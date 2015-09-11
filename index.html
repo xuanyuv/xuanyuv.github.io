@@ -1,49 +1,71 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>CSS版中国地图</title>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="css/style.css"/>
-</head>
-<body>
-<!-- 代码开始-->
-<div>
-    <dl id="gmap">
-        <dt><a id="title2" href="#nogo"></a></dt>
-        <dd><a id="xj" title="新疆" href="javascript:">新疆</a></dd>
-        <dd><a id="xz" title="西藏" href="javascript:">西藏</a></dd>
-        <dd><a id="qh" title="青海" href="javascript:">青海</a></dd>
-        <dd><a id="gs" title="甘肃" href="javascript:">甘肃</a></dd>
-        <dd><a id="lmg" title="内蒙古" href="javascript:">内蒙古</a></dd>
-        <dd><a id="hlj" title="黑龙江" href="javascript:">黑龙江</a></dd>
-        <dd><a id="jl" title="吉林" href="javascript:">吉林</a></dd>
-        <dd><a id="ln" title="辽宁" href="javascript:">辽宁</a></dd>
-        <dd><a id="sd" title="山东" href="javascript:">山东</a></dd>
-        <dd><a id="hb" title="河北" href="javascript:">河北</a></dd>
-        <dd><a id="sx" title="山西" href="javascript:">山西</a></dd>
-        <dd><a id="bj" title="北京" href="javascript:">北京</a></dd>
-        <dd><a id="tj" title="天津" href="javascript:">天津</a></dd>
-        <dd><a id="shx" title="陕西" href="javascript:">陕西</a></dd>
-        <dd><a id="nx" title="宁夏" href="javascript:">宁夏</a></dd>
-        <dd><a id="hn" title="河南" href="javascript:">河南</a></dd>
-        <dd><a id="js" title="江苏" href="javascript:">江苏</a></dd>
-        <dd><a id="ah" title="安徽" href="javascript:">安徽</a></dd>
-        <dd><a id="sh" title="上海" href="javascript:">上海</a></dd>
-        <dd><a id="zj" title="浙江" href="javascript:">浙江</a></dd>
-        <dd><a id="jx" title="江西" href="javascript:">江西</a></dd>
-        <dd><a id="hj" title="福建" href="javascript:">福建</a></dd>
-        <dd><a id="gd" title="广东" href="javascript:">广东</a></dd>
-        <dd><a id="hl" title="海南" href="javascript:">海南</a></dd>
-        <dd><a id="gx" title="广西" href="javascript:">广西</a></dd>
-        <dd><a id="gz" title="贵州" href="javascript:">贵州</a></dd>
-        <dd><a id="yn" title="云南" href="javascript:">云南</a></dd>
-        <dd><a id="sc" title="四川" href="javascript:">四川</a></dd>
-        <dd><a id="cq" title="重庆" href="javascript:">重庆</a></dd>
-        <dd><a id="hun" title="湖南" href="javascript:">湖南</a></dd>
-        <dd><a id="hub" title="湖北" href="javascript:">湖北</a></dd>
-        <dd><a id="tw" title="台湾" href="javascript:">台湾</a></dd>
-    </dl>
-</div>
-<!-- 代码结束-->
-</body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<Meta http-equiv="Content-Type" Content="text/html; Charset=utf-8">
+		<style type="text/css">
+			body{
+				font-family: "微软雅黑";
+			}
+			.abs{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#stage{
+				width: 100%;
+				height: 100%;
+				background-color: #000;
+				overflow: hidden;
+			}
+			#mark{
+				color: #fff;
+				font-size: 24px;
+			}
+			#msgBox{
+				width: 100%;
+				height: 100%;
+			}
+			#msgBox > div{
+				width: 300px;
+				height: 200px;
+				margin: 180px auto;
+				background-color: #fff;
+				cursor: pointer;
+				font-size: 24px;
+				line-height: 380%;
+				font-weight: bold;
+				color: #2a2a2a;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="stage" class="abs" onselectstart="return false">
+			<img id="PlayerPlane" src="src/plane.png" />
+		</div>
+		<!-- <div id="mark" class="abs">
+			
+		</div> -->
+		<div id="msgBox" class="abs">
+			<div id="button">
+				打飞机 v1.0
+				<br />
+				点击开始游戏
+				<br />
+				WASD 移动 J 打炮
+				<br />
+				by 陈轩 20141208
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="CX/CXGlobal.js"></script>
+	<script type="text/javascript" src="CX/AABB.js"></script>
+	<script type="text/javascript" src="CX/CXKeyboard.js"></script>
+	<script type="text/javascript" src="CX/CXTime.js"></script>
+	<script type="text/javascript" src="CX/CXObject.js"></script>
+	<script type="text/javascript" src="CX/CXWorld.js"></script>
+	<script type="text/javascript" src="gameObject/Bullet.js"></script>
+	<script type="text/javascript" src="gameObject/PlayerPlane.js"></script>
+	<script type="text/javascript" src="gameObject/Enemy_1.js"></script>
+	<script type="text/javascript" src="main.js"></script>
 </html>
