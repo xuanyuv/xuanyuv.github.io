@@ -48,3 +48,11 @@ hs_err_pid*
 target/
 bin/
 META-INF/
+
+#jekyll...
+_site
+.sass-cache
+.jekyll-metadata
+.vscode
+.idea
+startup.bat
