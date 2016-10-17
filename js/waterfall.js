@@ -13,13 +13,20 @@
      * 内容JSON
      */
     var demoContent = [{
-        demo_link: 'http://gaohaoyang.github.io/ife/task/task0002/work/Gaohaoyang/task0002_4.html',
-        img_link: 'http://ww2.sinaimg.cn/large/7011d6cfjw1f3ba2krzs0j207005y0sv.jpg',
-        code_link: 'https://github.com/Gaohaoyang/ife/tree/master/task/task0002/work/Gaohaoyang',
-        title: '输入框即时提示',
-        core_tech: 'JavaScript',
-        description: '对input监听，使用正在表达式高亮匹配，实现输入联想效果。'
+        demo_link: 'http://asciiflow.com/',
+        img_link: 'http://img1.appinn.com/2011/06/Asciiflow_-_ASCII_Flow_Diagram_Tool-20110620-082457.jpg',
+        code_link: 'http://asciiflow.com/',
+        title: '纯文本流程图表',
+        core_tech: 'js + css',
+        description: '如果你对MicrosoftVisio望而却步，对Diagram.ly都觉得麻烦，ASCIIFlow可能是你的菜。ASCIIFlow是上世纪九十年代黑客们最爱的制作流程图表方式，全文本易传播，Geek风格的反璞归真。不幸的是，目前似乎无法输入中文。'
     }, {
+       demo_link: 'http://gaohaoyang.github.io/ife/task/task0002/work/Gaohaoyang/task0002_4.html',
+       img_link: 'http://ww2.sinaimg.cn/large/7011d6cfjw1f3ba2krzs0j207005y0sv.jpg',
+       code_link: 'https://github.com/Gaohaoyang/ife/tree/master/task/task0002/work/Gaohaoyang',
+       title: '输入框即时提示',
+       core_tech: 'JavaScript',
+       description: '对input监听，使用正在表达式高亮匹配，实现输入联想效果。'
+   }, {
         demo_link: 'http://gaohaoyang.github.io/shadow-demo-css3',
         img_link: 'http://7q5cdt.com1.z0.glb.clouddn.com/Demoshadow.png',
         code_link: 'https://github.com/Gaohaoyang/shadow-demo-css3',
