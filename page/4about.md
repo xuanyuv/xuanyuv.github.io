@@ -9,6 +9,8 @@ icon: heart
 {:toc}
 
 
+![](/img/myself.jpg)
+
 我是玄玉
 
 * 我的邮箱：[jadyer@yeah.net](mailto:jadyer@yeah.net)
@@ -25,6 +27,7 @@ icon: heart
 
 ## 工具
 * [提供API的图床](https://sm.ms/)
+* [新浪微博图床](http://weibo.com/minipublish)
 * [新浪微博图床Chrome扩展](https://github.com/Suxiaogang/WeiboPicBed)
 <br/>
 <br/>
