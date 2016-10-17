@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "博客初建"
-date:   2016-10-17 01:22:02
-categories: mine
+categories: mine blog
+tags: blog 首篇 博客
 ---
 
 * content

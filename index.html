@@ -2,6 +2,16 @@
 layout: default
 ---
 
+<!--
+layout: post
+title:  "博客初建"
+date:   2016-10-17 01:22:02
+categories: mine blog
+author: 玄玉
+tags: blog 首篇 博客
+excerpt: 这是自定义的博文简介。
+-->
+
 <div class="page clearfix" index>
     <div class="left">
         <!--<h1>文章列表</h1>-->
@@ -14,31 +24,52 @@ layout: default
                   <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
                 </h2>
                 <div class="label">
+                    <!-- 隐藏博文发表日期 -->
+                    <!--
                     <div class="label-card">
                         <i class="fa fa-calendar"></i>{{ post.date | date: "%F" }}
                     </div>
+                    -->
+                    <!-- _posts文件夹下的md文章头部若定义了author则显示博文作者，否则不显示 -->
                     <div class="label-card">
-                        {% if post.author %}<i class="fa fa-user"></i>{{ post.author }}
+                        {% if post.author %}
+                            <i class="fa fa-user"></i>{{ post.author }}
                         {% endif %}
                     </div>
                     <div class="label-card">
-                        {% if page.meta %}<i class="fa fa-key"></i>{{ page.meta }}  {% endif %}
+                        {% if page.meta %}
+                            <i class="fa fa-key"></i>{{ page.meta }}
+                        {% endif %}
                     </div>
-
+                    <!-- 隐藏每篇博文的category -->
+                    <!--
                     <div class="label-card">
-                    {% include category.html %}
+                        {
+                        %
+                        include category.html %}
                     </div>
-
+                    -->
+                    <!-- 隐藏每篇博文的tag -->
+                    <!--
                     <div class="label-card">
-                    {% include tag.html %}
+                        {
+                        %
+                        include tag.html %}
                     </div>
+                    -->
                 </div>
+                <!-- 隐藏每篇博文的简介 -->
+                <!--
                 <div class="excerpt">
-                    {{post.excerpt}}
+                    {{ post.excerpt }}
                 </div>
+                -->
+                <!-- 隐藏每篇博文的Read All -->
+                <!--
                 <div class="read-all">
                     <a  href="{{ post.url | prepend: site.baseurl }}"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
+                -->
                 <hr>
               </li>
             {% endfor %}
@@ -68,18 +99,18 @@ layout: default
     <!-- <button class="anchor"><i class="fa fa-anchor"></i></button> -->
     <div class="right">
         <div class="wrap">
+            <!-- 隐藏最新发表 -->
             <div class="side">
                 <div>
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     Recent Posts
                 </div>
                 <ul class="content-ul" recent>
-                    {% for post in site.posts offset: 0 limit: 10  %}
+                    {% for post in site.posts offset: 0 limit: 6  %}
                         <li><a href="{{ post.url }}">{{ post.title }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
-
             <!-- Content -->
             <div class="side ">
                 <div>
