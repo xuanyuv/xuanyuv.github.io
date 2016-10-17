@@ -52,4 +52,4 @@ If you do not wish to install this documentation in the future, use the
 C:\Users\Jadyer>gem install jekyll
 ```
 
-## 有点困，明天再写吧。。
+## 牙疼，明天再写吧。。
