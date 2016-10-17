@@ -18,7 +18,7 @@ permalink: /:year/:month/:day/:title/
 # other links
 #twitter_username: gaohaoyang126
 #facebook_username: gaohaoyang.water
-github_username:  jadyer
+github_username: jadyer
 email: jadyer@yeah.net
 #weibo_username: 3115521wh
 #zhihu_username: gaohaoyang
@@ -30,7 +30,7 @@ description_footer: 本站记录我的所见所得！
 # comments
 # two ways to comment, only choose one, and use your own short name
 # 两种评论插件，选一个就好了，使用自己的 short_name
-#duoshuo_shortname: #hygblog
+duoshuo_shortname: jadyer
 #disqus_shortname: gaohaoyang
 
 # statistic analysis 统计代码
