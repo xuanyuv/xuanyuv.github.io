@@ -76,7 +76,7 @@ Successfully installed liquid-3.0.6
 Fetching: kramdown-1.12.0.gem (100%)
 Successfully installed kramdown-1.12.0
 
-（具体的列表明细就略了）
+（具体的安装列表明细就略了）
 
 Parsing documentation for jekyll-3.3.0
 Installing ri documentation for jekyll-3.3.0
