@@ -8,17 +8,24 @@ tags: jekyll rubygems github blog
 * content
 {:toc}
 
-这可以说是我的第一篇正式的github-blog，下面就通过Markdown语法写博，一步步讲述环境搭建到运行看效果。
+这可以说是我的第一篇正式的github-blog，下面通过Markdown写博，一步步讲述环境搭建到运行看效果。
 
 ## 安装Ruby
+
 Windows用户访问[http://rubyinstaller.org/](http://rubyinstaller.org/)，下载18.4MB的[rubyinstaller-2.3.1-x64.exe](http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.3.1-x64.exe)文件
+
 安装过程中会提示加入ruby到环境变量，没选的话也可手工加到Path=D:\Develop\Ruby23-x64\bin
+
 最后在命令提示符中验证：ruby -v
+
 得到输出：ruby 2.3.1p112 (2016-04-26 revision 54768) [x64-mingw32]
 
-#安装Jekyll
+## 安装Jekyll
+
 这里是通过RubyGems来安装Jekyll，所以到其官网[https://rubygems.org/](https://rubygems.org/)下载997KB的[rubygems-2.6.7.zip](https://rubygems.org/rubygems/rubygems-2.6.7.zip)文件
+
 解压后在命令提示符中执行以下命令安装RubyGems
+
 ```
 D:\Develop\rubygems-2.6.7>ruby setup.rb
 RubyGems 2.6.7 installed
@@ -31,7 +38,8 @@ Bug fixes:
 
 * Install native extensions in the correct location when using the
   `--user-install` flag. Pull request #1683 by Noah Kantrowitz.
-......（具体细节这里不详细贴了）
+
+（这里就是一大堆的* Install......具体就不详细贴了）
 
 ------------------------------------------------------------------------------
 
@@ -47,7 +55,9 @@ If you do not wish to install this documentation in the future, use the
 --no-document flag, or set it as the default in your ~/.gemrc file. See
 'gem help env' for details.
 ```
+
 **接下来就是开始安装Jekyll了**
+
 ```
 C:\Users\Jadyer>gem install jekyll
 ```
