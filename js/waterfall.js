@@ -21,21 +21,21 @@
         description: '如果你对MicrosoftVisio望而却步，对Diagram.ly都觉得麻烦，ASCIIFlow可能是你的菜。ASCIIFlow是上世纪九十年代黑客们最爱的制作流程图表方式，全文本易传播，Geek风格的反璞归真。不幸的是，目前似乎无法输入中文。'
     }, {
        demo_link: 'http://emblemmatic.org/markmaker',
-       img_link: 'http://ww3.sinaimg.cn/small/723dadf5gw1f8vnlypmn9j208c08cdg0.jpg',
+       img_link: 'http://ww3.sinaimg.cn/large/723dadf5gw1f8vnlypmn9j208c08cdg0.jpg',
        code_link: 'http://emblemmatic.org/markmaker',
        title: '生成企业Logo',
        core_tech: 'JavaScript',
        description: '还在为设计企业Logo而绞尽脑汁么？这里有国外站点提供的Logo免费生成服务！'
    }, {
         demo_link: 'http://d.lanrentuku.com/down/js/jiaodiantu-785/',
-        img_link: 'http://ww2.sinaimg.cn/small/723dadf5gw1f8vnvv35zpj207s03w0st.jpg',
+        img_link: 'http://ww1.sinaimg.cn/mw690/723dadf5gw1f8vo03ponpj207s03wdfw.jpg',
         code_link: 'http://www.lanrentuku.com/js/d785.zip',
         title: '腾讯软件中心JS焦点图代码',
         core_tech: 'CSS',
         description: '腾讯软件中心JS焦点图代码，调用方便，图片尺寸610x205。'
     }, {
         demo_link: 'http://d.lanrentuku.com/down/js/jiaodiantu-1164/',
-        img_link: 'http://ww1.sinaimg.cn/large/723dadf5gw1f8vnw8j0rvj207s03w74p.jpg',
+        img_link: 'http://ww3.sinaimg.cn/mw690/723dadf5gw1f8vo046r3fj207s03wwev.jpg',
         code_link: 'http://www.lanrentuku.com/js/d1164.zip',
         title: 'jQuery横向图片焦点图滚动效果',
         core_tech: 'jQuery',
