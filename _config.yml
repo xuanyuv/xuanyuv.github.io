@@ -1,5 +1,6 @@
 #本博客素材取自https://github.com/Gaohaoyang/gaohaoyang.github.io
 #第一版介绍地址为http://jekyllthemes.org/themes/cool-concise-high-end/
+#Jekyll中文介绍见http://jekyllcn.com/docs/structure/
 
 
 #指定启动Jekyll服务时的端口号，访问的地址为http://127.0.0.1:port/，不配置则默认为4000
