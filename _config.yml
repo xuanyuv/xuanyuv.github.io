@@ -2,7 +2,7 @@
 #第一版介绍地址为http://jekyllthemes.org/themes/cool-concise-high-end/
 
 
-#指定启动Jekyll服务时的端口号，访问的地址为http://127.0.0.1:port/
+#指定启动Jekyll服务时的端口号，访问的地址为http://127.0.0.1:port/，不配置则默认为4000
 port: 1234
 #指定并配置Markdown解析器（2016年05月01日起，GitHubPages将只支持kramdown作为唯一的Markdown引擎）
 markdown: kramdown
@@ -12,13 +12,12 @@ kramdown:
 
 
 title: 半步多博客
-brief-intro: ""
-
+brief-intro: "珞珞如石"
+#the subpath of your site, e.g. /blog
+baseurl: ""
 #配置页面头部<link rel="canonical" href="https://jadyer.github.io/2016/10/17/first-blog/">
 url: "https://jadyer.github.io"
 
-#the subpath of your site, e.g. /blog
-baseurl: ""
 
 #footer下方显示的联系方式
 #twitter_username: jadyer
