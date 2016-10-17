@@ -14,7 +14,7 @@
      */
     var demoContent = [{
         demo_link: 'http://asciiflow.com/',
-        img_link: 'http://img1.appinn.com/2011/06/Asciiflow_-_ASCII_Flow_Diagram_Tool-20110620-082457.jpg',
+        img_link: 'http://ww2.sinaimg.cn/large/723dadf5gw1f8vnviyg1zj20cb0bq74o.jpg',
         code_link: 'http://asciiflow.com/',
         title: '纯文本流程图表',
         core_tech: 'JavaScript + CSS',
@@ -28,14 +28,14 @@
        description: '还在为设计企业Logo而绞尽脑汁么？这里有国外站点提供的Logo免费生成服务！'
    }, {
         demo_link: 'http://d.lanrentuku.com/down/js/jiaodiantu-785/',
-        img_link: 'http://d.lanrentuku.com/down/js/jiaodiantu-785/index.jpg',
+        img_link: 'http://ww2.sinaimg.cn/large/723dadf5gw1f8vnvv35zpj207s03w0st.jpg',
         code_link: 'http://www.lanrentuku.com/js/d785.zip',
         title: '腾讯软件中心JS焦点图代码',
         core_tech: 'CSS',
         description: '腾讯软件中心JS焦点图代码，调用方便，图片尺寸610x205。'
     }, {
         demo_link: 'http://d.lanrentuku.com/down/js/jiaodiantu-1164/',
-        img_link: 'http://d.lanrentuku.com/down/js/jiaodiantu-1164/index.jpg',
+        img_link: 'http://ww1.sinaimg.cn/large/723dadf5gw1f8vnw8j0rvj207s03w74p.jpg',
         code_link: 'http://www.lanrentuku.com/js/d1164.zip',
         title: 'jQuery横向图片焦点图滚动效果',
         core_tech: 'jQuery',
