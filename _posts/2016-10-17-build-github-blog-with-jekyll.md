@@ -300,7 +300,7 @@ C:\Users\Jadyer>
 
 ## 创建博客
 
-先新建一个文件夹（这里命名为Jekyll）用于存放博客内容，然后在命令提示符中执行以下命令来创建Jekyll工作区。
+先建一个文件夹（这里命名为Jekyll）用于存放博客内容，然后在命令提示符中执行以下命令创建Jekyll工作区。
 
 ```
 D:\Develop\Code\Jekyll>jekyll new myblog
@@ -329,7 +329,7 @@ Done installing documentation for bundler after 12 seconds
 D:\Develop\Code\Jekyll>
 ```
 
-然后再执行命令，创建Jekyll工作区（记得先把上面new操作创建的myblog目录删掉）
+然后再执行命令（记得先把上面new操作创建的myblog目录删掉）
 
 ```
 D:\Develop\Code\Jekyll>jekyll new myblog
@@ -383,7 +383,9 @@ D:\Develop\Code\Jekyll>
 
 ![](/img/2016-10-17/myblog-folder.png)
 
-接下来到博客文件夹中，开启Jekyll服务器（watch参数用于检测文件变化，即修改后不需重启Jekyll，可惜Windows不支持）
+接下来到博客文件夹中，启动Jekyll服务
+
+（watch参数用于检测文件变化，即修改后不需重启Jekyll，可惜Windows不支持）
 
 ```
 D:\Develop\Code\Jekyll>cd myblog
@@ -404,7 +406,7 @@ Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
   Server running... press ctrl-c to stop.
 ```
 
-访问http://127.0.0.1:4000/会看到下面的页面
+访问[http://127.0.0.1:4000/](http://127.0.0.1:4000/)会看到下面的页面
 
 ![](/img/2016-10-17/myblog-index-page.png)
 
@@ -434,7 +436,9 @@ jekyll 3.3.0 | Error:  jekyll-paginate
 C:\Users\Jadyer\Desktop\gaohaoyang.github.io-master>
 ```
 
-这是因为Jekyll3.x中默认安装已没有此分页组件，官方将其插件化了，故需独立安装，详见[https://jekyllrb.com/docs/pagination/](https://jekyllrb.com/docs/pagination/)
+这是因为Jekyll3.x中默认安装已没有此分页组件，官方将其插件化了，故需独立安装。
+
+详见[https://jekyllrb.com/docs/pagination/](https://jekyllrb.com/docs/pagination/)
 
 ```
 C:\Users\Jadyer\Desktop\gaohaoyang.github.io-master>gem install jekyll-paginate
@@ -485,7 +489,7 @@ yml
   Server running... press ctrl-c to stop.
 ```
 
-访问http://127.0.0.1:4000/就看到本地页面了
+访问[http://127.0.0.1:4000/](http://127.0.0.1:4000/)就看到本地页面了
 
 ![](/img/2016-10-17/hyg-blog.png)
 
@@ -504,5 +508,7 @@ yml
 * index.html是整站的入口
 
 
-
-### 牙疼，剩下的明天再写吧。。
+<br/>
+<br/>
+<br/>
+## 牙疼，剩下的明天再写吧。。
