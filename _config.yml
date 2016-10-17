@@ -1,6 +1,13 @@
 #本博客素材取自https://github.com/Gaohaoyang/gaohaoyang.github.io
 #第一版介绍地址为http://jekyllthemes.org/themes/cool-concise-high-end/
 #Jekyll中文介绍见http://jekyllcn.com/docs/structure/
+#_posts      存放博文
+#_layouts    存放模板文件
+#_includes   存放可以在模板文件中包含的公共文件
+#pages       站内固定的页面
+#static      公共资源（包括js,css,img等）
+#index.html  整个站的入口文件
+#sitemap.txt 给搜索引擎看的（即如何爬取这个站）
 
 
 #指定启动Jekyll服务时的端口号，访问的地址为http://127.0.0.1:port/，不配置则默认为4000
@@ -56,23 +63,3 @@ paginate: 10
 permalink: /:year/:month/:day/:title/
 #摘要分割符号（Jekyll在解析文章时便可提取摘要）
 excerpt_separator: "\n\n\n\n"
-
-
-
-
-
-
-
-
-#layout: post                                   #这个博客的布局文件
-#title: 在Github上搭建自己的Jekyll博客             #博客标题
-#category: 工具                                  #博客分类
-#tags: Jekyll                                   #博客标签
-#keywords: Jekyll,Github                        #自定义常量
-#description:                                   #自定义常量
-#_includes 可以在模板中随时包含的文件
-#_layouts 布局文件，在博客头配置中可以选择
-#pages 站内固定的页面
-#public 公共资源，包括js,css,img等，还有我博客中调用的图片，我都放这里
-#index.html 站点的首页，整个站的入口文件
-#sitemap.txt 给搜索引擎看的，如何爬取这个站
