@@ -35,12 +35,15 @@ excerpt: 这是自定义的博文简介。
                         <i class="fa fa-calendar"></i>{{ post.date | date: "%F" }}
                     </div>
                     -->
+                    <!-- 隐藏博文作者 -->
                     <!-- _posts文件夹下的md文章头部若定义了author则显示博文作者，否则不显示 -->
+                    <!--
                     <div class="label-card">
                         {% if post.author %}
                             <i class="fa fa-user"></i>{{ post.author }}
                         {% endif %}
                     </div>
+                    -->
                     <div class="label-card">
                         {% if page.meta %}
                             <i class="fa fa-key"></i>{{ page.meta }}
