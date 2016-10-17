@@ -19,7 +19,7 @@ icon: heart
 
 ## 友情链接
 
-[GitHub](https://github.com/jadyer) \| [半步多](http://blog.csdn.net/jadyer)
+[订阅](https://jadyer.github.io/feed.xml) \| [GitHub](https://github.com/jadyer) \| [半步多](http://blog.csdn.net/jadyer)
 
 ## Comments
 

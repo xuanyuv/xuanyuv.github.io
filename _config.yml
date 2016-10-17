@@ -4,6 +4,11 @@
 
 #指定启动Jekyll服务时的端口号，访问的地址为http://127.0.0.1:port/
 port: 1234
+#指定并配置Markdown解析器（2016年05月01日起，GitHubPages将只支持kramdown作为唯一的Markdown引擎）
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 
 title: 半步多博客
@@ -15,51 +20,59 @@ url: "https://jadyer.github.io"
 #the subpath of your site, e.g. /blog
 baseurl: ""
 
-
-permalink: /:year/:month/:day/:title/
-
-# other links
-#twitter_username: gaohaoyang126
-#facebook_username: gaohaoyang.water
+#footer下方显示的联系方式
+#twitter_username: jadyer
+#facebook_username: jadyer
 #github_username: jadyer
 #email: jadyer@yeah.net
-#weibo_username: 3115521wh
-#zhihu_username: gaohaoyang
-#linkedIn_username: gaohaoyang
-#dribbble_username:
+#weibo_username: jadyer
+#zhihu_username: jadyer
+#linkedIn_username: jadyer
 
-#description_footer: 本站记录我的所见所得！
-
-# comments
-# two ways to comment, only choose one, and use your own short name
-# 两种评论插件，选一个就好了，使用自己的 short_name
+#评论（指定多说或Disqus的short_name）
+#disqus_shortname: jadyer
 duoshuo_shortname: jadyer
-#disqus_shortname: gaohaoyang
 
-# statistic analysis 统计代码
-# 百度统计 id，将统计代码替换为自己的百度统计id，即
-# hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
-# xxxxx字符串
+#统计（指定Baidu或Google的统计ID）
+#google_analytics_id: UA-72449510-4
 baidu_tongji_id: a1ec472ee05eea50838e5dab0a70c4a0
-#google_analytics_id: UA-72449510-4 # google 分析追踪id
 
-# Build settings
-markdown: kramdown
 
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
 
-# port
-# port: 1234
+
 
 # url
 category_dir: category/
 tag_dir: tag/
 
-# excerpt
+
+
+
+
+#博文分页的配置
+gems: [jekyll-paginate]
+paginate: 10
+#博文的固定链接形式
+permalink: /:year/:month/:day/:title/
+#摘要分割符号（Jekyll在解析文章时便可提取摘要）
 excerpt_separator: "\n\n\n\n"
 
-# paginate
-gems: [jekyll-paginate]
-paginate: 6
+
+
+
+
+
+
+
+#layout: post                                   #这个博客的布局文件
+#title: 在Github上搭建自己的Jekyll博客             #博客标题
+#category: 工具                                  #博客分类
+#tags: Jekyll                                   #博客标签
+#keywords: Jekyll,Github                        #自定义常量
+#description:                                   #自定义常量
+#_includes 可以在模板中随时包含的文件
+#_layouts 布局文件，在博客头配置中可以选择
+#pages 站内固定的页面
+#public 公共资源，包括js,css,img等，还有我博客中调用的图片，我都放这里
+#index.html 站点的首页，整个站的入口文件
+#sitemap.txt 给搜索引擎看的，如何爬取这个站
