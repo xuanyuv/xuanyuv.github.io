@@ -12,9 +12,10 @@ tags: jekyll rubygems github blog
 
 ## 安装Ruby
 
-Windows用户访问[http://rubyinstaller.org/](http://rubyinstaller.org/)，下载18.4MB的[rubyinstaller-2.3.1-x64.exe](http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.3.1-x64.exe)文件
+Windows用户访问[http://rubyinstaller.org/](http://rubyinstaller.org/)下载18.4MB大小的[rubyinstaller-2.3.1-x64.exe](http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.3.1-x64.exe)
 
-安装过程中会提示加入ruby到环境变量，没选的话也可手工加到Path=D:\Develop\Ruby23-x64\bin
+安装时可勾选`Add Ruby executables to your PATH`，没选的话后面也可手工加到`Path=D:\Develop\Ruby23-x64\bin`
+
 
 最后在命令提示符中验证：ruby -v
 
