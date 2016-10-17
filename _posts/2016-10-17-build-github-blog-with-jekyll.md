@@ -16,10 +16,12 @@ Windows用户访问[http://rubyinstaller.org/](http://rubyinstaller.org/)下载1
 
 安装时可勾选`Add Ruby executables to your PATH`，没选的话可以手工`Path=D:\Develop\Ruby23-x64\bin`
 
+然后验证一下安装结果
 
-最后在命令提示符中验证：ruby -v
-
-得到输出：ruby 2.3.1p112 (2016-04-26 revision 54768) [x64-mingw32]
+```
+C:\Users\Jadyer>ruby -v
+ruby 2.3.1p112 (2016-04-26 revision 54768) [x64-mingw32]
+```
 
 ## 安装Jekyll
 
