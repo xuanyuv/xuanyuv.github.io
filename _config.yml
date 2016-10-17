@@ -1,13 +1,17 @@
 #本博客素材取自https://github.com/Gaohaoyang/gaohaoyang.github.io
 #第一版介绍地址为http://jekyllthemes.org/themes/cool-concise-high-end/
 
+
 #指定启动Jekyll服务时的端口号，访问的地址为http://127.0.0.1:port/
 port: 1234
 
+
 title: 半步多博客
 brief-intro: 站在云端，敲下键盘，望着通往世界另一头的那扇窗，只为做那读懂0和1的人。。
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://jadyer.github.io2222"
+baseurl: "/ab" # the subpath of your site, e.g. /blog
+
+#配置页面头部<link rel="canonical" href="https://jadyer.github.io/2016/10/17/first-blog/">
+url: "https://jadyer.github.io"
 
 permalink: /:year/:month/:day/:title/
 
