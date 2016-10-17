@@ -1,18 +1,3 @@
-#本博客素材取自https://github.com/Gaohaoyang/gaohaoyang.github.io
-#第一版介绍地址为http://jekyllthemes.org/themes/cool-concise-high-end/
-#Jekyll中文介绍见http://jekyllcn.com/docs/structure/
-#_posts      博文（格式是：YEAR-MONTH-DAY-title.md）
-#_drafts     草稿文件（格式是：没有日期.md）（用处不大）
-#_site       Jekyll生成的网站会放在该文件夹下（用处不大）
-#_layouts    模板文件
-#_includes   可以被模板文件包含的公共文件
-#_data       保存数据的（jekyll会自动加载这里的所有.jml或者.yaml结尾的文件）（暂未创建）
-#static      自定义的公共资源（包括js/css/img等）（暂未创建）
-#page        自定义的站内固定的页面
-#index.html  整站的入口
-#sitemap.txt 给搜索引擎看的（即如何爬取这个站）（暂未创建）
-
-
 #指定启动Jekyll服务时的端口号，访问的地址为http://127.0.0.1:port/，不配置则默认为4000
 port: 1234
 #指定并配置Markdown解析器（2016年05月01日起，GitHubPages将只支持kramdown作为唯一的Markdown引擎）
