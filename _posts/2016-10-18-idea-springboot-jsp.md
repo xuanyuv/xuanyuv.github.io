@@ -2,7 +2,7 @@
 layout: post
 title: "idea运行多模块的springbootjsp"
 categories: 工具
-tags: idea intellij spring boot jsp maven module run debug
+tags: idea springboot jsp maven module
 author: 玄玉
 excerpt: idea在运行含有多个maven module的jsp工程时的解决方案。
 ---

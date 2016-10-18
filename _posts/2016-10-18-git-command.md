@@ -2,7 +2,7 @@
 layout: post
 title: "Git命令小结"
 categories: 工具
-tags: svn revert git checkout push clone id_rsa passphrase
+tags: svn revert git clone id_rsa passphrase
 author: 玄玉
 excerpt: 一些常用的Git用法，诸如还原、冲突、仓库迁移、拉取指定分支、克隆最新的几个版本、一机管理多个SSHKey、重置passphrase等等。
 ---
