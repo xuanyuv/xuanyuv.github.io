@@ -10,7 +10,9 @@ excerpt: 详细介绍了通过Jekyll在GithubPages（github.io）上创建静态
 * content
 {:toc}
 
+
 这可以说是我的第一篇正式的github-blog，下面通过Markdown写博，一步步讲述环境搭建到运行看效果。
+
 
 ## 安装Ruby
 
