@@ -33,5 +33,8 @@ icon: heart
 <br/>
 <br/>
 
-## Blogs
-* [半步多](http://blog.csdn.net/jadyer/) 这是博主的CSDN博客
+## 站点
+* [半步多](http://blog.csdn.net/jadyer) 博主的CSDN博客
+* [素材网](http://www.xwcms.net)
+* [懒人图库](http://www.lanrentuku.com)
+* [懒人图库](http://www.lanrenzhijia.com)
