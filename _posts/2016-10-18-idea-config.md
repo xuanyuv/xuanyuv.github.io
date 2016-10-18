@@ -115,7 +115,9 @@ File---Project Structure---Project Settings---Project---Project JDK
 
 #### 黑色主题及避免中文乱码
 
-settings---Appearance & Behavior---Appearance---Theme---Darcula 以及 Override default fonts by---Microsoft YaHei
+settings---Appearance & Behavior---Appearance---Theme---Darcula
+
+并勾选Override default fonts by，同时选择Microsoft YaHei字体
 
 #### 打开内存使用状态
 
@@ -243,7 +245,7 @@ settings---Editor---File Encodings---Transparent native-to-ascii conversion
 
 #### 隐藏.iml和.idea和.gradle
 
-settings---Editor---File Types---Ignore files and folders---*.iml;*.idea;*.gradle;
+settings---Editor---File Types---Ignore files and folders---`*.iml;*.idea;*.gradle;`
 
 #### 版本控制下文件变化的显示
 
