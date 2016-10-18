@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Git命令小结"
+title: "Git命令小结"
 categories: 工具
 tags: svn revert git checkout push clone id_rsa passphrase
 author: 玄玉

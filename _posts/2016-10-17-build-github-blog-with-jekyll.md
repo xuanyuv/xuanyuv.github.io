@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Jekyll搭建Github静态博客"
+title: "Jekyll搭建Github静态博客"
 categories: 其它
 tags: jekyll rubygems github blog
 author: 玄玉
