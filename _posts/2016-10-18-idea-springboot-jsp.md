@@ -84,9 +84,8 @@ public class BootStrap extends SpringBootServletInitializer {
 最好在下面的`Before launch: Activate tool window`一栏增加`Make`操作，这里就不截图了
 
 * 注意Module运行时的工作空间依赖问题
-    > 建议勾选`Resolve Workspace artifacts`<br/>
-否则启动时该Module只会找本地仓库的依赖，不找workspace里的submodule<br/>
-光这个问题就搞了我**5**个小时，后来还是在[stackoverflow](http://stackoverflow.com/questions/35567002/spring-boot-multi-module-reload-sub-modules-without-running-maven-install)找到的解决方法
+
+    > 建议勾选`Resolve Workspace artifacts`，否则启动时该Module只会找本地仓库的依赖，不找workspace里的submodule。**光这个问题就搞了我**5**个小时**，后来还是在[stackoverflow](http://stackoverflow.com/questions/35567002/spring-boot-multi-module-reload-sub-modules-without-running-maven-install)找到的解决方法
 
 ![](/img/2016-10-18/boss-config.png)
 
