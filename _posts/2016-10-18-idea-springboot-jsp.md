@@ -16,13 +16,19 @@ excerpt: idea在运行含有多个maven module的jsp工程时的解决方案。
 ## 现象
 
 * 现象01
+
     > idea里面整个工程只有一个MavenModule的情况下，访问SpringBoot应用的JSP页面，没任何问题
+
 * 现象02
+
     > 多个MavenModule情况下，idea启动SpringBootApplication之后，无法访问JSP页面，总是提示404<br/>
+
 而其它的资源如`js、css、controller`等都可访问（`jsp`是放在`src/main/webapp/`下的）<br/>
+
 同样的代码，同事的`STS(Run as Spring Boot App)`启动后访问JSP页面，没任何问题
 
 ## 解决
+
 参考了这两个链接：[jetbrains](https://youtrack.jetbrains.com/issue/IDEA-142078)　和　[stackoverflow](http://stackoverflow.com/questions/25119604/spring-boot-application-deployed-in-sts-works-fine-but-not-in-intellij-idea)
 
 #### RUN模式
