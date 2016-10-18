@@ -63,7 +63,7 @@ SELECT TABLE_NAME FROM information_schema.COLUMNS WHERE COLUMN_NAME='file_id';
 SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA='数据库名';
 ```
 
-## 统计昨日今日本周数据
+## 统计昨日、今日、本周数据
 
 ```sql
 SELECT t.tag 渠道, count(*) 累计扫描量 FROM t_qq_qrcode t GROUP BY t.tag;
