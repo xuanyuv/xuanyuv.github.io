@@ -2,7 +2,7 @@
 layout: post
 title: "MySQL命令小结"
 categories: MySQL
-tags: mysql schema tablespace count sum max groupby orderby
+tags: sql mysql schema tablespace
 author: 玄玉
 excerpt: 一些常用的MySQL命令，诸如元数据查询、统计、建表、修改表结构等等。
 ---
