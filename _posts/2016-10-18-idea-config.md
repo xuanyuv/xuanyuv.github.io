@@ -276,19 +276,28 @@ settings---Build,Execution,Deployment---Compiler---Make project automatically
 相较于eclipse的自动实时编译，idea更灵活些，虽然它也支持自动实时编译，但比较占资源
 
 idea共有三种手工编译方式：Compile、Rebuild、Make（可点击菜单栏Build看到）
+
 * Compile
+
     > 对选定的目标（Java 类文件），进行强制性编译，不管目标是否是被修改过
+
 * Rebuild
+
     > 对选定的目标（Project），进行强制性编译，不管目标是否是被修改过。由于Rebuild的目标只有Project，所以Rebuild每次花的时间会比较长
+
 * Make
+
     >使用最多的编译操作。对选定的目标（Project 或 Module）进行编译，但只编译有修改过的文件，没有修改过的不会编译，这样开发大项目才不会浪费时间在编译过程中
 
 #### 编译报错
 
 * 报告：OutOfMemoryError
+
     > 将其默认的700MB增大（64位用户在内存足够的情况下，建议改为1500或以上）<br/>
 settings---Build,Execution,Deployment---Compiler---Build process heap size(Mbytes)
+
 * 报告：找不到符号、未结束的字符串文字
+
     > 1、UTF-8文件分有BOM和无BOM，idea默认使用的编译器是javac，而其只能编译无BOM的文件<br/>
 　　很多eclipse用户在使用idea开发eclipse项目时会遇到此问题<br/>
 　　主要是因为eclipse的编译器是eclipse，其支持有BOM的文件编译。故需对文件进行BOM去除<br/>
