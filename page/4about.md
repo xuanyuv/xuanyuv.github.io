@@ -13,14 +13,8 @@ icon: heart
 
 我是玄玉
 
-* 我的邮箱：[jadyer@yeah.net](mailto:jadyer@yeah.net)
-* 我的Github：[https://github.com/jadyer](https://github.com/jadyer)
-<br/>
-<br/>
-<br/>
-
-## 链接
-[订阅](https://jadyer.github.io/feed.xml) \| [GitHub](https://github.com/jadyer) \| [半步多](http://blog.csdn.net/jadyer)
+* 邮箱：[jadyer@yeah.net](mailto:jadyer@yeah.net)
+* 订阅：[https://jadyer.github.io/feed.xml](https://jadyer.github.io/feed.xml)
 <br/>
 <br/>
 <br/>
