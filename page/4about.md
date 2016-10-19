@@ -37,7 +37,7 @@ icon: heart
 * [半步多](http://blog.csdn.net/jadyer) 博主的CSDN博客
 * [OneCoder](http://www.coderli.com)
 * [Ticmy](http://www.ticmy.com)
-* [阿里中间件](http://jm.taobao.org)
+* [阿里中间件团队博客](http://jm.taobao.org)
 * [并发编程网](http://ifeve.com)
 * [酷壳](http://coolshell.cn)
 * [一问一答](http://wenda60.com)
