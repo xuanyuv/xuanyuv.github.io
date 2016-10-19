@@ -35,7 +35,10 @@ icon: heart
 
 ## 站点
 * [半步多](http://blog.csdn.net/jadyer) 博主的CSDN博客
+* [OneCoder](http://www.coderli.com)
+* [Ticmy](http://www.ticmy.com)
+* [酷壳](http://coolshell.cn)
+* [一问一答](http://wenda60.com)
 * [素材网](http://www.xwcms.net)
 * [懒人图库](http://www.lanrentuku.com)
 * [懒人图库](http://www.lanrenzhijia.com)
-* [OneCoder](http://www.coderli.com)
