@@ -24,65 +24,61 @@ excerpt: 这是自定义的博文简介。
         <hr>
         <ul>
             {% for post in paginator.posts %}
+            <li>
+                <a class="post-link" style="font-size:20px;" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                <hr style="margin: 12px 0">
+            </li>
+            {% endfor %}
+        </ul>
+        <!--
+        <ul>
+            {% for post in paginator.posts %}
               <li>
                 <h2>
-                  <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                  <a class="post-link" style="font-size:20px;" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
                 </h2>
                 <div class="label">
-                    <!-- 隐藏博文发表日期 -->
-                    <!--
+                    博文发表日期
                     <div class="label-card">
                         <i class="fa fa-calendar"></i>{{ post.date | date: "%F" }}
                     </div>
-                    -->
-                    <!-- 隐藏博文作者 -->
-                    <!-- _posts文件夹下的md文章头部若定义了author则显示博文作者，否则不显示 -->
-                    <!--
+                    博文作者（_posts文件夹下的md文章头部若定义了author则显示博文作者，否则不显示）
                     <div class="label-card">
                         {% if post.author %}
                             <i class="fa fa-user"></i>{{ post.author }}
                         {% endif %}
                     </div>
-                    -->
                     <div class="label-card">
                         {% if page.meta %}
                             <i class="fa fa-key"></i>{{ page.meta }}
                         {% endif %}
                     </div>
-                    <!-- 隐藏每篇博文的category -->
-                    <!--
+                    每篇博文的category
                     <div class="label-card">
                         {
                         %
                         include category.html %}
                     </div>
-                    -->
-                    <!-- 隐藏每篇博文的tag -->
-                    <!--
+                    每篇博文的tag
                     <div class="label-card">
                         {
                         %
                         include tag.html %}
                     </div>
-                    -->
                 </div>
-                <!-- 隐藏每篇博文的简介 -->
-                <!--
+                每篇博文的简介
                 <div class="excerpt">
                     {{ post.excerpt }}
                 </div>
-                -->
-                <!-- 隐藏每篇博文的Read All -->
-                <!--
+                每篇博文的ReadAll
                 <div class="read-all">
                     <a  href="{{ post.url | prepend: site.baseurl }}"><i class="fa fa-newspaper-o"></i>Read All</a>
                 </div>
-                -->
                 <hr>
               </li>
             {% endfor %}
         </ul>
-
+        -->
 
 
         <!-- Pagination links -->
