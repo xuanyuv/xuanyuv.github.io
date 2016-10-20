@@ -28,18 +28,18 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * ThreadPool Test
- * @see ================================================================================================
+ * @see ==============================================================================================
  * @see 线程与进程的区别
  * @see 1)多个进程的内部数据和状态是完全独立的，而多线程则会共享一块内存空间和一组系统资源，有可能互相影响
  * @see 2)线程本身的数据通常只有寄存器数据，以及一个程序执行时使用的堆栈。所以线程的切换比进程切换的负担要小
- * @see ================================================================================================
+ * @see ==============================================================================================
  * @see 线程的启动方式和消亡
- * @see 1)以Thread.start()启动时，JVM会以线程的方式运行它。start()首先会为线程的执行准备系统资源，然后才去调用run方法
- * @see 2)以Thread.run()启动时，JVM会以普通方法运行它。此时就不会存在线程所特有的交替执行的效果
+ * @see 1)Thread.start()启动时，JVM会以线程的方式运行它。start()首先会为线程的执行准备系统资源，然后才调用run()
+ * @see 2)Thread.run()启动时，JVM会以普通方法运行它。此时就不会存在线程所特有的交替执行的效果
  * @see 3)一个线程类的两个对象，同时以start()方式运行时，JVM仍会把它们当作两个线程类来执行
  * @see 4)终止线程时，绝对不能使用stop()方法，而应该让run()自然结束
- * @see ================================================================================================
- * @author 宏宇
+ * @see ==============================================================================================
+ * @author 玄玉
  * @create Feb 29, 2012 1:13:43 AM
  */
 public class ThreadPoolTest {
@@ -57,11 +57,13 @@ public class ThreadPoolTest {
      * @see Executors.newSingleThreadExecutor(); //创建单个线程池。它可以实现线程死掉后重新启动的效果，但实际启动的是"替补线程"
      */
     public void threadPoolTest(){
-        //newSingleThreadExecutor()的好处就是，若池中的线程死了，它会把一个"替补的线程"扶上位，即它会保证池中始终有一个线程存在
+        //newSingleThreadExecutor()的好处就是，若池中的线程死了，它会把一个"替补的线程"扶上位
+        //即它会保证池中始终有一个线程存在
         ExecutorService threadPool = Executors.newSingleThreadExecutor();
         for(int i=1; i<=10; i++) {
             final int task = i;
-            threadPool.execute(new MyThread(task)); //注意execute()的返回值是void
+            //注意execute()的返回值是void
+            threadPool.execute(new MyThread(task));
         }
         System.out.println("all of 10 tasks have committed......");
 
@@ -100,7 +102,8 @@ public class ThreadPoolTest {
         );
         System.out.println("等待结果");
         try {
-            System.out.println("拿到结果：" + future.get()); //future.get(4, TimeUnit.SECONDS)
+            //future.get(4, TimeUnit.SECONDS)
+            System.out.println("拿到结果：" + future.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -149,7 +152,8 @@ class MyThread implements Runnable{
     }
     @Override
     public void run() {
-        //这里不需要写成j，因为它和threadPoolTest()里面的for()循环中的i并不是同一个方法中的变量，故其不会冲突
+        //这里不需要写成j
+        //因为它和threadPoolTest()里面的for()循环中的i并不是同一个方法中的变量，故其不会冲突
         for(int i=1; i<=10; i++) {
             try {
                 Thread.sleep(20);
