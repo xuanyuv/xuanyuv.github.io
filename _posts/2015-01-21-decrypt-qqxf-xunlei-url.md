@@ -2,7 +2,7 @@
 layout: post
 title: "解密QQ旋风和迅雷链接地址"
 categories: 其它
-tags: 解密 QQ旋风 迅雷 下载 链接 地址
+tags: 解密 QQ旋风 迅雷 下载 链接
 author: 玄玉
 excerpt: 介绍QQ旋风、迅雷、网际快车的各自下载地址，如何解密后还原为文件原始下载地址。
 ---
