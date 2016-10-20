@@ -2,7 +2,7 @@
 layout: post
 title: "微信开发利器ngrok和pagekite"
 categories: 工具
-tags: 微信 开发 花生壳 ngrok pagekite
+tags: 微信 花生壳 ngrok pagekite
 author: 玄玉
 excerpt: 介绍微信、手Q、支付宝服务窗等开发场景中，需要与远程服务器联调时的，本机服务代理至互联网的工具。
 ---
