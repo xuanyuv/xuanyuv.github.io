@@ -2,7 +2,7 @@
 layout: post
 title: "Java线程池的用法"
 categories: JavaSE
-tags: java 线程 线程池 返回值
+tags: java 线程 线程池 返回值 并发包
 author: 玄玉
 excerpt: 介绍了Java自带的线程池用法。
 ---
