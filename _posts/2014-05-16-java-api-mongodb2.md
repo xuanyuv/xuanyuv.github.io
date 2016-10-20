@@ -13,17 +13,17 @@ excerpt: 详细介绍了MongoDB-2.6版本的，Java驱动的常见API用法。
 
 对于MongoDB而言，学习方式和学习关系型数据库差不太多
 
-开始都是学习如何insert、find、update、remove
+开始都是学习如何`insert`、`find`、`update`、`remove`
 
-然后就是分页、排序、索引，再接着就是主从复制、副本集、分片等等
+然后就是`分页`、`排序`、`索引`，再接着就是`主从复制`、`副本集`、`分片`等等
 
 最后就是通过它提供的各个驱动（比如Java、PHP、node.js等等）来练习所谓的高级用法
 
-另外：MongoDB也有一款图形化操作工具，叫做MongoVUE
+另外：MongoDB也有一款图形化操作工具，叫做`MongoVUE`
 
 好，回到正文
 
-下面演示的就是以Java为例，常见的操作MongoDB-2.6的API
+下面演示的就是以Java为例，常见的操作`MongoDB-2.6`的API
 
 ```java
 package com.jadyer.test;
