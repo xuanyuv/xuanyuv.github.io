@@ -2,7 +2,7 @@
 layout: post
 title: "JSF实现用户登录小例子"
 categories: JSF
-tags: jsf demo myfaces asp.net
+tags: jsf demo myfaces asp.net 事件绑定
 author: 玄玉
 excerpt: 介绍JSF实现用户登录功能的入门示例代码。
 ---
@@ -15,11 +15,11 @@ excerpt: 介绍JSF实现用户登录功能的入门示例代码。
 
 平常我们用的Struts2是基于标准的HTTP请求响应的模式，而`JavaServerFaces`是基于事件的一种编程模型
 
-它是2004年SUN推出的一个规范，也是基于MVC的一种架构，JSF页面表单的每一个输入域都绑定到后台`backingbean`对应的属性上
+它是2004年SUN推出的基于MVC的规范，JSF页面表单的每个输入域都绑定到后台`backingbean`对应属性
 
-它也是基于Web的，属于JSP跟Servlet层次，所以使用Tomcat即可运行，无需借助类似于WebLogic之类的应用服务器
+它也属于JSP、Servlet层次，所以使用Tomcat即可运行，无需借助类似于WebLogic之类的应用服务器
 
-它比较有名的实现是[Apache出品的MyFaces](http://myfaces.apache.org)，它提供了更多的组件，也是比较成熟的，可以满足日常所需的绝大多数需求
+较有名的实现是[Apache出品的MyFaces](http://myfaces.apache.org)，它提供了更多的组件，也是较成熟的，可满足日常绝大数需求
 
 ## JSF与ASP.NET
 
@@ -27,7 +27,7 @@ SUN之所以推出JSF，其实很大程度上是模仿了微软的ASP.NET，编�
 
 例如填写完表单内容后点击提交按钮，它就会执行与提交按钮所绑定的事件所对应的方法
 
-因此从这点来说，JSF跟ASP.NET是异曲同工的，它们都是将期望的原始的Web开发方式转化成接近于桌面应用的开发方式
+可以说，JSF跟ASP.NET是异曲同工的，都是将期望的原始Web开发方式转化成接近于桌面应用的开发方式
 
 ## 示例
 
@@ -99,20 +99,20 @@ SUN之所以推出JSF，其实很大程度上是模仿了微软的ASP.NET，编�
 
 运行时应该直接访问`http://127.0.0.1:8088/JSF/login.faces`
 
-由于匹配了`web.xml`中配置的`*.faces`路径，于是会经过`FacesServlet`
+由于匹配了`web.xml`中配置的`*.faces`路径，所以请求会经过`FacesServlet`
 
 `FacesServlet`会直接查找当前工程的`login.jsp`文件，并加入JSF标签库的支持
 
-若直接访问http://127.0.0.1:8088/JSF/login.jsp，会由于不认识JSF标签导致页面出错
+若直接访问`http://127.0.0.1:8088/JSF/login.jsp`，会由于不认识JSF标签导致页面出错
 
-```xml
+```java
 <%@ page pageEncoding="UTF-8"%>
 <%response.sendRedirect(request.getContextPath() + "/login.faces");%>
 ```
 
 接着是login.jsp页面
 
-```xml
+```html
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
@@ -132,11 +132,11 @@ SUN之所以推出JSF，其实很大程度上是模仿了微软的ASP.NET，编�
     <h:form>
         <h:outputText value="username: "/>
         <h:inputText value="#{userBean.username}"/><br/>
-        <%-- 这里#{}表示一种绑定，这里是与userBean对象的username属性进行绑定 --%>
+        <!-- 这里#{}表示一种绑定，这里是与userBean对象的username属性进行绑定 -->
         <h:outputText value="password: "/>
         <h:inputSecret value="#{userBean.password}"/><br/>
-        <%-- action属性表示：点击该按钮时就会触发userBean对象的validateUser()方法 --%>
-        <%-- 但是注意，页面中不要写成action="#{userBean.validateUser()}"的形式 --%>
+        <!-- action属性表示：点击该按钮时就会触发userBean对象的validateUser()方法 -->
+        <!-- 但是注意，页面中不要写成action="#{userBean.validateUser()}"的形式 -->
         <h:commandButton value="Login" action="#{userBean.validateUser}"/>
     </h:form>
 </f:view>
@@ -146,15 +146,15 @@ SUN之所以推出JSF，其实很大程度上是模仿了微软的ASP.NET，编�
 
 从HTTP角度来说，其实login.jsp和success.jsp是在一个请求里面的
 
-当我们在login.jsp中点提交时进入到服务器端，服务器端是一个请求转发的过程，然后回到了success.jsp页面
+当我们在login.jsp中点提交时进入服务器端，服务器端是一个请求转发的过程，然后回到了success.jsp页面
 
-因为整个过程是在一个请求里面，而在`faces-config.xml`中注册的`<managed-bean-scope>`也是在一个request里面
+因为整个过程是在一个请求中，而在`faces-config.xml`注册的`<managed-bean-scope>`也是在一个request里面
 
-因此`login.jsp`和`success.jsp`共享同一个`UserBean`的实例，于是在login.jsp中将属性值绑定到userBean对象的属性中
+因此`login.jsp`和`success.jsp`共享同一个`UserBean`的实例，于是login.jsp中将属性值绑定到userBean属性中
 
-然后在success.jsp中就可以通过`<h:outputText value="#{userBean.username}"/>`取得所绑定的userBean对象的属性值
+然后success.jsp就可通过`<h:outputText value="#{userBean.username}"/>`取得所绑定的userBean对象属性值
 
-```xml
+```html
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
