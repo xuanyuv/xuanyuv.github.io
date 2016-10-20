@@ -96,6 +96,7 @@ Struts2只需在`<s:form/>`标签范围中添加`<s:token/>`标签，即可实�
 ```
 
 下面是用于输入用户名和密码以测试重复提交表单的testToken.jsp页面
+
 ```xml
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
@@ -117,6 +118,7 @@ Struts2只需在`<s:form/>`标签范围中添加`<s:token/>`标签，即可实�
 ```
 
 下面是Struts2的配置文件struts.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
@@ -137,6 +139,7 @@ Struts2只需在`<s:form/>`标签范围中添加`<s:token/>`标签，即可实�
 ```
 
 最后是处理所输入的用户名和密码的LoginAction.java
+
 ```java
 package com.jadyer.action;
 import com.opensymphony.xwork2.ActionSupport;
