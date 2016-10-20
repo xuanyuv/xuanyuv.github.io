@@ -62,19 +62,19 @@ import javax.servlet.Filter;
 
 @SpringBootApplication(scanBasePackages="com.jadyer.union")
 public class BootStrap extends SpringBootServletInitializer {
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(getClass());
-	}
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(getClass());
+    }
 
-	@Bean
-	public Filter characterEncodingFilter(){
-		return new CharacterEncodingFilter("UTF-8", true);
-	}
+    @Bean
+    public Filter characterEncodingFilter(){
+        return new CharacterEncodingFilter("UTF-8", true);
+    }
 
-	public static void main(String[] args) {
-		new SpringApplicationBuilder().sources(BootStrap.class).profiles("local").run(args);
-	}
+    public static void main(String[] args) {
+        new SpringApplicationBuilder().sources(BootStrap.class).profiles("local").run(args);
+    }
 }
 ```
 
