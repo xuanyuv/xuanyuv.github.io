@@ -10,9 +10,7 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 * content
 {:toc}
 
-
-我的是`iPhone4S`，`2013`年买的联通合约机，型号为`A1431`，操作系统为`ios7.1.1(11D201)未越狱`
-
+> 我的是`iPhone4S`，`2013`年买的联通合约机，型号为`A1431`，操作系统为`ios7.1.1(11D201)未越狱`<br/><br/>
 **下文介绍的步骤，仅限上述配置**
 
 其内容搜集并整理自[威锋论坛](http://bbs.feng.com/thread-htm-fid-385.html)，特此鸣谢！
@@ -29,11 +27,10 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 
 这时有两个解决办法
 
-* 1、太极越狱重新越一次
+> 1、太极越狱重新越一次<br/>
+2、更新`Pangu 7.1.X Unthether`插件后再重新降级
 
-* 2、更新`Pangu 7.1.X Unthether`插件后再重新降级
-
-上面说的是越狱，那么，就是安装插件`openSSH`和`Core Utilities`
+上面说的是越狱，那么接下来就是安装插件`openSSH`和`Core Utilities`
 
 **注意：**不是`Core Utilities (/bin)`，二者不是同一个软件
 
@@ -42,6 +39,8 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 另外，如果安装`openSSH`报错，可以多试几次直到安装上为止
 
 ![](/img/2016-10-25/iphone4s-to-ios613-02.png)
+
+<br/>
 
 ![](/img/2016-10-25/iphone4s-to-ios613-03.png)
 
@@ -75,6 +74,8 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 
 ![](/img/2016-10-25/iphone4s-to-ios613-05.png)
 
+<br/>
+
 ![](/img/2016-10-25/iphone4s-to-ios613-06.png)
 
 3、将上面的`kloader`和`pwnediBSS`文件拖到WinSCP显示的手机窗口
@@ -83,7 +84,11 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 
 ![](/img/2016-10-25/iphone4s-to-ios613-07.png)
 
+<br/>
+
 ![](/img/2016-10-25/iphone4s-to-ios613-08.png)
+
+<br/>
 
 ![](/img/2016-10-25/iphone4s-to-ios613-09.png)
 
@@ -99,7 +104,11 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 
 ![](/img/2016-10-25/iphone4s-to-ios613-10.png)
 
+<br/>
+
 ![](/img/2016-10-25/iphone4s-to-ios613-11.png)
+
+<br/>
 
 ![](/img/2016-10-25/iphone4s-to-ios613-12.png)
 
@@ -124,18 +133,30 @@ idevicerestore.exe -e fistmedaddy.ipsw
 
 ![](/img/2016-10-25/iphone4s-to-ios613-13.png)
 
+<br/>
+
 ![](/img/2016-10-25/iphone4s-to-ios613-14.png)
 
 ## 回味经典
 
 ![](/img/2016-10-25/iphone4s-to-ios613-15.jpg)
 
+<br/>
+
 ![](/img/2016-10-25/iphone4s-to-ios613-16.jpg)
+
+<br/>
 
 ![](/img/2016-10-25/iphone4s-to-ios613-17.png)
 
+<br/>
+
 ![](/img/2016-10-25/iphone4s-to-ios613-18.jpg)
 
+<br/>
+
 ![](/img/2016-10-25/iphone4s-to-ios613-19.jpg)
+
+<br/>
 
 ![](/img/2016-10-25/iphone4s-to-ios613-20.png)
