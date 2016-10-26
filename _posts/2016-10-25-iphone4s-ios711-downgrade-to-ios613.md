@@ -125,3 +125,17 @@ idevicerestore.exe -e fistmedaddy.ipsw
 ![](/img/2016-10-25/iphone4s-to-ios613-13.png)
 
 ![](/img/2016-10-25/iphone4s-to-ios613-14.png)
+
+## 回味经典
+
+![](/img/2016-10-25/iphone4s-to-ios613-15.jpg)
+
+![](/img/2016-10-25/iphone4s-to-ios613-16.jpg)
+
+![](/img/2016-10-25/iphone4s-to-ios613-17.png)
+
+![](/img/2016-10-25/iphone4s-to-ios613-18.jpg)
+
+![](/img/2016-10-25/iphone4s-to-ios613-19.jpg)
+
+![](/img/2016-10-25/iphone4s-to-ios613-20.png)
