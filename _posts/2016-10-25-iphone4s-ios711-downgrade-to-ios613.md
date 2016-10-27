@@ -15,7 +15,7 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 
 其内容搜集并整理自[威锋论坛](http://bbs.feng.com/thread-htm-fid-385.html)，特此鸣谢！
 
-注意：对于其它机型和系统，理论上只要能越狱，在这个时间点上（2016-10-22）都能降级到613
+注意：对于其它机型和系统，理论上只要能越狱，在这个时间点上（2016-10-22）都能降级到非越狱的613
 
 ## 越狱并安装插件
 
@@ -139,11 +139,13 @@ idevicerestore.exe -e fistmedaddy.ipsw
 
 ## 回味经典
 
-![](/img/2016-10-25/iphone4s-to-ios613-15.jpg)
+让我们从激活开始，看看降级成功的效果吧！！
+
+![](/img/2016-10-25/iphone4s-to-ios613-15.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-16.jpg)
+![](/img/2016-10-25/iphone4s-to-ios613-16.png)
 
 <br/>
 
@@ -151,12 +153,44 @@ idevicerestore.exe -e fistmedaddy.ipsw
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-18.jpg)
+![](/img/2016-10-25/iphone4s-to-ios613-18.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-19.jpg)
+![](/img/2016-10-25/iphone4s-to-ios613-19.png)
 
 <br/>
 
 ![](/img/2016-10-25/iphone4s-to-ios613-20.png)
+
+<br/>
+
+![](/img/2016-10-25/iphone4s-to-ios613-21.png)
+
+<br/>
+
+![](/img/2016-10-25/iphone4s-to-ios613-22.png)
+
+<br/>
+
+![](/img/2016-10-25/iphone4s-to-ios613-23.png)
+
+<br/>
+
+![](/img/2016-10-25/iphone4s-to-ios613-24.png)
+
+<br/>
+
+![](/img/2016-10-25/iphone4s-to-ios613-25.jpg)
+
+<br/>
+
+![](/img/2016-10-25/iphone4s-to-ios613-26.png)
+
+<br/>
+
+![](/img/2016-10-25/iphone4s-to-ios613-27.png)
+
+<br/>
+
+![](/img/2016-10-25/iphone4s-to-ios613-28.jpg)
