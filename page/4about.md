@@ -26,6 +26,7 @@ icon: heart
 * [阿里中间件团队博客](http://jm.taobao.org)
 * [并发编程网](http://ifeve.com)
 * [酷壳](http://coolshell.cn)
+* [使用SpringCloud与Docker实战微服务](https://github.com/eacdy/spring-cloud-book)
 <br/>
 <br/>
 <br/>
