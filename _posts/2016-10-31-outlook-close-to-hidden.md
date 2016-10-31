@@ -18,7 +18,7 @@ excerpt: 详细介绍了outlook里面，如何实现点击右上角关闭按钮�
 
 下载地址为[https://zh.osdn.net/projects/sfnet_keepoutlook/](https://zh.osdn.net/projects/sfnet_keepoutlook/)
 
-设置方法为：`Outlook-->文件-->选项-->加载项-->转到-->添加-->确定`
+设置方法为：`管理员身份运行-->Outlook-->文件-->选项-->加载项-->转到-->添加-->确定`
 
 若想最小化到右下角的任务栏，那就在右下角图标上右键勾选`最小化时隐藏(H)`
 
