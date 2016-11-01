@@ -34,33 +34,42 @@ UNIQUE INDEX unique_email_status(email, status)
 ## 修改表结构
 
 ```sql
-ALTER TABLE t_account COMMENT '这是渠道账户信息表';
+ALTER TABLE t_account COMMENT '账户信息表';
 ALTER TABLE t_account MODIFY money_max DECIMAL(16,4) NOT NULL COMMENT '最高额度，单位：元';
-ALTER TABLE t_account ADD COLUMN type TINYINT(1) COMMENT '类型：1--个人，2--企业' AFTER id;
+ALTER TABLE t_account ADD COLUMN money_type TINYINT(1) COMMENT '金额类型：1--RMB，2--USD' AFTER id;
+
+ALTER TABLE t_account ADD PRIMARY KEY(account_id);
+ALTER TABLE t_account ADD INDEX index_password(password);
+ALTER TABLE t_account ADD INDEX index_name_password(name, password);
+ALTER TABLE t_account ADD UNIQUE INDEX index_name_email(name, email);
+
+CREATE INDEX index_name_password ON t_account(name, password);
+CREATE UNIQUE INDEX index_name_email ON t_account(name, email);
+
+ALTER TABLE t_account DROP PRIMARY KEY;
+ALTER TABLE t_account DROP INDEX index_name_password;
+DROP INDEX index_name_password ON t_account;
 ```
 
-## 查询某张表的建表语句
+## 查询元数据
 
 ```sql
+-- 查询某张表的建表语句
 SHOW CREATE TABLE t_admin;
-```
 
-## 查询某张表的所有列名
-
-```sql
+-- 查询某张表的所有列名
 SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_NAME='t_admin';
-```
 
-## 查询拥有某字段的所有表名
-
-```sql
+-- 查询拥有某字段的所有表名
 SELECT TABLE_NAME FROM information_schema.COLUMNS WHERE COLUMN_NAME='file_id';
-```
 
-## 查询某数据库中的所有表名
-
-```sql
+-- 查询某数据库中的所有表名
 SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA='数据库名';
+
+-- 查询某张表存在的索引类型
+SHOW INDEX FROM jadyer.t_admin;
+SHOW INDEX FROM t_admin FROM jadyer;
+SELECT INDEX_NAME, INDEX_TYPE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_NAME='t_admin';
 ```
 
 ## 统计昨日、今日、本周数据
