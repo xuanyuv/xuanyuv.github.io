@@ -75,18 +75,23 @@ SELECT INDEX_NAME, INDEX_TYPE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_NAM
 ## 统计昨日、今日、本周数据
 
 ```sql
-SELECT t.tag 渠道, count(*) 累计扫描量 FROM t_qq_qrcode t GROUP BY t.tag;
+-- 累计扫描量
+SELECT t.tag, count(*) scanCounts FROM t_qq_qrcode t GROUP BY t.tag;
 
-SELECT t.tag 渠道, count(*) 今日扫描量 FROM t_qq_qrcode t
+-- 今日扫描量
+SELECT t.tag, count(*) scanCountsOfToday FROM t_qq_qrcode t
 WHERE datediff(now(),t.create_time)=0 GROUP BY t.tag;
 
-SELECT t.tag 渠道, count(*) 昨日扫描量 FROM t_qq_qrcode t
+-- 昨日扫描量
+SELECT t.tag, count(*) scanCountsOfYesterday FROM t_qq_qrcode t
 WHERE datediff(now(),t.create_time)=1 GROUP BY t.tag;
 
-SELECT t.tag 渠道, count(*) 本周扫描量 FROM t_qq_qrcode t
+-- 本周扫描量
+SELECT t.tag, count(*) scanCountsOfThisWeek FROM t_qq_qrcode t
 WHERE yearweek(date_format(t.create_time,'%Y-%m-%d'))=yearweek(now()) GROUP BY t.tag;
 
-SELECT t.tag 渠道, date_format(t.create_time, '%Y%m%d') 日期, count(*) 当日扫描量 FROM t_qq_qrcode t
+-- 指定日期的扫描量
+SELECT t.tag, date_format(t.create_time, '%Y%m%d') theDate, count(*) scanCountsOfToday FROM t_qq_qrcode t
 WHERE date_format(t.create_time, '%Y%m%d')='20160503' GROUP BY t.tag;
 ```
 
