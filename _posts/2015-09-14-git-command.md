@@ -158,7 +158,7 @@ $ git fetch origin tag 22
 From gitlab.jadyer.com:open/mpp
  * [new tag]         22         -> 22
 
-# 查看远程分支（-a参数可以将远程分支通过红色显示出来，如果你开了颜色支持）
+# 查看已拉取到本地的所有分支（-a参数可以将远程分支通过红色显示出来，如果你开了颜色支持）
 $ git branch -a
   develop
 * master
@@ -175,9 +175,9 @@ $ git tag
 1.6.6.RELEASE
 
 # 查看本地某一类标签
-$ git tag -l *.6*
+$ git tag -l *.6.R*
 1.6.6.RELEASE
-$ git tag | grep .6
+$ git tag | grep 6.R
 1.6.6.RELEASE
 
 # 查看本地某一个标签的详细信息
@@ -239,6 +239,7 @@ To git@gitlab.jadyer.com:open/mpp.git
 
 # 删除本地标签
 $ git tag
+1.6.5.RELEASE
 1.6.6.RELEASE
 1.6.7.RELEASE
 1.6.8.RELEASE
@@ -248,6 +249,7 @@ $ git tag -d 1.6.9.RELEASE
 Deleted tag '1.6.9.RELEASE' (was ea201ff)
 
 $ git tag
+1.6.5.RELEASE
 1.6.6.RELEASE
 1.6.7.RELEASE
 1.6.8.RELEASE
