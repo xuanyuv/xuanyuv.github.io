@@ -145,6 +145,123 @@ $ git remote add origin [YOUR NEW .GIT URL]
 $ git push -u origin master
 ```
 
+## 操作Tag
+```
+# 拉取远程最新内容
+$ git fetch origin
+From gitlab.jadyer.com:open/mpp
+ * [new branch]      my-test-bran -> origin/my-test-bran
+ * [new tag]         11         -> 11
+
+# 拉取远程指定的标签
+$ git fetch origin tag 22
+From gitlab.jadyer.com:open/mpp
+ * [new tag]         22         -> 22
+
+# 查看远程分支（-a参数可以将远程分支通过红色显示出来，如果你开了颜色支持）
+$ git branch -a
+  develop
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/branch-alipay-robot
+  remotes/origin/branch-alipay-sw
+  remotes/origin/develop
+  remotes/origin/master
+  remotes/origin/my-test-bran
+
+# 查看本地所有标签
+$ git tag
+1.6.5.RELEASE
+1.6.6.RELEASE
+
+# 查看本地某一类标签
+$ git tag -l *.6*
+1.6.6.RELEASE
+$ git tag | grep .6
+1.6.6.RELEASE
+
+# 查看本地某一个标签的详细信息
+$ git show 1.6.6.RELEASE
+tag 1.6.6.RELEASE
+Tagger: jadyer <jadyer@yeah.net>
+Date:   Thu Nov 3 11:30:05 2016 +0800
+
+1、商品贷微信后台增加操作员管理功能
+2、商品贷微信参数二维码增加推送动态门店功能
+
+commit 696e291cfdac6ca05a711acaf90e79f97cb1128f
+Author: jadyer <jadyer@yeah.net>
+Date:   Thu Nov 3 11:08:44 2016 +0800
+
+    [MOD] 门店扫描后的提示语改为分期不等待
+
+diff --git a/mpp-mgr/src/main/java/com/jadyer/mpp/mgr/mpp/WeixinController.java b/mpp-mgr/src/main/java/com/jadyer/mpp/mgr/mpp/WeixinController.java
+index 1d41739..2209e09 100644
+--- a/mpp-mgr/src/main/java/com/jadyer/mpp/mgr/mpp/WeixinController.java
++++ b/mpp-mgr/src/main/java/com/jadyer/mpp/mgr/mpp/WeixinController.java
+@@ -220,7 +220,7 @@ public class WeixinController extends WeixinMsgControllerCustomServiceAdapter {
+                StringBuilder sb = new StringBuilder();
+                sb.append("欢迎来到")
+                                .append(compInfoDto.getSuppCompBasicDto().getCompName())
+-                               .append("，美丽不等待，点击<a href='")
++                               .append("，分期不等待，点击<a href='")^M
+                                .append(ConfigUtil.INSTANCE.getProperty("posloan.wechat.url"))
+                                .append(compId)
+                                .append("'>【马上申请】</a>");
+
+
+# 创建本地标签
+$ git tag -a 1.6.7.RELEASE -m 'the tag of create'
+
+$ git tag -a 1.6.8.RELEASE -m 'the tag of create again'
+
+$ git tag -a 1.6.9.RELEASE -m 'the tag of create again again'
+
+
+# Push本地所有标签到远程
+$ git push --tags
+Counting objects: 2, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 396 bytes | 0 bytes/s, done.
+Total 2 (delta 0), reused 0 (delta 0)
+To git@gitlab.jadyer.com:open/mpp.git
+ * [new tag]         1.6.7.RELEASE -> 1.6.7.RELEASE
+ * [new tag]         1.6.8.RELEASE -> 1.6.8.RELEASE
+
+# Push本地指定标签到远程
+$ git push origin 1.6.9.RELEASE
+Counting objects: 1, done.
+Writing objects: 100% (1/1), 167 bytes | 0 bytes/s, done.
+Total 1 (delta 0), reused 0 (delta 0)
+To git@gitlab.jadyer.com:open/mpp.git
+ * [new tag]         1.6.9.RELEASE -> 1.6.9.RELEASE
+
+# 删除本地标签
+$ git tag
+1.6.6.RELEASE
+1.6.7.RELEASE
+1.6.8.RELEASE
+1.6.9.RELEASE
+
+$ git tag -d 1.6.9.RELEASE
+Deleted tag '1.6.9.RELEASE' (was ea201ff)
+
+$ git tag
+1.6.6.RELEASE
+1.6.7.RELEASE
+1.6.8.RELEASE
+
+# 删除远程标签
+$ git push origin --delete tag 1.6.8.RELEASE
+To git@gitlab.msxf.com:open/mpp.git
+ - [deleted]         1.6.8.RELEASE
+
+$ git push origin :refs/tags/1.6.9.RELEASE
+To git@gitlab.jadyer.com:open/mpp.git
+ - [deleted]         1.6.9.RELEASE
+```
+
 ## 还原文件
 
 SVN中使用命令`svn revert <filename>`
