@@ -436,8 +436,8 @@ public class ClientService {
         <property name="namespaceUri" value="http://blog.csdn.net/jadyer"/>
         <property name="serviceName" value="myHelloService"/>
         <property name="portName" value="HelloServiceImplPort"/>
-        <!-- 使用handlerResolver属性来启用Handler，不过该属性要求其值为javax.xml.ws.handler.HandlerResolver类型 -->
-        <!-- 所以需自定义一个类来实现HandlerResolver接口，具体写法见com.jadyer.handler.HeaderHandlerResolver.java -->
+        <!-- 使用handlerResolver属性来启用Handler，其属性值应为javax.xml.ws.handler.HandlerResolver类型 -->
+        <!-- 所以自定义了一个实现HandlerResolver的类，详见com.jadyer.handler.HeaderHandlerResolver.java -->
         <property name="handlerResolver" ref="headerHandlerResolver"/>
     </bean>
 </beans>
