@@ -122,7 +122,7 @@ Codehaus Snapshots仓库从Codehaus开源组织中寻找快照版本的仓库
 
 # Plugin
 
-详细用法见下面示例
+下面列举一下较为常见的插件用法
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -334,4 +334,38 @@ Codehaus Snapshots仓库从Codehaus开源组织中寻找快照版本的仓库
     </plugins>
 </build>
 </project>
+```
+
+补充一下`maven-war-plugin`的用法
+
+```xml
+
+...
+
+<!-- 注意这里为war -->
+<packaging>war</packaging>
+
+...
+
+<build>
+    <!--
+    下面，以aa代指生成的target下Web应用的文件夹名称，以bb代指发布到\tomcat\webapps\目录下的文件名称
+    1、aa以<finalName>值为准，并且无视<warName>。若未指定<finalName>值，则默认为'artifactId-version'
+    2、bb以<warName>值为优先。若未指定<warName>，则以<finalName>值为准。若二者均未指定，则默认为'artifactId-version'
+    -->
+    <finalName>myBlogServlet</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.2</version>
+            <configuration>
+                <!-- Run As Maven build : clean package 就可以发布到tomcat下了，并按照<warName>命名 -->
+                <!-- 访问应用时，访问该地址即可：http://IP:Port/warName/ -->
+                <warName>MyMavenStudyWebWarFile</warName>
+                <outputDirectory>D:\Develop\apache-tomcat-6.0.35\webapps</outputDirectory>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 ```
