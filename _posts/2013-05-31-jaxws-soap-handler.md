@@ -315,7 +315,7 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
 
 最后是客户端调用服务端代码
 
-这里是由wsimport生成的，关于其用法参考[https://jadyer.github.io/2013/03/19/jaxws-and-wsimport-demo/](https://jadyer.github.io/2013/03/19/jaxws-and-wsimport-demo/)
+这里是由wsimport生成的，关于其用法，可参考[https://jadyer.github.io/2013/03/19/jaxws-and-wsimport-demo/](https://jadyer.github.io/2013/03/19/jaxws-and-wsimport-demo/)
 
 ```java
 package com.jadyer.client;
