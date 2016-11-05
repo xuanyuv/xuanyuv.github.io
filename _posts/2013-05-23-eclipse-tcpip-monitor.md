@@ -21,9 +21,9 @@ GoogleCode地址是[https://code.google.com/p/tcpmon/](https://code.google.com/p
 
 GoogleCode上的tcpmon是较新版本的
 
-该工具较老版本的项目页面是[https://Java.NET/projects/tcpmon](https://Java.NET/projects/tcpmon)
+该工具较老版本的项目页面是[https://java.net/projects/tcpmon](https://java.net/projects/tcpmon)
 
-对应的SVN地址为[https://svn.java.Net/svn/tcpmon~svn](https://svn.java.Net/svn/tcpmon~svn)
+对应的SVN地址为[https://svn.java.net/svn/tcpmon~svn](https://svn.java.net/svn/tcpmon~svn)
 
 **好了，言归正传**
 

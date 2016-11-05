@@ -115,8 +115,9 @@ import com.jadyer.service.BinaryServiceImpl;
  * 这里有必要提一下：当使用Apache的TcpMon监听MTOM时，由于JAXWS版本问题，可能会报告下面的异常
  * javax.xml.ws.WebServiceException: java.io.IOException: Error writing to server
  * 这时可以使用GoogleCode上的tcpmon或者Eclipse提供的TCP/IP Monitor
- * 有关三者的描述,可参考我的博客https://jadyer.github.io/2013/05/23/eclipse-tcpip-monitor/
- * 好了,回归正题.关于MTOM,有两种实现方式,分别为传输byte[]和传输javax.activation.DataHandler
+ * 有关三者的描述，可参考https://jadyer.github.io/2013/05/23/eclipse-tcpip-monitor/
+ * 好了，回归正题
+ * 关于MTOM，有两种实现方式：传输byte[]和传输javax.activation.DataHandler
  * ---------------------------------------------------------------------------------------------------
  * MTOM实现之传输byte[]
  * 1)SEI中定义开放服务的方法参数为byte[]
