@@ -340,12 +340,12 @@ Codehaus Snapshots仓库从Codehaus开源组织中寻找快照版本的仓库
 
 ```xml
 
-...
+......
 
 <!-- 注意这里为war -->
 <packaging>war</packaging>
 
-...
+......
 
 <build>
     <!--
