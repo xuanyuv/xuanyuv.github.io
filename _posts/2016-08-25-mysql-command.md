@@ -110,11 +110,11 @@ WHERE id in(SELECT max(id) FROM coop_push_user GROUP BY mobile);
 
 -- 对于一对多的表统计，根据[一]把[多]里面的某个字段都查出来在一起
 SELECT t.email, t.name, IF(t.type=1, '个人', IF(t.type=2,'企业','未知')) AS accountType,
-GROUP_CONCAT(c.channel_no) AS channelList,
-ci.cooper_no
-FROM t_account_info t
-LEFT JOIN t_channel_info c ON t.id=c.account_id
-LEFT JOIN t_cooper_info ci ON t.id=ci.account_id
+GROUP_CONCAT(ac.channel_no) AS channelList,
+aco.cooper_no
+FROM t_account t
+LEFT JOIN t_account_channel ac ON t.id=ac.account_id
+LEFT JOIN t_account_cooper aco ON t.id=aco.account_id
 GROUP by t.id;
 ```
 
