@@ -4,7 +4,7 @@ title: "JAX-WS入门实例及wsimport的使用"
 categories: JAX-WS
 tags: jax-ws wsimport demo
 author: 玄玉
-excerpt: 介绍WebServices-wsdl文件的一些基本语义。
+excerpt: 介绍JAX-WS的一个基础demo，以及通过wsimport生成WebService客户端代码的用法。
 ---
 
 * content
@@ -72,7 +72,7 @@ public class HelloServiceImpl implements HelloService {
     @Override
     public int add(int a, int b) {
         System.out.println(a + "+" + b + "=" + (a+b));
-        return a+b;
+        return a + b;
     }
 
     @Override
