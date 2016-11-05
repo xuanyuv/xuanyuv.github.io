@@ -229,7 +229,7 @@ settings---Editor---File and Code Templates---Includes---File Header---修改如
 
 ```
 /**
- * Created by 玄玉<http://blog.csdn.net/jadyer> on ${DATE} ${TIME}.
+ * Created by 玄玉<https://jadyer.github.io/> on ${DATE} ${TIME}.
  */
 ```
 

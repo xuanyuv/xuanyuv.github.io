@@ -63,7 +63,7 @@ import com.mongodb.util.JSON;
  * @see 这里要用到mongoDB的Java驱动包,下载地址http://docs.mongodb.org/ecosystem/drivers/java/
  * @see ----------------------------------------------------------------------------------------
  * @create May 15, 2014 10:17:30 PM
- * @author 玄玉<http://blog.csdn.net/jadyer>
+ * @author 玄玉<https://jadyer.github.io/>
  */
 public class MongoDBTest {
     private static MongoClient mongoClient;
