@@ -60,7 +60,7 @@ controlHeight()
  * 控制 sidebar 的高度
  */
 function controlHeight() {
-    //先获取similar posts（相关文章）的高度
+    //先获取similar posts 的高度
     //和用户浏览器窗口的高度
     //给content设置最大高度
     var similarDiv = document.querySelector('.related-post')
