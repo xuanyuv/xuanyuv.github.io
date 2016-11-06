@@ -150,7 +150,7 @@ excerpt: 通过kissy-util-adaptive-frame.js解决iframe跨域时的高度自适�
 
 最后是位于`123.125.xx.232`机器上的`nested.jsp`
 
-```
+```html
 <%@ page language="java" pageEncoding="UTF-8"%>
 
 <!--
