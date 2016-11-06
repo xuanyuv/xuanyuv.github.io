@@ -3,8 +3,12 @@ layout: default
 title: Tags
 permalink: /tag/
 icon: tags
-published: false
 ---
+
+<!--
+tag的其中一个作用就是计算[相关文章]
+所以这里没有设置published=alse，而是在/includes/header.html中循环显示时隐藏了Tags菜单
+-->
 
 <div class="page clearfix">
     <div class="left">
