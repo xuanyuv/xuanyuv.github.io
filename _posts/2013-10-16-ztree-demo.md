@@ -105,7 +105,6 @@ $(function(){
     $.fn.zTree.init($('#treeDemo'), setting, null);
 });
 
-
 /**
  * 获取已勾选项编号
  */
