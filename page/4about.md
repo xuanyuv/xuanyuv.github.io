@@ -20,7 +20,6 @@ icon: heart
 <br/>
 
 ## 站点
-* [半步多](http://blog.csdn.net/jadyer) 博主的CSDN博客
 * [OneCoder](http://www.coderli.com)
 * [Ticmy](http://www.ticmy.com)
 * [阿里中间件团队博客](http://jm.taobao.org)
