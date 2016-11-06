@@ -11,7 +11,7 @@ excerpt: 介绍Apache-CXF中通过手工编写XML的方式定义WSDL的各种细
 {:toc}
 
 
-它与`JAX-WS`的契约优先开发方式基本相同，不同在于：CXF发布时要加两个参数
+它与`JAX-WS`的契约优先开发方式基本相同，不同在于：**CXF发布时要加两个参数**
 
 关于`JAX-WS`的契约优先开发方式，详见[https://jadyer.github.io/2013/05/31/jaxws-build-wsdl-with-wrapped/](https://jadyer.github.io/2013/05/31/jaxws-build-wsdl-with-wrapped/)
 
@@ -187,7 +187,7 @@ public class ServerApp {
         factory.getOutInterceptors().add(new LoggingOutInterceptor());
 
         //设置以下两个参数后，此种发布方式才是基于契约优先来发布的，否则仍会以代码优先来发布
-        //区别为：发布后浏览器访问wsdl，若其与我们编写的wsdl相同，且元素类型引用自另一个xsd，则表示契约优先发布成功
+        //区别为：发布后浏览器访问wsdl，若其与我们编写的wsdl相同，且元素类型引用自另一个xsd，即契约优先发布成功
         //否则，浏览器访问wsdl时，可直接看到元素类型定义，则表示是代码优先的方式发布的
         factory.setWsdlLocation("META-INF/myCalculator.wsdl");
         factory.setServiceName(new QName("http://blog.csdn.net/jadyer", "CalculatorServiceImpl"));
