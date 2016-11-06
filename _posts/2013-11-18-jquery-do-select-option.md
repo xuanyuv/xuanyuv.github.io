@@ -15,6 +15,8 @@ excerpt: 演示jQuery操作Select标签的各种用法。
 
 ![](/img/2013-11-18/jquery-do-select-option-01.png)
 
+这里主要是通过`jQuery`实现对`<select>`标签的`上下移动`、`添加`、`删除`、`获取Option的值`等功能
+
 代码是这样的
 
 ```html
@@ -24,7 +26,7 @@ excerpt: 演示jQuery操作Select标签的各种用法。
     <title>jQuery操作SelectOption上下移动</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
 </head>
 <script>
 /**
