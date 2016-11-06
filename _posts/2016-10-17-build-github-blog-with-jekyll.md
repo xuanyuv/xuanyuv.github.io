@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Jekyll搭建Github静态博客"
-categories: 其它
+categories: 工具
 tags: jekyll rubygems github blog
 author: 玄玉
 excerpt: 详细介绍了通过Jekyll在GithubPages（github.io）上创建静态博客的方法。
