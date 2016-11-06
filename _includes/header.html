@@ -17,11 +17,8 @@
 
                 {% for my_page in site.pages %}
                     {% if my_page.title %}
-                    <!--
-                    这里的'Tags'对应的是/page/2tags.html里面的顶部title的值
-                    {
-                    % if my_page.title != 'Tags' %}
-                    -->
+                    <!-- 这里的'Tags'对应的是/page/2tags.html里面的顶部title的值 -->
+                    {% if my_page.title != 'Tags' %}
                     <li>
                         {% if my_page.url == page.url %}
                         <a class="active" href="{{ my_page.url | prepend: site.baseurl }}">
@@ -31,10 +28,7 @@
                             <i class="fa fa-{{my_page.icon}}"></i>{{ my_page.title }}
                         </a>
                     </li>
-                    <!--
-                    {
-                    % endif %}
-                    -->
+                    {% endif %}
                     {% endif %}
                 {% endfor %}
             </ul>
