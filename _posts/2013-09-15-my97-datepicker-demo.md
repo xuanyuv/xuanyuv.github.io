@@ -13,6 +13,8 @@ excerpt: 介绍My97DatePicker日期控件的一些常用功能。
 
 用法很简单，主要演示代码在`myDate.html`
 
+主要：下文中的`｛%`写成了全角的，实际应该是半角的`{`，这是为了避免生成静态博文时造成语义冲突
+
 ```html
 <!DOCTYPE HTML>
 <html>
@@ -101,7 +103,7 @@ WebRoot
 <br/>
 <font color="blue">只能选择今天以后的日期(不包括今天)(这里使用了My97DatePicker的运算表达式)</font>
 <br/>
-<input type="text" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}'})"/>
+<input type="text" onfocus="WdatePicker({minDate:'%y-%M-｛%d+1}'})"/>
 <br/>
 <br/>
 <font color="blue">只能选择本月日期的第一天到最后一天</font>
@@ -111,12 +113,12 @@ WebRoot
 <br/>
 <font color="blue">只能选择今天10:20至明天14:28的日期</font>
 <br/>
-<input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm', minDate:'%y-%M-%d 10:20', maxDate:'%y-%M-{%d+1} 14:28'})"/>
+<input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm', minDate:'%y-%M-%d 10:20', maxDate:'%y-%M-｛%d+1} 14:28'})"/>
 <br/>
 <br/>
 <font color="blue">只能选择20个小时前到30个小时后的日期(这里使用了My97DatePicker的运算表达式)</font>
 <br/>
-<input type="text" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm', minDate:'%y-%M-%d {%H-20}:%m:%s', maxDate:'%y-%M-%d {%H+30}:%m:%s'})"/>
+<input type="text" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm', minDate:'%y-%M-%d ｛%H-20}:%m:%s', maxDate:'%y-%M-%d ｛%H+30}:%m:%s'})"/>
 <br/>
 <br/>
 <font color="blue">后面的日期大于前面的日期，且两个日期都不能大于2020-10-01</font>
@@ -160,7 +162,7 @@ WebRoot
 <br/>
 <font color="blue">禁用前一个小时和后一个小时内所有时间(鼠标点击日期输入框时，你会发现当前时间对应的前一个小时和后一个小时是灰色的)</font>
 <br/>
-<input type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm', disabledDates:['%y-%M-%d {%H-1}\:..\:..','%y-%M-%d {%H+1}\:..\:..']})"/>
+<input type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm', disabledDates:['%y-%M-%d ｛%H-1}\:..\:..','%y-%M-%d ｛%H+1}\:..\:..']})"/>
 <br/>
 <br/>
 <form action="servlet/DatePickerServlet" method="POST">
