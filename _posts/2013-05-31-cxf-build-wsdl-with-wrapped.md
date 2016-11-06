@@ -2,7 +2,7 @@
 layout: post
 title: "CXF之契约优先及隐式声明头信息"
 categories: CXF
-tags: cxf xml
+tags: cxf xml jax-ws
 author: 玄玉
 excerpt: 介绍Apache-CXF中通过手工编写XML的方式定义WSDL的各种细节，以及隐式声明头信息的用法。
 ---
@@ -11,11 +11,11 @@ excerpt: 介绍Apache-CXF中通过手工编写XML的方式定义WSDL的各种细
 {:toc}
 
 
-其实它与JAX-WS的契约优先开发方式基本相同，详见[https://jadyer.github.io/2013/05/31/jaxws-build-wsdl-with-wrapped/](https://jadyer.github.io/2013/05/31/jaxws-build-wsdl-with-wrapped/)
+它与`JAX-WS`的契约优先开发方式基本相同，不同在于：CXF发布时要加两个参数
 
-不同的地方是：这种方式下，CXF发布的时候要加两个参数而已
+关于`JAX-WS`的契约优先开发方式，详见[https://jadyer.github.io/2013/05/31/jaxws-build-wsdl-with-wrapped/](https://jadyer.github.io/2013/05/31/jaxws-build-wsdl-with-wrapped/)
 
-即便如此，还是老习惯：贴代码
+下面开始演示代码编写
 
 ## 服务端
 
@@ -187,8 +187,8 @@ public class ServerApp {
         factory.getOutInterceptors().add(new LoggingOutInterceptor());
 
         //设置以下两个参数后，此种发布方式才是基于契约优先来发布的，否则仍会以代码优先来发布
-        //区别方式是发布后用浏览器访问wsdl时，若wsdl与我们编写的wsdl相同，且元素类型引用自另一个xsd，则表示契约优先发布成功
-        //否则，用浏览器访问wsdl时，可直接看到元素类型定义，则表示是代码优先的方式发布的
+        //区别为：发布后浏览器访问wsdl，若其与我们编写的wsdl相同，且元素类型引用自另一个xsd，则表示契约优先发布成功
+        //否则，浏览器访问wsdl时，可直接看到元素类型定义，则表示是代码优先的方式发布的
         factory.setWsdlLocation("META-INF/myCalculator.wsdl");
         factory.setServiceName(new QName("http://blog.csdn.net/jadyer", "CalculatorServiceImpl"));
         factory.create();
