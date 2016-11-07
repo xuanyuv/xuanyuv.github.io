@@ -51,11 +51,14 @@ VOL的文件名一般以`SW_DVD5_Office_Professional_Plus_2016`打头
 
 Retail的一般以`cn_office_professional_plus_2016`打头
 
-比如说Office2016VOL版的镜像文件名是：SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO
+比如说Office2016VOL是`SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO`
 
-它的RETAIL文件名是：cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso（大小为2.41GB）
+它的RETAIL是`cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso（大小为2.41GB）`
 
-其下载地址为`ed2k://|file|cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso|2588266496|27EEA4FE4BB13CD0ECCDFC24167F9E01|/`
+其下载地址为
+```
+ed2k://|file|cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso|2588266496|27EEA4FE4BB13CD0ECCDFC24167F9E01|/
+```
 
 之所以RETAIL版的容量要大些，是因为它同时包含了32bit和64bit的安装文件
 
