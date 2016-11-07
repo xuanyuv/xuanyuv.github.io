@@ -4,7 +4,7 @@ title: "Office版本划分以及下载地址"
 categories: 工具
 tags: office download retail vol
 author: 玄玉
-excerpt: 介绍Office镜像下载地址。
+excerpt: 介绍Office镜像下载地址，以及它那复杂的版本划分情况。
 ---
 
 * content
@@ -15,25 +15,59 @@ excerpt: 介绍Office镜像下载地址。
 
 Office本身分为：家庭和学生版、小型企业版、专业版、Office365家庭高级版
 
-而这些版本中，又分为：`零售版（RETAIL）`以及`大客户批量授权版（VOL）`，二者区别如下
+而这些版本中，又分为：`零售版（RETAIL）`以及`大客户批量授权版（VOL）`
 
-> 1、功能方面：完全相同<br/>
-2、安装方面：VOL在安装过程中不用输入序列号，Retail则必须输入（尽管所输入的也不一定通过验证）<br/>
-3、发售方式：平时在商店买的Office安装光盘的版本，其实就是RETAIL<br/>
-　　　　　　　而VOL则不是（并且它只有PROFESSIONAL版本）<br/>
-4、授权方面：VOL可以使用KMS服务器激活（或使用MAK密钥永久激活）<br/>
-　　　　　　　RETAIL则不适用于KMS（目前可以使用电话激活方式）<br/>
-　　　　　　　相对而言，VOL更容易激活一些
+## RETAIL和VOL
 
-另外，Office镜像文件名上经常出现几个缩写，下面是关于几个缩写的描述
+这两个版本的区别，可以简单用以下五点来概括
 
+#### 功能方面
+
+完全相同
+
+##### 安装方面
+
+VOL在安装过程中不用输入序列号，Retail则必须输入（尽管所输入的也不一定通过验证）
+
+另外：据说Retail的不能选择安装路径和自定义组件（我没验证过）
+
+## 发售方式
+
+平时在商店买的Office安装光盘的版本，其实就是RETAIL
+
+而VOL则不是（并且它只有PROFESSIONAL版本）
+
+#### 授权方面
+
+VOL可以使用`KMS`服务器激活，或使用`MAK`密钥永久激活
+
+RETAIL则不适用于KMS，目前可以使用电话激活方式
+
+相对而言，VOL更容易激活一些
+
+#### 镜像名称
+
+VOL的文件名一般以`SW_DVD5_Office_Professional_Plus_2016`打头，Retail的一般以`cn_office_professional_plus_2016`打头
+
+比如说Office2016VOL版的镜像文件名是：SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO
+
+而它的RETAIL版的镜像文件名是：cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso（大小为2.41GB）
+
+其下载地址为ed2k://|file|cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso|2588266496|27EEA4FE4BB13CD0ECCDFC24167F9E01|/
+
+之所以RETAIL版的容量大写，是因为它同时包含了32bit和64bit的安装文件
+
+另外，关于镜像文件名上经常出现的几个单词缩写，其完整描述可以理解成下面这样
+
+```
 SW - Software
-
 MLF – Microsoft Licensing Fulfillment
-
 CORE – software meant for Core based License
+```
 
-最后列出的是VOL版下载地址
+## 下载地址
+
+下面列出的是VOL版的中文安装包下载地址
 
 ```
 版本：Office 2016 Pro Plus 64位
