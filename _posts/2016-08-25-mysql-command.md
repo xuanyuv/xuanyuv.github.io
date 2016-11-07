@@ -37,6 +37,7 @@ UNIQUE INDEX unique_email_status(email, status)
 ALTER TABLE t_account COMMENT '账户信息表';
 ALTER TABLE t_account MODIFY money_max DECIMAL(16,4) NOT NULL COMMENT '最高额度，单位：元';
 ALTER TABLE t_account ADD COLUMN money_type TINYINT(1) COMMENT '金额类型：1--RMB，2--USD' AFTER id;
+ALTER TABLE t_account DROP COLUMN money_type;
 
 ALTER TABLE t_account ADD PRIMARY KEY(account_id);
 ALTER TABLE t_account ADD INDEX index_password(password);
