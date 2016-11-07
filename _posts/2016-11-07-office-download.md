@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Office版本划分以及下载地址"
+title: "Office版本划分及其下载地址"
 categories: 工具
 tags: office download retail vol
 author: 玄玉
@@ -25,7 +25,7 @@ Office本身分为：家庭和学生版、小型企业版、专业版、Office36
 
 完全相同
 
-##### 安装方面
+#### 安装方面
 
 VOL在安装过程中不用输入序列号，Retail则必须输入（尽管所输入的也不一定通过验证）
 
