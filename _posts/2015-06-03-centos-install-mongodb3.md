@@ -73,8 +73,8 @@ numactl --interleave=all /usr/local/mongodb/bin/mongod --fork --httpinterface --
 
 ```
 [Jadyer@CentOS64 ~]$ cd /app/mongodb-3.0.2/bin/
-[Jadyer@CentOS64 bin]$ ./startup.sh
-[Jadyer@CentOS64 bin]$ ./client.sh
+[Jadyer@CentOS64 bin]$ ./startup.sh  #若启动失败，就检查下/etc/sysconfig/iptables防火墙里面有没有开放27017端口
+[Jadyer@CentOS64 bin]$ ./client.sh   #启动客户端，连接服务器
 MongoDB shell version: 3.0.2
 connecting to: 127.0.0.1:27017/admin
 > show dbs
