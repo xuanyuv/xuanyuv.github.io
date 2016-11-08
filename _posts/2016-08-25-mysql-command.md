@@ -52,6 +52,13 @@ ALTER TABLE t_account DROP INDEX index_name_password;
 DROP INDEX index_name_password ON t_account;
 ```
 
+## 修改表数据
+
+```sql
+-- 更新某字段值为另一个表的同名字段值
+UPDATE t_user u, t_account a SET u.account_type=a.type WHERE u.account_id=a.id
+```
+
 ## 查询元数据
 
 ```sql
