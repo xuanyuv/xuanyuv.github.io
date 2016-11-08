@@ -19,7 +19,7 @@ excerpt: 详细介绍了在CentOS-6.4-minimal版本中，安装MongoDB-x86_64-3.
 [Jadyer@CentOS64 ~]$ cd /app/software/
 [Jadyer@CentOS64 software]$ tar zxvf mongodb-linux-x86_64-3.0.2.tgz
 [Jadyer@CentOS64 software]$ mv mongodb-linux-x86_64-3.0.2 /app/mongodb-3.0.2
-[root@CentOS64 ~]# vi /etc/profile
+[root@CentOS64 ~]# vim /etc/profile
                       #Set MongoDB Environment Variable
                       MONGODB_HOME=/app/mongodb-3.0.2
                       PATH=$PATH:$MONGODB_HOME/bin
@@ -37,13 +37,13 @@ excerpt: 详细介绍了在CentOS-6.4-minimal版本中，安装MongoDB-x86_64-3.
 [Jadyer@CentOS64 mongodb-3.0.2]$ mkdir logs             #创建MongoDB存放日志文件的目录
 [Jadyer@CentOS64 mongodb-3.0.2]$ touch logs/mongodb.log #创建一个空的日志文件
 [Jadyer@CentOS64 mongodb-3.0.2]$ cd bin
-[Jadyer@CentOS64 bin]$ vi startup.sh
+[Jadyer@CentOS64 bin]$ vim startup.sh
 mongod --dbpath /app/mongodb-3.0.2/data --logpath /app/mongodb-3.0.2/logs/mongodb.log --logappend --fork --rest --httpinterface
 [Jadyer@CentOS64 bin]$ chmod 755 startup.sh
-[Jadyer@CentOS64 bin]$ vi shutdown.sh
+[Jadyer@CentOS64 bin]$ vim shutdown.sh
 mongod --dbpath /app/mongodb-3.0.2/data --shutdown
 [Jadyer@CentOS64 bin]$ chmod 755 shutdown.sh
-[Jadyer@CentOS64 bin]$ vi client.sh
+[Jadyer@CentOS64 bin]$ vim client.sh
 mongo 127.0.0.1:27017/admin
 [Jadyer@CentOS64 bin]$ chmod 755 client.sh
 ```
@@ -83,7 +83,7 @@ local  0.078GB                       #此时是看不见admin的,但mongodb3.0�
 > show users                         #查看刚才创建的用户
 > db.system.users.find()             #该命令也能查看创建的用户,而且信息更详细
 > db.shutdownServer()                #关闭数据库(也可用上面编写的shutdown.sh)
-[Jadyer@CentOS64 bin]$ vi startup.sh #加入[--auth]参数
+[Jadyer@CentOS64 bin]$ vim startup.sh #加入[--auth]参数
 [Jadyer@CentOS64 bin]$ ./startup.sh
 [Jadyer@CentOS64 bin]$ ./client.sh
 MongoDB shell version: 3.0.2
