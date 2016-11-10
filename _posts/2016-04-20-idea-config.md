@@ -233,6 +233,19 @@ settings---Editor---File and Code Templates---Includes---File Header---修改如
  */
 ```
 
+#### 自定义方法上的注释
+settings---Editor---Live Templates---右上角`+`选择`Template Group`---我输入的模板组名是**JadyerGroup**
+
+然后点击`JadyerGroup`---右上角`+`加号选择`Live Template`---设置自定义的触发注释输出的字母
+
+用到时间时可以用`$date$`或者`$time$`占位，并点击`Edit variables`按钮设置为`date()`和`time()`即可
+
+最后别忘了最下方的`No applicable contexts. Define`处选择模板适用范围（截图中我勾选的是**Java**范围）
+
+比如我下面设置的就是输入`c`，然后按`Tab`键，就会生成方法注释
+
+![](/img/2016-04-20/idea-config-01.png)
+
 #### 资源文件的中文显示
 
 settings---Editor---File Encodings---IDE Encoding---UTF-8
