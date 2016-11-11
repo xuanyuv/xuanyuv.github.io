@@ -46,6 +46,8 @@ icon: heart
 * [懒人图库](http://www.lanrentuku.com)
 * [懒人图库](http://www.lanrenzhijia.com)
 * [一问一答](http://wenda60.com)
+* [网站测速](http://ce.cloud.360.cn)
+* [网站备案](http://www.beian.gov.cn)
 * [房贷计算器](http://fangd.sinaapp.com)
 * [工资计算器](http://salarycalculator.sinaapp.com/city/chongqing)
 * [12306订票助手](http://www.fishlee.net)
