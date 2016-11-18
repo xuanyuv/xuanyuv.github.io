@@ -16,7 +16,7 @@ excerpt: 描述网页播放视频的<video>的用法。
     <p>Your user agent does not support the HTML5 Video element.</p>
 </video>
 
-实现代码如下
+## 代码
 
 ```html
 <!--
