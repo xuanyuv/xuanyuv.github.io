@@ -12,7 +12,12 @@ excerpt: 描述网页播放视频的<video>的用法。
 
 
 <video style="width:100%; height:100%;" preload="none" controls="controls" poster="http://ww2.sinaimg.cn/large/723dadf5gw1f9wab7mmuij20wp0hggon.jpg">
-    <source id="mp4" src="http://gslb.miaopai.com/stream/HtNgr3djfi4nh859KYPpAg__.mp4" type="video/mp4">
+    <source src="http://gslb.miaopai.com/stream/HtNgr3djfi4nh859KYPpAg__.mp4" type="video/mp4">
+    <p>Your user agent does not support the HTML5 Video element.</p>
+</video>
+
+<video style="width:100%; height:100%;" preload="none" controls="controls" poster="http://ww2.sinaimg.cn/large/723dadf5gw1f9yvqqe13xj20nj0d6ac4.jpg">
+    <source src="http://gslb.miaopai.com/stream/b3xS3YS3zpU6AWS-8vgK-g__.mp4" type="video/mp4">
     <p>Your user agent does not support the HTML5 Video element.</p>
 </video>
 
