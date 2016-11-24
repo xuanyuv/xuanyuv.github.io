@@ -2,7 +2,7 @@
 layout: post
 title: "JAX-WS之借助SAAJ创建SOAP消息"
 categories: JAX-WS
-tags: saaj message payload
+tags: jax-ws saaj payload
 author: 玄玉
 excerpt: 介绍JAX-WS中借助saaj的方式创建，以及发送SOAP消息给WebService服务端。
 ---

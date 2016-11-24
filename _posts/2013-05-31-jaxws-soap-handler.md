@@ -2,7 +2,7 @@
 layout: post
 title: "JAX-WS之SOAP异常处理和Handler处理"
 categories: JAX-WS
-tags: soap handler
+tags: jax-ws handler
 author: 玄玉
 excerpt: 介绍在JAX-WS里面如果处理SOAP异常，以及编写Handler的方式。
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: "JAX-WS之通过JAX-RI集成Tomcat"
 categories: JAX-WS
-tags: jax-ri sun-jaxws tomcat
+tags: jax-ws jax-ri tomcat
 author: 玄玉
 excerpt: 介绍JAX-WS通过其参考实现JAX-RI实现与Tomcat的集成方法。
 ---

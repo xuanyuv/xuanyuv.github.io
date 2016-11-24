@@ -2,7 +2,7 @@
 layout: post
 title: "WebServices之简述DTD和Schema"
 categories: JAX-WS
-tags: webservices dtd schema
+tags: jax-ws webservices
 author: 玄玉
 excerpt: 介绍WebServices-wsdl文件的一些基本语义。
 ---
