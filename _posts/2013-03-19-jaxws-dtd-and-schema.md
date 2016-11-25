@@ -39,7 +39,26 @@ excerpt: 介绍WebServices-wsdl文件的一些基本语义。
 | **“** | **&amp;quot;** |
 | **’** | **&amp;apos;** |
 
+#### 注释CDATA
+
+注释：`<!--`和`-->`引起来的
+
+CDATA：该标签中的所有标签或实体引用都会被忽略，而被XML处理程序一视同仁地当作字符数据看待
+
+```xml
+<!-- 运行时会出错 -->
+<name><<"“XML应用大全”">></name>
+<!-- 运行时正常输出<<"“XML应用大全”">> -->
+<name><![CDATA[<<"“XML应用大全”">>]]></name>
+```
+
 ## Schema
+
+`web.xml`的顶部会看到类似[http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd](http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd)的标志
+
+这说明`web.xml`文件使用了`web-app_2_5.xsd`的`Schema`作为限制标准，并且Schema的后缀是xsd
+
+该文件看似是在SUN网站上，实则位于`tomcat6\\lib\\servlet-api.jar\\javax\\servlet\\resources中`
 
 #### 为何要Schema
 
