@@ -15,14 +15,12 @@ excerpt: 介绍Dom4j和Jdom读写XML文件的方法。
 
 ```java
 package com.jadyer.demo.xml;
-
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
-
 import java.io.IOException;
 
 /**
@@ -121,7 +119,6 @@ public class Dom4jDemo {
 
 ```java
 package com.jadyer.demo.xml;
-
 import org.apache.commons.io.IOUtils;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -134,7 +131,6 @@ import org.jdom2.xpath.XPath;
 import org.jdom2.xpath.XPathBuilder;
 import org.jdom2.xpath.XPathExpression;
 import org.jdom2.xpath.jaxen.JaxenXPathFactory;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
