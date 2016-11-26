@@ -69,16 +69,16 @@ layout: default
         <!-- Pagination links -->
         <div class="pagination">
           {% if paginator.previous_page %}
-            <a href="{{ site.url }}/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
-            <a href="{{ site.url }}{{ paginator.previous_page_path }}" class="previous"><i class="fa fa-angle-left"></i></a>
+            <a href="/index.html" class="previous"><i class="fa fa-angle-double-left"></i></a>
+            <a href="{{ paginator.previous_page_path }}" class="previous"><i class="fa fa-angle-left"></i></a>
           {% else %}
             <span class="previous disable"><i class="fa fa-angle-double-left"></i></span>
             <span class="previous disable"><i class="fa fa-angle-left"></i></span>
           {% endif %}
           <span class="page_number ">{{ paginator.page }}/{{ paginator.total_pages }}</span>
           {% if paginator.next_page %}
-            <a href="{{ site.url }}{{ paginator.next_page_path }}" class="next"><i class="fa fa-angle-right"></i></a>
-            <a href="{{ site.url }}/page{{ paginator.total_pages }}" class="next"><i class="fa fa-angle-double-right"></i></a>
+            <a href="{{ paginator.next_page_path }}" class="next"><i class="fa fa-angle-right"></i></a>
+            <a href="/page{{ paginator.total_pages }}" class="next"><i class="fa fa-angle-double-right"></i></a>
           {% else %}
             <span class="next disable"><i class="fa fa-angle-right"></i></span>
             <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
