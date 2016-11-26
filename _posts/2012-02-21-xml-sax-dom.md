@@ -13,15 +13,15 @@ excerpt: 介绍SAX和DOM读取XML文件的方法。
 
 ## 区别
 
-二者属于XML的两种解析模型，DOM是面向模型的，SAX是基于事件的
+二者属于XML的两种解析模型：DOM是面向模型的，SAX是基于事件的
 
-DOM解析XML时，会将XML文档加载到内存，再操作内存中的DOM树，虽然内存效率高些但不适合大文件解析
+DOM解析XML时，会先将XML文档加载到内存，再操作内存中的DOM树，效率虽然高但不适合大文件解析
 
-SAX是读一部分解一部分这种顺序执行的，它一旦经过了某个元素，我们就没有办法再去访问它了
+SAX则是读一部分解一部分这种顺序执行的，它一旦经过了某个元素，我们就没有办法再去访问它了
 
-SAX不必将整个XML文档都加载到内存当中，因此它占据内存要小于DOM
+SAX不必将整个XML文档都加载到内存中，因此它占据内存要比DOM少一些
 
-SAX编程也要比DOM稍微复杂一点，它需要实现一个回调
+不过，SAX编程要比DOM稍微复杂一点：它需要实现一个回调
 
 下面是本文示例中，读取的XML内容
 
@@ -69,7 +69,7 @@ import java.util.Stack;
  * SAX(Simple APIs for XML)的方式解析XML文档
  * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 11:33.
  */
-public class SaxXML {
+public class SaxXMLDemo {
     public static void main(String[] args) throws Exception {
         String xmlStr = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
                 "<people>\n" +
@@ -243,7 +243,7 @@ import java.nio.charset.StandardCharsets;
  * DOM(Document Object Model)的方式解析XML文档
  * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 11:33.
  */
-public class DomXML {
+public class DomXMLDemo {
     public static void main(String[] args) throws Exception {
         String xmlStr = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
                 "<people>\n" +
@@ -279,7 +279,7 @@ public class DomXML {
         //解析一个XML文档，获得Document对象
         //Document document = documentBuilder.parse(new File("userinfo.xml"));
         Document document = documentBuilder.parse(IOUtils.toInputStream(xmlStr, StandardCharsets.UTF_8));
-        new DomXML().xmlPrint(document.getDocumentElement());
+        new DomXMLDemo().xmlPrint(document.getDocumentElement());
     }
 
     /**
@@ -339,7 +339,7 @@ import java.nio.charset.StandardCharsets;
  * DOM(Document Object Model)的方式解析XML文档
  * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 11:33.
  */
-public class DomXML {
+public class DomXMLDemo {
     public static void main(String[] args) throws Exception {
         String xmlStr = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
                 "<people>\n" +
@@ -365,7 +365,7 @@ public class DomXML {
                 "        <地址>太极陈家沟</地址>\n" +
                 "    </person>\n" +
                 "</people>";
-        new DomXML().xmlRead(xmlStr);
+        new DomXMLDemo().xmlRead(xmlStr);
     }
 
     private void xmlRead(String xmlStr) throws ParserConfigurationException, IOException, SAXException {
