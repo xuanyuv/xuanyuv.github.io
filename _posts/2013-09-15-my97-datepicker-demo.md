@@ -19,29 +19,29 @@ excerpt: 介绍My97DatePicker日期控件的一些常用功能。
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<!-- 它的官网是http://www.my97.net/ -->
-<!-- 引入它的js(这里用的是My97.DatePicker.4.72.Release) -->
-<!--
-My97DatePicker引入到项目中后的目录结构如下
-WebRoot
-  |--js
-  |  |--My97DatePicker
-  |  |  |--lang
-  |  |  |  |--zh-cn.js
-  |  |  |--skin
-  |  |  |  |--default
-  |  |  |  |  |--datepicker.css
-  |  |  |  |  |--img.gif
-  |  |  |  |--datePicker.gif
-  |  |  |  |--WdatePicker.css
-  |  |  |--calendar.js
-  |  |  |--config.js
-  |  |  |--My97DatePicker.htm
-  |  |  |--WdatePicker.js
- -->
-<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- 它的官网是http://www.my97.net/ -->
+    <!-- 引入它的js(这里用的是My97.DatePicker.4.72.Release) -->
+    <!--
+    My97DatePicker引入到项目中后的目录结构如下
+    WebRoot
+      |--js
+      |  |--My97DatePicker
+      |  |  |--lang
+      |  |  |  |--zh-cn.js
+      |  |  |--skin
+      |  |  |  |--default
+      |  |  |  |  |--datepicker.css
+      |  |  |  |  |--img.gif
+      |  |  |  |--datePicker.gif
+      |  |  |  |--WdatePicker.css
+      |  |  |--calendar.js
+      |  |  |--config.js
+      |  |  |--My97DatePicker.htm
+      |  |  |--WdatePicker.js
+     -->
+    <script src="js/My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
 <!-- 下面演示My97DatePicker的一些效果 -->

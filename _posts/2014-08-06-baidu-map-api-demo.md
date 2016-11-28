@@ -34,7 +34,7 @@ excerpt: 主要演示了百度地图API中的地址解析、浏览器定位、IP
     <div id="lnglat" style="color:red;">当前坐标：0,0</div>
     <div id="allmap" style="width:400px; height:400px; overflow:hidden; margin:0;"></div>
 </body>
-<script type="text/javascript">
+<script>
 /**
  * 百度地图API功能
  */
