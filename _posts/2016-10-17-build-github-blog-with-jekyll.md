@@ -209,7 +209,7 @@ Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
 
 ## 复制主题
 
-本博主题取自[https://github.com/Gaohaoyang/gaohaoyang.github.io](https://github.com/Gaohaoyang/gaohaoyang.github.io)
+本博主题修改自[https://github.com/Gaohaoyang/gaohaoyang.github.io](https://github.com/Gaohaoyang/gaohaoyang.github.io)
 
 其第一版的介绍地址为[http://jekyllthemes.org/themes/cool-concise-high-end/](http://jekyllthemes.org/themes/cool-concise-high-end/)
 
