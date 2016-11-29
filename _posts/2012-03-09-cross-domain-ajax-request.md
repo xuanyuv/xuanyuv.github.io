@@ -11,6 +11,12 @@ excerpt: 演示了FlyJSONP和jQuery分别实现跨域的异步请求的例子。
 {:toc}
 
 
+这里主要介绍了实现跨域异步请求的两种方式：`FlyJSONP`和`jQuery`
+
+实际上我觉得FlyJSONP更好用一些
+
+下面分别演示这两种用法
+
 ## FlyJSONP
 
 FlyJSONP是一个应用JSONP实现跨域请求的相当轻量级的JavaScript类库
