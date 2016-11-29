@@ -11,20 +11,6 @@ excerpt: 介绍Eclipse或MyEclipse中的一些常用和好用的配置。
 {:toc}
 
 
-## easyexplore和OpenExplorer
-
-`Eclipse_Luna`版中安装`org.sf.easyexplore_1.0.4.jar`后，会发现它不支持easyexplore了
-
-这时有两个解决办法
-
-一个是采用Eclipse_Luna自带的功能：`工程-->包或文件上右键-->Show In-->System Explorer即可`
-
-另一个是使用`OpenExplorer`：下载地址为[https://github.com/samsonw/OpenExplorer/downloads](https://github.com/samsonw/OpenExplorer/downloads)
-
-下载后得到`OpenExplorer_1.5.0.v201108051513.jar`，将其拷贝至`//eclipse//dropins//`目录下即可
-
-重新启动Eclipse，会发现工具栏上面有一个类似公文包的图标，就是它了
-
 ## 启动时选择工作空间
 
 启动MyEclipse6.5时，默认会弹出`Select a workspace`对话框
@@ -142,6 +128,28 @@ SVN插件版本：site-1.6.17
 Eclipse版本：eclipse-jee-indigo-SR2-win32-x86_64
 解决方法为：Window-->Preferences-->Team-->SVN-->SVN interface-->修改默认的JavaHL为SVNKit即可
 ```
+
+## easyexplore和OpenExplorer
+
+`Eclipse_Luna`版中安装`org.sf.easyexplore_1.0.4.jar`后，会发现它不支持easyexplore了
+
+这时有两个解决办法
+
+一个是采用Eclipse_Luna自带的功能：`工程-->包或文件上右键-->Show In-->System Explorer即可`
+
+另一个是使用`OpenExplorer`：下载地址为[https://github.com/samsonw/OpenExplorer/downloads](https://github.com/samsonw/OpenExplorer/downloads)
+
+下载后得到`OpenExplorer_1.5.0.v201108051513.jar`，将其拷贝至`//eclipse//dropins//`目录下即可
+
+重新启动Eclipse，会发现工具栏上面有一个类似公文包的图标，就是它了
+
+## 内嵌Jetty报告OutOfMemoryError
+
+`Jetty启动类-->Run AS-->Open Run Dialog-->Arguments-->VM arguments`
+
+输入如下参数即可解决
+
+`-server -Xms512m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=512m -XX:+CMSClassUnloadingEnabled -XX:+PrintGCDetails`
 
 ## TCPIPMonitor的用法
 
