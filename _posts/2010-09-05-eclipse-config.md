@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Eclipse配置集锦"
+title: "Eclipse配置小结"
 categories: 工具
 tags: eclipse myeclipse
 author: 玄玉
