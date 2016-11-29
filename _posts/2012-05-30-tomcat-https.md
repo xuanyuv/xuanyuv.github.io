@@ -144,6 +144,8 @@ KeyIdentifier [
 
 ```xml
 <web-app xmlns="http://xmlns.jcp.org.....version=3.1">
+    ......
+    ......
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.htm</welcome-file>
