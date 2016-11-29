@@ -11,6 +11,20 @@ excerpt: 介绍Eclipse或MyEclipse中的一些常用和好用的配置。
 {:toc}
 
 
+## easyexplore和OpenExplorer
+
+`Eclipse_Luna`版中安装`org.sf.easyexplore_1.0.4.jar`后，会发现它不支持easyexplore了
+
+这时有两个解决办法
+
+一个是采用Eclipse_Luna自带的功能：`工程-->包或文件上右键-->Show In-->System Explorer即可`
+
+另一个是使用`OpenExplorer`：下载地址为[https://github.com/samsonw/OpenExplorer/downloads](https://github.com/samsonw/OpenExplorer/downloads)
+
+下载后得到`OpenExplorer_1.5.0.v201108051513.jar`，将其拷贝至`//eclipse//dropins//`目录下即可
+
+重新启动Eclipse，会发现工具栏上面有一个类似公文包的图标，就是它了
+
 ## 启动时选择工作空间
 
 启动MyEclipse6.5时，默认会弹出`Select a workspace`对话框
