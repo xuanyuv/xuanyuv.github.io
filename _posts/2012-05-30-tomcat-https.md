@@ -2,7 +2,7 @@
 layout: post
 title: "Tomcat配置HTTPS"
 categories: Tomcat
-tags: Tomcat https
+tags: tomcat https
 author: 玄玉
 excerpt: 介绍了通过keytool生成证书，并分别导入Tomcat、JVM、浏览器的方法。
 ---
