@@ -75,7 +75,8 @@ Window-->preferences-->MyEclipse Enterprise Workbench-->File and Editors-->XML--
 > 第二种是：修改eclipse的插件jar（这个法子虽说麻烦点，但比第一种灵活）<br>
 `D:\Develop\MyEclipse\eclipse\plugins\org.eclipse.text_3.3.0.v20070606-0010.jar`<br>
 也就是`org.eclipse.text_xxxx.jar`（有的eclipse中该jar后面的版本或日期不同）<br>
-修改里面的`org.eclipse.jface.text.templates.GlobalTemplateVariables.java`，找到如下代码<br>
+修改里面的`org.eclipse.jface.text.templates.GlobalTemplateVariables.java`，找到如下代码
+
 ```java
 public static class Date extends SimpleTemplateVariableResolver {
     public Date() {
