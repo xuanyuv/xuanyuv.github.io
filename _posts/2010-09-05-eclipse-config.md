@@ -37,7 +37,67 @@ excerpt: 介绍Eclipse或MyEclipse中的一些常用和好用的配置。
 
 　　　　　　　　　　　　然后选择`Perform the selected action on save`，再勾选`Organize imports`即可
 
-## SVN插件中英文互转
+## 代码格式化时防止换行
+
+```
+//Java代码
+Window-->preferences-->Java-->Code Style-->Formatter-->Edit-->Line Wrapping-->Maximum line width-->调大点
+//HTML代码
+Window-->preferences-->MyEclipse Enterprise Workbench-->File and Editors-->HTML-->HTML Source-->Line width-->调大点
+//XML代码
+Window-->preferences-->MyEclipse Enterprise Workbench-->File and Editors-->XML-->XML Source-->Line width-->调大点
+```
+
+## 注释模板日期为中文格式
+
+相信大部分人都用过Eclipse/MyEclipse中的`Code Templates`功能，配置地址如下
+
+`Windows-->Preferences-->Java-->Code Style-->Code Templates-->Comments`
+
+一般我只会配置两个地方：一个是`Types(用于注释在类名上)`，一个是`Methods(用于注释方法上)`
+
+配置内容都是下面这样
+
+```
+/**
+ * @create ${date} ${time}
+ * @author 玄玉<https://jadyer.github.io/>
+ */
+```
+
+那么问题来了：上面注释中，时间是英文格式，看着很不舒服
+
+想换成中文格式的话，有两个法子
+
+> 第一种是：修改eclipse配置文件`D:\Develop\MyEclipse\eclipse\eclipse.ini`<br>
+将其中的`-Duser.language=en`修改为`-Duser.language=zh-cn`（有则修改，无则添加）
+
+> 第二种是：修改eclipse的插件jar（这个法子虽说麻烦点，但比第一种灵活）<br>
+`D:\Develop\MyEclipse\eclipse\plugins\org.eclipse.text_3.3.0.v20070606-0010.jar`<br>
+也就是`org.eclipse.text_xxxx.jar`（有的eclipse中该jar后面的版本或日期不同）<br>
+修改里面的`org.eclipse.jface.text.templates.GlobalTemplateVariables.java`，找到如下代码<br>
+```java
+public static class Date extends SimpleTemplateVariableResolver {
+    public Date() {
+        super(TextTemplateMessages.getString("GlobalVariables.variable.description.date"));
+    }
+    protected String resolve(TemplateContext context) {
+        return DateFormat.getDateInstance().format(new Date());
+    }
+}
+//修改成如下内容
+public static class Date extends SimpleTemplateVariableResolver {
+    public Date() {
+        super(TextTemplateMessages.getString("GlobalVariables.variable.description.date"));
+    }
+    protected String resolve(TemplateContext context) {
+        //return DateFormat.getDateInstance().format(new Date());
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+    }
+}
+```
+
+## SVN插件中英文互相转换
 
 修改`D:\Develop\eclipse\configuration\config.ini`文件，在其尾部添加如下属性即可
 
@@ -46,6 +106,26 @@ excerpt: 介绍Eclipse或MyEclipse中的一些常用和好用的配置。
 #osgi.nl=en_US
 # Set Subversion Chinese Version
 osgi.nl=zh_CN
+```
+
+## SVN插件提示nosvnjavahl
+
+这里主要指的是：`EclipseJEE`安装SVN插件后提示`Failed to load JavaHL Library`
+
+报错信息，见下方截图
+
+![](/img/2010-09-05/eclipse-config-01.png)
+
+![](/img/2010-09-05/eclipse-config-02.png)
+
+所使用相关工具和环境，以及解决方法，如下所示
+
+```
+操作系统：Windows7-64bit-专业版
+Java版本：jdk-6u45-windows-x64
+SVN插件版本：site-1.6.17
+Eclipse版本：eclipse-jee-indigo-SR2-win32-x86_64
+解决方法为：Window-->Preferences-->Team-->SVN-->SVN interface-->修改默认的JavaHL为SVNKit即可
 ```
 
 ## TCPIPMonitor的用法
