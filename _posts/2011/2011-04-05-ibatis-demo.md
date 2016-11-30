@@ -207,6 +207,19 @@ public class User {
         delete from T_USER where id = #id#
     </delete>
 
+    <!--
+    以下是<select>标签的几个常用属性
+    parameterClass：用于指定执行该节点中的操作时，需要传入的参数的类型
+                    比如parameterClass="user"，其中"user"就是"com.jadyer.model.Person"类的别名
+                    别名是通过<typeAlias>指定的，如本文的<typeAlias alias="user" type=".....User"/>
+    resultClass：指定返回的结果类型。建议输入别名，避免每次重复书写冗长的类名
+    cacheModel：表明通过id为"findById"的Select statement获取的数据，使用"userCache"进行缓存
+                以后再用此Statement进行数据查询时，会直接从缓存中读取查询结果，而无需再去数据库查询
+    resultMap：结果映射，需结合resultMap节点对映射关系加以定义
+    parameterMap：参数映射，需结合parameterMap节点对映射关系加以定义
+                  对于存储过程之外的statement而言，建议使用parameterClass作为参数配置方式
+                  一方面避免了参数映射配置工作，另一方面其性能表现也更加出色
+    -->
     <select id="findById" parameterClass="int" resultClass="user">
         <![CDATA[
             select * from T_USER where id = #id#
