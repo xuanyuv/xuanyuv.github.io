@@ -11,6 +11,8 @@ excerpt: 介绍JPA中的一对多、一对一、多对多映射的不同写法�
 {:toc}
 
 
+## 公共的persistence.xml
+
 这两个例子里面，都有用到`//META-INF//persistence.xml`文件
 
 这是个公共文件，内容如下
@@ -317,7 +319,8 @@ import java.util.Set;
  */
 @Entity
 public class Student {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Integer id;
 
     @Column(length=10, nullable=false)
@@ -374,7 +377,8 @@ import java.util.Set;
  */
 @Entity
 public class Teacher {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Integer id;
 
     @Column(length=10, nullable=false)
