@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "JPA中的一对多和一对一映射"
+title: "JPA中的一和多映射"
 categories: JPA
-tags: jpa
+tags: jpa 映射
 author: 玄玉
-excerpt: 介绍JPA中的一对多和一对一映射的不同写法，以及示例代码。
+excerpt: 介绍JPA中的一对多、一对一、多对多映射的不同写法，以及示例代码。
 ---
 
 * content
@@ -18,6 +18,10 @@ excerpt: 介绍JPA中的一对多和一对一映射的不同写法，以及示�
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
+    <!--
+    <persistence-unit name="jadyerJPAOneToOne" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="jadyerJPAManyToMany" transaction-type="RESOURCE_LOCAL">
+    -->
     <persistence-unit name="jadyerJPAOneToMany" transaction-type="RESOURCE_LOCAL">
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
@@ -234,6 +238,7 @@ import javax.persistence.OneToOne;
 
 /**
  * 人的实体Bean
+ * Created by 玄玉<https://jadyer.github.io/> on 2011/02/11 09:16.
  */
 @Entity
 public class Person {
@@ -282,6 +287,227 @@ public class OneToOneTest {
         person.setIdcard(new IDCard("222222"));
         em.persist(person);
         //提交事务
+        em.getTransaction().commit();
+        em.close();
+        factory.close();
+    }
+}
+```
+
+## 多对多映射
+
+首先是学生的实体`Student.java`
+
+```java
+package com.jadyer.model;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * 学生的实体Bean
+ * Created by 玄玉<https://jadyer.github.io/> on 2011/02/11 10:39.
+ */
+@Entity
+public class Student {
+    @Id @GeneratedValue
+    private Integer id;
+
+    @Column(length=10, nullable=false)
+    private String name;
+
+    //@JoinTable(name="student_teacher") //这种情况下中间表的字段名默认为students_id和teachers_id
+    //@JoinTable注解的inverseJoinColumns属性指的是被维护端的外键，joinColumns用来定义关联表中维护端的外键
+    @ManyToMany(cascade=CascadeType.REFRESH)
+    @JoinTable(name="student_teacher", joinColumns=@JoinColumn(name="student_id"), inverseJoinColumns=@JoinColumn(name="teacher_id"))
+    private Set<Teacher> teachers = new HashSet<>();
+
+    public Student(){}
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    /* 三个属性的setter和getter略 */
+
+    /**
+     * 建立学生跟老师的关系
+     */
+    public void addTeacher(Teacher teacher){
+        this.teachers.add(teacher);
+    }
+
+    /**
+     * 解除学生跟老师的关系
+     */
+    public void removeTeacher(Teacher teacher){
+        if(this.teachers.contains(teacher)){
+            this.teachers.remove(teacher);
+        }
+    }
+}
+```
+
+然后是教师的实体`Teacher.java`
+
+```java
+package com.jadyer.model;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * 教师的实体Bean
+ * Created by 玄玉<https://jadyer.github.io/> on 2011/02/11 10:39.
+ */
+@Entity
+public class Teacher {
+    @Id @GeneratedValue
+    private Integer id;
+
+    @Column(length=10, nullable=false)
+    private String name;
+
+    //双向多对多是一种对等关系，所以我们可以人为的决定关系维护端
+    @ManyToMany(mappedBy="teachers", cascade=CascadeType.REFRESH)
+    private Set<Student> students = new HashSet<Student>();
+
+    public Teacher(){}
+
+    public Teacher(String name) {
+        this.name = name;
+    }
+
+    /* 三个属性的setter和getter略 */
+
+    //用来判断两个对象是否相同，所以要重写hashCode()和equals()方法
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        final Teacher other = (Teacher) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+}
+```
+
+用到的`persistence.xml`就是本文公共的`persistence.xml`
+
+最后是JUnit4单元测试类`ManyToManyTest.java`
+
+```java
+package com.jadyer.junit;
+import com.jadyer.model.Student;
+import com.jadyer.model.Teacher;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import org.junit.Test;
+
+public class ManyToManyTest {
+    /**
+     * 添加学生和老师
+     */
+    @Test
+    public void save(){
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jadyerJPAManyToMany");
+        EntityManager em = factory.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(new Student("令狐冲"));
+        em.persist(new Teacher("风清扬"));
+        em.getTransaction().commit();
+        em.close();
+        factory.close();
+    }
+
+    /**
+     * 建立学生跟老师的关系
+     */
+    @Test
+    public void buildTS(){
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jadyerJPAManyToMany");
+        EntityManager em = factory.createEntityManager();
+        em.getTransaction().begin();
+        Student student = em.find(Student.class, 3);
+        student.addTeacher(em.getReference(Teacher.class, 4));
+        em.getTransaction().commit();
+        em.close();
+        factory.close();
+    }
+
+    /**
+     * 解除学生跟老师的关系
+     */
+    @Test
+    public void removeTS(){
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jadyerJPAManyToMany");
+        EntityManager em = factory.createEntityManager();
+        em.getTransaction().begin();
+        Student student = em.find(Student.class, 3);
+        student.removeTeacher(em.getReference(Teacher.class, 4));
+        em.getTransaction().commit();
+        em.close();
+        factory.close();
+    }
+
+    /**
+     * 删除老师
+     */
+    @Test
+    public void deleteTeacher(){
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jadyerJPAManyToMany");
+        EntityManager em = factory.createEntityManager();
+        em.getTransaction().begin();
+        Student student = em.find(Student.class, 1);
+        Teacher teacher = em.getReference(Teacher.class, 2);
+        student.removeTeacher(teacher);
+        //Teacher是关系被维护端，所以它没有权利直接更新外键，所以必须在解除关系之后再删除Teacher
+        em.remove(em.getReference(Teacher.class, 2));
+        em.getTransaction().commit();
+        em.close();
+        factory.close();
+    }
+
+    /**
+     * 删除学生
+     */
+    @Test
+    public void deleteStudent(){
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jadyerJPAManyToMany");
+        EntityManager em = factory.createEntityManager();
+        em.getTransaction().begin();
+        Student student = em.getReference(Student.class, 1);
+        //Student是关系维护端，有权利更新外键，所以能够直接删除
+        em.remove(student);
         em.getTransaction().commit();
         em.close();
         factory.close();
