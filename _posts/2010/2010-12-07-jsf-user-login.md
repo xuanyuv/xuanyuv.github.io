@@ -37,9 +37,7 @@ SUN之所以推出JSF，其实很大程度上是模仿了微软的ASP.NET，编�
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     <!-- 也可不指定JSF配置文件，默认即/WEB-INF/faces-config.xml -->
     <!--
     <context-param>
