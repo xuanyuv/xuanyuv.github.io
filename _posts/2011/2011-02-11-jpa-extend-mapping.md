@@ -25,6 +25,7 @@ import java.util.Set;
 
 /**
  * 部门表的实体
+ * Created by 玄玉<https://jadyer.github.io/> on 2011/02/11 11:15.
  */
 @Entity
 public class Department {
@@ -56,6 +57,7 @@ import javax.persistence.ManyToOne;
 
 /**
  * 员工表的实体
+ * Created by 玄玉<https://jadyer.github.io/> on 2011/02/11 11:15.
  */
 @Entity
 //指定继承策略
