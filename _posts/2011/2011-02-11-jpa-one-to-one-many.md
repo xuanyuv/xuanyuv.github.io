@@ -179,7 +179,7 @@ public class OneToManyTest {
 }
 ```
 
-## 一对一
+## 一对一映射
 
 首先是身份证的实体`IDCard.java`
 
