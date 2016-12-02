@@ -45,16 +45,16 @@ DROP PROCEDURE IF EXISTS pro_init; -- 删除一个已存在的存储过程
 DELIMITER //                       -- 声明当前MySQL分隔符为//
 CREATE PROCEDURE pro_init(username VARCHAR(60), OUT userId INT)
 BEGIN
-    SELECT user_id INTO userId FROM user_info ui WHERE ui.username=username;
+    SELECT user_id INTO userId FROM t_user_info ui WHERE ui.username=username;
     IF userId IS NULL OR userId='' THEN
         SELECT 0 INTO userId;
     ELSE
-        INSERT INTO t_worldcup(userId, teamAA, teamBB, createTime) VALUES (userId, '巴西', '俄罗斯', now());
-        INSERT INTO t_worldcup(userId, teamAA, teamBB, createTime) VALUES (userId, '法国', '西班牙', now());
-        INSERT INTO t_worldcup(userId, teamAA, teamBB, createTime) VALUES (userId, '荷兰', '英格兰', now());
-        INSERT INTO t_worldcup(userId, teamAA, teamBB, createTime) VALUES (userId, '智利', '意大利', now());
-        INSERT INTO t_worldcup(userId, teamAA, teamBB, createTime) VALUES (userId, '伊朗', '葡萄牙', now());
-        INSERT INTO t_worldcup(userId, teamAA, teamBB, createTime) VALUES (userId, '希腊', '阿根廷', now());
+        INSERT INTO t_worldcup(userId, teamAA, teamBB) VALUES (userId, '巴西', '俄罗斯');
+        INSERT INTO t_worldcup(userId, teamAA, teamBB) VALUES (userId, '法国', '西班牙');
+        INSERT INTO t_worldcup(userId, teamAA, teamBB) VALUES (userId, '荷兰', '英格兰');
+        INSERT INTO t_worldcup(userId, teamAA, teamBB) VALUES (userId, '智利', '意大利');
+        INSERT INTO t_worldcup(userId, teamAA, teamBB) VALUES (userId, '伊朗', '葡萄牙');
+        INSERT INTO t_worldcup(userId, teamAA, teamBB) VALUES (userId, '希腊', '阿根廷');
     END IF;
 END
 //                                 -- 分隔符，表示此SQL语句结束
