@@ -11,7 +11,21 @@ excerpt: 演示JUnit4.x的基本用法。
 {:toc}
 
 
-单元测试不是证明您是对的，而是证明您没有错误！
+单元测试切记：单元测试不是证明您是对的，而是证明您没有错误！
+
+下面是`JUnit4.x`与`JUnit3.8`的明显不同
+
+| JUnit4.x | JUnit3.8 |
+|:-------------:|:------------------:|
+| 无            | extends TestCase   |
+| @Before       | void setUp()       |
+| @After        | void tearDown()    |
+| @Test         | void testXxx()     |
+| @BeforeClass  | 无                  |
+| @AfterClass   | 无                  |
+| @SuiteClasses | static Test suite() |
+
+下面是二者的示例用法
 
 ## 公共的待测试类
 
