@@ -63,7 +63,7 @@ response.getWriter().print("{customState: 'hasCustomized'}");
 ## jQuery
 
 ```html
-<script src="http://cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
 <script>
 //IE9.0.8112.16421和FireFox9.0.1上测试均通过
 //客户端请求时，必须提供回调函数名，并以参数形式放到请求的URL后面
