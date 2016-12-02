@@ -168,6 +168,7 @@ PRIMARY KEY (id)
 ```java
 package com.jadyer.dao;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Resource;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -220,21 +221,24 @@ public class UserDaoImpl {
     /**
      * @return 本次操作影响的行数，即本次删除的记录数
      */
-    public int delete(int id) throws SQLException{
+    public int delete(int id) throws SQLException {
         return (Integer)this.sqlMapClientTemplate.delete("User.delete", id);
     }
 
     /**
      * @return 本次操作影响的行数，即本次修改的记录数
      */
-    public int update(Map<String, Object> map) throws SQLException{
-        return (Integer)this.sqlMapClientTemplate.update("User.update", map);
+    public int update(int id, String content) throws SQLException {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("id", id);
+        paramMap.put("content", content);
+        return (Integer)this.sqlMapClientTemplate.update("User.update", paramMap);
     }
 
     /**
      * @return 本次查询到的对象
      */
-    public User selectByID(int id) throws SQLException{
+    public User selectByID(int id) throws SQLException {
         return (User)this.sqlMapClientTemplate.queryForObject("User.selectByID", id);
     }
 }
@@ -245,8 +249,6 @@ public class UserDaoImpl {
 ```java
 package com.jadyer.test;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -289,7 +291,7 @@ public class IbatisSpringTest {
     }
 
     @Test
-    public void insert() throws SQLException{
+    public void insert() throws SQLException {
         User user = new User();
         user.setName("张起灵");
         user.setContent("张起灵是个过客，可吴邪却成了幽灵。");
@@ -297,20 +299,17 @@ public class IbatisSpringTest {
     }
 
     @Test
-    public void delete() throws SQLException{
+    public void delete() throws SQLException {
         Assert.assertEquals(1, userDao.delete(2));
     }
 
     @Test
-    public void update() throws SQLException{
-        Map<String, Object> paramMap = new HashMap<String, Object>();
-        paramMap.put("id", 4);
-        paramMap.put("content", "铁面生可能是最后的黑手");
-        Assert.assertEquals(1, userDao.update(paramMap));
+    public void update() throws SQLException {
+        Assert.assertEquals(1, userDao.update(4, "铁面生可能是最后的黑手"));
     }
 
     @Test
-    public void selectByID() throws SQLException{
+    public void selectByID() throws SQLException {
         Assert.assertEquals("张起灵", userDao.selectByID(4).getName());
     }
 }
