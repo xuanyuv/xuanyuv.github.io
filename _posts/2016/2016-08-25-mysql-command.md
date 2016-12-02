@@ -31,6 +31,39 @@ UNIQUE INDEX unique_email_status(email, status)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8 AUTO_INCREMENT=10001001 COMMENT='渠道账户信息表';
 ```
 
+## 存储过程
+
+```sql
+-- 列出所有的存储过程
+SHOW PROCEDURE STATUS;
+
+-- 查看一个已存在的存储过程的创建语句，若此存储过程不存在，会提示SQL错误（1305）：PROCEDURE pro_init does not exist
+SHOW CREATE PROCEDURE pro_init;
+
+-- 创建存储过程
+DROP PROCEDURE IF EXISTS pro_init; -- 删除一个已存在的存储过程
+DELIMITER //                       -- 声明当前MySQL分隔符为//
+CREATE PROCEDURE pro_init(username VARCHAR(60), OUT userId INT)
+BEGIN
+    SELECT user_id INTO userId FROM user_info ui WHERE ui.username=username;
+    IF userId IS NULL OR userId='' THEN
+        SELECT 0 INTO userId;
+    ELSE
+        INSERT INTO t_worldcup(userId, teamAA, teamBB, createTime) VALUES (userId, '巴西', '俄罗斯', now());
+        INSERT INTO t_worldcup(userId, teamAA, teamBB, createTime) VALUES (userId, '法国', '西班牙', now());
+        INSERT INTO t_worldcup(userId, teamAA, teamBB, createTime) VALUES (userId, '荷兰', '英格兰', now());
+        INSERT INTO t_worldcup(userId, teamAA, teamBB, createTime) VALUES (userId, '智利', '意大利', now());
+        INSERT INTO t_worldcup(userId, teamAA, teamBB, createTime) VALUES (userId, '伊朗', '葡萄牙', now());
+        INSERT INTO t_worldcup(userId, teamAA, teamBB, createTime) VALUES (userId, '希腊', '阿根廷', now());
+    END IF;
+END
+//                                 -- 分隔符，表示此SQL语句结束
+
+-- 调用存储过程
+CALL pro_init('jadyer', @userId);
+SELECT @userId;
+```
+
 ## 修改表结构
 
 ```sql
