@@ -100,17 +100,20 @@ public class CalculatorTest {
     /**
      * JUnit4中使用@Before标识的方法的作用，与JUnit3的setUp()是完全相同的
      * 而且JUnit4中该方法的名字可随意，只需要提供@Before注解标识即可
-     * 同理使用@After注解标识的方法的作用，就完全等价于JUnit3中tearDown()方法
+     * 同理使用@After标注的方法，完全等价于JUnit3.8中的tearDown()
      */
     @Before
     public void init(){
-        cal = new Calculator();
         System.out.println("---init invoked---");
+        //由于每执行一个测试方法前，都会运行一次该方法
+        //所以每一个测试方法中的cal指向的都是不同的Calculator对象
+        cal = new Calculator();
     }
 
     @After
     public void destroy(){
         System.out.println("---destroy invoked---");
+        cal = null;
     }
 
     @Test
@@ -226,8 +229,8 @@ public class CalculatorTest extends TestCase {
     private Calculator cal;
 
     /**
-     * 执行每一个testXxx()之前，都会先执行setUp()，就是说有几个testXxx()，便执行几次setUp()
-     * 由于每执行testXxx()前都会运行一次setUp()，所以每一次testXxx()中的cal指向的都是不同的Calculator对象
+     * 执行每一个testXxx()之前，都会先执行setUp()
+     * 就是说有几个testXxx()，便执行几次setUp()
      */
     public void setUp(){
         System.out.println("------setUp is invoked------");
@@ -240,6 +243,7 @@ public class CalculatorTest extends TestCase {
      */
     public void tearDown(){
         System.out.println("------tearDown is invoked------");
+        cal = null;
     }
 
     public void testAdd() {
