@@ -73,6 +73,7 @@ import com.jadyer.service.Calculator;
  * 3..无参
  * 4..方法名随意
  * 5..使用@Test指明该方法为测试方法
+ * Created by 玄玉<https://jadyer.github.io/> on 2011/02/12 14:08.
  */
 public class CalculatorTest {
     private Calculator cal;
@@ -224,6 +225,7 @@ import junit.framework.TestCase;
  * 2..void
  * 3..无参
  * 4..方法名以test开头，即testXxx()
+ * Created by 玄玉<https://jadyer.github.io/> on 2011/02/12 14:08.
  */
 public class CalculatorTest extends TestCase {
     private Calculator cal;
@@ -287,6 +289,7 @@ package com.jadyer.junit3;
  * 在junit.awtui和junit.swingui和junit.textui三个包中都提供了TestRunner.class类
  * 这是JUnit本身提供的三种运行方式，不依赖于任何IDE，它可以通过命令行或者图形界面来独立运行
  * 当JUnit和Ant结合时，它还是使用命令行的方式运行的，然后把结果输出给Ant，最后产生测试报告
+ * Created by 玄玉<https://jadyer.github.io/> on 2011/02/12 14:08.
  */
 public class TestRunnerDemo {
     public static void main(String[] args) {
