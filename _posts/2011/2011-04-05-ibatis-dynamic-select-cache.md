@@ -98,21 +98,24 @@ ibatis提供了丰富的判定节点，它主要分为一元判定和二元判�
 
     <!--
     cacheModel节点：定义了本映射文件中使用的Cache机制
-    这里申明了一个名为"userCache"的cacheModel，之后可以在<statement>中对其引用
+    这里申明了一个名为"user-cache"的cacheModel，之后可以在<statement>中对其引用
     与Hibernate类似，ibatis通过缓冲接口的插件式实现，提供了多种Cache的实现机制可供选择
     目前有四种Cache实现：MEMORY、LRU、FIFO、OSCACHE
     -->
-    <cacheModel type="LRU" id="userCache">
+    <cacheModel type="LRU" id="user-cache">
         <!-- Cache刷新间隔。间隔时间到了之后，会在下一次查询时，越过Cache直接查数据库，然后才更新Cache -->
         <flushInterval hours="24"/>
-        <!-- 当这些statement被执行了，那么下次的查询将会通过SQL去查，同时用查询结果更新Cache -->
-        <!-- 注意和flushInterval一样，都不是主动刷新，而是由下次查询来触发被动刷新 -->
+        <!--
+        当这些statement被执行了，那么下次的查询将会通过SQL去查，同时用查询结果更新Cache
+        注意和flushInterval一样，都不是主动刷新，而是由下次查询来触发被动刷新
+        在一个cacheModel中可以指定多个flushOnExecute
+        -->
         <flushOnExecute statement="updateUser"/>
         <!-- 本CacheModel中最大容纳的数据对象数量 -->
         <property name="size" value="1000"/>
     </cacheModel>
 
-    <select id="findById" parameterClass="int" resultClass="user" cacheModel="userCache">
+    <select id="findById" parameterClass="int" resultClass="user" cacheModel="user-cache">
         <![CDATA[
             select * from T_USER where id = #id#
         ]]>
@@ -123,5 +126,3 @@ ibatis提供了丰富的判定节点，它主要分为一元判定和二元判�
     </update>
 </sqlMap>
 ```
-
-http://www.cnblogs.com/xiziyin/archive/2009/12/28/1634430.html
