@@ -13,7 +13,7 @@ excerpt: 演示jQuery操作Select标签的各种用法。
 
 效果是这样的
 
-![](/img/2013-11-18/jquery-do-select-option-01.png)
+![](/img/2013/2013-11-18-jquery-do-select-option-01.png)
 
 这里主要是通过`jQuery`实现对`<select>`标签的`上下移动`、`添加`、`删除`、`获取Option的值`等功能
 
