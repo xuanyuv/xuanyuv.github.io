@@ -23,16 +23,16 @@ excerpt: 详细介绍了outlook里面，如何实现点击右上角关闭按钮�
 
 若想最小化到右下角的任务栏，那就在右下角图标上右键勾选`最小化时隐藏(H)`
 
-![](/img/2016-10-31/outlook-close-to-hidden-01.png)
+![](/img/2016/2016-10-31-outlook-close-to-hidden-01.png)
 
 <br/>
 
-![](/img/2016-10-31/outlook-close-to-hidden-02.png)
+![](/img/2016/2016-10-31-outlook-close-to-hidden-02.png)
 
 <br/>
 
-![](/img/2016-10-31/outlook-close-to-hidden-03.png)
+![](/img/2016/2016-10-31-outlook-close-to-hidden-03.png)
 
 <br/>
 
-![](/img/2016-10-31/outlook-close-to-hidden-04.png)
+![](/img/2016/2016-10-31-outlook-close-to-hidden-04.png)
