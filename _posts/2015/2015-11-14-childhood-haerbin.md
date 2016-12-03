@@ -13,17 +13,17 @@ excerpt: 小时候的哈尔滨生活点滴。
 
 ## 柿子
 
-![](/img/2015-11-14/childhood-haerbin-01.jpeg)
+![](/img/2015/2015-11-14-childhood-haerbin-01.jpeg)
 
 ## 米饭
 
 最出名的：`东北五常大米`，好久没吃过这么香的米了
 
-![](/img/2015-11-14/childhood-haerbin-02.jpeg)
+![](/img/2015/2015-11-14-childhood-haerbin-02.jpeg)
 
 ## 婆婆丁
 
-![](/img/2015-11-14/childhood-haerbin-03.jpeg)
+![](/img/2015/2015-11-14-childhood-haerbin-03.jpeg)
 
 ## 打饭包
 
@@ -41,11 +41,11 @@ excerpt: 小时候的哈尔滨生活点滴。
 
 `两手捧着吃，简直不敢想了，太特么好吃了！！`
 
-![](/img/2015-11-14/childhood-haerbin-04.jpeg)
+![](/img/2015/2015-11-14-childhood-haerbin-04.jpeg)
 
 ## 土豆干
 
-![](/img/2015-11-14/childhood-haerbin-05.jpeg)
+![](/img/2015/2015-11-14-childhood-haerbin-05.jpeg)
 
 ## 锅包肉
 
@@ -55,21 +55,21 @@ excerpt: 小时候的哈尔滨生活点滴。
 
 嗅觉不知所以，口水不能自已，百吃其所不厌
 
-![](/img/2015-11-14/childhood-haerbin-06.jpeg)
+![](/img/2015/2015-11-14-childhood-haerbin-06.jpeg)
 
 ## 地三鲜
 
 地三鲜的主要食材是土豆、茄子、青椒
 
-![](/img/2015-11-14/childhood-haerbin-07.png)
+![](/img/2015/2015-11-14-childhood-haerbin-07.png)
 
 ## 杀猪菜
 
-![](/img/2015-11-14/childhood-haerbin-08.jpeg)
+![](/img/2015/2015-11-14-childhood-haerbin-08.jpeg)
 
 ## 鼓酿悠悠
 
-![](/img/2015-11-14/childhood-haerbin-09.jpeg)
+![](/img/2015/2015-11-14-childhood-haerbin-09.jpeg)
 
 ## 排骨炖豆角
 
@@ -89,7 +89,7 @@ excerpt: 小时候的哈尔滨生活点滴。
 
 后来黑龙江农户家里来了贵宾时也都用这道菜来招待客人
 
-![](/img/2015-11-14/childhood-haerbin-10.jpeg)
+![](/img/2015/2015-11-14-childhood-haerbin-10.jpeg)
 
 ## 小鸡炖蘑菇
 
@@ -105,7 +105,7 @@ excerpt: 小时候的哈尔滨生活点滴。
 
 这道菜做出来色泽红亮，骨酥肉烂、汤鲜味浓，是增强免疫力、补脾益气、提神开胃的理想佳肴
 
-![](/img/2015-11-14/childhood-haerbin-11.jpg)
+![](/img/2015/2015-11-14-childhood-haerbin-11.jpg)
 
 ## 猪肉炖粉条
 
@@ -125,4 +125,4 @@ excerpt: 小时候的哈尔滨生活点滴。
 
 这种本地特产的土豆粉条特别易熟，而且非常耐煮，与肉同炖，鲜香扑鼻
 
-![](/img/2015-11-14/childhood-haerbin-12.jpeg)
+![](/img/2015/2015-11-14-childhood-haerbin-12.jpeg)
