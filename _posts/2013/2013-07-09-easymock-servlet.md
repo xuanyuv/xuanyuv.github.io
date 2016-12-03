@@ -35,7 +35,7 @@ public class User {
 }
 ```
 
-下面是待测试的`LoginServlet.java`
+接下来是待测试的`LoginServlet.java`
 
 ```java
 package com.jadyer.servlet;
