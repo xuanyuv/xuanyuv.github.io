@@ -158,6 +158,7 @@ Codehaus Snapshots仓库从Codehaus开源组织中寻找快照版本的仓库
     <maven-shade-plugin.version>1.6</maven-shade-plugin.version>
     <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>2.14.1</maven-surefire-plugin.version>
+    <maven-cobertura-plugin.version>2.5.1</maven-surefire-plugin.version>
     <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
     <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
     <mysql.url>jdbc:mysql://127.0.0.1:3306/jadyer?characterEncoding=UTF-8</mysql.url>
@@ -283,6 +284,7 @@ Codehaus Snapshots仓库从Codehaus开源组织中寻找快照版本的仓库
         <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>cobertura-maven-plugin</artifactId>
+            <version>${maven-cobertura-plugin.version}</version>
             <configuration>
                 <formats>
                     <format>html</format>
