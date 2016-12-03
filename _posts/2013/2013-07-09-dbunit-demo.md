@@ -189,7 +189,7 @@ public class UserDaoJdbc {
     </t_user>
      -->
     <t_user id="2" username="jadyer" password="xuanyu"/>
-</dataset
+</dataset>
 ```
 
 最后是包含了`DBUnit`简单用法的测试用例`UserDaoTest.java`
@@ -229,7 +229,6 @@ import com.jadyer.util.DBUtil;
 public class UserDaoTest {
     private static Connection conn;
     private static IDatabaseConnection dbUnitConn;
-    private static String DATA_BACKUP_FILE = "dataBackup_t_user.xml";
 
     @BeforeClass
     public static void globalInit() {
@@ -263,7 +262,7 @@ public class UserDaoTest {
     //    //此时所创建的DataSet包含了数据库中所有表的数据
     //    IDataSet dataSet = dbUnitConn.createDataSet();
     //    //备份数据库中所有表的数据
-    //    FlatXmlDataSet.write(dataSet, new FileWriter("D:/dataAllBackup.xml"));
+    //    FlatXmlDataSet.write(dataSet, new FileWriter("D:/AllBak.xml"));
     //}
 
     /**
@@ -275,7 +274,7 @@ public class UserDaoTest {
         QueryDataSet dataSet = new QueryDataSet(dbUnitConn);
         //这里指定只备份t_user表中的数据，若想备份多个表，那就再addTable(tableName)
         dataSet.addTable("t_user");
-        FlatXmlDataSet.write(dataSet, new FileWriter(DATA_BACKUP_FILE));
+        FlatXmlDataSet.write(dataSet, new FileWriter("userBak.xml"));
     }
 
     /**
@@ -283,7 +282,7 @@ public class UserDaoTest {
      */
     @After
     public void destroy() throws Exception {
-        IDataSet dataSet = new FlatXmlDataSet(new FlatXmlProducer(new InputSource(new FileInputStream(DATA_BACKUP_FILE))));
+        IDataSet dataSet = new FlatXmlDataSet(new FlatXmlProducer(new InputSource(new FileInputStream("userBak.xml"))));
         DatabaseOperation.CLEAN_INSERT.execute(dbUnitConn, dataSet);
     }
 
@@ -292,11 +291,12 @@ public class UserDaoTest {
      */
     @Test
     public void testLoad() throws Exception {
-        //FlatXmlDataSet用来获取基于属性存储的属性值,XmlDataSet用来获取基于节点类型存储的属性值
+        //FlatXmlDataSet用来获取基于属性存储的属性值
+        //XmlDataSet用来获取基于节点类型存储的属性值
         IDataSet dataSet = new FlatXmlDataSet(new FlatXmlProducer(new InputSource(UserDaoTest.class.getClassLoader().getResourceAsStream("t_user.xml"))));
         //DatabaseOperation类的几个常量值
-        //CLEAN_INSERT---->先删除数据库中的所有数据,然后将t_user.xml中的数据插入数据库
-        //DELETE---------->如果数据库存在与t_user.xml记录的相同的数据,则删除数据库中的该条数据
+        //CLEAN_INSERT---->先删除数据库中的所有数据，然后将t_user.xml中的数据插入数据库
+        //DELETE---------->如果数据库存在与t_user.xml记录的相同的数据，则删除数据库中的该条数据
         //DELETE_ALL------>删除数据库中的所有数据
         //INSERT---------->将t_user.xml中的数据插入数据库
         //NONE------------>nothing to do
