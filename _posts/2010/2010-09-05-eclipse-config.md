@@ -115,9 +115,9 @@ osgi.nl=zh_CN
 
 报错信息，见下方截图
 
-![](/img/2010-09-05/eclipse-config-01.png)
+![](/img/2010/2010-09-05-eclipse-config-01.png)
 
-![](/img/2010-09-05/eclipse-config-02.png)
+![](/img/2010/2010-09-05-eclipse-config-02.png)
 
 所使用相关工具和环境，以及解决方法，如下所示
 
