@@ -23,7 +23,7 @@ excerpt: 介绍WebServices-wsdl文件的一些基本语义。
 
 这就是参数实体的概念
 
-![](/img/2013-03-19/what-is-dtd-and-schema-01.png)
+![](/img/2013/2013-03-19-jaxws-dtd-and-schema-01.png)
 
 #### 实体引用
 
