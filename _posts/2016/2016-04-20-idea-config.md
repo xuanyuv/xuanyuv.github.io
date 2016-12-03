@@ -297,11 +297,13 @@ idea共有三种手工编译方式：Compile、Rebuild、Make（可点击菜单�
 
 * Rebuild
 
-    > 对选定的目标（Project），进行强制性编译，不管目标是否是被修改过。由于Rebuild的目标只有Project，所以Rebuild每次花的时间会比较长
+    > 对选定的目标（Project），进行强制性编译，不管目标是否是被修改过<br>
+由于Rebuild的目标只有Project，所以Rebuild每次花的时间会比较长
 
 * Make
 
-    > 使用最多的编译操作。对选定的目标（Project 或 Module）进行编译，但只编译有修改过的文件，没有修改过的不会编译，这样开发大项目才不会浪费时间在编译过程中
+    > 使用最多的编译操作。对选定的目标（Project 或 Module）进行编译，但只编译有修改过的文件<br>
+没有修改过的不会编译，这样开发大项目才不会浪费时间在编译过程中
 
 #### 编译报错
 
@@ -382,7 +384,7 @@ settings---Editor---Inspections---Java---Naming conventions---取消勾选Method
 
 ##### 未处理方法返回值
 
-比如java.io.File.delete()
+比如`java.io.File.delete()`
 
 settings---Editor---Inspections---Java---Probable bugs---取消勾选Result of method call ignored
 
