@@ -11,9 +11,13 @@ excerpt: 演示了EasyMock测试Servlet的用法。
 {:toc}
 
 
-这里只是用`EasyMock`模拟`HttpServletRequest`等对象，实际应用`Cactus`框架来测试`Servlet`
+实际应该用`Cactus`框架来测试`Servlet`
 
-下面是演示代码，首先是用到的实体类`User.Java`
+这里只是用`EasyMock`模拟`HttpServletRequest`等对象
+
+下面是演示代码
+
+首先是用到的实体类`User.Java`
 
 ```java
 package com.jadyer.model;
