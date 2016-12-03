@@ -289,7 +289,8 @@ public class UserServiceTest {
         UserDao dao = EasyMock.createStrictMock(UserDao.class);
         User user = new User(2, "jadyer", "xuanyu");
         UserService service = new UserServiceImpl(dao);
-        //然后开始EasyMock的测试(先要保证用户不存在,所以要先andReturn(null))
+        //然后开始EasyMock的测试
+        //先要保证用户不存在，所以要先andReturn(null)
         EasyMock.expect(dao.load(user.getUsername())).andReturn(null);
         EasyMock.expect(dao.save(user)).andReturn(user);
         EasyMock.replay(dao);
@@ -311,7 +312,8 @@ public class UserServiceTest {
         UserDao dao = EasyMock.createStrictMock(UserDao.class);
         User user = new User(2, "jadyer", "xuanyu");
         UserService service = new UserServiceImpl(dao);
-        //然后开始EasyMock的测试(先要保证用户存在，所以要先andReturn(user))
+        //然后开始EasyMock的测试
+        //先要保证用户存在，所以要先andReturn(user)
         EasyMock.expect(dao.load(user.getUsername())).andReturn(user);
         EasyMock.expect(dao.save(user)).andReturn(user);
         EasyMock.replay(dao);
@@ -337,7 +339,7 @@ public class UserServiceTest {
         //由于这里是要测试登录成功的情况，所以这里用户名密码就要与准备数据中的相同
         String username = "jadyer";
         String password = "xuanyu";
-        //先要保证用户存在,所以要先andReturn(user)
+        //先要保证用户存在，所以要先andReturn(user)
         EasyMock.expect(dao.load(username)).andReturn(user);
         EasyMock.replay(dao);
         User user22 = service.login(username, password);
