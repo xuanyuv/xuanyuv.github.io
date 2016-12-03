@@ -11,13 +11,9 @@ excerpt: 演示了EasyMock测试Servlet的用法。
 {:toc}
 
 
-这里只是用`EasyMock`来模拟`HttpServletRequest`等对象，实际应该使用`Cactus`框架来测试`Servlet`
+这里只是用`EasyMock`模拟`HttpServletRequest`等对象，实际应用`Cactus`框架来测试`Servlet`
 
-下面是演示代码
-
-**Tips：**虽然示例代码是一个`WebProject`，但不需配置`web.xml`，因为EasyMock用不上它
-
-首先是用到的实体类`User.Java`
+下面是演示代码，首先是用到的实体类`User.Java`
 
 ```java
 package com.jadyer.model;
@@ -74,6 +70,7 @@ import com.jadyer.model.User;
 
 /**
  * EasyMock测试Servlet
+ * 虽然示例代码是一个WebProject，但不需配置web.xml，因为EasyMock用不上它
  * Created by 玄玉<https://jadyer.github.io/> on 2013/07/09 14:30.
  */
 public class LoginServletTest {
