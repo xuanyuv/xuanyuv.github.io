@@ -23,7 +23,7 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 
 `盘古越狱`可能导致降级过程中一定几率失败：最后一步执行命令后，卡在`Sending iBEC (279576 bytes)...`
 
-![](/img/2016-10-25/iphone4s-to-ios613-01.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-01.png)
 
 这时有两个解决办法
 
@@ -38,11 +38,11 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 
 另外，如果安装`openSSH`报错，可以多试几次直到安装上为止
 
-![](/img/2016-10-25/iphone4s-to-ios613-02.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-02.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-03.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-03.png)
 
 ## 准备文件
 
@@ -66,31 +66,31 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 
 　　然后打开手机`设置--->无线局域网--->找到连接的WiFi`，查看信息找到手机IP（本文假设10.0.0.66）
 
-![](/img/2016-10-25/iphone4s-to-ios613-04.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-04.png)
 
 2、打开WinSCP，文件协议选择`SCP`，主机名填手机IP，用户名为`root`，密码默认为`alpine`，点击**登录**
 
 　　如果弹出对话框**警告 - 潜在的安全问题**，继续点弹窗上面的**登录**（有的版本也叫**更新**）按钮
 
-![](/img/2016-10-25/iphone4s-to-ios613-05.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-05.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-06.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-06.png)
 
 3、将上面的`kloader`和`pwnediBSS`文件拖到WinSCP显示的手机窗口
 
 　然后选中右侧右窗口中的这两个文件，右键选择属性，将属性里的`w r x`全部打勾，点击确认。
 
-![](/img/2016-10-25/iphone4s-to-ios613-07.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-07.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-08.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-08.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-09.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-09.png)
 
 ## 进入DFU模式
 
@@ -102,15 +102,15 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 
 同时WinSCP会弹出提醒窗口，告诉你手机没有响应通信，直接点击`中止(A)`即可
 
-![](/img/2016-10-25/iphone4s-to-ios613-10.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-10.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-11.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-11.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-12.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-12.png)
 
 到了这步，正常情况就进入了DFU模式（前提是已装苹果驱动，上文有提及），若进入失败可尝试下面的方法
 
@@ -131,66 +131,66 @@ cd idevicerestore for Windows
 idevicerestore.exe -e fistmedaddy.ipsw
 ```
 
-![](/img/2016-10-25/iphone4s-to-ios613-13.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-13.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-14.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-14.png)
 
 ## 回味经典
 
 让我们从激活开始，看看降级成功的效果吧！！
 
-![](/img/2016-10-25/iphone4s-to-ios613-15.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-15.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-16.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-16.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-17.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-17.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-18.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-18.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-19.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-19.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-20.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-20.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-21.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-21.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-22.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-22.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-23.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-23.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-24.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-24.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-25.jpg)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-25.jpg)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-26.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-26.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-27.png)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-27.png)
 
 <br/>
 
-![](/img/2016-10-25/iphone4s-to-ios613-28.jpg)
+![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-28.jpg)
