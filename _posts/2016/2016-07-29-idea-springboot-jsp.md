@@ -26,7 +26,7 @@ excerpt: idea在运行含有多个maven module的jsp工程时的解决方案。
 
 ## 解决
 
-参考了这两个链接：[jetbrains](https://youtrack.jetbrains.com/issue/IDEA-142078)　和　[stackoverflow](http://stackoverflow.com/questions/25119604/spring-boot-application-deployed-in-sts-works-fine-but-not-in-intellij-idea)
+参考了这两个链接：[jetbrains](https://youtrack.jetbrains.com/issue/IDEA-142078)和[stackoverflow](http://stackoverflow.com/questions/25119604/spring-boot-application-deployed-in-sts-works-fine-but-not-in-intellij-idea)
 
 #### RUN模式
 
