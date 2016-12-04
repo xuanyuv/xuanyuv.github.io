@@ -46,7 +46,7 @@ icon: heart
 * [精品绿色便携软件](http://www.portablesoft.org)
 * [素材网](http://www.xwcms.net)
 * [懒人图库](http://www.lanrentuku.com)
-* [懒人图库](http://www.lanrenzhijia.com)
+* [懒人之家](http://www.lanrenzhijia.com)
 * [一问一答](http://wenda60.com)
 * [网站测速](http://ce.cloud.360.cn)
 * [网站备案](http://www.beian.gov.cn)
