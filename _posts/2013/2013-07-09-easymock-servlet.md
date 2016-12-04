@@ -11,7 +11,7 @@ excerpt: 演示了EasyMock测试Servlet的用法。
 {:toc}
 
 
-实际应该用`Cactus`框架来测试`Servlet`
+实际应该用`Cactus`框架来测试`Servlet`，详见我的另一篇博文：[https://jadyer.github.io/2013/07/11/cactus-servlet/](https://jadyer.github.io/2013/07/11/cactus-servlet/)
 
 这里只是用`EasyMock`模拟`HttpServletRequest`等对象
 
