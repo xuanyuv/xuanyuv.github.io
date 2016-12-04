@@ -13,9 +13,19 @@ excerpt: 演示了Cactus分别基于Tomcat和Jetty两种服务器，测试Servle
 
 ## 简介
 
-`Cactus`可以模拟`JavaEE`容器进行测试`JSP、Servlet、Filter、EJB`等等
+容器内测试主要是面向`JSP、Servlet、Filter`等等，它们依赖于Servlet容器
 
-它是基于`JUnit3.8`的，不支持`JUnit4.x`的注解，其下载地址为[http://archive.apache.org/dist/jakarta/cactus/](http://archive.apache.org/dist/jakarta/cactus/)
+它们所使用的某些对象都是由容器来产生的，我们自己是无法`new`出来的
+
+其中比较出名的，比如本文中的`Cactus`框架
+
+Cactus框架可以模拟`JavaEE`容器进行测试`JSP、Servlet、Filter`等等
+
+它本身是基于`JUnit3.8`的，所以不支持`JUnit4.x`的注解
+
+它已经很长时间没有更新了，其下载地址为[http://archive.apache.org/dist/jakarta/cactus/](http://archive.apache.org/dist/jakarta/cactus/)
+
+但不更新不代表它不好，它还是很好用的，在公司和企业中，它的使用还是很多的
 
 ## 工作流程
 
@@ -27,7 +37,7 @@ ServerSide中包括setUp()和testXxx()和tearDown()等方法
 
 执行顺序为：`beginXxx-->setUp-->testXxx-->tearDown-->endXxx-->beginYyy-->setUp-->testYyy-->tearDown-->endYyy`
 
-可以粗略的将beginXxx和endXxx方法理解为`JUnit4.x`中的`@BeforeClass`和`@AfterClass`，尽管它们之间并没有什么联系
+可以粗略的将beginXxx和endXxx方法理解为`JUnit4.x`中的`@BeforeClass`和`@AfterClass`，尽管它们之间并啥联系
 
 **注意：**这里beginXxx和testXxx方法中的`Xxx`应该是相同的，比如beginLogin()和testLogin()才能对应上
 
