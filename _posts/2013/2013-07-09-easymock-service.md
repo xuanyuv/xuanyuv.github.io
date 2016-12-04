@@ -21,7 +21,7 @@ excerpt: 演示了EasyMock测试普通Service的用法。
 
 其实EasyMock本身所采用的底层的原理就是`Java的动态代理`
 
-**Tips：**`JMock`也是用来进行模拟测试的，但是它与EasyMock的侧重点不太一样
+**Tips：** *`JMock`也是用来进行模拟测试的，但是它与EasyMock的侧重点不太一样*
 
 #### mock和stub的区别
 
