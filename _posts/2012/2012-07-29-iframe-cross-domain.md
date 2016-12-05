@@ -19,7 +19,7 @@ excerpt: 通过kissy-util-adaptive-frame.js解决iframe跨域时的高度自适�
 
 ## 公共部分
 
-下面是我们要用到的一个公共的kissy-util-adaptive-frame.js
+下面是我们要用到的一个公共的`kissy-util-adaptive-frame.js`
 
 ```js
 /**
