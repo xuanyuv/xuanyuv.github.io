@@ -113,9 +113,13 @@ SHOW INDEX FROM t_admin FROM jadyer;
 SELECT INDEX_NAME, INDEX_TYPE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_NAME='t_admin';
 ```
 
-## 统计昨日、今日、本周数据
+## 统计时间段内的数据
 
 ```sql
+-- 11月份的注册量
+-- SELECT count(1) FROM t_account_info t WHERE month(t.create_time)=11;
+SELECT count(1) FROM t_account_info t WHERE date_format(t.apply_time,'%Y%m')=201611
+
 -- 累计扫描量
 SELECT t.tag, count(*) scanCounts FROM t_qq_qrcode t GROUP BY t.tag;
 
