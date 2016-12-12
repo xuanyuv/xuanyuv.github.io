@@ -39,8 +39,6 @@ excerpt: 介绍如何实现网页在不同浏览器下的声音自动播放功�
 
 ## 播放声音
 
-下面是实现网页自动播放声音的代码
-
 ```html
 <!DOCTYPE HTML>
 <html>
@@ -77,11 +75,6 @@ $(function(){
 
 ## 播放视频
 
-<video style="width:100%; height:100%;" preload="none" controls="controls" poster="http://ww2.sinaimg.cn/large/723dadf5gw1f9wab7mmuij20wp0hggon.jpg">
-    <source src="http://gslb.miaopai.com/stream/HtNgr3djfi4nh859KYPpAg__.mp4" type="video/mp4">
-    <p>Your user agent does not support the HTML5 Video element.</p>
-</video>
-
 ```html
 <!--
 比较常用的和实用的，也就下面这几个
@@ -103,3 +96,8 @@ loop="loop"        ：设置视频循环播放
     <p>Your user agent does not support the HTML5 Video element.</p>
 </video>
 ```
+
+<video style="width:100%; height:100%;" preload="none" controls="controls" poster="http://ww2.sinaimg.cn/large/723dadf5gw1f9wab7mmuij20wp0hggon.jpg">
+    <source src="http://gslb.miaopai.com/stream/HtNgr3djfi4nh859KYPpAg__.mp4" type="video/mp4">
+    <p>Your user agent does not support the HTML5 Video element.</p>
+</video>
