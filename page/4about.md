@@ -61,4 +61,5 @@ icon: heart
 * [圣城家园](http://hdscg.com)
 * [影视帝国](http://www.y4dg.cc)
 * [无极电影](http://bbs.btwuji.com)
+* [深影论坛](http://www.shinybbs.com)
 * [伊甸园国外连续剧交流站](http://bbs.sfile2012.com)
