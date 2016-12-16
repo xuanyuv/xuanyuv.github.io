@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "各操作系统中的换行符差异"
+title: "各操作系统的换行符差异"
 categories: Linux
 tags: linux 换行符
 author: 玄玉
