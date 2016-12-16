@@ -214,6 +214,8 @@ Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
 
 其第一版的介绍地址为[http://jekyllthemes.org/themes/cool-concise-high-end/](http://jekyllthemes.org/themes/cool-concise-high-end/)
 
+*补充一下，还有一个主题网站，也挺不错的：[https://jekyllthemes.io/](https://jekyllthemes.io/)*
+
 这里将该主题代码clone、fork或download下来后，通过`jekyll s`命令启动来查看本地效果
 
 本地启动时，可能会报告下面的错误
