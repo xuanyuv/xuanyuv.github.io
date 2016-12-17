@@ -539,6 +539,14 @@ public class CmccSipcDecoder extends CumulativeProtocolDecoder {
 
 ## 控制台输出
 
+这是客户端的控制台输出
+
+```
+Mina Client is startup
+19:12:19.560 [NioProcessor-2] DEBUG org.apache.mina.filter.codec.ProtocolCodecFilter - Processing a MESSAGE_RECEIVED for session 1
+The message received from Server is [Server Received OK]
+```
+
 这是服务端的控制台输出
 
 ```
@@ -586,12 +594,4 @@ Queue : [SESSION_IDLE, ]
 19:12:59.565 [NioProcessor-3] INFO org.apache.mina.filter.logging.LoggingFilter - IDLE
 19:12:59.565 [NioProcessor-3] DEBUG org.apache.mina.filter.executor.OrderedThreadPoolExecutor - Adding event SESSION_IDLE to session 2
 Queue : [SESSION_IDLE, ]
-```
-
-这是客户端的控制台输出
-
-```
-Mina Client is startup
-19:12:19.560 [NioProcessor-2] DEBUG org.apache.mina.filter.codec.ProtocolCodecFilter - Processing a MESSAGE_RECEIVED for session 1
-The message received from Server is [Server Received OK]
 ```
