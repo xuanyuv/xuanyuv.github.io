@@ -173,7 +173,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetEncoder;
 
 /**
- * 自定义编码器
+ * 自定义的编码器
  * Created by 玄玉<https://jadyer.github.io/> on 2012/10/19 11:21.
  */
 public class CmccSipcEncoder extends ProtocolEncoderAdapter {
@@ -278,7 +278,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 
 /**
- * 自定义解码器（适用于客户端发送的数据是一次全部发送完整的情况）
+ * 自定义的解码器（适用于客户端发送的数据是一次全部发送完整的情况）
  * Created by 玄玉<https://jadyer.github.io/> on 2012/10/19 11:21.
  */
 public class CmccSipcDecoder extends CumulativeProtocolDecoder {
@@ -413,7 +413,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 
 /**
- * 自定义解码器（适用于客户端发送的数据被拆分为多次后发送的情况）
+ * 自定义的解码器（适用于客户端发送的数据被拆分为多次后发送的情况）
  * Created by 玄玉<https://jadyer.github.io/> on 2012/10/19 11:21.
  */
 public class CmccSipcDecoder extends CumulativeProtocolDecoder {
