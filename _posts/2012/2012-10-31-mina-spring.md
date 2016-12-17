@@ -15,7 +15,7 @@ excerpt: 介绍Mina2.x集成Spring的示例。
 
 其中客户端和服务端的通信协议是我们自定义的：通信内容为`\n`结尾的字符串，且无长度限制
 
-OK, Let`s drink code ...
+ok，let`s drink code ...
 
 ## 服务端
 
