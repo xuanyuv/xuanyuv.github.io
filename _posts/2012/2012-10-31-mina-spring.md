@@ -381,6 +381,6 @@ The message received from Client is [hello]
 
 上面控制台输出的内容里面，有一块是`HeapBuffer[pos=0 lim=6 cap=2048: 68 65 6C 6C 6F 0A]`
 
-其中的`68 65 6C 6C 6F 0A`可以在`Editplus`工具中看到各自代表什么，如下图所示
+其中的`68 65 6C 6C 6F 0A`可以在`Editplus`中查到各自代表什么，如下图所示
 
 ![](/img/2012/2012-10-31-mina-spring.png)
