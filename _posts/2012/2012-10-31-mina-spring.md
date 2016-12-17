@@ -43,72 +43,6 @@ public class ServerHandler extends IoHandlerAdapter {
 }
 ```
 
-其次是自定义的Mina2.x服务启动器`MinaStartup.java`
-
-```java
-package com.jadyer.demo.mina;
-import org.apache.mina.core.filterchain.IoFilterChainBuilder;
-import org.apache.mina.core.service.IoHandler;
-import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
-import java.io.IOException;
-import java.net.SocketAddress;
-import java.util.List;
-
-/**
- * 用于启动Mina2.x服务
- * Created by 玄玉<https://jadyer.github.io/> on 2012/10/31 16:38.
- */
-public class MinaStartup {
-    private IoHandler handler;                       //处理器
-    private List<SocketAddress> socketAddresses;     //监听地址
-    private IoFilterChainBuilder filterChainBuilder; //过滤器链
-    private int bothIdleTime;                        //双向发呆时间
-    private int writeTimeout;                        //写操作超时时间
-    private boolean reuseAddress;                    //监听的端口是否可重用
-
-    public final void bind() throws IOException {
-        NioSocketAcceptor acceptor = new NioSocketAcceptor();
-        acceptor.setHandler(this.handler);
-        acceptor.setReuseAddress(this.reuseAddress);
-        acceptor.setFilterChainBuilder(this.filterChainBuilder);
-        acceptor.getSessionConfig().setWriteTimeout(this.writeTimeout);
-        acceptor.getSessionConfig().setBothIdleTime(this.bothIdleTime);
-        if(null==this.socketAddresses || this.socketAddresses.size()<1){
-            throw new RuntimeException("监听SocketAddress数不得小于1");
-        }
-        acceptor.bind(this.socketAddresses);
-        if(acceptor.isActive()){
-            System.out.println("写 超 时: " + this.writeTimeout + "ms");
-            System.out.println("发呆配置: Both Idle " + this.bothIdleTime + "s");
-            System.out.println("端口重用: " + this.reuseAddress);
-            System.out.println("服务端初始化完成......");
-            System.out.println("服务已启动...开始监听..." + acceptor.getLocalAddresses());
-        }else{
-            System.out.println("服务端初始化失败......");
-        }
-    }
-
-    public void setHandler(IoHandler handler) {
-        this.handler = handler;
-    }
-    public void setSocketAddresses(List<SocketAddress> socketAddresses) {
-        this.socketAddresses = socketAddresses;
-    }
-    public void setFilterChainBuilder(IoFilterChainBuilder filterChainBuilder) {
-        this.filterChainBuilder = filterChainBuilder;
-    }
-    public void setBothIdleTime(int bothIdleTime) {
-        this.bothIdleTime = bothIdleTime;
-    }
-    public void setWriteTimeout(int writeTimeout) {
-        this.writeTimeout = writeTimeout;
-    }
-    public void setReuseAddress(boolean reuseAddress) {
-        this.reuseAddress = reuseAddress;
-    }
-}
-```
-
 下面是自定义的编码器`MyEncoder.java`
 
 ```java
@@ -179,6 +113,72 @@ public class MyDecoder extends CumulativeProtocolDecoder{
         }
         out.write(msg);
         return false;
+    }
+}
+```
+
+下面是自定义的Mina2.x服务启动器`MinaStartup.java`
+
+```java
+package com.jadyer.demo.mina;
+import org.apache.mina.core.filterchain.IoFilterChainBuilder;
+import org.apache.mina.core.service.IoHandler;
+import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
+import java.io.IOException;
+import java.net.SocketAddress;
+import java.util.List;
+
+/**
+ * 用于启动Mina2.x服务
+ * Created by 玄玉<https://jadyer.github.io/> on 2012/10/31 16:38.
+ */
+public class MinaStartup {
+    private IoHandler handler;                       //处理器
+    private List<SocketAddress> socketAddresses;     //监听地址
+    private IoFilterChainBuilder filterChainBuilder; //过滤器链
+    private int bothIdleTime;                        //双向发呆时间
+    private int writeTimeout;                        //写操作超时时间
+    private boolean reuseAddress;                    //监听的端口是否可重用
+
+    public final void bind() throws IOException {
+        NioSocketAcceptor acceptor = new NioSocketAcceptor();
+        acceptor.setHandler(this.handler);
+        acceptor.setReuseAddress(this.reuseAddress);
+        acceptor.setFilterChainBuilder(this.filterChainBuilder);
+        acceptor.getSessionConfig().setWriteTimeout(this.writeTimeout);
+        acceptor.getSessionConfig().setBothIdleTime(this.bothIdleTime);
+        if(null==this.socketAddresses || this.socketAddresses.size()<1){
+            throw new RuntimeException("监听SocketAddress数不得小于1");
+        }
+        acceptor.bind(this.socketAddresses);
+        if(acceptor.isActive()){
+            System.out.println("写 超 时: " + this.writeTimeout + "ms");
+            System.out.println("发呆配置: Both Idle " + this.bothIdleTime + "s");
+            System.out.println("端口重用: " + this.reuseAddress);
+            System.out.println("服务端初始化完成......");
+            System.out.println("服务已启动...开始监听..." + acceptor.getLocalAddresses());
+        }else{
+            System.out.println("服务端初始化失败......");
+        }
+    }
+
+    public void setHandler(IoHandler handler) {
+        this.handler = handler;
+    }
+    public void setSocketAddresses(List<SocketAddress> socketAddresses) {
+        this.socketAddresses = socketAddresses;
+    }
+    public void setFilterChainBuilder(IoFilterChainBuilder filterChainBuilder) {
+        this.filterChainBuilder = filterChainBuilder;
+    }
+    public void setBothIdleTime(int bothIdleTime) {
+        this.bothIdleTime = bothIdleTime;
+    }
+    public void setWriteTimeout(int writeTimeout) {
+        this.writeTimeout = writeTimeout;
+    }
+    public void setReuseAddress(boolean reuseAddress) {
+        this.reuseAddress = reuseAddress;
     }
 }
 ```
@@ -376,3 +376,11 @@ The message received from Client is [hello]
 [20121030 18:21:16 700][NioProcessor-3][LoggingFilter.log]SENT: ok
 [20121030 18:21:16 709][NioProcessor-3][LoggingFilter.log]CLOSED
 ```
+
+## ANSI的查看
+
+上面控制台输出的内容里面，有一块是`HeapBuffer[pos=0 lim=6 cap=2048: 68 65 6C 6C 6F 0A]`
+
+其中的`68 65 6C 6C 6F 0A`可以在`Editplus`工具中看到各自代表什么，如下图所示
+
+![](/img/2012/2012-10-31-mina-spring.png)
