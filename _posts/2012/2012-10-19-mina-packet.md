@@ -179,8 +179,8 @@ import java.nio.charset.CharsetEncoder;
 public class CmccSipcEncoder extends ProtocolEncoderAdapter {
     private final CharsetEncoder charsetEncoder;
 
-    public CmccSipcEncoder(String _charsetName){
-        this.charsetEncoder = Charset.forName(_charsetName).newEncoder();
+    public CmccSipcEncoder(){
+        this.charsetEncoder = Charset.forName("UTF-8").newEncoder();
     }
 
     @Override
@@ -284,8 +284,8 @@ import java.nio.charset.CharsetDecoder;
 public class CmccSipcDecoder extends CumulativeProtocolDecoder {
     private final CharsetDecoder charsetDecoder;
 
-    public CmccSipcDecoder(String _charsetName){
-        this.charsetDecoder = Charset.forName(_charsetName).newDecoder();
+    public CmccSipcDecoder(){
+        this.charsetDecoder = Charset.forName("UTF-8").newDecoder();
     }
 
     @Override
@@ -420,8 +420,8 @@ public class CmccSipcDecoder extends CumulativeProtocolDecoder {
     private final CharsetDecoder charsetDecoder;
     private final AttributeKey CONTEXT = new AttributeKey(getClass(), "context");
 
-    public CmccSipcDecoder(String _charsetName){
-        this.charsetDecoder = Charset.forName(_charsetName).newDecoder();
+    public CmccSipcDecoder(){
+        this.charsetDecoder = Charset.forName("UTF-8").newDecoder();
     }
 
     private Context getContext(IoSession session){
