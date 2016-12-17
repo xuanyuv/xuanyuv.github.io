@@ -84,7 +84,7 @@ public class MyServer {
         acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
         acceptor.getFilterChain().addLast("logger", new LoggingFilter());
         acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(
-            new CmccSipcEncoder(Charset.forName("UTF-8")), new CmccSipcDecoder(Charset.forName("UTF-8"))
+            new CmccSipcEncoder("UTF-8"), new CmccSipcDecoder("UTF-8")
         ));
         acceptor.getFilterChain().addLast("executor", new ExecutorFilter());
         //acceptor.setHandler(new ServerHandler());
@@ -133,7 +133,7 @@ public class MyClient {
         IoConnector connector = new NioSocketConnector();
         connector.setConnectTimeoutMillis(3000);
         connector.getFilterChain().addLast("codec", new ProtocolCodecFilter(
-            new CmccSipcEncoder(Charset.forName("UTF-8")), new CmccSipcDecoder(Charset.forName("UTF-8"))
+            new CmccSipcEncoder("UTF-8"), new CmccSipcDecoder("UTF-8")
         ));
         connector.setHandler(new IoHandlerAdapter(){
             @Override
@@ -181,10 +181,10 @@ import java.nio.charset.CharsetEncoder;
  * Created by 玄玉<https://jadyer.github.io/> on 2012/10/19 11:21.
  */
 public class CmccSipcEncoder extends ProtocolEncoderAdapter {
-    private final Charset charset;
+    private final CharsetEncoder charsetEncoder;
 
-    public CmccSipcEncoder(Charset charset){
-        this.charset = charset;
+    public CmccSipcEncoder(String _charsetName){
+        this.charsetEncoder = Charset.forName(_charsetName).newEncoder();
     }
 
     @Override
@@ -195,16 +195,11 @@ public class CmccSipcEncoder extends ProtocolEncoderAdapter {
         //2.创建IoBuffer缓冲区对象，并设置为自动扩展
         IoBuffer buffer = IoBuffer.allocate(100).setAutoExpand(true);
         //3.将转换后的message对象各属性按指定协议组装，并put()到IoBuffer缓冲区
-        String statusLine = "M sip:wap.fetion.com.cn SIP-C/2.0";
-        String sender = smsInfo.getSender();
-        String receiver = smsInfo.getReceiver();
-        String smsContent = smsInfo.getMessage();
-        CharsetEncoder ce = this.charset.newEncoder();
-        buffer.putString(statusLine+'\n', ce);
-        buffer.putString("S: "+sender+'\n', ce);
-        buffer.putString("R: "+receiver+'\n', ce);
-        buffer.putString("L: "+smsContent.getBytes(this.charset).length+'\n', ce);
-        buffer.putString(smsContent, ce);
+        buffer.putString("M sip:wap.fetion.com.cn SIP-C/2.0"+'\n', this.charsetEncoder);
+        buffer.putString("S: "+smsInfo.getSender()+'\n', this.charsetEncoder);
+        buffer.putString("R: "+smsInfo.getReceiver()+'\n', this.charsetEncoder);
+        buffer.putString("L: "+smsInfo.getMessage().getBytes(this.charsetEncoder.charset()).length+'\n', this.charsetEncoder);
+        buffer.putString(smsInfo.getMessage(), this.charsetEncoder);
         //4.数据组装完毕后，调用flip()方法，为输出做好准备
         //  切记在write()之前调用flip()方法，否则缓冲区的position的后面是没有数据可以用来输出的
         //  必须调用flip()方法将position移至0，limit移至刚才的position（含义请参看java.nio.ByteBuffer）
@@ -291,21 +286,20 @@ import java.nio.charset.CharsetDecoder;
  * Created by 玄玉<https://jadyer.github.io/> on 2012/10/19 11:21.
  */
 public class CmccSipcDecoder extends CumulativeProtocolDecoder {
-    private final Charset charset;
+    private final CharsetDecoder charsetDecoder;
 
-    public CmccSipcDecoder22(Charset charset){
-      this.charset = charset;
+    public CmccSipcDecoder(String _charsetName){
+        this.charsetDecoder = Charset.forName(_charsetName).newDecoder();
     }
 
     @Override
     protected boolean doDecode(IoSession session, IoBuffer in, ProtocolDecoderOutput out) throws Exception {
-        IoBuffer buffer = IoBuffer.allocate(100).setAutoExpand(true);
-        CharsetDecoder cd = charset.newDecoder();
         //记录解析到了短信协议中的哪一行(\n)
         int i = 1;
         //记录在当前行中读取到了哪一个字节
         int matchCount = 0;
         String statusLine="", sender="", receiver="", length="", sms="";
+        IoBuffer buffer = IoBuffer.allocate(100).setAutoExpand(true);
         while(in.hasRemaining()){
             byte b = in.get();
             buffer.put(b);
@@ -315,7 +309,7 @@ public class CmccSipcDecoder extends CumulativeProtocolDecoder {
                 if(1 == i){
                     //limit=position，position=0
                     buffer.flip();
-                    statusLine = buffer.getString(matchCount, cd);
+                    statusLine = buffer.getString(matchCount, this.charsetDecoder);
                     //移除本行的最后一个换行符
                     statusLine = statusLine.substring(0, statusLine.length()-1);
                     //本行读取完毕，所以让matchCount=0
@@ -324,21 +318,21 @@ public class CmccSipcDecoder extends CumulativeProtocolDecoder {
                 }
                 if(2 == i){
                     buffer.flip();
-                    sender = buffer.getString(matchCount, cd);
+                    sender = buffer.getString(matchCount, this.charsetDecoder);
                     sender = sender.substring(0, sender.length()-1);
                     matchCount = 0;
                     buffer.clear();
                 }
                 if(3 == i){
                     buffer.flip();
-                    receiver = buffer.getString(matchCount, cd);
+                    receiver = buffer.getString(matchCount, this.charsetDecoder);
                     receiver = receiver.substring(0, receiver.length()-1);
                     matchCount = 0;
                     buffer.clear();
                 }
                 if(4 == i){
                     buffer.flip();
-                    length = buffer.getString(matchCount, cd);
+                    length = buffer.getString(matchCount, this.charsetDecoder);
                     length = length.substring(0, length.length()-1);
                     matchCount = 0;
                     buffer.clear();
@@ -348,7 +342,7 @@ public class CmccSipcDecoder extends CumulativeProtocolDecoder {
                 matchCount++;
                 if(Long.parseLong(length.split(": ")[1]) == matchCount){
                     buffer.flip();
-                    sms = buffer.getString(matchCount, cd);
+                    sms = buffer.getString(matchCount, this.charsetDecoder);
                     i++;
                     break;
                 }
@@ -427,11 +421,11 @@ import java.nio.charset.CharsetDecoder;
  * Created by 玄玉<https://jadyer.github.io/> on 2012/10/19 11:21.
  */
 public class CmccSipcDecoder extends CumulativeProtocolDecoder {
-    private final Charset charset;
+    private final CharsetDecoder charsetDecoder;
     private final AttributeKey CONTEXT = new AttributeKey(getClass(), "context");
 
-    public CmccSipcDecoder(Charset charset){
-        this.charset = charset;
+    public CmccSipcDecoder(String _charsetName){
+        this.charsetDecoder = Charset.forName(_charsetName).newDecoder();
     }
 
     private Context getContext(IoSession session){
@@ -445,7 +439,6 @@ public class CmccSipcDecoder extends CumulativeProtocolDecoder {
 
     @Override
     protected boolean doDecode(IoSession session, IoBuffer in, ProtocolDecoderOutput out) throws Exception {
-        CharsetDecoder cd = charset.newDecoder();
         Context ctx = this.getContext(session);
         IoBuffer buffer = ctx.innerBuffer;
         int matchCount = ctx.getMatchCount();
@@ -462,7 +455,7 @@ public class CmccSipcDecoder extends CumulativeProtocolDecoder {
             if(10==b && line<4){
                 if(0 == line){
                     buffer.flip();
-                    statusLine = buffer.getString(matchCount, cd);
+                    statusLine = buffer.getString(matchCount, this.charsetDecoder);
                     statusLine = statusLine.substring(0, statusLine.length()-1);
                     matchCount = 0;
                     buffer.clear();
@@ -470,7 +463,7 @@ public class CmccSipcDecoder extends CumulativeProtocolDecoder {
                 }
                 if(1 == line){
                     buffer.flip();
-                    sender = buffer.getString(matchCount, cd);
+                    sender = buffer.getString(matchCount, this.charsetDecoder);
                     sender = sender.substring(0, sender.length()-1);
                     matchCount = 0;
                     buffer.clear();
@@ -478,7 +471,7 @@ public class CmccSipcDecoder extends CumulativeProtocolDecoder {
                 }
                 if(2 == line){
                     buffer.flip();
-                    receiver = buffer.getString(matchCount, cd);
+                    receiver = buffer.getString(matchCount, this.charsetDecoder);
                     receiver = receiver.substring(0, receiver.length()-1);
                     matchCount = 0;
                     buffer.clear();
@@ -486,7 +479,7 @@ public class CmccSipcDecoder extends CumulativeProtocolDecoder {
                 }
                 if(3 == line){
                     buffer.flip();
-                    length = buffer.getString(matchCount, cd);
+                    length = buffer.getString(matchCount, this.charsetDecoder);
                     length = length.substring(0, length.length()-1);
                     matchCount = 0;
                     buffer.clear();
@@ -496,7 +489,7 @@ public class CmccSipcDecoder extends CumulativeProtocolDecoder {
             }else if(4 == line){
                 if(Long.parseLong(length.split(": ")[1]) == matchCount){
                     buffer.flip();
-                    sms = buffer.getString(matchCount, cd);
+                    sms = buffer.getString(matchCount, this.charsetDecoder);
                     ctx.setSms(sms);
                     //由于下面的break，这里需要调用else外面的两行代码
                     ctx.setMatchCount(matchCount);
