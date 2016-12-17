@@ -1,17 +1,17 @@
 ---
 layout: post
-title: "Mina编写同时支持TCP和HTTP的服务端"
+title: "Mina编写同时支持TCP和HTTP的服务器"
 categories: Mina2
 tags: mina tcp http server
 author: 玄玉
-excerpt: 演示了Mina2.x编写的，同时监听两个端口，处理不同的TCP和HTTP请求的服务端。
+excerpt: 演示了Mina2.x编写的，同时监听两个端口，处理不同的TCP和HTTP请求的服务器。
 ---
 
 * content
 {:toc}
 
 
-这里是用纯Mina2.x写一个服务器，此外不依赖其它任何框架，运行时也不需要类似Tomcat的服务器
+这里是用纯Mina2.x写的一个服务器实现，其不依赖任何第三方框架，运行时也不需要类似Tomcat的服务器
 
 它比较适用后台服务（尽管也支持HTML页面），其内部同时支持TCP（自定义协议）和HTTP（HTTP1.0/1.1协议）请求
 
@@ -81,9 +81,9 @@ public class MainApp {
 
 ## 消息处理器
 
-下面是服务端消息处理器，它主要承担业务分发的作用
+下面是服务端消息处理器，它主要用来处理业务分发
 
-本例中目前只接收两种请求：TCP请求的固定业务编码为`10005`，HTTP请求的固定业务编码为`/login`（[http://127.0.0.1:8000/login](http://127.0.0.1:8000/login)）
+这里目前只接收两种请求：TCP请求的固定业务编码为`10005`，HTTP请求的固定业务编码为`/login`（[http://127.0.0.1:8000/login](http://127.0.0.1:8000/login)）
 
 ```java
 package com.jadyer.demo.mina.server.Handler;
@@ -381,7 +381,7 @@ public final class JadyerUtil {
 
 ## 编解码器
 
-由于我们要同时处理TCP和HTTP两类请求，这也就意味着我们需要自定义两个解码器，这时就用到了`DemuxingProtocolCodecFactory.java`
+由于要同时处理TCP和HTTP请求，也就意味着需要自定义两个解码器，这时就用到了Mina提供的`DemuxingProtocolCodecFactory`
 
 其内部维护了一个MessageDecoder数组，用于保存添加的所有解码器
 
@@ -437,14 +437,6 @@ public class ServerProtocolEncoder implements MessageEncoder<String> {
 
 下面是自定义的TCP协议解码器`ServerProtocolTCPDecoder.java`
 
-当收到数据包时，程序首先会执行decodable()方法，通过读取数据判断当前数据包是否可进行decode
-
-当decodable()方法返回MessageDecoderResult.OK时，接着会调用decode()方法，正式decode数据包
-
-在decode()方法进行读取操作会影响数据包的大小，decode需要判断协议中哪些已经decode完，哪些还没decode
-
-decode完成后，通过ProtocolDecoderOutput.write()输出，并返回MessageDecoderResult.OK表示decode完毕
-
 ```java
 package com.jadyer.demo.mina.server.codec;
 import com.jadyer.demo.mina.server.model.Token;
@@ -457,6 +449,12 @@ import org.apache.mina.filter.codec.demux.MessageDecoderResult;
 
 /**
  * 自定义的TCP协议解码器
+ * ----------------------------------------------------------------------------------------------
+ * 收到数据包时，程序首先会执行decodable()方法，通过读取数据判断当前数据包是否可进行decode
+ * 当decodable()方法返回MessageDecoderResult.OK时，接着会调用decode()方法，正式decode数据包
+ * 在decode()方法进行读取操作会影响数据包的大小，decode需要判断协议中哪些已经decode完，哪些还没decode
+ * decode完成后，通过ProtocolDecoderOutput.write()输出，并返回MessageDecoderResult.OK表示decode完毕
+ * ----------------------------------------------------------------------------------------------
  * Created by 玄玉<https://jadyer.github.io/> on 2013/07/07 13:44.
  */
 public class ServerProtocolTCPDecoder implements MessageDecoder {
@@ -676,15 +674,14 @@ public final class MinaUtil {
     private MinaUtil(){}
 
     /**
-     * 发送TCP消息
-     * @see 当通信发生异常时，如Fail to get session...返回"MINA_SERVER_ERROR"字符串
+     * 发送TCP消息（当通信发生异常时，比如Fail to get session，它会返回"MINA_SERVER_ERROR"字符串）
      * @param message   待发送报文的中文字符串形式
-     * @param ipAddress 远程主机的IP地址
+     * @param ip        远程主机的IP地址
      * @param port      远程主机的端口号
      * @param charset   该方法与远程主机间通信报文为编码字符集（编码为byte[]发送到Server）
      * @return 远程主机响应报文的字符串形式
      */
-    public static String sendTCPMessage(String message, String ipAddress, int port, String charset){
+    public static String sendTCPMessage(String message, String ip, int port, String charset){
         IoConnector connector = new NioSocketConnector();
         connector.setConnectTimeoutMillis(1000);
         //同步的客户端，必须设置此项，其默认为false
@@ -697,7 +694,7 @@ public final class MinaUtil {
         IoSession session = null;
         Object respData = null;
         try{
-            ConnectFuture connectFuture = connector.connect(new InetSocketAddress(ipAddress, port));
+            ConnectFuture connectFuture = connector.connect(new InetSocketAddress(ip, port));
             //等待连接成功，相当于将异步执行转为同步执行
             connectFuture.awaitUninterruptibly();
             //获取连接成功后的会话对象
@@ -711,10 +708,10 @@ public final class MinaUtil {
                 //Get the received message
                 respData = readFuture.getMessage();
             }else{
-                System.out.println("读取[/" + ipAddress + ":" + port + "]超时");
+                System.out.println("读取[/" + ip + ":" + port + "]超时");
             }
         }catch(Exception e){
-            System.out.println("请求通信[/" + ipAddress + ":" + port + "]时发生异常，堆栈轨迹如下");
+            System.out.println("请求通信[/" + ip + ":" + port + "]时发生异常，堆栈轨迹如下");
             e.printStackTrace();
         }finally{
             if(null != session){
@@ -832,9 +829,7 @@ public final class MinaUtil {
 
 ## 测试一下
 
-执行`MainApp.main()`启动服务后，除了浏览器访问，也可以用工具直接发TCP和HTTP消息
-
-如下所示
+执行`MainApp.main()`启动服务后，除了浏览器访问，也可以用工具直接发TCP和HTTP消息，如下所示
 
 ```java
 package com.jadyer.demo.mina.server.test;
@@ -847,6 +842,7 @@ import java.util.Map;
 
 /**
  * 测试MinaServer
+ * 这里用到的HttpUtil，详见https://github.com/jadyer/JadyerEngine/blob/master/JadyerEngine-common/src/main/java/com/jadyer/engine/common/util/HttpUtil.java
  * Created by 玄玉<https://jadyer.github.io/> on 2013/07/09 19:59.
  */
 public class TestMinaServer {
@@ -892,6 +888,10 @@ public class TestMinaServer {
 ```
 
 ## 控制台输出
+
+* **最初的博文并没有这一部分，这是2016-12-17 22:25后补充的控制台输出**
+
+* **也是为了网友翻看的时候，方便理解上面的处理逻辑，毕竟不是每个人都会把代码拷下来运行一遍**
 
 这是TCP测试时的服务端控制台输出
 
