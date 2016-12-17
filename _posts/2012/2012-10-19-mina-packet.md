@@ -190,7 +190,7 @@ public class CmccSipcEncoder extends ProtocolEncoderAdapter {
         SmsInfo smsInfo = (SmsInfo)message;
         //2.创建IoBuffer缓冲区对象，并设置为自动扩展
         IoBuffer buffer = IoBuffer.allocate(100).setAutoExpand(true);
-        //3.将转换后的message对象各属性按指定协议组装，并put()到IoBuffer缓冲区
+        //3.将转换后的message对象各属性按指定协议组装，并put()到IoBuffer缓冲区（下面写成+"\n"也是可以的）
         buffer.putString("M sip:wap.fetion.com.cn SIP-C/2.0"+'\n', this.charsetEncoder);
         buffer.putString("S: "+smsInfo.getSender()+'\n', this.charsetEncoder);
         buffer.putString("R: "+smsInfo.getReceiver()+'\n', this.charsetEncoder);
