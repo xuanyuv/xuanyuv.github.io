@@ -83,7 +83,7 @@ public class MainApp {
 
 下面是服务端消息处理器，它主要用来处理业务分发
 
-这里目前只接收两种请求：TCP请求的固定业务编码为`10005`，HTTP请求的固定业务编码为`/login`（[http://127.0.0.1:8000/login](http://127.0.0.1:8000/login)）
+目前只接收两种请求：TCP请求的固定业务编码为`10005`，HTTP请求的固定业务编码为`/login`（[http://127.0.0.1:8000/login](http://127.0.0.1:8000/login)）
 
 ```java
 package com.jadyer.demo.mina.server.Handler;
