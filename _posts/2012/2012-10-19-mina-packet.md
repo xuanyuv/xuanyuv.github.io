@@ -83,9 +83,7 @@ public class MyServer {
         acceptor.getSessionConfig().setReadBufferSize(2048);
         acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
         acceptor.getFilterChain().addLast("logger", new LoggingFilter());
-        acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(
-            new CmccSipcEncoder("UTF-8"), new CmccSipcDecoder("UTF-8")
-        ));
+        acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(new CmccSipcEncoder(), new CmccSipcDecoder()));
         acceptor.getFilterChain().addLast("executor", new ExecutorFilter());
         //acceptor.setHandler(new ServerHandler());
         //服务端的自定义消息处理器（由于演示时的逻辑比较简单，所以用内部类）
@@ -132,9 +130,7 @@ public class MyClient {
     public static void main(String[] args) {
         IoConnector connector = new NioSocketConnector();
         connector.setConnectTimeoutMillis(3000);
-        connector.getFilterChain().addLast("codec", new ProtocolCodecFilter(
-            new CmccSipcEncoder("UTF-8"), new CmccSipcDecoder("UTF-8")
-        ));
+        connector.getFilterChain().addLast("codec", new ProtocolCodecFilter(new CmccSipcEncoder(), new CmccSipcDecoder()));
         connector.setHandler(new IoHandlerAdapter(){
             @Override
             public void sessionOpened(IoSession session) throws Exception {
