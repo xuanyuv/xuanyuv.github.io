@@ -11,6 +11,8 @@ excerpt: 主要描述CAS-4.0.3服务端登录页内容修改的方法。
 {:toc}
 
 
+## 原理
+
 cas的页面显示控制是集中在`\WEB-INF\cas.properties`中的`cas.viewResolver.basename`属性的，其默认值为`default_views`
 
 所以cas会去classpath中寻找`default_views.properties`（它里面指定了登录登出页面等）
@@ -30,9 +32,9 @@ cas的页面显示控制是集中在`\WEB-INF\cas.properties`中的`cas.viewReso
 可以换成百度CDN（[http://cdn.code.baidu.com](http://cdn.code.baidu.com)），比如[http://apps.bdimg.com/libs/jqueryui/1.10.2/jquery-ui.min.js](http://apps.bdimg.com/libs/jqueryui/1.10.2/jquery-ui.min.js)<br>
 或者Bootstrap中文网开源的免费CDN服务（[http://www.bootcdn.cn](http://www.bootcdn.cn)），比如[//cdn.bootcss.com/jqueryui/1.10.2/jquery-ui.min.js](//cdn.bootcss.com/jqueryui/1.10.2/jquery-ui.min.js)<br>
 
-**下面，又到了Show代码的环节了**
+## 代码
 
-首先是我修改的casGenericSuccess.jsp
+下面是我修改的casGenericSuccess.jsp
 
 ```html
 <%@ page pageEncoding="UTF-8"%>
@@ -41,7 +43,7 @@ cas的页面显示控制是集中在`\WEB-INF\cas.properties`中的`cas.viewReso
 </body>
 ```
 
-其次是我修改的`casLoginView.jsp`
+下面是我修改的`casLoginView.jsp`
 
 ```html
 <%@ page pageEncoding="UTF-8"%>
@@ -122,7 +124,7 @@ body {background-color: #CBE0C9;}
 </html>
 ```
 
-最后是效果图
+## 效果图
 
 ![](/img/2015/2015-07-16-sso-cas-login-diy-01.png)
 
