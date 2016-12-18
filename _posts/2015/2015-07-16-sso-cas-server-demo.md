@@ -78,6 +78,8 @@ Could not transfer artifact net.jradius:jradius-core:pom:1.0.0 from/to coova (ht
 
 ![](/img/2015/2015-07-16-sso-cas-server-demo-03.png)
 
+注意：导入时，这两个jar文件也是CAS的：`person-directory-api-1.5.1.jar`、`person-directory-impl-1.5.1.jar`
+
 另外：cas.war中的`\WEB-INF\classes\`中并没有class文件，实际上它是在`\WEB-INF\lib\cas-server-*.jar`四个jar里面的
 
 如果也想导入它们的源码，可通过以下方式找到（如果你需要的话）
