@@ -23,7 +23,7 @@ excerpt: 主要描述CAS-4.0.3服务端通过数据库实现用户认证的功�
 
 1、`CSA-4.0.3`的默认登录用户密码配置在`deployerConfigContext.xml`，所以就到deployerConfigContext.xml里面找
 
-　　可以找到`<bean id="primaryAuthenticationHandler" class="org.jasig.cas.authentication.AcceptUsersAuthenticationHandler">``
+　　可以找到`<bean id="primaryAuthenticationHandler" class="org.jasig...AcceptUsersAuthenticationHandler">`
 
 　　我们在AcceptUsersAuthenticationHandler.java中发现CAS是把配置的用户密码读取到全局`Map<String, String>`中的
 
@@ -69,7 +69,7 @@ excerpt: 主要描述CAS-4.0.3服务端通过数据库实现用户认证的功�
 
 4、通过查看org.jasig.cas.adaptors.jdbc.QueryDatabaseAuthenticationHandler源码会发现
 
-　　这种方式与上面自己写认证类的方式，原理是一样的，都是直接或间接的扩展AbstractUsernamePasswordAuthenticationHandler
+　　这与上面自己写认证类的方式，原理一样，都是直接或间接的扩展AbstractUsernamePasswordAuthenticationHandler
 
 ## 代码
 
