@@ -96,7 +96,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import com.msxf.sso.model.User;
+import com.jadyer.sso.model.User;
 
 @Repository
 public class UserDaoJdbc {
