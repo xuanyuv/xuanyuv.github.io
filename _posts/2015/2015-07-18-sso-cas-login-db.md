@@ -23,9 +23,9 @@ excerpt: 主要描述CAS-4.0.3服务端通过数据库实现用户认证的功�
 
 1、`CSA-4.0.3`的默认登录用户密码配置在`deployerConfigContext.xml`，所以就到deployerConfigContext.xml里面找
 
-　　可以找到<bean id="primaryAuthenticationHandler" class="org.jasig.cas.authentication.AcceptUsersAuthenticationHandler">
+　　可以找到`<bean id="primaryAuthenticationHandler" class="org.jasig.cas.authentication.AcceptUsersAuthenticationHandler">``
 
-　　我们在`AcceptUsersAuthenticationHandler.java`中发现CAS是把配置的用户密码读取到全局`Map<String, String>`中的
+　　我们在AcceptUsersAuthenticationHandler.java中发现CAS是把配置的用户密码读取到全局`Map<String, String>`中的
 
 2、而AcceptUsersAuthenticationHandler.java是通过继承AbstractUsernamePasswordAuthenticationHandler.java才实现的认证
 
@@ -33,9 +33,11 @@ excerpt: 主要描述CAS-4.0.3服务端通过数据库实现用户认证的功�
 
 　　再重写authenticateUsernamePasswordInternal()方法，在里面获取到前台页面输入的用户密码，再到数据库中校验就行了
 
-3、接下来创建`\WEB-INF\spring-configuration\applicationContext-datasource.xml`，它会在启动时被自动加载（web.xml中设定的）
+3、接下来创建`\WEB-INF\spring-configuration\applicationContext-datasource.xml`
 
-　　我们在applicationContext-datasource.xml中配置数据库连接池，连接池的用户名密码等可以配置在`\WEB-INF\cas.properties`
+　　它会在启动时被自动加载（web.xml中设定的）
+
+　　然后在里面配置数据库连接池，连接池的用户名密码等可以配置在`\WEB-INF\cas.properties`
 
 　　同时增加`<context:component-scan base-package="com.jadyer.sso"/>`，使得可以在自定义类中应用Spring注解
 
@@ -45,13 +47,13 @@ excerpt: 主要描述CAS-4.0.3服务端通过数据库实现用户认证的功�
 
 5、最后记得`deployerConfigContext.xml`里面把这段Bean配置给注释掉`<bean id="primaryAuthenticationHandler">`
 
-　　并在我们自定义的`UserAuthenticationHandler.java`中使用`@Component(value="primaryAuthenticationHandler")`声明其为Bean
+　　并在自定义的`UserAuthenticationHandler.java`中使用`@Component(value="primaryAuthenticationHandler")`声明其为Bean
 
 　　注意其名字应该是primaryAuthenticationHandler，因为deployerConfigContext.xml的其它配置引用了primaryAuthenticationHandler
 
 　　否则你还要找到引用了primaryAuthenticationHandler的位置修改为新的Bean
 
-#### cas-server-support-jdbc-4.0.3.jar
+#### cas-server-support-jdbc
 
 1、这一种方式就简单一些了，先引入c3p0-0.9.1.2.jar以及cas-server-support-jdbc-4.0.3.jar
 
@@ -116,7 +118,7 @@ excerpt: 主要描述CAS-4.0.3服务端通过数据库实现用户认证的功�
 
 ```ruby
 #<<数据库元信息>>
-jdbc.url=jdbc:mysql://192.168.2.41:3306/turtle?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+jdbc.url=jdbc:mysql://192.168.2.41:3306/turtle?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&failOverReadOnly=false
 jdbc.username=turtle
 jdbc.password=turtle
 ```
