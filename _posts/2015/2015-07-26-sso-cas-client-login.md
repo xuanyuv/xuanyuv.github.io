@@ -110,6 +110,8 @@ CASClient中有多种验证ticket的Filter，都继承自AbstractTicketValidatio
 
 ## 代码
 
+本文源码下载：[http://download.csdn.net/detail/jadyer/8934207](http://download.csdn.net/detail/jadyer/8934207)
+
 下面是`web.xml`的配置
 
 ```xml
