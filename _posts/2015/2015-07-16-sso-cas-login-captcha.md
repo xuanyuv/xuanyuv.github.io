@@ -25,11 +25,11 @@ excerpt: 主要描述CAS-4.0.3服务端登录页添加验证码的方法。
 
 　　这是一个用来接收前台表单参数的JavaBean，我们这里要在表单上加一个参数captcha，所以继承它就行了
 
-3、创建com.msxf.sso.model.UsernamePasswordCaptchaCredential extends UsernamePasswordCredential
+3、创建com.jadyer.sso.model.UsernamePasswordCaptchaCredential extends UsernamePasswordCredential
 
 　　再加上captcha属性，及其对应的setter和getter
 
-　　再修改login-webflow.xml第27行credential对应实体类为com.msxf.sso.model.UsernamePasswordCaptchaCredential
+　　再修改login-webflow.xml第27行credential对应实体类为com.jadyer.sso.model.UsernamePasswordCaptchaCredential
 
 4、接下来添加校验验证码的流程
 
@@ -39,7 +39,7 @@ excerpt: 主要描述CAS-4.0.3服务端登录页添加验证码的方法。
 
 　　我们要在原有表单处理逻辑的基础上增加验证码，所以就扩展authenticationViaFormAction
 
-　　创建com.msxf.sso.authentication.AuthenticationViaCaptchaFormAction extends AuthenticationViaFormAction
+　　创建com.jadyer.sso.authentication.AuthenticationViaCaptchaFormAction extends AuthenticationViaFormAction
 
 　　在AuthenticationViaCaptchaFormAction中增加一个validateCaptcha()方法用来校验验证码
 
@@ -72,7 +72,7 @@ excerpt: 主要描述CAS-4.0.3服务端登录页添加验证码的方法。
 ```xml
 <!-- <var name="credential" class="org.jasig.cas.authentication.UsernamePasswordCredential"/> -->
 <!-- 新加的用于接收前台表单验证码字段captcha的JavaBean -->
-<var name="credential" class="com.msxf.sso.model.UsernamePasswordCaptchaCredential"/>
+<var name="credential" class="com.jadyer.sso.model.UsernamePasswordCaptchaCredential"/>
 
 <view-state id="viewLoginForm" view="casLoginView" model="credential">
     <binder>
@@ -283,7 +283,7 @@ body {background-color: #CBE0C9;}
 
 最后是用到的用于生成验证码的`\WebRoot\captcha.jsp`
 
-```html
+```java
 <%@ page contentType="image/jpeg; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.awt.Color"%>
 <%@ page import="java.util.Random"%>
