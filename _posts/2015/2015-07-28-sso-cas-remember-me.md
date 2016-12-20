@@ -77,9 +77,7 @@ RememberMe也就是记住密码，可以让用户登录成功后，关闭浏览�
 
 ## 代码
 
-本文源码下载：[http://download.csdn.net/detail/jadyer/8940967](http://download.csdn.net/detail/jadyer/8940967)
-
-验证RememberMe：用客户端单点登录成功后，关掉浏览器，再打开浏览器访问客户端，此时若不登录就能访问成功说明RememberMe成功
+本文源码下载：[http://download.csdn.net/detail/jadyer/8940967](http://download.csdn.net/detail/jadyer/8940967)（包含了本系列所有代码）
 
 下面是`ticketExpirationPolicies.xml`的修改
 
@@ -148,6 +146,14 @@ RememberMe也就是记住密码，可以让用户登录成功后，关闭浏览�
           p:sessionExpirationPolicy-ref="standardSessionTGTExpirationPolicy"
           p:rememberMeExpirationPolicy-ref="longTermSessionTGTExpirationPolicy"/>
 </beans>
+```
+
+下面是`cas.properties`中增加的rememberMeDuration配置
+
+```ruby
+# Long term authentication session length in seconds
+#服务端RememberMe的有效期,默认为1209600s,即两周
+rememberMeDuration=1209600
 ```
 
 下面是`ticketGrantingTicketCookieGenerator.xml`的修改
@@ -234,7 +240,7 @@ public class UsernamePasswordCaptchaCredential extends RememberMeUsernamePasswor
 }
 ```
 
-下面是`/WEB-INF/view/jsp/jadyer/ui/casLoginView.jsp`
+最后是`/WEB-INF/view/jsp/jadyer/ui/casLoginView.jsp`
 
 ```html
 <%@ page pageEncoding="UTF-8"%>
@@ -310,14 +316,14 @@ body {background-color: #CBE0C9;}
                 <label for="warn">RememberMe</label>
             </td>
         </tr>
-        <%--
+        <!--
         <tr>
             <td>
                 <input type="checkbox" tabindex="3" name="warn" value="true"/>
                 <label for="warn">转向其他站点前提示我</label>
             </td>
         </tr>
-        --%>
+        -->
         <tr>
             <td>
                 <input type="submit" tabindex="5" value="登录"/>
@@ -327,12 +333,4 @@ body {background-color: #CBE0C9;}
 </form:form>
 </body>
 </html>
-```
-
-最后是`cas.properties`中增加的rememberMeDuration配置
-
-```ruby
-# Long term authentication session length in seconds
-#服务端RememberMe的有效期,默认为1209600s,即两周
-rememberMeDuration=1209600
 ```
