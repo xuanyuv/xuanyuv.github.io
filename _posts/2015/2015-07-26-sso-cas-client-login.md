@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "CAS系列第06节之客户端配置单点登录"
+title: "单点登录CAS系列第06节之客户端配置单点登录"
 categories: SSO
 tags: sso cas
 author: 玄玉
-excerpt: 主要描述服务端为CAS-4.0.3，客户端配置单点登录的方法。
+excerpt: 主要描述单点登录服务端为CAS-4.0.3，客户端配置单点登录的方法。
 ---
 
 * content

@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "CAS系列第05节之服务端自定义返回的用户信息"
+title: "单点登录CAS系列第05节之服务端自定义返回的用户信息"
 categories: SSO
 tags: sso cas
 author: 玄玉
-excerpt: 主要描述CAS-4.0.3服务端自定义返回的用户信息的功能。
+excerpt: 主要描述单点登录CAS-4.0.3服务端自定义返回的用户信息的功能。
 ---
 
 * content

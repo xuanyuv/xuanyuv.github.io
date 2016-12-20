@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "CAS系列第01节之服务端搭建及导入源码到MyEclipse"
+title: "单点登录CAS系列第01节之服务端搭建及源码导入IDE"
 categories: SSO
 tags: sso cas myeclipse
 author: 玄玉
-excerpt: 主要描述CAS-4.0.3服务端搭建方法，以及源码导入MyEclipse的步骤。
+excerpt: 主要描述单点登录CAS-4.0.3服务端搭建方法，以及源码导入MyEclipse的步骤。
 ---
 
 * content

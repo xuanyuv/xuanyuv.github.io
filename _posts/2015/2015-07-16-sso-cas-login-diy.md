@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "CAS系列第02节之登录页个性化"
+title: "单点登录CAS系列第02节之服务端登录页个性化"
 categories: SSO
 tags: sso cas
 author: 玄玉
-excerpt: 主要描述CAS-4.0.3服务端登录页内容修改的方法。
+excerpt: 主要描述单点登录CAS-4.0.3服务端登录页内容修改的方法。
 ---
 
 * content

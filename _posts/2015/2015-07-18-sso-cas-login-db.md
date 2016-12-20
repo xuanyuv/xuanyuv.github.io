@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "CAS系列第04节之服务端通过数据库认证用户"
+title: "单点登录CAS系列第04节之服务端通过数据库认证用户"
 categories: SSO
 tags: sso cas
 author: 玄玉
-excerpt: 主要描述CAS-4.0.3服务端通过数据库实现用户认证的功能。
+excerpt: 主要描述单点登录CAS-4.0.3服务端通过数据库实现用户认证的功能。
 ---
 
 * content
