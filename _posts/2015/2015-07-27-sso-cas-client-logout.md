@@ -23,25 +23,25 @@ SingleSignOutHttpSessionListener：用于在Session过期时移除其对应的�
 
 * 登出后自动跳转指定资源
 
-登出后默认会跳转到CASServer的登出页，若想跳转到其它资源，可在`/logout`的URL后面加上`service=you want to jump url`
+登出后默认会跳转到CASServer的登出页，若想跳转到其它资源，可在`/logout`的URL后面加上service=jumpurl
 
 比如[http://sso.jadyer.com:8080/cas-server-web/logout?service=http://blog.csdn.net/jadyer](http://sso.jadyer.com:8080/cas-server-web/logout?service=http://blog.csdn.net/jadyer`)
 
-但默认servcie跳转不会生效，需要CASServer配置//WEB-INF//cas.properties中的`cas.logout.followServiceRedirects=true`
+但默认servcie跳转不会生效，需要CASServer配置**//WEB-INF//cas.properties**中的`cas.logout.followServiceRedirects=true`
 
 另外为org.jasig.cas.client.session.SingleSignOutFilter增加service参数是没用的，因为登出后跳转到指定资源属于服务端行为
 
 * 禁用单点登出
 
-设置//CASServer//WEB-INF//cas.properties中的`slo.callbacks.disabled=true`
+设置**//CASServer//WEB-INF//cas.properties**中的`slo.callbacks.disabled=true`
 
 测试时点击登出后虽然页面跳转到了默认登出页，但再次访问CASClient资源发现并没有登出，即单点登出禁用成功
 
 * 测试单点登出
 
-测试时先登出，然后在浏览器新标签页访问CASClient资源，发现会自动重定向到单点登录页
+测试时先登出，然后在浏览器新标签页访问CASClient资源，发现会被自动重定向到单点登录页
 
-或登出后，点浏览器后退按钮，发现会后退到之前的CASClient资源页，但在这个页面点击任何请求，都会自动重定向到单点登录页
+或登出后，再点浏览器后退按钮，发现会后退到之前的资源页，但在这个页面点击任何请求，都会自动重定向到单点登录页
 
 ## 代码
 

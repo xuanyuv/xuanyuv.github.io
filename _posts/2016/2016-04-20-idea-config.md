@@ -210,7 +210,7 @@ settings---Editor---Colors & Fonts---Console Font---设置方式同代码字体
 
 #### import每个类而非整个包
 
-settings---Editor---Colors Style---Java---Imports---Class count to use improt with '*'设置大一点
+settings---Editor---Colors Style---Java---Imports---Class count to use import with '*'设置大一点
 
 当Java类中import某个包下的类超过这里设置的个数，就会换成用`*`号来代替，比如`import java.util.*`
 
