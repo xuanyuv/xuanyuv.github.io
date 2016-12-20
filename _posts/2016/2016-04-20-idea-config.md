@@ -350,7 +350,7 @@ Would you like to continue?
 
 #### Project视图折叠空包显示
 
-Project视图---右上角倒数第二个齿轮图标---Compact Empty Middle Packeages
+Project视图---右上角倒数第二个齿轮图标---Hide Empty Middle Packeages
 
 #### 省电模式
 
