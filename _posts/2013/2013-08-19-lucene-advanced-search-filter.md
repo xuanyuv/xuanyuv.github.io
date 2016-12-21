@@ -11,7 +11,7 @@ excerpt: 介绍Lucene-3.6.2中高级搜索里面的排序用法。
 {:toc}
 
 
-下面演示的是`Lucene-3.6.2`中搜索的时候，使用普通Filter和自定义Filter的用法（详见代码注释）
+下面演示的是`Lucene-3.6.2`中搜索的时候，使用`普通Filter`和`自定义Filter`的用法（详见代码注释）
 
 ```java
 package com.jadyer.lucene;
