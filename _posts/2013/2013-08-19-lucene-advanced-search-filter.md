@@ -4,7 +4,7 @@ title: "Lucene系列第07节之高级搜索之Filter"
 categories: Lucene
 tags: lucene
 author: 玄玉
-excerpt: 介绍Lucene-3.6.2中高级搜索里面的排序用法。
+excerpt: 介绍Lucene-3.6.2中高级搜索里面普通Filter和自定义Filter的用法。
 ---
 
 * content

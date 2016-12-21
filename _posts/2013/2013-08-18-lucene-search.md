@@ -4,7 +4,7 @@ title: "Lucene系列第03节之常见搜索"
 categories: Lucene
 tags: lucene
 author: 玄玉
-excerpt: 介绍Lucene-3.6.2中的常见搜索用法。
+excerpt: 介绍Lucene-3.6.2中的常见搜索用法，包括了精确搜索、范围搜索、针对数字的搜索、基于前缀的搜索、基于通配符的搜索、模糊搜索、多条件搜索、短语搜索、基于QueryParser的搜索、普通的分页搜索（适用于lucene3.5之前）、基于searchAfter的分页搜索（适用于Lucene3.5）等等。
 ---
 
 * content
