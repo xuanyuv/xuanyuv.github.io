@@ -13,7 +13,7 @@ excerpt: 主要介绍Oracle-PLSQL编程中的条件分支语句、控制结构�
 
 # 条件分支
 
-`PL/SQL`中提供了三种条件分支语句：`if--then`、`if--then--else`、if--then--elsif--else`
+`PL/SQL`中提供了三种条件分支语句：`if--then`、`if--then--else`、`if--then--elsif--else`
 
 ```sql
 -- 若员工职位是PRESIDENT，则为其增加工资1000；若员工职位是MANAGER，则为其增加工资500；其它职位的员工工资只增加200
