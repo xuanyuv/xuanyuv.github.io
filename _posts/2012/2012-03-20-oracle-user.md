@@ -72,18 +72,6 @@ password 用户名
 alter user 用户名 identified by 新密码
 ```
 
-# 动态性能视图
-
-动态性能视图用于记录当前例程的活动信息
-
-它的所有者为SYS，一般情况下，由dba或特权用户来查询动态性能视图
-
-启动OracleServer时系统会建立动态性能视图，停止Oracle Server时系统会删除动态性能视图
-
-Oracle的所有动态性能视图都是以`v_$`开始的，并且Oracle为每个动态性能视图都提供了相应的以`v$`开始的同义词
-
-例如`v_$datafile`的同义词为`v$datafile`
-
 # profile管理口令
 
 profile是口令限制、资源限制的命令集合
