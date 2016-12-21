@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "64bit环境下plsqldev的使用"
+title: "OraclePLSQLDev运行在64bit环境下的方法"
 categories: Oracle
 tags: oracle plsqldev
 author: 玄玉
