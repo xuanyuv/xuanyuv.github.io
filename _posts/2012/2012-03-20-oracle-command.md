@@ -44,28 +44,23 @@ SELECT ename,sal,job FROM emp WHERE sal>2500 intersect SELECT ename,sal,job FROM
 SELECT ename,sal,job FROM emp WHERE sal>2500 minus SELECT ename,sal,job FROM emp WHERE job='MANAGER'
 ```
 
-# 用户管理
+# 元数据
 
 ```sql
--- 创建一个密码为my22的myjava用户（具有dba权限，且密码要以字母开头，不能以数字开头）
-create user myjava identified by my22
+-- 显示错误的详细信息
+show error;
 
--- 删除用户
--- 通常使用dba身份去删除某个用户，若是其它身份则需要具有drop user权限，且不允许自己删除自己
--- 若欲删除的用户已创建table，则可以在删除时附加cascade参数，表明同时也删除该用户所创建的表
-drop user 用户名 [cascade]
+-- 显示操作时间
+set timing on;
 
--- 修改用户密码
--- 普通用户，可以直接使用password
-password
--- 系统管理员，可以使用下面两种方式
-password 用户名
-alter user 用户名 identified by 新密码
-```
+-- 可以替代变量，而该变量在执行时，需要用户输入
+select * from emp where ename='&Jadyer'
 
-# 数据字典
+-- 将sql*plus屏幕内容输出到指定的文件中
+spool d:\bb.sql
+select * from emp
+spool off
 
-```sql
 -- 用于显示当前用户拥有的所有表，它只返回用户所对应方案的所有表
 select table_name from user_tables;
 
@@ -90,34 +85,6 @@ select * from dba_tab_privs where grantee='CONNECT'; --查询CONNECT角色所具
 select * from dba_indexes;                                -- 显示数据库所有的索引信息
 select * from user_indexes where table_name='表名';       -- 显示当前用户的索引信息
 select * from user_ind_columns where index_name='索引名'; -- 显示索引对应的列信息
-```
-
-# 元数据管理
-
-```sql
--- 设置只读事物
-set transaction read only;
-
--- 显示操作时间
-set timing on;
-
--- 可以替代变量，而该变量在执行时，需要用户输入
-select * from emp where ename='&Jadyer'
-
--- 编辑sql脚本
-edit d:\aa.sql
-
--- 运行sql脚本
-start d:\aa.sql
-@ d:\aa.sql
-
--- 将sql*plus屏幕内容输出到指定的文件中
-spool d:\bb.sql
-select * from emp
-spool off
-
--- 显示错误的详细信息
-show error;
 
 -- 初始化参数用于设置实例或数据库特征，Oracle9i提供了200多个初始化参数，并且它们都有默认值
 -- 可在该文件中修改：ORACLE_HOME\\admin\\jadyer\\pfile\\init.ora

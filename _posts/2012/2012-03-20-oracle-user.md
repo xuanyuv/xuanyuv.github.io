@@ -53,7 +53,26 @@ system如果正常登录，它其实就是一个普通的dba用户
 
 　　这里entries是指允许几个特权用户同时登录，并且密码文件名一定要和原来的密码文件名一致
 
-## 动态性能视图
+# 用户管理命令
+
+```sql
+-- 创建一个密码为my22的myjava用户（具有dba权限，且密码要以字母开头，不能以数字开头）
+create user myjava identified by my22
+
+-- 删除用户
+-- 通常使用dba身份去删除某个用户，若是其它身份则需要具有drop user权限，且不允许自己删除自己
+-- 若欲删除的用户已创建table，则可以在删除时附加cascade参数，表明同时也删除该用户所创建的表
+drop user 用户名 [cascade]
+
+-- 修改用户密码
+-- 普通用户，可以直接使用password
+password
+-- 系统管理员，可以使用下面两种方式
+password 用户名
+alter user 用户名 identified by 新密码
+```
+
+# 动态性能视图
 
 动态性能视图用于记录当前例程的活动信息
 
@@ -65,19 +84,13 @@ Oracle的所有动态性能视图都是以`v_$`开始的，并且Oracle为每个
 
 例如`v_$datafile`的同义词为`v$datafile`
 
-# profile管理用户口令
+# profile管理口令
 
 profile是口令限制、资源限制的命令集合
 
 当建立数据库时，Oracle会自动建立名称为default的profile，
 
 若建立用户时没有指定profile选项，那么Oracle就会将default分配给用户
-
-## 锁定与解锁
-
-即指定登录账户时输入密码次数的阙值，也可以指定用户锁定的时间
-
-一般用DBA身份执行该命令
 
 ```sql
 -- 指定myjava用户最多只能尝试三次登录，锁定时间为二天
@@ -87,36 +100,17 @@ create profile lock_account limit failed_login_attempts 3 password_lock_time 2;
 alter user myjava profile lock_account;
 -- 解锁myjava账户
 alter user myjava account unlock;
-```
 
-## 终止口令
-
-为了让用户定期修改密码，可以使用终止口令的命令来完成
-
-同样也需要DBA身份来执行该命令
-
-```sql
 -- 给myjava用户创建一个profile文件，要求它每半个月应该修改自己的登录密码，宽限期为两天
 create profile myprofile limit password_life_time 15 password_grace_time 2;
 alter user myjava profile myprofile;
-```
 
-## 口令历史
-
-Oracle中的口令历史功能，会将用户以前使用过的密码，即口令修改的信息存放到数据字典中
-
-用户修改密码时，Oracle就会比较新旧密码，当发现新旧密码相同时，则提示用户输入新密码
-
-```sql
+-- Oracle中的口令历史功能，会将用户以前使用过的密码，即口令修改的信息存放到数据字典中
+-- 用户修改密码时，Oracle就会比较新旧密码，当发现新旧密码相同时，则提示用户输入新密码
 -- password_reuse_time 15指定口令可重用时间为15天，即15天后就可以再次使用该口令
 create profile myprofile limit password_life_time 15 password_grace_time 2 password_reuse_time 15
-```
 
-## 删除profile
-
-此时用该文件约束的那些用户，也就都被释放了
-
-```sql
+-- 删除profile：此时用该文件约束的那些用户，也就都被释放了
 drop profile password_history [cascade]
 ```
 
