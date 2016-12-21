@@ -276,11 +276,11 @@ create or replace procedure my_pro_book(proBookId in number, proBookName out var
 
 --下面是Java代码
 CallableStatement cstmt = java.sql.Connection.prepareCall("{call my_pro_book(?,?,?)}");
-cstmt.setInt(1, 10);                                            //给第一个问号赋值
-cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.VARCHAR); //给第二个问号赋值，可以理解为注册值
-cstmt.registerOutParameter(3, oracle.jdbc.OracleTypes.VARCHAR); //给第三个问号赋值
-cstmt.execute();                                                //执行该存储过程
-String publishHouse = cstmt.getString(3); //取出该存储过程的返回值（注意所取参数值的问号顺序，它由该参数的位置决定）
+cstmt.setInt(1, 10);                                            --给第一个问号赋值
+cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.VARCHAR); --给第二个问号赋值，可以理解为注册值
+cstmt.registerOutParameter(3, oracle.jdbc.OracleTypes.VARCHAR); --给第三个问号赋值
+cstmt.execute();                                                --执行该存储过程
+String publishHouse = cstmt.getString(3); --取出该存储过程的返回值（注意所取参数值的问号顺序，它由该参数的位置决定）
 ```
 
 下面是有返回值的存储过程（列表[结果集]）
@@ -298,9 +298,9 @@ create or replace procedure my_pro_emp(currNo in number, cursor_emp out my_packa
 -- 下面是Java代码
 CallableStatement cstmt = java.sql.Connection.prepareCall("{call my_pro_emp(?,?)}");
 cstmt.setInt(1, 10);
-cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR); //此时为该参数注册的类型为CURSOR
+cstmt.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR); --此时为该参数注册的类型为CURSOR
 cstmt.execute();
-ResultSet rs = (ResultSet)cstmt.getObject(2) //得到结果集。用ResultSet接收getObject()返回值的同时，注意造型
+ResultSet rs = (ResultSet)cstmt.getObject(2); --得到结果集（用ResultSet接收getObject()返回值的同时，注意造型）
 while(rs.next()){
     System.out.println(rs.getInt(1)+" "+rs.getString(2));
 }
@@ -342,9 +342,9 @@ cstmt.registerOutParameter(4, oracle.jdbc.OracleTypes.INTEGER); --注册总记�
 cstmt.registerOutParameter(5, oracle.jdbc.OracleTypes.INTEGER); --注册总页数
 cstmt.registerOutParameter(6, oracle.jdbc.OracleTypes.CURSOR);  --注册返回的结果集
 cstmt.execute();
-Integer rowCount = cstmt.getInt(4);          --取出总记录数
-Integer pageCount = cstmt.getInt(5);         --取出总页数
-ResultSet rs = (ResultSet)cstmt.getObject(6) --得到结果集
+Integer rowCount = cstmt.getInt(4);           --取出总记录数
+Integer pageCount = cstmt.getInt(5);          --取出总页数
+ResultSet rs = (ResultSet)cstmt.getObject(6); --得到结果集
 while(rs.next()){
     System.out.println("编号：" + rs.getInt(1) + "  姓名：" + rs.getString(2) + "  工资：" + rs.getFloat(6));
 }
