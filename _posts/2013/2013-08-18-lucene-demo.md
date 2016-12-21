@@ -52,9 +52,11 @@ Lucene文档：[http://wiki.apache.org/lucene-java/](http://wiki.apache.org/luce
 
 # 代码
 
-测试时，要在`/myExample/01_file/`文件夹中准备几个包含内容的文件（比如txt格式的）
+下面演示一下`Lucene-3.6.2`基本的创建索引和搜索文件的方式
 
-然后先执行`createIndex()`方法，再执行`searchFile()`方法，最后观看控制台输出即可
+注意：测试时，要在`/myExample/01_file/`文件夹中准备几个包含内容的文件（比如txt格式的）
+
+　　　然后先执行`createIndex()`方法，再执行`searchFile()`方法，最后观看控制台输出即可
 
 ```java
 package com.jadyer.lucene;
