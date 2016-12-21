@@ -299,7 +299,7 @@ public class HelloSearch {
             //query = parser.parse("-name:Jack +I");     //搜索content中包括[I]的，并且name不是Jack的记录（加减号要放到域说明的前面）
             //query = parser.parse("id:[1 TO 3]");       //搜索id值从1到3的记录（TO必须大写，且这种方式没有办法匹配数字）
             //query = parser.parse("id:{1 TO 3}");       //搜索id=2的记录
-            query = parser.parse("name:Jadk~");        //模糊搜索
+            query = parser.parse("name:Jadk~");          //模糊搜索
         } catch (ParseException e) {
             e.printStackTrace();
         }
