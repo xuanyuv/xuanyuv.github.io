@@ -26,24 +26,6 @@ SELECT * FROM student WHERE rowid in (SELECT rid FROM (SELECT rownum rn, rid FRO
 SELECT * FROM (SELECT ss.*, row_number() over(ORDER BY sid DESC) rk FROM student ss) WHERE rk<=500 and rk>=201
 ```
 
-# 合并查询
-
-实际应用中，为了合并多个select结果，可以使用集合操作符号：union、union all、intersect、minus
-
-```sql
--- union：用于取得两个结果的并集，它会自动去掉结果集中的重复行
-SELECT ename,sal,job FROM emp WHERE sal>2500 union SELECT ename,sal,job FROM emp WHERE job='MANAGER'
-
--- union all：与union相似，但它不会去掉重复行，而且不会排序
-SELECT ename,sal,job FROM emp WHERE sal>2500 union all SELECT ename,sal,job FROM emp WHERE job='MANAGER'
-
--- intersect：取得两个结果集的交集
-SELECT ename,sal,job FROM emp WHERE sal>2500 intersect SELECT ename,sal,job FROM emp WHERE job='MANAGER'
-
--- minus：取得两个结果集的差集，它只会显示存在于第一个集合中而不存在于第二个集合中的数据
-SELECT ename,sal,job FROM emp WHERE sal>2500 minus SELECT ename,sal,job FROM emp WHERE job='MANAGER'
-```
-
 # 元数据
 
 ```sql
@@ -97,6 +79,24 @@ SELECT sys_context('userenv', 'terminal') FROM DUAL;        --查询当前会话
 SELECT sys_context('userenv', 'session_user') FROM DUAL;    --查询当前在操作数据库的用户
 SELECT sys_context('userenv', 'current_schema') FROM DUAL;  --查询当前在操作的数据库方案
 SELECT sys_context('userenv', 'nls_date_format') FROM DUAL; --查询当前会话客户所对应的日期格式
+```
+
+# 合并查询
+
+实际应用中，为了合并多个select结果，可以使用集合操作符号：union、union all、intersect、minus
+
+```sql
+-- union：用于取得两个结果的并集，它会自动去掉结果集中的重复行
+SELECT ename,sal,job FROM emp WHERE sal>2500 union SELECT ename,sal,job FROM emp WHERE job='MANAGER'
+
+-- union all：与union相似，但它不会去掉重复行，而且不会排序
+SELECT ename,sal,job FROM emp WHERE sal>2500 union all SELECT ename,sal,job FROM emp WHERE job='MANAGER'
+
+-- intersect：取得两个结果集的交集
+SELECT ename,sal,job FROM emp WHERE sal>2500 intersect SELECT ename,sal,job FROM emp WHERE job='MANAGER'
+
+-- minus：取得两个结果集的差集，它只会显示存在于第一个集合中而不存在于第二个集合中的数据
+SELECT ename,sal,job FROM emp WHERE sal>2500 minus SELECT ename,sal,job FROM emp WHERE job='MANAGER'
 ```
 
 # 删除表数据
