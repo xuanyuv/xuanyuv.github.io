@@ -11,7 +11,7 @@ excerpt: 介绍Lucene-3.6.2中高级搜索里面自定义评分的用法。
 {:toc}
 
 
-下面演示的是`Lucene-3.6.2`中搜索的时候，自定义评分的用法（详见代码注释）
+下面演示的是`Lucene-3.6.2`中搜索的时候，`自定义评分`的用法（详见代码注释）
 
 ```java
 package com.jadyer.lucene;
@@ -166,7 +166,7 @@ import org.apache.lucene.search.function.ValueSourceQuery;
  * 1)创建一个类继承于CustomScoreQuery
  * 2)覆盖CustomScoreQuery.getCustomScoreProvider()方法
  * 3)创建一个类继承于CustomScoreProvider
- * 4)覆盖CustomScoreProvider.customScore()方法（我们的自定义评分主要就是在此方法中完成的）
+ * 4)覆盖CustomScoreProvider.customScore()方法：我们的自定义评分主要就是在此方法中完成的
  * ---------------------------------------------------------------------------------------
  * Created by 玄玉<https://jadyer.github.io/> on 2013/08/06 10:30.
  */
@@ -212,7 +212,7 @@ import org.apache.lucene.search.function.CustomScoreProvider;
 import org.apache.lucene.search.function.CustomScoreQuery;
 
 /**
- * 采用特殊文件名作为评分标准
+ * 采用特殊文件名作为评分标准的评分类
  * Created by 玄玉<https://jadyer.github.io/> on 2013/08/06 14:17.
  */
 public class MyNameScoreQuery extends CustomScoreQuery {
