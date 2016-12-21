@@ -17,7 +17,7 @@ excerpt: 介绍Lucene-3.6.2中的中文分词器的使用。
 
 这四大分词器有一个共同的抽象父类，此类有个方法`public final TokenStream tokenStream()`，即分词的一个流
 
-而分词流程大致有以下三个步骤
+**而分词流程大致有以下三个步骤**
 
 1、将一组数据流java.io.Reader交给Tokenizer，由其将数据转换为一个个的语汇单元
 
