@@ -11,7 +11,9 @@ excerpt: 主要介绍Lucene-3.6.2中搜索高亮功能的实现。
 {:toc}
 
 
-高亮功能属于Lucene的扩展功能（或者叫做贡献功能），其所需jar位于`Lucene-3.6.2.zip/contrib/highlighter/`文件夹中
+高亮功能属于Lucene的扩展功能（或者叫做贡献功能）
+
+其所需jar位于`Lucene-3.6.2.zip/contrib/highlighter/`文件夹中
 
 本文示例中需要以下4个jar
 
