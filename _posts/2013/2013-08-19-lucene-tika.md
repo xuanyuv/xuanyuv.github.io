@@ -25,7 +25,7 @@ excerpt: 主要介绍Lucene-3.6.2中创建索引时通过Tika来解析各种文�
 
 　　　　而在项目中使用时，直接引入tika-app-1.4.jar即可
 
-下面是Tike的一个使用示例`HelloTika.java`
+下面是`Tike-1.4`的一个使用示例`HelloTika.java`
 
 ```java
 package com.jadyer.lucene;
@@ -42,7 +42,7 @@ import org.apache.tika.sax.BodyContentHandler;
 import org.xml.sax.ContentHandler;
 
 /**
- * Tika使用示例
+ * Tika-1.4使用示例
  * Created by 玄玉<https://jadyer.github.io/> on 2013/08/07 08:57.
  */
 public class HelloTika {
@@ -116,6 +116,8 @@ public class HelloTika {
 ```
 
 # 借助Tika创建索引
+
+下面演示的就是在`Lucene-3.6.2`中借助`Tika-1.4`创建索引的示例代码
 
 ```java
 package com.jadyer.lucene;
