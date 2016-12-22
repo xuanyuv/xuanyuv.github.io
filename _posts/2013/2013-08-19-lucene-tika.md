@@ -11,13 +11,13 @@ excerpt: 主要介绍Lucene-3.6.2中创建索引时通过Tika来解析各种文�
 {:toc}
 
 
-# Tike
+# 简述Tike
 
 以往解析PDF时通常使用PDFBox：[http://pdfbox.apache.org/](http://pdfbox.apache.org/)
 
 解析Office时使用POI：[http://poi.apache.org/](http://poi.apache.org/)
 
-而Tika则是对它们的封装，使用Tika的API可以直接将PDF、Office等文件解析为文本字符串，它也可以处理html、txt等等
+而`Tika`则是对它们的封装，它可以直接将PDF、Office等文件解析为文本字符串（也可以处理html、txt等等）
 
 官网为：[http://tika.apache.org/](http://tika.apache.org/)
 
@@ -116,8 +116,6 @@ public class HelloTika {
 ```
 
 # 借助Tika创建索引
-
-示例代码如下
 
 ```java
 package com.jadyer.lucene;
