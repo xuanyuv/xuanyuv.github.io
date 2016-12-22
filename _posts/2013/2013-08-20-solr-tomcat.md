@@ -11,7 +11,7 @@ excerpt: 介绍Solr-3.6.2整合Tomcat的细节。
 {:toc}
 
 
-除非特别说明，本系列采用的是Solr-3.6.2，特此说明。
+除非特别说明，本系列采用的是`Solr-3.6.2`，特此说明。
 
 Solr官网：[http://lucene.apache.org/solr/](http://lucene.apache.org/solr/)
 
@@ -19,13 +19,13 @@ Solr下载：[http://archive.apache.org/dist/lucene/solr/](http://archive.apache
 
 Solr文档：[http://wiki.apache.org/solr/](http://wiki.apache.org/solr/)
 
-　　　　　　[http://wiki.apache.org/solr/SolrInstall](http://wiki.apache.org/solr/SolrInstall)
+　　　　　[http://wiki.apache.org/solr/SolrInstall](http://wiki.apache.org/solr/SolrInstall)
 
-　　　　　　[http://wiki.apache.org/solr/Solrj](http://wiki.apache.org/solr/Solrj)
+　　　　　[http://wiki.apache.org/solr/Solrj](http://wiki.apache.org/solr/Solrj)
 
-　　　　　　[http://wiki.apache.org/solr/SolrCloud](http://wiki.apache.org/solr/SolrCloud)
+　　　　　[http://wiki.apache.org/solr/SolrCloud](http://wiki.apache.org/solr/SolrCloud)
 
-　　　　　　[http://wiki.apache.org/solr/SolrCloud%20using%20Jboss](http://wiki.apache.org/solr/SolrCloud%20using%20Jboss)
+　　　　　[http://wiki.apache.org/solr/SolrCloud%20using%20Jboss](http://wiki.apache.org/solr/SolrCloud%20using%20Jboss)
 
 # 简介
 
@@ -39,33 +39,33 @@ Solr是一个高性能的，采用Java开发的，基于HTTP和Lucene实现的�
 
 # 启动
 
-解压下载到的`apache-solr-3.6.2.zip`中的`example`文件夹到本地硬盘
+解压下载到的apache-solr-3.6.2.zip中的example文件夹到本地硬盘
 
 然后命令行执行`java -jar start.jar`便启动了Solr服务器，访问地址为：[http://127.0.0.1:8983/solr/](http://127.0.0.1:8983/solr/)
 
 # 整合Tomcat
 
-1、本地硬盘新建`D:\Develop\apache-solr-3.6.2\`文件夹
+1、本地硬盘新建D:\Develop\apache-solr-3.6.2\文件夹
 
-2、再新建`D:\Develop\apache-solr-3.6.2\home\`文件夹
+2、再新建D:\Develop\apache-solr-3.6.2\home\文件夹
 
-3、将下载的`apache-solr-3.6.2.zip\example\solr\`里面的内容拷贝到上一步新建的home文件夹中
+3、将下载的apache-solr-3.6.2.zip\example\solr\里面的内容拷贝到上一步新建的home文件夹中
 
-4、清空`D:\Develop\apache-solr-3.6.2\home\data\`文件夹里的内容
+4、清空D:\Develop\apache-solr-3.6.2\home\data\文件夹里的内容
 
-5、再新建`D:\Develop\apache-solr-3.6.2\server\`文件夹
+5、再新建D:\Develop\apache-solr-3.6.2\server\文件夹
 
-6、将下载到的`apache-solr-3.6.2.zip\example\webapps\solr.war`中的内容解压到上一步新建的server文件夹中
+6、将下载到的apache-solr-3.6.2.zip\example\webapps\solr.war中的内容解压到上一步新建的server文件夹中
 
-7、编辑`D:\Develop\apache-solr-3.6.2\home\conf\solrconfig.xml`的第`114`行为下面的值
+7、编辑D:\Develop\apache-solr-3.6.2\home\conf\solrconfig.xml的第`114`行为下面的值
 
-　　**<dataDir>${solr.data.dir:D:\Develop\apache-solr-3.6.2\home\data}</dataDir>**
+　　`<dataDir>${solr.data.dir:D:\Develop\apache-solr-3.6.2\home\data}</dataDir>`
 
 　　其实这一步也可以把data目录放到环境变量中，然后使用`${environmentVariable}`就引用到了
 
-8、编辑`D:\Develop\apache-tomcat-6.0.36\conf\server.xml`的第`144`行即`<Hots>`标签中为下面的值
+8、编辑D:\Develop\apache-tomcat-6.0.36\conf\server.xml的第`144`行即`<Hots>`标签中为下面的值
 
-　　**<Context path="/solr" docBase="D:\Develop\apache-solr-3.6.2\server\solr" reloadable="false"/>**
+　　`<Context path="/solr" docBase="D:\Develop\apache-solr-3.6.2\server\solr" reloadable="false"/>`
 
 9、为`<Context/>`设置相应的环境变量，指明Solr的主目录的地址，修改好后是这样的
 
@@ -84,13 +84,13 @@ Solr是一个高性能的，采用Java开发的，基于HTTP和Lucene实现的�
 Caused by: java.lang.ClassNotFoundException: solr.VelocityResponseWriter
 ```
 
-这时就要修改`D:\Develop\apache-solr-3.5.0\home\conf\solrconfig.xml`文件的第1554行（对于solr-3.6.2而言就是第1573行）
+这时就要修改D:\Develop\apache-solr-3.5.0\home\conf\solrconfig.xml文件的第1554行（对于solr-3.6.2而言就是第1573行）
 
 ```xml
 <queryResponseWriter name="velocity" class="solr.VelocityResponseWriter" enable="${solr.velocity.enable:false}"/>
 ```
 
-如果在取消了（即设置为false）VelocityResponseWriter输出格式后，重启Tomcat还是报告此异常，那直接把这行代码注释掉应该就可以了
+若取消了（即置为false）VelocityResponseWriter输出格式后，重启Tomcat仍报此异常，那直接把这行代码注释掉应该就可以了
 
 # schema
 
