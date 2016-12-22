@@ -15,7 +15,9 @@ excerpt: 主要介绍Lucene-3.6.2中近实时搜索功能的实现。
 
 近实时搜索：数据发生变化时，先将索引保存到内存中，然后在一个统一的时间再对内存中的所有索引执行commit提交动作
 
-为了实现近实时搜索，`Lucene3.0`提供的方式叫做`reopen`，后来的版本中提供了两个线程安全的类`NRTManager`和`SearcherManager`
+为了实现近实时搜索，`Lucene3.0`提供的方式叫做`reopen`
+
+后来的版本中提供了两个线程安全的类`NRTManager`和`SearcherManager`
 
 不过这俩线程安全的类在`Lucene3.5`和`3.6`版本中的用法有点不太一样，这点要注意！
 
