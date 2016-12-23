@@ -198,11 +198,23 @@ settings---Editor---General---Editor Tabs--Mark modified tabs with asterisk
 
 #### 代码字体
 
-Primary font即第一字体，这里选择Consolas，Size=14
+在发布了Windows-Vista的时候，一款全新的中英文字体也跟着面世了：微软雅黑体
 
-Secondary font即第二字体，当第一字体不支持某些字符时会使用第二字体来显示
+据说微软为了打造这个字体，做每个字的成本几乎达到100美元，也被戏称有史以来最昂贵的一套中文字体
 
-settings---Editor---Colors & Fonts---Font---Schema---Darcula Save As Darcula_jadyer
+而Consolas是一种专门为编程人员设计的字体，它特性是所有字母、数字与符号都很容易的辨认，且都具有相同的宽度，看着很舒服
+
+所以`Yahei Consolas Hybrid`就出现了，它是上面两种字体的结合（程序员字体＋最昂贵的中文字体）
+
+下载地址为：[http://download.csdn.net/detail/jadyer/9719438](http://download.csdn.net/detail/jadyer/9719438)
+
+或者这个也可以，都是一样的：[http://www.intellij.org/downloads/YaHei.Consolas.1.12.zip](http://www.intellij.org/downloads/YaHei.Consolas.1.12.zip)
+
+安装方法为：拷贝`ttf`文件到`C:\Windows\Fonts\`目录即可，然后就可以回到idea里面配置了
+
+settings---Editor---Colors & Fonts---Schema---Darcula Save As Darcula_jadyer
+
+然后再到子菜单Font里面，设置`Primary font=Yahei Consolas Hybrid，Size=14`
 
 #### 控制台字体
 
