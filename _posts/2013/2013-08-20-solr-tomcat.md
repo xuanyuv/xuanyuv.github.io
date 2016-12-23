@@ -11,7 +11,7 @@ excerpt: 介绍Solr-3.6.2整合Tomcat的细节。
 {:toc}
 
 
-除非特别说明，本系列采用的是`Solr-3.6.2`，特此说明。
+除非特别说明，本系列采用的都是`Solr-3.6.2`
 
 Solr官网：[http://lucene.apache.org/solr/](http://lucene.apache.org/solr/)
 

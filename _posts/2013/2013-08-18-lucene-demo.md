@@ -11,7 +11,7 @@ excerpt: 介绍Lucene-3.6.2的基本理念，以及建索引和搜索的基本�
 {:toc}
 
 
-除非特别说明，本系列采用的是`Lucene-3.6.2`，特此说明。
+除非特别说明，本系列采用的都是`Lucene-3.6.2`
 
 Lucene官网：[http://lucene.apache.org](http://lucene.apache.org)
 
