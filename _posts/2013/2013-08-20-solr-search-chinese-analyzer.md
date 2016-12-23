@@ -31,7 +31,7 @@ Solr定义的大量域默认都不支持中文分词，若要增加中文分词�
 
 　　同理将mmseg4j-1.8.5.zip中的README.txt打开，拷贝里面描述的三个fieldType到schema.xml中第68行
 
-5、确认并修改这三个fileType中的dicPath属性值为"dic"（里的dic其实指的就是第二步新建的dic文件夹）
+5、确认并修改这三个fileType中的dicPath属性值为：dic（指的就是第二步新建的dic文件夹）
 
 6、最后测试一下中文分词效果
 
