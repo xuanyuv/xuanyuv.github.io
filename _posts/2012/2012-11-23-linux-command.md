@@ -225,7 +225,7 @@ tmpfs           1.9G     0  1.9G   0% /dev/shm
 65608	mpp
 [root@wxtest webapps]#
 
-# 列出当前目录各个文件及其大小，并以大小倒序排序（参数大S用于指定排序）
+# 列出当前目录各个文件及其大小，并以大小倒序排序（参数大S用于指定排序，也可以加-a，表示all即显示包括隐藏文件在内的所有文件）
 [root@wxtest webapps]# ls -lhS
 total 107M
 -rw-r--r--  1 root root  48M Dec 16 10:01 open.war
