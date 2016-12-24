@@ -267,4 +267,16 @@ zip -9r ../codebak/CucPayTradePortal_20130509.zip CucPayTradePortal
 
 # 解压
 unzip CucPayTradePortal_20130509.zip -d ../code/
+
+# 压缩bb.txt和cc.txt文件为aa.zip文件
+zip aa.zip bb.txt cc.txt
+
+# 压缩bb.txt成aa.zip后，自动删除bb.txt文件
+zip -m aa.zip bb.txt
+
+# 解压除bb.txt文件之外的其它文件
+unzip aa.zip -x bb.txt
+
+# 不解压查看zip内容，也可以用-l、-Z（大写）参数，都是不解压查看
+unzip -v aa.zip
 ```
