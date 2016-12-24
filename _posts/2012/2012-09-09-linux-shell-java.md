@@ -25,8 +25,9 @@ excerpt: 介绍启动和停止Java应用程序的Shell脚本。
 
 ```sh
 #!/bin/sh
+
 # JDK路径
-#JAVA_HOME="/usr/java/jdk1.6.0_31"
+# JAVA_HOME="/usr/java/jdk1.6.0_31"
 
 # JVM启动参数
 # -server：一定要作为第一个参数，多个CPU时性能佳
