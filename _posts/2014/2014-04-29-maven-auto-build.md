@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "结合Maven实现的自动打包批处理脚本"
-categories: 工具
+title: "结合Maven实现的自动打包工程的批处理脚本"
+categories: Maven
 tags: maven 打包 批处理
 author: 玄玉
-excerpt: 通过在批处理脚本中调用Maven命令实现的自动打包工具，并把生成的war自动拷贝到桌面，还有自动上传至FTP的功能。
+excerpt: 通过在批处理脚本中调用Maven命令实现的自动打包工程的工具，并把生成的war自动拷贝到桌面，还有自动上传至FTP的功能。
 ---
 
 * content
