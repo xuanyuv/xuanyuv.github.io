@@ -2,7 +2,7 @@
 layout: post
 title: "Java操作MongoDB的常见API"
 categories: MongoDB
-tags: java api mongodb
+tags: mongodb java api
 author: 玄玉
 excerpt: 详细介绍了MongoDB-2.6版本的，Java驱动的常见API用法。
 ---

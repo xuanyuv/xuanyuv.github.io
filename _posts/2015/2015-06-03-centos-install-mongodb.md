@@ -2,7 +2,7 @@
 layout: post
 title: "CentOS安装MongoDB"
 categories: MongoDB
-tags: centos mongodb 安装
+tags: mongodb centos
 author: 玄玉
 excerpt: 详细介绍了在CentOS-6.4-minimal版本中，安装MongoDB-x86_64-3.0.2的步骤。
 ---
