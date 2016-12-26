@@ -73,7 +73,11 @@ excerpt: 主要描述单点登录CAS-4.0.3服务端通过数据库实现用户�
 
 ## 代码
 
-本文源码下载：[http://download.csdn.net/detail/jadyer/8911139](http://download.csdn.net/detail/jadyer/8911139)
+本文源码下载：（下面两个地址的文件的内容，都是一样的）
+
+[http://oirr30q6q.bkt.clouddn.com/code/sso-cas-login-db.rar](http://oirr30q6q.bkt.clouddn.com/code/sso-cas-login-db.rar)
+
+[http://download.csdn.net/detail/jadyer/8911139](http://download.csdn.net/detail/jadyer/8911139)
 
 下面是新创建的`\WEB-INF\spring-configuration\applicationContext-datasource.xml`
 
