@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CentOS-6.4安装MongoDB-3.0.2"
+title: "CentOS安装MongoDB"
 categories: MongoDB
 tags: centos mongodb 安装
 author: 玄玉
@@ -19,6 +19,21 @@ excerpt: 详细介绍了在CentOS-6.4-minimal版本中，安装MongoDB-x86_64-3.
 
 
 ## 安装
+
+在开始正文之前，先简单描述下Windows版的安装步骤（这里以Windows上的mongodb-2.6.1版为例）
+
+1. 下载[https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-2.6.1.zip](https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-2.6.1.zip)
+2. 解压到本地硬盘D:\Develop\mongoDB\，并配置环境变量path=D:\Develop\mongoDB\bin<br>
+   然后在CMD下执行此命令验证安装成功与否`>mongod --version`
+3. 建立D:\Develop\mongoDBData\文件夹，用于存放mongoDB数据文件
+4. 自定义bat文件，分别用于启动mongoDB数据库和连接数据库的客户端<br>
+   启动客户端的`mongo_client.bat`内容为：`mongo 127.0.0.1:27017/admin`<br>
+   启动数据库的`mongo_db.bat`内容为：`mongod --dbpath D:\Develop\mongoDBData --rest`<br>
+   注意：加入`--rest`参数是为了能够访问mongoDB的Web控制台[http://127.0.0.1:28017/](http://127.0.0.1:28017/)
+
+至此，Windows版的mongodb-2.6.1安装完毕
+
+下面开始正文：`CentOS-6.4-minimal`上安装`MongoDB-x86_64-3.0.2`
 
 ```
 [Jadyer@CentOS64 ~]$ cd /app/software/
