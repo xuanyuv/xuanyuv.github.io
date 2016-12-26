@@ -33,6 +33,7 @@ icon: heart
 <br/>
 
 ## 工具
+* [七牛云](http://www.qiniu.com/)
 * [新浪微博图床Chrome扩展](https://github.com/Suxiaogang/WeiboPicBed)
 * [新浪微博图床](http://weibo.com/minipublish)
 * [提供API的图床](https://sm.ms/)
