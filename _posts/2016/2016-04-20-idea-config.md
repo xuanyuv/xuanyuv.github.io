@@ -206,7 +206,7 @@ settings---Editor---General---Editor Tabs--Mark modified tabs with asterisk
 
 所以`Yahei Consolas Hybrid`就出现了，它是上面两种字体的结合（程序员字体＋最昂贵的中文字体）
 
-下载地址如下：（三个地址的文件都是同一个文件）
+下载地址如下：（下面三个地址的文件的内容，都是一样的）
 
 [http://oirr30q6q.bkt.clouddn.com/idea/YaHei_Consolas_Hybrid.rar](http://oirr30q6q.bkt.clouddn.com/idea/YaHei_Consolas_Hybrid.rar)
 
