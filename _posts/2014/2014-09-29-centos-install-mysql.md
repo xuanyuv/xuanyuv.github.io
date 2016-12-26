@@ -19,7 +19,7 @@ excerpt: 详细介绍了CentOS-6.4-minimal版中源码安装MySQL-5.5.38的细�
 2. 二进制包安装
 3. rpm或yum安装
 
-本文演示的是源码安装，并且：自从`mysql-5.5`开始，源码安装要通过`cmake`安装，不能再像以前使用`configure`安装了
+**本文演示的是源码安装**，并且：自从`mysql-5.5`开始，源码安装要通过`cmake`安装，不能再像以前使用`configure`安装了
 
 我们在`mysql-5.5.38.tar.gz`根目录中会看到一个名为**BUILD-CMAKE**的文件，打开可以看到下面这句话
 
