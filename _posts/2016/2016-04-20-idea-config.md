@@ -206,9 +206,13 @@ settings---Editor---General---Editor Tabs--Mark modified tabs with asterisk
 
 所以`Yahei Consolas Hybrid`就出现了，它是上面两种字体的结合（程序员字体＋最昂贵的中文字体）
 
-下载地址为：[http://download.csdn.net/detail/jadyer/9719438](http://download.csdn.net/detail/jadyer/9719438)
+下载地址如下：（三个地址的文件都是同一个文件）
 
-或者这个也可以，都是一样的：[http://www.intellij.org/downloads/YaHei.Consolas.1.12.zip](http://www.intellij.org/downloads/YaHei.Consolas.1.12.zip)
+[http://oirr30q6q.bkt.clouddn.com/idea/YaHei_Consolas_Hybrid.rar](http://oirr30q6q.bkt.clouddn.com/idea/YaHei_Consolas_Hybrid.rar)
+
+[http://download.csdn.net/detail/jadyer/9719438](http://download.csdn.net/detail/jadyer/9719438)
+
+[http://www.intellij.org/downloads/YaHei.Consolas.1.12.zip](http://www.intellij.org/downloads/YaHei.Consolas.1.12.zip)
 
 安装方法为：拷贝`ttf`文件到`C:\Windows\Fonts\`目录即可，然后就可以回到idea里面配置了
 
