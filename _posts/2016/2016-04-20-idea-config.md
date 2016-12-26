@@ -208,7 +208,7 @@ settings---Editor---General---Editor Tabs--Mark modified tabs with asterisk
 
 下载地址如下：（下面三个地址的文件的内容，都是一样的）
 
-[http://oirr30q6q.bkt.clouddn.com/idea/YaHei_Consolas_Hybrid.rar](http://oirr30q6q.bkt.clouddn.com/idea/YaHei_Consolas_Hybrid.rar)
+[http://oirr30q6q.bkt.clouddn.com/jadyer/idea/YaHei_Consolas_Hybrid.rar](http://oirr30q6q.bkt.clouddn.com/jadyer/idea/YaHei_Consolas_Hybrid.rar)
 
 [http://download.csdn.net/detail/jadyer/9719438](http://download.csdn.net/detail/jadyer/9719438)
 

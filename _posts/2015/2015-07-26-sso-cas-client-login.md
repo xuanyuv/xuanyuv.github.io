@@ -112,7 +112,7 @@ CASClient中有多种验证ticket的Filter，都继承自AbstractTicketValidatio
 
 本文源码下载：（下面两个地址的文件的内容，都是一样的）
 
-[http://oirr30q6q.bkt.clouddn.com/code/sso-cas-client-login.rar](http://oirr30q6q.bkt.clouddn.com/code/sso-cas-client-login.rar)
+[http://oirr30q6q.bkt.clouddn.com/jadyer/code/sso-cas-client-login.rar](http://oirr30q6q.bkt.clouddn.com/jadyer/code/sso-cas-client-login.rar)
 
 [http://download.csdn.net/detail/jadyer/8934207](http://download.csdn.net/detail/jadyer/8934207)
 
