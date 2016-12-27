@@ -124,7 +124,7 @@ worker.tomcat.port=8009
 
 1. 修改httpd-vhosts.conf，在`<Directory/>`标签下新增如下内容
 
-   > ```xml
+   > ```
 <Location /jkstatus>
     Options MultiViews
     AuthType Basic               #Basic验证
