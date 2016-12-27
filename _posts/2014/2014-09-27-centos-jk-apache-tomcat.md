@@ -61,70 +61,81 @@ AJP协议是为Tomcat与HTTP服务器之间通信而定制的协议，能够提�
 
 Apache的安装过程详见：[https://jadyer.github.io/2014/09/26/centos-install-apache/](https://jadyer.github.io/2014/09/26/centos-install-apache/)
 
-1. 修改/app/apache/conf/httpd.conf<br>
-   开启虚拟主机：取消注释Include conf/extra/httpd-vhosts.conf<br>
-   添加JK配置：增加一行Include conf/extra/httpd-jk.conf
-2. 创建/app/apache/conf/extra/httpd-jk.conf，内容如下<br>
-   ```
-   LoadModule jk_module modules/mod_jk.so
-   JkWorkersFile conf/workers.properties
-   JkLogFile logs/mod_jk.log
-   JkLogLevel info
-   ```
-3. 创建/app/apache/conf/workers.properties，内容如下<br>
-   ```ruby
-   worker.list=tomcat
-   worker.tomcat.type=ajp13
-   worker.tomcat.host=192.168.0.103
-   worker.tomcat.port=8009
-   ```
-4. 修改/app/apache/conf/extra/httpd-vhosts.conf，增加以下内容（可用**#**号注释掉原有的两个`<VirtualHost *:80/>`默认配置）<br>
-   ```xml
-   <VirtualHost *:80>
-       ServerName "www.jadyer.com"
-       DocumentRoot "/app/tomcat/webapps/docs"
-       ErrorLog "logs/www.jadyer.com-error.log"
-       CustomLog "logs/www.jadyer.com-access.log" common
-       <Directory "/app/tomcat/webapps/docs">
-           Options FollowSymLinks
-           AllowOverride None
-           Order allow,deny
-           Allow from all
-       </Directory>
-       JkMount   /*      tomcat
-       JkUnMount /*.html tomcat
-       JkUnMount /*.jpg  tomcat
-       JkUnMount /*.css  tomcat
-       JkUnMount /css/*  tomcat
-       JkUnMount /js/*   tomcat
-       JkUnMount /lib/*  tomcat
-   </VirtualHost>
-   ```
+1、修改/app/apache/conf/httpd.conf
+
+```ruby
+#开启虚拟主机
+取消注释Include conf/extra/httpd-vhosts.conf
+#添加JK配置
+增加一行Include conf/extra/httpd-jk.conf
+```
+
+2、创建/app/apache/conf/extra/httpd-jk.conf，内容如下
+
+```
+LoadModule jk_module modules/mod_jk.so
+JkWorkersFile conf/workers.properties
+JkLogFile logs/mod_jk.log
+JkLogLevel info
+```
+
+3. 创建/app/apache/conf/workers.properties，内容如下
+
+```ruby
+worker.list=tomcat
+worker.tomcat.type=ajp13
+worker.tomcat.host=192.168.0.103
+worker.tomcat.port=8009
+```
+
+4. 修改/app/apache/conf/extra/httpd-vhosts.conf，增加以下内容（可用**#**号注释掉原有的两个`<VirtualHost *:80/>`默认配置）
+
+```xml
+<VirtualHost *:80>
+   ServerName "www.jadyer.com"
+   DocumentRoot "/app/tomcat/webapps/docs"
+   ErrorLog "logs/www.jadyer.com-error.log"
+   CustomLog "logs/www.jadyer.com-access.log" common
+   <Directory "/app/tomcat/webapps/docs">
+       Options FollowSymLinks
+       AllowOverride None
+       Order allow,deny
+       Allow from all
+   </Directory>
+   JkMount   /*      tomcat
+   JkUnMount /*.html tomcat
+   JkUnMount /*.jpg  tomcat
+   JkUnMount /*.css  tomcat
+   JkUnMount /css/*  tomcat
+   JkUnMount /js/*   tomcat
+   JkUnMount /lib/*  tomcat
+</VirtualHost>
+```
 
 # 监控JK连接状态
 
 通过jkstatus可以监控JK-1.2.40连接状态，不过需要我们配置一下jkstatus
 
 1. 修改workers.properties，添加以下两行内容<br>
-   ```ruby
-   worker.list=status（实际上是worker.list=status,tomcat）
+   worker.list=status（实际上是worker.list=status,tomcat）<br>
    worker.status.type=status
-   ```
 2. httpd-vhosts.conf文件中的`<Directory/>`标签下添加一行：JkMount /jkstatus status
 3. 重启Apache后，浏览器中访问[http://192.168.0.103/jkstatus](http://192.168.0.103/jkstatus)即可
 
 默认访问时不需要密码，不过，也可以配置访问的密码，方法如下
 
-1. 修改httpd-vhosts.conf，在`<Directory/>`标签下新增如下内容<br>
-   ```xml
-   <Location /jkstatus>
-       Options MultiViews
-       AuthType Basic               #Basic验证
-       AuthName "Auther Center"     #弹出框的提示
-       AuthUserFile conf/.htpasswd  #存放密码的位置
-       require valid-user granted   #只有.htpasswd文件里面的用户才能进入
-   </Location>
-   ```
+1. 修改httpd-vhosts.conf，在`<Directory/>`标签下新增如下内容
+
+```xml
+<Location /jkstatus>
+   Options MultiViews
+   AuthType Basic               #Basic验证
+   AuthName "Auther Center"     #弹出框的提示
+   AuthUserFile conf/.htpasswd  #存放密码的位置
+   require valid-user granted   #只有.htpasswd文件里面的用户才能进入
+</Location>
+```
+
 2. 生成密码文件<br>
    执行命令：`/app/apache/bin/htpasswd -c /app/apache/conf/.htpasswd admin`，即可生成一个包含用户admin的密码文件<br>
    同时会让你输入两次新用户admin的密码，最后通过`ls -al`就可以看到生成的密码文件了（它是隐藏文件，需要`-a`才能看到）
