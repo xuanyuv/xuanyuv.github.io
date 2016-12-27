@@ -139,8 +139,6 @@ worker.tomcat.port=8009
    同时会让你输入两次新用户admin的密码，最后通过`ls -al`就可以看到生成的密码文件了（它是隐藏文件，需要`-a`才能看到）
 3. 修改密码：`htpasswd -m .htpasswd 用户名`
 4. 删除用户：`htpasswd -D .htpasswd 用户名`
-5. 最后重启apache就可以了
-
-下面是效果图
+5. 最后重启apache就可以了，下面是效果图
 
 ![](/img/2014/2014-09-27-centos-jk-apache-tomcat.png)
