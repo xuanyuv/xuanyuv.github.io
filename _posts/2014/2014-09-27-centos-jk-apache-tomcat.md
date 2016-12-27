@@ -94,12 +94,12 @@ worker.tomcat.port=8009
     DocumentRoot "/app/tomcat/webapps/docs"
     ErrorLog "logs/www.jadyer.com-error.log"
     CustomLog "logs/www.jadyer.com-access.log" common
-    <Directory "/app/tomcat/webapps/docs">
+    \<Directory "/app/tomcat/webapps/docs">
         Options FollowSymLinks
         AllowOverride None
         Order allow,deny
         Allow from all
-    </Directory>
+    \</Directory>
     JkMount   /*      tomcat
     JkUnMount /*.html tomcat
     JkUnMount /*.jpg  tomcat
