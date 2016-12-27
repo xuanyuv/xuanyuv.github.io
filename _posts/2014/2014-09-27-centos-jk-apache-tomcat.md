@@ -79,33 +79,36 @@ JkLogLevel info
 
 3. 创建/app/apache/conf/workers.properties，内容如下
 
-   > ```
+   > ```ruby
 worker.list=tomcat
 worker.tomcat.type=ajp13
 worker.tomcat.host=192.168.0.103
 worker.tomcat.port=8009
 ```
 
-4. 修改/app/apache/conf/extra/httpd-vhosts.conf，增加以下内容（可用**#**号注释掉原有的两个`<VirtualHost *:80/>`默认配置）<br>
-   > <VirtualHost *:80>
-   ServerName "www.jadyer.com"
-   DocumentRoot "/app/tomcat/webapps/docs"
-   ErrorLog "logs/www.jadyer.com-error.log"
-   CustomLog "logs/www.jadyer.com-access.log" common
-   <Directory "/app/tomcat/webapps/docs">
-       Options FollowSymLinks
-       AllowOverride None
-       Order allow,deny
-       Allow from all
-   </Directory>
-   JkMount   /*      tomcat
-   JkUnMount /*.html tomcat
-   JkUnMount /*.jpg  tomcat
-   JkUnMount /*.css  tomcat
-   JkUnMount /css/*  tomcat
-   JkUnMount /js/*   tomcat
-   JkUnMount /lib/*  tomcat
+4. 修改/app/apache/conf/extra/httpd-vhosts.conf，增加以下内容（可用**#**号注释掉原有的两个`<VirtualHost *:80/>`默认配置）
+
+   > ```xml
+<VirtualHost *:80>
+    ServerName "www.jadyer.com"
+    DocumentRoot "/app/tomcat/webapps/docs"
+    ErrorLog "logs/www.jadyer.com-error.log"
+    CustomLog "logs/www.jadyer.com-access.log" common
+    <Directory "/app/tomcat/webapps/docs">
+        Options FollowSymLinks
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    </Directory>
+    JkMount   /*      tomcat
+    JkUnMount /*.html tomcat
+    JkUnMount /*.jpg  tomcat
+    JkUnMount /*.css  tomcat
+    JkUnMount /css/*  tomcat
+    JkUnMount /js/*   tomcat
+    JkUnMount /lib/*  tomcat
 </VirtualHost>
+```
 
 # 监控JK连接状态
 
@@ -119,14 +122,15 @@ worker.tomcat.port=8009
 
 默认访问时不需要密码，不过，也可以配置访问的密码，方法如下
 
-1. 修改httpd-vhosts.conf，在`<Directory/>`标签下新增如下内容<br>
+1. 修改httpd-vhosts.conf，在`<Directory/>`标签下新增如下内容
+
    > ```xml
 <Location /jkstatus>
-   Options MultiViews
-   AuthType Basic               #Basic验证
-   AuthName "Auther Center"     #弹出框的提示
-   AuthUserFile conf/.htpasswd  #存放密码的位置
-   require valid-user granted   #只有.htpasswd文件里面的用户才能进入
+    Options MultiViews
+    AuthType Basic               #Basic验证
+    AuthName "Auther Center"     #弹出框的提示
+    AuthUserFile conf/.htpasswd  #存放密码的位置
+    require valid-user granted   #只有.htpasswd文件里面的用户才能进入
 </Location>
 ```
 
