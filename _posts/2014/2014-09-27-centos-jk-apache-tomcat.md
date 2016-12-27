@@ -61,23 +61,23 @@ AJP协议是为Tomcat与HTTP服务器之间通信而定制的协议，能够提�
 
 Apache的安装过程详见：[https://jadyer.github.io/2014/09/26/centos-install-apache/](https://jadyer.github.io/2014/09/26/centos-install-apache/)
 
-1. 修改/app/apache/conf/httpd.conf
+1. 修改/app/apache/conf/httpd.conf<br>
    > 开启虚拟主机：取消注释Include conf/extra/httpd-vhosts.conf<br>
 添加JK配置：增加一行Include conf/extra/httpd-jk.conf
 
-2. 创建/app/apache/conf/extra/httpd-jk.conf，内容如下
+2. 创建/app/apache/conf/extra/httpd-jk.conf，内容如下<br>
    > LoadModule jk_module modules/mod_jk.so<br>
 JkWorkersFile conf/workers.properties<br>
 JkLogFile logs/mod_jk.log<br>
 JkLogLevel info
 
-3. 创建/app/apache/conf/workers.properties，内容如下
+3. 创建/app/apache/conf/workers.properties，内容如下<br>
    > worker.list=tomcat<br>
 worker.tomcat.type=ajp13<br>
 worker.tomcat.host=192.168.0.103<br>
 worker.tomcat.port=8009
 
-4. 修改/app/apache/conf/extra/httpd-vhosts.conf，增加以下内容（可用**#**号注释掉原有的两个`<VirtualHost *:80/>`默认配置）
+4. 修改/app/apache/conf/extra/httpd-vhosts.conf，增加以下内容（可用**#**号注释掉原有的两个`<VirtualHost *:80/>`默认配置）<br>
    > <VirtualHost *:80>
    ServerName "www.jadyer.com"
    DocumentRoot "/app/tomcat/webapps/docs"
@@ -110,7 +110,7 @@ worker.tomcat.port=8009
 
 默认访问时不需要密码，不过，也可以配置访问的密码，方法如下
 
-1. 修改httpd-vhosts.conf，在`<Directory/>`标签下新增如下内容
+1. 修改httpd-vhosts.conf，在`<Directory/>`标签下新增如下内容<br>
    > ```xml
 <Location /jkstatus>
    Options MultiViews
