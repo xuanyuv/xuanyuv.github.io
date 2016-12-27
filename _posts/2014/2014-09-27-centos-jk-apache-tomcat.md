@@ -61,9 +61,12 @@ AJP协议是为Tomcat与HTTP服务器之间通信而定制的协议，能够提�
 
 Apache的安装过程详见：[https://jadyer.github.io/2014/09/26/centos-install-apache/](https://jadyer.github.io/2014/09/26/centos-install-apache/)
 
-1. 修改/app/apache/conf/httpd.conf<br>
-   > 开启虚拟主机：取消注释Include conf/extra/httpd-vhosts.conf<br>
+1. 修改/app/apache/conf/httpd.conf
+
+   > ```
+开启虚拟主机：取消注释Include conf/extra/httpd-vhosts.conf
 添加JK配置：增加一行Include conf/extra/httpd-jk.conf
+```
 
 2. 创建/app/apache/conf/extra/httpd-jk.conf，内容如下<br>
    > LoadModule jk_module modules/mod_jk.so<br>
