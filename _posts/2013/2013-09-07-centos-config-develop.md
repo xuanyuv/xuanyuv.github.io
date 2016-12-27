@@ -81,6 +81,12 @@ alias ipv6 off
 [Jadyer@CentOS64 ~]$ java -version                             #重复验证（普通用户重连服务器后才会生效）
 ```
 
+# 安装Tomcat
+
+无需编译源码，直接`tar zxvf apache-tomcat-6.0.41.tar.gz`解压即可
+
+再执行`/app/tomcat/bin/startup.sh`可以启动Tomcat了
+
 # 安装Maven
 
 ```sh
