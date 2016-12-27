@@ -68,20 +68,21 @@ Apache的安装过程详见：[https://jadyer.github.io/2014/09/26/centos-instal
 添加JK配置：增加一行Include conf/extra/httpd-jk.conf
 ```
 
-2. 创建/app/apache/conf/extra/httpd-jk.conf，内容如下<br>
-   >
-```
-LoadModule jk_module modules/mod_jk.so<br>
-JkWorkersFile conf/workers.properties<br>
-JkLogFile logs/mod_jk.log<br>
+2. 创建/app/apache/conf/extra/httpd-jk.conf，内容如下
+   > ```
+LoadModule jk_module modules/mod_jk.so
+JkWorkersFile conf/workers.properties
+JkLogFile logs/mod_jk.log
 JkLogLevel info
 ```
 
-3. 创建/app/apache/conf/workers.properties，内容如下<br>
-   > worker.list=tomcat<br>
-worker.tomcat.type=ajp13<br>
-worker.tomcat.host=192.168.0.103<br>
+3. 创建/app/apache/conf/workers.properties，内容如下
+   > ```
+worker.list=tomcat
+worker.tomcat.type=ajp13
+worker.tomcat.host=192.168.0.103
 worker.tomcat.port=8009
+```
 
 4. 修改/app/apache/conf/extra/httpd-vhosts.conf，增加以下内容（可用**#**号注释掉原有的两个`<VirtualHost *:80/>`默认配置）<br>
    > <VirtualHost *:80>
