@@ -15,7 +15,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中通过JK-1.2.40整合Apache-2.2.29与T
 
 # AJP
 
-Tomcat提供了专门的`JK`插件来负责Tomcat和HTTP服务器（比如Apache、Nginx、IIS等）的通信，即我们常见到的`mod_jk`
+Tomcat提供了专门的`JK插件（即常见的mod_jk）`来负责Tomcat和HTTP服务器（比如Apache、Nginx、IIS等）的通信
 
 JK安装在对方的HTTP服务器上之后，当HTTP服务器接收到客户请求时，它会通过JK过滤URL
 
@@ -64,21 +64,21 @@ Apache的安装过程详见：[https://jadyer.github.io/2014/09/26/centos-instal
 1. 修改/app/apache/conf/httpd.conf<br>
    开启虚拟主机：取消注释Include conf/extra/httpd-vhosts.conf<br>
    添加JK配置：增加一行Include conf/extra/httpd-jk.conf
-2. 创建/app/apache/conf/extra/httpd-jk.conf，内容如下
+2. 创建/app/apache/conf/extra/httpd-jk.conf，内容如下<br>
    ```
    LoadModule jk_module modules/mod_jk.so
    JkWorkersFile conf/workers.properties
    JkLogFile logs/mod_jk.log
    JkLogLevel info
    ```
-3. 创建/app/apache/conf/workers.properties，内容如下
+3. 创建/app/apache/conf/workers.properties，内容如下<br>
    ```ruby
    worker.list=tomcat
    worker.tomcat.type=ajp13
    worker.tomcat.host=192.168.0.103
    worker.tomcat.port=8009
    ```
-4. 修改/app/apache/conf/extra/httpd-vhosts.conf，增加以下内容（可用**#**号注释掉原有的两个`<VirtualHost *:80/>`默认配置）
+4. 修改/app/apache/conf/extra/httpd-vhosts.conf，增加以下内容（可用**#**号注释掉原有的两个`<VirtualHost *:80/>`默认配置）<br>
    ```xml
    <VirtualHost *:80>
        ServerName "www.jadyer.com"
@@ -105,7 +105,7 @@ Apache的安装过程详见：[https://jadyer.github.io/2014/09/26/centos-instal
 
 通过jkstatus可以监控JK-1.2.40连接状态，不过需要我们配置一下jkstatus
 
-1. 修改workers.properties，添加以下两行内容
+1. 修改workers.properties，添加以下两行内容<br>
    ```ruby
    worker.list=status（实际上是worker.list=status,tomcat）
    worker.status.type=status
@@ -115,7 +115,7 @@ Apache的安装过程详见：[https://jadyer.github.io/2014/09/26/centos-instal
 
 默认访问时不需要密码，不过，也可以配置访问的密码，方法如下
 
-1. 修改httpd-vhosts.conf，在`<Directory/>`标签下新增如下内容
+1. 修改httpd-vhosts.conf，在`<Directory/>`标签下新增如下内容<br>
    ```xml
    <Location /jkstatus>
        Options MultiViews
@@ -131,5 +131,7 @@ Apache的安装过程详见：[https://jadyer.github.io/2014/09/26/centos-instal
 3. 修改密码：`htpasswd -m .htpasswd 用户名`
 4. 删除用户：`htpasswd -D .htpasswd 用户名`
 5. 最后重启apache就可以了
+
+下面是效果图
 
 ![](/img/2014/2014-09-27-centos-jk-apache-tomcat.png)
