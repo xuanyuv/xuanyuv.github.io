@@ -88,8 +88,8 @@ worker.tomcat.port=8009
 
 4. 修改/app/apache/conf/extra/httpd-vhosts.conf，增加以下内容（可用**#**号注释掉原有的两个`<VirtualHost *:80/>`默认配置）
 
-   > ```xml
-/<VirtualHost *:80>
+   > ```sh
+\<VirtualHost *:80>
     ServerName "www.jadyer.com"
     DocumentRoot "/app/tomcat/webapps/docs"
     ErrorLog "logs/www.jadyer.com-error.log"
@@ -107,7 +107,7 @@ worker.tomcat.port=8009
     JkUnMount /css/*  tomcat
     JkUnMount /js/*   tomcat
     JkUnMount /lib/*  tomcat
-/</VirtualHost>
+\</VirtualHost>
 ```
 
 # 监控JK连接状态
