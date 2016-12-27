@@ -124,14 +124,14 @@ worker.tomcat.port=8009
 
 1. 修改httpd-vhosts.conf，在`<Directory/>`标签下新增如下内容
 
-   > ```xml
-\<Location /jkstatus>
+   > ```sh
+ <Location /jkstatus>
     Options MultiViews
     AuthType Basic               #Basic验证
     AuthName "Auther Center"     #弹出框的提示
     AuthUserFile conf/.htpasswd  #存放密码的位置
     require valid-user granted   #只有.htpasswd文件里面的用户才能进入
-\</Location>
+ </Location>
 ```
 
 2. 生成密码文件<br>
