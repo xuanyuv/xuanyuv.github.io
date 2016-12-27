@@ -131,7 +131,7 @@ worker.tomcat.port=8009
     AuthName "Auther Center"     #弹出框的提示
     AuthUserFile conf/.htpasswd  #存放密码的位置
     require valid-user granted   #只有.htpasswd文件里面的用户才能进入
-</Location>
+\</Location>
 ```
 
 2. 生成密码文件<br>
