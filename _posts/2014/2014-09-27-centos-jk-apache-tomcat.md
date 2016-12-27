@@ -63,13 +63,13 @@ Apache的安装过程详见：[https://jadyer.github.io/2014/09/26/centos-instal
 
 1. 修改/app/apache/conf/httpd.conf
 
-```
+   > ```
 开启虚拟主机：取消注释Include conf/extra/httpd-vhosts.conf
 添加JK配置：增加一行Include conf/extra/httpd-jk.conf
 ```
 
 2. 创建/app/apache/conf/extra/httpd-jk.conf，内容如下<br>
-
+   >
 ```
 LoadModule jk_module modules/mod_jk.so<br>
 JkWorkersFile conf/workers.properties<br>
