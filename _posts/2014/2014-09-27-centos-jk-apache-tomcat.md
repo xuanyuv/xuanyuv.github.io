@@ -61,7 +61,7 @@ AJP协议是为Tomcat与HTTP服务器之间通信而定制的协议，能够提�
 
 Apache的安装过程详见：[https://jadyer.github.io/2014/09/26/centos-install-apache/](https://jadyer.github.io/2014/09/26/centos-install-apache/)
 
-1、修改/app/apache/conf/httpd.conf
+1. 修改/app/apache/conf/httpd.conf
 
 ```ruby
 #开启虚拟主机
@@ -70,7 +70,7 @@ Apache的安装过程详见：[https://jadyer.github.io/2014/09/26/centos-instal
 增加一行Include conf/extra/httpd-jk.conf
 ```
 
-2、创建/app/apache/conf/extra/httpd-jk.conf，内容如下
+2. 创建/app/apache/conf/extra/httpd-jk.conf，内容如下
 
 ```
 LoadModule jk_module modules/mod_jk.so
@@ -114,7 +114,7 @@ worker.tomcat.port=8009
 
 # 监控JK连接状态
 
-通过jkstatus可以监控JK-1.2.40连接状态，不过需要我们配置一下jkstatus
+通过jkstatus可以监控JK-1.2.40连接状态，不过需要配置一下jkstatus，方法如下
 
 1. 修改workers.properties，添加以下两行内容<br>
    worker.list=status（实际上是worker.list=status,tomcat）<br>
