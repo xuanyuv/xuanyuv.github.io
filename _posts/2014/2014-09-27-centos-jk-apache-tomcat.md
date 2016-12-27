@@ -88,8 +88,8 @@ worker.tomcat.port=8009
 
 4. 修改/app/apache/conf/extra/httpd-vhosts.conf，增加以下内容（可用**#**号注释掉原有的两个`<VirtualHost *:80/>`默认配置）
 
-   > ```ruby
-<VirtualHost *:80>
+   > ```xml
+/<VirtualHost *:80>
     ServerName "www.jadyer.com"
     DocumentRoot "/app/tomcat/webapps/docs"
     ErrorLog "logs/www.jadyer.com-error.log"
@@ -107,7 +107,7 @@ worker.tomcat.port=8009
     JkUnMount /css/*  tomcat
     JkUnMount /js/*   tomcat
     JkUnMount /lib/*  tomcat
-</VirtualHost>
+/</VirtualHost>
 ```
 
 # 监控JK连接状态
@@ -125,13 +125,13 @@ worker.tomcat.port=8009
 1. 修改httpd-vhosts.conf，在`<Directory/>`标签下新增如下内容
 
    > ```sh
-&gt;Location /jkstatus>
+\<Location /jkstatus>
     Options MultiViews
     AuthType Basic               #Basic验证
     AuthName "Auther Center"     #弹出框的提示
     AuthUserFile conf/.htpasswd  #存放密码的位置
     require valid-user granted   #只有.htpasswd文件里面的用户才能进入
-&gt;/Location>
+\</Location>
 ```
 
 2. 生成密码文件<br>
