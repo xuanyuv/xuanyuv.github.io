@@ -8,14 +8,14 @@
     *zoom: 1;
 }
 .page {
-    width: 97%;
     //width: 1140px;
+    width: 97%;
     box-sizing: border-box;
     margin: 0 auto;
     // word-break: break-all;
     .left {
-        width: 78%;
         //width: 75%;
+        width: 78%;
         float: left;
         padding: 20px 30px;
         line-height: 1.6;
@@ -93,8 +93,8 @@
     }
     .right {
         float: left;
-        width: 22%;
         //width: 25%;
+        width: 22%;
         padding-left: 20px;
         top: 0;
         .fixed {

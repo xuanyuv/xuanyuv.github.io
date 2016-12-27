@@ -20,7 +20,7 @@ layout: default
             {% for post in paginator.posts %}
               <li>
                 <h2>
-                  <a class="post-link" style="font-size:20px;" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                  <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
                 </h2>
                 <div class="label">
                     博文发表日期
@@ -106,7 +106,7 @@ layout: default
                     分类目录
                 </div>
                 <ul class="content-ul" cate>
-                    {% for category in site.categories order:ascending %}
+                    {% for category in site.categories %}
                     <li>
                         <a href="{{ root_url }}/{{ site.category_dir }}#{{ category | first }}" class="categories-list-item" cate="{{ category | first }}">
                             <span class="name">
@@ -139,7 +139,7 @@ layout: default
 
                     {% if max == min %}
                         {% assign diff = 1 %}
-                    {% else %}    
+                    {% else %}
                         {% assign diff = max | minus: min %}
                     {% endif %}
 
