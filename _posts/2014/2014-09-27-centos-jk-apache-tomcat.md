@@ -69,6 +69,7 @@ Apache的安装过程详见：[https://jadyer.github.io/2014/09/26/centos-instal
 ```
 
 2. 创建/app/apache/conf/extra/httpd-jk.conf，内容如下
+
    > ```
 LoadModule jk_module modules/mod_jk.so
 JkWorkersFile conf/workers.properties
@@ -77,6 +78,7 @@ JkLogLevel info
 ```
 
 3. 创建/app/apache/conf/workers.properties，内容如下
+
    > ```
 worker.list=tomcat
 worker.tomcat.type=ajp13
