@@ -149,13 +149,13 @@ while(e.hasMoreElements()){
 # 注意事项
 
 1. java.net.BindException: Cannot assign requested address; No faulty members identified<br>
-   启动tomcat时报告上面的异常<br>
-   猜测可能是由于tomcat安装在我的虚拟机中，该属性导致其与我的主机（Thinkpad笔记本）的IP产生冲突<br>
+   启动 tomcat 时报告上面的异常<br>
+   猜测可能是由于 tomcat 安装在我的虚拟机中，该属性导致其与我的主机（Thinkpad笔记本）的IP产生冲突<br>
    此时修改`tomcat/conf/server.xml--><Receiver address="auto">`的auto为`192.168.0.103`（即tomcat服务器IP）即可<br>
    如果还报这个异常，可以试一下`address="127.0.0.1"`
 2. 如果仍然启动失败，或者启动成功，但无法实现session共享，那么有可能是组播出现了问题<br>
-   因为tomcat中的集群原理是通过组播的方式进行节点的查找并使用TCP连接进行会话的复制的<br>
-   即tomcat的session同步功能需要用到组播服务<br>
+   因为 tomcat 中的集群原理是通过组播的方式进行节点的查找并使用 TCP 连接进行会话的复制的<br>
+   即 tomcat 的 session 同步功能需要用到组播服务<br>
    可以通过`route add -net 224.0.0.0 netmask 240.0.0.0 dev eth0`命令开通Linux组播服务<br>
-   如果需要服务器启动时即开通组播，则需`/etc/sysconfig/static-routes`文件中加入`eht0 net 224.0.0.0 netmask 240.0.0.0`<br>
+   若需服务器启动时即开通组播，可以在`/etc/sysconfig/static-routes`文件中加入`eht0 net 224.0.0.0 netmask 240.0.0.0`<br>
    另外，可以通过`netstat -g`或者`route -e`命令来查看组播状态
