@@ -86,7 +86,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 
 如果其中包含`mod_so.c`，则说明apache具备了动态加载模块的功能
 
-比如说想新增加一个模块，那么就不用再编译一次apache了，只要编译一下这个模块，再在配置文件里面load进去就行了
+比如说想新增加一个模块，那么就不用再编译一次apache，只要编译一下这个模块，再在配置文件里面 load 进去就行了
 
 并且：由于 /app/apache/bin/httpd 支持很多参数，容易搞混
 
@@ -96,7 +96,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 
 而在 **apache2.2** 版本，直接执行`apachectl start`即可启动并支持SSL
 
-当然前提是在httpd.conf中配置`Include conf/extra/httpd-ssl.conf`
+当然前提是在 httpd.conf 中配置`Include conf/extra/httpd-ssl.conf`
 
 ```sh
 [root@CentOS64 bin]# /app/apache/bin/apachectl start
@@ -110,7 +110,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
    httpd: Could not reliably determine the server's fully qualified domain name, using 192.168.0.103 for ServerName<br>
    解决办法是修改 /app/apache/conf/httpd.conf，取消注释`#ServerName www.example.com:80`，再重启apache就看到效果了
 2. apache启动后通过电脑访问：[http://192.168.0.102/](http://192.168.0.102/)，发现无法访问（成功访问时页面会显示"It works!"）<br>
-   解决办法是修改/etc/sysconfig/iptables，增加一行：-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT<br>
+   解决办法是修改 /etc/sysconfig/iptables，增加一行：-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT<br>
    注意：这一样要添加到默认的22端口规则的下面，若添加到 iptables 文件的尾部，会有可能导致防火墙启动失败<br>
    接着再执行：`service iptables restart`命令重启防火墙即可，不需要重启Linux<br>
    详细原理描述见：[https://jadyer.github.io/2013/09/07/centos-config-develop/](https://jadyer.github.io/2013/09/07/centos-config-develop/)
