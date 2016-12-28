@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CentOS中通过JK整合Apache与Tomcat"
+title: "Tomcat与Apache整合"
 categories: Tomcat
 tags: centos apache tomcat jk
 author: 玄玉
@@ -141,4 +141,4 @@ worker.tomcat.port=8009
 4. 删除用户：`htpasswd -D .htpasswd 用户名`
 5. 最后重启apache就可以了，下面是效果图
 
-![](/img/2014/2014-09-27-centos-jk-apache-tomcat.png)
+![](/img/2014/2014-09-27-tomcat-apache-jk.png)

@@ -23,7 +23,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29配置请求转发的方�
 
 本文是建立在源码安装Apache-2.2.29基础上的，安装过程详见：[https://jadyer.github.io/2014/09/26/centos-install-apache/](https://jadyer.github.io/2014/09/26/centos-install-apache/)
 
-*另外，关于Apache与Tomcat的整合*，详见：[https://jadyer.github.io/2014/09/27/centos-jk-apache-tomcat/](https://jadyer.github.io/2014/09/27/centos-jk-apache-tomcat/)
+*另外，关于Apache与Tomcat的整合*，详见：[https://jadyer.github.io/2014/09/27/tomcat-apache-jk/](https://jadyer.github.io/2014/09/27/tomcat-apache-jk/)
 
 # 概述
 
