@@ -67,15 +67,9 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 [root@CentOS64 httpd-2.2.29]# make install
 ```
 
-# Apache的目录结构
+# 访问Apache
 
-其实apache的可执行文件就一个：**httpd**，它就是apache的主程序
-
-使用`/app/apache/bin/httpd -l`命令可以查看apache编译了多少模块，即列出它支持的所有模块
-
-如果其中包含`mod_so.c`，则说明apache具备了动态加载模块的功能
-
-比如说想新增加一个模块，那么就不用再编译一次apache了，只要编译一下这个模块，再在配置文件里面load进去就行了
+下面是Apache的目录结构
 
 * bin：可执行文件
 * conf：配置文件(apache只有一个配置文件)
@@ -86,15 +80,21 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 * manual：联机文档
 * modules：存放一些编译好的模块，供apache启动时动态加载
 
-# 访问Apache
+其实apache的可执行文件就一个：**httpd**，它就是apache的主程序
 
-由于`/app/apache/bin/`目录下的apache主程序httpd支持很多参数，容易搞混
+通过`/app/apache/bin/httpd -l`命令可以查看apache编译了多少模块（即列出它支持的所有模块）
 
-为了方便用户，apache提供了一个名为apachectl的启动脚本（它也是位于/app/apache/bin/目录下的）
+如果其中包含`mod_so.c`，则说明apache具备了动态加载模块的功能
 
-启动apache时，在**apache2.0**版本中，若想启动支持SSL的apache，则需执行`apachectl startssl`命令
+比如说想新增加一个模块，那么就不用再编译一次apache了，只要编译一下这个模块，再在配置文件里面load进去就行了
 
-而在**2.2**中，直接执行`apachectl start`即可启动并支持SSL
+并且：由于 /app/apache/bin/httpd 支持很多参数，容易搞混
+
+所以：为了方便用户，apache提供了一个名为 /app/apache/bin/apachectl 的启动脚本
+
+启动apache时：在 **apache2.0** 版本中，若想启动支持SSL的apache，则需执行`apachectl startssl`命令
+
+而在 **apache2.2** 版本，直接执行`apachectl start`即可启动并支持SSL
 
 当然前提是在httpd.conf中配置`Include conf/extra/httpd-ssl.conf`
 
@@ -108,16 +108,16 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 
 1. 启动或重启apache时，控制台会打印下面的信息<br>
    httpd: Could not reliably determine the server's fully qualified domain name, using 192.168.0.103 for ServerName<br>
-   解决办法是修改`/app/apache/conf/httpd.conf`，取消注释`#ServerName www.example.com:80`，再重启apache就看到效果了
-2. apache启动后通过电脑访问`http://192.168.0.102/`，发现无法访问（成功访问时页面会显示"It works!"）<br>
-   解决办法是修改`/etc/sysconfig/iptables`，增加一行：-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT<br>
-   注意：这一样要添加到默认的22端口规则的下面，若添加到iptables文件的尾部，会有可能导致防火墙启动失败<br>
+   解决办法是修改 /app/apache/conf/httpd.conf，取消注释`#ServerName www.example.com:80`，再重启apache就看到效果了
+2. apache启动后通过电脑访问：[http://192.168.0.102/](http://192.168.0.102/)，发现无法访问（成功访问时页面会显示"It works!"）<br>
+   解决办法是修改/etc/sysconfig/iptables，增加一行：-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT<br>
+   注意：这一样要添加到默认的22端口规则的下面，若添加到 iptables 文件的尾部，会有可能导致防火墙启动失败<br>
    接着再执行：`service iptables restart`命令重启防火墙即可，不需要重启Linux<br>
    详细原理描述见：[https://jadyer.github.io/2013/09/07/centos-config-develop/](https://jadyer.github.io/2013/09/07/centos-config-develop/)
-3. `/app/apache/htdocs/`中默认的index.html不存在时，访问apache会显示htdocs目录下的文件列表<br>
+3. /app/apache/htdocs/ 中默认的 index.html 不存在时，访问apache会显示 htdocs 目录下的文件列表<br>
    我们可以设置其不显示文件列表<br>
-   解决办法是修改`/app/apache/conf/httpd.conf`，注释掉**Options Indexes FollowSymLinks**这一行即可<br>
+   解决办法是修改 /app/apache/conf/httpd.conf，注释掉**Options Indexes FollowSymLinks**这一行即可<br>
    然后再访问[http://192.168.0.102/](http://192.168.0.102/)，就会看到熟悉的：Forbidden:You don't have permission to access / on this server.
 4. 如果想把apache加入系统自启动<br>
    常见的方法有两种：修改配置文件和将apache注册为系统服务（还有一种是在`ntsysv`命令调出的图形界面中操作的）<br>
-   修改配置文件的方式最简单：`/etc/rc.d/rc.local`文件尾部加入`/app/apache/bin/apachectl start`即可
+   修改配置文件的方式最简单：/etc/rc.d/rc.local 文件尾部加入`/app/apache/bin/apachectl start`即可
