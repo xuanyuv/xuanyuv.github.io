@@ -65,38 +65,38 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现集
 由于我们这里有三个tomcat节点，故这个端口就依次修改为4001、4002、4003
 之所以没有修改为4100、4200、4300，是由于Tomcat官方建议此端口范围在4000~4100之间
 -->
-<Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster" channelSendOptions="8">
-    <Manager className="org.apache.catalina.ha.session.DeltaManager"
+\<Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster" channelSendOptions="8">
+    \<Manager className="org.apache.catalina.ha.session.DeltaManager"
         expireSessionsOnShutdown="false"
         notifyListenersOnReplication="true"/>
-    <Channel className="org.apache.catalina.tribes.group.GroupChannel">
-        <Membership className="org.apache.catalina.tribes.membership.McastService"
+    \<Channel className="org.apache.catalina.tribes.group.GroupChannel">
+        \<Membership className="org.apache.catalina.tribes.membership.McastService"
             address="228.0.0.4"
             port="45564"
             frequency="500"
             dropTime="3000"/>
-        <Receiver className="org.apache.catalina.tribes.transport.nio.NioReceiver"
+        \<Receiver className="org.apache.catalina.tribes.transport.nio.NioReceiver"
             address="auto"
             port="4000"
             autoBind="100"
             selectorTimeout="5000"
             maxThreads="6"/>
-        <Sender className="org.apache.catalina.tribes.transport.ReplicationTransmitter">
-            <Transport className="org.apache.catalina.tribes.transport.nio.PooledParallelSender"/>
-        </Sender>
-        <Interceptor className="org.apache.catalina.tribes.group.interceptors.TcpFailureDetector"/>
-        <Interceptor className="org.apache.catalina.tribes.group.interceptors.MessageDispatch15Interceptor"/>
-    </Channel>
-    <Valve className="org.apache.catalina.ha.tcp.ReplicationValve" filter=""/>
-    <Valve className="org.apache.catalina.ha.session.JvmRouteBinderValve"/>
-    <Deployer className="org.apache.catalina.ha.deploy.FarmWarDeployer"
+        \<Sender className="org.apache.catalina.tribes.transport.ReplicationTransmitter">
+            \<Transport className="org.apache.catalina.tribes.transport.nio.PooledParallelSender"/>
+        \</Sender>
+        \<Interceptor className="org.apache.catalina.tribes.group.interceptors.TcpFailureDetector"/>
+        \<Interceptor className="org.apache.catalina.tribes.group.interceptors.MessageDispatch15Interceptor"/>
+    \</Channel>
+    \<Valve className="org.apache.catalina.ha.tcp.ReplicationValve" filter=""/>
+    \<Valve className="org.apache.catalina.ha.session.JvmRouteBinderValve"/>
+    \<Deployer className="org.apache.catalina.ha.deploy.FarmWarDeployer"
         tempDir="/tmp/war-temp/"
         deployDir="/tmp/war-deploy/"
         watchDir="/tmp/war-listen/"
         watchEnabled="false"/>
-    <ClusterListener className="org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener"/>
-    <ClusterListener className="org.apache.catalina.ha.session.ClusterSessionListener"/>
-</Cluster>
+    \<ClusterListener className="org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener"/>
+    \<ClusterListener className="org.apache.catalina.ha.session.ClusterSessionListener"/>
+\</Cluster>
 ```
 
 # 修改应用程序
