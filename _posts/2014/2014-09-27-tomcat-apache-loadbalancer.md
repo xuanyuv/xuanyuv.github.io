@@ -11,7 +11,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现负
 {:toc}
 
 
-本文使用的相关版本为：`CentOS-6.4-minimal`、`Apache-2.2.29`、`Tomcat-6.0.41`
+本文涉及的相关环境和版本为：`CentOS-6.4-minimal`、`Apache-2.2.29`、`Tomcat-6.0.41`
 
 本文建立在Apache-2.2.29与Tomcat-6.0.41整合的基础上
 

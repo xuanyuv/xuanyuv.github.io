@@ -11,7 +11,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 {:toc}
 
 
-本文使用的相关版本为：`CentOS-6.4-minimal`、`Apache-2.2.29`，**安装方式为源码安装**
+本文涉及的相关环境和版本为：`CentOS-6.4-minimal`、`Apache-2.2.29`，**安装方式为源码安装**
 
 源码安装软件时，通常有以下三个步骤
 

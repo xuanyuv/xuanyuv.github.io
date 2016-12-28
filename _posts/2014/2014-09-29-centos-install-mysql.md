@@ -11,7 +11,7 @@ excerpt: 详细介绍了CentOS-6.4-minimal版中源码安装MySQL-5.5.38的细�
 {:toc}
 
 
-本文使用的相关版本为：`CentOS-6.4-minimal`、`MySQL-5.5.38`
+本文涉及的相关环境和版本为：`CentOS-6.4-minimal`、`MySQL-5.5.38`
 
 安装MySQL，通常有以下三种方式
 

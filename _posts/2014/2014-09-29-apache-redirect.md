@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CentOS中的Apache配置请求转发"
+title: "Apache配置请求转发"
 categories: Tomcat
 tags: centos apache tomcat
 author: 玄玉
@@ -10,6 +10,8 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29配置请求转发的方�
 * content
 {:toc}
 
+
+本文涉及的相关环境和版本为：`CentOS-6.4-minimal`、`Apache-2.2.29`
 
 # 前言
 
@@ -44,7 +46,7 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 
 # 配置
 
-这里详细描述一下具体怎么配置
+下面详细描述一下具体怎么配置
 
 首先执行以下命令
 

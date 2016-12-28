@@ -11,7 +11,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中通过JK-1.2.40整合Apache-2.2.29与T
 {:toc}
 
 
-本文使用的相关版本为：`CentOS-6.4-minimal`、`Apache-2.2.29`、`Tomcat-6.0.41`、`JK-1.2.40`
+本文涉及的相关环境和版本为：`CentOS-6.4-minimal`、`Apache-2.2.29`、`Tomcat-6.0.41`、`JK-1.2.40`
 
 # AJP
 

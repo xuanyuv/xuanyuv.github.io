@@ -11,7 +11,7 @@ excerpt: 主要介绍CentOS-6.4-DVD系统中安装Oracle-11.2.0.4，以及RLwrap
 {:toc}
 
 
-本文涉及的相关环境为：`CentOS-6.4-DVD`和`Oracle-11.2.0.4`
+本文涉及的相关环境和版本为：`CentOS-6.4-DVD`、`Oracle-11.2.0.4`
 
 # 前言
 
