@@ -2,7 +2,7 @@
 layout: post
 title: "Tomcat与Apache配置负载均衡"
 categories: Tomcat
-tags: tomcat apache loadbalancer
+tags: tomcat apache
 author: 玄玉
 excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现负载均衡的配置、以及验证的方法。
 ---
