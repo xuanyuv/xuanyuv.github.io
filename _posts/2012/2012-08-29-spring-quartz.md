@@ -13,10 +13,10 @@ excerpt: 描述Spring应用中，通过quartz框架实现作业调度功能的�
 
 本文涉及的相关环境和版本为：`Spring-2.x`、`Quartz-1.x`
 
-2013-10-16 更新如下内容
+* *2013-10-16 更新：*
 
     > 像本文这种配置之后，启动Web应用，即便是只部署一个应用实例，也有可能定时任务被执行了两次<br>
-      这通常是由于applicationContext.xml被初始化两次导致，所以检查以下web.xml就看到了
+这通常是由于applicationContext.xml被初始化两次导致，所以检查以下web.xml就看到了
 
 下面直接演示代码（這里只把核心的几块贴出来）
 
@@ -80,7 +80,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ecpay.cus.service.JFBBusinessManager;
 
 /**
- * 信息推送
+ * 信息推送之作业调度类
  * Created by 玄玉<https://jadyer.github.io/> on 2012/05/04 12:50.
  */
 @Transactional
