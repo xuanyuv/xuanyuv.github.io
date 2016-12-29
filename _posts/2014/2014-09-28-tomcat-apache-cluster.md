@@ -61,7 +61,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现集
 
     > ```xml
 <!--
-我们要做的就是显式添加此默认配置，并修改里面的Receiver port
+我们要做的就是显式添加此默认配置，并修改里面的<Receiver port="">
 由于我们这里有三个tomcat节点，故这个端口就依次修改为4001、4002、4003
 之所以没有修改为4100、4200、4300，是由于Tomcat官方建议此端口范围在4000~4100之间
 -->
@@ -102,7 +102,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现集
 # 修改应用程序
 
 1. Session中存放的数据必须实现序列化
-2. web.xml中加入<distributable/>标签
+2. web.xml中加入`<distributable/>`标签
 
 # 测试集群
 
