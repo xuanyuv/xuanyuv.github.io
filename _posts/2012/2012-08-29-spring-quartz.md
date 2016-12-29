@@ -14,7 +14,7 @@ excerpt: 描述Spring应用中，通过quartz框架实现作业调度功能的�
 * *2013-10-16 更新如下内容：*
 
     > 像本文这种配置之后，启动Web应用，即便是只部署一个应用实例，也有可能定时任务被执行了两次<br>
-这通常是由于applicationContext.xml被初始化两次导致，所以检查以下web.xml就看到了
+这通常是由于 applicationContext.xml 被初始化两次导致，所以检查以下 web.xml 里面的配置就行了
 
 本文涉及的相关环境和版本为：`Spring-2.x`、`Quartz-1.x`
 
