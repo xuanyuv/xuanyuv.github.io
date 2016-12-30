@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Spring集成Quartz实现作业调度"
+title: "Spring集成Quartz"
 categories: Spring
 tags: spring quartz
 author: 玄玉
@@ -18,7 +18,7 @@ excerpt: 描述Spring应用中，通过quartz框架实现作业调度功能的�
 
 本文涉及的相关环境和版本为：`Spring-2.x`、`Quartz-1.x`
 
-下面直接演示代码（這里只把核心的几块贴出来）
+下面直接演示Spring集成Quartz实现作业调度功能的核心代码
 
 首先是`applicationContext.xml`
 
