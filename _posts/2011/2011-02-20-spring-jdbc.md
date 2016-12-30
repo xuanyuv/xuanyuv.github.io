@@ -34,20 +34,21 @@ minIdle=1
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
     <!-- 也可通过下面的方式引入配置文件中的属性 -->
+    <!-- 关于appenv.active配置可参考https://jadyer.github.io/2010/11/10/tomcat-config/ -->
     <!--
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
         <property name="ignoreResourceNotFound" value="false"/>
         <property name="locations">
             <list>
-                <value>classpath:config-${spring.profiles.active}.properties</value>
+                <value>classpath:config-${appenv.active}.properties</value>
                 <value>file:/app/wzf/password/ElecChnlPayCusPassword.properties</value>
             </list>
         </property>
     </bean>
     -->
     <!-- 将jdbc.properties中的值引入到配置文件中 -->
-    <context:property-placeholder location="classpath:jdbc.properties" />
+    <context:property-placeholder location="classpath:jdbc.properties"/>
 
     <!-- 配置数据源 -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">

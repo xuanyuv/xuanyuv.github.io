@@ -149,3 +149,84 @@ Connection conn = ds.getConnection();
 //这种方式获取的Connection对象在使用完后，必须在程序中显式调用该对象的close()方法，释放资源
 //即将当前的Connection对象再返回到连接池中，而并不是真正的关闭其相应的到数据库的连接
 ```
+
+# 配置运行环境变量
+
+先说一下配置Tomcat启动参数的方法
+
+通常在 catalina.sh 第97行增加如下参数配置（也就是`# OS specific support.  $var _must_ be set to either true or false.`的上一行）
+
+```ruby
+JAVA_OPTS="-server -Xms512M -Xmx1024M -Xmn192M -XX:NewSize=64m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC"
+```
+
+而配置运行的环境变量，就是要在 JAVA_OPTS 上面做文章
+
+Tomcat 启动时会通过 catalina.sh 来读取当前目录下的 setenv.sh
+
+所以，我们就可以在 setenv.sh 中配置一些参数，使得应用可以在 **开发／测试／集成／线上** 等环境加载不同的配置文件
+
+做法就是：直接在 /apache-tomcat-6.0.20/bin/ 目录中新建 setenv.sh 文件，内容如下
+
+```ruby
+JAVA_OPTS="$JAVA_OPTS -Dappenv.active=dev"
+```
+
+然后就可以在 Spring 配置文件或者我们自己写的工具类中，读取这个环境变量，实现不同环境加载不同配置文件的目的
+
+下面简单分别列举一下配置方式
+
+这是 Spring 配置文件的写法
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="ignoreResourceNotFound" value="false"/>
+        <property name="locations">
+            <list>
+                <!-- 自动读取Tomcat启动时配置的环境变量参数 -->
+                <value>classpath:config-${appenv.active}.properties</value>
+                <value>file:/app/wzf/password/ElecChnlPayCusPassword.properties</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <!-- 这里的两个值就是配置在properties文件中的键 -->
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+</beans>
+```
+
+这是工具类的写法
+
+```java
+package com.jadyer.demo.util;
+import java.io.IOException;
+import java.util.Properties;
+
+public enum ConfigUtil {
+	INSTANCE;
+
+	private Properties config;
+
+	ConfigUtil(){
+		config = new Properties();
+		try {
+			config.load(ConfigUtil.class.getResourceAsStream("/config-"+System.getProperty("appenv.active")+".properties"));
+		} catch (IOException e) {
+			throw new ExceptionInInitializerError("加载系统配置文件失败...");
+		}
+	}
+
+	public String getProperty(String key){
+		return config.getProperty(key);
+	}
+
+	public int getPropertyForInt(String key){
+		return Integer.parseInt(config.getProperty(key));
+	}
+}
+```
