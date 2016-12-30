@@ -74,10 +74,6 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
 </web-app>
 ```
 
@@ -97,7 +93,12 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
     经过下面的配置，该标签的作用就是：所有页面中引用"/css/**"的资源，都会从"/resources/styles/"里面找
     我们可以访问http://IP:8080/xxx/css/my.css和http://IP:8080/xxx/resources/styles/my.css对比出来
     -->
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/img/**" location="/img/"/>
     <mvc:resources mapping="/css/**" location="/resources/styles/"/>
+    <mvc:resources mapping="/druid" location="/druid/index.html"/>
+    <mvc:resources mapping="/MP_verify_BJ6Y9M1T1nabcdef.txt" location="/MP_verify_BJ6Y9M1T1nabcdef.txt" />
+    <mvc:view-controller path="/" view-name="forward:/login.jsp"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--
