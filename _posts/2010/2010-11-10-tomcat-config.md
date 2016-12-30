@@ -215,7 +215,7 @@ public enum ConfigUtil {
     ConfigUtil(){
         config = new Properties();
         try{
-            config.load(ConfigUtil.class.getResourceAsStream("/config-" + System.getProperty("appenv.active") + ".properties"));
+            config.load(ConfigUtil.class.getResourceAsStream("/config-"+System.getProperty("appenv.active")+".properties"));
         }catch(IOException e){
             throw new ExceptionInInitializerError("加载系统配置文件失败...");
         }
