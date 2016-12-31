@@ -129,11 +129,13 @@ $ git checkout -b develop origin/develop
 
 ## 提交本地新项目到Gitlab
 
-```
+```bash
 $ cd existing_folder
 $ git init
 $ cd .git/
 $ git config --local user.name 'jadyer' && git config --local user.email 'jadyer@yeah.net'
+# 解决提交文件时报告warning: LF will be replaced by CRLF的问题
+# $ git config --local core.autocrlf false
 $ cd ..
 $ git remote add origin git@git.yourcompany.cn:open/mpp.git
 $ git pull origin master
