@@ -130,11 +130,13 @@ $ git checkout -b develop origin/develop
 ## 提交本地新项目到Gitlab
 
 ```
-$ git config --global user.name "玄玉"
-$ git config --global user.email "jadyer@yeah.net"
 $ cd existing_folder
 $ git init
+$ cd .git/
+$ git config --local user.name 'jadyer' && git config --local user.email 'jadyer@yeah.net'
+$ cd ..
 $ git remote add origin git@git.yourcompany.cn:open/mpp.git
+$ git pull origin master
 $ git add .
 $ git commit -a -m "init commit"
 $ git push -u origin master
