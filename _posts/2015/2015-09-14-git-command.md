@@ -29,25 +29,36 @@ $ git config --local user.name 'xuanyu' && git config --local user.email 'xuanyu
 
 # 生成供gitlab使用的ssh key
 $ ssh-keygen -t rsa -f ~/.ssh/id_rsa.gitlab -C "xuanyu@company.com"
+# 生成供git.oschina使用的ssh key
+$ ssh-keygen -t rsa -f ~/.ssh/id_rsa.gitoschina -C "jadyer@yeah.net"
 # 生成供github使用的默认的ssh key
 $ ssh-keygen -t rsa -C "jadyer@yeah.net"
 ```
 
-再看~/.ssh/目录下（Windows一般为`C:\Users\Jadyer\.ssh\`）有没有config文件
+再看 **~/.ssh/** 目录下（Windows一般为`C:\Users\Jadyer\.ssh\`）有没有config文件
 
-若没有，就新建`touch ~/.ssh/config`，并添加如下内容
+若没有，就新建 `touch ~/.ssh/config`，并添加如下内容
 
 ```
+Host git.oschina.net
+     IdentityFile ~/.ssh/id_rsa.gitoschina
+     User jadyer
+
 Host gitlab.company.com
      IdentityFile ~/.ssh/id_rsa.gitlab
      User xuanyu
 ```
 
-然后将publicKey上传到github（id_rsa.pub）和gitlab（id_rsa.gitlab.pub），再执行下面命令验证是否OK
+然后将 publicKey 分别上传 github（id_rsa.pub）、git.oschina.net（id_rsa.gitoschina.pub）、gitlab（id_rsa.gitlab.pub）
+
+再执行下面的命令，进行验证
 
 ```
 $ ssh -T git@github.com
 Hi jadyer! You've successfully authenticated, but GitHub does not provide shell access.
+
+$ ssh -T git@git.oschina.net
+Welcome to Git@OSC, 玄玉!
 
 $ ssh -T git@gitlab.company.com
 Welcome to GitLab, 玄玉!
