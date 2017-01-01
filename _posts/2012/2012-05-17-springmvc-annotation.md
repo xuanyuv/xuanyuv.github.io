@@ -223,7 +223,7 @@ public class UserController {
      * 若想上传多个文件，则这里就要用MultipartFile[]类型来接收文件，且需指定@RequestParam
      * 上传多个文件时：前台表单中的所有文件域都要写为<input type="file" name="myfiles"/>
      * 并且表单类型为：<form action="${ctx}/mydemo/upload" method="POST" enctype="multipart/form-data">
-     * 但如果前台用的是ajaxfileupload.js这种类似的组件，那就不需要显式的编写表单了，按照组件要求来提交文件就行了
+     * 但如果前台用的是ajaxfileupload.js这种类似的组件，那就不需要显式的编写表单了，按照组件要求提交文件就行了
      */
     @RequestMapping(value="/upload")
     public String upload(String uname, @RequestParam MultipartFile[] myfiles, HttpServletResponse response) throws IOException{
