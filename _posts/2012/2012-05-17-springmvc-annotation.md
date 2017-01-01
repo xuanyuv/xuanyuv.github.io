@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "SpringMVC及其注解的用法"
+title: "SpringMVC常用的配置和注解"
 categories: Spring
 tags: spring springmvc
 author: 玄玉
@@ -11,7 +11,7 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
 {:toc}
 
 
-这里只贴比较核心的，需要关注的配置，以及各种常用注解的写法
+这里只列举比较常用的，需要关注的配置，以及各种注解的写法
 
 首先是 `web.xml`
 
