@@ -52,6 +52,21 @@ excerpt: 介绍了SpringMVC-3.2.4整合Ehcache-2.7.4的方法。
 
 下面正式演示 `SpringMVC-3.2.4` 整合 `Ehcache-2.7.4` 的完整例子（没有使用ehcache-spring-annotations）
 
+本示例用到的jar如下
+
+ * aopalliance.jar
+ * commons-logging-1.1.2.jar
+ * ehcache-2.7.4.jar
+ * slf4j-api-1.7.5.jar
+ * spring-aop-3.2.4.RELEASE.jar
+ * spring-beans-3.2.4.RELEASE.jar
+ * spring-context-3.2.4.RELEASE.jar
+ * spring-context-support-3.2.4.RELEASE.jar
+ * spring-core-3.2.4.RELEASE.jar
+ * spring-expression-3.2.4.RELEASE.jar
+ * spring-web-3.2.4.RELEASE.jar
+ * spring-webmvc-3.2.4.RELEASE.jar
+
 首先是 `web.xml`
 
 ```xml
@@ -227,19 +242,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.jadyer.service.UserService;
 
 /**
- * 这里用到的jar如下
- * aopalliance.jar
- * commons-logging-1.1.2.jar
- * ehcache-2.7.4.jar
- * slf4j-api-1.7.5.jar
- * spring-aop-3.2.4.RELEASE.jar
- * spring-beans-3.2.4.RELEASE.jar
- * spring-context-3.2.4.RELEASE.jar
- * spring-context-support-3.2.4.RELEASE.jar
- * spring-core-3.2.4.RELEASE.jar
- * spring-expression-3.2.4.RELEASE.jar
- * spring-web-3.2.4.RELEASE.jar
- * spring-webmvc-3.2.4.RELEASE.jar
  * Created by 玄玉<https://jadyer.github.io/> on 2013/10/03 18:22.
  */
 @Controller
