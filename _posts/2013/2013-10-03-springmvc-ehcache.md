@@ -52,7 +52,7 @@ excerpt: 介绍了SpringMVC-3.2.4整合Ehcache-2.7.4的方法。
 
 下面正式演示 `SpringMVC-3.2.4` 整合 `Ehcache-2.7.4` 的完整例子（没有使用ehcache-spring-annotations）
 
-本示例用到的jar如下
+本示例用到的所有 jar 如下
 
  * aopalliance.jar
  * commons-logging-1.1.2.jar
