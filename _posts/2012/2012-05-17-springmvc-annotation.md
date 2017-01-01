@@ -241,7 +241,7 @@ public class UserController {
                 System.out.println("文件名称：" + myfile.getName());
                 System.out.println("文件长度：" + myfile.getSize());
                 System.out.println("文件类型：" + myfile.getContentType());
-                System.out.println("===================================================);
+                System.out.println("===================================================");
                 //以下两种方式都能实现文件的保存
                 //myfile.transferTo(new File(""));
                 //FileUtils.copyInputStreamToFile(myfile.getInputStream(), new File(""));
