@@ -104,13 +104,27 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
         <!--
         viewClass属性可以用来指定前台在解析数据时，所允许采用的手段。实际上其默认值就是JstlView
         将来有需要的话，就可以在这里把JstlView改成其它的，如FreeMarkerView,VelocityView,TilesView
-        -->
-        <!--
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         -->
         <!-- 若Controller的方法返回"user/addSuccess"，则SpringMVC会自动找/WEB-INF/jsp/user/addSuccess.jsp -->
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 指定上传文件总大小不能超过800KB（注意maxUploadSize的限制不是针对单个文件，而是所有文件的总容量） -->
+        <property name="maxUploadSize" value="800000"/>
+    </bean>
+    <!-- SpringMVC在超出上传文件限制时，会抛出org.springframework.web.multipart.MaxUploadSizeExceededException -->
+    <!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到具体的业务Controller方法中 -->
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <!-- 设置遇到MaxUploadSizeExceededException异常时，自动跳转到/WEB-INF/jsp/error_fileupload.jsp页面 -->
+                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error_fileupload</prop>
+            </props>
+        </property>
     </bean>
 </beans>
 ```
@@ -124,13 +138,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
@@ -204,6 +216,40 @@ public class UserController {
         //两种写法都要写绝对路径（SpringMVC都会为其自动添加应用上下文）
         //return "redirect:/mydemo/eat";
         return InternalResourceViewResolver.REDIRECT_URL_PREFIX + "/mydemo/eat";
+    }
+
+    /**
+     * 这里这里用的是MultipartFile[] myfiles参数，所以前台就要用<input type="file" name="myfiles"/>
+     * 上传文件完毕后返回给前台[0`filepath]，0表示上传成功（后跟上传后的文件路径），1表示失败（后跟失败描述）
+     */
+    @RequestMapping(value="/fileUpload")
+    public String fileUpload(String uname, @RequestParam MultipartFile[] myfiles, HttpServletResponse response) throws IOException{
+        //可以在上传文件的同时接收其它参数
+        System.out.println("收到用户[" + uname + "]的文件上传请求");
+        response.setContentType("text/plain; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        //若只上传一个文件，则只需MultipartFile类型接收文件即可，而无需显式指定@RequestParam
+        //若想上传多个文件，则这里就要用MultipartFile[]类型来接收文件，且需指定@RequestParam
+        //上传多个文件时，前台表单中的所有<input type="file"/>的name都应该是myfiles，否则参数里的myfiles无法获取到所有上传的文件
+        for(MultipartFile myfile : myfiles){
+            if(myfile.isEmpty()){
+                out.print("1`请选择文件后上传");
+                out.flush();
+                return null;
+            }else{
+                System.out.println("文件原名：" + myfile.getOriginalFilename());
+                System.out.println("文件名称：" + myfile.getName());
+                System.out.println("文件长度：" + myfile.getSize());
+                System.out.println("文件类型：" + myfile.getContentType());
+                System.out.println("===================================================);
+                //以下两种方式都能实现文件的保存
+                //myfile.transferTo(new File(""));
+                //FileUtils.copyInputStreamToFile(myfile.getInputStream(), new File(""));
+            }
+        }
+        out.print("0`/app/data/img/");
+        out.flush();
+        return null;
     }
 }
 ```
