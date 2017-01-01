@@ -137,12 +137,12 @@ public class User33 {
 
 ```java
 package com.jadyer.hibernate;
-
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 /**
  * 利用Hibernate映射文件生成数据库表
+ * Created by 玄玉<https://jadyer.github.io/> on 2011/04/17 01:21.
  */
 public class ExportDB {
     public static void main(String[] args) {
@@ -160,11 +160,13 @@ public class ExportDB {
 
 ```java
 package com.jadyer.hibernate;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+/**
+ * Created by 玄玉<https://jadyer.github.io/> on 2011/04/17 01:21.
+ */
 public class HibernateSessionUtils {
     private static SessionFactory factory;
 
@@ -193,19 +195,18 @@ public class HibernateSessionUtils {
 
 ```java
 package com.jadyer.hibernate;
-
 import java.util.Date;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import com.jadyer.hibernate.HibernateSessionUtils;
 import com.jadyer.hibernate.User11;
 import com.jadyer.hibernate.User22;
 import com.jadyer.hibernate.User33;
-
 import junit.framework.TestCase;
 
+/**
+ * Created by 玄玉<https://jadyer.github.io/> on 2011/04/17 01:21.
+ */
 public class SessionFlushTest extends TestCase {
     /**
      * 向数据库中批量录入1000条数据
