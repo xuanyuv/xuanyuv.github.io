@@ -89,16 +89,18 @@ The resource identified by this request is only capable of generating responses 
 * WriteNullStringAsEmpty   ：字符类型字段若为null，输出""，而非null
 * WriteNullBooleanAsFalse  ：Boolean字段若为null，输出false，而非null
 
-通常网上搜到的例子中，都会为该属性设置两个值：WriteMapNullValue、QuoteFieldNames
+而通常网上搜到的例子中，都会为该属性设置两个值：WriteMapNullValue、QuoteFieldNames
 
 这就表示：输出时 key 使用双引号，同时也输出值为 null 的字段
 
 * **注意**
 
-    > 若某属性为 String，且值为 null，此时若需要其输出，且输出值为空字符串，则应同时赋值：WriteMapNullValue、WriteNullStringAsEmpty<br>
-    因为实际测试发现：若只赋值 WriteNullStringAsEmpty，则不会输出该属性，只有加上 WriteMapNullValue 之后，才会输出，且输出值不是 null，而是预期的空字符串
+    > 若某属性为 String，且值为 null，此时若需要其输出，且输出值为空字符串<br>
+    则应同时赋值：WriteMapNullValue、WriteNullStringAsEmpty<br>
+    因为实际测试发现：若只赋值 WriteNullStringAsEmpty，则不会输出该属性<br>
+    只有加上 WriteMapNullValue 之后，才会输出，且输出值不是 null，而是预期的空字符串
 
-至于 Controller 的写法，就很常见了，没什么特殊的，如下所示
+至于 Controller 的写法，就很常见了，没什么特殊的，就像下面这样的
 
 ```java
 package com.jadyer.controller;
