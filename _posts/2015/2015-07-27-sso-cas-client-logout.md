@@ -25,7 +25,7 @@ SingleSignOutHttpSessionListener：用于在Session过期时移除其对应的�
 
 登出后默认会跳转到CASServer的登出页，若想跳转到其它资源，可在`/logout`的URL后面加上service=jumpurl
 
-比如[http://sso.jadyer.com:8080/cas-server-web/logout?service=http://blog.csdn.net/jadyer](http://sso.jadyer.com:8080/cas-server-web/logout?service=http://blog.csdn.net/jadyer`)
+比如[http://sso.jadyer.com:8080/cas-server-web/logout?service=https://jadyer.github.io/](http://sso.jadyer.com:8080/cas-server-web/logout?service=https://jadyer.github.io/`)
 
 但默认servcie跳转不会生效，需要CASServer配置**//WEB-INF//cas.properties**中的`cas.logout.followServiceRedirects=true`
 
@@ -198,7 +198,7 @@ casClientServerName=http://boss.jadyer.com:8080
 <script>
 function ssoLogout(){
     if(confirm('确定要退出系统吗？')){
-        //top.location.href ='http://sso.jadyer.com:8080/cas-server-web/logout?service=http://blog.csdn.net/jadyer';
+        //top.location.href ='http://sso.jadyer.com:8080/cas-server-web/logout?service=https://jadyer.github.io/';
         //top.location.href ='http://sso.jadyer.com:8080/cas-server-web/logout?service=http://sso.jadyer.com:8080/cas-server-web/login';
         top.location.href ='<%=ConfigUtil.INSTANCE.getProperty("casServerLogoutUrl")%>';
     }

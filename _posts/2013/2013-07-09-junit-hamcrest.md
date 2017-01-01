@@ -63,9 +63,9 @@ public class TestByHamcrest {
         Map<String, String> userMap = new HashMap<String, String>();
         userMap.put("11", "玄玉");
         userMap.put("22", "Jadyer");
-        userMap.put("33", "http://blog.csdn.net/jadyer");
+        userMap.put("33", "https://jadyer.github.io/");
         Assert.assertThat(userMap, Matchers.hasKey("22"));
-        Assert.assertThat(userMap, Matchers.hasValue("http://blog.csdn.net/jadyer"));
+        Assert.assertThat(userMap, Matchers.hasValue("https://jadyer.github.io/"));
     }
 }
 ```

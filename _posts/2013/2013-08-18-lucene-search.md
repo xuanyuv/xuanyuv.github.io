@@ -70,7 +70,7 @@ public class HelloSearch {
     private String[] ids = {"1", "2", "3", "4", "5", "6"};
     private String[] names = {"Michael", "Scofield", "Tbag", "Jack", "Jade", "Jadyer"};
     private String[] emails = {"aa@jadyer.us", "bb@jadyer.cn", "cc@jadyer.cc", "dd@jadyer.tw", "ee@jadyer.hk", "ff@jadyer.me"};
-    private String[] contents = {"my java blog is http://blog.csdn.net/jadyer", "my website is http://www.jadyer.cn", "my name is jadyer", "I am JavaDeveloper", "I am from Haerbin", "I like Lucene"};
+    private String[] contents = {"my blog is https://jadyer.github.io/", "my github is https://github.com/jadyer", "my name is jadyer", "I am JavaDeveloper", "I am from Haerbin", "I like Lucene"};
     private int[] attachs = {9,3,5,4,1,2};
     private Date[] dates = new Date[ids.length];
 

@@ -74,7 +74,7 @@ public class UserStubPersonAttributeDao extends StubPersonAttributeDao {
             attributes.put("userId", Collections.singletonList((Object)user.getUsercode()));
             attributes.put("username", Collections.singletonList((Object)user.getUsername()));
             attributes.put("usernamePlain", Collections.singletonList((Object)URLEncoder.encode(user.getUsernamePlain(), "UTF-8")));
-            attributes.put("blogURL", Collections.singletonList((Object)"http://blog.csdn.net/jadyer"));
+            attributes.put("blogURL", Collections.singletonList((Object)"https://jadyer.github.io/"));
             attributes.put("blogger", Collections.singletonList((Object)URLEncoder.encode("玄玉", "UTF-8")));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

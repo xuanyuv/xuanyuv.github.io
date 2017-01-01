@@ -51,8 +51,8 @@ public class AdvancedSearchByFilter {
         /** 文件名 */
         String[] names = {"Michael.java", "Scofield.ini", "Tbag.txt", "Jack", "Jade", "Jadyer"};
         /** 文件内容 */
-        String[] contents = {"my java blog is http://blog.csdn.net/jadyer",
-                             "my Java Website is http://www.jadyer.cn",
+        String[] contents = {"my blog is https://jadyer.github.io/",
+                             "my github is https://github.com/jadyer",
                              "my name is jadyer",
                              "I am a Java Developer",
                              "I am from Haerbin",

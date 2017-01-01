@@ -18,6 +18,8 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+    <!-- Web容器加载顺序ServletContext==>context-param==>listener==>filter==>servlet -->
+
     <!--
     使用ContextLoaderListener时需要告诉它Spring配置文件的位置，它默认会去找/WEB-INF/applicationContext.xml
     不过可以设置contextConfigLocation参数，来为上下文载入器指定一个或多个Spring配置文件
@@ -27,6 +29,12 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/jadyer-servlet.xml, classpath:applicationContext-*.xml</param-value>
     </context-param>
+
+    <!-- 防止发生java.beans.Introspector内存泄露，应将它配置在ContextLoaderListener的前面 -->
+    <!-- 详细介绍见https://jadyer.github.io/2013/09/24/spring-introspector-cleanup-listener/ -->
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
 
     <!--
     配置上下文载入器，载入除DispatcherServlet载入的配置文件之外的其它上下文配置文件
@@ -74,6 +82,41 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <!-- Session超时30分钟（零或负数表示会话永不超时） -->
+    <!--
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    -->
+
+    <error-page>
+        <error-code>405</error-code>
+        <location>/WEB-INF/405.html</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/500.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/WEB-INF/500.jsp</location>
+    </error-page>
+
+    <!--
+    默认欢迎页
+    Servlet2.5中可直接在此处执行Servlet应用，比如<welcome-file>servlet/InitSystemParamServlet</welcome-file>
+    本文的演示代码使用了SpringMVC提供的<mvc:view-controller>，实现了首页隐藏的目的，详见下面的jadyer-servlet.xml
+    -->
+    <!--
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+    -->
 </web-app>
 ```
 
@@ -82,7 +125,11 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-    <!-- 启用Spring的组件自动扫描机制（自动扫描base-package指定的包中的类和子包里面类） -->
+    <!--
+    启用Spring的组件自动扫描机制（自动扫描base-package指定的包中的类和子包里面类）
+    它背后注册了很多用于解析注解的处理器，其中就包括<context:annotation-config/>配置的注解所使用的处理器
+    所以配置了<context:component-scan base-package="">之后，便无需再配置<context:annotation-config>
+    -->
     <context:component-scan base-package="com.jadyer"/>
 
     <!-- 启动SpringMVC的注解功能，它会自动注册HandlerMapping、HandlerAdapter、ExceptionResolver的相关实例 -->
@@ -102,8 +149,8 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--
-        viewClass属性可以用来指定前台在解析数据时，所允许采用的手段。实际上其默认值就是JstlView
-        将来有需要的话，就可以在这里把JstlView改成其它的，如FreeMarkerView,VelocityView,TilesView
+        viewClass属性用于指定前台在解析数据时，所允许采用的手段（实际上其默认值就是JstlView）
+        将来有需要的话，可以把JstlView改成其它的，如FreeMarkerView、VelocityView、TilesView
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         -->
         <!-- 若Controller的方法返回"user/addSuccess"，则SpringMVC会自动找/WEB-INF/jsp/user/addSuccess.jsp -->
@@ -123,6 +170,8 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
             <props>
                 <!-- 设置遇到MaxUploadSizeExceededException异常时，自动跳转到/WEB-INF/jsp/error_fileupload.jsp页面 -->
                 <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error_fileupload</prop>
+                <!-- 处理其它异常（包括Controller抛出的） -->
+                <prop key="java.lang.Throwable">WEB-INF/500</prop>
             </props>
         </property>
     </bean>
@@ -252,4 +301,23 @@ public class UserController {
         return null;
     }
 }
+```
+
+再顺手补充一个 `405.html`
+
+```html
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>405.html</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<font color="blue">
+    Request method 'GET' not supported
+    <br/><br/>
+    The specified HTTP method is not allowed for the requested resource.
+</font>
+</body>
+</html>
 ```
