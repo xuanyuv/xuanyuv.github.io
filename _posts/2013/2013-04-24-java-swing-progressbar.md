@@ -14,7 +14,7 @@ excerpt: 介绍Swing编程中如何编写两种不同风格的进度条。
 # 代码
 
 ```java
-package com.jadyer.bootcode;
+package com.jadyer.demo;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -100,6 +100,6 @@ public class JProgressBarDemo {
 
 # 效果图
 
-![](/img/2013/2013-04-24-java-swing-progressbar-01.png)
+第一张：![](/img/2013/2013-04-24-java-swing-progressbar-01.png)
 
-![](/img/2013/2013-04-24-java-swing-progressbar-02.png)
+第二张：![](/img/2013/2013-04-24-java-swing-progressbar-02.png)
