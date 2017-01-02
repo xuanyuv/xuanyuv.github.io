@@ -101,7 +101,7 @@ excerpt: 介绍了SpringMVC-3.2.4整合Shiro-1.2.2的完整例子。
 <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
     <!-- 指定Shiro验证用户登录的类为自定义的Realm（若有多个Realm，可用[realms]属性代替） -->
     <property name="realm">
-        <bean class="com.jadyer.realm.MyRealm"/>
+        <bean class="com.jadyer.demo.realm.MyRealm"/>
     </property>
     <!--
     Shiro默认会使用Servlet容器的Session，此时修改超时时间的话，可以修改web.xml或者这里自定义的MyRealm
@@ -127,7 +127,7 @@ excerpt: 介绍了SpringMVC-3.2.4整合Shiro-1.2.2的完整例子。
     <property name="unauthorizedUrl" value="/"/>
     <!--
     Shiro连接约束配置，即过滤链的定义
-    更详细介绍，见本文最下方提供的Shiro-1.2.2内置的FilterChain说明
+    更详细介绍，请见本文下方提供的Shiro-1.2.2内置的FilterChain说明
     下面value值的第一个'/'代表的路径是相对于HttpServletRequest.getContextPath()的值来的
     anon：它对应的过滤器里面是空的，什么都没做，另外.do和.jsp后面的*表示参数，比方说[login.jsp?main]这种
     authc：该过滤器下的页面必须验证后才能访问，它是内置的org.apache.shiro.web.filter.authc.FormAuthenticationFilter
@@ -167,7 +167,7 @@ excerpt: 介绍了SpringMVC-3.2.4整合Shiro-1.2.2的完整例子。
 这里定义了两个用户：**jadyer**（拥有admin角色和admin:manage权限）、**xuanyu**（无任何角色和权限）
 
 ```java
-package com.jadyer.realm;
+package com.jadyer.demo.realm;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.shiro.SecurityUtils;
@@ -241,7 +241,7 @@ public class MyRealm extends AuthorizingRealm {
             return simpleAuthorInfo;
         }
         if(null!=currentUsername && "xuanyu".equals(currentUsername)){
-            System.out.println("当前用户[xuanyu]无授权");
+            System.out.println("当前用户[xuanyu]无授权（不需要为其赋予角色和权限）");
             return simpleAuthorInfo;
         }
         //若该方法什么都不做直接返回null的话
@@ -260,10 +260,14 @@ public class MyRealm extends AuthorizingRealm {
         //实际上这个authcToken是从LoginController里面currentUser.login(token)传过来的
         //两个token的引用都是一样的，本例中是：org.apache.shiro.authc.UsernamePasswordToken@33799a1e
         UsernamePasswordToken token = (UsernamePasswordToken)authcToken;
-        System.out.println("验证当前Subject时获取到token为" + ReflectionToStringBuilder.toString(token, ToStringStyle.MULTI_LINE_STYLE));
+        System.out.print("验证当前Subject时获取到Token：");
+        System.out.println(ReflectionToStringBuilder.toString(token, ToStringStyle.MULTI_LINE_STYLE));
         //User user = userService.getByUsername(token.getUsername());
         //if(null != user){
-        //    AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), user.getNickname());
+        //    String username = user.getUsername();
+        //    String password = user.getPassword();
+        //    String nickname = user.getNickname();
+        //    AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(username, password, nickname);
         //    this.setSession("currentUser", user);
         //    return authcInfo;
         //}else{
@@ -306,7 +310,7 @@ public class MyRealm extends AuthorizingRealm {
 下面是用到的控制器 `UserController.java`
 
 ```java
-package com.jadyer.controller;
+package com.jadyer.demo.controller;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -324,6 +328,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * SpringMVC-3.2.4整合Shiro-1.2.2
@@ -333,13 +338,17 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("mydemo")
 public class UserController {
     @RequestMapping("/logout")
-    public String logout(HttpServletRequest request){
+    public String logout(HttpSession session){
+        String currentUser = (String)session.getAttribute("currentUser");
+        System.out.println("用户[" + currentUser + "]准备登出");
         SecurityUtils.getSubject().logout();
+        System.out.println("用户[" + currentUser + "]已登出");
         return InternalResourceViewResolver.REDIRECT_URL_PREFIX + "/";
     }
 
     @RequestMapping(value="/login", method=RequestMethod.POST)
     public String login(String username, String password, HttpServletRequest request){
+        System.out.println("-------------------------------------------------------");
         String rand = (String)request.getSession().getAttribute("rand");
         String captcha = WebUtils.getCleanParam(request, "captcha");
         System.out.println("用户["+username+"]登录时输入的验证码为["+captcha+"]，HttpSession中的验证码为["+rand+"]");
@@ -409,7 +418,7 @@ public class UserController {
 
 下面这个是登录后的首页 `/WebRoot/main.jsp`
 
-注：本例中设置了 **/tomain** 请求也能访问到该页面
+注：本例中设置了 **/tomain** 请求也能访问到该页面，详见applicationContext.xml
 
 ```html
 <%@ page language="java" pageEncoding="UTF-8"%>
@@ -449,6 +458,95 @@ public class UserController {
 <br>
 这是允许管理员查看的页面
 ```
+
+# 控制台输出
+
+这是不同用户登录的控制台输出（先用 xuanyu 登录，后用 jadyer 登录）
+
+```
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+*****************************************************************
+[INFO] Server running in 2328ms at http://127.0.0.1/
+*****************************************************************
+
+-------------------------------------------------------
+用户[xuanyu]登录时输入的验证码为[5910]，HttpSession中的验证码为[5912]
+-------------------------------------------------------
+用户[xuanyu]登录时输入的验证码为[3254]，HttpSession中的验证码为[3254]
+为验证登录用户而封装的Token：org.apache.shiro.authc.UsernamePasswordToken@4057627c[
+  username=xuanyu
+  password={t,e,s,t,p,w,d}
+  rememberMe=true
+  host=<null>
+]
+对用户[xuanyu]进行登录验证...验证开始
+验证当前Subject时获取到token：org.apache.shiro.authc.UsernamePasswordToken@4057627c[
+  username=xuanyu
+  password={t,e,s,t,p,w,d}
+  rememberMe=true
+  host=<null>
+]
+当前Session超时时间为[2700000]毫秒
+修改Session超时时间为[7200000]毫秒
+对用户[xuanyu]进行登录验证...验证未通过，错误的凭证
+-------------------------------------------------------
+用户[xuanyu]登录时输入的验证码为[4660]，HttpSession中的验证码为[4660]
+为验证登录用户而封装的Token：org.apache.shiro.authc.UsernamePasswordToken@6e6b4b4a[
+  username=xuanyu
+  password={x,u,a,n,y,u}
+  rememberMe=true
+  host=<null>
+]
+对用户[xuanyu]进行登录验证...验证开始
+验证当前Subject时获取到token：org.apache.shiro.authc.UsernamePasswordToken@6e6b4b4a[
+  username=xuanyu
+  password={x,u,a,n,y,u}
+  rememberMe=true
+  host=<null>
+]
+当前Session超时时间为[7200000]毫秒
+修改Session超时时间为[7200000]毫秒
+对用户[xuanyu]进行登录验证...验证通过
+用户[xuanyu]登录认证通过（这里可进行一些认证通过后的系统参数初始化操作）
+用户[xuanyu]准备登出
+用户[xuanyu]已登出
+-------------------------------------------------------
+用户[jadyer]登录时输入的验证码为[2596]，HttpSession中的验证码为[2596]
+为验证登录用户而封装的Token：org.apache.shiro.authc.UsernamePasswordToken@6deaf3ce[
+  username=jadyer
+  password={j,a,d,y,e,r}
+  rememberMe=true
+  host=<null>
+]
+对用户[jadyer]进行登录验证...验证开始
+验证当前Subject时获取到token：org.apache.shiro.authc.UsernamePasswordToken@6deaf3ce[
+  username=jadyer
+  password={j,a,d,y,e,r}
+  rememberMe=true
+  host=<null>
+]
+当前Session超时时间为[2700000]毫秒
+修改Session超时时间为[7200000]毫秒
+对用户[jadyer]进行登录验证...验证通过
+用户[jadyer]登录认证通过（这里可进行一些认证通过后的系统参数初始化操作）
+已为用户[jadyer]赋予了[admin]角色和[admin:manage]权限
+```
+
+下面是对应控制台输出的一些辅助截图
+
+![](/img/2013/2013-09-30-springmvc-shiro-01.png)
+
+![](/img/2013/2013-09-30-springmvc-shiro-02.png)
+
+![](/img/2013/2013-09-30-springmvc-shiro-03.png)
+
+![](/img/2013/2013-09-30-springmvc-shiro-04.png)
+
+![](/img/2013/2013-09-30-springmvc-shiro-05.png)
+
+![](/img/2013/2013-09-30-springmvc-shiro-06.png)
 
 # 内置的FilterChain
 
