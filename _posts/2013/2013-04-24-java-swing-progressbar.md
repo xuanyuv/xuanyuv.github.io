@@ -100,6 +100,8 @@ public class JProgressBarDemo {
 
 # 效果图
 
-第一张：![](/img/2013/2013-04-24-java-swing-progressbar-01.png)
+第一张：
+![](/img/2013/2013-04-24-java-swing-progressbar-01.png)
 
-第二张：![](/img/2013/2013-04-24-java-swing-progressbar-02.png)
+第二张：
+![](/img/2013/2013-04-24-java-swing-progressbar-02.png)
