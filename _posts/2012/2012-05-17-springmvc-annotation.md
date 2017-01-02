@@ -83,7 +83,7 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- Session超时30分钟（零或负数表示会话永不超时） -->
+    <!-- 设置Session超时时间为30分钟（零或负数表示会话永不超时） -->
     <!--
     <session-config>
         <session-timeout>30</session-timeout>
