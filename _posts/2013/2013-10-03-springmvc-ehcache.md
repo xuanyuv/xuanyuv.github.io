@@ -4,7 +4,7 @@ title: "SpringMVC整合Ehcache"
 categories: Spring
 tags: spring springmvc
 author: 玄玉
-excerpt: 介绍了SpringMVC-3.2.4整合Ehcache-2.7.4的方法。
+excerpt: 介绍了SpringMVC-3.2.4整合Ehcache-2.7.4的完整例子。
 ---
 
 * content
