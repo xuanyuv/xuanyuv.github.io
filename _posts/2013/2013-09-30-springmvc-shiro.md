@@ -13,20 +13,11 @@ excerpt: 介绍了SpringMVC-3.2.4整合Shiro-1.2.2的完整例子。
 
 本文涉及的相关环境和版本为：`SpringMVC-3.2.4`、`Shiro-1.2.2`
 
-其中用到的所有 jar 如下
+本文源码下载：（下面两个地址的文件的内容，都是一样的）
 
- * aopalliance.jar
- * commons-lang3-3.1.jar
- * commons-logging-1.1.2.jar
- * shiro-all-1.2.2.jar
- * slf4j-api-1.7.5.jar
- * spring-aop-3.2.4.RELEASE.jar
- * spring-beans-3.2.4.RELEASE.jar
- * spring-context-3.2.4.RELEASE.jar
- * spring-core-3.2.4.RELEASE.jar
- * spring-expression-3.2.4.RELEASE.jar
- * spring-web-3.2.4.RELEASE.jar
- * spring-webmvc-3.2.4.RELEASE.jar
+[http://oirr30q6q.bkt.clouddn.com/jadyer/code/springmvcshiro.rar](http://oirr30q6q.bkt.clouddn.com/jadyer/code/springmvcshiro.rar)
+
+[http://download.csdn.net/detail/jadyer/9727097](http://download.csdn.net/detail/jadyer/9727097)
 
 # 示例代码
 
