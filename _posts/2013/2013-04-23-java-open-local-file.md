@@ -4,7 +4,7 @@ title: "Java调用系统默认程序打开本地文件"
 categories: JavaSE
 tags: java open file
 author: 玄玉
-excerpt: 介绍魔兽RPG的防守地图新超越极限的一些攻略。
+excerpt: 介绍Java调用系统默认程序打开本地文件的几种方式。
 ---
 
 * content
