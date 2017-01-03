@@ -43,7 +43,7 @@ tag_dir: tag/
 
 # 博文分页的配置
 gems: [jekyll-paginate]
-paginate: 18
+paginate: 16
 
 # 博文的固定链接形式（若配置成/:categories/:title.html则表示按照/分类/文章.html生成链接）
 permalink: /:year/:month/:day/:title/
