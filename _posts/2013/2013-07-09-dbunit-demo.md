@@ -75,33 +75,53 @@ import java.sql.SQLException;
  * 用于获取数据库连接的工具类
  * Created by 玄玉<https://jadyer.github.io/> on 2013/07/09 13:56.
  */
-public class DBUtil {
-    private static Connection conn;
-    private static String className = "com.mysql.jdbc.Driver";
-    private static String url = "jdbc:mysql://127.0.0.1:3306/jadyer?characterEncoding=UTF-8";
-    private static String username = "root";
-    private static String password = "jadyer";
+public enum  DBUtil {
+    INSTANCE;
 
-    public static Connection getConnection(){
+    private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
+    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/jadyer?characterEncoding=UTF-8";
+    private static final String DB_URL2 = "jdbc:oracle:thin:@127.0.0.1:1521:jadyer";
+    private static final String DB_USERNAME = "scott";
+    private static final String DB_PASSWORD = "jadyer";
+
+    DBUtil(){
         try {
-            Class.forName(className);
-            conn = DriverManager.getConnection(url, username, password);
+            Class.forName(DB_DRIVER);
         } catch (ClassNotFoundException e) {
-            System.out.println("数据库驱动加载失败，堆栈轨迹如下");
-            e.printStackTrace();
-        } catch (SQLException e) {
-            System.out.println("数据库连接创建失败，堆栈轨迹如下");
-            e.printStackTrace();
+            throw new RuntimeException("数据库驱动载入失败", e);
         }
-        return conn;
     }
 
-    public static void closeAll(ResultSet rs, PreparedStatement pstmt, Connection conn){
+    public Connection getConnection(){
+        try {
+            return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+        } catch (SQLException e) {
+            throw new RuntimeException("数据库连接创建失败", e);
+        }
+    }
+
+    public void close(Connection conn){
+        if(null != conn){
+            try {
+                conn.close();
+                if(conn.isClosed()){
+                    System.out.println("此数据库连接已关闭-->" + conn);
+                }else{
+                    System.err.println("此数据库连接关闭失败-->" + conn);
+                }
+            } catch (SQLException e) {
+                System.err.println("数据库连接关闭失败，堆栈轨迹如下：");
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void closeAll(ResultSet rs, PreparedStatement pstmt, Connection conn){
         if(null != rs){
             try {
                 rs.close();
             } catch (SQLException e) {
-                System.out.println("数据库操作的ResultSet关闭失败，堆栈轨迹如下");
+                System.err.println("数据库操作的ResultSet关闭失败，堆栈轨迹如下：");
                 e.printStackTrace();
             }
         }
@@ -109,27 +129,11 @@ public class DBUtil {
             try {
                 pstmt.close();
             } catch (SQLException e) {
-                System.out.println("数据库操作的PreparedStatement关闭失败，堆栈轨迹如下");
+                System.err.println("数据库操作的PreparedStatement关闭失败，堆栈轨迹如下：");
                 e.printStackTrace();
             }
         }
-        close(conn);
-    }
-
-    public static void close(Connection conn){
-        if(null != conn){
-            try {
-                conn.close();
-                if(conn.isClosed()){
-                    System.out.println("此数据库连接已关闭-->" + conn);
-                }else{
-                    System.out.println("此数据库连接关闭失败-->" + conn);
-                }
-            } catch (SQLException e) {
-                System.out.println("数据库连接关闭失败，堆栈轨迹如下");
-                e.printStackTrace();
-            }
-        }
+        this.close(conn);
     }
 }
 ```
@@ -152,7 +156,7 @@ public class UserDaoJdbc {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil.INSTANCE.getConnection();
             System.out.println("UserDaoJdbc获取到数据库连接-->" + conn);
             pstmt = conn.prepareStatement("SELECT * FROM t_user WHERE username=?");
             pstmt.setString(1, username);
@@ -168,7 +172,7 @@ public class UserDaoJdbc {
             System.out.println("数据库查询时发生异常，堆栈轨迹如下");
             e.printStackTrace();
         } finally {
-            DBUtil.closeAll(rs, pstmt, conn);
+            DBUtil.INSTANCE.closeAll(rs, pstmt, conn);
         }
         return user;
     }
@@ -232,7 +236,7 @@ public class UserDaoTest {
 
     @BeforeClass
     public static void globalInit() {
-        conn = DBUtil.getConnection();
+        conn = DBUtil.INSTANCE.getConnection();
         System.out.println("DBUnit初始化时获取到数据库连接-->" + conn);
         try {
             //DBUnit中用来操作数据文件的Connection依赖于数据库连接的Connection
@@ -244,7 +248,7 @@ public class UserDaoTest {
 
     @AfterClass
     public static void globalDestroy(){
-        DBUtil.close(conn);
+        DBUtil.INSTANCE.close(conn);
         if(null != dbUnitConn){
             try {
                 dbUnitConn.close();
