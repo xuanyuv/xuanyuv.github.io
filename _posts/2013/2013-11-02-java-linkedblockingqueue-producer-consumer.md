@@ -15,7 +15,7 @@ Java 提供的线程安全的 Queue 可分为阻塞和非阻塞队列
 
 其中非阻塞队列的典型是：ConcurrentLinkedQueue，阻塞队列的是：BlockingQueue
 
-ConcurrentLinkedQueue 是一个无界线程安全队列，它是按照 FIFO（先入先出）原则对元素进行排序的，并且此队列不允许使用 null 元素
+ConcurrentLinkedQueue 是一个无界线程安全队列，它是按照 FIFO（先入先出）来排序元素的，且此队列不允许使用 null 元素
 
 关于接口 BlockingQueue，文档中是这么说的
 
@@ -28,7 +28,7 @@ retrieving an element, and wait for space to become available in the queue when 
 以下是 BlockingQueue 接口的几个常见标准实现
 
 1. SynchronousQueue：这是一个特殊的 BlockingQueue，对其的操作必须是存放和获取交替完成
-2. PriorityBlockingQueue：类似于 LinkedBlockQueue，但其所含对象的排序不是 FIFO，而是依据对象自然排序或构造方法的 Comparator 决定
+2. PriorityBlockingQueue：其所含对象的排序不是 FIFO，而是依据对象自然排序或构造方法的 Comparator 决定
 3. ArrayBlockingQueue：有界的阻塞队列，它具有固定的尺寸，因此可在它被阻塞之前向其中放置有限数量的元素<br>
    其构造方法必须带一个 int 参数来指明 BlockingQueue 的大小，其所含对象是以 FIFO（先入先出）顺序排序的
 4. LinkedBlockingQueue：无界的阻塞队列，其所含的对象是以 FIFO（先入先出）顺序排序的<br>
@@ -38,9 +38,9 @@ retrieving an element, and wait for space to become available in the queue when 
 
 由于 LinkedBlockingQueue 实现是线程安全的，实现了先进先出等特性，是作为生产者消费者的首选
 
-它常用的方法是 put 方法（队列满的时候会阻塞直到有队列成员被消费） 和 take 方法（队列空的时候会阻塞直到有队列成员被放进来）
+它常用的方法是 put （队列满的时候会阻塞直到有队列成员被消费） 和 take （队列空的时候会阻塞直到有队列成员被放进来）
 
-如果消费者试图从空队列中获取对象时，那么这些队列可以挂起消费者任务，并且当有更多元素可用时恢复消费者任务，生产者与之类似
+若消费者试图从空队列获取对象时，那么队列可以挂起消费者任务，且当有更多元素可用时恢复消费者任务，生产者与之类似
 
 # 模拟实现
 
@@ -146,6 +146,7 @@ class Consumer implements Runnable {
 消费者03号已消费：80
 消费者03号已消费：42
 消费者02号已消费：24
+...
 ...
 ...
 ```
