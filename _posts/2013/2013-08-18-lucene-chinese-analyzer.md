@@ -11,7 +11,7 @@ excerpt: 介绍Lucene-3.6.2中的中文分词器的使用。
 {:toc}
 
 
-# 简介
+## 简介
 
 `Lucene-3.5`推荐的四大分词器：SimpleAnalyzer、StopAnalyzer、WhitespaceAnalyzer、StandardAnalyzer
 
@@ -47,7 +47,7 @@ TokenFilter用于过滤语汇单元，下面是它的一些子类
 * StandardFilter，对标准输出流做一些控制
 * PorterStemFilter，还原一些数据，比如将coming还原为come，将countries还原为country
 
-# 举例
+## 举例
 
 比如'how are you thank you'会被分词为'how'，'are'，'you'，'thank'，'you'合计5个语汇单元
 
@@ -71,7 +71,7 @@ TokenFilter用于过滤语汇单元，下面是它的一些子类
 
 目前非常流行的一个叫做`WordNet`的东西，就可以做同义词的搜索
 
-# 中文分词
+## 中文分词
 
 Lucene默认提供的众多分词器完全不适用中文，下面是一些常见的中文分词器
 
@@ -95,7 +95,7 @@ Lucene默认提供的众多分词器完全不适用中文，下面是一些常�
 
 一句话总结：直接引入mmseg4j-all-1.8.5-with-dic.jar就行了
 
-# 代码
+## 代码
 
 下面是示例代码
 

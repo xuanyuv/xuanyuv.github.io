@@ -11,7 +11,7 @@ excerpt: 介绍Lucene-3.6.2中使用工具Luke查看索引、和针对索引的C
 {:toc}
 
 
-# Luke
+## Luke
 
 使用Luke可以查看分词信息，其下载地址为:[http://code.google.com/p/luke/](http://code.google.com/p/luke/)
 
@@ -31,7 +31,7 @@ Luke菜单下的`Search`选项卡中可以根据我们输入的表达式来查�
 
 比如在`Enter search expression here:`输入`content:my`，再在右侧点击一个黑色粗体字的Search大按钮即可
 
-# 代码
+## 代码
 
 下面演示的是`Lucene-3.6.2`中针对索引文件增删改查的操作方式
 

@@ -19,7 +19,7 @@ Lucene下载：[http://archive.apache.org/dist/lucene/java/](http://archive.apac
 
 Lucene文档：[http://wiki.apache.org/lucene-java/](http://wiki.apache.org/lucene-java/)
 
-# 简介
+## 简介
 
 对于全文搜索工具：都是由索引、分词、搜索三部分组成
 
@@ -50,7 +50,7 @@ Lucene文档：[http://wiki.apache.org/lucene-java/](http://wiki.apache.org/luce
 | YES         | NOT_ANALYZED           | 隐藏关键字                                       |
 | YES         | NO                     | 文档类型，数据库主键（不进行索引）                  |
 
-# 代码
+## 代码
 
 下面演示一下`Lucene-3.6.2`基本的创建索引和搜索文件的方式
 

@@ -15,7 +15,7 @@ excerpt: 介绍了SpringMVC-3.2.4整合Ehcache-2.7.4的完整例子。
 
 正式演示整合代码之前，先介绍一下 googlecode 上的一个经 apache 认证的开源项目：ehcache-spring-annotations
 
-# googlecode开源项目
+## googlecode开源项目
 
 目前它已经到了 `1.2.0` 版本
 
@@ -48,7 +48,7 @@ excerpt: 介绍了SpringMVC-3.2.4整合Ehcache-2.7.4的完整例子。
 
 但是若写成：**@TriggersRemove(cacheName="..", when="..")** 则不会移除缓存中的单一或所有的对象（即缓存中的对象无变化）
 
-# 演示代码
+## 演示代码
 
 下面正式演示 `SpringMVC-3.2.4` 整合 `Ehcache-2.7.4` 的完整例子（没有使用ehcache-spring-annotations）
 

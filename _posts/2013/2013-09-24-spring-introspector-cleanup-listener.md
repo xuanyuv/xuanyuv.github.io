@@ -11,7 +11,7 @@ excerpt: 介绍Spring中的IntrospectorCleanupListener的用途。
 {:toc}
 
 
-# 简介
+## 简介
 
 JDK中的 `java.beans.Introspector` 的用途是：发现 Java 类是否符合 JavaBean 规范
 
@@ -27,7 +27,7 @@ IntrospectorCleanupListener 会在 Web 服务器停止时清理 Introspector 缓
 
 但有些程序和框架在使用了 JavaBeans Introspector 之后，没有进行清理工作（比如Quartz、Struts），最后导致内存泄漏
 
-# 结论
+## 结论
 
 此监听器可以解决 java.beans.Introspector 导致内存泄漏的问题
 

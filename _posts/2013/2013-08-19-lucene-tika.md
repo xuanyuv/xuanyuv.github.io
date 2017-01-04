@@ -11,7 +11,7 @@ excerpt: 主要介绍Lucene-3.6.2中创建索引时通过Tika来解析各种文�
 {:toc}
 
 
-# 简述Tike
+## 简述Tike
 
 以往解析PDF时通常使用PDFBox：[http://pdfbox.apache.org/](http://pdfbox.apache.org/)
 
@@ -115,7 +115,7 @@ public class HelloTika {
 }
 ```
 
-# 借助Tika创建索引
+## 借助Tika创建索引
 
 下面演示的就是在`Lucene-3.6.2`中借助`Tika-1.4`创建索引的示例代码
 

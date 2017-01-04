@@ -42,7 +42,7 @@ retrieving an element, and wait for space to become available in the queue when 
 
 若消费者试图从空队列获取对象时，那么队列可以挂起消费者任务，且当有更多元素可用时恢复消费者任务，生产者与之类似
 
-# 模拟实现
+## 模拟实现
 
 ```java
 package com.jadyer.demo;
@@ -121,7 +121,7 @@ class Consumer implements Runnable {
 }
 ```
 
-# 控制台输出
+## 控制台输出
 
 ```
 生产者02号已生产：39

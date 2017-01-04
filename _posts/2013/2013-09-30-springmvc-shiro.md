@@ -19,7 +19,7 @@ excerpt: 介绍了SpringMVC-3.2.4整合Shiro-1.2.2的完整例子。
 
 [http://download.csdn.net/detail/jadyer/9727097](http://download.csdn.net/detail/jadyer/9727097)
 
-# 示例代码
+## 示例代码
 
 首先是 `web.xml`
 
@@ -450,7 +450,7 @@ public class UserController {
 这是允许管理员查看的页面
 ```
 
-# 控制台输出
+## 控制台输出
 
 这是不同用户登录的控制台输出（先用 xuanyu 登录，后用 jadyer 登录）
 
@@ -539,7 +539,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 
 ![](/img/2013/2013-09-30-springmvc-shiro-06.png)
 
-# 内置的FilterChain
+## 内置的FilterChain
 
 运行 Web 应用时，Shiro会创建一些有用的默认 Filter 实例，并自动地在 [main] 项中将它们置为可用
 

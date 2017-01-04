@@ -13,7 +13,7 @@ excerpt: 主要介绍CentOS-6.4-minimal版系统配置，以及Java开发环境�
 
 本文使用的是`CentOS-6.4-minimal`版的操作系统（安装包为：CentOS-6.4-x86_64-minimal.iso）
 
-# 网卡
+## 网卡
 
 CentOS默认没有启用eth0网卡，我们做的就是启用它
 
@@ -21,7 +21,7 @@ CentOS默认没有启用eth0网卡，我们做的就是启用它
 
 （如果是VirtualBox里的虚拟机，可以将VirtualBox配置为桥接网卡，就能让虚拟机里的CentOS联网了）
 
-# IPv6
+## IPv6
 
 若想检查当前IP地址中是否含有IPv6地址，可以执行`ifconfig`命令
 
@@ -35,7 +35,7 @@ alias net-pf-10 off
 
 alias ipv6 off
 
-# 防火墙
+## 防火墙
 
 * service iptables stop：关闭防火墙
 * service iptables start：启动防火墙
@@ -56,7 +56,7 @@ alias ipv6 off
 
 最后执行`service iptables restart`命令即可，此时服务器的8080端口就可以对外提供服务了
 
-# 安装JDK
+## 安装JDK
 
 下面使用的是`.tar.gz`文件，如果用的是`.bin`文件，可以先执行`./jdk-6u45-linux-x64.bin`命令，再配置环境变量，即可。
 
@@ -81,13 +81,13 @@ alias ipv6 off
 [Jadyer@CentOS64 ~]$ java -version                             #重复验证（普通用户重连服务器后才会生效）
 ```
 
-# 安装Tomcat
+## 安装Tomcat
 
 无需编译源码，直接`tar zxvf apache-tomcat-6.0.41.tar.gz`解压即可
 
 再执行`/app/tomcat/bin/startup.sh`可以启动Tomcat了
 
-# 安装Maven
+## 安装Maven
 
 ```sh
 [Jadyer@localhost ~]$ cd /app/
@@ -109,7 +109,7 @@ alias ipv6 off
 [Jadyer@localhost code]$ cp /app/apache-maven-3.2.5/conf/settings.xml MavenRepository/
 ```
 
-# 安装Subversion
+## 安装Subversion
 
 下载地址为：[https://www.open.collab.net/files/documents/60/11125/CollabNetSubversion-client-1.8.13-1.x86_64.rpm](https://www.open.collab.net/files/documents/60/11125/CollabNetSubversion-client-1.8.13-1.x86_64.rpm)
 
@@ -130,7 +130,7 @@ Preparing...                ########################################### [100%]
 [Jadyer@localhost ~]$ svn --version
 ```
 
-# 修改RPM安装路径
+## 修改RPM安装路径
 
 RPM包通常都有默认的安装路径，但也有办法更新它的默认安装路径（只不过不是所有的rpm都允许安装到其它路径）
 

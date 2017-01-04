@@ -27,7 +27,7 @@ Solr文档：[http://wiki.apache.org/solr/](http://wiki.apache.org/solr/)
 
 　　　　　[http://wiki.apache.org/solr/SolrCloud%20using%20Jboss](http://wiki.apache.org/solr/SolrCloud%20using%20Jboss)
 
-# 简介
+## 简介
 
 Solr是一个高性能的，采用Java开发的，基于HTTP和Lucene实现的开源企业级全文搜索引擎
 
@@ -37,13 +37,13 @@ Solr是一个高性能的，采用Java开发的，基于HTTP和Lucene实现的�
 
 而SolrJ是Solr提供的基于Java的访问Solr服务器的接口，它提供了对Solr服务器进行索引的CRUD和优化的相关接口
 
-# 启动
+## 启动
 
 解压下载到的apache-solr-3.6.2.zip中的example文件夹到本地硬盘
 
 然后命令行执行`java -jar start.jar`便启动了Solr服务器，访问地址为：[http://127.0.0.1:8983/solr/](http://127.0.0.1:8983/solr/)
 
-# 整合Tomcat
+## 整合Tomcat
 
 1、本地硬盘新建D:\Develop\apache-solr-3.6.2\文件夹
 
@@ -92,7 +92,7 @@ Caused by: java.lang.ClassNotFoundException: solr.VelocityResponseWriter
 
 若取消了（即置为false）VelocityResponseWriter输出格式后，重启Tomcat仍报此异常，那直接把这行代码注释掉应该就可以了
 
-# schema
+## schema
 
 这里介绍一下`D:\Develop\apache-solr-3.6.2\home\conf\schema.xml`
 

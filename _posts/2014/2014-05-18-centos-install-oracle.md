@@ -13,7 +13,7 @@ excerpt: 主要介绍CentOS-6.4-DVD系统中安装Oracle-11.2.0.4，以及RLwrap
 
 本文涉及的相关环境和版本为：`CentOS-6.4-DVD`、`Oracle-11.2.0.4`
 
-# 前言
+## 前言
 
 本来是在`CentOS-6.4-minimal-64bit`中安装`Oracle-11.2.0.4.0-Linux-x86_64`，结果整整折腾两天都没安装成功
 
@@ -55,7 +55,7 @@ ls: 无法访问/usr/sbin/smartctl: 没有那个文件或目录  /usr/sbin/smart
 
 但在其它Linux系统上安装不同版本的Oracle时，就会提示你缺少这个缺少那个的，没点经验的还未必搞得定
 
-# 准备
+## 准备
 
 本文记述的是在VirtualBox里面的`CentOS-6.4-DVD`系统中安装`Oracle-11.2.0.4.0-Linux-x86_64`
 
@@ -94,7 +94,7 @@ Oracle-11.2.0.4.0-Linux-x86_64安装包共有7个文件，其中`1of7`和`2of7`�
 
 接下来就会看到很多的安装说明，这里我们只看`Oracle Database Preinstallation Tasks`部分就够了
 
-# 环境配置
+## 环境配置
 
 总体来讲，主要有以下六步
 
@@ -105,7 +105,7 @@ Oracle-11.2.0.4.0-Linux-x86_64安装包共有7个文件，其中`1of7`和`2of7`�
 5. Change oracle limits------------------------------->修改oracle用户的shell限制（可以提升性能）
 6. **./runInstaller**--------------------------------->安装Oracle
 
-## 创建组和用户
+### 创建组和用户
 
 ```sh
 [root@CentOS64 ~]# groupadd oinstall                 (创建一个名为oinstall的组，也可以用别的名字，只是习惯性用oinstall而已)
@@ -120,7 +120,7 @@ Oracle-11.2.0.4.0-Linux-x86_64安装包共有7个文件，其中`1of7`和`2of7`�
 [oracle@CentOS64 app]# unzip /app/software/p13390677_112040_Linux-x86-64_2of7.zip
 ```
 
-## 配置环境变量
+### 配置环境变量
 
 这里会配置两个东西：`stty`和`DISPLAY`
 
@@ -162,7 +162,7 @@ export PATH LD_LIBRARY_PATH DISPLAY ORACLE_BASE ORACLE_HOME ORACLE_SID
 [oracle@CentOS64 ~]$ cat .bash_profile
 ```
 
-## 检查所需RPM
+### 检查所需RPM
 
 Oracle文档上都有描述，地址为[http://docs.oracle.com/cd/E11882_01/install.112/e47689/pre_install.htm#LADBI1085](http://docs.oracle.com/cd/E11882_01/install.112/e47689/pre_install.htm#LADBI1085)
 
@@ -189,7 +189,7 @@ Oracle文档上都有描述，地址为[http://docs.oracle.com/cd/E11882_01/inst
  * unixODBC-devel-2.2.14-11.el6 (x86_64) or later
  * unixODBC-devel-2.2.14-11.el6.i686 or later
 
-## 修改内核参数
+### 修改内核参数
 
 [http://docs.oracle.com/cd/E11882_01/install.112/e47689/pre_install.htm#LADBI1188](http://docs.oracle.com/cd/E11882_01/install.112/e47689/pre_install.htm#LADBI1188)
 
@@ -214,7 +214,7 @@ net.core.wmem_max = 1048576
 
 这样，上面修改的内核参数就生效了，我们可以使用`sysctl -a | grep net.core.wmem_max`命令查看
 
-## 修改shell限制
+### 修改shell限制
 
 [http://docs.oracle.com/cd/E11882_01/install.112/e47689/pre_install.htm#LADBI1188](http://docs.oracle.com/cd/E11882_01/install.112/e47689/pre_install.htm#LADBI1188)
 
@@ -228,7 +228,7 @@ oracle           soft    nproc           2047
 oracle           hard    stack           32768
 ```
 
-# 安装
+## 安装
 
 有两种方式安装，一个是有图形界面的可视化安装，一个是无图形界面的静默安装
 
@@ -269,7 +269,7 @@ oracle           hard    stack           32768
     两个脚本执行完毕，再回到Oracle安装界面，在这个弹出的对话框中点击"OK"就行了
 13. Finish：The installation of Oracle Database was successfull.
 
-# 创建数据库
+## 创建数据库
 
 先创建一个Listener
 
@@ -297,7 +297,7 @@ oracle           hard    stack           32768
 [oracle@CentOS64 oracle]$ ps -ef | grep ora_ (图形界面创建数据库完毕后，通过这个命令就可以看到Oracle实例是否在运行了)
 ```
 
-# 关闭数据库
+## 关闭数据库
 
 ```sql
 [oracle@CentOS64 oracle]$ sqlplus /nolog     (启动SQLPLUS)
@@ -312,7 +312,7 @@ SQL> quit                                    (退出SQLPLUS)
 [oracle@CentOS64 oracle]$ ps -ef | grep ora_ (这时会发现没有任何打印，说明数据库被停止了)
 ```
 
-# 启动数据库
+## 启动数据库
 
 ```sql
 [oracle@CentOS64 oracle]$ sqlplus /nolog     (启动SQLPLUS)
@@ -331,7 +331,7 @@ SQL> !                                       (退出SQLPLUS)
 [oracle@CentOS64 oracle]$ ps -ef | grep ora_ (这时会发现打印出一大堆东西，说明数据库被启动了)
 ```
 
-# RLwrap安装和配置
+## RLwrap安装和配置
 
 Linux中安装完Oracle后，默认的`sqlplus`上下键是不能用的，安装了`rlwrap`之后就能通过上下键翻回历史命令了
 
