@@ -11,7 +11,7 @@ excerpt: 介绍Swing编程中如何编写两种不同风格的进度条。
 {:toc}
 
 
-# 代码
+## 代码
 
 ```java
 package com.jadyer.demo;
@@ -98,7 +98,7 @@ public class JProgressBarDemo {
 }
 ```
 
-# 效果图
+## 效果图
 
 第一张：
 

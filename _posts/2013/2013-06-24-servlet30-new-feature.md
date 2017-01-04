@@ -63,7 +63,7 @@ excerpt: 主要介绍Servlet3.0的几个新特性，包括通过注解来编写S
 <form>
 ```
 
-# 注解编写Filter
+## 注解编写Filter
 
 ```java
 package com.jadyer.demo;
@@ -102,7 +102,7 @@ public class EncodingFilter implements Filter {
 }
 ```
 
-# 注解编写Servlet
+## 注解编写Servlet
 
 `@WebServlet` 注解常用的有两个参数
 
@@ -149,7 +149,7 @@ public class HelloServlet extends HttpServlet {
 }
 ```
 
-# 注解编写Listener
+## 注解编写Listener
 
 动态注册 Servlet 的功能，也是在 Listener 里面实现的
 
@@ -221,7 +221,7 @@ public class UserListener implements ServletContextListener {
 }
 ```
 
-# 文件上传
+## 文件上传
 
 先介绍一下 @MultipartConfig 注解的几个属性
 
@@ -308,7 +308,8 @@ public class UploadServlet extends HttpServlet {
 }
 ```
 
-# 异步支持
+## 异步支持
+
 Servlet2.5 中也可以单独启动一个线程去执行耗时的任务，接着Servlet会继续往下执行
 
 执行完最后一行代码时，Servlet就会把响应输出给请求方，而那个单独启动的线程的任何执行结果都不会反映给请求方
