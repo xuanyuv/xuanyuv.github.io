@@ -11,7 +11,7 @@ excerpt: 描述Spring集成JDBC的配置方法。
 {:toc}
 
 
-# 代码
+## 代码
 
 下面直接演示代码，各种细节详见代码注释
 
@@ -346,7 +346,7 @@ create table person(
 create sequence SEQUENCE_PERSON_12 increment by 1 start with 1 nomaxvalue nocycle;
 ```
 
-# 补充
+## 补充
 
 获取本次 INSERT 的主键值，也可以借助org.springframework.jdbc.core.simple.SimpleJdbcInsert.class
 

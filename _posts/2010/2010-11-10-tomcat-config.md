@@ -11,7 +11,7 @@ excerpt: 列举了几个常用的Tomcat配置。
 {:toc}
 
 
-# 配置端口
+## 配置端口
 
 修改 /apache-tomcat-6.0.20/conf/server.xml 文件第67行，改为如下内容
 
@@ -19,7 +19,7 @@ excerpt: 列举了几个常用的Tomcat配置。
 <Connector port="8088" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" URIEncoding="UTF-8"/>
 ```
 
-# 新增管理员
+## 新增管理员
 
 修改 /apache-tomcat-6.0.20/conf/tomcat-users.xml 文件第18行的 `<tomcat-users>`
 
@@ -31,7 +31,7 @@ excerpt: 列举了几个常用的Tomcat配置。
 </tomcat-users>
 ```
 
-# 显示列表页面
+## 显示列表页面
 
 当我们未设置 JavaWeb 项目的欢迎文件或者欢迎文件不存在时，访问 Web 应用后以列表的形式显示可用页面
 
@@ -53,7 +53,7 @@ excerpt: 列举了几个常用的Tomcat配置。
 </servlet>
 ```
 
-# 自动重载应用
+## 自动重载应用
 
 修改 /apache-tomcat-6.0.20/conf/context.xml 文件第19行 `<Context>` 改为 `<Context reloadable="true">`
 
@@ -63,7 +63,7 @@ excerpt: 列举了几个常用的Tomcat配置。
 
 如果把 Tomcat 作为产品阶段所使用的服务器，最好将其修改成 `<Context reloadable="false">`
 
-# 项目映射本地
+## 项目映射本地
 
 修改 /apache-tomcat-6.0.20/conf/server.xml 文件第142行的 `<Host>`，在里面新增如下内容
 
@@ -75,7 +75,7 @@ excerpt: 列举了几个常用的Tomcat配置。
 
 但此时 /test/WebRoot/WEB-INF/lib 中需存在相应的 jar，否则可能会报告错误（因为这里是映射的路径）
 
-# 配置内置连接池
+## 配置内置连接池
 
 Tomcat 中使用的默认的连接池技术是 DBCP
 
@@ -150,7 +150,7 @@ Connection conn = ds.getConnection();
 //即将当前的Connection对象再返回到连接池中，而并不是真正的关闭其相应的到数据库的连接
 ```
 
-# 配置运行环境变量
+## 配置运行环境变量
 
 先说一下配置 Tomcat 启动参数的方法：通常在 catalina.sh 第97行增加如下参数配置
 
