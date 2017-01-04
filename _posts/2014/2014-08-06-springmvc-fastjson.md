@@ -15,7 +15,7 @@ excerpt: 介绍了SpringMVC整合Fastjson-1.1.41的方法。
 
 整合目的：Controller 里面能够直接通过 `@ResponseBody` 的方式序列化输出 json
 
-# 无效的整合
+## 无效的整合
 
 很自然的，大家会想到类似整合 Jackson 那样，像下面这样配置
 
@@ -56,7 +56,7 @@ HTTP Status 406
 The resource identified by this request is only capable of generating responses with characteristics not acceptable according to the request "accept" headers.
 ```
 
-# 有效的整合
+## 有效的整合
 
 像下面这样配置，实际测试是有效的
 

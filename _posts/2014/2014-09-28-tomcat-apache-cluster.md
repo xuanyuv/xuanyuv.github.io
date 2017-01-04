@@ -17,7 +17,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现集
 
 配置细节详见：[https://jadyer.github.io/2014/09/27/tomcat-apache-loadbalancer/](https://jadyer.github.io/2014/09/27/tomcat-apache-loadbalancer/)
 
-# 前言
+## 前言
 
 先介绍下几个术语
 
@@ -36,7 +36,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现集
 2. 由于集群服务需要在处理请求之间不断地会话复制，复制后的会话将会慢慢变得庞大，因此它的资源占用率（内存）非常高
 3. 实践证明：在各应用服务器之间不需要状态复制的情况下，负载均衡可以达到性能的线性增长及更高的并发需求
 
-# 配置Tomcat实例
+## 配置Tomcat实例
 
 下面配置的**jvmRoute**属性值要与`workers.properties`中设置的节点名相同
 
@@ -52,7 +52,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现集
 [root@CentOS64 app]# vi /app/tomcat3/conf/server.xml # 为<Engine/>节点增加jvmRoute属性，属性值为tomcat3
 ```
 
-# 配置集群参数
+## 配置集群参数
 
 1. 如果tomcat是放在不同机器上面的<br>
    则取消注释`tomcat/conf/server.xml--><Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"/>`即可
@@ -99,12 +99,12 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现集
 \</Cluster>
 ```
 
-# 修改应用程序
+## 修改应用程序
 
 1. Session中存放的数据必须实现序列化
 2. web.xml中加入`<distributable/>`标签
 
-# 测试集群
+## 测试集群
 
 启动apache和三个tomcat后，测试方法如下（测试代码已在下方贴出）
 
@@ -146,7 +146,7 @@ while(e.hasMoreElements()){
 </form>
 ```
 
-# 注意事项
+## 注意事项
 
 1. java.net.BindException: Cannot assign requested address; No faulty members identified<br>
    启动 tomcat 时报告上面的异常<br>

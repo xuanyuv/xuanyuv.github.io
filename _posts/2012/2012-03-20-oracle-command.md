@@ -11,7 +11,7 @@ excerpt: 一些常用的Oracle命令。
 {:toc}
 
 
-# 分页
+## 分页
 
 ```sql
 -- rownum分页：这里Oracle使用了二分机制，这种机制使得其分页速度均要快于MySQL和MSSQL
@@ -26,7 +26,7 @@ SELECT * FROM student WHERE rowid in (SELECT rid FROM (SELECT rownum rn, rid FRO
 SELECT * FROM (SELECT ss.*, row_number() over(ORDER BY sid DESC) rk FROM student ss) WHERE rk<=500 and rk>=201
 ```
 
-# 元数据
+## 元数据
 
 ```sql
 -- 显示错误的详细信息
@@ -81,7 +81,7 @@ SELECT sys_context('userenv', 'current_schema') FROM DUAL;  --查询当前在操
 SELECT sys_context('userenv', 'nls_date_format') FROM DUAL; --查询当前会话客户所对应的日期格式
 ```
 
-# 合并查询
+## 合并查询
 
 实际应用中，为了合并多个select结果，可以使用集合操作符号：union、union all、intersect、minus
 
@@ -99,7 +99,7 @@ SELECT ename,sal,job FROM emp WHERE sal>2500 intersect SELECT ename,sal,job FROM
 SELECT ename,sal,job FROM emp WHERE sal>2500 minus SELECT ename,sal,job FROM emp WHERE job='MANAGER'
 ```
 
-# 删除表数据
+## 删除表数据
 
 Oracle中共有三种删除数据的方式：为drop、delete、truncate（其中delete速度慢，truncate速度快）
 
@@ -115,7 +115,7 @@ ROLLBACK TO aa;         --回滚到aa存储点
 SELECT * FROM student;  --此时会发现之前delete掉的数据，又恢复回来了
 ```
 
-# 创建DBLINK
+## 创建DBLINK
 
 ```sql
 -- 创建方式
@@ -132,7 +132,7 @@ CREATE PUBLIC DATABASE LINK EC_PAYCORE_LINK connect to jfb identified by jfb usi
 SELECT count(*) FROM t_pay_order_info@EC_PAYCORE_LINK;
 ```
 
-# 动态性能视图
+## 动态性能视图
 
 动态性能视图用于记录当前例程的活动信息
 

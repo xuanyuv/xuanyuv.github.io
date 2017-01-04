@@ -22,7 +22,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 2. 编译源码：通常命令为`make`
 3. 安装应用：通常命令为`make install`
 
-# 注意事项
+## 注意事项
 
 1. `httpd-2.2.29`目录下的configure工具是GNU软件基金会推出的专门用于源码发布的工具
 2. 配置环境时若出现这个错误：**configure: error: no acceptable C compiler found in $PATH**<br>
@@ -32,7 +32,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 4. 配置环境时configure的主要工作就是生成Makefile，编译源码时的make命令就是根据Makefile来进行编译的
 5. 最好以root安装和启动Apache，以root运行之后，apache就会把它的派生进程切换到非root用户
 
-# 安装Perl5
+## 安装Perl5
 
 ```sh
 [root@CentOS64 software]# yum -y install wget
@@ -45,7 +45,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 [root@CentOS64 perl-5.20.1]# perl -v
 ```
 
-# 安装OpenSSL
+## 安装OpenSSL
 
 ```sh
 [root@CentOS64 software]# tar zxvf openssl-1.0.1i.tar.gz
@@ -56,7 +56,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 [root@CentOS64 openssl-1.0.1i]# /app/openssl/bin/openssl version
 ```
 
-# 安装Apache
+## 安装Apache
 
 ```sh
 [root@CentOS64 software]# tar zxvf httpd-2.2.29.tar.gz
@@ -67,7 +67,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 [root@CentOS64 httpd-2.2.29]# make install
 ```
 
-# 访问Apache
+## 访问Apache
 
 下面是Apache的目录结构
 

@@ -11,7 +11,7 @@ excerpt: 主要介绍Oracle表空间的用法，以及物理备份和逻辑备�
 {:toc}
 
 
-# 表空间
+## 表空间
 
 表空间是数据库的逻辑组成部分，它由一个或多个数据文件组成，它的大小实际上就是数据文件相加后的大小
 
@@ -29,7 +29,7 @@ excerpt: 主要介绍Oracle表空间的用法，以及物理备份和逻辑备�
 
 　　比如说：有经验的DBA，他不会把索引放到数据空间里面，而是会单放到一个表空间中
 
-## 表空间管理
+### 表空间管理
 
 建立表空间使用`create tablespace`命令（通常由dba或特权用户或具有`create tablespace`系统权限的其它用户来创建表空间）
 
@@ -67,7 +67,7 @@ alter tablespace ts_blog 'd:\ts_blog.dbf' autoextend on next 10m maxsize 500m; -
 
 以上是最常用的数据表空间，除此之外，还有其它类型表空间，如：索引表空间、undo表空间、临时表空间、非标准块的表空间
 
-## 迁移数据文件
+### 迁移数据文件
 
 如果数据文件所在的磁盘损坏，那么该数据文件将不能再使用
 
@@ -82,7 +82,7 @@ alter tablespace 表空间名 rename datafile 'd:\ts_blog.dbf' to 'e:\ts_blog.db
 alter tablespace 表空间名 online;                                              --联机表空间
 ```
 
-# 逻辑备份
+## 逻辑备份
 
 关于备份，Oracle有两类备份方式：物理备份和逻辑备份
 
@@ -98,7 +98,7 @@ alter tablespace 表空间名 online;                                           
 
 当数据库对象被误操作而损坏后，再使用工具`import`利用备份的文件把数据对象导入到数据库的过程
 
-## 导出
+### 导出
 
 具体分为导出表、导出方案、导出数据库三种方式
 
@@ -135,7 +135,7 @@ exp userid=system/manager@jadyer owner=(system,scott) file=d:\schema_system_scot
 exp userid=system/manager@jadyer full=y inctype=complete file=d:\database_bak.dmp
 ```
 
-## 导入
+### 导入
 
 使用工具import将文件中的对象和数据导入到数据库中**（但导入的文件必须是export所导出的文件）**
 

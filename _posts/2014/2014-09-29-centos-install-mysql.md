@@ -27,7 +27,7 @@ WHAT YOU NEED : CMake version 2.6 or later installed on your system.
 
 所以，我们首先要做的，就是安装CMake
 
-# 安装CMake
+## 安装CMake
 
 CMake（cross platform make）的特性是独立于源码编译，编译工作可以在另外一个目录中而非源码目录中进行
 
@@ -53,7 +53,7 @@ CMake（cross platform make）的特性是独立于源码编译，编译工作�
 [root@CentOS64 ~]# cmake -version                         #验证cmake-3.0.2安装结果
 ```
 
-# 安装MySQL
+## 安装MySQL
 
 ```sh
 [root@CentOS64 ~]# groupadd -r mysql
@@ -68,7 +68,7 @@ CMake（cross platform make）的特性是独立于源码编译，编译工作�
 [root@CentOS64 mysql-5.5.38]# make install
 ```
 
-# 配置MySQL
+## 配置MySQL
 
 ```sh
 [root@CentOS64 ~]# cd /app/mysql/support-files/
@@ -99,7 +99,7 @@ character-set-server = urf8
 skip-name-resolve
 ```
 
-# 启动MySQL
+## 启动MySQL
 
 首先通过下面的命令初始化MySQL
 
@@ -113,7 +113,7 @@ skip-name-resolve
 [root@CentOS64 ~]# mysql -uroot -pxuanyu
 ```
 
-# 注意事项
+## 注意事项
 
 1. 安装必要的编译环境时，也可以使用`yum -y groupinstall "Development tools"`命令<br>
    但这会安装大约101个库，太粗暴，不建议
@@ -147,7 +147,7 @@ skip-name-resolve
    接着再执行`service iptables restart`命令重启防火墙即可，不需要重启Linux<br>
    详细原理见：[https://jadyer.github.io/2013/09/07/centos-config-develop/](https://jadyer.github.io/2013/09/07/centos-config-develop/)
 
-# 编译选项
+## 编译选项
 
 下面列出的是较为常见的，其它参数见官方文档
 

@@ -11,13 +11,13 @@ excerpt: 主要介绍Oracle中的普通用户、特权用户的管理，包括�
 {:toc}
 
 
-# SYS和SYSTEM
+## SYS和SYSTEM
 
 安装Oracle时会生成`SYS`和`SYSTEM`两个用户。可以理解为SYS是董事长，SYSTEM是总经理
 
 `Oracle9i`中，默认的SYS密码是change_on_install，默认的SYSTEM密码是manager
 
-## SYS
+### SYS
 
 所有Oracle的数据字典的基表和视图都存放在sys用户中
 
@@ -27,7 +27,7 @@ sys用户拥有sysdba、sysoper、dba角色或权限，是Oracle权限最高的�
 
 sys用户必须以`as sysdba`或者`as sysoper`形式登录，不能以normal方式登录数据库
 
-## SYSTEM
+### SYSTEM
 
 用于存放一级的内部数据，如Oracle的一些特性或工具的管理信息
 
@@ -37,7 +37,7 @@ system如果正常登录，它其实就是一个普通的dba用户
 
 但如果以`as sysdba`登录，那么实际上它是作为sys用户登录的，从登录信息里我们就可以看出来
 
-## 重建SYS密码
+### 重建SYS密码
 
 这里重建也可以理解为找回密码，主要是删掉原有密码文件，再生成一个新密码文件
 
@@ -53,7 +53,7 @@ system如果正常登录，它其实就是一个普通的dba用户
 
 　　这里entries是指允许几个特权用户同时登录，并且密码文件名一定要和原来的密码文件名一致
 
-# 用户管理命令
+## 用户管理命令
 
 ```sql
 -- 创建一个密码为my22的myjava用户（具有dba权限，且密码要以字母开头，不能以数字开头）
@@ -72,7 +72,7 @@ password 用户名
 alter user 用户名 identified by 新密码
 ```
 
-# profile管理口令
+## profile管理口令
 
 profile是口令限制、资源限制的命令集合
 
@@ -102,13 +102,13 @@ create profile myprofile limit password_life_time 15 password_grace_time 2 passw
 drop profile password_history [cascade]
 ```
 
-# 权限
+## 权限
 
 权限指执行特定类型sql命令或者访问其它方案对象的权利
 
 包括系统权限和对象权限两种
 
-## 系统权限
+### 系统权限
 
 用于控制用户可以执行的一个或一组数据库操作
 
@@ -144,7 +144,7 @@ revoke create session from Michael;
 revoke select on emp from myjava;
 ```
 
-## 对象权限
+### 对象权限
 
 指访问其它方案对象的权利
 
@@ -171,13 +171,13 @@ grant select on emp to myjava with grant option; --如果是对象权限，就�
 grant select on scott.emp to myjava22;           --级联回收机制：若scott回收myjava对emp表的查询权限，那么得到myjava授权的myjava22也会失去select权限
 ```
 
-# 角色
+## 角色
 
 角色为相关权限的命令集合，使用角色的主要目的就是为了简化权限的管理
 
 角色分为预定义角色和自定义角色
 
-## 预定义角色
+### 预定义角色
 
 预定义角色指Oracle所提供的角色，每种角色都用于执行一些特定的管理任务，常用的预定义角色有connect、resource、dba
 
@@ -207,7 +207,7 @@ grant select on scott.emp to myjava22;           --级联回收机制：若scott
 
 　　但要注意，dba角色不具备`sysdba`和`sysoper`的特权（启动和关闭数据库）
 
-## 自定义角色
+### 自定义角色
 
 一般由`dba`或者具有`create role`系统权限的其它用户来建立
 
@@ -221,7 +221,7 @@ grant select on scott.emp to myjava22;           --级联回收机制：若scott
 
 　　命令为：`create role 角色名 identified by 口令;`
 
-## 管理角色
+### 管理角色
 
 新建立角色时，该角色没有任何权限，为了使得角色能够完成特定任务，必须为其授予相应的系统权限和对象权限
 

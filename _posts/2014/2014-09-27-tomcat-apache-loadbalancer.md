@@ -17,7 +17,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现负
 
 整合细节详见：[https://jadyer.github.io/2014/09/27/tomcat-apache-jk/](https://jadyer.github.io/2014/09/27/tomcat-apache-jk/)
 
-# 配置负载均衡
+## 配置负载均衡
 
 1. 修改端口（由于我是在一台机器上复制多个tomcat，所以需要修改端口，如果是不同的机器就可以跳过这一步）
 
@@ -55,7 +55,7 @@ worker.tomcatlb.balanced_workers=tomcat1,tomcat2,tomcat3  # 参与负载均衡�
 
 3. 修改/app/apache/conf/extra/httpd-vhosts.conf：将默认的tomcat改为tomcatlb（即指定所有请求交由tomcatlb处理）
 
-# 测试负载均衡
+## 测试负载均衡
 
 启动apache和三个tomcat，便可通过jkstatus看到参与负载均衡的三个tomcat和一些参数（也可通过jkstatus修改负载均衡参数）
 
@@ -100,7 +100,7 @@ while(e.hasMoreElements()){
 
 ![](/img/2014/2014-09-27-tomcat-apache-jk.png)
 
-# workers.properties
+## workers.properties
 
 关于workers.properties的更多属性说明，可参考以下两个网址
 

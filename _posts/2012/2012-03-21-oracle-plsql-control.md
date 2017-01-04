@@ -11,7 +11,7 @@ excerpt: 主要介绍Oracle-PLSQL编程中的条件分支语句、控制结构�
 {:toc}
 
 
-# 条件分支
+## 条件分支
 
 `PL/SQL`中提供了三种条件分支语句：`if--then`、`if--then--else`、`if--then--elsif--else`
 
@@ -31,7 +31,7 @@ create or replace procedure my_pro(currNo number) is
     end;
 ```
 
-# 控制结构
+## 控制结构
 
 常用的包括`loop`循环、`while`循环、`for`循环
 
@@ -113,7 +113,7 @@ begin
 end;
 ```
 
-# 例外处理
+## 例外处理
 
 Oracle将例外分为预定义例外、非预定义例外、自定义例外三种
 
@@ -246,7 +246,7 @@ exception
 end;
 ```
 
-# Oracle分页
+## Oracle分页
 
 下面是无返回值的存储过程
 

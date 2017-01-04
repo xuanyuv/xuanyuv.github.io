@@ -17,7 +17,7 @@ excerpt: 介绍自动下载SVN源码、Maven编译打包、部署Tomcat、重启
 
 关于脚本中一些命令的含义，可参考我之前的博文：[https://jadyer.github.io/2012/09/09/linux-shell-java/](https://jadyer.github.io/2012/09/09/linux-shell-java/)
 
-# deploy-engine
+## deploy-engine
 
 下面是包含了核心逻辑的，具体的脚本内容`deploy-engine.sh`
 
@@ -95,7 +95,7 @@ deploy
 startup
 ```
 
-# 中途退出的问题
+## 中途退出的问题
 
 上面的脚本在使用命令`sh deploy-engine.sh`直接执行的过程中，若未执行完毕便`Ctrl+C`退出，这会导致应用部署失败
 
@@ -103,7 +103,7 @@ startup
 
 不过，要是给别人用的话，对方每次都要敲这么长的命令，可能会觉得麻烦，所以相对来说`Jenkins`也比较适合给别人用
 
-# deploy
+## deploy
 
 这是额外提供的，在上面的`deploy-engine.sh`基础上，可以直接执行的脚本`deploy.sh`
 

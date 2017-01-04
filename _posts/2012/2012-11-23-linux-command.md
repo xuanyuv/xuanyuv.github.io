@@ -11,7 +11,7 @@ excerpt: 介绍常用的Linux命令。
 {:toc}
 
 
-# scp
+## scp
 
 ```ruby
 scp mongodb-linux-x86_64-3.2.10.tgz root@10.16.30.72:/root/
@@ -23,7 +23,7 @@ root@10.16.30.72's password:
 mongodb-linux-x86_64-3.2.10.tgz                                                                                                                                 100%   73MB  73.3MB/s   00:01
 ```
 
-# wget
+## wget
 
 ```ruby
 wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.2.10.tgz
@@ -39,7 +39,7 @@ Saving to: "mongodb-linux-x86_64-3.2.10.tgz"
 2016-11-08 12:14:40 (3.36 MB/s) - "mongodb-linux-x86_64-3.2.10.tgz" saved [76836431/76836431]
 ```
 
-# grep
+## grep
 
 ```ruby
 # 统计"keyword"出现在日志中的次数
@@ -62,7 +62,7 @@ grep --color -n "20170815193506520" *
 grep -l -r "20170815193506520" *
 ```
 
-# history
+## history
 
 ```ruby
 # 输出最为常用的十条命令，由此可以看出你是一个什么类型的程序员
@@ -92,7 +92,7 @@ grep -l -r "20170815193506520" *
 [Jadyer@Jadyer-RHEL63 ~]$
 ```
 
-# 查CPU
+## 查CPU
 
 ```ruby
 # 查看CPU个数
@@ -159,7 +159,7 @@ Swap:  8388600k total,  2571452k used,  5817148k free,  2378820k cached
     9 root      20   0     0    0    0 S  0.0  0.0   0:50.88 ksoftirqd/1
 ```
 
-# 查端口
+## 查端口
 
 ```ruby
 # 查询指定端口的监听及运行情况
@@ -173,7 +173,7 @@ java    17608 root  163u  IPv6 29073040      0t0  TCP bjgg-kfvm-31:http (LISTEN)
 [Jadyer@Jadyer-RHEL63 CucPayTradePortalLog]$
 ```
 
-# 查日志
+## 查日志
 
 ```ruby
 # 根据指定的关键字查询日志（关键字需用双引号括起来，并注意不要出现'>''-'等特殊字符）
@@ -194,7 +194,7 @@ java    17608 root  163u  IPv6 29073040      0t0  TCP bjgg-kfvm-31:http (LISTEN)
 #    参数[-f]会不停地读取最新的内容，使用[Ctrl+c]可以终止日志显示
 ```
 
-# 查看空间
+## 查看空间
 
 ```ruby
 # 查看整体目录占用空间
@@ -259,7 +259,7 @@ drwxr-xr-x  4 root root 4.0K Oct 13 11:19 WEB-INF
 [root@wxtest webapps]#
 ```
 
-# 文件解压缩
+## 文件解压缩
 
 ```ruby
 # 压缩

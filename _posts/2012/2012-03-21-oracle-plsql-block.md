@@ -11,7 +11,7 @@ excerpt: 主要介绍Oracle-PLSQL编程中的块、存储过程、函数、包�
 {:toc}
 
 
-# 简述
+## 简述
 
 `PL/SQL`编程是Oracle在标准的SQL语言上的扩展，它不仅支持允许嵌入SQL语言，还可以自定义常量和变量
 
@@ -47,7 +47,7 @@ exec mypro; -- 调用名字为mypro的存储过程，格式为exec procedure_nam
 call mypro; -- 也可以使用call命令调用
 ```
 
-# block
+## block
 
 `块`是`PL/SQL`的基本程序单元，编写PL/SQL程序实际上就是编写PL/SQL块
 
@@ -93,7 +93,7 @@ exception
 end;
 ```
 
-# 存储过程
+## 存储过程
 
 其用于执行特定的操作
 
@@ -117,7 +117,7 @@ cstmt.setInt(2, 23456);
 cstmt.execute();
 ```
 
-# 函数
+## 函数
 
 其用于返回特定的数据
 
@@ -138,7 +138,7 @@ call emp_fun('SCOTT') into:NianXin;
 print NianXin;
 ```
 
-# 包
+## 包
 
 其用于在逻辑上组合过程和函数，它由包规范和包体两部分组成
 
@@ -168,7 +168,7 @@ end;
 call emp_pack.emp_pro('SCOTT',400800);
 ```
 
-# 触发器
+## 触发器
 
 触发器是指存放在数据库中，被隐含执行的存储过程
 
@@ -176,7 +176,7 @@ call emp_pack.emp_pro('SCOTT',400800);
 
 它主要分为：DML触发器、DDL触发器、系统触发器（后两个触发器通常由系统管理员创建，即`conn system/xxx as sysdba`）
 
-## 管理触发器
+### 管理触发器
 
 需要使用system登录
 
@@ -188,7 +188,7 @@ alter table table_name enable all triggers;  --激活表的所有触发器
 drop trigger trigger_name;                   --删除触发器
 ```
 
-## DML触发器
+### DML触发器
 
 ```sql
 -- /**
@@ -263,7 +263,7 @@ begin
 end;
 ```
 
-## DDL触发器
+### DDL触发器
 
 ```sql
 -- 语法如下
@@ -281,7 +281,7 @@ begin
 end;
 ```
 
-## 系统触发器
+##`# 系统触发器
 
 系统触发器是指基于Oracle事件（如logon,startup）所建立的触发器
 
@@ -313,7 +313,7 @@ begin
 end;
 ```
 
-# 变量
+## 变量
 
 在编写PL/SQL程序时，可以定义变量和常量，其主要包括以下四种常见类型
 
@@ -332,7 +332,7 @@ end;
 * default   ：用于指定初始值
 * expr      ：指定初始值PL/SQL表达式，可以是文本值、其它变量、函数等
 
-## 标量
+### 标量
 
 ```sql
 v_ename varchar2(10);                   --定义一个变长字符串
@@ -360,7 +360,7 @@ end;
 v_ename emp.ename%type;
 ```
 
-## 复合变量
+### 复合变量
 
 composite用于存放多个值的变量，主要包括PL/SQL记录、PL/SQL表、嵌套表（nested table）、动态数组（varray）等
 
@@ -392,7 +392,7 @@ begin
 end;
 ```
 
-## 参照变量
+### 参照变量
 
 其用于存放数值指针的变量
 

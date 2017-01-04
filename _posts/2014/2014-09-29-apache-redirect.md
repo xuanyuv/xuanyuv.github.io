@@ -13,7 +13,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29配置请求转发的方�
 
 本文涉及的相关环境和版本为：`CentOS-6.4-minimal`、`Apache-2.2.29`
 
-# 前言
+## 前言
 
 请求转发、请求重定向、端口转发、端口映射、域名转发、域名反向代理、请求代理等等，都可以通过本文的配置方式来实现
 
@@ -25,7 +25,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29配置请求转发的方�
 
 *另外，关于Apache与Tomcat的整合*，详见：[https://jadyer.github.io/2014/09/27/tomcat-apache-jk/](https://jadyer.github.io/2014/09/27/tomcat-apache-jk/)
 
-# 概述
+## 概述
 
 安装Apache时，可能并没有编译加载很多的模块
 
@@ -44,7 +44,7 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 
 接着开启虚拟主机配置，并增加映射信息，最后重启apache即可
 
-# 配置
+## 配置
 
 下面详细描述一下具体怎么配置
 
