@@ -11,6 +11,8 @@ excerpt: 演示ArrayList自定义排序的方法。
 {:toc}
 
 
+# 代码实现
+
 ```java
 package com.jadyer.demo;
 import java.util.ArrayList;
@@ -74,7 +76,7 @@ class User {
 }
 ```
 
-下面是控制台输出
+# 控制台输出
 
 ```
 4--40--特色功能
