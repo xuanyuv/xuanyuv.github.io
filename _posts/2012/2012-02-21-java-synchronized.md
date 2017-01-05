@@ -36,7 +36,16 @@ package com.jadyer.demo;
 
 /**
  * synchronized同步普通方法
- * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 17:29
+ * --------------------------------------------------------------
+ * 控制台输出内容，类似如下
+ * Thread-0：0
+ * Thread-0：1
+ * Thread-0：2
+ * Thread-1：0
+ * Thread-1：1
+ * Thread-1：2
+ * --------------------------------------------------------------
+ * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 17:29.
  */
 public class SynchronizedTest {
     public static void main(String[] args) {
@@ -98,17 +107,6 @@ class ThreadDollar implements Runnable{
 }
 ```
 
-此时控制台输出如下
-
-```
-Thread-0：0
-Thread-0：1
-Thread-0：2
-Thread-1：0
-Thread-1：1
-Thread-1：2
-```
-
 ## 同步静态方法
 
 如果某个 synchronized 方法是 static 的
@@ -128,7 +126,16 @@ package com.jadyer.demo;
 
 /**
  * synchronized同步静态方法
- * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 17:29
+ * --------------------------------------------------------------
+ * 控制台输出内容，类似如下
+ * Thread-1：0
+ * Thread-0：0
+ * Thread-1：1
+ * Thread-0：1
+ * Thread-0：2
+ * Thread-1：2
+ * --------------------------------------------------------------
+ * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 17:29.
  */
 public class SynchronizedStaticTest {
     public static void main(String[] args) {
@@ -180,17 +187,6 @@ class ThreadDollar implements Runnable{
 }
 ```
 
-此时控制台输出如下
-
-```
-Thread-1：0
-Thread-0：0
-Thread-1：1
-Thread-0：1
-Thread-0：2
-Thread-1：2
-```
-
 ## 同步块
 
 写法：`synchronized(object){//do something...}`，它表示线程在执行的时候，会对 object 对象上锁
@@ -211,7 +207,16 @@ package com.jadyer.demo;
 
 /**
  * synchronized同步块
- * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 17:29
+ * --------------------------------------------------------------
+ * 控制台输出内容，类似如下
+ * Thread-1：0
+ * Thread-0：0
+ * Thread-0：1
+ * Thread-1：1
+ * Thread-0：2
+ * Thread-1：2
+ * --------------------------------------------------------------
+ * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 17:29.
  */
 public class SynchronizedBlockTest {
     public static void main(String[] args) {
@@ -226,7 +231,7 @@ public class SynchronizedBlockTest {
 
 
 /**
- * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 02:29
+ * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 02:29.
  */
 class Bank{
     private Object obj11 = new Object();
@@ -285,15 +290,4 @@ class ThreadDollar implements Runnable{
         bank.getDollar();
     }
 }
-```
-
-此时控制台输出如下
-
-```
-Thread-1：0
-Thread-0：0
-Thread-0：1
-Thread-1：1
-Thread-0：2
-Thread-1：2
 ```
