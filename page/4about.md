@@ -21,6 +21,7 @@ type: page
 <br/>
 
 ## 站点
+
 * [CodeLF](https://unbug.github.io/codelf/)
 * [OneCoder](http://www.coderli.com)
 * [StackOverflow](https://stackoverflow.com/)
@@ -34,6 +35,7 @@ type: page
 <br/>
 
 ## 工具
+
 * [七牛云](http://www.qiniu.com/)
 * [新浪微博图床Chrome扩展](https://github.com/Suxiaogang/WeiboPicBed)
 * [新浪微博图床](http://weibo.com/minipublish)
@@ -67,3 +69,7 @@ type: page
 * [无极电影](http://bbs.btwuji.com)
 * [深影论坛](http://www.shinybbs.com)
 * [伊甸园国外连续剧交流站](http://bbs.sfile2012.com)
+
+## Comments
+
+{% include comments.html %}
