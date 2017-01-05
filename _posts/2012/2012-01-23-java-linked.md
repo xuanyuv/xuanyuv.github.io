@@ -19,7 +19,7 @@ excerpt: 介绍了Java模拟单向链表和双向链表的实现，以及线性�
 
 非线性数据结构，包含：树、图
 
-** 下面主要说一下线性表 **
+**下面主要说一下线性表**
 
 线性表的数据元素呈线性关系，其所有数据元素在同一个线性表中必须是相同的数据类型
 
@@ -107,7 +107,7 @@ java.util.LinkedList 类的底层，就是用双向循环链表实现的
 
 双向链表内的每个对象除了数据本身外，还有两个引用，分别指向前一个元素和后一个元素
 
-所以：** add/remove 操作时，LinkedList 性能好一些，而 get 操作时，ArrayList 性能好一些 **
+所以：**add/remove 操作时，LinkedList 性能好一些，而 get 操作时，ArrayList 性能好一些**
 
 ```java
 package com.jadyer.demo;
