@@ -11,15 +11,41 @@ excerpt: 这是一个持续更新的一些关于SpringCloud周边的文章，比
 {:toc}
 
 
-这是一个持续更新的、一些关于 [SpringCloud](http://projects.spring.io/spring-cloud/) 周边的文章
+这是一个持续更新的、一些关于 SpringCloud 周边的文章
 
 比如它那不走寻常路的版本名、其各组件的功能描述等等
+
+## 简介
+
+SpringCloud 是在 SpringBoot 基础上建立的，一个包含了诸多子项目（比如Spring Cloud Config、Spring Cloud Netflix）的大型综合项目
+
+项目主页为：[http://projects.spring.io/spring-cloud/](http://projects.spring.io/spring-cloud/)
+
+其主要提供了包括但不限于以下功能：
+
+* 配置管理（configuration management）
+* 服务发现（service discovery）
+* 断路器（circuit breakers）
+* 智能路由（intelligent routing）
+* 控制总线（control bus）
+* 微代理（micro-proxy）
+* 全局锁（global locks）
+* 领导选举（leadership election）
+* 一次性令牌（one-time tokens）
+* 分布式会话（distributed sessions）
+* 集群状态管理（cluster state）
+
+举个例子：比如 Spring Cloud 的子项目之一 Spring Cloud Netflix
+
+它主要是：封装 Netflix 公司开源的一系列产品，它为 SpringBoot 应用提供了自配置的 Netflix OSS 整合
+
+它提供了：服务发现（Eureka）、断路器（Hystrix）、智能路由（Zuul）、客户端负载均衡（Ribbon）等功能
 
 ## 版本名
 
 目前，官网中会看到三个版本名：Angel、Brixton、Camden（注意我的用语是版本名，没说版本号）
 
-这是由于：SpringCloud 是一个包含了诸多子项目的大型综合项目，其各子项目分别维护自己的版本号
+这是由于：SpringCloud 这个包含了诸多子项目的大型综合项目，它的各子项目版本号都是各自维护的
 
 于是为了管理子项目，避免混淆版本名与子项目版本号，才采用了命名的方式（这些命名目前来看是根据英文字母顺序表的）
 
