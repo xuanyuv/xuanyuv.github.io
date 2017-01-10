@@ -17,16 +17,18 @@ excerpt: 这是一个持续更新的一些关于SpringCloud周边的文章，比
 
 ## 简介
 
-SpringCloud 是在 SpringBoot 基础上建立的，一个包含了诸多子项目（比如Spring Cloud Config、Spring Cloud Netflix）的大型综合项目
+SpringCloud 是在 SpringBoot 基础上建立的
+
+是一个包含了诸多子项目（比如Spring Cloud Config、Spring Cloud Netflix）的大型综合项目
 
 项目主页为：[http://projects.spring.io/spring-cloud/](http://projects.spring.io/spring-cloud/)
 
 其主要提供了包括但不限于以下功能：
 
 * 配置管理（configuration management）
-* 服务发现（service discovery）
-* 断路器（circuit breakers）
-* 智能路由（intelligent routing）
+* 服务发现（service discovery，也就是服务注册中心）
+* 断路器（circuit breakers，也叫熔断器）
+* 智能路由（intelligent routing，通常用来做 API-Gateway 实现）
 * 控制总线（control bus）
 * 微代理（micro-proxy）
 * 全局锁（global locks）
