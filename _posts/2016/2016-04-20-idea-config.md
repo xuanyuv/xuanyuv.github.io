@@ -271,9 +271,9 @@ settings---Editor---File Encodings---Default encoding for properties files---UTF
 
 settings---Editor---File Encodings---Transparent native-to-ascii conversion
 
-#### 隐藏.iml和.idea和.gradle
+#### 隐藏文件和文件夹
 
-settings---Editor---File Types---Ignore files and folders---`*.iml;*.idea;*.gradle;`
+settings---Editor---File Types---Ignore files and folders---`target;*.iml;*.idea;*.gradle;`
 
 #### 版本控制下文件变化的显示
 
