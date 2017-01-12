@@ -87,4 +87,4 @@ Spring Cloud 将它集成在其子项目 Spring Cloud Netflix 中，以实现 Sp
 2. 续约：微服务启动后，会周期性地向 Eureka Server 发送心跳（默认周期为30秒）以Renew（续约）自己的信息
 3. 续期：Eureka Server 在一定时间内（默认90秒）没有接收到某个微服务节点的心跳，Eureka Server 会注销该微服务节点
 4. 识别：Eureka Client 会缓存 Eureka Server 中的信息，即使所有的 Eureka Server 节点都宕掉<br>
-　　　服务消费者依然可以使用缓存中的信息找到服务提供者**（亲测）**
+　　　服务消费者依然可以使用缓存中的信息找到服务提供者**（已亲测）**
