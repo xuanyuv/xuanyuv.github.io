@@ -77,14 +77,14 @@ Spring Cloud 将它集成在其子项目 Spring Cloud Netflix 中，以实现 Sp
 它主要包括两个组件：Eureka Server 和 Eureka Client
 
 * Eureka Client：一个Java客户端，用于简化与 Eureka Server 的交互
-* Eureka Server：提供服务发现的能力，各个微服务启动时，会通过 Eureka Client 向 Eureka Server 注册自己，Eureka Server 会存储该服务的信息
+* Eureka Server：提供服务注册和发现的能力
 
-关于服务端和客户端的相互识别，有以下几点需要介绍
+各个微服务启动时，会通过 Eureka Client 向 Eureka Server 注册自己，Eureka Server 会存储该服务的信息
+
+另外，关于服务端和客户端的相互识别，有以下几点需要介绍
 
 1. 同步：每个 Eureka Server 同时也是 Eureka Client，多个 Eureka Server 之间通过复制的方式完成服务注册表的同步
-2. 识别：Eureka Client 会缓存 Eureka Server 中的信息，即使所有的 Eureka Server 节点都宕掉，服务消费者依然可以使用缓存中的信息找到服务提供者
-3. 续约：微服务启动后，会周期性地向 Eureka Server 发送心跳（默认周期为30秒）以Renew（续约）自己的信息
-4. 续期：如果 Eureka Server 在一定时间内（默认90秒）没有接收到某个微服务节点的心跳，Eureka Server 将会注销该微服务节点
-
-
-
+2. 续约：微服务启动后，会周期性地向 Eureka Server 发送心跳（默认周期为30秒）以Renew（续约）自己的信息
+3. 续期：Eureka Server 在一定时间内（默认90秒）没有接收到某个微服务节点的心跳，Eureka Server 会注销该微服务节点
+4. 识别：Eureka Client 会缓存 Eureka Server 中的信息，即使所有的 Eureka Server 节点都宕掉<br>
+　　　服务消费者依然可以使用缓存中的信息找到服务提供者（亲测）
