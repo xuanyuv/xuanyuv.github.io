@@ -59,12 +59,12 @@ SpringCloud 是在 SpringBoot 基础上建立的
 
 *注意：关于其各版本与 Spring-Boot 版本之间的关系，也会在这里面看到*
 
-| Component | Angel.SR6 | Brixton.SR7 | Camden.SR3 | Camden.BUILD-SNAPSHOT |
+| Component | Angel.SR6 | Brixton.SR7 | Camden.SR4 | Camden.BUILD-SNAPSHOT |
 |:---------:|:---------:|:-----------:|:----------:|:---------------------:|
 | spring-cloud-aws     | 1.0.4.RELEASE | 1.1.3.RELEASE | 1.1.3.RELEASE | 1.1.4.BUILD-SNAPSHOT |
 | spring-cloud-bus     | 1.0.3.RELEASE | 1.1.2.RELEASE | 1.2.1.RELEASE | 1.2.2.BUILD-SNAPSHOT |
 | spring-cloud-cli     | 1.0.6.RELEASE | 1.1.6.RELEASE | 1.2.0.RC1     | 1.2.0.BUILD-SNAPSHOT |
-| spring-cloud-commons | 1.0.5.RELEASE | 1.1.3.RELEASE | 1.1.6.RELEASE | 1.1.7.BUILD-SNAPSHOT |
+| spring-cloud-commons | 1.0.5.RELEASE | 1.1.3.RELEASE | 1.1.7.RELEASE | 1.1.8.BUILD-SNAPSHOT |
 | ...                  | ...           | ...           | ...           | ...                  |
 | ...                  | ...           | ...           | ...           | ...                  |
 
@@ -111,7 +111,7 @@ Spring Cloud 将它集成在其子项目 Spring Cloud Netflix 中，以实现 Sp
 
 这就不会使得线程被故障服务长时间占用而不释放，避免了故障在分布式系统中的蔓延
 
-而 Hystrix 正是 Netflix 开源的微服务框架套件之一，是由 Java 实现的，用来处理分布式系统发生故障或延迟时的容错库
+而 Hystrix 正是 Netflix 开源的 [javanica](https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-javanica) 提供的微服务框架套件之一，是由 Java 实现的，用来处理分布式系统发生故障或延迟时的容错库
 
 它基于命令模式 HystrixCommand 来包装依赖调用逻辑，其每个命令在单独线程中 **/** 信号授权下执行
 
@@ -131,3 +131,5 @@ Hystrix 支持两种隔离策略：线程池隔离和信号量隔离（都是限
 开发者可以限制系统对某一个依赖的最高并发数，这个基本上就是一个限流的策略<br>
 每次调用依赖时都会检查一下是否到达信号量的限制值，如达到，则拒绝<br>
 该策略的优点是不新起线程执行命令，减少上下文切换，缺点是无法配置断路，每次都一定会去尝试获取信号量
+
+关于 Hystrix 的详细属性配置说明，可以参见 [Hystrix的Wiki](https://github.com/Netflix/Hystrix/wiki/Configuration)
