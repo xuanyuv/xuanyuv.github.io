@@ -111,7 +111,9 @@ Spring Cloud 将它集成在其子项目 Spring Cloud Netflix 中，以实现 Sp
 
 这就不会使得线程被故障服务长时间占用而不释放，避免了故障在分布式系统中的蔓延
 
-而 Hystrix 正是 Netflix 开源的 [javanica](https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-javanica) 提供的微服务框架套件之一，是由 Java 实现的，用来处理分布式系统发生故障或延迟时的容错库
+而 Hystrix 正是 Netflix 开源的 [javanica](https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-javanica) 提供的微服务框架套件之一
+
+它是由 Java 实现的，用来处理分布式系统发生故障或延迟时的容错库
 
 它基于命令模式 HystrixCommand 来包装依赖调用逻辑，其每个命令在单独线程中 **/** 信号授权下执行
 
