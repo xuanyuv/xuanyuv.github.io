@@ -11,7 +11,7 @@ excerpt: 详细介绍了Windows安装MySQL-5.7.14之后的配置细节。
 {:toc}
 
 
-关于 CentOS-6.4-minimal 上面采用源码安装的方式，安装 MySQL-5.5.38 的步骤，详见这里[传送门：CentOS安装MySQL](https://jadyer.github.io/2014/09/29/centos-install-mysql/)
+> 关于 CentOS-6.4-minimal 上面通过源码来安装 MySQL-5.5.38，详见这里：[传送门-->CentOS安装MySQL](https://jadyer.github.io/2014/09/29/centos-install-mysql/)
 
 Windows 上安装完 MySQL，以前都会有一个配置向导工具，一路点下去就可以了
 
