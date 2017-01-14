@@ -91,6 +91,8 @@ Spring Cloud 将它集成在其子项目 Spring Cloud Netflix 中，以实现 Sp
 
 关于 Eureka 配置的最佳实践，可参考：[https://github.com/spring-cloud/spring-cloud-netflix/issues/203](https://github.com/spring-cloud/spring-cloud-netflix/issues/203)
 
+更多内容，可参考：[http://cloud.spring.io/spring-cloud-static/Camden.SR4/#spring-cloud-eureka-server](http://cloud.spring.io/spring-cloud-static/Camden.SR4/#spring-cloud-eureka-server)
+
 ## Hystrix
 
 微服务架构中，一般都存在着很多的服务单元
