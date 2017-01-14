@@ -147,3 +147,5 @@ Spring Cloud Config 为服务端和客户端各应用的所有环境，提供了
 它默认采用 git 存储配置信息，这样通过 git 客户端工具就可以很轻松的管理配置内容，维护环境配置的版本
 
 虽然它也提供本地化文件系统的存储方式，但相信，很少有人这么做
+
+更多内容，可参考：[http://cloud.spring.io/spring-cloud-static/Camden.SR4/#_spring_cloud_config](http://cloud.spring.io/spring-cloud-static/Camden.SR4/#_spring_cloud_config)
