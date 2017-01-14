@@ -41,7 +41,7 @@ SpringCloud 是在 SpringBoot 基础上建立的
 
 它主要是：封装 Netflix 公司开源的一系列产品，它为 SpringBoot 应用提供了自配置的 Netflix OSS 整合
 
-它提供了：服务发现（Eureka）、断路器（Hystrix）、智能路由（Zuul）、客户端负载均衡（Ribbon）等功能
+它提供了：服务发现（Eureka）、断路器（Hystrix）、智能路由（Zuul）、客户端软负载均衡（Ribbon）等功能
 
 ## 版本名
 
