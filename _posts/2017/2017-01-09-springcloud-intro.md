@@ -17,9 +17,17 @@ excerpt: 这是一个持续更新的一些关于SpringCloud周边的文章，比
 
 ## 简介
 
+系统一旦走向分布式，其复杂程度成倍增长，传统单体应用只考虑业务逻辑的开发方式已经不再适用
+
+正因其复杂性，目前只有业务需求大的大型互联网公司才会（被迫）采用
+
+而且需要投入大量的技术力量来开发基础设施，也造成了小公司“用不起”分布式架构的情况
+
+而随着 Netflix 开源了其经过实战考验的一系列基础组件，再加上 Spring Cloud 的大力支持，开发分布式系统已经不再像以前那样可怕了
+
 SpringCloud 是在 SpringBoot 基础上建立的
 
-是一个包含了诸多子项目（比如Spring Cloud Config、Spring Cloud Netflix）的大型综合项目
+它是一个包含了诸多子项目（比如Spring Cloud Config、Spring Cloud Netflix）的大型综合项目
 
 项目主页为：[http://projects.spring.io/spring-cloud/](http://projects.spring.io/spring-cloud/)
 
@@ -101,7 +109,7 @@ Spring Cloud 将它集成在其子项目 Spring Cloud Netflix 中，以实现 Sp
 
 如果此时调用方的请求不断增加，时间一长就会出现由于等待故障方响应而形成任务积压，最终导致自身服务的瘫痪
 
-为了解决这样的问题：断路器（或者叫熔断器）模式便出现了
+为了解决这样的问题：断路器（Cricuit Breaker，或者叫熔断器）模式便出现了
 
 断路器模式源于 Martin Fowler 的 [Circuit Breaker](http://martinfowler.com/bliki/CircuitBreaker.html) 一文
 
@@ -119,7 +127,33 @@ Spring Cloud 将它集成在其子项目 Spring Cloud Netflix 中，以实现 Sp
 
 它是由 Java 实现的，用来处理分布式系统发生故障或延迟时的容错库
 
-它基于命令模式 HystrixCommand 来包装依赖调用逻辑，其每个命令在单独线程中 **/** 信号授权下执行
+它提供了断路器、资源隔离、自我修复三大功能
+
+* 断路器
+
+实际可初步理解为快速失败
+
+快速失败是防止资源耗尽的关键点，当 Hystrix 发现在过去某段时间内对服务 AA 的调用出错率达到某个阀值时，Hystrix 就会“熔断”该服务
+
+后续任何向服务 AA 的请求都会快速失败，而不是白白让调用线程去等待
+
+* 资源隔离
+
+首先，Hystrix 对每一个依赖服务都配置了一个线程池，对依赖服务的调用会在线程池中执行
+
+比如，我们设计服务 AA 的线程池大小为20, 那么 Hystrix 会最多允许有20个容器线程调用服务 AA，如果超出20，Hystrix 会拒绝并快速失败
+
+这样即使服务 AA 长时间未响应，容器最多也只能堵塞20个线程，剩余的线程仍然可以处理用户请求
+
+* 自我修复
+
+处于熔断状态的服务，在经过一段时间后，Hystrix 会让其进入“半关闭”状态（即允许少量请求通过），然后统计调用的成功率
+
+如果这个请求都能成功，Hystrix 会恢复该服务，从而达到自我修复的效果
+
+其中：在服务被熔断到进入“半关闭”状态之间的时间，就是留给开发人员排查错误并恢复故障的时间，开发人员可以通过监控措施得到提醒并线上排查
+
+Hystrix 基于命令模式 HystrixCommand 来包装依赖调用逻辑，其每个命令在单独线程中 **/** 信号授权下执行
 
 （Command 是在 Receiver 和 Invoker 之间添加的中间层，Command 实现了对 Receiver 的封装）
 
@@ -141,6 +175,12 @@ Hystrix 支持两种隔离策略：线程池隔离和信号量隔离（都是限
 关于 Hystrix 的详细属性配置说明，可以参见 [Hystrix的Wiki](https://github.com/Netflix/Hystrix/wiki/Configuration)
 
 ## 配置中心
+
+微服务意味着要将单体应用中的业务拆分成一个个子服务，每个服务的粒度相对较小，因此系统中会出现大量的服务
+
+由于每个服务都依靠必要的配置信息才能运行，所以一套集中式的、动态的配置管理设施是必不可少的
+
+于是 Spring Cloud 提供了 Spring Cloud Config 来解决这个问题
 
 Spring Cloud Config 为服务端和客户端各应用的所有环境，提供了适用于分布式系统的，一个中心化的外部化配置支持
 
