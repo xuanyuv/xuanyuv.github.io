@@ -89,6 +89,8 @@ Spring Cloud 将它集成在其子项目 Spring Cloud Netflix 中，以实现 Sp
 4. 识别：Eureka Client 会缓存 Eureka Server 中的信息，即使所有的 Eureka Server 节点都宕掉<br>
 　　　服务消费者依然可以使用缓存中的信息找到服务提供者**（已亲测）**
 
+关于 Eureka 配置的最佳实践，可参考：[https://github.com/spring-cloud/spring-cloud-netflix/issues/203](https://github.com/spring-cloud/spring-cloud-netflix/issues/203)
+
 ## Hystrix
 
 微服务架构中，一般都存在着很多的服务单元
