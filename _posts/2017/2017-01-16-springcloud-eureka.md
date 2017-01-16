@@ -31,7 +31,7 @@ excerpt: 本文主要对Eureka做一个基本介绍，并演示一个小demo。
 * 识别：Eureka Client 会缓存 Eureka Server 中的信息<br>
   　　　即使所有的 Eureka Server 节点都宕掉，服务消费者依然可以使用缓存中的信息找到服务提供者**（笔者已亲测）**
 
-Spring Cloud 已经把 Eureka 集成在其子项目 Spring Cloud Netflix 里面，以实现 Spring Cloud 的注册中心
+Spring Cloud 已经把 Eureka 集成在其子项目 Spring Cloud Netflix 里面
 
 关于 Eureka 配置的最佳实践，可参考：[https://github.com/spring-cloud/spring-cloud-netflix/issues/203](https://github.com/spring-cloud/spring-cloud-netflix/issues/203)
 
@@ -39,6 +39,49 @@ Spring Cloud 已经把 Eureka 集成在其子项目 Spring Cloud Netflix 里面�
 
 ## 示例
 
-#### 注册中心
+这里只是一个基本的例子，只能用来尝尝鲜
 
-#### 服务端
+更多丰富的介绍和演示，详见 Eureka 进阶篇：[https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/](https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/)
+
+### 注册中心
+
+代码比较简单，只有一个启动类 ServiceDiscoveryBootStrap.java 和一个配置文件 application.yml
+
+```java
+package com.jadyer.demo;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+//创建服务注册中心
+@EnableEurekaServer
+@SpringBootApplication
+public class ServiceDiscoveryBootStrap {
+	public static void main(String[] args) {
+		new SpringApplicationBuilder(ServiceDiscoveryBootStrap.class).run(args);
+	}
+}
+```
+
+```yml
+server:
+  port: 1100
+
+eureka:
+  client:
+    # 设置是否从注册中心获取注册信息（缺省true）
+    # 因为这是一个单点的EurekaServer，不需要同步其它EurekaServer节点的数据，故设为false
+    fetch-registry: false
+    # 设置是否将自己作为客户端注册到注册中心（缺省true）
+    # 这里为不需要（查看@EnableEurekaServer注解的源码，会发现它间接用到了@EnableDiscoveryClient）
+    register-with-eureka: false
+    # 在未设置defaultZone的情况下，注册中心在本例中的默认地址就是http://127.0.0.1:1100/eureka/
+    # 但奇怪的是，启动注册中心时，控制台还是会打印这个地址的节点：http://localhost:8761/eureka/
+    # 而实际服务端注册时，要使用1100的才能注册成功，8761的会注册失败并报告异常
+    serviceUrl:
+      # 实际测试：若修改尾部的eureka为其它的，注册中心启动没问题，但服务端在注册时会失败
+      # 报告异常：com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+      defaultZone: http://127.0.0.1:${server.port}/eureka/
+```
+
+### 服务端
