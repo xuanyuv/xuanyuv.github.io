@@ -176,9 +176,9 @@ eureka:
     register-with-eureka: false
     # 在未设置defaultZone的情况下，注册中心在本例中的默认地址就是http://127.0.0.1:1100/eureka/
     # 但奇怪的是，启动注册中心时，控制台还是会打印这个地址的节点：http://localhost:8761/eureka/
-    # 而实际服务端注册时，要使用1100的才能注册成功，8761的会注册失败并报告异常
+    # 而实际服务端注册时，要使用1100端口的才能注册成功，8761端口的会注册失败并报告异常
     serviceUrl:
-      # 实际测试：若修改尾部的eureka为其它的，注册中心启动没问题，但服务端在注册时会失败
+      # 实际测试：若修改尾部的eureka为其它的，比如/myeureka，注册中心启动没问题，但服务端在注册时会失败
       # 报告异常：com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
       defaultZone: http://127.0.0.1:${server.port}/eureka/
 ```
@@ -339,7 +339,7 @@ public class CalculatorController {
 
 目前为止，我们完成了 Spring Cloud Netflix Eureka 搭建注册中心的基本示例，不过也只是尝尝鲜
 
-因为它存在着很多问题，比如
+因为它还存在着很多问题，比如
 
 * 服务提供方关闭之后，在注册中心看到的状态还是 UP
 * 注册中心的服务提供方显示的名字，是不是可以自定义
