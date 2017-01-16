@@ -17,21 +17,17 @@ excerpt: 这是一个持续更新的一些关于SpringCloud周边的文章，比
 
 ## 简介
 
-系统一旦走向分布式，其复杂程度成倍增长，传统单体应用只考虑业务逻辑的开发方式已经不再适用
-
-正因其复杂性，目前只有业务需求大的大型互联网公司才会（被迫）采用
-
-再加上需要投入大量的技术力量来开发基础设施，也造成了小公司“用不起”分布式架构的情况
-
-而随着 Netflix 开源了其经过实战考验的一系列组件，再加上 Spring Cloud 的大力支持，开发分布式系统已经不那么可怕了
-
 SpringCloud 是在 SpringBoot 基础上建立的
 
 它是一个包含了诸多子项目（Spring Cloud Bus、Spring Cloud Config、Spring Cloud Netflix）的大型综合项目
 
-项目主页为：[http://projects.spring.io/spring-cloud/](http://projects.spring.io/spring-cloud/)
+提到 Spring Cloud，就不得不提微服务中，大名鼎鼎的 Netflix
 
-其主要提供了包括但不限于以下功能：
+Netflix 开源了他们家久经实战考验的一系列微服务组件，而 Spring Cloud 又对其进行了一系列的封装，使之更便于使用
+
+其项目主页为：[http://projects.spring.io/spring-cloud/](http://projects.spring.io/spring-cloud/)
+
+目前主要包括但不限于以下功能：
 
 * 配置管理（configuration management）
 * 服务发现（service discovery，也就是服务注册中心）
@@ -47,9 +43,9 @@ SpringCloud 是在 SpringBoot 基础上建立的
 
 举个例子：比如 Spring Cloud 的子项目之一 Spring Cloud Netflix
 
-它主要是：封装 Netflix 公司开源的一系列产品，它为 SpringBoot 应用提供了自配置的 Netflix OSS 整合
+它封装 Netflix 公司开源的一系列产品，为 SpringBoot 应用提供了自配置的 Netflix OSS 整合
 
-它提供了：服务发现（Eureka）、断路器（Hystrix）、智能路由（Zuul）、客户端软负载均衡（Ribbon）等功能
+比如：服务发现（Eureka）、断路器（Hystrix）、智能路由（Zuul）、客户端软负载均衡（Ribbon）等功能
 
 ## 版本名
 
