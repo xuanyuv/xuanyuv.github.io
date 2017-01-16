@@ -84,4 +84,33 @@ eureka:
       defaultZone: http://127.0.0.1:${server.port}/eureka/
 ```
 
+补充一个日志输出配置的 logback.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<contextName>${PROJECT_NAME}</contextName>
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%d{yyyyMMddHHmmssSSS}][%t][%C{0}.%M]%m%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.jboss" level="WARN"/>
+	<logger name="org.apache" level="WARN"/>
+	<logger name="com.netflix" level="INFO"/>
+	<logger name="org.hibernate" level="WARN"/>
+	<logger name="org.springframework" level="WARN"/>
+
+	<root level="DEBUG">
+		<appender-ref ref="CONSOLE"/>
+	</root>
+</configuration>
+```
+
+顺便看一下注册中心 Eureka 首页效果图
+
+![](/img/2017/2017-01-16-springcloud-eureka.png)
+
 ### 服务端
