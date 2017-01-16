@@ -34,7 +34,7 @@ Eureka 在设计时，认为分布式环境的网络是不可靠的，可能会�
 *关于断路器，在接下来的系列文章中，我会详细介绍并演示*
 
 > 注意：更改 Eureka Server 的更新频率将打破服务的自我保护功能<br>
-生产环境不建议自定义这些配置，详见：[https://github.com/spring-cloud/spring-cloud-netflix/issues/373](https://github.com/spring-cloud/spring-cloud-netflix/issues/373)
+　　　生产环境不建议自定义这些配置，详见：[https://github.com/spring-cloud/spring-cloud-netflix/issues/373](https://github.com/spring-cloud/spring-cloud-netflix/issues/373)
 
 ## 踢出已关停的节点
 
