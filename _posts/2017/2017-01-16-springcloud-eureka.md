@@ -39,9 +39,9 @@ Spring Cloud 已经把 Eureka 集成在其子项目 Spring Cloud Netflix 里面
 
 ## 示例代码
 
-本文演示的是一个基本的例子，只能用来尝尝鲜
+本文的例子只能用来尝尝鲜，更丰富的详见 Eureka 进阶篇：[https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/](https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/)
 
-更多丰富的介绍和演示，详见 Eureka 进阶篇：[https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/](https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/)
+这里通过一个注册中心，和两个服务提供者，搭建一个基本的示例
 
 这是一个公共的 `pom.xml`
 
@@ -107,7 +107,10 @@ Spring Cloud 已经把 Eureka 集成在其子项目 Spring Cloud Netflix 里面
 
 ### 注册中心
 
-总体思路：1、SpringBoot 启动类标注 `@EnableEurekaServer` 注解，2、配置自己本身不注册到注册中心
+总体思路如下
+
+1. SpringBoot启动类标注 `@EnableEurekaServer` 注解
+2. 设置自己本身不注册到注册中心
 
 ok，let`s drink code ...
 
@@ -138,7 +141,7 @@ ok，let`s drink code ...
 </project>
 ```
 
-这是 SpringBoot 启动类 `ServiceDiscoveryBootStrap.java`
+这是注册中心的 SpringBoot 启动类 `ServiceDiscoveryBootStrap.java`
 
 ```java
 package com.jadyer.demo;
@@ -156,7 +159,7 @@ public class ServiceDiscoveryBootStrap {
 }
 ```
 
-这是配置文件 `/src/main/resources/application.yml`
+这是注册中心的配置文件 `/src/main/resources/application.yml`
 
 ```yml
 server:
@@ -179,7 +182,7 @@ eureka:
       defaultZone: http://127.0.0.1:${server.port}/eureka/
 ```
 
-补充一个日志输出的配置 `/src/main/resources/logback.xml`
+补充一个注册中心的的日志输出配置 `/src/main/resources/logback.xml`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -204,8 +207,140 @@ eureka:
 </configuration>
 ```
 
+### 服务提供方01
+
+总体思路如下
+
+1. SpringBoot启动类标注 `@EnableEurekaClient` 或者 `@EnableDiscoveryClient` 注解
+2. 配置注册中心地址
+
+ok，let`s drink code ...
+
+这是服务提供方的 `pom.xml`
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.jadyer.demo</groupId>
+		<artifactId>demo-cloud-02</artifactId>
+		<version>1.1</version>
+	</parent>
+	<artifactId>service-server-01</artifactId>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+```
+
+这是服务提供方的 SpringBoot 启动类 `ServiceServer01BootStarp.java`
+
+```java
+package com.jadyer.demo;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+
+/**
+ * 通过 @EnableEurekaClient 注解，为服务提供方赋予注册和发现服务的能力
+ * ------------------------------------------------------------------------------------------------------------------
+ * 也可以使用org.springframework.cloud.client.discovery.@EnableDiscoveryClient注解
+ * 详见以下两篇文章的介绍
+ * http://cloud.spring.io/spring-cloud-static/Camden.SR3/#_registering_with_eureka
+ * https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka
+ * ------------------------------------------------------------------------------------------------------------------
+ * Created by 玄玉<https://jadyer.github.io/> on 2017/1/9 16:00.
+ */
+@EnableEurekaClient
+@SpringBootApplication
+public class ServiceServer01BootStarp {
+	public static void main(String[] args) {
+		new SpringApplicationBuilder(ServiceServer01BootStarp.class).run(args);
+	}
+}
+```
+
+这是服务提供方的配置文件 `/src/main/resources/application.yml`
+
+```yml
+server:
+  port: 2100
+
+# 指定发布的微服务名（以后调用时，只需该名称即可访问该服务）
+spring:
+  application:
+    name: CalculatorServer
+
+# 指定服务注册中心的地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:1100/eureka/
+```
+
+这是服务提供方暴露的数学运算服务 `CalculatorController.java`
+
+```java
+package com.jadyer.demo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import javax.annotation.Resource;
+
+/**
+ * 服务提供方暴露的数学运算服务
+ * Created by 玄玉<https://jadyer.github.io/> on 2017/1/9 16:00.
+ */
+@RestController
+public class CalculatorController {
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Resource
+    private DiscoveryClient client;
+
+    @RequestMapping("/add")
+    public int add(int a, int b){
+        //加运算
+        int r = a + b;
+        //输出服务信息
+        ServiceInstance instance = client.getLocalServiceInstance();
+        logger.info("uri={}，service_id={}，result={}", instance.getUri(), instance.getServiceId(), r);
+        //返回结果
+        return r;
+    }
+}
+```
+
+### 服务提供方02
+
+除了启动端口为2200外，其代码与服务提供方01的完全相同
+
+### 效果图
+
 最后我们看一下注册中心的 Eureka 首页效果图
+
+可以看到：两个服务相同，启动端口不同的 CalculatorServer 已经注册进来了
 
 ![](/img/2017/2017-01-16-springcloud-eureka.png)
 
-### 服务端
+目前为止，我们完成了 Spring Cloud Netflix Eureka 搭建注册中心的基本示例，不过也只是尝尝鲜
+
+因为它存在着很多问题，比如
+
+* 服务提供方关闭之后，在注册中心看到的状态还是 UP
+* 注册中心的服务提供方显示的名字，是不是可以自定义
+
+等等吧，这些问题，请参见 Eureka 进阶篇：[https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/](https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/)
