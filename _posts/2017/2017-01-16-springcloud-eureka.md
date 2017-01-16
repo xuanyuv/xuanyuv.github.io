@@ -37,15 +37,108 @@ Spring Cloud 已经把 Eureka 集成在其子项目 Spring Cloud Netflix 里面
 
 更多介绍，可参考：[http://cloud.spring.io/spring-cloud-static/Camden.SR4/#spring-cloud-eureka-server](http://cloud.spring.io/spring-cloud-static/Camden.SR4/#spring-cloud-eureka-server)
 
-## 示例
+## 示例代码
 
-这里只是一个基本的例子，只能用来尝尝鲜
+本文演示的是一个基本的例子，只能用来尝尝鲜
 
 更多丰富的介绍和演示，详见 Eureka 进阶篇：[https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/](https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/)
 
+这是一个公共的 `pom.xml`
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.jadyer.demo</groupId>
+	<artifactId>demo-cloud-02</artifactId>
+	<version>1.1</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>service-discovery</module>
+		<module>service-server-01</module>
+		<module>service-server-02</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.3.RELEASE</version>
+	</parent>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Camden.SR4</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+```
+
 ### 注册中心
 
-代码比较简单，只有一个启动类 ServiceDiscoveryBootStrap.java 和一个配置文件 application.yml
+总体思路：1、SpringBoot 启动类标注 `@EnableEurekaServer` 注解，2、配置自己本身不注册到注册中心
+
+ok，let`s drink code ...
+
+这是注册中心的 `pom.xml`
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.jadyer.demo</groupId>
+		<artifactId>demo-cloud-02</artifactId>
+		<version>1.1</version>
+	</parent>
+	<artifactId>service-discovery</artifactId>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+```
+
+这是 SpringBoot 启动类 `ServiceDiscoveryBootStrap.java`
 
 ```java
 package com.jadyer.demo;
@@ -62,6 +155,8 @@ public class ServiceDiscoveryBootStrap {
 	}
 }
 ```
+
+这是配置文件 `/src/main/resources/application.yml`
 
 ```yml
 server:
@@ -84,7 +179,7 @@ eureka:
       defaultZone: http://127.0.0.1:${server.port}/eureka/
 ```
 
-补充一个日志输出配置的 logback.xml
+补充一个日志输出的配置 `/src/main/resources/logback.xml`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -109,7 +204,7 @@ eureka:
 </configuration>
 ```
 
-顺便看一下注册中心 Eureka 首页效果图
+最后我们看一下注册中心的 Eureka 首页效果图
 
 ![](/img/2017/2017-01-16-springcloud-eureka.png)
 
