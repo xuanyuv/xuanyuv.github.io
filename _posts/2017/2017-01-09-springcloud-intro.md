@@ -21,13 +21,13 @@ excerpt: 这是一个持续更新的一些关于SpringCloud周边的文章，比
 
 正因其复杂性，目前只有业务需求大的大型互联网公司才会（被迫）采用
 
-而且需要投入大量的技术力量来开发基础设施，也造成了小公司“用不起”分布式架构的情况
+再加上需要投入大量的技术力量来开发基础设施，也造成了小公司“用不起”分布式架构的情况
 
-而随着 Netflix 开源了其经过实战考验的一系列基础组件，再加上 Spring Cloud 的大力支持，开发分布式系统已经不再像以前那样可怕了
+而随着 Netflix 开源了其经过实战考验的一系列组件，再加上 Spring Cloud 的大力支持，开发分布式系统已经不那么可怕了
 
 SpringCloud 是在 SpringBoot 基础上建立的
 
-它是一个包含了诸多子项目（比如Spring Cloud Config、Spring Cloud Netflix）的大型综合项目
+它是一个包含了诸多子项目（Spring Cloud Bus、Spring Cloud Config、Spring Cloud Netflix）的大型综合项目
 
 项目主页为：[http://projects.spring.io/spring-cloud/](http://projects.spring.io/spring-cloud/)
 
@@ -75,31 +75,6 @@ SpringCloud 是在 SpringBoot 基础上建立的
 | spring-cloud-commons | 1.0.5.RELEASE | 1.1.3.RELEASE | 1.1.7.RELEASE | 1.1.8.BUILD-SNAPSHOT |
 | ...                  | ...           | ...           | ...           | ...                  |
 | ...                  | ...           | ...           | ...           | ...                  |
-
-## Eureka
-
-[Eureka](https://github.com/Netflix/Eureka) 是 [Netflix](https://github.com/Netflix) 开发的服务注册与发现的组件，本身是一个基于 REST 的服务
-
-Spring Cloud 将它集成在其子项目 Spring Cloud Netflix 中，以实现 Spring Cloud 的服务注册与发现功能
-
-它主要包括两个组件：Eureka Server 和 Eureka Client
-
-* Eureka Client：一个Java客户端，用于简化与 Eureka Server 的交互
-* Eureka Server：提供服务注册和发现的能力
-
-各个微服务启动时，会通过 Eureka Client 向 Eureka Server 注册自己，Eureka Server 会存储该服务的信息
-
-另外，关于服务端和客户端的相互识别，有以下几点需要介绍
-
-1. 同步：每个 Eureka Server 同时也是 Eureka Client，多个 Eureka Server 之间通过复制的方式完成服务注册表的同步
-2. 续约：微服务启动后，会周期性地向 Eureka Server 发送心跳（默认周期为30秒）以Renew（续约）自己的信息
-3. 续期：Eureka Server 在一定时间内（默认90秒）没有接收到某个微服务节点的心跳，Eureka Server 会注销该微服务节点
-4. 识别：Eureka Client 会缓存 Eureka Server 中的信息，即使所有的 Eureka Server 节点都宕掉<br>
-　　　服务消费者依然可以使用缓存中的信息找到服务提供者**（已亲测）**
-
-关于 Eureka 配置的最佳实践，可参考：[https://github.com/spring-cloud/spring-cloud-netflix/issues/203](https://github.com/spring-cloud/spring-cloud-netflix/issues/203)
-
-更多内容，可参考：[http://cloud.spring.io/spring-cloud-static/Camden.SR4/#spring-cloud-eureka-server](http://cloud.spring.io/spring-cloud-static/Camden.SR4/#spring-cloud-eureka-server)
 
 ## Hystrix
 
