@@ -17,13 +17,13 @@ excerpt: 这是一个持续更新的一些关于SpringCloud周边的文章，比
 
 ## 简介
 
-SpringCloud 是在 SpringBoot 基础上建立的
-
-它是一个包含了诸多子项目（Spring Cloud Bus、Spring Cloud Config、Spring Cloud Netflix）的大型综合项目
-
 提到 Spring Cloud，就不得不提微服务中，大名鼎鼎的 Netflix
 
-Netflix 开源了他们家久经实战考验的一系列微服务组件，而 Spring Cloud 又对其进行了一系列的封装，使之更便于使用
+Netflix 开源了他们家久经实战考验的一系列微服务组件，而 Spring Cloud 又对其进行了一系列封装，使之更便于使用
+
+Spring Cloud 是在 Spring Boot 的基础上建立的
+
+它是一个包含了诸多子项目（Spring Cloud Bus、Spring Cloud Config、Spring Cloud Netflix）的大型综合项目
 
 其项目主页为：[http://projects.spring.io/spring-cloud/](http://projects.spring.io/spring-cloud/)
 
