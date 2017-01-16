@@ -29,7 +29,7 @@ excerpt: 本文主要对Eureka做一个基本介绍，并演示一个小demo。
 * 识别：Eureka Client 会缓存 Eureka Server 中的信息<br>
   　　　即使所有的 Eureka Server 节点都宕掉，服务消费者依然可以使用缓存中的信息找到服务提供者**（笔者已亲测）**
 * 续约：微服务启动后，会周期性（默认30s）地向 Eureka Server 发送心跳以Renew（续约）自己的信息（类似于heartbeat）
-* 续期：Eureka Server 会定期（默认60s）执行一次失效服务检测功能
+* 续期：Eureka Server 会定期（默认60s）执行一次失效服务检测功能<br>
   　　　它会检查超过一定时间（默认90s）没有Renew的服务，发现则会注销该微服务节点
 
 关于续约和续期，总结就是：注册中心默认60s扫描一次失效服务，失效标准就是微服务已经超过90s没有Renew，而微服务默认会30s发送一次Renew
