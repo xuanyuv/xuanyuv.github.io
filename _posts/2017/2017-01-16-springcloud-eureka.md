@@ -40,7 +40,7 @@ Spring Cloud 已经把 Eureka 集成在其子项目 Spring Cloud Netflix 里面
 
 ## 示例代码
 
-本文的例子只能用来尝尝鲜，更丰富的详见 Eureka 进阶篇：[https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/](https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/)
+本文的例子只能用来尝尝鲜，更丰富的详见 Eureka 进阶篇：[https://jadyer.github.io/2017/01/17/springcloud-eureka-advance/](https://jadyer.github.io/2017/01/17/springcloud-eureka-advance/)
 
 这里通过一个注册中心，和两个服务提供者，搭建一个基本的示例
 
@@ -344,4 +344,4 @@ public class CalculatorController {
 * 服务提供方关闭之后，在注册中心看到的状态还是 UP
 * 注册中心的服务提供方显示的名字，是不是可以自定义
 
-等等吧，这些问题，请参见 Eureka 进阶篇：[https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/](https://jadyer.github.io/2017/01/16/springcloud-eureka-advance/)
+等等吧，这些问题，请参见 Eureka 进阶篇：[https://jadyer.github.io/2017/01/17/springcloud-eureka-advance/](https://jadyer.github.io/2017/01/17/springcloud-eureka-advance/)
