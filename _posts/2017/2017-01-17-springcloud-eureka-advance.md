@@ -69,8 +69,8 @@ eureka:
 
 详见上一篇文章中有关续约和续期的描述：[https://jadyer.github.io/2017/01/16/springcloud-eureka/](https://jadyer.github.io/2017/01/16/springcloud-eureka/)
 
-> 如果把 eureka.client.healthcheck.enabled 属性配置在 bootstrap.yml 里面，可能会引起一些不良反应<br>
-实际测试时发现：这个时候 Eureka 首页显示的服务状态，本来应该是 UP(1)，却变成了大红色的粗体 UNKNOWN(1)
+> 注意：如果把 eureka.client.healthcheck.enabled 属性配置在 bootstrap.yml 里面，可能会引起一些不良反应<br>
+　　　实际测试时发现：这个时候 Eureka 首页显示的服务状态，本来应该是 UP(1)，却变成了大红色的粗体 UNKNOWN(1)
 
 ## 注册服务慢的问题
 
