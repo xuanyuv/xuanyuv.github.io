@@ -277,16 +277,14 @@ public class ServiceServer01BootStarp {
 server:
   port: 2100
 
-# 指定发布的微服务名（以后调用时，只需该名称即可访问该服务）
 spring:
   application:
-    name: CalculatorServer
+    name: CalculatorServer                        # 指定发布的微服务名（以后调用时，只需该名称即可访问该服务）
 
-# 指定服务注册中心的地址
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.1:1100/eureka/
+      defaultZone: http://127.0.0.1:1100/eureka/  # 指定服务注册中心的地址
 ```
 
 这是服务提供方暴露的数学运算服务 `CalculatorController.java`
