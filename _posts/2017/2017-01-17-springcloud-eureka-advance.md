@@ -115,8 +115,8 @@ eureka:
     prefer-ip-address: true     # 设置微服务调用地址为IP优先（缺省为false）
 ```
 
-默认的，Eureka 首页显示的微服务调用地址是这样的：[http://jadyer-pc:2100/info](http://jadyer-pc:2100/info)
+Eureka 首页显示的微服务调用地址，默认是这样的：[http://jadyer-pc:2100/info](http://jadyer-pc:2100/info)
 
-设置 prefer-ip-address=true 之后，调用地址会变成：[http://10.16.18.95:2100/info](http://10.16.18.95:2100/info)
+而设置 prefer-ip-address=true 之后，调用地址会变成：[http://10.16.18.95:2100/info](http://10.16.18.95:2100/info)
 
 这时若再设置 ip-address=192.168.6.66，则调用地址会变成：[http://192.168.6.66:2100/info](http://192.168.6.66:2100/info)
