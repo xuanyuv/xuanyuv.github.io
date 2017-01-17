@@ -83,4 +83,32 @@ eureka:
 
 Tips：bootstrap.yml 通常会在连接 Spring Cloud Config 搭建的配置中心时使用，接下来的本系列文章中会有介绍和演示
 
-**== 未完待续 ==**
+## 首页显示的微服务名
+
+Eureka 首页显示的微服务名默认为：`机器主机名:应用名称:应用端口`
+
+也就是：`${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}`
+
+我们也可以修改它，如下所示
+
+```yml
+eureka:
+  instance:
+    # instance-id: ${spring.application.name}                     # 修改显示的微服务名为：应用名称
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}  # 修改显示的微服务名为：IP:端口
+```
+
+如果两个相同的服务（端口不同）都注册到 Eureka，而他们设置的 eureka.instance.instance-id 都是 ${spring.application.name}
+
+那我们在 Eureka 首页就只会看到一个服务名字，而无法区分有几个实例注册上来了（因为注册的实例名都是相同的）
+
+## 首页显示的微服务链接
+
+既然，显示的微服务名称允许修改，那么其对应的点击链接，也是可以修改的
+
+
+<br>
+<br>
+<br>
+
+**==未完待续==**
