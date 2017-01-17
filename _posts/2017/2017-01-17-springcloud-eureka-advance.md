@@ -71,13 +71,13 @@ eureka:
 
 ## 注册服务慢的问题
 
-修改 eureka.instance.lease-renewal-interval-in-seconds 参数（即心跳时间），便可解决此问题
+修改微服务的 eureka.instance.lease-renewal-interval-in-seconds 参数（即心跳时间），便可解决此问题
 
 详见：[http://cloud.spring.io/spring-cloud-static/Camden.SR4/#_why_is_it_so_slow_to_register_a_service](http://cloud.spring.io/spring-cloud-static/Camden.SR4/#_why_is_it_so_slow_to_register_a_service)
 
 ## 服务状态UNKNOWN
 
-如果把 eureka.client.healthcheck.enabled 属性配置在 bootstrap.yml 里面，可能会引起一些不良反应
+如果把微服务的 eureka.client.healthcheck.enabled 属性配置在 bootstrap.yml 里面，可能会引起一些不良反应
 
 比如，实际测试发现，Eureka 首页显示的服务状态，本应是 UP(1)，却变成大红色的粗体 UNKNOWN(1)
 
@@ -89,7 +89,7 @@ Eureka 首页显示的微服务名默认为：`机器主机名:应用名称:应�
 
 也就是：`${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}`
 
-我们可以修改它，如下所示
+我们也可以修改微服务的配置文件，定制它注册到注册中心时显示的名字，如下所示
 
 ```yml
 eureka:
@@ -104,11 +104,19 @@ eureka:
 
 ## 首页显示的微服务链接
 
-既然，显示的微服务名称允许修改，那么其对应的点击链接，也是可以修改的
+既然微服务显示的名称允许修改，那么其对应的点击链接，也是可以修改的
 
+同样的，还是修改微服务的配置文件，如下所示
 
-<br>
-<br>
-<br>
+```yml
+eureka:
+  instance:
+    # ip-address: 192.168.6.66  # 只有prefer-ip-address=true时才会生效
+    prefer-ip-address: true     # 设置微服务调用地址为IP优先（缺省为false）
+```
 
-**==未完待续==**
+默认的，Eureka 首页显示的微服务调用地址是这样的：[http://jadyer-pc:2100/info](http://jadyer-pc:2100/info)
+
+设置 prefer-ip-address=true 之后，调用地址会变成：[http://10.16.18.95:2100/info](http://10.16.18.95:2100/info)
+
+这时若再设置 ip-address=192.168.6.66，则调用地址会变成：[http://192.168.6.66:2100/info](http://192.168.6.66:2100/info)
