@@ -98,7 +98,7 @@ eureka:
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}  # 修改显示的微服务名为：IP:端口
 ```
 
-同样可以知道，如果两个相同的服务（端口不同），注册时设置的都是 eureka.instance.instance-id=${spring.application.name}
+同样可以知道，两个相同的服务（端口不同），如果注册时设置的都是 eureka.instance.instance-id=${spring.application.name}
 
 那么 Eureka 首页只会看到一个服务名字，而无法区分有几个实例注册上来了（因为注册上来的实例名都是相同的），这是要注意的
 
