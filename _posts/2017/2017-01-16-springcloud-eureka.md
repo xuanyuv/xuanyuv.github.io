@@ -339,7 +339,9 @@ public class CalculatorController {
 
 因为它还存在着很多问题，比如
 
+* 什么是自我保护模式
 * 服务提供方关闭之后，在注册中心看到的状态还是 UP
 * 注册中心的服务提供方显示的名字，是不是可以自定义
+* ...
 
 等等吧，这些问题，请参见 Eureka 进阶篇：[https://jadyer.github.io/2017/01/17/springcloud-eureka-advance/](https://jadyer.github.io/2017/01/17/springcloud-eureka-advance/)
