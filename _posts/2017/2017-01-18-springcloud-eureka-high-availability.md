@@ -25,6 +25,8 @@ Eureka Server 也支持运行多实例，并以互相注册的方式（即伙伴
 
 ## Zone
 
+上面提到 serviceUrl，那就顺便说下 defaultZone
+
 Eureka 有一个 Region 和 Zone 的概念，你可以理解为现实中的大区（Region）和机房（Zone）
 
 Eureka Client 在启动时需要指定 Zone，它会优先请求自己 Zone 的 Eureka Server 获取注册列表
