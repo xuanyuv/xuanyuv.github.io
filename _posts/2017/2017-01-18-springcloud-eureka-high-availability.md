@@ -34,3 +34,9 @@ Eureka Client 在启动时需要指定 Zone，它会优先请求自己 Zone 的 
 同样的，Eureka Server 在启动时也需要指定 Zone，如果没有指定的话，其会默认使用 defaultZone
 
 详见源码中的 getEurekaServerServiceUrls() 方法：[https://github.com/spring-cloud/spring-cloud-netflix/blob/master/spring-cloud-netflix-eureka-client/src/main/java/org/springframework/cloud/netflix/eureka/EurekaClientConfigBean.java](https://github.com/spring-cloud/spring-cloud-netflix/blob/master/spring-cloud-netflix-eureka-client/src/main/java/org/springframework/cloud/netflix/eureka/EurekaClientConfigBean.java)
+
+<br>
+<br>
+<br>
+
+**==【未完待续】=**
