@@ -132,11 +132,9 @@ ok，let`s drink code ...
 		<version>1.1</version>
 	</parent>
 	<artifactId>service-discovery</artifactId>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -193,19 +191,16 @@ eureka:
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 	<contextName>${PROJECT_NAME}</contextName>
-
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>[%d{yyyyMMddHHmmssSSS}][%t][%C{0}.%M]%m%n</pattern>
 		</encoder>
 	</appender>
-
 	<logger name="org.jboss" level="WARN"/>
 	<logger name="org.apache" level="WARN"/>
 	<logger name="com.netflix" level="INFO"/>
 	<logger name="org.hibernate" level="WARN"/>
 	<logger name="org.springframework" level="WARN"/>
-
 	<root level="DEBUG">
 		<appender-ref ref="CONSOLE"/>
 	</root>
@@ -234,11 +229,9 @@ ok，let`s drink code ...
 		<version>1.1</version>
 	</parent>
 	<artifactId>service-server-01</artifactId>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -310,7 +303,6 @@ import javax.annotation.Resource;
 @RestController
 public class CalculatorController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
-
     @Resource
     private DiscoveryClient client;
 
