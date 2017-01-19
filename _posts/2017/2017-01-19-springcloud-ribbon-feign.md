@@ -31,6 +31,77 @@ Spring Cloud 为 Feign 增加了对 SpringMVC 注解的支持，还整合了 Rib
 
 ## 示例代码
 
+这是演示的是一个由四个模块组成的  Maven 工程，其中包含一个服务消费者、一个注册中心、两个服务提供者
+
+如下图所示
+
+![](/img/2017/2017-01-19-springcloud-ribbon-feign.png)
+
+这是公共的 `pom.xml`
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.jadyer.demo</groupId>
+	<artifactId>demo-cloud-05</artifactId>
+	<version>1.1</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>service-client</module>
+		<module>service-discovery</module>
+		<module>service-server-01</module>
+		<module>service-server-02</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.3.RELEASE</version>
+	</parent>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Camden.SR4</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+```
+
+### 注册中心
+
 **==未完待续==**
 
 年底较忙，过几天不忙的时候，我再把代码放上来
