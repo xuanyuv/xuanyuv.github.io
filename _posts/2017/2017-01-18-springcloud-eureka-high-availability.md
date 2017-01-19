@@ -204,7 +204,7 @@ eureka:
 其大部分代码与注册中心01相同，不同的有以下两处
 
 1. 启动端口为1200
-2. eureka.client.serviceUrl.defaultZone=http://127.0.0.1:1100/eureka/
+2. eureka.client.serviceUrl.defaultZone=http://127.0.0.1:1100/eureka/（指向到伙伴那里）
 
 ### 服务提供方01
 
@@ -247,12 +247,12 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * 通过 @EnableEurekaClient 注解，为服务提供方赋予注册和发现服务的能力
- * --------------------------------------------------------------------------------------------
+ * ------------------------------------------------------------------------------------------------------------------
  * 也可以使用org.springframework.cloud.client.discovery.@EnableDiscoveryClient注解
  * 详见以下两篇文章的介绍
  * http://cloud.spring.io/spring-cloud-static/Camden.SR3/#_registering_with_eureka
  * https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka
- * --------------------------------------------------------------------------------------------
+ * ------------------------------------------------------------------------------------------------------------------
  * Created by 玄玉<https://jadyer.github.io/> on 2017/1/9 16:00.
  */
 @EnableEurekaClient
@@ -277,9 +277,9 @@ spring:
 eureka:
   instance:
     instance-id: ${spring.application.name}:${server.port}
-    prefer-ip-address: true                     # 设置微服务调用地址为IP优先（缺省为false）
-    lease-renewal-interval-in-seconds: 5      # 心跳时间，即服务续约间隔时间（缺省为30s）
-    lease-expiration-duration-in-seconds: 15  # 发呆时间，即服务续约到期时间（缺省为90s）
+    prefer-ip-address: true                       # 设置微服务调用地址为IP优先（缺省为false）
+    lease-renewal-interval-in-seconds: 5          # 心跳时间，即服务续约间隔时间（缺省为30s）
+    lease-expiration-duration-in-seconds: 15      # 发呆时间，即服务续约到期时间（缺省为90s）
   client:
     healthcheck:
       enabled: true                               # 开启健康检查（依赖spring-boot-starter-actuator）
@@ -327,8 +327,8 @@ public class CalculatorController {
 其大部分代码与服务提供方01相同，不同的有以下两处
 
 1. 启动端口为2200
-2. eureka.client.serviceUrl.defaultZone=http://127.0.0.1:1200/eureka/（其实也可以配成1100，再看下效果，是一样的）
+2. eureka.client.serviceUrl.defaultZone=http://127.0.0.1:1200/eureka/（也可配成1100，再看效果，是一样的）
 
 至于验证，先启动两个注册中心（启动时会报错，不过没关系，这是由于它找不到伙伴），再启动服务提供方
 
-然后看两个注册中心 Eureka 首页的注册服务列表，就会发现自动被同步了
+然后看两个注册中心 Eureka 首页的注册服务列表，就会发现会被自动同步
