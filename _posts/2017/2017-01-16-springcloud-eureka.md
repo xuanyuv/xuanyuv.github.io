@@ -42,7 +42,9 @@ Spring Cloud 已经把 Eureka 集成在其子项目 Spring Cloud Netflix 里面
 
 本文的例子只能用来尝尝鲜，更丰富的详见 Eureka 进阶篇：[https://jadyer.github.io/2017/01/17/springcloud-eureka-advance/](https://jadyer.github.io/2017/01/17/springcloud-eureka-advance/)
 
-这是演示的是一个由三个模块组成的  Maven 工程，其中包含一个注册中心和两个服务提供者，如下图所示
+这是演示的是一个由三个模块组成的  Maven 工程，其中包含一个注册中心和两个服务提供者
+
+如下图所示
 
 ![](/img/2017/2017-01-16-springcloud-eureka-01.png)
 
