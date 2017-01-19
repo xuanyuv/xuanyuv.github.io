@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "SpringCloud系列第02节之注册中心Eureka示例"
+title: "SpringCloud系列第02节之注册中心Eureka"
 categories: SpringCloud
 tags: springcloud spring
 author: 玄玉
