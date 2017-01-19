@@ -44,7 +44,11 @@ Spring Cloud 已经把 Eureka 集成在其子项目 Spring Cloud Netflix 里面
 
 这里通过一个注册中心，和两个服务提供者，搭建一个基本的示例
 
-这是一个公共的 `pom.xml`
+这是演示的是一个由三个模块组成的  Maven 工程，其中包含一个注册中心和两个服务提供者，如下图所示
+
+![](/img/2017/2017-01-16-springcloud-eureka-01.png)
+
+这是公共的 `pom.xml`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -333,7 +337,7 @@ public class CalculatorController {
 
 可以看到：两个服务相同，启动端口不同的 CalculatorServer 已经注册进来了
 
-![](/img/2017/2017-01-16-springcloud-eureka.png)
+![](/img/2017/2017-01-16-springcloud-eureka-02.png)
 
 目前为止，我们完成了 Spring Cloud Netflix Eureka 搭建注册中心的基本示例，不过也只是尝尝鲜
 
