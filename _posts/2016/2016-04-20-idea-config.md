@@ -11,39 +11,55 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 {:toc}
 
 
+## 插件
+
+### Idea 2016.2 Icon Pack
+
+idea 从 2016.3 开始，文件夹图标全部换成那种有点蓝色的，单独拿出来看上去有点高科技，放在一起实则暴丑的图标
+
+对于习惯之前版本的橘黄色图标的人来说，可以用这个 Idea 2016.2 Icon Pack 插件来恢复，目前最新版为 v3.1.1
+
+插件介绍见：[https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack](https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack)
+
+这是 v3.1.1 的官方下载地址：[https://plugins.jetbrains.com/files/7285/31093/Idea11Icons.jar](https://plugins.jetbrains.com/files/7285/31093/Idea11Icons.jar)
+
+这是 v3.1.1 的我备份的地址：[http://oirr30q6q.bkt.clouddn.com/jadyer/idea/Idea11Icons_v3.1.1.jar](http://oirr30q6q.bkt.clouddn.com/jadyer/idea/Idea11Icons_v3.1.1.jar)
+
+安装的时候，选择 Install plugin from disk... 然后重启 idea 就会看到经典的橘黄色图标啦
+
 ## 快捷键
 
-#### 自定补全
+### 自定补全
 
 Alt + 回車
 
-#### 合并develop分支到master
+### 合并develop分支到master
 
 master分支上工程上右键---Git---Repository---Merge Changes---Branches to merge选择develop分支
 
 合并完成后，若有冲突或替换的修改，idea会列出来，最后再Ctrl+Shift+K把合并后的代码push到master
 
-#### 查询某方法被其它地方调用
+### 查询某方法被其它地方调用
 
 Ctrl+Alt+H
 
-#### 定位文件或直接定位某一行
+### 定位文件或直接定位某一行
 
 Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，即可，如`LoanHelper:22`
 
-#### 快速输入main函数
+### 快速输入main函数
 
 键入psvm再按Tab键，或者，键入main再按Ctrl+J键
 
-#### 快速输入System.out.println
+### 快速输入System.out.println
 
 键入sout再按Tab键（对应Eclipse中的syso）
 
-#### 快速生成普通for循环
+### 快速生成普通for循环
 
 键入fori再按Tab键或Ctrl+J键
 
-#### 快速生成普通for-each循环
+### 快速生成普通for-each循环
 
 键入iter再按Tab键或Ctrl+J键
 
@@ -52,7 +68,7 @@ Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，�
 
 ## 首次运行前配置
 
-#### 向导功能
+### 向导功能
 
 只有首次安装运行时，才会看见向导，提示导入配置文件、输入注册码、选择UItheme、配置plugin等
 
@@ -64,7 +80,7 @@ Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，�
 
 （其实config和system等子目录在idea启动时会自动创建的）
 
-#### idea.properties
+### idea.properties
 
 `idea.config.path=D:/Develop/ideaIC/JadyerData/config`，配置idea个性化配置目录
 
@@ -76,7 +92,7 @@ Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，�
 
 导致不能自动输出后面的日志，这时可以禁用该值或增大`idea.cycle.buffer.size=1024`的配置
 
-#### idea64.exe需要JDK8
+### idea64.exe需要JDK8
 
 若当前安装的是JDK7，idea201611版在启动idea64.exe时会提示需要JDK8来运行它
 
@@ -86,7 +102,7 @@ Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，�
 
 关于idea64.exe的更详细介绍见[http://www.iflym.com/index.php/code/201404190001.html](http://www.iflym.com/index.php/code/201404190001.html)
 
-#### idea64.exe.vmoptions
+### idea64.exe.vmoptions
 
 ```
 -server
@@ -108,51 +124,51 @@ Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，�
 
 ## 欢迎窗口的配置
 
-#### 设置JDK
+### 设置JDK
 
 File---Project Structure---Project Settings---Project---Project JDK
 
-#### 黑色主题及避免中文乱码
+### 黑色主题及避免中文乱码
 
 settings---Appearance & Behavior---Appearance---Theme---Darcula
 
 并勾选Override default fonts by，同时选择Microsoft YaHei字体
 
-#### 打开内存使用状态
+### 打开内存使用状态
 
 settings---Appearance & Behavior---Appearance---Show memory indicator
 
-#### 隐藏工具栏快捷键下划线
+### 隐藏工具栏快捷键下划线
 
 settings---Appearance & Behavior---Appearance---Disable mnemonics in menu
 
-#### 启动时不打开工程
+### 启动时不打开工程
 
 settings---Appearance & Behavior---System Settings---Reopen last project on startup
 
-#### 取消自动更新
+### 取消自动更新
 
 settings---Appearance & Behavior---System Settings---Updates---Automatically check updates
 
-#### 修改代码提示快捷键
+### 修改代码提示快捷键
 
 settings---keymap---搜索框输入basic（idea默认的是Ctrl+空格，和我们输入法冲突）---Ctrl+B
 
-#### 设置全屏模式快捷键
+### 设置全屏模式快捷键
 
 即工具类View菜单下面的Enter Full Screen
 
 settings---keymap---搜索框输入full screen（搜索到的是Toggle Full Screen mode）---F11
 
-#### 修改文件关闭快捷键
+### 修改文件关闭快捷键
 
 settings---keymap---快捷键搜索Ctrl+F4（搜索到的是Window--Editor Tabs--Close）---Ctrl+W
 
-#### 设置Ctrl+E弹层的文件个数
+### 设置Ctrl+E弹层的文件个数
 
 settings---Editor---General---Limits---Recent files limit---默认为50个
 
-#### 自动移除UnuseImport
+### 自动移除UnuseImport
 
 settings---Editor---General---Auto Import---Optimize imports...fly 以及 Add unambiguous...fly
 
@@ -160,43 +176,43 @@ settings---Editor---General---Auto Import---Optimize imports...fly 以及 Add un
 
 注意：通过Ctrl+X的方式不会有效果，只有Ctrl+Y或全选后按键盘回退或Delete删除时才会有效果
 
-#### 显示行号
+### 显示行号
 
 settings---Editor---General---Appearance---Show line numbers
 
-#### 取消面包屑导航
+### 取消面包屑导航
 
 即打开HTML/XML文件时隐藏html/header/script等标签
 
 settings---Editor---General---Appearance---取消勾选Show breadcrumbs
 
-#### 代码提示忽略大小写
+### 代码提示忽略大小写
 
 settings---Editor---General---Code Completion---Case sensitive completion---None
 
-#### 设定折叠或展开的代码类型
+### 设定折叠或展开的代码类型
 
 settings---Editor---General---Code Folding---勾选表示该类型代码在文件被打开时默认是被折叠的
 
-#### 移除文件编辑Tab的`×`
+### 移除文件编辑Tab的`×`
 
 settings---Editor---General---Editor Tabs---Show "close" button on editor tabs
 
-#### 移除文件编辑Tab的后缀
+### 移除文件编辑Tab的后缀
 
 settings---Editor---General---Editor Tabs---Hide file extension in editor tabs
 
-#### 设置文件编辑Tab的最多数
+### 设置文件编辑Tab的最多数
 
 当我们打开的文件数超过该设置时，最先打开的文件会被关闭
 
 settings---Editor---General---Editor Tabs--Tab Closing Policy---Tab limit---默认为10个
 
-#### 星号标识编辑过的文件
+### 星号标识编辑过的文件
 
 settings---Editor---General---Editor Tabs--Mark modified tabs with asterisk
 
-#### 代码字体
+### 代码字体
 
 在发布了Windows-Vista的时候，一款全新的中英文字体也跟着面世了：微软雅黑体
 
@@ -220,25 +236,25 @@ settings---Editor---Colors & Fonts---Schema---Darcula Save As Darcula_jadyer
 
 然后再到子菜单Font里面，设置`Primary font=Yahei Consolas Hybrid，Size=14`
 
-#### 控制台字体
+### 控制台字体
 
 settings---Editor---Colors & Fonts---Console Font---设置方式同代码字体
 
-#### import每个类而非整个包
+### import每个类而非整个包
 
 settings---Editor---Colors Style---Java---Imports---Class count to use import with '*'设置大一点
 
 当Java类中import某个包下的类超过这里设置的个数，就会换成用`*`号来代替，比如`import java.util.*`
 
-#### 注释时双斜杠置为代码头部
+### 注释时双斜杠置为代码头部
 
 settings---Editor---Colors Style---Java---Code Generation---取消勾选Line comment at first column
 
-#### 函数花括号显示为对称结构
+### 函数花括号显示为对称结构
 
 settings---Editor---Colors Style---Java---Wrapping and Braces---Braces placement---三项均改为Next line
 
-#### 自定义文件代码模板
+### 自定义文件代码模板
 
 settings---Editor---File and Code Templates---Includes---File Header---修改如下
 
@@ -248,7 +264,7 @@ settings---Editor---File and Code Templates---Includes---File Header---修改如
  */
 ```
 
-#### 自定义方法上的注释
+### 自定义方法上的注释
 settings---Editor---Live Templates---右上角`+`选择`Template Group`---我输入的模板组名是**JadyerGroup**
 
 然后点击`JadyerGroup`---右上角`+`加号选择`Live Template`---设置自定义的触发注释输出的字母
@@ -261,7 +277,7 @@ settings---Editor---Live Templates---右上角`+`选择`Template Group`---我输
 
 ![](/img/2016/2016-04-20-idea-config.png)
 
-#### 资源文件的中文显示
+### 资源文件的中文显示
 
 settings---Editor---File Encodings---IDE Encoding---UTF-8
 
@@ -271,37 +287,37 @@ settings---Editor---File Encodings---Default encoding for properties files---UTF
 
 settings---Editor---File Encodings---Transparent native-to-ascii conversion
 
-#### 隐藏文件和文件夹
+### 隐藏文件和文件夹
 
 settings---Editor---File Types---Ignore files and folders---`target;*.iml;*.idea;*.gradle;`
 
-#### 版本控制下文件变化的显示
+### 版本控制下文件变化的显示
 
 settings---Version Control---Show directories with changed descendants
 
 开启后若想调整文件夹的显示颜色：settings---Editor---Colors & Fonts---File Status
 
-#### 设置git.exe
+### 设置git.exe
 
 settings---Version Control---Git---Path to Git executable---D:\Develop\Git\bin\git.exe
 
-#### Maven自动刷新
+### Maven自动刷新
 
 settings---Build,Execution,Deployment---Build Tools---Maven---Importing---Import Maven projects automatically
 
-#### Maven自动导入源码
+### Maven自动导入源码
 
 settings---Build,Execution,Deployment---Build Tools---Maven---Importing---Automatically download---勾选Sources
 
-#### 编译排除
+### 编译排除
 
 settings---Build,Execution,Deployment---Compiler---Excludes---添加文件或目录进行编译排除
 
-#### 自动编译
+### 自动编译
 
 settings---Build,Execution,Deployment---Compiler---Make project automatically
 
-#### 手工编译
+### 手工编译
 
 相较于eclipse的自动实时编译，idea更灵活些，虽然它也支持自动实时编译，但比较占资源
 
@@ -321,7 +337,7 @@ idea共有三种手工编译方式：Compile、Rebuild、Make（可点击菜单�
     > 使用最多的编译操作。对选定的目标（Project 或 Module）进行编译，但只编译有修改过的文件<br>
 没有修改过的不会编译，这样开发大项目才不会浪费时间在编译过程中
 
-#### 编译报错
+### 编译报错
 
 * 报告：OutOfMemoryError
 
@@ -340,7 +356,7 @@ settings---Build,Execution,Deployment---Compiler---Build process heap size(Mbyte
 　　项目编码的配置文件在：/项目目录/.idea/encodings.xml。你要是能修改明白就修改<br/>
 　　要是不会修改，那就删掉.idea整个目录，重启idea重新配置这个项目即可
 
-#### 清除缓存和索引
+### 清除缓存和索引
 
 idea的缓存和索引主要用来加快文件查询、代码提示等操作的速度，但其缓存和索引文件偶尔会莫名损坏
 
@@ -364,25 +380,25 @@ Would you like to continue?
 
 即`idea.properties`文件中的`${idea.system.path}\LocalHistory\`目录
 
-#### Project视图折叠空包显示
+### Project视图折叠空包显示
 
 Project视图---右上角倒数第二个齿轮图标---Hide Empty Middle Packeages
 
-#### 省电模式
+### 省电模式
 
 File---Power Save Mode---此时会关掉代码检查、代码提示等功能，适合读代码，所以也称为阅读模式
 
-#### 关闭警告
+### 关闭警告
 
-##### DefaultFileTemplate
+#### DefaultFileTemplate
 
 settings---Editor---Inspections---General---取消勾选Default File Template Usage
 
-##### neverused
+#### neverused
 
 settings---Editor---Inspections---Java---Declaration redundancy---取消勾选Unused declaration
 
-##### @see@create@author
+#### @see@create@author
 
 settings---Editor---Inspections---Java---Javadoc issues---
 
@@ -390,35 +406,35 @@ settings---Editor---Inspections---Java---Javadoc issues---
 
 取消勾选Declaration has problems in Javadoc references（适用@see）
 
-##### 拼写检查
+#### 拼写检查
 
 settings---Editor---Inspections---Spelling---取消勾选
 
-##### 方法和类同名
+#### 方法和类同名
 
 settings---Editor---Inspections---Java---Naming conventions---取消勾选Method name same as class name
 
-##### 未处理方法返回值
+#### 未处理方法返回值
 
 比如`java.io.File.delete()`
 
 settings---Editor---Inspections---Java---Probable bugs---取消勾选Result of method call ignored
 
-##### String代替StringBuilder
+#### String代替StringBuilder
 
 settings---Editor---Inspections---Java---Performance issues---取消勾选StringBuffer can be replaced with String
 
-##### 未生成serialVersionUID
+#### 未生成serialVersionUID
 
 settings---Editor---Inspections---Java---Serialization issues---勾选Serializable class without 'serialVersionUID'
 
 然后回到我们的类文件中，将光标放到类名上，再按Alt+Enter就会提示生成serialVersionUID
 
-##### properties的属性未使用
+#### properties的属性未使用
 
 settings---Editor---Inspections---Properties Files---Unused Property---取消勾选
 
-##### spring的一些警告
+#### spring的一些警告
 
 关闭Can not resolve configuration property 'jasypt.file.****'的警告
 
