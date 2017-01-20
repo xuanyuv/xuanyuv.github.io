@@ -21,7 +21,7 @@ type: page
 <br/>
 <br/>
 
-## 站点
+## 友链
 
 * [CodeLF](https://unbug.github.io/codelf/)
 * [OneCoder](http://www.coderli.com)
@@ -30,6 +30,7 @@ type: page
 * [阿里中间件团队博客](http://jm.taobao.org)
 * [并发编程网](http://ifeve.com)
 * [酷壳](http://coolshell.cn)
+* [摘星少年](http://cmin.me/)
 <br/>
 <br/>
 <br/>
