@@ -74,9 +74,32 @@ The resource identified by this request is only capable of generating responses 
         </bean>
     </mvc:message-converters>
 </mvc:annotation-driven>
-```
 
-关于 features 属性：注意不是 serializerFeature，而应该是 features，详见 [FastJsonHttpMessageConverter.java](https://github.com/alibaba/fastjson/blob/master/src/main/java/com/alibaba/fastjson/support/spring/FastJsonHttpMessageConverter.java)
+<!-- 下面的是spring-4.2整合fastjson-1.2.22的写法 -->
+
+<mvc:annotation-driven>
+    <mvc:message-converters register-defaults="true">
+        <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4">
+            <property name="supportedMediaTypes" value="text/json;charset=UTF-8"/>
+            <property name="fastJsonConfig">
+                <bean class="com.alibaba.fastjson.support.config.FastJsonConfig">
+                    <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+                    <property name="serializerFeatures">
+                        <array>
+                            <value>PrettyFormat</value>
+                            <value>WriteNullListAsEmpty</value>
+                            <value>WriteNullNumberAsZero</value>
+                            <value>WriteNullStringAsEmpty</value>
+                            <value>WriteNullBooleanAsFalse</value>
+                            <value>WriteDateUseDateFormat</value>
+                        </array>
+                    </property>
+                </bean>
+            </property>
+        </bean>
+    </mvc:message-converters>
+</mvc:annotation-driven>
+```
 
 它可以控制 json 序列化输出时的一些额外属性（比如是否输出、输出为单引号还是双引号、不使用任何引号等等）
 
