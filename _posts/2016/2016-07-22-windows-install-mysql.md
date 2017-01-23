@@ -29,7 +29,7 @@ Windows 上安装完 MySQL，以前都会有一个配置向导工具，一路点
 
 我们可以看到 Looking for previous GA versions 里只提供了 `5.5.X` 这种容量要小很多的 msi 下载
 
-**现在，脑洞大开的时候，开始了**
+**现在，到了脑洞大开的时候了**
 
 官网提供的 5.5.X 下载地址为：[http://cdn.mysql.com/Downloads/MySQL-5.5/mysql-5.5.50-winx64.msi](http://cdn.mysql.com/Downloads/MySQL-5.5/mysql-5.5.50-winx64.msi)
 
@@ -96,6 +96,7 @@ sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 # 设置mysql客户端默认字符集
 default-character-set=utf8
 [mysqld]
+# skip-grant-tables
 port=3306
 # 设置mysql的安装目录
 basedir=D:\\Develop\\MySQL\\MySQLServer5714
@@ -131,7 +132,9 @@ path=%MYSQL_HOME%\bin;......
 
 ### 修改Root密码
 
-首次安装后，修改 Root 密码时可能会报告下面的错误
+首次安装后，修改 Root 密码时，会报告下面的错误
+
+注：下面在操作时，直接回车，即视为输入空密码（因为后面要手工修改root密码，所以这里空密码就行）
 
 ```sql
 D:\Develop\MySQL\MySQLServer5714\bin>mysql -uroot -p
@@ -141,7 +144,7 @@ ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: N
 
 这时需要在 **my.ini** 的 `[mysqld]` 条目下增加配置：`skip-grant-tables`，并重启 MySQL
 
-然后再继续修改，如下所示
+然后再继续修改，如下所示（注意里面执行的几个SQL命令）
 
 ```sql
 D:\Develop\MySQL\MySQLServer5714\bin>mysql -uroot -p
@@ -175,7 +178,7 @@ Bye
 
 这个时候用新密码可以登录了
 
-但在执行诸如 show databases 或者 use mysql 等命令时，可能会看到下面的提示错误
+但在执行诸如 show databases 或者 use mysql 等命令时，会看到下面的提示错误
 
 ```sql
 mysql> show databases;
@@ -184,10 +187,10 @@ mysql> use mysql
 ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
 ```
 
-解决办法是：重新设置一下密码
+解决办法是：重新设置一下密码（这里设置的新密码可以与上面设置的root密码相同）
 
 ```sql
-mysql> set PASSWORD = PASSWORD("xuanyuu");
+mysql> set PASSWORD = PASSWORD("xuanyu");
 Query OK, 0 rows affected, 1 warning (0.00 sec)
 ```
 
