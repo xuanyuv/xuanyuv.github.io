@@ -25,11 +25,13 @@ type: page
 
 * [CodeLF](https://unbug.github.io/codelf/)
 * [OneCoder](http://www.coderli.com)
+* [HoltYin](https://holtyin.github.io/)
 * [StackOverflow](https://stackoverflow.com/)
 * [Ticmy](http://www.ticmy.com)
 * [阿里中间件团队博客](http://jm.taobao.org)
 * [并发编程网](http://ifeve.com)
 * [酷壳](http://coolshell.cn)
+* [前端踩坑那些事](http://www.acgo.moe/)
 * [摘星少年](http://cmin.me/)
 <br/>
 <br/>
