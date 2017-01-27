@@ -21,13 +21,13 @@ baseurl: ""
 url: "https://jadyer.github.io"
 
 # footer下方显示的联系方式
+# weibo_username: jadyer
+# zhihu_username: jadyer
+# linkedIn_username: myjadyer
+# facebook_username: myjadyer
+# twitter_username: myjadyer
 github_username: jadyer
 email: jadyer@yeah.net
-weibo_username: jadyer
-zhihu_username: jadyer
-linkedIn_username: myjadyer
-facebook_username: myjadyer
-twitter_username: myjadyer
 
 # 评论（指定多说或Disqus的short_name）
 # disqus_shortname: jadyer
