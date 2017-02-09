@@ -28,7 +28,7 @@ type: page
 * [HoltYin](https://holtyin.github.io/)
 * [Ticmy](http://www.ticmy.com)
 * [并发编程网](http://ifeve.com)
-* [前端踩坑那些事](http://www.acgo.moe/)
+* [前端踩坑那些事](https://www.febugs.com/)
 * [摘星少年](http://cmin.me/)
 <br/>
 <br/>
