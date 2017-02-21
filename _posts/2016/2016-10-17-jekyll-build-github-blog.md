@@ -17,7 +17,7 @@ published: false
 
 ## 安装Ruby
 
-Windows用户访问[http://rubyinstaller.org/](http://rubyinstaller.org/)下载18.4MB大小的[rubyinstaller-2.3.1-x64.exe](http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.3.1-x64.exe)
+Windows用户访问 [http://rubyinstaller.org/](http://rubyinstaller.org/) 下载 18.7MB 大小的 [rubyinstaller-2.3.3-x64.exe](https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.3.3-x64.exe)
 
 安装时可勾选`Add Ruby executables to your PATH`，没选的话可以手工`Path=D:\Develop\Ruby23-x64\bin`
 
@@ -25,39 +25,23 @@ Windows用户访问[http://rubyinstaller.org/](http://rubyinstaller.org/)下载1
 
 ```
 C:\Users\Jadyer>ruby -v
-ruby 2.3.1p112 (2016-04-26 revision 54768) [x64-mingw32]
+ruby 2.3.3p222 (2016-11-21 revision 56859) [x64-mingw32]
 ```
 
 ## 安装Jekyll
 
-这里通过RubyGems安装Jekyll，所以先到官网[https://rubygems.org/](https://rubygems.org/)下载997KB大小的[rubygems-2.6.7.zip](https://rubygems.org/rubygems/rubygems-2.6.7.zip)
+这里通过RubyGems安装Jekyll，所以先到官网 [https://rubygems.org/](https://rubygems.org/) 下载 1.01MB 大小的[rubygems-2.6.10.zip](https://rubygems.org/rubygems/rubygems-2.6.10.zip)
 
-接着解压压缩包，并在命令提示符中执行安装命令
+接着解压压缩包到 `D:\Develop\` 目录下，并在命令提示符中执行安装命令
 
 ```
-D:\Develop\rubygems-2.6.7>ruby setup.rb
-RubyGems 2.6.7 installed
-Parsing documentation for rubygems-2.6.7
-Installing ri documentation for rubygems-2.6.7
-
-=== 2.6.7 / 2016-09-26
-
-Bug fixes:
-
-* Install native extensions in the correct location when using the
-  `--user-install` flag. Pull request #1683 by Noah Kantrowitz.
-
-（具体Bug列表明细就略了）
-
-* Find_files only from loaded_gems when using gemdeps. Pull request #1277
-  by Michal Papis.
-
-
-------------------------------------------------------------------------------
-
-RubyGems installed the following executables:
-        D:/Develop/Ruby23-x64/bin/gem
-
+D:\Develop\rubygems-2.6.10>ruby setup.rb
+RubyGems 2.6.10 installed
+Parsing documentation for rubygems-2.6.10
+Installing ri documentation for rubygems-2.6.10
+...
+...
+...
 Ruby Interactive (ri) documentation was installed. ri is kind of like man
 pages for ruby libraries. You may access it like this:
   ri Classname
@@ -67,9 +51,7 @@ If you do not wish to install this documentation in the future, use the
 --no-document flag, or set it as the default in your ~/.gemrc file. See
 'gem help env' for details.
 
-
-
-D:\Develop\rubygems-2.6.7>
+D:\Develop\rubygems-2.6.10>
 ```
 
 **接下来就可以用RubyGems来安装Jekyll**
@@ -80,15 +62,9 @@ Fetching: liquid-3.0.6.gem (100%)
 Successfully installed liquid-3.0.6
 Fetching: kramdown-1.12.0.gem (100%)
 Successfully installed kramdown-1.12.0
-
-（具体的安装列表明细就略了）
-
-Parsing documentation for jekyll-3.3.0
-Installing ri documentation for jekyll-3.3.0
-Done installing documentation for liquid, kramdown, mercenary, safe_yaml, colora
-tor, rouge, sass, jekyll-sass-converter, rb-fsevent, ffi, rb-inotify, listen, je
-kyll-watch, forwardable-extended, pathutil, addressable, jekyll after 33 seconds
-
+...
+...
+...
 17 gems installed
 
 C:\Users\Jadyer>
@@ -131,48 +107,51 @@ D:\Develop\Code\Jekyll>
 
 ```
 D:\Develop\Code\Jekyll>jekyll new myblog
-New jekyll site installed in D:/Develop/Code/Jekyll/myblog.
-Running bundle install in D:/Develop/Code/Jekyll/myblog...
-Fetching gem metadata from https://rubygems.org/..............
-Fetching version metadata from https://rubygems.org/...
-Fetching dependency metadata from https://rubygems.org/..
-Resolving dependencies...
-Using addressable 2.4.0
-Using colorator 1.1.0
-Using ffi 1.9.14
-Using forwardable-extended 2.6.0
-Using sass 3.4.22
-Using rb-fsevent 0.9.7
-Using kramdown 1.12.0
-Using liquid 3.0.6
-Using mercenary 0.3.6
-Using rouge 1.11.1
-Using safe_yaml 1.0.4
-Installing minima 2.0.0
-Using bundler 1.13.5
-Using rb-inotify 0.9.7
-Using pathutil 0.14.0
-Using jekyll-sass-converter 1.4.0
-Using listen 3.0.8
-Using jekyll-watch 1.5.0
-Using jekyll 3.3.0
-Installing jekyll-feed 0.8.0
-Bundle complete! 3 Gemfile dependencies, 20 gems now installed.
-Use `bundle show [gemname]` to see where a bundled gem is installed.
-Post-install message from minima:
-
-----------------------------------------------
-Thank you for installing minima 2.0!
-
-Minima 2.0 comes with a breaking change that
-renders '<your-site>/css/main.scss' redundant.
-That file is now bundled with this gem as
-'<minima>/assets/main.scss'.
-
-More Information:
-https://github.com/jekyll/minima#customization
-----------------------------------------------
-
+Running bundle install in D:/Develop/Code/jekyll/myblog...
+  Bundler: Fetching gem metadata from https://rubygems.org/...........
+  Bundler: Fetching version metadata from https://rubygems.org/..
+  Bundler: Fetching dependency metadata from https://rubygems.org/.
+  Bundler: Resolving dependencies...
+  Bundler: Using public_suffix 2.0.5
+  Bundler: Using colorator 1.1.0
+  Bundler: Using ffi 1.9.17 (x64-mingw32)
+  Bundler: Using forwardable-extended 2.6.0
+  Bundler: Using sass 3.4.23
+  Bundler: Using rb-fsevent 0.9.8
+  Bundler: Using kramdown 1.13.2
+  Bundler: Using liquid 3.0.6
+  Bundler: Using mercenary 0.3.6
+  Bundler: Using rouge 1.11.1
+  Bundler: Using safe_yaml 1.0.4
+  Bundler: Installing thread_safe 0.3.5
+  Bundler: Using bundler 1.14.4
+  Bundler: Using addressable 2.5.0
+  Bundler: Using rb-inotify 0.9.8
+  Bundler: Using pathutil 0.14.0
+  Bundler: Using jekyll-sass-converter 1.5.0
+  Bundler: Installing tzinfo 1.2.2
+  Bundler: Using listen 3.0.8
+  Bundler: Installing tzinfo-data 1.2016.10
+  Bundler: Using jekyll-watch 1.5.0
+  Bundler: Using jekyll 3.4.0
+  Bundler: Installing jekyll-feed 0.9.1
+  Bundler: Installing minima 2.1.0
+  Bundler: Bundle complete! 4 Gemfile dependencies, 24 gems now installed.
+  Bundler: Use `bundle show [gemname]` to see where a bundled gem is installed.
+  Bundler: Post-install message from minima:
+  Bundler:
+  Bundler: ----------------------------------------------
+  Bundler: Thank you for installing minima 2.0!
+  Bundler:
+  Bundler: Minima 2.0 comes with a breaking change that
+  Bundler: renders '<your-site>/css/main.scss' redundant.
+  Bundler: That file is now bundled with this gem as
+  Bundler: '<minima>/assets/main.scss'.
+  Bundler:
+  Bundler: More Information:
+  Bundler: https://github.com/jekyll/minima#customization
+  Bundler: ----------------------------------------------
+New jekyll site installed in D:/Develop/Code/jekyll/myblog.
 
 D:\Develop\Code\Jekyll>
 ```
@@ -183,23 +162,21 @@ D:\Develop\Code\Jekyll>
 
 接下来到博客文件夹中，启动Jekyll服务
 
-（watch参数用于检测文件变化，即修改后不需重启Jekyll，可惜Windows不支持）
-
 ```
 D:\Develop\Code\Jekyll>cd myblog
 
 D:\Develop\Code\Jekyll\myblog>jekyll serve --watch
-Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
-Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
-            Source: D:/Develop/Code/Jekyll/myblog
-       Destination: D:/Develop/Code/Jekyll/myblog/_site
+Configuration file: D:/Develop/Code/jekyll/myblog/_config.yml
+Configuration file: D:/Develop/Code/jekyll/myblog/_config.yml
+            Source: D:/Develop/Code/jekyll/myblog
+       Destination: D:/Develop/Code/jekyll/myblog/_site
  Incremental build: disabled. Enable with --incremental
       Generating...
-                    done in 0.738 seconds.
-                    --watch arg is unsupported on Windows.
-                    If you are on Windows Bash, please see: https://github.com/M
-icrosoft/BashOnWindows/issues/216
-Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
+                    done in 0.629 seconds.
+  Please add the following to your Gemfile to avoid polling for changes:
+    gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+ Auto-regeneration: enabled for 'D:/Develop/Code/jekyll/myblog'
+Configuration file: D:/Develop/Code/jekyll/myblog/_config.yml
     Server address: http://127.0.0.1:4000/
   Server running... press ctrl-c to stop.
 ```
@@ -309,3 +286,17 @@ yml
 
 1. Jekyll语法简单笔记：[http://github.tiankonguse.com/blog/2014/11/10/jekyll-study.html](http://github.tiankonguse.com/blog/2014/11/10/jekyll-study.html)
 2. Jekyll模板语法：[http://jzlingmo.top/blog/2015/03/26/Jekyll模板语法/](http://jzlingmo.top/blog/2015/03/26/Jekyll模板语法/)
+
+## 启动脚本
+
+另附我的启动脚本 `startup.bat`
+
+注意：应使用 ANSI 编码保存批处理文件，否则Windows系统不认识
+
+```sh
+@echo off
+title 自动打包工具【玄玉制作】
+color 02
+
+call jekyll s --watch
+```

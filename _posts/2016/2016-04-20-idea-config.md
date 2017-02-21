@@ -120,6 +120,7 @@ Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，�
 -Djsse.enablesSNIExtension=false
 -XX:+HeapDumpOnOutOfMemoryError
 -XX:-OmitStackTraceInFastThrow
+
 ```
 
 ## 欢迎窗口的配置
@@ -132,7 +133,7 @@ File---Project Structure---Project Settings---Project---Project JDK
 
 settings---Appearance & Behavior---Appearance---Theme---Darcula
 
-并勾选Override default fonts by，同时选择Microsoft YaHei字体
+并勾选 Override default fonts by，同时选择 Microsoft YaHei UI 字体
 
 ### 打开内存使用状态
 
@@ -234,7 +235,7 @@ settings---Editor---General---Editor Tabs--Mark modified tabs with asterisk
 
 settings---Editor---Colors & Fonts---Schema---Darcula Save As Darcula_jadyer
 
-然后再到子菜单Font里面，设置`Primary font=Yahei Consolas Hybrid，Size=14`
+然后子菜单Font---取消勾选Show only monospaced fonts---Primary font=Yahei Consolas Hybrid，Size=14
 
 ### 控制台字体
 
@@ -289,7 +290,7 @@ settings---Editor---File Encodings---Transparent native-to-ascii conversion
 
 ### 隐藏文件和文件夹
 
-settings---Editor---File Types---Ignore files and folders---`target;*.iml;*.idea;*.gradle;`
+settings---Editor---File Types---Ignore files and folders---`target;*.iml;*.idea;`
 
 ### 版本控制下文件变化的显示
 
@@ -297,7 +298,7 @@ settings---Version Control---Show directories with changed descendants
 
 开启后若想调整文件夹的显示颜色：settings---Editor---Colors & Fonts---File Status
 
-### 设置git.exe
+### 设置git.exe（可选）
 
 settings---Version Control---Git---Path to Git executable---D:\Develop\Git\bin\git.exe
 
@@ -309,13 +310,9 @@ settings---Build,Execution,Deployment---Build Tools---Maven---Importing---Import
 
 settings---Build,Execution,Deployment---Build Tools---Maven---Importing---Automatically download---勾选Sources
 
-### 编译排除
-
-settings---Build,Execution,Deployment---Compiler---Excludes---添加文件或目录进行编译排除
-
 ### 自动编译
 
-settings---Build,Execution,Deployment---Compiler---Make project automatically
+settings---Build,Execution,Deployment---Compiler---Build project automatically
 
 ### 手工编译
 
