@@ -165,6 +165,10 @@ settings---keymap---搜索框输入full screen（搜索到的是Toggle Full Scre
 
 settings---keymap---快捷键搜索Ctrl+F4（搜索到的是Window--Editor Tabs--Close）---Ctrl+W
 
+### 修改类结构视图快捷键
+
+settings---keymap---快捷键搜索Ctrl+7（搜索到的是Other--Structure）---Ctrl+
+
 ### 设置Ctrl+E弹层的文件个数
 
 settings---Editor---General---Limits---Recent files limit---默认为50个
