@@ -113,6 +113,19 @@ SHOW INDEX FROM t_admin FROM jadyer;
 SELECT INDEX_NAME, INDEX_TYPE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_NAME='t_admin';
 ```
 
+## 分组查询并组内排序
+
+```sql
+-- 根据区域分组，并根据组内的新闻发生时间先后排序
+SELECT * FROM t_news_info WHERE news_type='1' GROUP BY news_area, news_time desc, id
+
+-- 如果想让某区域的新闻优先显示，则像下面这样写
+-- 注意：union all之后会发生查询到的记录的顺序被打乱了，那么可以加上limit使之严格按照union all的先后返回结果
+(SELECT * FROM t_news_info WHERE news_type='1' AND news_area='chongqing' ORDER BY news_time desc limit 999999)
+UNION ALL
+(SELECT * FROM t_news_info WHERE news_type='1' AND news_area!='chongqing' GROUP BY news_area, news_time desc, id limit 999999)
+```
+
 ## 统计时间段内的数据
 
 ```sql
