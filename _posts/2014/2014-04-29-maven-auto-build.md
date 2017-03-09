@@ -96,13 +96,13 @@ if exist "%userprofile%\Desktop\" (
     if exist "boot-*.zip" (
         del boot-*.zip /Q
     )
-    REM ren demo-boot*.war boot.war
-    REM ren demo-boot*.war boot-%curtime%.zip
+    REM ren seed*.war boot.war
+    REM ren seed*.war boot-%curtime%.zip
     REM 該文件所在目錄路徑可以有中文，但不能有空格，否則for會報告参数数量錯誤
-    REM demo-boot-2.5.2.war
-    for /f "delims=. tokens=1,2,3" %%i in ('dir /a-d/b demo-boot*.war') do ren demo-boot*.war %%i.%%j.%%k-%curtime%.zip
-    REM demo-boot-2.5.2-201607271822.zip
-    for /f "delims=- tokens=1,2,3,4" %%i in ('dir /a-d/b demo-boot*.zip') do ren demo-boot*.zip %%j-%%k-%%l
+    REM seed-2.5.2.war
+    for /f "delims=. tokens=1,2,3" %%i in ('dir /a-d/b seed*.war') do ren seed*.war %%i.%%j.%%k-%curtime%.zip
+    REM seed-2.5.2-201607271822.zip
+    for /f "delims=- tokens=1,2,3,4" %%i in ('dir /a-d/b seed*.zip') do ren seed*.zip %%j-%%k-%%l
     echo;
     echo War包已经拷贝至桌面 ==========================================
 ) else if exist "%userprofile%\桌面\" (
