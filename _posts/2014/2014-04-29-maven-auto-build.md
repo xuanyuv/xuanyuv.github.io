@@ -93,11 +93,11 @@ if exist "%userprofile%\Desktop\" (
     xcopy %curdir%\target\*.war %userprofile%\Desktop\ /F/Y
     c:
     cd %userprofile%\Desktop\
-    if exist "boot-*.zip" (
-        del boot-*.zip /Q
+    if exist "seed-*.zip" (
+        del seed-*.zip /Q
     )
-    REM ren seed*.war boot.war
-    REM ren seed*.war boot-%curtime%.zip
+    REM ren seed*.war seed.war
+    REM ren seed*.war seed-%curtime%.zip
     REM 該文件所在目錄路徑可以有中文，但不能有空格，否則for會報告参数数量錯誤
     REM seed-2.5.2.war
     for /f "delims=. tokens=1,2,3" %%i in ('dir /a-d/b seed*.war') do ren seed*.war %%i.%%j.%%k-%curtime%.zip
