@@ -404,7 +404,7 @@ public class UserController {
          <img style="cursor:pointer;" src="/captcha.jsp" onClick="this.src='/captcha.jsp?time'+Math.random();"/><br/>
          <input type="submit"/>
 </form>
-<!-- captcha.jsp源码见https://github.com/jadyer/JadyerEngine/blob/master/JadyerEngine-web/src/main/webapp/captcha.jsp -->
+<!-- captcha.jsp源码见https://github.com/jadyer/seed/blob/master/seed-scs/src/main/webapp/captcha.jsp -->
 ```
 
 下面这个是登录后的首页 `/WebRoot/main.jsp`

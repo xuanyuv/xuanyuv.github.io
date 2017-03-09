@@ -842,7 +842,7 @@ import java.util.Map;
 
 /**
  * 测试MinaServer
- * 这里用到的HttpUtil，详见https://github.com/jadyer/JadyerEngine/blob/master/JadyerEngine-common/src/main/java/com/jadyer/engine/common/util/HttpUtil.java
+ * 这里用到的HttpUtil，详见https://github.com/jadyer/seed/blob/master/seed-comm/src/main/java/com/jadyer/seed/comm/util/HttpUtil.java
  * Created by 玄玉<https://jadyer.github.io/> on 2013/07/09 19:59.
  */
 public class TestMinaServer {

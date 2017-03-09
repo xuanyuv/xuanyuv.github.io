@@ -255,7 +255,7 @@ public class LicenseHandler implements SOAPHandler<SOAPMessageContext> {
 下面这个是便于日志打印的`log4j.properties`
 
 ```ruby
-#https://github.com/jadyer/JadyerEngine/blob/master/JadyerEngine-web/src/main/resources/log4j.properties
+# https://github.com/jadyer/seed/blob/master/seed-comm/src/main/java/com/jadyer/seed/comm/util/LogUtil.java
 log4j.rootLogger=DEBUG,CONSOLE
 
 #通常用于框架日志,如mina,spring等

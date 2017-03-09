@@ -24,10 +24,10 @@ excerpt: 介绍自动下载SVN源码、Maven编译打包、部署Tomcat、重启
 ```sh
 #!/bin/sh
 APP_NAME=engine
-APP_WARS=JadyerEngine-web/target
+APP_WARS=seed-scs/target
 APP_PATH=/app/tomcat-6.0.43
 APP_CODE=sourcecode
-SVN_URL=https://svn.sinaapp.com/jadyer/2/repository/JadyerEngine
+SVN_URL=https://svn.sinaapp.com/jadyer/2/repository/seed
 SVN_USER=jadyer@yeah.net
 SVN_PSWD=玄玉
 
