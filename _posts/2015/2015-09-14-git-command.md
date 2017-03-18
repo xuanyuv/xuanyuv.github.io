@@ -90,8 +90,8 @@ Welcome to GitLab, 玄玉!
 ## 仅克隆最后两个版本
 
 ```
-$ git clone https://github.com/jadyer/JadyerSDK.git --depth=2
-Cloning into 'JadyerSDK'...
+$ git clone https://github.com/jadyer/seed.git --depth=2
+Cloning into 'seed'...
 remote: Counting objects: 249, done.
 remote: Compressing objects: 100% (195/195), done.
 remote: Total 249 (delta 58), reused 148 (delta 27), pack-reused 0
@@ -99,7 +99,7 @@ Receiving objects: 100% (249/249), 484.00 KiB | 33.00 KiB/s, done.
 Resolving deltas: 100% (58/58), done.
 Checking connectivity... done.
 
-$ cd JadyerSDK/
+$ cd seed/
 
 $ git rev-list master
 0af3137946011e8924c152fec86b8610368512d4
