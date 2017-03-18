@@ -87,7 +87,7 @@ public class BootStrap extends SpringBootServletInitializer {
 
 `idea顶部菜单-->Run-->Edit Configurations--> + -->选择Maven`
 
-最好在下面的`Before launch: Activate tool window`一栏增加`Make`操作，这里就不截图了
+最好在下面的`Before launch: Activate tool window`一栏增加 Build 操作，这里就不截图了
 
 * 注意Module运行时的工作空间依赖问题
 
