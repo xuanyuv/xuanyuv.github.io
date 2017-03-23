@@ -117,3 +117,7 @@ Spring Cloud 为 Feign 增加了对 SpringMVC 注解的支持
 **==未完待续==**
 
 年底较忙，过几天再放实现代码
+
+
+
+http://blog.csdn.net/neosmith/article/details/52449921
