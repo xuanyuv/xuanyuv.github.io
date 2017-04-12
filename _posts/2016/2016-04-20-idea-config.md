@@ -167,7 +167,7 @@ settings---keymap---快捷键搜索Ctrl+F4（搜索到的是Window--Editor Tabs-
 
 ### 修改类结构视图快捷键
 
-settings---keymap---快捷键搜索Ctrl+7（搜索到的是Other--Structure）---Ctrl+
+settings---keymap---快捷键搜索Ctrl+7（搜索到的是Other--Structure）---Ctrl+O
 
 ### 设置Ctrl+E弹层的文件个数
 
