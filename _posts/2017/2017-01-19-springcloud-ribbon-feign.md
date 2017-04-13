@@ -573,6 +573,6 @@ public class ConsumerController {
 
 [http://10.16.64.133:3200/demo/feign/toadd?a=11&b=22](http://10.16.64.133:3200/demo/feign/toadd?a=11&b=22)
 
-補充一張註冊中心的頁面截圖
+最後，補充一張註冊中心的頁面截圖：
 
 ![](/img/2017/2017-01-19-springcloud-ribbon-feign-02.png)
