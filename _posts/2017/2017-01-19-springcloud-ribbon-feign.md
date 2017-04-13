@@ -567,7 +567,7 @@ public class ConsumerController {
 
 本文中的示例（Ribbon和Feign）都會將請求走软负载均衡后，打到服务端
 
-验证方式就是：分別多次訪問下面的兩個服务消费URL，我們會发現兩個服务端打印的請求日誌是均等輸出的
+验证方式就是：分別多次訪問下面的兩個服务消费URL，兩個服务端打印的請求日誌是均等輸出的
 
 [http://10.16.64.133:3100/demo/ribbon/toadd?a=11&b=22](http://10.16.64.133:3100/demo/ribbon/toadd?a=11&b=22)
 
