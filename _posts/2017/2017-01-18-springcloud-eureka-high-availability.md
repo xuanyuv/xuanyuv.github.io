@@ -312,12 +312,12 @@ public class CalculatorController {
     @RequestMapping("/add")
     public int add(int a, int b){
         //加运算
-        int r = a + b;
+        int result = a + b;
         //输出服务信息
         ServiceInstance instance = client.getLocalServiceInstance();
-        logger.info("uri={}，service_id={}，result={}", instance.getUri(), instance.getServiceId(), r);
+        logger.info("uri={}，serviceId={}，result={}", instance.getUri(), instance.getServiceId(), result);
         //返回结果
-        return r;
+        return result;
     }
 }
 ```
