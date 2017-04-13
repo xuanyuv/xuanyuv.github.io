@@ -62,12 +62,10 @@ eureka:
       enabled: true                           # 开启健康检查（依赖spring-boot-starter-actuator）
 ```
 
-关于续期时间、心跳时间、发呆时间的关系
-
-详见上一篇文章中有关续约和续期的描述：[https://jadyer.github.io/2017/01/16/springcloud-eureka/](https://jadyer.github.io/2017/01/16/springcloud-eureka/)
+关于续期、心跳、发呆时间的关系，详见上一篇文章中的有关分析：[https://jadyer.github.io/2017/01/16/springcloud-eureka/](https://jadyer.github.io/2017/01/16/springcloud-eureka/)
 
 > 注意：更改 Eureka Server 的更新频率将打破注册中心的的自我保护功能<br>
-　　　生产环境不建议自定义这些配置，详见：[https://github.com/spring-cloud/spring-cloud-netflix/issues/373](https://github.com/spring-cloud/spring-cloud-netflix/issues/373)
+　　　生产环境不建议自定义这些配置，详见[https://github.com/spring-cloud/spring-cloud-netflix/issues/373](https://github.com/spring-cloud/spring-cloud-netflix/issues/373)
 
 ## 注册服务慢的问题
 
@@ -81,7 +79,7 @@ eureka:
 
 比如，实际测试发现，Eureka 首页显示的服务状态，本应是 UP(1)，却变成大红色的粗体 UNKNOWN(1)
 
-Tips：bootstrap.yml 通常会在连接 Spring Cloud Config 搭建的配置中心时使用，接下来的本系列文章中会有介绍和演示
+> Tips：bootstrap.yml 通常会在连接 Spring Cloud Config 搭建的配置中心时使用，接下来的本系列文章中会有介绍和演示
 
 ## 首页显示的微服务名
 
