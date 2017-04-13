@@ -48,61 +48,61 @@ Eureka Client 在启动时需要指定 Zone，它会优先请求自己 Zone 的 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.jadyer.demo</groupId>
-	<artifactId>demo-cloud-04</artifactId>
-	<version>1.1</version>
-	<packaging>pom</packaging>
-	<modules>
-		<module>service-discovery-01</module>
-		<module>service-discovery-02</module>
-		<module>service-server-01</module>
-		<module>service-server-02</module>
-	</modules>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.jadyer.demo</groupId>
+    <artifactId>demo-cloud-04</artifactId>
+    <version>1.1</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>service-discovery-01</module>
+        <module>service-discovery-02</module>
+        <module>service-server-01</module>
+        <module>service-server-02</module>
+    </modules>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.3.RELEASE</version>
-	</parent>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Camden.SR4</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.3.RELEASE</version>
+    </parent>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Camden.SR4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
 ```
 
@@ -113,23 +113,23 @@ Eureka Client 在启动时需要指定 Zone，它会优先请求自己 Zone 的 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.jadyer.demo</groupId>
-		<artifactId>demo-cloud-04</artifactId>
-		<version>1.1</version>
-	</parent>
-	<artifactId>service-discovery-01</artifactId>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka-server</artifactId>
-		</dependency>
-	</dependencies>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jadyer.demo</groupId>
+        <artifactId>demo-cloud-04</artifactId>
+        <version>1.1</version>
+    </parent>
+    <artifactId>service-discovery-01</artifactId>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka-server</artifactId>
+        </dependency>
+    </dependencies>
 </project>
 ```
 
@@ -145,9 +145,9 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 @EnableEurekaServer
 @SpringBootApplication
 public class ServiceDiscovery01BootStrap {
-	public static void main(String[] args) {
-		new SpringApplicationBuilder(ServiceDiscovery01BootStrap.class).run(args);
-	}
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(ServiceDiscovery01BootStrap.class).run(args);
+    }
 }
 ```
 
@@ -182,20 +182,20 @@ eureka:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<contextName>${PROJECT_NAME}</contextName>
-	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>[%d{yyyyMMddHHmmssSSS}][%t][%C{0}.%M]%m%n</pattern>
-		</encoder>
-	</appender>
-	<logger name="org.jboss" level="WARN"/>
-	<logger name="org.apache" level="WARN"/>
-	<logger name="com.netflix" level="INFO"/>
-	<logger name="org.hibernate" level="WARN"/>
-	<logger name="org.springframework" level="WARN"/>
-	<root level="DEBUG">
-		<appender-ref ref="CONSOLE"/>
-	</root>
+    <contextName>${PROJECT_NAME}</contextName>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{yyyyMMddHHmmssSSS}][%t][%C{0}.%M]%m%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="org.jboss" level="WARN"/>
+    <logger name="org.apache" level="WARN"/>
+    <logger name="com.netflix" level="INFO"/>
+    <logger name="org.hibernate" level="WARN"/>
+    <logger name="org.springframework" level="WARN"/>
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE"/>
+    </root>
 </configuration>
 ```
 
@@ -213,27 +213,27 @@ eureka:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.jadyer.demo</groupId>
-		<artifactId>demo-cloud-04</artifactId>
-		<version>1.1</version>
-	</parent>
-	<artifactId>service-server-01</artifactId>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
-		</dependency>
-	</dependencies>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jadyer.demo</groupId>
+        <artifactId>demo-cloud-04</artifactId>
+        <version>1.1</version>
+    </parent>
+    <artifactId>service-server-01</artifactId>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+    </dependencies>
 </project>
 ```
 
@@ -258,9 +258,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableEurekaClient
 @SpringBootApplication
 public class ServiceServer01BootStarp {
-	public static void main(String[] args) {
-		new SpringApplicationBuilder(ServiceServer01BootStarp.class).run(args);
-	}
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(ServiceServer01BootStarp.class).run(args);
+    }
 }
 ```
 

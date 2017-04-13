@@ -68,7 +68,7 @@ excerpt: 介绍了SpringMVC-3.2.4整合Shiro-1.2.2的完整例子。
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-	<!-- 设置Session超时时间为45分钟 -->
+    <!-- 设置Session超时时间为45分钟 -->
     <session-config>
         <session-timeout>45</session-timeout>
     </session-config>

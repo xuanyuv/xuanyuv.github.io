@@ -208,21 +208,21 @@ tmpfs           1.9G     0  1.9G   0% /dev/shm
 
 # 查看指定目录占用空间
 [root@wxtest webapps]# du -sh /opt/tomcat8.0.21/
-429M	/opt/tomcat8.0.21/
+429M    /opt/tomcat8.0.21/
 [root@wxtest webapps]#
 
 # 列出当前目录里最大的10个文件
 [root@wxtest webapps]# du -s * | sort -n | tail
-4344	fwcdemo
-28380	oppp.war
-28380	opp.war
-32772	oppp
-32948	opp
-48128	ROOT
-48920	open.war
-60044	open
-61852	WEB-INF
-65608	mpp
+4344    fwcdemo
+28380    oppp.war
+28380    opp.war
+32772    oppp
+32948    opp
+48128    ROOT
+48920    open.war
+60044    open
+61852    WEB-INF
+65608    mpp
 [root@wxtest webapps]#
 
 # 列出当前目录各个文件及其大小，并以大小倒序排序（参数大S用于指定排序，也可以加-a，表示all即显示包括隐藏文件在内的所有文件）
