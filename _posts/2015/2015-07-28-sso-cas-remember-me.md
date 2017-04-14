@@ -83,6 +83,8 @@ RememberMe也就是记住密码，可以让用户登录成功后，关闭浏览�
 
 [http://download.csdn.net/detail/jadyer/8940967](http://download.csdn.net/detail/jadyer/8940967)
 
+**另附 Github 地址：**[https://github.com/v5java/demo-cas-client](https://github.com/v5java/demo-cas-client) 以及 [https://github.com/v5java/demo-cas-server-web](https://github.com/v5java/demo-cas-server-web)
+
 下面是`ticketExpirationPolicies.xml`的修改
 
 ```xml

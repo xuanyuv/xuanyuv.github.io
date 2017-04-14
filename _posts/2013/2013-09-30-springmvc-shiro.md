@@ -15,9 +15,9 @@ excerpt: 介绍了SpringMVC-3.2.4整合Shiro-1.2.2的完整例子。
 
 本文源码下载：（下面两个地址的文件的内容，都是一样的）
 
-[http://oirr30q6q.bkt.clouddn.com/jadyer/code/springmvcshiro.rar](http://oirr30q6q.bkt.clouddn.com/jadyer/code/springmvcshiro.rar)
+Github：[https://github.com/v5java/demo-springmvc-shiro](https://github.com/v5java/demo-springmvc-shiro)
 
-[http://download.csdn.net/detail/jadyer/9727097](http://download.csdn.net/detail/jadyer/9727097)
+CSDN源码：[http://download.csdn.net/detail/jadyer/9727097](http://download.csdn.net/detail/jadyer/9727097)
 
 ## 示例代码
 

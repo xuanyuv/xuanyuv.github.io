@@ -116,6 +116,8 @@ CASClient中有多种验证ticket的Filter，都继承自AbstractTicketValidatio
 
 [http://download.csdn.net/detail/jadyer/8934207](http://download.csdn.net/detail/jadyer/8934207)
 
+**另附 Github 地址：**[https://github.com/v5java/demo-cas-client](https://github.com/v5java/demo-cas-client) 以及 [https://github.com/v5java/demo-cas-server-web](https://github.com/v5java/demo-cas-server-web)
+
 下面是`web.xml`的配置
 
 ```xml
