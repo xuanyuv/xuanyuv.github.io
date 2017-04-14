@@ -67,11 +67,9 @@ excerpt: 主要描述单点登录CAS-4.0.3服务端登录页添加验证码的�
 
 本文源码下载：（下面两个地址的文件的内容，都是一样的）
 
-[http://oirr30q6q.bkt.clouddn.com/jadyer/code/sso-cas-login-captcha.rar](http://oirr30q6q.bkt.clouddn.com/jadyer/code/sso-cas-login-captcha.rar)
+Github：[https://github.com/v5java/demo-cas-server-web](https://github.com/v5java/demo-cas-server-web)
 
-[http://download.csdn.net/detail/jadyer/8906831](http://download.csdn.net/detail/jadyer/8906831)
-
-**另附 Github 地址：**[https://github.com/v5java/demo-cas-client](https://github.com/v5java/demo-cas-client) 以及 [https://github.com/v5java/demo-cas-server-web](https://github.com/v5java/demo-cas-server-web)
+CSDN下载：[http://download.csdn.net/detail/jadyer/8906831](http://download.csdn.net/detail/jadyer/8906831)
 
 下面是`login-webflow.xml`中的改动部分
 

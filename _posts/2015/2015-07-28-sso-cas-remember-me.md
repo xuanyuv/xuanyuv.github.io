@@ -79,11 +79,9 @@ RememberMe也就是记住密码，可以让用户登录成功后，关闭浏览�
 
 本文源码下载：（下面两个地址的文件的内容，都是一样的，并包含了本系列的所有代码）
 
-[http://oirr30q6q.bkt.clouddn.com/jadyer/code/sso-cas-remember-me.rar](http://oirr30q6q.bkt.clouddn.com/jadyer/code/sso-cas-remember-me.rar)
+Github：[https://github.com/v5java/demo-cas-server-web](https://github.com/v5java/demo-cas-server-web)
 
-[http://download.csdn.net/detail/jadyer/8940967](http://download.csdn.net/detail/jadyer/8940967)
-
-**另附 Github 地址：**[https://github.com/v5java/demo-cas-client](https://github.com/v5java/demo-cas-client) 以及 [https://github.com/v5java/demo-cas-server-web](https://github.com/v5java/demo-cas-server-web)
+CSDN下载：[http://download.csdn.net/detail/jadyer/8940967](http://download.csdn.net/detail/jadyer/8940967)
 
 下面是`ticketExpirationPolicies.xml`的修改
 
