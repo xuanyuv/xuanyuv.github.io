@@ -33,13 +33,11 @@ Spring Cloud Netflix 的微服务都是以 HTTP 接口的形式暴露的，所�
 
 ## 示例代码
 
-这是演示的是一个由五个模块组成的 Maven 工程，其中包含兩个服务消费者、一个注册中心、兩个服务提供者
+示例代码如下（也可以直接从 Github 下载：[https://github.com/v5java/demo-cloud-05-ribbon-feign](https://github.com/v5java/demo-cloud-05-ribbon-feign)）
 
-如下图所示
+它是由五個模块组成的 Maven 工程，其中包含兩个服务消费者、一个注册中心、兩个服务提供者
 
-![](/img/2017/2017-01-19-springcloud-ribbon-feign-01.png)
-
-這是五個模块都會用到的日誌輸出配置 `/src/main/resources/logback.xml`
+這是五個模块都使用了的日誌輸出配置 `/src/main/resources/logback.xml`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -575,4 +573,4 @@ public class ConsumerController {
 
 最後，補充一張註冊中心的頁面截圖：
 
-![](/img/2017/2017-01-19-springcloud-ribbon-feign-02.png)
+![](/img/2017/2017-01-19-springcloud-ribbon-feign.png)
