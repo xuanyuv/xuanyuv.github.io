@@ -64,11 +64,11 @@ Hystrix 支持两种隔离策略：线程池隔离和信号量隔离（都是限
 根据配置把不同命令分配到不同的线程池中，这是比较常用的隔离策略，其优点是隔离性好，并且可以配置断路<br>
 某个依赖被设置断路之后，系统不会再尝试新起线程运行它，而是直接提示失败，或返回fallback值<br>
 它的缺点是新起线程执行命令，在执行时必然涉及上下文的切换，这会造成一定的性能消耗<br>
-但是 Netflix 做过实验，这种消耗对比其带来的价值是完全可以接受的，具体的数据参见 [Hystrix Wiki](https://github.com/Netflix/Hystrix/wiki/How-it-Works#wiki-Isolation)
+但是 Netflix 做过实验，这种消耗对比其带来的价值是完全可以接受的，具体的数据参见 [Hystrix-Wiki](https://github.com/Netflix/Hystrix/wiki/How-it-Works#wiki-Isolation)
 2. Semaphores<br>
 顾名思义就是使用一个信号量来做隔离<br>
 开发者可以限制系统对某一个依赖的最高并发数，这个基本上就是一个限流的策略<br>
 每次调用依赖时都会检查一下是否到达信号量的限制值，如达到，则拒绝<br>
 该策略的优点是不新起线程执行命令，减少上下文切换，缺点是无法配置断路，每次都一定会去尝试获取信号量
 
-关于 Hystrix 的详细属性配置说明，可以参见 [Hystrix的Wiki](https://github.com/Netflix/Hystrix/wiki/Configuration)
+关于 Hystrix 的详细属性配置说明，可以参见 [Hystrix-Wiki-Configuration](https://github.com/Netflix/Hystrix/wiki/Configuration)
