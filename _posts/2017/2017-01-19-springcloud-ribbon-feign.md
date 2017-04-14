@@ -13,7 +13,7 @@ excerpt: 本文演示了分别通过Ribbon和Feign两种方式实现，调用注
 
 ## Ribbon
 
-Ribbon 是一个基于 HTTP 和 TCP 客户端的负载均衡器
+[Ribbon](https://github.com/Netflix/ribbon) 是一个基于 HTTP 和 TCP 客户端的负载均衡器
 
 它可以在客户端配置 ribbonServerList（服务端列表），然后轮询请求以实现均衡负载
 
@@ -27,7 +27,7 @@ ribbonServerList 会被 DiscoveryEnabledNIWSServerList 重写，扩展成从 Eur
 
 Spring Cloud Netflix 的微服务都是以 HTTP 接口的形式暴露的，所以可以用 Apache 的 HttpClient 或 Spring 的 RestTemplate 去調用
 
-而 Feign 是一個使用起來更加方便的 HTTP 客戶端，它用起來就好像調用本地方法一樣，完全感覺不到是調用的遠程方法
+而 [Feign](https://github.com/Netflix/feign) 是一個使用起來更加方便的 HTTP 客戶端，它用起來就好像調用本地方法一樣，完全感覺不到是調用的遠程方法
 
 注意：spring-cloud-starter-feign 里面已经包含了 spring-cloud-starter-ribbon（Feign 中也使用了 Ribbon）
 
