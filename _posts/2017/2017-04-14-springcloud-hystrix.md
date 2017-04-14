@@ -72,3 +72,7 @@ Hystrix 支持两种隔离策略：线程池隔离和信号量隔离（都是限
 该策略的优点是不新起线程执行命令，减少上下文切换，缺点是无法配置断路，每次都一定会去尝试获取信号量
 
 关于 Hystrix 的详细属性配置说明，可以参见 [Hystrix-Wiki-Configuration](https://github.com/Netflix/Hystrix/wiki/Configuration)
+
+## 示例代码
+
+稍后补充。。
