@@ -35,7 +35,7 @@ excerpt: 本文演示了客户端在Ribbon和Feign两种实现方式下的，断
 
 ## Hystrix
 
-Hystrix 正是 Netflix 开源的 [javanica](https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-javanica) 提供的微服务框架套件之一
+[Hystrix](https://github.com/Netflix/Hystrix) 正是 Netflix 开源的 [javanica](https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-javanica) 提供的微服务框架套件之一
 
 它是由 Java 实现的，用来处理分布式系统发生故障或延迟时的容错库
 
