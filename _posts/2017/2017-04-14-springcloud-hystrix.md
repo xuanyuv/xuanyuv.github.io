@@ -101,13 +101,13 @@ Hystrix 的大部分配置都是 hystrix.command.[HystrixCommandKey] 开头
 * hystrix.command.default.circuitBreaker.requestVolumeThreshold<br>
 当在配置时间窗口内达到此数量的失败后，进行短路，默认20个
 
-* hystrix.command.default.circuitBreaker.sleepWindowInMilliseconds
+* hystrix.command.default.circuitBreaker.sleepWindowInMilliseconds<br>
 短路多久以后开始尝试是否恢复，默认5s
 
-* hystrix.command.default.circuitBreaker.errorThresholdPercentage
+* hystrix.command.default.circuitBreaker.errorThresholdPercentage<br>
 出错百分比阈值，当达到此阈值后，开始短路，默认50%
 
-* hystrix.command.default.fallback.isolation.semaphore.maxConcurrentRequests
+* hystrix.command.default.fallback.isolation.semaphore.maxConcurrentRequests<br>
 调用线程允许请求 HystrixCommand.GetFallback() 的最大数量，默认10，超出时将会有异常抛出<br>
 注意：该项配置对于 thread 隔离模式也起作用
 
@@ -679,4 +679,4 @@ There was an unexpected error (type=Internal Server Error, status=500).
 CalculatorService#myadd(int,int) timed-out and no fallback available.
 ```
 
-然后我们再启用断路器，并访问两个接口（此时服务提供方是关闭的），这时会看到该应答：-999
+然后我们再启用断路器，并访问两个接口（此时服务提供方是关闭的），都会看到该应答：-999
