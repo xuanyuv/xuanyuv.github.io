@@ -55,7 +55,7 @@ ServiceId 映射的好处是：它支持软负载均衡，基于 URL 的方式�
     <modules>
         <module>service-client</module>
         <module>service-discovery</module>
-		<module>service-gateway-01</module>
+        <module>service-gateway-01</module>
         <module>service-gateway-02</module>
         <module>service-server-01</module>
         <module>service-server-02</module>
