@@ -177,28 +177,6 @@ eureka:
       defaultZone: http://127.0.0.1:1200/eureka/
 ```
 
-补充一个注册中心的的日志输出配置 `/src/main/resources/logback.xml`
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <contextName>${PROJECT_NAME}</contextName>
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>[%d{yyyyMMddHHmmssSSS}][%t][%C{0}.%M]%m%n</pattern>
-        </encoder>
-    </appender>
-    <logger name="org.jboss" level="WARN"/>
-    <logger name="org.apache" level="WARN"/>
-    <logger name="com.netflix" level="INFO"/>
-    <logger name="org.hibernate" level="WARN"/>
-    <logger name="org.springframework" level="WARN"/>
-    <root level="DEBUG">
-        <appender-ref ref="CONSOLE"/>
-    </root>
-</configuration>
-```
-
 ### 注册中心02
 
 其大部分代码与注册中心01相同，不同的有以下两处
