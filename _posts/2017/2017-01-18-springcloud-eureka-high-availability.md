@@ -329,6 +329,8 @@ public class CalculatorController {
 1. 启动端口为2200
 2. eureka.client.serviceUrl.defaultZone=http://127.0.0.1:1200/eureka/（也可配成1100，再看效果，是一样的）
 
+补充一下：服务提供方配置成这样也可以eureka.client.serviceUrl.defaultZone=http://127.0.0.1:1100/eureka/,http://127.0.0.1:1200/eureka/
+
 至于验证，先启动两个注册中心（启动时会报错，不过没关系，这是由于它找不到伙伴），再启动服务提供方
 
 然后看两个注册中心 Eureka 首页的注册服务列表，就会发现会被自动同步
