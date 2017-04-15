@@ -117,7 +117,7 @@ Hystrix 的大部分配置都是 hystrix.command.[HystrixCommandKey] 开头
 
 示例代码如下（也可以直接从 Github 下载：[https://github.com/v5java/demo-cloud-06-hystrix](https://github.com/v5java/demo-cloud-06-hystrix)）
 
-它是由四个模块组成的 Maven 工程，其中包含兩个服务消费者、一个注册中心、一个服务提供者
+它是由四个模块组成的 Maven 工程，其中包含一个注册中心、一个服务提供者、兩个服务消费者
 
 这是公共的 `pom.xml`
 
