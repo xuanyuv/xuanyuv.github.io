@@ -81,42 +81,34 @@ Hystrix 的大部分配置都是 hystrix.command.[HystrixCommandKey] 开头
 
 它常见的有以下几个配置
 
-* hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds
+* hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds<br>
 用来设置 thread 和 semaphore 两种隔离策略的超时时间，默认值是1000<br>
 建议设置这个参数，在 Hystrix-1.4.0 之前，semaphore-isolated 隔离策略是不能超时的，1.4.0 开始 semaphore-isolated 也支持超时时间了
 
-* hystrix.command.default.execution.isolation.semaphore.maxConcurrentRequests
+* hystrix.command.default.execution.isolation.semaphore.maxConcurrentRequests<br>
 此值并非 TPS、QPS、RPS 等都是相对值，它指的是 **1** 秒时间窗口内的事务 **/** 查询 **/** 请求，它是一个绝对值，无时间窗口<br>
 相当于亚毫秒级的，指任意时间点允许的并发数，当请求达到或超过该设置值后，其其余就会被拒绝，默认值是100
 
-* hystrix.command.default.execution.timeout.enabled
-
+* hystrix.command.default.execution.timeout.enabled<br>
 是否开启超时，默认为true
 
-* hystrix.command.default.execution.isolation.thread.interruptOnTimeout
-
+* hystrix.command.default.execution.isolation.thread.interruptOnTimeout<br>
 发生超时是是否中断线程，默认是true
 
-* hystrix.command.default.execution.isolation.thread.interruptOnCancel
-
+* hystrix.command.default.execution.isolation.thread.interruptOnCancel<br>
 取消时是否中断线程，默认是false
 
-* hystrix.command.default.circuitBreaker.requestVolumeThreshold
-
+* hystrix.command.default.circuitBreaker.requestVolumeThreshold<br>
 当在配置时间窗口内达到此数量的失败后，进行短路，默认20个
 
 * hystrix.command.default.circuitBreaker.sleepWindowInMilliseconds
-
 短路多久以后开始尝试是否恢复，默认5s
 
 * hystrix.command.default.circuitBreaker.errorThresholdPercentage
-
 出错百分比阈值，当达到此阈值后，开始短路，默认50%
 
 * hystrix.command.default.fallback.isolation.semaphore.maxConcurrentRequests
-
-调用线程允许请求 HystrixCommand.GetFallback() 的最大数量，默认10，超出时将会有异常抛出
-
+调用线程允许请求 HystrixCommand.GetFallback() 的最大数量，默认10，超出时将会有异常抛出<br>
 注意：该项配置对于 thread 隔离模式也起作用
 
 以上就是列举的一些常见配置，更多内容可参考：[https://github.com/Netflix/Hystrix/wiki/Configuration](https://github.com/Netflix/Hystrix/wiki/Configuration)
