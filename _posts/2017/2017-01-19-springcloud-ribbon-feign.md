@@ -37,28 +37,6 @@ Spring Cloud Netflix 的微服务都是以 HTTP 接口的形式暴露的，所�
 
 它是由五個模块组成的 Maven 工程，其中包含兩个服务消费者、一个注册中心、兩个服务提供者
 
-這是五個模块都使用了的日誌輸出配置 `/src/main/resources/logback.xml`
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <contextName>${PROJECT_NAME}</contextName>
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>[%d{yyyyMMddHHmmssSSS}][%t][%C{0}.%M]%m%n</pattern>
-        </encoder>
-    </appender>
-    <logger name="org.jboss" level="WARN"/>
-    <logger name="org.apache" level="WARN"/>
-    <logger name="com.netflix" level="INFO"/>
-    <logger name="org.hibernate" level="WARN"/>
-    <logger name="org.springframework" level="WARN"/>
-    <root level="DEBUG">
-        <appender-ref ref="CONSOLE"/>
-    </root>
-</configuration>
-```
-
 这是公共的 `pom.xml`
 
 ```xml
@@ -77,11 +55,9 @@ Spring Cloud Netflix 的微服务都是以 HTTP 接口的形式暴露的，所�
         <module>service-server-01</module>
         <module>service-server-02</module>
     </modules>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -98,7 +74,6 @@ Spring Cloud Netflix 的微服务都是以 HTTP 接口的形式暴露的，所�
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <build>
         <plugins>
             <plugin>
