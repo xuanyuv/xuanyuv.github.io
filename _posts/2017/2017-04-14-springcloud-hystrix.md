@@ -198,7 +198,7 @@ Hystrix 的大部分配置都是 hystrix.command.[HystrixCommandKey] 开头
 </project>
 ```
 
-这是中心的配置文件 `/src/main/resources/application.yml`
+这是注册中心的配置文件 `/src/main/resources/application.yml`
 
 ```yml
 server:
