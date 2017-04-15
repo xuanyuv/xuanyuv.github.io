@@ -11,7 +11,7 @@ excerpt: 本文演示了客户端在Ribbon和Feign两种实现方式下的，断
 {:toc}
 
 
-## 简介
+## 前言
 
 微服务架构中，一般都存在着很多的服务单元
 
@@ -33,7 +33,7 @@ excerpt: 本文演示了客户端在Ribbon和Feign两种实现方式下的，断
 
 这就不会使得线程被故障服务长时间占用而不释放，避免了故障在分布式系统中的蔓延
 
-## Hystrix
+## Hystrix的介绍
 
 [Hystrix](https://github.com/Netflix/Hystrix) 正是 Netflix 开源的 [javanica](https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-javanica) 提供的微服务框架套件之一
 
@@ -73,24 +73,20 @@ Hystrix 支持两种隔离策略：线程池隔离和信号量隔离（都是限
 每次调用依赖时都会检查一下是否到达信号量的限制值，如达到，则拒绝<br>
 该策略的优点是不新起线程执行命令，减少上下文切换，缺点是无法配置断路，每次都一定会去尝试获取信号量
 
-## Hystrix的配置
+## Hystrix的配置参数
 
 Hystrix 的大部分配置都是 hystrix.command.[HystrixCommandKey] 开头
 
-其中 [HystrixCommandKey] 是可变的，默认是 default，即：hystrix.command.default（对于zuul而言，CommandKey就是service id）
+其中 [HystrixCommandKey] 是可变的，默认是 default，即：hystrix.command.default（对于 Zuul 而言，CommandKey 就是 service id）
 
 它常见的有以下几个配置
 
 * hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds
-
-用来设置 thread 和 semaphore 两种隔离策略的超时时间，默认值是1000
-
-建议设置这个参数，在 Hystrix-1.4.0 之前，semaphore-isolated 隔离策略是不能超时的，从 1.4.0 开始 semaphore-isolated 也支持超时时间了
+用来设置 thread 和 semaphore 两种隔离策略的超时时间，默认值是1000<br>
+建议设置这个参数，在 Hystrix-1.4.0 之前，semaphore-isolated 隔离策略是不能超时的，1.4.0 开始 semaphore-isolated 也支持超时时间了
 
 * hystrix.command.default.execution.isolation.semaphore.maxConcurrentRequests
-
-此值并非 TPS、QPS、RPS 等都是相对值，它指的是 **1** 秒时间窗口内的事务 **/** 查询 **/** 请求，它是一个绝对值，无时间窗口
-
+此值并非 TPS、QPS、RPS 等都是相对值，它指的是 **1** 秒时间窗口内的事务 **/** 查询 **/** 请求，它是一个绝对值，无时间窗口<br>
 相当于亚毫秒级的，指任意时间点允许的并发数，当请求达到或超过该设置值后，其其余就会被拒绝，默认值是100
 
 * hystrix.command.default.execution.timeout.enabled
