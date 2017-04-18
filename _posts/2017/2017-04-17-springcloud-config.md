@@ -40,7 +40,7 @@ SpringCloud 中的 bootstrap.yml 是会比 application.yml 先加载的，所以
 这就引申出两个需要注意的地方
 
 * spring.application.name<br>
-它应该配置在 bootstrap.yml，它的名字应该等于配置中心的配置文件的{application}<br>
+它应该配置在 bootstrap.yml，它的名字应该等于配置中心的配置文件的 {application}<br>
 所以配置中心在给配置文件取名字时，最好让它等于对应的应用服务名
 
 * 配置中心与注册中心联合使用<br>
