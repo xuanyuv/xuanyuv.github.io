@@ -33,38 +33,44 @@ excerpt: 本文演示了spring-cloud-config实现的统一配置中心示例。
 
 ### yml的加载顺序
 
-应用读取统一配置中心的参数时，需要定义配置中心的地址等相关参数，** 而这部分配置需要优先于 application.yml 被应用读取**
+应用读取统一配置中心的参数时，需要定义配置中心的地址等相关参数，**而这部分配置需要优先于 application.yml 被应用读取**
 
 SpringCloud 中的 bootstrap.yml 是会比 application.yml 先加载的，所以这部分配置要定义在 bootstrap.yml 里面
 
-这就引申出来两个需要注意的地方
+这就引申出两个需要注意的地方
 
 * spring.application.name<br>
 它应该配置在 bootstrap.yml，它的名字应该等于配置中心的配置文件的{application}<br>
 所以配置中心在给配置文件取名字时，最好让它等于对应的应用服务名
 
 * 配置中心与注册中心联合使用<br>
-此时若应用是通过 serviceId 而非 url 来指定配置中心的，则要把 eureka.client.serviceUrl.defaultZone 也配置在 bootstrap.yml<br>
-要不启动的时候，应用会找不到注册中心，自然就也找不到配置中心了
+此时若应用是通过 serviceId 而非 url 来指定配置中心的，那么 eureka.client.serviceUrl.defaultZone 也要配置在 bootstrap.yml<br>
+要不启动的时候，应用会找不到注册中心，自然也就找不到配置中心了
 
 ### url的映射关系
 
-/{application}/{profile}[/{label}]<br>
-/{application}-{profile}.yml<br>
-/{label}/{application}-{profile}.yml<br>
-/{application}-{profile}.properties<br>
+/{application}/{profile}[/{label}]
+
+/{application}-{profile}.yml
+
+/{label}/{application}-{profile}.yml
+
+/{application}-{profile}.properties
+
 /{label}/{application}-{profile}.properties
 
 其中，{label} 对应 git 分支，{application}-{profile}.properties 对应配置文件的名字
 
-所以，可以根据不同的 url 来访问不同的配置内容
+所以，可以根据不同的 url 来访问不同的配置内容，比如本文的示例就对应下面链接
 
-比如，本文的例子中就对应下面几个 url
+http://127.0.0.1:4100/demo.cloud.config/dev/master
 
-http://127.0.0.1:4100/demo.cloud.config/dev/master<br>
-http://127.0.0.1:4100/demo.cloud.config-dev.yml<br>
-http://127.0.0.1:4100/master/demo.cloud.config-test.yml<br>
-http://127.0.0.1:4100/demo.cloud.config-prod.properties<br>
+http://127.0.0.1:4100/demo.cloud.config-dev.yml
+
+http://127.0.0.1:4100/master/demo.cloud.config-test.yml
+
+http://127.0.0.1:4100/demo.cloud.config-prod.properties
+
 http://127.0.0.1:4100/master/demo.cloud.config-dev.properties
 
 ### 属性的热加载
@@ -73,13 +79,13 @@ http://127.0.0.1:4100/master/demo.cloud.config-dev.properties
 
 2、添加依赖 `spring-boot-starter-actuator`
 
-3、执行热加载 `curl -X POST http://127.0.0.1:2100/refresh（大写的 X 和 POST）`
+3、刷新属性 `curl -X POST http://127.0.0.1:2100/refresh（大写的 X 和 POST）`
 
 ## 示例代码
 
 示例代码如下（也可以直接从 Github 下载：[https://github.com/v5java/demo-cloud-08-config](https://github.com/v5java/demo-cloud-08-config)）
 
-它是由三个模块组成的 Maven 工程，其中一个注册中心、一个配置中心、一个服务提供方
+它是由三个模块组成的 Maven 工程，包含了一个注册中心、一个配置中心、一个服务提供方
 
 这是公共的 `pom.xml`
 
@@ -348,14 +354,14 @@ eureka:
 ```yml
 spring:
   application:
-    name: demo.cloud.config         # 指定配置中心配置文件的{application}（也就是配置中心的属性文件的基础名称）
+    name: demo.cloud.config         # 指定配置中心配置文件的{application}
   cloud:
     config:
-      #uri: http://127.0.0.1:4100/  # 指定配置中心的地址（它不能配置在application.yml）
+      #uri: http://127.0.0.1:4100/  # 指定配置中心的地址
       profile: prod                 # 指定配置中心配置文件的{profile}
-      label: master                 # 指定配置中心配置文件的{label}（即git分支）
+      label: master                 # 指定配置中心配置文件的{label}
       discovery:
-        enabled: true                    # 使用注册中心里面已注册的配置中心（默认为false）
+        enabled: true                    # 使用注册中心里面已注册的配置中心
         serviceId: jadyer-config-server  # 指定配置中心注册到注册中心的serviceId
 
 eureka:
@@ -419,4 +425,4 @@ public class DemoController {
 
 ## 验证
 
-直接访问服务提供方暴露的接口：[http://127.0.0.1:2100/demo/config/getHost](http://127.0.0.1:2100/demo/config/getHost)
+访问服务提供方暴露的接口：[http://127.0.0.1:2100/demo/config/getHost](http://127.0.0.1:2100/demo/config/getHost)
