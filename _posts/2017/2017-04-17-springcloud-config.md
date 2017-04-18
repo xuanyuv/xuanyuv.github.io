@@ -33,7 +33,7 @@ excerpt: 本文演示了spring-cloud-config实现的统一配置中心示例。
 
 ### yml的加载顺序
 
-应用读取统一配置中心的参数时，需要定义配置中心的地址等相关参数，**而这部分配置需要优先于 application.yml 被应用读取**
+应用读取配置中心参数时，会配置配置中心的地址等相关参数，**而这部分配置需优先于 application.yml 被应用读取**
 
 SpringCloud 中的 bootstrap.yml 是会比 application.yml 先加载的，所以这部分配置要定义在 bootstrap.yml 里面
 
@@ -44,7 +44,7 @@ SpringCloud 中的 bootstrap.yml 是会比 application.yml 先加载的，所以
 所以配置中心在给配置文件取名字时，最好让它等于对应的应用服务名
 
 * 配置中心与注册中心联合使用<br>
-此时若应用是通过 serviceId 而非 url 来指定配置中心的，那么 eureka.client.serviceUrl.defaultZone 也要配置在 bootstrap.yml<br>
+若应用通过 serviceId 而非 url 来指定配置中心，则 eureka.client.serviceUrl.defaultZone 也要配置在 bootstrap.yml<br>
 要不启动的时候，应用会找不到注册中心，自然也就找不到配置中心了
 
 ### url的映射关系
