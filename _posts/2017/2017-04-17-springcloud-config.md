@@ -85,7 +85,7 @@ http://127.0.0.1:4100/master/demo.cloud.config-dev.properties
 
 示例代码如下（也可以直接从 Github 下载：[https://github.com/v5java/demo-cloud-08-config](https://github.com/v5java/demo-cloud-08-config)）
 
-它是由三个模块组成的 Maven 工程，包含了一个注册中心、一个配置中心、一个服务提供方
+它是由四个模块组成的 Maven 工程，包含了一个注册中心、一个配置中心、两个读取了配置中心属性的服务提供方
 
 这是公共的 `pom.xml`
 
@@ -291,9 +291,9 @@ public class ServiceConfigBootStarp {
 }
 ```
 
-### 服务提供方
+### 服务提供方01
 
-这是服务提供方的 `pom.xml`
+这是第一个服务提供方的 `pom.xml`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -326,7 +326,7 @@ public class ServiceConfigBootStarp {
 </project>
 ```
 
-这是服务提供方的配置文件 `/src/main/resources/application.yml`
+这是第一个服务提供方的配置文件 `/src/main/resources/application.yml`
 
 ```yml
 server:
@@ -349,7 +349,7 @@ eureka:
     #  defaultZone: http://127.0.0.1:1100/eureka/  # 指定服务注册中心的地址
 ```
 
-这是服务提供方的配置文件 `/src/main/resources/bootstrap.yml`
+这是第一个服务提供方的配置文件 `/src/main/resources/bootstrap.yml`
 
 ```yml
 spring:
@@ -370,7 +370,7 @@ eureka:
       defaultZone: http://127.0.0.1:1100/eureka/
 ```
 
-这是服务提供方的 SpringBoot 启动类 `ServiceServerBootStarp.java`
+这是第一个服务提供方的 SpringBoot 启动类 `ServiceServerBootStarp.java`
 
 ```java
 package com.jadyer.demo;
@@ -397,7 +397,7 @@ public class ServiceServerBootStarp {
 }
 ```
 
-这是服务提供方读取配置中心参数（且支持热加载）的例子 `DemoController.java`
+这是第一个服务提供方读取配置中心参数（且支持热加载）的例子 `DemoController.java`
 
 ```java
 package com.jadyer.demo;
@@ -423,6 +423,24 @@ public class DemoController {
 }
 ```
 
+### 服务提供方02
+
+除了启动端口为2200外，其代码与服务提供方01的完全相同
+
 ## 验证
 
-访问服务提供方暴露的接口：[http://127.0.0.1:2100/demo/config/getHost](http://127.0.0.1:2100/demo/config/getHost)
+分别访问两个服务提供方暴露出来的接口
+
+[http://127.0.0.1:2100/demo/config/getHost](http://127.0.0.1:2100/demo/config/getHost)
+
+[http://127.0.0.1:2200/demo/config/getHost](http://127.0.0.1:2200/demo/config/getHost)
+
+然后再 `curl -X POST http://127.0.0.1:2100/refresh` 后发现只有2100端口的服务属性刷新了，2200的没变
+
+所以才有了下面的彩蛋
+
+## 彩蛋
+
+属性热加载前，都要手工调用各个应用的刷新接口，即便使用 Git 仓库的 Webhooks，维护起来也够费劲的
+
+解决办法也有，详见下一篇文章《[SpringCloud系列第09节之消息总线Bus](https://jadyer.github.io/2017/04/19/springcloud-bus/)》中通过消息总线的方式，实现集群的自动更新
