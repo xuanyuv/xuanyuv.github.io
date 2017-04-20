@@ -78,8 +78,8 @@ D:\Develop\RabbitMQServer\rabbitmq_server-3.6.9\sbin>
 
 ### 配置中心
 
-1.引入依赖项spring-cloud-starter-bus-amqp
-2.application.yml 中添加 spring.rabbitmq.* 的配置，如下所示
+1. 引入依赖项spring-cloud-starter-bus-amqp
+2. application.yml 中添加 spring.rabbitmq.* 的配置，如下所示
 ```yml
 spring:
   rabbitmq:
@@ -103,8 +103,8 @@ spring:
 
 至于属性热加载，有两种方式（它俩都能使集群中其它节点动态刷新读取到的属性）
 
-1.调用某个应用的接口：`curl -X POST http://10.16.64.133:2100/bus/refresh`
-2.调用消息总线的接口：`curl -X POST http://10.16.64.133:4100/bus/refresh`
+1. 调用某个应用的接口：`curl -X POST http://10.16.64.133:2100/bus/refresh`
+2. 调用消息总线的接口：`curl -X POST http://10.16.64.133:4100/bus/refresh`
 
 但若我们需要迁移某个使用了的节点时，就不得不去修改 Git 仓库的 Webhooks，所以更为推荐第二种方式来刷新属性
 
