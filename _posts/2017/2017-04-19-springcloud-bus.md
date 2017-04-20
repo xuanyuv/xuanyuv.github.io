@@ -79,7 +79,7 @@ D:\Develop\RabbitMQServer\rabbitmq_server-3.6.9\sbin>
 ### 配置中心
 
 1. 引入依赖项spring-cloud-starter-bus-amqp
-2. application.yml 中添加 spring.rabbitmq.* 的配置，如下所示
+2. application.yml 中添加 spring.rabbitmq.* 的配置，如下所示<br>
 ```yml
 spring:
   rabbitmq:
