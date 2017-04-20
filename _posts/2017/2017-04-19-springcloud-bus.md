@@ -103,13 +103,13 @@ spring:
 
 至于属性热加载，有两种方式（它俩都能使集群中其它节点动态刷新读取到的属性）
 
-1. 调用某个应用的接口：`curl -X POST http://10.16.64.133:2100/bus/refresh`
-2. 调用消息总线的接口：`curl -X POST http://10.16.64.133:4100/bus/refresh`
+1. 调用某个应用的接口：`curl -X POST http://127.0.0.1:2100/bus/refresh`
+2. 调用消息总线的接口：`curl -X POST http://127.0.0.1:4100/bus/refresh`
 
 但若我们需要迁移某个使用了的节点时，就不得不去修改 Git 仓库的 Webhooks，所以更为推荐第二种方式来刷新属性
 
 另外，刷新属性时也可以通过 destination 参数来指定刷新范围，举例如下
 
-curl -X POST http://10.16.64.133:4100/bus/refresh?destination=demo.cloud.config:9000
+curl -X POST http://127.0.0.1:4100/bus/refresh?destination=demo.cloud.config:9000
 
-curl -X POST http://10.16.64.133:4100/bus/refresh?destination=demo.cloud.config:**
+curl -X POST http://127.0.0.1:4100/bus/refresh?destination=demo.cloud.config:**
