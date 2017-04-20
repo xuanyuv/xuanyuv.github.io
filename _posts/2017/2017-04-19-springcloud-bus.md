@@ -74,12 +74,13 @@ D:\Develop\RabbitMQServer\rabbitmq_server-3.6.9\sbin>
 
 ### 服务中心
 
-配置不变
+无修改
 
 ### 配置中心
 
 1. 引入依赖项spring-cloud-starter-bus-amqp
-2. application.yml 中添加 spring.rabbitmq.* 的配置，如下所示<br>
+2. application.yml 中添加 spring.rabbitmq.* 的配置，如下所示
+
 ```yml
 spring:
   rabbitmq:
@@ -106,7 +107,9 @@ spring:
 1. 调用某个应用的接口：`curl -X POST http://127.0.0.1:2100/bus/refresh`
 2. 调用消息总线的接口：`curl -X POST http://127.0.0.1:4100/bus/refresh`
 
-但若我们需要迁移某个使用了的节点时，就不得不去修改 Git 仓库的 Webhooks，所以更为推荐第二种方式来刷新属性
+但若我们需要迁移某个使用了的节点时，就不得不去修改 Git 仓库的 Webhooks
+
+所以更为推荐第二种方式来刷新属性
 
 另外，刷新属性时也可以通过 destination 参数来指定刷新范围，举例如下
 
