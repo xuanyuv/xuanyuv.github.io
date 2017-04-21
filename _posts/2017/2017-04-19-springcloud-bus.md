@@ -19,9 +19,9 @@ excerpt: 本文演示了spring-cloud-starter-bus-amqp结合RabbitMQ搭建消息�
 
 所以我们希望配置中心的属性发生变化时，能有一种途径去通知所有的相关应用去自动刷新配置
 
-而通过 Spring Cloud Bus 就能够实现以消息总线的方式，去通知集群上的应用动态更新配置信息
+而通过 Spring Cloud Bus 就能够实现以消息总线的方式，通知集群上的应用，去动态更新配置信息
 
-这里是以 RabbitMQ 来作为消息代理的中间件（实现将消息路由到一个或多个目的地），所以要先安装 RabbitMQ
+本文是以 RabbitMQ 来作为消息代理的中间件（实现将消息路由到一个或多个目的地），所以要先安装 RabbitMQ
 
 ## RabbitMQ的安装
 
@@ -102,15 +102,17 @@ spring:
 
 [http://127.0.0.1:2200/demo/config/getHost](http://127.0.0.1:2200/demo/config/getHost)
 
-至于属性热加载，有两种方式（它俩都能使集群中其它节点动态刷新读取到的属性）
+属性热加载时，需要调用消息总线的 `/bus/refresh` 接口，共有两种方式（都能使集群中其它节点动态刷新读取到的属性）
 
 1. 调用某个应用的接口：`curl -X POST http://127.0.0.1:2100/bus/refresh`
 2. 调用消息总线的接口：`curl -X POST http://127.0.0.1:4100/bus/refresh`
 
-但若我们需要迁移某个使用了的节点时，就不得不去修改 Git 仓库的 Webhooks，**所以更为推荐第二种方式来刷新属性**
+但在需要迁移某个使用了的节点时，就不得不修改 Git 仓库的 Webhooks
 
-另外，刷新属性时也可以通过 destination 参数来指定刷新范围，举例如下
+**所以，为了使得各个微服务保持对等，故推荐第二种方式来刷新属性**
 
-curl -X POST http://127.0.0.1:4100/bus/refresh?destination=demo.cloud.config:9000
+另外，也可通过 destination 参数来指定刷新范围，举例如下
+
+curl -X POST http://127.0.0.1:4100/bus/refresh?destination=demo.cloud.config:2200
 
 curl -X POST http://127.0.0.1:4100/bus/refresh?destination=demo.cloud.config:**
