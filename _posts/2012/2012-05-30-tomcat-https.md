@@ -11,7 +11,7 @@ excerpt: 介绍了通过keytool生成证书，并分别导入Tomcat、JVM、浏�
 {:toc}
 
 
-也可以申请免费的CA证书：`StartSSL`
+也可以申请免费的CA证书：`StartSSL`（或者参考[微信支付的HTTPS搭建指南](https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=10_4)）
 
 它是StartCom公司的，也是一家CA机构，它的根证书很久之前就被一些具有开源背景的浏览器所支持
 
