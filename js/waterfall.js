@@ -130,6 +130,6 @@ function initGrid() {
         itemSelector: '.grid-item',
         columnWidth: 250,
         isFitWidth: true,
-        gutter: 20,
+        gutter: 20
     })
 }
