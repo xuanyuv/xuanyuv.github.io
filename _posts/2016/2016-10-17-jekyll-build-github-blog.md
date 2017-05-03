@@ -198,10 +198,10 @@ Configuration file: D:/Develop/Code/jekyll/myblog/_config.yml
 本地启动时，可能会报告下面的错误
 
 ```
-C:\Users\Jadyer\Desktop\gaohaoyang.github.io-master>jekyll s
-Configuration file: C:/Users/Jadyer/Desktop/gaohaoyang.github.io-master/_config.
+C:\Users\Jadyer\Desktop\jadyer.github.io-master>jekyll s
+Configuration file: C:/Users/Jadyer/Desktop/jadyer.github.io-master/_config.
 yml
-Configuration file: C:/Users/Jadyer/Desktop/gaohaoyang.github.io-master/_config.
+Configuration file: C:/Users/Jadyer/Desktop/jadyer.github.io-master/_config.
 yml
   Dependency Error: Yikes! It looks like you don't have jekyll-paginate or one o
 f its dependencies installed. In order to use Jekyll as currently configured, yo
@@ -210,7 +210,7 @@ u'll need to install this gem. The full error message from Ruby is: 'cannot load
 ources at http://jekyllrb.com/help/!
 jekyll 3.3.0 | Error:  jekyll-paginate
 
-C:\Users\Jadyer\Desktop\gaohaoyang.github.io-master>
+C:\Users\Jadyer\Desktop\jadyer.github.io-master>
 ```
 
 这是因为Jekyll3.x中默认安装已没有此分页组件，官方将其插件化了，故需独立安装。
@@ -218,7 +218,7 @@ C:\Users\Jadyer\Desktop\gaohaoyang.github.io-master>
 详见[https://jekyllrb.com/docs/pagination/](https://jekyllrb.com/docs/pagination/)
 
 ```
-C:\Users\Jadyer\Desktop\gaohaoyang.github.io-master>gem install jekyll-paginate
+C:\Users\Jadyer\Desktop\jadyer.github.io-master>gem install jekyll-paginate
 Fetching: jekyll-paginate-1.1.0.gem (100%)
 Successfully installed jekyll-paginate-1.1.0
 Parsing documentation for jekyll-paginate-1.1.0
@@ -226,19 +226,19 @@ Installing ri documentation for jekyll-paginate-1.1.0
 Done installing documentation for jekyll-paginate after 0 seconds
 1 gem installed
 
-C:\Users\Jadyer\Desktop\gaohaoyang.github.io-master>
+C:\Users\Jadyer\Desktop\jadyer.github.io-master>
 ```
 
 接着再启动，就能启动成功了。
 
 ```
-C:\Users\Jadyer\Desktop\gaohaoyang.github.io-master>jekyll s
-Configuration file: C:/Users/Jadyer/Desktop/gaohaoyang.github.io-master/_config.
+C:\Users\Jadyer\Desktop\jadyer.github.io-master>jekyll s
+Configuration file: C:/Users/Jadyer/Desktop/jadyer.github.io-master/_config.
 yml
-Configuration file: C:/Users/Jadyer/Desktop/gaohaoyang.github.io-master/_config.
+Configuration file: C:/Users/Jadyer/Desktop/jadyer.github.io-master/_config.
 yml
-            Source: C:/Users/Jadyer/Desktop/gaohaoyang.github.io-master
-       Destination: C:/Users/Jadyer/Desktop/gaohaoyang.github.io-master/_site
+            Source: C:/Users/Jadyer/Desktop/jadyer.github.io-master
+       Destination: C:/Users/Jadyer/Desktop/jadyer.github.io-master/_site
  Incremental build: disabled. Enable with --incremental
       Generating...
     Liquid Warning: Liquid syntax error (line 86): Invalid attribute in for loop
@@ -260,7 +260,7 @@ cending" in page5/index.html
                     --watch arg is unsupported on Windows.
                     If you are on Windows Bash, please see: https://github.com/M
 icrosoft/BashOnWindows/issues/216
-Configuration file: C:/Users/Jadyer/Desktop/gaohaoyang.github.io-master/_config.
+Configuration file: C:/Users/Jadyer/Desktop/jadyer.github.io-master/_config.
 yml
     Server address: http://127.0.0.1:4000/
   Server running... press ctrl-c to stop.
@@ -300,3 +300,13 @@ color 02
 
 call jekyll s --watch
 ```
+
+## 数学表达式
+
+目前该博客模板已支持 MathJax，示例如下
+
+$$
+f(x) = ax + b
+$$
+
+Inline Mathjax $a \neq b$

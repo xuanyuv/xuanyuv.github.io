@@ -53,7 +53,7 @@ tag的其中一个作用就是计算[相关文章]
                 <ul id="content-side" class="content-ul">
                     {% for tag in sortedtags %}
                     <li>
-                        <a class="scroll" href="#{{ tag }}">
+                        <a data-scroll href="#{{ tag }}">
                             {{ tag }} ({{ site.tags[tag].size }})
                         </a>
                     </li>
