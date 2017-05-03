@@ -1,3 +1,17 @@
+<!-- 网易云跟帖：https://gentie.163.com -->
+{% if site.wangyi_shortname %}
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: document.location.href,
+    sourceId: "",
+    productKey: "{{site.wangyi_shortname}}",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+{% endif %}
+
 {% if site.duoshuo_shortname %}
 <!-- 多说评论框 start -->
 <div class="ds-thread" data-thread-key="{{ site.url }}{{ page.url }}" data-title="{{page.title}}" data-url="{{ site.url }}{{ page.url }}"></div>

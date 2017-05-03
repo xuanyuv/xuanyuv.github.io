@@ -29,11 +29,12 @@ url: "https://jadyer.github.io"
 github_username: jadyer
 email: jadyer@yeah.net
 
-# 评论（指定多说或Disqus的short_name）
+# 评论功能（指定多说、网易云跟帖、Disqus的short_name）
 # disqus_shortname: jadyer
+# wangyi_shortname: da96aa66335742ce9b5fac10a208f02d
 duoshuo_shortname: jadyer
 
-# 统计（指定Baidu或Google的统计ID）
+# 统计功能（指定Baidu、Google的统计ID）
 # google_analytics_id: UA-12345678-9
 baidu_tongji_id: a1ec472ee05eea50838e5dab0a70c4a0
 
