@@ -119,7 +119,7 @@ import com.chenlb.mmseg4j.analysis.MMSegAnalyzer;
 
 /**
  * Lucene系列第04节之中文分词器
- * Created by 玄玉<https://jadyer.github.io/> on 2013/08/18 17:43.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/08/18 17:43.
  */
 public class HelloChineseAnalyzer {
     /**

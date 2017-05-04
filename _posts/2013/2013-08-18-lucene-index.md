@@ -60,7 +60,7 @@ import org.apache.lucene.util.Version;
 
 /**
  * Lucene系列第02节之操作索引
- * Created by 玄玉<https://jadyer.github.io/> on 2013/08/18 15:48.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/08/18 15:48.
  */
 public class HelloIndex {
     /*

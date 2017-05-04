@@ -79,7 +79,7 @@ import java.io.IOException;
 
 /**
  * Servlet3.0新特性之注解编写过滤器
- * Created by 玄玉<https://jadyer.github.io/> on 2013/06/24 10:39.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/06/24 10:39.
  */
 @WebFilter(urlPatterns="/*", initParams=@WebInitParam(name="encoding", value="UTF-8"))
 public class EncodingFilter implements Filter {
@@ -127,7 +127,7 @@ import java.io.PrintWriter;
 
 /**
  * Servlet3.0新特性之注解编写ervlet
- * Created by 玄玉<https://jadyer.github.io/> on 2013/06/23 17:46.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/06/23 17:46.
  */
 @WebServlet(urlPatterns={"/hello", "/servlet/hello"}, initParams={@WebInitParam(name="savePath", value="D:/upload")})
 public class HelloServlet extends HttpServlet {
@@ -167,7 +167,7 @@ import java.io.IOException;
 /**
  * 这里并没有使用@WebServlet注解
  * 而是在监听器里面通过Servlet3.0提供的动态注册机制把它动态注册为一个Servlet
- * Created by 玄玉<https://jadyer.github.io/> on 2013/06/24 10:39.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/06/24 10:39.
  */
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 7115756326691777726L;
@@ -180,7 +180,7 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("https://jadyer.github.io/");
+        System.out.println("http://jadyer.cn/");
     }
 }
 ```
@@ -197,7 +197,7 @@ import javax.servlet.annotation.WebListener;
 
 /**
  * Servlet3.0新特性之注解编写监听器以及动态注册Servlet
- * Created by 玄玉<https://jadyer.github.io/> on 2013/06/24 10:39.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/06/24 10:39.
  */
 @WebListener
 public class UserListener implements ServletContextListener {
@@ -259,7 +259,7 @@ import java.io.PrintWriter;
 
 /**
  * Servlet3.0新特性之文件上传
- * Created by 玄玉<https://jadyer.github.io/> on 2013/06/24 15:19.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/06/24 15:19.
  */
 @WebServlet(urlPatterns="/upload")
 //标明此Servlet支持文件上传
@@ -345,7 +345,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Servlet3.0新特性之异步支持
- * Created by 玄玉<https://jadyer.github.io/> on 2013/06/23 17:47.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/06/23 17:47.
  */
 //默认不支持异步，需手工开启：asyncSupported=true
 @WebServlet(urlPatterns={"/async"}, asyncSupported=true)

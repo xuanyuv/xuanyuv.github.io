@@ -56,7 +56,7 @@ import java.util.Set;
 
 /**
  * 订单的实体Bean
- * Created by 玄玉<https://jadyer.github.io/> on 2011/02/11 09:16.
+ * Created by 玄玉<http://jadyer.cn/> on 2011/02/11 09:16.
  */
 @Entity
 @Table(name="orders")
@@ -121,7 +121,7 @@ import javax.persistence.ManyToOne;
 
 /**
  * 订单项的实体Bean
- * Created by 玄玉<https://jadyer.github.io/> on 2011/02/11 09:16.
+ * Created by 玄玉<http://jadyer.cn/> on 2011/02/11 09:16.
  */
 @Entity
 public class OrderItem {
@@ -200,7 +200,7 @@ import javax.persistence.OneToOne;
 
 /**
  * 身份证的实体Bean
- * Created by 玄玉<https://jadyer.github.io/> on 2011/02/11 09:16.
+ * Created by 玄玉<http://jadyer.cn/> on 2011/02/11 09:16.
  */
 @Entity
 public class IDCard {
@@ -240,7 +240,7 @@ import javax.persistence.OneToOne;
 
 /**
  * 人的实体Bean
- * Created by 玄玉<https://jadyer.github.io/> on 2011/02/11 09:16.
+ * Created by 玄玉<http://jadyer.cn/> on 2011/02/11 09:16.
  */
 @Entity
 public class Person {
@@ -315,7 +315,7 @@ import java.util.Set;
 
 /**
  * 学生的实体Bean
- * Created by 玄玉<https://jadyer.github.io/> on 2011/02/11 10:39.
+ * Created by 玄玉<http://jadyer.cn/> on 2011/02/11 10:39.
  */
 @Entity
 public class Student {
@@ -373,7 +373,7 @@ import java.util.Set;
 
 /**
  * 教师的实体Bean
- * Created by 玄玉<https://jadyer.github.io/> on 2011/02/11 10:39.
+ * Created by 玄玉<http://jadyer.cn/> on 2011/02/11 10:39.
  */
 @Entity
 public class Teacher {

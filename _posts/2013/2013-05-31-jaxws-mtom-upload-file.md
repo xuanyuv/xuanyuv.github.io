@@ -115,7 +115,7 @@ import com.jadyer.service.BinaryServiceImpl;
  * 这里有必要提一下：当使用Apache的TcpMon监听MTOM时，由于JAXWS版本问题，可能会报告下面的异常
  * javax.xml.ws.WebServiceException: java.io.IOException: Error writing to server
  * 这时可以使用GoogleCode上的tcpmon或者Eclipse提供的TCP/IP Monitor
- * 有关三者的描述，可参考https://jadyer.github.io/2013/05/23/eclipse-tcpip-monitor/
+ * 有关三者的描述，可参考http://jadyer.cn/2013/05/23/eclipse-tcpip-monitor/
  * 好了，回归正题
  * 关于MTOM，有两种实现方式：传输byte[]和传输javax.activation.DataHandler
  * ---------------------------------------------------------------------------------------------------
@@ -141,7 +141,7 @@ import com.jadyer.service.BinaryServiceImpl;
  * 一个是upload(byte[] file),一个是upload(@XmlMimeType("application/octet-stream")DataHandler file)
  * ---------------------------------------------------------------------------------------------------
  * @create May 26, 2013 12:15:53 AM
- * @author 玄玉<https://jadyer.github.io/>
+ * @author 玄玉<http://jadyer.cn/>
  */
 public class ServerApp {
     public static void main(String[] args) {
@@ -157,7 +157,7 @@ public class ServerApp {
 
 客户端只有一个演示调用服务的类`ClientApp.java`
 
-这里是由wsimport生成的，关于其用法，可参考[https://jadyer.github.io/2013/03/19/jaxws-and-wsimport-demo/](https://jadyer.github.io/2013/03/19/jaxws-and-wsimport-demo/)
+这里是由wsimport生成的，关于其用法，可参考[http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/](http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/)
 
 ```java
 package com.jadyer.client;
@@ -175,7 +175,7 @@ import net.csdn.blog.jadyerhandler.BinaryHandlerServiceImplService;
 /**
  * wsimport -d D:/Download/ -keep -verbose http://127.0.0.1:8086/upload?wsdl
  * @create May 26, 2013 1:47:40 AM
- * @author 玄玉<https://jadyer.github.io/>
+ * @author 玄玉<http://jadyer.cn/>
  */
 public class ClientApp {
     public static void main(String[] args) throws IOException {

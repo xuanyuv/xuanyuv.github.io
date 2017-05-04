@@ -171,7 +171,7 @@ import com.jadyer.model.User;
  * @see 这对于理解本文,有莫大的帮助..类似的还有Apache的TCPMon(http://ws.apache.org/commons/tcpmon/)
  * @see ----------------------------------------------------------------------------------------------
  * @create Mar 18, 2013 2:47:18 PM
- * @author 玄玉<https://jadyer.github.io/>
+ * @author 玄玉<http://jadyer.cn/>
  */
 public class TestSAAJ {
     //Web服务端公布的服务地址

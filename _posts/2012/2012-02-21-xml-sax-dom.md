@@ -67,7 +67,7 @@ import java.util.Stack;
 
 /**
  * SAX(Simple APIs for XML)的方式解析XML文档
- * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 11:33.
+ * Created by 玄玉<http://jadyer.cn/> on 2012/02/21 11:33.
  */
 public class SaxXMLDemo {
     public static void main(String[] args) throws Exception {
@@ -241,7 +241,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * DOM(Document Object Model)的方式解析XML文档
- * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 11:33.
+ * Created by 玄玉<http://jadyer.cn/> on 2012/02/21 11:33.
  */
 public class DomXMLDemo {
     public static void main(String[] args) throws Exception {
@@ -337,7 +337,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * DOM(Document Object Model)的方式解析XML文档
- * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 11:33.
+ * Created by 玄玉<http://jadyer.cn/> on 2012/02/21 11:33.
  */
 public class DomXMLDemo {
     public static void main(String[] args) throws Exception {

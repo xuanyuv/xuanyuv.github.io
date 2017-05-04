@@ -113,7 +113,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
    解决办法是修改 /etc/sysconfig/iptables，增加一行：-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT<br>
    注意：这一样要添加到默认的22端口规则的下面，若添加到 iptables 文件的尾部，会有可能导致防火墙启动失败<br>
    接着再执行：`service iptables restart`命令重启防火墙即可，不需要重启Linux<br>
-   详细原理描述见：[https://jadyer.github.io/2013/09/07/centos-config-develop/](https://jadyer.github.io/2013/09/07/centos-config-develop/)
+   详细原理描述见：[http://jadyer.cn/2013/09/07/centos-config-develop/](http://jadyer.cn/2013/09/07/centos-config-develop/)
 3. /app/apache/htdocs/ 中默认的 index.html 不存在时，访问apache会显示 htdocs 目录下的文件列表<br>
    我们可以设置其不显示文件列表<br>
    解决办法是修改 /app/apache/conf/httpd.conf，注释掉**Options Indexes FollowSymLinks**这一行即可<br>

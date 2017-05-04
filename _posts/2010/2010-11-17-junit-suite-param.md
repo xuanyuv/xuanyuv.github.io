@@ -39,7 +39,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * 2、使用org.junit.runner.RunWith和org.junit.runners.Suite.SuiteClasses注解标注该空类
  * 3、将org.junit.runners.Suite作为参数传入RunWith注解，即表明使用套件运行器执行此类
  * 4、将需要放入此测试套件的测试类组成数组，作为SuiteClasses注解的参数
- * Created by 玄玉<https://jadyer.github.io/> on 2010/11/17 00:43.
+ * Created by 玄玉<http://jadyer.cn/> on 2010/11/17 00:43.
  */
 @RunWith(Suite.class)
 @SuiteClasses({MyStackTest.class, CalculatorTest.class})
@@ -56,7 +56,7 @@ import junit.framework.TestSuite;
 
 /**
  * JUnit3.8中批量运行所有的测试类（直接在该类上Run As JUnit Test）
- * Created by 玄玉<https://jadyer.github.io/> on 2010/11/17 00:43.
+ * Created by 玄玉<http://jadyer.cn/> on 2010/11/17 00:43.
  */
 public class TestAll extends TestCase {
     //方法名固定的：必须为public static Test suite()
@@ -125,7 +125,7 @@ import com.jadyer.junit4.Calculator;
  * 3、为测试类声明几个变量，分别用于存放期望值和测试所用的数据
  * 4、为测试类声明一个带有参数的公共构造函数，并在其中为上一步声明的变量赋值
  * 5、编写测试方法，使用定义的变量作为参数进行测试
- * Created by 玄玉<https://jadyer.github.io/> on 2010/11/17 00:43.
+ * Created by 玄玉<http://jadyer.cn/> on 2010/11/17 00:43.
  */
 @RunWith(Parameterized.class)
 public class ParameterTest {

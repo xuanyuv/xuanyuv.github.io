@@ -213,7 +213,7 @@ import javax.jws.WebService;
  *   如果SEI中的header=true没有指明的话，那么SIB的方法中是无法获取头信息licenseInfo值的，即便客户端传了
  * -------------------------------------------------------------------------------------------------------
  * @create May 20, 2013 12:46:26 AM
- * @author 玄玉<https://jadyer.github.io/>
+ * @author 玄玉<http://jadyer.cn/>
  */
 @WebService(serviceName="CalculatorServiceImpl",
             wsdlLocation="META-INF/wsdl/myCalculator.wsdl",
@@ -258,7 +258,7 @@ import net.csdn.blog.jadyer.CalculatorServiceImpl;
  *   但发布后在浏览器中查看wsdl时会发现,其<soap:address location=""/>值始终与发布时指定的address相同
  * --------------------------------------------------------------------------------------------------
  * @create May 17, 2013 11:33:09 AM
- * @author 玄玉<https://jadyer.github.io/>
+ * @author 玄玉<http://jadyer.cn/>
  */
 public class ServerApp {
     public static void main(String[] args) {
@@ -271,7 +271,7 @@ public class ServerApp {
 
 客户端只有一个用于演示调用服务端的`ClientApp.Java`
 
-它是通过wsimport生成的，关于其用法，可参考[https://jadyer.github.io/2013/03/19/jaxws-and-wsimport-demo/](https://jadyer.github.io/2013/03/19/jaxws-and-wsimport-demo/)
+它是通过wsimport生成的，关于其用法，可参考[http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/](http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/)
 
 ```java
 package com.jadyer.client;

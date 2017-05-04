@@ -28,7 +28,7 @@ import org.apache.mina.core.session.IoSession;
 
 /**
  * 服务端的消息处理器
- * Created by 玄玉<https://jadyer.github.io/> on 2012/10/31 16:46.
+ * Created by 玄玉<http://jadyer.cn/> on 2012/10/31 16:46.
  */
 public class ServerHandler extends IoHandlerAdapter {
     @Override
@@ -56,7 +56,7 @@ import java.nio.charset.CharsetEncoder;
 
 /**
  * 自定义的编码器
- * Created by 玄玉<https://jadyer.github.io/> on 2012/10/31 16:38.
+ * Created by 玄玉<http://jadyer.cn/> on 2012/10/31 16:38.
  */
 public class MyEncoder extends ProtocolEncoderAdapter {
     private final CharsetEncoder charsetEncoder;
@@ -86,7 +86,7 @@ import java.nio.charset.CharsetDecoder;
 
 /**
  * 自定义的解码器
- * Created by 玄玉<https://jadyer.github.io/> on 2012/10/31 16:38.
+ * Created by 玄玉<http://jadyer.cn/> on 2012/10/31 16:38.
  */
 public class MyDecoder extends CumulativeProtocolDecoder{
     private final CharsetDecoder charsetDecoder;
@@ -130,7 +130,7 @@ import java.util.List;
 
 /**
  * 用于启动Mina2.x服务
- * Created by 玄玉<https://jadyer.github.io/> on 2012/10/31 16:38.
+ * Created by 玄玉<http://jadyer.cn/> on 2012/10/31 16:38.
  */
 public class MinaStartup {
     private IoHandler handler;                       //处理器

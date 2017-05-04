@@ -45,7 +45,7 @@ package com.jadyer.demo;
  * Thread-1：1
  * Thread-1：2
  * --------------------------------------------------------------
- * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 17:29.
+ * Created by 玄玉<http://jadyer.cn/> on 2012/02/21 17:29.
  */
 public class SynchronizedTest {
     public static void main(String[] args) {
@@ -135,7 +135,7 @@ package com.jadyer.demo;
  * Thread-0：2
  * Thread-1：2
  * --------------------------------------------------------------
- * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 17:29.
+ * Created by 玄玉<http://jadyer.cn/> on 2012/02/21 17:29.
  */
 public class SynchronizedStaticTest {
     public static void main(String[] args) {
@@ -216,7 +216,7 @@ package com.jadyer.demo;
  * Thread-0：2
  * Thread-1：2
  * --------------------------------------------------------------
- * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 17:29.
+ * Created by 玄玉<http://jadyer.cn/> on 2012/02/21 17:29.
  */
 public class SynchronizedBlockTest {
     public static void main(String[] args) {
@@ -231,7 +231,7 @@ public class SynchronizedBlockTest {
 
 
 /**
- * Created by 玄玉<https://jadyer.github.io/> on 2012/02/21 02:29.
+ * Created by 玄玉<http://jadyer.cn/> on 2012/02/21 02:29.
  */
 class Bank{
     private Object obj11 = new Object();

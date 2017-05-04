@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
 
 /**
  * Swing进度条样例
- * Created by 玄玉<https://jadyer.github.io/> on 2013/04/24 13:52.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/04/24 13:52.
  */
 public class JProgressBarDemo {
     private Timer timer;

@@ -172,7 +172,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 自定义的用户登录认证类
- * Created by 玄玉<https://jadyer.github.io/> on 2015/07/17 15:48.
+ * Created by 玄玉<http://jadyer.cn/> on 2015/07/17 15:48.
  */
 @Component(value="primaryAuthenticationHandler")
 public class UserAuthenticationHandler extends AbstractUsernamePasswordAuthenticationHandler {

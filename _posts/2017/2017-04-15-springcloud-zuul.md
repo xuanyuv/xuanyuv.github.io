@@ -236,7 +236,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * http://cloud.spring.io/spring-cloud-static/Camden.SR3/#_registering_with_eureka
  * https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka
  * --------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.github.io/> on 2017/1/9 16:00.
+ * Created by 玄玉<http://jadyer.cn/> on 2017/1/9 16:00.
  */
 @EnableEurekaClient
 @SpringBootApplication
@@ -261,7 +261,7 @@ import javax.annotation.Resource;
 
 /**
  * 服务提供方暴露的数学运算服务
- * Created by 玄玉<https://jadyer.github.io/> on 2017/1/9 16:00.
+ * Created by 玄玉<http://jadyer.cn/> on 2017/1/9 16:00.
  */
 @RestController
 public class CalculatorController {
@@ -406,7 +406,7 @@ import javax.servlet.http.HttpServletRequest;
  * http://127.0.0.1:4100/mycall/add?a=11&b=22：返回"权限不足"
  * http://127.0.0.1:4100/mycall/add?a=11&b=22&accesstoken=token：返回正常
  * -------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.github.io/> on 2017/1/14 15:05.
+ * Created by 玄玉<http://jadyer.cn/> on 2017/1/14 15:05.
  */
 public class GatewayFilter extends ZuulFilter {
     private Logger log = LoggerFactory.getLogger(getClass());
@@ -593,7 +593,7 @@ import javax.annotation.Resource;
 
 /**
  * 服务调用方
- * Created by 玄玉<https://jadyer.github.io/> on 2017/1/10 18:23.
+ * Created by 玄玉<http://jadyer.cn/> on 2017/1/10 18:23.
  */
 @RestController
 @RequestMapping("/demo/feign")

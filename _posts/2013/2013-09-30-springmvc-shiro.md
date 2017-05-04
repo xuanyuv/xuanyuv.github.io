@@ -177,7 +177,7 @@ import org.apache.shiro.subject.Subject;
 /**
  * 自定义的指定Shiro验证用户登录的类
  * 这里定义了两个用户：jadyer（拥有admin角色和admin:manage权限）、xuanyu（无任何角色和权限）
- * Created by 玄玉<https://jadyer.github.io/> on 2013/09/29 15:15.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/09/29 15:15.
  */
 public class MyRealm extends AuthorizingRealm {
     /**
@@ -323,7 +323,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * SpringMVC-3.2.4整合Shiro-1.2.2
- * Created by 玄玉<https://jadyer.github.io/> on 2013/09/30 23:37.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/09/30 23:37.
  */
 @Controller
 @RequestMapping("mydemo")

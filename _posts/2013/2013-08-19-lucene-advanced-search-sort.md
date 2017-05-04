@@ -38,7 +38,7 @@ import org.apache.lucene.util.Version;
 
 /**
  * Lucene系列第06节之高级搜索之排序
- * Created by 玄玉<https://jadyer.github.io/> on 2013/08/19 11:04.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/08/19 11:04.
  */
 public class AdvancedSearchBySort {
     private Directory directory;
@@ -50,7 +50,7 @@ public class AdvancedSearchBySort {
         /** 文件名 */
         String[] names = {"Michael.java", "Scofield.ini", "Tbag.txt", "Jack", "Jade", "Jadyer"};
         /** 文件内容 */
-        String[] contents = {"my blog is https://jadyer.github.io/",
+        String[] contents = {"my blog is http://jadyer.cn/",
                              "my github is https://github.com/jadyer",
                              "my name is jadyer",
                              "I am a Java Developer",

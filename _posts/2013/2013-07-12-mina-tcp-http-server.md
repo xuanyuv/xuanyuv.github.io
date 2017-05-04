@@ -45,7 +45,7 @@ import java.util.List;
 
 /**
  * 服务启动类
- * Created by 玄玉<https://jadyer.github.io/> on 2013/07/07 14:28.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/07/07 14:28.
  */
 public class MainApp {
     public static void main(String[] args) throws IOException {
@@ -96,7 +96,7 @@ import java.net.HttpURLConnection;
 
 /**
  * 服务端消息处理器
- * Created by 玄玉<https://jadyer.github.io/> on 2013/07/07 14:24.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/07/07 14:24.
  */
 public class ServerHandler extends IoHandlerAdapter {
     @Override
@@ -139,11 +139,11 @@ public class ServerHandler extends IoHandlerAdapter {
                 respData = this.buildHTTPResponseMessage("<h2>欢迎访问由Mina2.0.7编写的Web服务器</h2>");
                 break;
             case "/favicon.ico":
-                //<link rel="icon" href="https://jadyer.github.io/favicon.ico" type="image/x-icon"/>
-                //<link rel="shortcut icon" href="https://jadyer.github.io/favicon.ico" type="image/x-icon"/>
-                String httpResponseMessageBody = "<link rel=\"icon\" href=\"https://jadyer.github.io/favicon.ico\"";
+                //<link rel="icon" href="http://jadyer.cn/favicon.ico" type="image/x-icon"/>
+                //<link rel="shortcut icon" href="http://jadyer.cn/favicon.ico" type="image/x-icon"/>
+                String httpResponseMessageBody = "<link rel=\"icon\" href=\"http://jadyer.cn/favicon.ico\"";
                 httpResponseMessageBody += " type=\"image/x-icon\"/>\n";
-                httpResponseMessageBody += "<link rel=\"shortcut icon\" href=\"https://jadyer.github.io/favicon.ico\"";
+                httpResponseMessageBody += "<link rel=\"shortcut icon\" href=\"http://jadyer.cn/favicon.ico\"";
                 httpResponseMessageBody += " type=\"image/x-icon\"/>";
                 respData = this.buildHTTPResponseMessage(httpResponseMessageBody);
                 break;
@@ -226,7 +226,7 @@ public class ServerHandler extends IoHandlerAdapter {
 package com.jadyer.demo.mina.server.model;
 /**
  * 封装客户端请求报文
- * Created by 玄玉<https://jadyer.github.io/> on 2013/07/07 13:42.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/07/07 13:42.
  */
 public class Token {
     public static final String BUSI_TYPE_TCP = "TCP";
@@ -247,7 +247,7 @@ package com.jadyer.demo.mina.server.util;
 import java.io.UnsupportedEncodingException;
 
 /**
- * Created by 玄玉<https://jadyer.github.io/> on 2013/07/12 10:18.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/07/12 10:18.
  */
 public final class JadyerUtil {
     private JadyerUtil(){}
@@ -399,7 +399,7 @@ import org.apache.mina.filter.codec.demux.DemuxingProtocolCodecFactory;
 
 /**
  * 组装编解码器的工厂
- * Created by 玄玉<https://jadyer.github.io/> on 2013/07/07 14:41.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/07/07 14:41.
  */
 public class ServerProtocolCodecFactory extends DemuxingProtocolCodecFactory {
     public ServerProtocolCodecFactory(){
@@ -422,7 +422,7 @@ import java.nio.charset.Charset;
 
 /**
  * 自定义的编码器
- * Created by 玄玉<https://jadyer.github.io/> on 2013/07/07 14:43.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/07/07 14:43.
  */
 public class ServerProtocolEncoder implements MessageEncoder<String> {
     @Override
@@ -455,7 +455,7 @@ import org.apache.mina.filter.codec.demux.MessageDecoderResult;
  * 在decode()方法进行读取操作会影响数据包的大小，decode需要判断协议中哪些已经decode完，哪些还没decode
  * decode完成后，通过ProtocolDecoderOutput.write()输出，并返回MessageDecoderResult.OK表示decode完毕
  * ----------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.github.io/> on 2013/07/07 13:44.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/07/07 13:44.
  */
 public class ServerProtocolTCPDecoder implements MessageDecoder {
     @Override
@@ -519,7 +519,7 @@ import org.apache.mina.filter.codec.demux.MessageDecoderResult;
 
 /**
  * 自定义的HTTP协议解码器
- * Created by 玄玉<https://jadyer.github.io/> on 2013/07/07 13:44.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/07/07 13:44.
  */
 public class ServerProtocolHTTPDecoder implements MessageDecoder {
     @Override
@@ -598,7 +598,7 @@ public class ServerProtocolHTTPDecoder implements MessageDecoder {
 
     /**
      * 校验HTTP请求报文是否已完整接收（目前仅授理GET和POST请求）
-     * 关于HTTP请求的样例报文，可参考https://jadyer.github.io/2012/11/22/linux-crlf/
+     * 关于HTTP请求的样例报文，可参考http://jadyer.cn/2012/11/22/linux-crlf/
      * @param in 装载HTTP请求报文的IoBuffer
      */
     private boolean isComplete(IoBuffer in){
@@ -668,7 +668,7 @@ import java.util.concurrent.TimeUnit;
  * v1.4-->增加全局异常捕获
  * v1.5-->由于本工具类的作用是同步的客户端，故取消IoHandler设置，但注意必须setUseReadOperation(true)
  * ----------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.github.io/> on 2012/10/03 12:42.
+ * Created by 玄玉<http://jadyer.cn/> on 2012/10/03 12:42.
  */
 public final class MinaUtil {
     private MinaUtil(){}
@@ -843,7 +843,7 @@ import java.util.Map;
 /**
  * 测试MinaServer
  * 这里用到的HttpUtil，详见https://github.com/jadyer/seed/blob/master/seed-comm/src/main/java/com/jadyer/seed/comm/util/HttpUtil.java
- * Created by 玄玉<https://jadyer.github.io/> on 2013/07/09 19:59.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/07/09 19:59.
  */
 public class TestMinaServer {
     @Test

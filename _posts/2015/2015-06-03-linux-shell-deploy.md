@@ -15,7 +15,7 @@ excerpt: 介绍自动下载SVN源码、Maven编译打包、部署Tomcat、重启
 
 主要包括功能：自动从SVN拉取最新代码、然后执行Maven编译打包、接着重新发布到Tomcat、最后重启Tomcat
 
-关于脚本中一些命令的含义，可参考我之前的博文：[https://jadyer.github.io/2012/09/09/linux-shell-java/](https://jadyer.github.io/2012/09/09/linux-shell-java/)
+关于脚本中一些命令的含义，可参考我之前的博文：[http://jadyer.cn/2012/09/09/linux-shell-java/](http://jadyer.cn/2012/09/09/linux-shell-java/)
 
 ## deploy-engine
 

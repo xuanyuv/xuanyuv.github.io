@@ -113,7 +113,7 @@ import javax.xml.ws.soap.SOAPFaultException;
  * 4)在服务上启动过滤链
  *   在服务端或者客户端的Service实现类上使用@HandlerChain(file="myHandlerChain.xml")即可
  * @create May 17, 2013 12:07:54 AM
- * @author 玄玉<https://jadyer.github.io/>
+ * @author 玄玉<http://jadyer.cn/>
  */
 public class LicenseHandler implements SOAPHandler<SOAPMessageContext> {
     @Override
@@ -220,7 +220,7 @@ import com.jadyer.service.HelloServiceImpl;
  * @see 客户端发出的消息始终都是LogicalHandler先处理,然后才是SOAPHandler处理,服务器端的消息处理顺序则与之相反
  * @see ----------------------------------------------------------------------------------------------
  * @create May 16, 2013 6:14:10 PM
- * @author 玄玉<https://jadyer.github.io/>
+ * @author 玄玉<http://jadyer.cn/>
  */
 public class ServerApp {
     public static void main(String[] args) {
@@ -315,7 +315,7 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
 
 最后是客户端调用服务端代码
 
-这里是由wsimport生成的，关于其用法，可参考[https://jadyer.github.io/2013/03/19/jaxws-and-wsimport-demo/](https://jadyer.github.io/2013/03/19/jaxws-and-wsimport-demo/)
+这里是由wsimport生成的，关于其用法，可参考[http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/](http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/)
 
 ```java
 package com.jadyer.client;

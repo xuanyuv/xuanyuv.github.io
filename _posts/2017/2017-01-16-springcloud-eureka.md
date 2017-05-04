@@ -40,7 +40,7 @@ Spring Cloud 已经把 Eureka 集成在其子项目 Spring Cloud Netflix 里面
 
 ## 示例代码
 
-本文的例子只能用来尝尝鲜，更丰富的配置详见 Eureka 进阶篇：[https://jadyer.github.io/2017/01/17/springcloud-eureka-advance/](https://jadyer.github.io/2017/01/17/springcloud-eureka-advance/)
+本文的例子只能用来尝尝鲜，更丰富的配置详见 Eureka 进阶篇：[http://jadyer.cn/2017/01/17/springcloud-eureka-advance/](http://jadyer.cn/2017/01/17/springcloud-eureka-advance/)
 
 这是演示的是一个由三个模块组成的  Maven 工程，其中包含一个注册中心和两个服务提供者
 
@@ -235,7 +235,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * http://cloud.spring.io/spring-cloud-static/Camden.SR3/#_registering_with_eureka
  * https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka
  * ------------------------------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.github.io/> on 2017/1/9 16:00.
+ * Created by 玄玉<http://jadyer.cn/> on 2017/1/9 16:00.
  */
 @EnableEurekaClient
 @SpringBootApplication
@@ -276,7 +276,7 @@ import javax.annotation.Resource;
 
 /**
  * 服务提供方暴露的数学运算服务
- * Created by 玄玉<https://jadyer.github.io/> on 2017/1/9 16:00.
+ * Created by 玄玉<http://jadyer.cn/> on 2017/1/9 16:00.
  */
 @RestController
 public class CalculatorController {
@@ -325,4 +325,4 @@ public class CalculatorController {
 * ...
 * ...
 
-等等吧，这些问题，请参见 Eureka 进阶篇：[https://jadyer.github.io/2017/01/17/springcloud-eureka-advance/](https://jadyer.github.io/2017/01/17/springcloud-eureka-advance/)
+等等吧，这些问题，请参见 Eureka 进阶篇：[http://jadyer.cn/2017/01/17/springcloud-eureka-advance/](http://jadyer.cn/2017/01/17/springcloud-eureka-advance/)

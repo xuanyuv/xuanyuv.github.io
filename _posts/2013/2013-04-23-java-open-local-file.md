@@ -23,7 +23,7 @@ import java.util.List;
  * Java调用系统默认程序打开本地文件
  * @see 这里提供了三种打开方式,大家可自行选取
  * @create Apr 23, 2013 1:00:37 AM
- * @author 玄玉<https://jadyer.github.io/>
+ * @author 玄玉<http://jadyer.cn/>
  */
 public class OpenLocalFile {
     public static void main(String[] args) throws IOException {

@@ -62,7 +62,7 @@ import org.apache.lucene.util.Version;
 
 /**
  * Lucene系列第03节之常见搜索
- * Created by 玄玉<https://jadyer.github.io/> on 2013/08/18 16:20.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/08/18 16:20.
  */
 public class HelloSearch {
     private Directory directory;
@@ -70,7 +70,7 @@ public class HelloSearch {
     private String[] ids = {"1", "2", "3", "4", "5", "6"};
     private String[] names = {"Michael", "Scofield", "Tbag", "Jack", "Jade", "Jadyer"};
     private String[] emails = {"aa@jadyer.us", "bb@jadyer.cn", "cc@jadyer.cc", "dd@jadyer.tw", "ee@jadyer.hk", "ff@jadyer.me"};
-    private String[] contents = {"my blog is https://jadyer.github.io/", "my github is https://github.com/jadyer", "my name is jadyer", "I am JavaDeveloper", "I am from Haerbin", "I like Lucene"};
+    private String[] contents = {"my blog is http://jadyer.cn/", "my github is https://github.com/jadyer", "my name is jadyer", "I am JavaDeveloper", "I am from Haerbin", "I like Lucene"};
     private int[] attachs = {9,3,5,4,1,2};
     private Date[] dates = new Date[ids.length];
 

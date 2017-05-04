@@ -68,7 +68,7 @@ import org.w3c.dom.Node;
  * 1)自定义一个类,并继承AbstractSoapInterceptor
  * 2)显示声明该Interceptor的一个无参够构造方法,并在其中指明handleMessage()方法的调用阶段
  * @create May 28, 2013 9:05:10 PM
- * @author 玄玉<https://jadyer.github.io/>
+ * @author 玄玉<http://jadyer.cn/>
  */
 public class LicenseInInterceptor extends AbstractSoapInterceptor {
     public LicenseInInterceptor(){
@@ -187,7 +187,7 @@ public class User {
 
 客户端只有一个用于演示调用服务端的`ClientApp.Java`
 
-它是通过`CXF提供的wsdl2java`生成的，关于其用法，可参考[https://jadyer.github.io/2013/05/31/cxf-demo/](https://jadyer.github.io/2013/05/31/cxf-demo/)
+它是通过`CXF提供的wsdl2java`生成的，关于其用法，可参考[http://jadyer.cn/2013/05/31/cxf-demo/](http://jadyer.cn/2013/05/31/cxf-demo/)
 
 ```java
 package com.jadyer.client;
@@ -198,7 +198,7 @@ import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import com.jadyer.interceptor.LicenseOutInterceptor;
 
 //wsdl2java -d D:/Download/ -frontend jaxws21 -keep -verbose http://127.0.0.1:8088/myHelloService?wsdl
-//wsdl2java命令与wsimport相似，wsimport简介详见https://jadyer.github.io/2013/03/19/jaxws-and-wsimport-demo/
+//wsdl2java命令与wsimport相似，wsimport简介详见http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/
 public class ClientApp {
     public static void main(String[] args) {
         JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();

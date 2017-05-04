@@ -142,7 +142,7 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 /**
  * 利用Hibernate映射文件生成数据库表
- * Created by 玄玉<https://jadyer.github.io/> on 2011/04/17 01:21.
+ * Created by 玄玉<http://jadyer.cn/> on 2011/04/17 01:21.
  */
 public class ExportDB {
     public static void main(String[] args) {
@@ -165,7 +165,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 /**
- * Created by 玄玉<https://jadyer.github.io/> on 2011/04/17 01:21.
+ * Created by 玄玉<http://jadyer.cn/> on 2011/04/17 01:21.
  */
 public class HibernateSessionUtils {
     private static SessionFactory factory;
@@ -205,7 +205,7 @@ import com.jadyer.hibernate.User33;
 import junit.framework.TestCase;
 
 /**
- * Created by 玄玉<https://jadyer.github.io/> on 2011/04/17 01:21.
+ * Created by 玄玉<http://jadyer.cn/> on 2011/04/17 01:21.
  */
 public class SessionFlushTest extends TestCase {
     /**

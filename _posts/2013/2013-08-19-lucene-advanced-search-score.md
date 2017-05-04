@@ -39,7 +39,7 @@ import com.jadyer.custom.MyNameScoreQuery;
 
 /**
  * Lucene系列第08节之高级搜索之评分
- * Created by 玄玉<https://jadyer.github.io/> on 2013/08/19 12:13.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/08/19 12:13.
  */
 public class AdvancedSearchByScore {
     private Directory directory;
@@ -51,7 +51,7 @@ public class AdvancedSearchByScore {
         /** 文件名 */
         String[] names = {"Michael.java", "Scofield.ini", "Tbag.txt", "Jack", "Jade", "Jadyer"};
         /** 文件内容 */
-        String[] contents = {"my blog is https://jadyer.github.io/",
+        String[] contents = {"my blog is http://jadyer.cn/",
                              "my github is https://github.com/jadyer",
                              "my name is jadyer",
                              "I am a Java Developer",
@@ -168,7 +168,7 @@ import org.apache.lucene.search.function.ValueSourceQuery;
  * 3)创建一个类继承于CustomScoreProvider
  * 4)覆盖CustomScoreProvider.customScore()方法：我们的自定义评分主要就是在此方法中完成的
  * ---------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.github.io/> on 2013/08/06 10:30.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/08/06 10:30.
  */
 public class MyCustomScoreQuery extends CustomScoreQuery {
     private static final long serialVersionUID = -2373017691291184609L;
@@ -213,7 +213,7 @@ import org.apache.lucene.search.function.CustomScoreQuery;
 
 /**
  * 采用特殊文件名作为评分标准的评分类
- * Created by 玄玉<https://jadyer.github.io/> on 2013/08/06 14:17.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/08/06 14:17.
  */
 public class MyNameScoreQuery extends CustomScoreQuery {
     private static final long serialVersionUID = -2813985445544972520L;

@@ -17,7 +17,7 @@ brief-intro: "玄玉的博客"
 baseurl: ""
 
 # the base hostname & protocol for your site
-# 配合页面头部<link rel="canonical" href="https://jadyer.github.io/2016/10/17/first-blog/">
+# 配合页面头部<link rel="canonical" href="http://jadyer.cn/2016/10/17/first-blog/">
 url: "http://jadyer.cn"
 
 # footer下方显示的联系方式

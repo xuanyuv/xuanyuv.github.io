@@ -271,7 +271,7 @@ import com.jadyer.model.User;
 
 /**
  * 本程序用到了ibatis-2.3.4.726.jar和log4j-1.2.16.jar
- * Created by 玄玉<https://jadyer.github.io/> on 2011/04/05 23:26.
+ * Created by 玄玉<http://jadyer.cn/> on 2011/04/05 23:26.
  */
 public class UserDaoIbatisTest {
     //SqlMapClient是ibatis的核心组件，提供数据操作的基础平台

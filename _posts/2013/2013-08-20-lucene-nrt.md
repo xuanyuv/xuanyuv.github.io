@@ -48,7 +48,7 @@ import org.apache.lucene.util.Version;
 
 /**
  * Lucene系列第12节之近实时搜索
- * Created by 玄玉<https://jadyer.github.io/> on 2013/08/20 16:19.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/08/20 16:19.
  */
 public class HelloNRTSearch {
     private IndexWriter writer;

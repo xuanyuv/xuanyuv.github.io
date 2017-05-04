@@ -30,7 +30,7 @@ import javax.persistence.Embeddable;
  *         3.必须重写hashCode()和equals()方法，其中以复合主键类的字段作为判断依据
  *     </li>
  * </ul>
- * Created by 玄玉<https://jadyer.github.io/> on 2011/02/11 10:39.
+ * Created by 玄玉<http://jadyer.cn/> on 2011/02/11 10:39.
  */
 //即嵌入注解，它用来告诉JPA：我们只是使用复合主键类里面的属性，作为实体的持久化字段
 @Embeddable

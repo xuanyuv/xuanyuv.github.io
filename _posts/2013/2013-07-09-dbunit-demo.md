@@ -73,7 +73,7 @@ import java.sql.SQLException;
 
 /**
  * 用于获取数据库连接的工具类
- * Created by 玄玉<https://jadyer.github.io/> on 2013/07/09 13:56.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/07/09 13:56.
  */
 public enum  DBUtil {
     INSTANCE;
@@ -228,7 +228,7 @@ import com.jadyer.util.DBUtil;
  * 1、导入DBUnit所需两个jar文件：dbunit.jar和slf4j-api.jar
  * 2、创建DBUnit用到的xml格式的测试数据，xml文件名建议与表名相同
  * 3、创建DBUnit的Connection和DataSet，然后开始进行各项测试工作
- * Created by 玄玉<https://jadyer.github.io/> on 2013/07/09 13:56.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/07/09 13:56.
  */
 public class UserDaoTest {
     private static Connection conn;

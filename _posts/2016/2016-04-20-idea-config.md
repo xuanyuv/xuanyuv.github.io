@@ -265,7 +265,7 @@ settings---Editor---File and Code Templates---Includes---File Header---修改如
 
 ```
 /**
- * Created by 玄玉<https://jadyer.github.io/> on ${DATE} ${TIME}.
+ * Created by 玄玉<http://jadyer.cn/> on ${DATE} ${TIME}.
  */
 ```
 

@@ -38,7 +38,7 @@ import javax.jws.WebService;
  * @see 所以服务一旦发布就不要轻易修改
  * @see -------------------------------------------------------------------------------------------
  * @create Mar 17, 2013 12:11:24 AM
- * @author 玄玉<https://jadyer.github.io/>
+ * @author 玄玉<http://jadyer.cn/>
  */
 @WebService
 public interface HelloService {
@@ -65,7 +65,7 @@ import javax.jws.WebService;
  * @see 这是因为endpointInterface属性的作用之一是让SEI中配置的注解生效,不过我们也可以在SIB中直接注解
  * @see -----------------------------------------------------------------------------------------------
  * @create Mar 17, 2013 12:11:24 AM
- * @author 玄玉<https://jadyer.github.io/>
+ * @author 玄玉<http://jadyer.cn/>
  */
 @WebService(endpointInterface="com.jadyer.service.HelloService")
 public class HelloServiceImpl implements HelloService {
@@ -103,7 +103,7 @@ import com.jadyer.service.HelloServiceImpl;
  * @see SIB(Service Implemention Bean)---服务实现的Bean,本例中指的就是HelloServiceImpl.java
  * @see -------------------------------------------------------------------------------------------------
  * @create Mar 16, 2013 10:04:52 PM
- * @author 玄玉<https://jadyer.github.io/>
+ * @author 玄玉<http://jadyer.cn/>
  */
 public class MainApp {
     public static void main(String[] args) {
@@ -173,7 +173,7 @@ import com.jadyer.service.HelloServiceImplService;
  * @see '-verbose'--指明生成文件时在控制台打印详细信息
  * @see '-p'--------指明生成文件的所属包名,默认为按照wsdl文件的targetNamespace属性来生成包名
  * @create Mar 16, 2013 10:49:18 PM
- * @author 玄玉<https://jadyer.github.io/>
+ * @author 玄玉<http://jadyer.cn/>
  */
 public class ClientApp {
     public static void main(String[] args) {

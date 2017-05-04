@@ -28,7 +28,7 @@ import org.junit.Test;
  * 但是注意：测试时可能报告这个异常java.lang.NoSuchMethodError: org.hamcrest.core.AllOf.allOf
  *          这时把hamcrest.jar移到junit.jar前面即可，否则组合条件如allOf、anyOff等都会抛此异常
  * -----------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.github.io/> on 2013/07/09 12:41.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/07/09 12:41.
  */
 public class TestByHamcrest {
     /**
@@ -53,8 +53,8 @@ public class TestByHamcrest {
         Assert.assertThat("abc.txt", Matchers.startsWith("ab"));
         Assert.assertThat("abc.txt", Matchers.containsString("c.t"));
         Assert.assertThat(22+"aa", Matchers.hasToString("22aa"));
-        Assert.assertThat("https://jadyer.github.io/", Matchers.instanceOf(String.class));
-        Assert.assertThat("https://jadyer.github.io/", Matchers.notNullValue());
+        Assert.assertThat("http://jadyer.cn/", Matchers.instanceOf(String.class));
+        Assert.assertThat("http://jadyer.cn/", Matchers.notNullValue());
         Assert.assertThat(null, Matchers.nullValue());
 
         //针对集合的测试
@@ -63,9 +63,9 @@ public class TestByHamcrest {
         Map<String, String> userMap = new HashMap<String, String>();
         userMap.put("11", "玄玉");
         userMap.put("22", "Jadyer");
-        userMap.put("33", "https://jadyer.github.io/");
+        userMap.put("33", "http://jadyer.cn/");
         Assert.assertThat(userMap, Matchers.hasKey("22"));
-        Assert.assertThat(userMap, Matchers.hasValue("https://jadyer.github.io/"));
+        Assert.assertThat(userMap, Matchers.hasValue("http://jadyer.cn/"));
     }
 }
 ```

@@ -57,7 +57,7 @@ import org.junit.Test;
 
 /**
  * JUnit借助Cobertura生成测试覆盖率报告
- * Created by 玄玉<https://jadyer.github.io/> on 2013/07/09 13:13.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/07/09 13:13.
  */
 public class CalculatorTest {
     private Calculator calService;

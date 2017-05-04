@@ -17,7 +17,7 @@ Solr定义的大量域默认都不支持中文分词，若要增加中文分词�
 
 下面以`MMSeg4j-1.8.5`为例，描述Solr整合中文分词器的细节（其核心就是在schema.xml中配置fieldType）
 
-关于MMSeg4j的介绍，详见[https://jadyer.github.io/2013/08/18/lucene-chinese-analyzer/](https://jadyer.github.io/2013/08/18/lucene-chinese-analyzer/)
+关于MMSeg4j的介绍，详见[http://jadyer.cn/2013/08/18/lucene-chinese-analyzer/](http://jadyer.cn/2013/08/18/lucene-chinese-analyzer/)
 
 1、拷贝mmseg4j-all-1.8.5.jar到D:\Develop\apache-solr-3.6.2\server\solr\WEB-INF\lib\文件夹中
 
@@ -79,7 +79,7 @@ import com.jadyer.model.MyMessage;
 
 /**
  * Solr系列第02节之搜索和中文分词
- * Created by 玄玉<https://jadyer.github.io/> on 2013/08/20 14:12.
+ * Created by 玄玉<http://jadyer.cn/> on 2013/08/20 14:12.
  */
 public enum HelloSolrJ {
     INSTANCE;

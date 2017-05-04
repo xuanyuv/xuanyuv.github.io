@@ -31,7 +31,7 @@ enum EnumTest {
 
 /**
  * 自定义注解
- * Created by 玄玉<https://jadyer.github.io/> on 2011/03/02 21:35.
+ * Created by 玄玉<http://jadyer.cn/> on 2011/03/02 21:35.
  */
 public @interface JadyerAnnotation {
     //定义属性时，需要在后面加上小括号（这和普通的类或接口是不同的）

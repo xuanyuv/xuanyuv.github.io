@@ -25,7 +25,7 @@ import java.io.IOException;
 
 /**
  * Dom4j读取XML
- * Created by 玄玉<https://jadyer.github.io/> on 2010/12/06 18:41.
+ * Created by 玄玉<http://jadyer.cn/> on 2010/12/06 18:41.
  */
 public class Dom4jDemo {
     public static void main(String[] args) throws IOException, DocumentException {
@@ -138,7 +138,7 @@ import java.util.List;
 
 /**
  * Jdom读写XML
- * Created by 玄玉<https://jadyer.github.io/> on 2010/12/06 18:46.
+ * Created by 玄玉<http://jadyer.cn/> on 2010/12/06 18:46.
  */
 public class JdomDemo {
     public static void main(String[] args) throws IOException, JDOMException {

@@ -25,7 +25,7 @@ SingleSignOutHttpSessionListener：用于在Session过期时移除其对应的�
 
 登出后默认会跳转到CASServer的登出页，若想跳转到其它资源，可在`/logout`的URL后面加上service=jumpurl
 
-比如[http://sso.jadyer.com:8080/cas-server-web/logout?service=https://jadyer.github.io/](http://sso.jadyer.com:8080/cas-server-web/logout?service=https://jadyer.github.io/`)
+比如[http://sso.jadyer.com:8080/cas-server-web/logout?service=http://jadyer.cn/](http://sso.jadyer.com:8080/cas-server-web/logout?service=http://jadyer.cn/`)
 
 但默认servcie跳转不会生效，需要CASServer配置**//WEB-INF//cas.properties**中的`cas.logout.followServiceRedirects=true`
 
@@ -198,7 +198,7 @@ casClientServerName=http://boss.jadyer.com:8080
 <script>
 function ssoLogout(){
     if(confirm('确定要退出系统吗？')){
-        //top.location.href ='http://sso.jadyer.com:8080/cas-server-web/logout?service=https://jadyer.github.io/';
+        //top.location.href ='http://sso.jadyer.com:8080/cas-server-web/logout?service=http://jadyer.cn/';
         //top.location.href ='http://sso.jadyer.com:8080/cas-server-web/logout?service=http://sso.jadyer.com:8080/cas-server-web/login';
         top.location.href ='<%=ConfigUtil.INSTANCE.getProperty("casServerLogoutUrl")%>';
     }
@@ -257,7 +257,7 @@ import java.util.regex.Pattern;
  * @history v2.1-->增加<code>getPropertyBySysKey()</code>方法,用于获取配置文件的键值中含系统属性时的值,详见该方法注释
  * @history v2.0-->采用枚举的方式实现单例
  * @history v1.0-->通过内部类实现单例
- * Created by 玄玉<https://jadyer.github.io/> on 2012/06/07 17:30.
+ * Created by 玄玉<http://jadyer.cn/> on 2012/06/07 17:30.
  */
 public enum ConfigUtil {
     INSTANCE;
@@ -288,7 +288,7 @@ public enum ConfigUtil {
      * 若配置文件的某个键值含类似于${user.dir}的写法，如log=${user.dir}/app.log
      * 则可以通过该方法使用系统属性中user.dir的值，替换掉配置文件键值中的${user.dir}
      * -------------------------------------------------------------------------
-     * Created by 玄玉<https://jadyer.github.io/> on 2015/02/02 17:22.
+     * Created by 玄玉<http://jadyer.cn/> on 2015/02/02 17:22.
      */
     public String getPropertyBySysKey(String key){
         String value = config.getProperty(key);

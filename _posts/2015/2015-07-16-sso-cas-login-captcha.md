@@ -118,7 +118,7 @@ import org.jasig.cas.authentication.UsernamePasswordCredential;
 
 /**
  * 自定义的接收登录验证码的实体类
- * Created by 玄玉<https://jadyer.github.io/> on 2015/07/14 16:28.
+ * Created by 玄玉<http://jadyer.cn/> on 2015/07/14 16:28.
  */
 public class UsernamePasswordCaptchaCredential extends UsernamePasswordCredential {
     private static final long serialVersionUID = 8317889802836113837L;
@@ -144,7 +144,7 @@ import com.jadyer.sso.model.UsernamePasswordCaptchaCredential;
 
 /**
  * 自定义的处理验证码登录逻辑的Action
- * Created by 玄玉<https://jadyer.github.io/> on 2015/07/14 16:28.
+ * Created by 玄玉<http://jadyer.cn/> on 2015/07/14 16:28.
  */
 public class AuthenticationViaCaptchaFormAction extends AuthenticationViaFormAction {
     public final String validateCaptcha(final RequestContext context, final Credential credential, final MessageContext messageContext){

@@ -17,7 +17,7 @@ type: page
 * 现居：重庆
 * 来自：哈尔滨
 * 邮箱：[jadyer@yeah.net](mailto:jadyer@yeah.net)
-* 订阅：[https://jadyer.github.io/feed.xml](https://jadyer.github.io/feed.xml)
+* 订阅：[http://jadyer.cn/feed.xml](http://jadyer.cn/feed.xml)
 <br/>
 <br/>
 <br/>
