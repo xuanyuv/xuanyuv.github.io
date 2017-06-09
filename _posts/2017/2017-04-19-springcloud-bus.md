@@ -72,7 +72,7 @@ D:\Develop\RabbitMQServer\rabbitmq_server-3.6.9\sbin>
 
 由于改动不多，所以下面就只列出来各个改动点
 
-### 服务中心
+### 注册中心
 
 无修改
 
@@ -92,7 +92,7 @@ spring:
 
 ### 服务提供方
 
-其改动部分与配置中心相同：都是引入依赖，添加 rabbitmq 配置，简单粗暴一步到位（Spring Cloud Bus 的自动化配置的功劳）
+其改动部分与配置中心相同：都是引入依赖，添加 rabbitmq 配置，简单粗暴一步到位（Spring Cloud Bus 自动化配置的功劳）
 
 ## 验证
 
