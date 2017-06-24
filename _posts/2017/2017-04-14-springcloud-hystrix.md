@@ -571,7 +571,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
-//开启Feign功能（不需要再显式@EnableCircuitBreaker，其已包含此功能）
+//开启Feign功能（无需显式@EnableCircuitBreaker，其已含此功能）
 @EnableFeignClients
 @EnableEurekaClient
 @SpringBootApplication
@@ -586,7 +586,6 @@ public class ServiceClient02BootStarp {
 
 ```java
 package com.jadyer.demo.feign;
-
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
