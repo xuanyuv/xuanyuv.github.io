@@ -113,6 +113,6 @@ spring:
 
 另外，也可通过 destination 参数来指定刷新范围，举例如下
 
-curl -X POST http://127.0.0.1:4100/bus/refresh?destination=demo.cloud.config:2200
+`curl -X POST http://127.0.0.1:4100/bus/refresh?destination=demo.cloud.config:2200`
 
-curl -X POST http://127.0.0.1:4100/bus/refresh?destination=demo.cloud.config:**
+`curl -X POST http://127.0.0.1:4100/bus/refresh?destination=demo.cloud.config:**`
