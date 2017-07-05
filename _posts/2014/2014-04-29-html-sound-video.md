@@ -101,3 +101,8 @@ loop="loop"        ：设置视频循环播放
     <source src="http://gslb.miaopai.com/stream/HtNgr3djfi4nh859KYPpAg__.mp4" type="video/mp4">
     <p>Your user agent does not support the HTML5 Video element.</p>
 </video>
+
+<video style="width:100%; height:100%;" preload="none" controls="controls" poster="http://ww1.sinaimg.cn/large/723dadf5ly1fh8zvn6059j21h20s34qq.jpg">
+    <source src="https://gss3.baidu.com/6LZ0ej3k1Qd3ote6lo7D0j9wehsv/tieba-smallvideo/35_f626470dc54c0cc506323973d140705a.mp4" type="video/mp4">
+    <p>Your user agent does not support the HTML5 Video element.</p>
+</video>
