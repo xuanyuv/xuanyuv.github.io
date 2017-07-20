@@ -395,6 +395,10 @@ File---Power Save Mode---此时会关掉代码检查、代码提示等功能，�
 
 settings---Editor---Inspections---General---取消勾选Default File Template Usage
 
+#### 方法参数是相同值
+
+settings---Editor---Inspections---Java---Declaration redundancy---取消勾选Actual method parameter is the same constant
+
 #### neverused
 
 settings---Editor---Inspections---Java---Declaration redundancy---取消勾选Unused declaration
