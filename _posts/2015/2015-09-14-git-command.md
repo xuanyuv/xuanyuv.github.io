@@ -139,8 +139,8 @@ $ git config --local user.name 'jadyer' && git config --local user.email 'jadyer
 $ cd ..
 $ git remote add origin git@git.yourcompany.cn:open/mpp.git
 $ git pull origin master
-$ git add .
-$ git commit -a -m "init commit"
+$ git add -A
+$ git commit -am "init commit"
 $ git push -u origin master
 ```
 
