@@ -11,9 +11,9 @@ excerpt: 介绍自动下载SVN源码、Maven编译打包、部署Tomcat、重启
 {:toc}
 
 
-本文演示的脚本，依赖的环境和工具有：linux、jdk、tomcat、maven、svn
+本文演示的脚本，依赖的环境和工具有：linux、jdk、tomcat、maven、git/svn
 
-主要包括功能：自动从SVN拉取最新代码、然后执行Maven编译打包、接着重新发布到Tomcat、最后重启Tomcat
+主要包括功能：自动从git/svn仓库拉取最新代码至临时目录、maven编译打包、重发布到tomcat、删除临时文件、最后重启tomcat
 
 关于脚本中一些命令的含义，可参考我之前的博文：[http://jadyer.cn/2012/09/09/linux-shell-java/](http://jadyer.cn/2012/09/09/linux-shell-java/)
 
@@ -21,15 +21,23 @@ excerpt: 介绍自动下载SVN源码、Maven编译打包、部署Tomcat、重启
 
 下面是包含了核心逻辑的，具体的脚本内容`deploy-engine.sh`
 
+该脚步可放置于服务器任何目录下执行，不过我的习惯是统一放到 /tomcat/bin/ 目录下
+
 ```sh
 #!/bin/sh
-APP_NAME=engine
-APP_WARS=seed-scs/target
+# 部署在/tomcat/webapps/目录下的应用名
+APP_NAME=ROOT
+# tomcat目录的绝对路径
 APP_PATH=/app/tomcat-6.0.43
+# tomcat里面存储临时代码的文件夹名称（发布完会自动删除）
 APP_CODE=sourcecode
-SVN_URL=https://svn.sinaapp.com/jadyer/2/repository/seed
-SVN_USER=jadyer@yeah.net
-SVN_PSWD=玄玉
+# SVN_URL=https://svn.sinaapp.com/jadyer/2/repository/seed
+# SVN_USER=jadyer@yeah.net
+# SVN_PSWD=xuanyu
+# git仓库地址、应用名称、打成的war所在的模块名称
+GIT_URL=https://jadyer%40yeah.net:xuanyu@github.com/jadyer/seed.git
+GIT_CODE=seed
+GIT_MODULE=seed-mpp
 
 appPID=0
 getAppPID(){
@@ -44,8 +52,10 @@ getAppPID(){
 downloadAndCompileSourceCode(){
     cd $APP_PATH
     mkdir $APP_CODE
-    svn --username $SVN_USER --password $SVN_PSWD checkout $SVN_URL $APP_CODE
+    # svn --username $SVN_USER --password $SVN_PSWD checkout $SVN_URL $APP_CODE
     cd $APP_CODE
+    git clone $GIT_URL --depth=2
+    cd $GIT_CODE
     mvn clean package -DskipTests
 }
 
@@ -76,7 +86,7 @@ deploy(){
     cd $APP_PATH/webapps/
     rm -rf $APP_NAME
     rm -rf $APP_NAME.war
-    cp $APP_PATH/$APP_CODE/$APP_WARS/*.war $APP_NAME.war
+    cp $APP_PATH/$APP_CODE/$GIT_CODE/$GIT_MODULE/target/*.war $APP_NAME.war
     cd $APP_PATH/logs/
     rm -rf *
     cd $APP_PATH
@@ -101,16 +111,20 @@ startup
 
 所以，可以使用命令`nohup ./deploy-engine.sh &`来执行，这样中途`Ctrl+C`就不会有问题了
 
-不过，要是给别人用的话，对方每次都要敲这么长的命令，可能会觉得麻烦，所以相对来说`Jenkins`也比较适合给别人用
-
 ## deploy
 
-这是额外提供的，在上面的`deploy-engine.sh`基础上，可以直接执行的脚本`deploy.sh`
+这是额外提供的、基于上面的`deploy-engine.sh`基础上的额外封装、可直接执行的脚本`deploy.sh`
+
+而即便执行过程中，`Ctrl+C`退出了，不也会有什么影响，应用会后台继续自动部署
+
+该脚本同样可放置于服务器任何目录下执行
 
 ```sh
 #!/bin/sh
-APP_LOGS=/app/tomcat-6.0.43/logs
-SHELL_NAME=bin/deploy-engine.sh
+# 执行真正逻辑的启动脚本文件名（默认会去/tomcat/bin/下取该文件）
+SHELL_NAME=deploy-engine.sh
+# tomcat目录
+APP_PATH=/app/tomcat-6.0.43
 
 shellPID=0
 getShellPID(){
@@ -147,9 +161,9 @@ shutdown(){
 
 # [2>&1]表示把标准错误(stderr)重定向到标准输出(stdout)，否则会提示[nohup: redirecting stderr to stdout]
 startupByNohup(){
-    cd $APP_LOGS
+    cd $APP_PATH/logs
     rm -rf nohup.log
-    nohup ../$SHELL_NAME > nohup.log 2>&1 &
+    nohup ../bin/$SHELL_NAME > nohup.log 2>&1 &
     sleep 1
     tail -100f nohup.log
 }
