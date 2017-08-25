@@ -11,7 +11,7 @@ excerpt: 介绍了SpringMVC整合Fastjson-1.1.41的方法。
 {:toc}
 
 
-使用版本：目前最新版本的`Fastjson-1.1.41`
+使用版本：本文已根据当前最新版本的`Fastjson-1.2.37`同步更新
 
 整合目的：Controller 里面能够直接通过 `@ResponseBody` 的方式序列化输出 json
 
@@ -64,22 +64,6 @@ The resource identified by this request is only capable of generating responses 
 <mvc:annotation-driven>
     <mvc:message-converters register-defaults="true">
         <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
-            <property name="supportedMediaTypes" value="text/html;charset=UTF-8"/>
-            <property name="features">
-                <array>
-                    <value>WriteMapNullValue</value>
-                    <value>WriteNullStringAsEmpty</value>
-                </array>
-            </property>
-        </bean>
-    </mvc:message-converters>
-</mvc:annotation-driven>
-
-<!-- 下面的是spring-4.2整合fastjson-1.2.22的写法 -->
-
-<mvc:annotation-driven>
-    <mvc:message-converters register-defaults="true">
-        <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4">
             <property name="supportedMediaTypes" value="text/json;charset=UTF-8"/>
             <property name="fastJsonConfig">
                 <bean class="com.alibaba.fastjson.support.config.FastJsonConfig">
