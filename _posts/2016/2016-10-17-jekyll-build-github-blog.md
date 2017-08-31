@@ -12,33 +12,32 @@ published: false
 {:toc}
 
 
-可以说这是我的第一篇github-blog，下面通过Markdown一步步讲述环境搭建到运行看效果。
-
+可以说这是我的第一篇github-blog，下面通过Markdown一步步描述从环境搭建到运行看效果。
 
 ## 安装Ruby
 
-Windows用户访问 [http://rubyinstaller.org/](http://rubyinstaller.org/) 下载 18.7MB 大小的 [rubyinstaller-2.3.3-x64.exe](https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.3.3-x64.exe)
+Windows用户访问 [http://rubyinstaller.org/](http://rubyinstaller.org/) 下载 8.55MB 大小的 [rubyinstaller-2.4.1-2-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/2.4.1-2/rubyinstaller-2.4.1-2-x64.exe)
 
-安装时可勾选`Add Ruby executables to your PATH`，没选的话可以手工`Path=D:\Develop\Ruby23-x64\bin`
+安装时注意勾选 `Add Ruby executables to your PATH`，没选的话可以手工配置 `Path=D:\Develop\Ruby24-x64\bin`
 
 然后在命令提示符中验证一下安装结果
 
 ```
 C:\Users\Jadyer>ruby -v
-ruby 2.3.3p222 (2016-11-21 revision 56859) [x64-mingw32]
+ruby 2.4.1p111 (2017-03-22 revision 58053) [x64-mingw32]
 ```
 
 ## 安装Jekyll
 
-这里通过RubyGems安装Jekyll，所以先到官网 [https://rubygems.org/](https://rubygems.org/) 下载 1.01MB 大小的[rubygems-2.6.10.zip](https://rubygems.org/rubygems/rubygems-2.6.10.zip)
+这里通过RubyGems安装Jekyll，所以先到官网 [https://rubygems.org/](https://rubygems.org/) 下载 1.01MB 大小的[rubygems-2.6.13.zip](https://rubygems.org/rubygems/rubygems-2.6.13.zip)
 
-接着解压压缩包到 `D:\Develop\` 目录下，并在命令提示符中执行安装命令
+接着解压压缩包到 `D:\Develop\` 目录下（可以是任意其它目录，不是必须Develop下面），并在命令提示符中执行安装命令
 
 ```
-D:\Develop\rubygems-2.6.10>ruby setup.rb
-RubyGems 2.6.10 installed
-Parsing documentation for rubygems-2.6.10
-Installing ri documentation for rubygems-2.6.10
+D:\Develop\rubygems-2.6.13>ruby setup.rb
+RubyGems 2.6.13 installed
+Parsing documentation for rubygems-2.6.13
+Installing ri documentation for rubygems-2.6.13
 ...
 ...
 ...
@@ -51,21 +50,26 @@ If you do not wish to install this documentation in the future, use the
 --no-document flag, or set it as the default in your ~/.gemrc file. See
 'gem help env' for details.
 
-D:\Develop\rubygems-2.6.10>
+D:\Develop\rubygems-2.6.13>
 ```
 
-**接下来就可以用RubyGems来安装Jekyll**
+然后便可删掉rubygems-2.6.13文件夹了，它没用了，**接下来就可以用RubyGems来安装Jekyll**
 
 ```
 C:\Users\Jadyer>gem install jekyll
-Fetching: liquid-3.0.6.gem (100%)
-Successfully installed liquid-3.0.6
-Fetching: kramdown-1.12.0.gem (100%)
-Successfully installed kramdown-1.12.0
+Fetching: public_suffix-3.0.0.gem (100%)
+Successfully installed public_suffix-3.0.0
+Fetching: addressable-2.5.2.gem (100%)
+Successfully installed addressable-2.5.2
 ...
 ...
 ...
-17 gems installed
+Parsing documentation for safe_yaml-1.0.4
+Installing ri documentation for safe_yaml-1.0.4
+Parsing documentation for jekyll-3.5.2
+Installing ri documentation for jekyll-3.5.2
+Done installing documentation for public_suffix, addressable, colorator, rb-fsevent, ffi, rb-inotify, sass-listen, sass, jekyll-sass-converter, listen, jekyll-watch, kramdown, liquid, mercenary, forwardable-extended, pathutil, rouge, safe_yaml, jekyll after 15 seconds
+19 gems installed
 
 C:\Users\Jadyer>
 ```
@@ -89,15 +93,15 @@ jekyll 3.3.0 | Error:  bundler
 D:\Develop\Code\Jekyll>
 ```
 
-我在实际操作中，遇到了上面的错误提示，这个时候就需要安装一下bundler
+我在实际操作中，遇到了上面的错误提示，这时就需要安装一下bundler
 
 ```
 D:\Develop\Code\Jekyll>gem install bundler
-Fetching: bundler-1.13.5.gem (100%)
-Successfully installed bundler-1.13.5
-Parsing documentation for bundler-1.13.5
-Installing ri documentation for bundler-1.13.5
-Done installing documentation for bundler after 12 seconds
+Fetching: bundler-1.15.4.gem (100%)
+Successfully installed bundler-1.15.4
+Parsing documentation for bundler-1.15.4
+Installing ri documentation for bundler-1.15.4
+Done installing documentation for bundler after 4 seconds
 1 gem installed
 
 D:\Develop\Code\Jekyll>
@@ -107,51 +111,44 @@ D:\Develop\Code\Jekyll>
 
 ```
 D:\Develop\Code\Jekyll>jekyll new myblog
-Running bundle install in D:/Develop/Code/jekyll/myblog...
-  Bundler: Fetching gem metadata from https://rubygems.org/...........
-  Bundler: Fetching version metadata from https://rubygems.org/..
-  Bundler: Fetching dependency metadata from https://rubygems.org/.
+Running bundle install in D:/Develop/Code/Jekyll/myblog...
+  Bundler: Fetching gem metadata from https://rubygems.org/............
+  Bundler: Fetching version metadata from https://rubygems.org/...
+  Bundler: Fetching dependency metadata from https://rubygems.org/..
   Bundler: Resolving dependencies...
-  Bundler: Using public_suffix 2.0.5
+  Bundler: Using public_suffix 3.0.0
+  Bundler: Using bundler 1.15.4
   Bundler: Using colorator 1.1.0
-  Bundler: Using ffi 1.9.17 (x64-mingw32)
+  Bundler: Using ffi 1.9.18 (x64-mingw32)
   Bundler: Using forwardable-extended 2.6.0
-  Bundler: Using sass 3.4.23
-  Bundler: Using rb-fsevent 0.9.8
-  Bundler: Using kramdown 1.13.2
-  Bundler: Using liquid 3.0.6
+  Bundler: Using rb-fsevent 0.10.2
+  Bundler: Using kramdown 1.14.0
+  Bundler: Using liquid 4.0.0
   Bundler: Using mercenary 0.3.6
   Bundler: Using rouge 1.11.1
   Bundler: Using safe_yaml 1.0.4
-  Bundler: Installing thread_safe 0.3.5
-  Bundler: Using bundler 1.14.4
-  Bundler: Using addressable 2.5.0
-  Bundler: Using rb-inotify 0.9.8
+  Bundler: Fetching thread_safe 0.3.6
+  Bundler: Installing thread_safe 0.3.6
+  Bundler: Using addressable 2.5.2
+  Bundler: Using rb-inotify 0.9.10
   Bundler: Using pathutil 0.14.0
-  Bundler: Using jekyll-sass-converter 1.5.0
-  Bundler: Installing tzinfo 1.2.2
+  Bundler: Fetching tzinfo 1.2.3
+  Bundler: Installing tzinfo 1.2.3
+  Bundler: Using sass-listen 4.0.0
   Bundler: Using listen 3.0.8
-  Bundler: Installing tzinfo-data 1.2016.10
+  Bundler: Fetching tzinfo-data 1.2017.2
+  Bundler: Installing tzinfo-data 1.2017.2
+  Bundler: Using sass 3.5.1
   Bundler: Using jekyll-watch 1.5.0
-  Bundler: Using jekyll 3.4.0
-  Bundler: Installing jekyll-feed 0.9.1
-  Bundler: Installing minima 2.1.0
-  Bundler: Bundle complete! 4 Gemfile dependencies, 24 gems now installed.
-  Bundler: Use `bundle show [gemname]` to see where a bundled gem is installed.
-  Bundler: Post-install message from minima:
-  Bundler:
-  Bundler: ----------------------------------------------
-  Bundler: Thank you for installing minima 2.0!
-  Bundler:
-  Bundler: Minima 2.0 comes with a breaking change that
-  Bundler: renders '<your-site>/css/main.scss' redundant.
-  Bundler: That file is now bundled with this gem as
-  Bundler: '<minima>/assets/main.scss'.
-  Bundler:
-  Bundler: More Information:
-  Bundler: https://github.com/jekyll/minima#customization
-  Bundler: ----------------------------------------------
-New jekyll site installed in D:/Develop/Code/jekyll/myblog.
+  Bundler: Using jekyll-sass-converter 1.5.0
+  Bundler: Using jekyll 3.5.2
+  Bundler: Fetching jekyll-feed 0.9.2
+  Bundler: Installing jekyll-feed 0.9.2
+  Bundler: Fetching minima 2.1.1
+  Bundler: Installing minima 2.1.1
+  Bundler: Bundle complete! 4 Gemfile dependencies, 25 gems now installed.
+  Bundler: Use `bundle info [gemname]` to see where a bundled gem is installed.
+New jekyll site installed in D:/Develop/Code/Jekyll/myblog.
 
 D:\Develop\Code\Jekyll>
 ```
@@ -166,17 +163,15 @@ D:\Develop\Code\Jekyll>
 D:\Develop\Code\Jekyll>cd myblog
 
 D:\Develop\Code\Jekyll\myblog>jekyll serve --watch
-Configuration file: D:/Develop/Code/jekyll/myblog/_config.yml
-Configuration file: D:/Develop/Code/jekyll/myblog/_config.yml
-            Source: D:/Develop/Code/jekyll/myblog
-       Destination: D:/Develop/Code/jekyll/myblog/_site
+Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
+            Source: D:/Develop/Code/Jekyll/myblog
+       Destination: D:/Develop/Code/Jekyll/myblog/_site
  Incremental build: disabled. Enable with --incremental
       Generating...
-                    done in 0.629 seconds.
+                    done in 0.419 seconds.
   Please add the following to your Gemfile to avoid polling for changes:
     gem 'wdm', '>= 0.1.0' if Gem.win_platform?
- Auto-regeneration: enabled for 'D:/Develop/Code/jekyll/myblog'
-Configuration file: D:/Develop/Code/jekyll/myblog/_config.yml
+ Auto-regeneration: enabled for 'D:/Develop/Code/Jekyll/myblog'
     Server address: http://127.0.0.1:4000/
   Server running... press ctrl-c to stop.
 ```
@@ -189,26 +184,18 @@ Configuration file: D:/Develop/Code/jekyll/myblog/_config.yml
 
 本博主题修改自[https://github.com/Gaohaoyang/gaohaoyang.github.io](https://github.com/Gaohaoyang/gaohaoyang.github.io)
 
-其第一版的介绍地址为[http://jekyllthemes.org/themes/cool-concise-high-end/](http://jekyllthemes.org/themes/cool-concise-high-end/)
+其第一版的介绍为[http://jekyllthemes.org/themes/cool-concise-high-end/](http://jekyllthemes.org/themes/cool-concise-high-end/)（另：这个[https://jekyllthemes.io/](https://jekyllthemes.io/)主题网站也挺不错）
 
-*补充一下，还有一个主题网站，也挺不错的：[https://jekyllthemes.io/](https://jekyllthemes.io/)*
-
-这里将该主题代码clone、fork或download下来后，通过`jekyll s`命令启动来查看本地效果
+这里将该主题代码弄下来后，通过 `jekyll s` 命令启动来查看本地效果
 
 本地启动时，可能会报告下面的错误
 
 ```
 C:\Users\Jadyer\Desktop\jadyer.github.io-master>jekyll s
-Configuration file: C:/Users/Jadyer/Desktop/jadyer.github.io-master/_config.
-yml
-Configuration file: C:/Users/Jadyer/Desktop/jadyer.github.io-master/_config.
-yml
-  Dependency Error: Yikes! It looks like you don't have jekyll-paginate or one o
-f its dependencies installed. In order to use Jekyll as currently configured, yo
-u'll need to install this gem. The full error message from Ruby is: 'cannot load
- such file -- jekyll-paginate' If you run into trouble, you can find helpful res
-ources at http://jekyllrb.com/help/!
-jekyll 3.3.0 | Error:  jekyll-paginate
+Configuration file: C:/Users/Jadyer/Desktop/gaohaoyang.github.io-master/_config.yml
+       Deprecation: The 'gems' configuration option has been renamed to 'plugins'. Please update your config file accordingly.
+  Dependency Error: Yikes! It looks like you don't have jekyll-paginate or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- jekyll-paginate' If you run into trouble, you can find helpful resources at https://jekyllrb.com/help/!
+jekyll 3.5.2 | Error:  jekyll-paginate
 
 C:\Users\Jadyer\Desktop\jadyer.github.io-master>
 ```
@@ -233,35 +220,16 @@ C:\Users\Jadyer\Desktop\jadyer.github.io-master>
 
 ```
 C:\Users\Jadyer\Desktop\jadyer.github.io-master>jekyll s
-Configuration file: C:/Users/Jadyer/Desktop/jadyer.github.io-master/_config.
-yml
-Configuration file: C:/Users/Jadyer/Desktop/jadyer.github.io-master/_config.
-yml
-            Source: C:/Users/Jadyer/Desktop/jadyer.github.io-master
-       Destination: C:/Users/Jadyer/Desktop/jadyer.github.io-master/_site
+Configuration file: C:/Users/Jadyer/Desktop/gaohaoyang.github.io-master/_config.yml
+       Deprecation: The 'gems' configuration option has been renamed to 'plugins'. Please update your config file accordingly.
+            Source: C:/Users/Jadyer/Desktop/gaohaoyang.github.io-master
+       Destination: C:/Users/Jadyer/Desktop/gaohaoyang.github.io-master/_site
  Incremental build: disabled. Enable with --incremental
       Generating...
-    Liquid Warning: Liquid syntax error (line 86): Invalid attribute in for loop
-. Valid attributes are limit and offset in "category in site.categories order:as
-cending" in index.html
-    Liquid Warning: Liquid syntax error (line 86): Invalid attribute in for loop
-. Valid attributes are limit and offset in "category in site.categories order:as
-cending" in page2/index.html
-    Liquid Warning: Liquid syntax error (line 86): Invalid attribute in for loop
-. Valid attributes are limit and offset in "category in site.categories order:as
-cending" in page3/index.html
-    Liquid Warning: Liquid syntax error (line 86): Invalid attribute in for loop
-. Valid attributes are limit and offset in "category in site.categories order:as
-cending" in page4/index.html
-    Liquid Warning: Liquid syntax error (line 86): Invalid attribute in for loop
-. Valid attributes are limit and offset in "category in site.categories order:as
-cending" in page5/index.html
-                    done in 6.586 seconds.
-                    --watch arg is unsupported on Windows.
-                    If you are on Windows Bash, please see: https://github.com/M
-icrosoft/BashOnWindows/issues/216
-Configuration file: C:/Users/Jadyer/Desktop/jadyer.github.io-master/_config.
-yml
+                    done in 2.372 seconds.
+  Please add the following to your Gemfile to avoid polling for changes:
+    gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+ Auto-regeneration: enabled for 'C:/Users/Jadyer/Desktop/gaohaoyang.github.io-master'
     Server address: http://127.0.0.1:4000/
   Server running... press ctrl-c to stop.
 ```
