@@ -31,7 +31,7 @@ tag的其中一个作用就是计算[相关文章]
                 <time>
                 {{ post.date | date:"%F" }} {{ post.date | date: "%a" }}.
                 </time>
-                <a class="title" href="{{ post.url }}">{{ post.title }}</a>
+                <a class="title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
 
                 {% include category.html %}
                 {% include tag.html %}
