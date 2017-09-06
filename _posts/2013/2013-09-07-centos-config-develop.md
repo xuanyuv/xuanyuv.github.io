@@ -70,9 +70,9 @@ alias ipv6 off
 [Jadyer@CentOS64 software]$ tar zxvf jdk-8u40-linux-x64.tar.gz #解压jdk
 [Jadyer@CentOS64 software]$ mv jdk1.8.0_40/ /app/jdk1.8.0_40   #统一存放应用在/app目录中
 [root@CentOS64 ~]# vi /etc/profile                             #配置环境变量，最后[:x]保存即可
-                      #Set Java Environment Variable
+                      # Set Java Environment Variable
                       JAVA_HOME=/app/jdk1.8.0_40
-                      PATH=$PATH:$JAVA_HOME/bin
+                      PATH=$JAVA_HOME/bin:$PATH
                       export JAVA_HOME PATH
 [root@CentOS64 ~]# echo $PATH                                  #查看当前PATH
 [root@CentOS64 ~]# source /etc/profile                         #令环境变量生效
@@ -94,9 +94,9 @@ alias ipv6 off
 [Jadyer@localhost app]$ tar -zxvf apache-maven-3.2.5-bin.tar.gz
 [Jadyer@localhost app]$ rm -rf apache-maven-3.2.5-bin.tar.gz
 [root@localhost Jadyer]# vi /etc/profile
-                         #Set Maven Environment Variable
+                         # Set Maven Environment Variable
                          MAVEN_HOME=/app/apache-maven-3.2.5
-                         PATH=$PATH:$MAVEN_HOME/bin
+                         PATH=$MAVEN_HOME/bin:$PATH
                          export MAVEN_HOME PATH
 [root@localhost Jadyer]# source /etc/profile
 [root@localhost Jadyer]# echo $PATH
@@ -107,6 +107,31 @@ alias ipv6 off
 [Jadyer@localhost code]$ vi /app/apache-maven-3.2.5/conf/settings.xml
                          <localRepository>/app/code/MavenRepository</localRepository>
 [Jadyer@localhost code]$ cp /app/apache-maven-3.2.5/conf/settings.xml MavenRepository/
+```
+
+## 安装Git
+
+···sh
+# Git 的工作需要调用 curl，zlib，openssl，expat，libiconv 等库的代码，所以需要先安装这些依赖工具
+[Jadyer@localhost app]# yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
+[Jadyer@localhost app]# cd software/
+[Jadyer@localhost software]# wget https://github.com/git/git/archive/v2.14.1.tar.gz
+[Jadyer@localhost software]# tar -zxvf v2.14.1.tar.gz
+[Jadyer@localhost software]# cd git-2.14.1/
+[Jadyer@localhost software]# cd ..
+[Jadyer@localhost app]# mkdir git
+[Jadyer@localhost app]# cd software/git-2.14.1/
+[Jadyer@localhost git-2.14.1]# make prefix=/app/git all
+[root@localhost git-2.14.1]# make prefix=/app/git install
+[root@localhost git-2.14.1]# vi /etc/profile
+                             # Set Git Environment Variable
+                             GIT_HOME=/app/git
+                             PATH=$GIT_HOME/bin:$PATH
+                             export GIT_HOME PATH
+[root@localhost git-2.14.1]# source /etc/profile
+[root@localhost git-2.14.1]# echo $PATH
+[root@localhost git-2.14.1]# git --version
+[Jadyer@localhost ~]$ git -version
 ```
 
 ## 安装Subversion
@@ -121,9 +146,9 @@ Preparing...                ########################################### [100%]
    1:CollabNetSubversion-cli########################################### [100%]
 [root@localhost Jadyer]# svn --version
 [root@localhost Jadyer]# vi /etc/profile
-                         #Set Subversion Environment Variable
+                         # Set Subversion Environment Variable
                          SVN_HOME=/opt/CollabNet_Subversion
-                         PATH=$PATH:$SVN_HOME/bin
+                         PATH=$SVN_HOME/bin:$PATH
                          export SVN_HOME PATH
 [root@localhost Jadyer]# source /etc/profile
 [root@localhost Jadyer]# svn --version
