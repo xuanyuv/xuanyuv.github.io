@@ -111,7 +111,7 @@ alias ipv6 off
 
 ## 安装Git
 
-···sh
+```sh
 # Git 的工作需要调用 curl，zlib，openssl，expat，libiconv 等库的代码，所以需要先安装这些依赖工具
 [Jadyer@localhost app]# yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
 [Jadyer@localhost app]# cd software/
