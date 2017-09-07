@@ -344,6 +344,10 @@ settings---Editor---Inspections---Java---Declaration redundancy---取消勾选Ac
 
 settings---Editor---Inspections---Java---Declaration redundancy---取消勾选Unused declaration
 
+### lamba转化
+
+settings---Editor---Inspections---Java---Java language level migration aids---Java 8---取消勾选Anonymous type can be replaced with lambda
+
 ### @see@create@author
 
 settings---Editor---Inspections---Java---Javadoc issues---
