@@ -106,9 +106,14 @@ SELECT TABLE_NAME FROM information_schema.COLUMNS WHERE COLUMN_NAME='file_id';
 
 -- 查询某张表的所有列信息
 SELECT
-COLUMN_NAME, IS_NULLABLE, DATA_TYPE, COLUMN_KEY, EXTRA, COLUMN_COMMENT
-ifnull(CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION) as length
-FROM information_schema.COLUMNS WHERE TABLE_NAME='表名' ORDER BY ORDINAL_POSITION;
+COLUMN_NAME as name,
+COLUMN_COMMENT as comment,
+DATA_TYPE as type,
+ifnull(CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION) as length,
+if(IS_NULLABLE='yes', true, false) as nullable,
+if(COLUMN_KEY='pri', true, false) as isPrikey,
+if(EXTRA='auto_increment', true, false) as isAutoIncrement
+FROM information_schema.COLUMNS WHERE TABLE_NAME='t_mpp_user_info' ORDER BY ORDINAL_POSITION;
 
 -- 查询某数据库中的所有表信息
 SELECT TABLE_NAME, TABLE_COMMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA='数据库名';
