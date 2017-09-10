@@ -98,11 +98,19 @@ UPDATE t_user u, t_account a SET u.account_type=a.type WHERE u.account_id=a.id
 -- 查询某张表的建表语句
 SHOW CREATE TABLE t_admin;
 
+-- 查询某张表存在的索引类型
+SHOW INDEX FROM jadyer.t_admin;
+SHOW INDEX FROM t_admin FROM jadyer;
+SELECT INDEX_NAME, INDEX_TYPE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_NAME='t_admin';
+
 -- 查询某张表的所有列名
 SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_NAME='t_admin';
 
 -- 查询拥有某字段的所有表名
 SELECT TABLE_NAME FROM information_schema.COLUMNS WHERE COLUMN_NAME='file_id';
+
+-- 查询某数据库的所有表信息
+SELECT TABLE_NAME, TABLE_COMMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA='数据库名';
 
 -- 查询某张表的所有列信息
 SELECT
@@ -113,15 +121,7 @@ ifnull(CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION) as length,
 if(IS_NULLABLE='yes', true, false) as nullable,
 if(COLUMN_KEY='pri', true, false) as isPrikey,
 if(EXTRA='auto_increment', true, false) as isAutoIncrement
-FROM information_schema.COLUMNS WHERE TABLE_NAME='t_mpp_user_info' ORDER BY ORDINAL_POSITION;
-
--- 查询某数据库中的所有表信息
-SELECT TABLE_NAME, TABLE_COMMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA='数据库名';
-
--- 查询某张表存在的索引类型
-SHOW INDEX FROM jadyer.t_admin;
-SHOW INDEX FROM t_admin FROM jadyer;
-SELECT INDEX_NAME, INDEX_TYPE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_NAME='t_admin';
+FROM information_schema.COLUMNS WHERE TABLE_NAME='表名' ORDER BY ORDINAL_POSITION;
 ```
 
 ## 分组查询并组内排序
