@@ -230,3 +230,15 @@ public enum ConfigUtil {
     }
 }
 ```
+
+## 解决启动慢的问题
+
+这是由于 Tomcat7/8 使用org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom产生安全随机类SecureRandom的实例作为会话ID
+
+解决办法就是修改 Tomcat 启动脚本 catalina.sh，增加参数 `JAVA_OPTS="$JAVA_OPTS -Djava.security.egd=file:/dev/./urandom"`
+
+另外，也可以在 JVM 环境中解决：打开 $JAVA_PATH/jre/lib/security/java.security 文件（可通过 `which java` 命令查找 Java 安装位置）
+
+将原来的 `securerandom.source=file:/dev/urandom` 修改为 `securerandom.source=file:/dev/./urandom`
+
+注：有时默认是 random，而非 urandom，记得加个 u
