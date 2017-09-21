@@ -37,6 +37,7 @@ type: page
 ## 收藏
 
 * [知轩藏书](http://www.zxcs8.com)
+* [求职防坑](https://beantu.cc)、[TensorFlow教程](http://www.tensorflowjiaocheng.com/)
 * [12306订票助手](http://www.fishlee.net)、[工资计算器](http://salarycalculator.sinaapp.com/city/chongqing)、[房贷计算器](http://fangd.sinaapp.com)
 * [HTML5炫画](http://www.html5tricks.com)、[素材网](http://www.xwcms.net)、[懒人图库](http://www.lanrentuku.com)、[懒人之家](http://www.lanrenzhijia.com)、[网站模板](http://www.mycodes.net/153/)
 * [新浪微博图床](http://weibo.com/minipublish)、[新浪微博图床Chrome扩展](https://github.com/Suxiaogang/WeiboPicBed)、[另一个提供API的图床](https://sm.ms/)
