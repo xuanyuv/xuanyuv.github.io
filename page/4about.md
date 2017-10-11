@@ -28,6 +28,7 @@ type: page
 * [HoltYin](https://holtyin.github.io/)
 * [Ticmy](http://www.ticmy.com)
 * [并发编程网](http://ifeve.com)
+* [会摇摆](http://www.huiyaobai.com/)
 * [前端踩坑那些事](https://www.febugs.com/)
 * [摘星少年](http://cmin.me/)
 <br/>
