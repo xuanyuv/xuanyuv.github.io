@@ -117,13 +117,17 @@ $ git log --pretty=oneline
 00e01709d85a4dd5b2d75d2eeab6933d6a4bdf0c [+] set donot push msg to user phone
 ```
 
-## 拉取仓库及其所有分支
+## 拉取仓库以及分支操作
 
 ```bash
+# 直接克隆（默认只会拉取远程的master分支代码）
 $ cd workspace_folder
 $ git clone http://git.yourcompany.cn/open/mpp.git
+# 克隆指定分支代码（此时拉取下来后，本地分支名称是与远程相同的，并且无法做到拉取之前自定义本地分支名称）
+$ git clone -b remote_branch_name http://git.yourcompany.cn/open/mpp.git
+
+# 创建并切换至本地分支develop，同时关联远程origin/develop分支（本地develop分支的初始代码与远程origin/develop分支的初始代码相同）
 $ cd mpp
-# 创建并切换至本地分支develop，并关联远程origin/develop分支（本地develop分支的初始代码与远程origin/develop分支的初始代码相同）
 $ git checkout -b develop origin/develop
 # 切换到本地的master分支
 $ git checkout master
@@ -144,7 +148,15 @@ $ git branch
   master
 * mpp_v2.8.0
 
-# 查看当前项目的远程的所有分支列表（打印的绿色文字表示当前所在分支，或者看前面有星号表示。红色文字表示远程的所有分支列表）
+# 查看当前项目的远程的所有分支列表
+# 注：clone时若使用了--depth=2（即只克隆了最后两个版本的），则此处有可能只会打印部分的远程分支列表
+$ git branch -r
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/mpp_v2.7.0.1
+  remotes/origin/mpp_v2.8.0
+
+# 查看当前项目的、包含本地和远程的、所有分支列表（打印的绿色文字表示当前所在的本地分支，红色文字表示远程的所有分支列表）
 # 注：clone时若使用了--depth=2（即只克隆了最后两个版本的），则此处有可能只会打印部分的远程分支列表
 $ git branch -a
   master
