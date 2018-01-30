@@ -123,7 +123,16 @@ $ git log --pretty=oneline
 $ cd workspace_folder
 $ git clone http://git.yourcompany.cn/open/mpp.git
 $ cd mpp
+# 创建并切换至本地分支develop，并关联远程origin/develop分支（本地develop分支的初始代码与远程origin/develop分支的初始代码相同）
 $ git checkout -b develop origin/develop
+# 切换到本地的master分支
+$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+# 切换到本地的develop分支
+$ git checkout master
+Switched to branch 'develop'
+Your branch is up-to-date with 'origin/develop'.
 
 # 查看当前项目的远程git地址
 $ git remote -v
