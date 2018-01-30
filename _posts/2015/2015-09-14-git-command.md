@@ -22,9 +22,9 @@ excerpt: 一些常用的Git用法，诸如还原、冲突、仓库迁移、拉�
 下面举例：配置全局的用户为Github用户，团队项目Gitlab采用局部配置
 
 ```bash
-# 全局配置，Github默认使用此配置，执行完后可在~/.gitconfig文件中看到设置的用户信息
+# 全局配置，Github默认使用此配置，执行完后可在 ~/.gitconfig 文件中看到设置的用户信息
 $ git config --global user.name 'jadyer' && git config --global user.email 'jadyer@yeah.net'
-# 局部配置，每个项目都需在项目源码的.git目录下执行，执行完后可在.git/config文件中看到设置的用户信息
+# 局部配置，每个项目都需在项目源码的 .git 目录下执行，执行完后可在 .git/config 文件中看到设置的用户信息
 $ git config --local user.name 'xuanyu' && git config --local user.email 'xuanyu@company.com'
 
 # 生成供gitlab使用的ssh key
@@ -35,7 +35,7 @@ $ ssh-keygen -t rsa -f ~/.ssh/id_rsa.gitoschina -C "jadyer@yeah.net"
 $ ssh-keygen -t rsa -C "jadyer@yeah.net"
 ```
 
-再看 **~/.ssh/** 目录下（Windows一般为`C:\Users\Jadyer\.ssh\`）有没有config文件
+再看 **~/.ssh/** 目录下（Windows一般为 `C:\Users\Jadyer\.ssh\`）有没有config文件
 
 若没有，就新建 `touch ~/.ssh/config`，并添加如下内容
 
