@@ -39,7 +39,7 @@ $ ssh-keygen -t rsa -C "jadyer@yeah.net"
 
 若没有，就新建 `touch ~/.ssh/config`，并添加如下内容
 
-```
+```base
 Host git.oschina.net
      IdentityFile ~/.ssh/id_rsa.gitoschina
      User jadyer
@@ -53,7 +53,7 @@ Host gitlab.company.com
 
 再执行下面的命令，进行验证
 
-```
+```base
 $ ssh -T git@github.com
 Hi jadyer! You've successfully authenticated, but GitHub does not provide shell access.
 
@@ -72,7 +72,7 @@ passphrase指的是生成RSA密钥时使用的密码，重置时必须输入原�
 
 这里主要参考了万能的[stackoverflow](http://stackoverflow.com/questions/10189745/how-to-reset-or-change-the-passphrase-for-a-github-ssh-key)
 
-```
+```base
 $ ssh -T git@gitlab.company.com
 Enter passphrase for key '/c/Users/Jadyer/.ssh/id_rsa.gitlab':
 Welcome to GitLab, 玄玉!
@@ -89,7 +89,7 @@ Welcome to GitLab, 玄玉!
 
 ## 仅克隆最后两个版本
 
-```
+```base
 $ git clone https://github.com/jadyer/seed.git --depth=2
 Cloning into 'seed'...
 remote: Counting objects: 249, done.
