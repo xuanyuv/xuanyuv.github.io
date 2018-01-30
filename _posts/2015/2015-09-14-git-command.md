@@ -125,6 +125,24 @@ $ git clone http://git.yourcompany.cn/open/mpp.git
 $ cd mpp
 $ git checkout -b develop origin/develop
 
+# 查看当前项目的远程git地址
+$ git remote -v
+origin  git@git.yourcompany.cn:open/mpp.git (fetch)
+origin  git@git.yourcompany.cn:open/mpp.git (push)
+
+# 查看当前项目的本地的所有git分支（打印的绿色文字表示当前所在分支，或者看前面有星号表示）
+$ git branch
+  master
+* mpp_v2.8.0
+
+# 查看当前项目的远程的所有分支列表（打印的绿色文字表示当前所在分支，或者看前面有星号表示。红色文字表示远程的所有分支列表）
+$ git branch -a
+  master
+* mpp_v2.8.0
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/mpp_v2.7.0.1
+  remotes/origin/mpp_v2.8.0
 ```
 
 ## 提交本地新项目到Gitlab
@@ -161,7 +179,8 @@ $ git push -u origin master
 ```
 
 ## 操作Tag
-```
+
+```bash
 # 拉取远程最新内容
 $ git fetch origin
 From gitlab.jadyer.com:open/mpp
@@ -201,14 +220,14 @@ tag 1.6.6.RELEASE
 Tagger: jadyer <jadyer@yeah.net>
 Date:   Thu Nov 3 11:30:05 2016 +0800
 
-1、商品贷微信后台增加操作员管理功能
-2、商品贷微信参数二维码增加推送动态门店功能
+1、微信后台增加操作员管理功能
+2、微信参数二维码增加推送动态景点功能
 
 commit 696e291cfdac6ca05a711acaf90e79f97cb1128f
 Author: jadyer <jadyer@yeah.net>
 Date:   Thu Nov 3 11:08:44 2016 +0800
 
-    [MOD] 门店扫描后的提示语改为分期不等待
+    [^] 推广二维码扫描后的提示语改为分期不等待
 
 diff --git a/mpp-mgr/src/main/java/com/jadyer/mpp/mgr/mpp/WeixinController.java b/mpp-mgr/src/main/java/com/jadyer/mpp/mgr/mpp/WeixinController.java
 index 1d41739..2209e09 100644
@@ -219,11 +238,8 @@ index 1d41739..2209e09 100644
                 sb.append("欢迎来到")
                                 .append(compInfoDto.getSuppCompBasicDto().getCompName())
 -                               .append("，美丽不等待，点击<a href='")
-+                               .append("，分期不等待，点击<a href='")^M
-                                .append(ConfigUtil.INSTANCE.getProperty("posloan.wechat.url"))
-                                .append(compId)
-                                .append("'>【马上申请】</a>");
-
++                               .append("，旅游不等待，点击<a href='")^M
+                                .append(ConfigUtil.INSTANCE.getProperty("wechat.url.loan"))
 
 # 创建本地标签
 $ git tag -a 1.6.7.RELEASE -m 'the tag of create'
@@ -281,6 +297,6 @@ To git@gitlab.jadyer.com:open/mpp.git
 
 ## 还原文件
 
-SVN中使用命令`svn revert <filename>`
+SVN中使用命令 `svn revert <filename>`
 
-Git中使用命令`git checkout <filename>`（注意`git checkout .`会还原当前目录下的所有文件）
+Git中使用命令 `git checkout <filename>`（注意 `git checkout .` 会还原当前目录下的所有文件）
