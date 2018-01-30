@@ -113,8 +113,8 @@ $ git rev-list master --max-count=10
 00e01709d85a4dd5b2d75d2eeab6933d6a4bdf0c
 
 $ git log --pretty=oneline
-0af3137946011e8924c152fec86b8610368512d4 [MOD] set donot push msg to user phone on WeChat
-00e01709d85a4dd5b2d75d2eeab6933d6a4bdf0c [MOD] set donot push msg to user phone
+0af3137946011e8924c152fec86b8610368512d4 [^] set donot push msg to user phone on WeChat
+00e01709d85a4dd5b2d75d2eeab6933d6a4bdf0c [+] set donot push msg to user phone
 ```
 
 ## 拉取仓库及其所有分支
