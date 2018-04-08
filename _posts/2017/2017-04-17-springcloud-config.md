@@ -353,6 +353,8 @@ eureka:
 
 这是第一个服务提供方的配置文件 `/src/main/resources/bootstrap.yml`
 
+> 注：实际使用时，spring.cloud.config.profile 不需配置，它会自动读取 spring.profiles.active 的值
+
 ```yml
 spring:
   application:
