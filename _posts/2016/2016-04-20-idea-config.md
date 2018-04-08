@@ -69,18 +69,6 @@ Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，�
 
 ## 首次运行前配置
 
-### 向导功能
-
-只有首次安装运行时，才会看见向导，提示导入配置文件、输入注册码、选择UItheme、配置plugin等
-
-但若以前安装过且卸载过程中没有卸载干净，那么新安装的idea首次运行时就不会看见向导功能
-
-一般想卸载干净的话，卸载后还可以用 Everything 以及注册表搜索：jetbrains、intellij、idea等关键字
-
-如果这样还看不到向导，可能是下面步骤里创建了 JadyerData 目录后，又创建了config和system子目录
-
-（其实config和system等子目录在idea启动时会自动创建的）
-
 ### idea.properties
 
 `idea.config.path=D:/Develop/ideaIC/JadyerData/config`，配置idea个性化配置目录
@@ -124,6 +112,17 @@ Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，�
 
 ```
 
+### 向导功能
+
+只有首次安装运行时，才会看见向导，提示导入配置文件、输入注册码、选择UItheme、配置plugin等
+
+但若以前安装过且卸载过程中没有卸载干净，那么新安装的idea首次运行时就不会看见向导功能
+
+一般想卸载干净的话，卸载后还可以用 Everything 以及注册表搜索：jetbrains、intellij、idea等关键字
+
+如果这样还看不到向导，可能是下面步骤里创建了 JadyerData 目录后，又创建了config和system子目录
+
+（其实config和system等子目录在idea启动时会自动创建的）
 
 ## 欢迎窗口的配置
 
@@ -303,7 +302,7 @@ settings---Editor---File Types---Ignore files and folders---`target;*.iml;*.idea
 
 settings---Version Control---Show directories with changed descendants
 
-开启后若想调整文件夹的显示颜色：settings---Editor---Color Scheme---File Status
+开启后若想调整文件夹的显示颜色：settings---Version Control---File Status Color
 
 ### Maven配置
 
@@ -405,26 +404,6 @@ File---Power Save Mode---此时会关掉代码检查、代码提示等功能，�
 
 Project视图---右上角倒数第二个齿轮图标---Hide Empty Middle Packeages
 
-### 手工编译
-
-相较于eclipse的自动实时编译，idea更灵活些，虽然它也支持自动实时编译，但比较占资源
-
-idea共有三种手工编译方式：Compile、Rebuild、Make（可点击菜单栏Build看到）
-
-* Compile
-
-    > 对选定的目标（Java 类文件），进行强制性编译，不管目标是否是被修改过
-
-* Rebuild
-
-    > 对选定的目标（Project），进行强制性编译，不管目标是否是被修改过<br>
-由于Rebuild的目标只有Project，所以Rebuild每次花的时间会比较长
-
-* Make
-
-    > 使用最多的编译操作。对选定的目标（Project 或 Module）进行编译，但只编译有修改过的文件<br>
-没有修改过的不会编译，这样开发大项目才不会浪费时间在编译过程中
-
 ### 编译报错
 
 * 报告：OutOfMemoryError
@@ -467,112 +446,3 @@ Would you like to continue?
 LocalHistory=C:\Users\Jadyer\.IntelliJIdea2016.1\system\LocalHistory
 
 即 idea.properties 文件中的 ${idea.system.path}\LocalHistory\ 目录
-
-
-## 注册码
-
-idea15及以上版本注册：[http://idea.lanyus.com/](http://idea.lanyus.com/)，idea14注册码如下
-
-```java
-import java.math.BigInteger;
-import java.util.Date;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.zip.CRC32;
-
-public class KeyGen {
-    public static short getCRC(String s, int i, byte bytes[]) {
-        CRC32 crc32 = new CRC32();
-        if (s != null) {
-            for (int j = 0; j < s.length(); j++) {
-                char c = s.charAt(j);
-                crc32.update(c);
-            }
-        }
-        crc32.update(i);
-        crc32.update(i >> 8);
-        crc32.update(i >> 16);
-        crc32.update(i >> 24);
-        for (int k = 0; k < bytes.length - 2; k++) {
-            byte byte0 = bytes[k];
-            crc32.update(byte0);
-        }
-        return (short) (int) crc32.getValue();
-    }
-
-    public static String encodeGroups(BigInteger biginteger) {
-        BigInteger beginner1 = BigInteger.valueOf(0x39aa400L);
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; biginteger.compareTo(BigInteger.ZERO) != 0; i++) {
-            int j = biginteger.mod(beginner1).intValue();
-            String s1 = encodeGroup(j);
-            if (i > 0) {
-                sb.append("-");
-            }
-            sb.append(s1);
-            biginteger = biginteger.divide(beginner1);
-        }
-        return sb.toString();
-    }
-
-    public static String encodeGroup(int i) {
-        StringBuilder sb = new StringBuilder();
-        for (int j = 0; j < 5; j++) {
-            int k = i % 36;
-            char c;
-            if (k < 10) {
-                c = (char) (48 + k);
-            } else {
-                c = (char) ((65 + k) - 10);
-            }
-            sb.append(c);
-            i /= 36;
-        }
-        return sb.toString();
-    }
-
-    public static String MakeKey(String name, int days, int id) {
-        id %= 100000;
-        byte bkey[] = new byte[12];
-        bkey[0] = (byte) 1; // Product type: IntelliJ IDEA is 1
-        bkey[1] = 14; // version
-        Date d = new Date();
-        long ld = (d.getTime() >> 16);
-        bkey[2] = (byte) (ld & 255);
-        bkey[3] = (byte) ((ld >> 8) & 255);
-        bkey[4] = (byte) ((ld >> 16) & 255);
-        bkey[5] = (byte) ((ld >> 24) & 255);
-        days &= 0xffff;
-        bkey[6] = (byte) (days & 255);
-        bkey[7] = (byte) ((days >> 8) & 255);
-        bkey[8] = 105;
-        bkey[9] = -59;
-        bkey[10] = 0;
-        bkey[11] = 0;
-        int w = getCRC(name, id % 100000, bkey);
-        bkey[10] = (byte) (w & 255);
-        bkey[11] = (byte) ((w >> 8) & 255);
-        BigInteger pow = new BigInteger("89126272330128007543578052027888001981", 10);
-        BigInteger mod = new BigInteger("86f71688cdd2612ca117d1f54bdae029", 16);
-        BigInteger k0 = new BigInteger(bkey);
-        BigInteger k1 = k0.modPow(pow, mod);
-        String s0 = Integer.toString(id);
-        String sz = "0";
-        while (s0.length() != 5) {
-            s0 = sz.concat(s0);
-        }
-        s0 = s0.concat("-");
-        String s1 = encodeGroups(k1);
-        s0 = s0.concat(s1);
-        return s0;
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Please input your name : ");
-        Scanner scanner = new Scanner(System.in);
-        String username = scanner.next();
-        Random r = new Random();
-        System.out.println(MakeKey(username, 0, r.nextInt(100000)));
-    }
-}
-```
