@@ -26,8 +26,8 @@ biz_time    DATETIME      NOT NULL COMMENT '业务时间',
 send_time   DATETIME      DEFAULT NULL COMMENT '发送时间',
 create_time TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
 update_time TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
-INDEX index_password(password),
-UNIQUE INDEX unique_email_status(email, status)
+INDEX idx_password(password),
+UNIQUE INDEX uniq_email_status(email, status)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8 AUTO_INCREMENT=10001001 COMMENT='渠道账户信息表';
 ```
 
@@ -73,16 +73,16 @@ ALTER TABLE t_account ADD COLUMN money_type TINYINT(1) COMMENT '金额类型：1
 ALTER TABLE t_account DROP COLUMN money_type;
 
 ALTER TABLE t_account ADD PRIMARY KEY(account_id);
-ALTER TABLE t_account ADD INDEX index_password(password);
-ALTER TABLE t_account ADD INDEX index_name_password(name, password);
-ALTER TABLE t_account ADD UNIQUE INDEX index_name_email(name, email);
+ALTER TABLE t_account ADD INDEX idx_password(password);
+ALTER TABLE t_account ADD INDEX idx_name_password(name, password);
+ALTER TABLE t_account ADD UNIQUE INDEX uniq_name_email(name, email);
 
-CREATE INDEX index_name_password ON t_account(name, password);
-CREATE UNIQUE INDEX index_name_email ON t_account(name, email);
+CREATE INDEX idx_name_password ON t_account(name, password);
+CREATE UNIQUE INDEX uniq_name_email ON t_account(name, email);
 
 ALTER TABLE t_account DROP PRIMARY KEY;
-ALTER TABLE t_account DROP INDEX index_name_password;
-DROP INDEX index_name_password ON t_account;
+ALTER TABLE t_account DROP INDEX idx_name_password;
+DROP INDEX idx_name_password ON t_account;
 ```
 
 ## 修改表数据
