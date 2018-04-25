@@ -246,6 +246,12 @@ settings---Editor---Font---Font---Yahei Consolas Hybrid，Size=14
 
 settings---Editor---Color Scheme---Console Font---勾选Use console font instead---Size=12（字体不变）
 
+### 控制台颜色输出
+
+对于SpringBoot那种main(String[] args)方法直接启动的（Maven或者Gradle启动的，与之类似，也是右上角配置JVM参数）
+
+右上角---Edit Configurations...--- VM option 里面输入：`-Dspring.output.ansi.enabled=ALWAYS` 即可
+
 ### 函数花括号显示为对称结构
 
 settings---Editor---Colors Style---Java---Wrapping and Braces---Braces placement---三项均改为Next line
