@@ -168,9 +168,11 @@ settings---keymap---搜索框输入full screen（搜索到的是Toggle Full Scre
 
 settings---keymap---快捷键搜索Ctrl+F4（搜索到的是Window--Editor Tabs--Close）---Ctrl+W
 
-### 修改类结构视图快捷键
+### 修改类方法列表快捷键
 
-settings---keymap---快捷键搜索Alt+7（搜索到的是Tool Windows--Structure）---Ctrl+O
+settings---keymap---快捷键搜索Ctrl+F12（搜索到的是Main menu--Navigate--File Structure）---Ctrl+O
+
+另外，显示类结构视图的快捷键默认为Alt+7（搜索到的是Tool Windows--Structure），这个感觉不如Ctrl+F12方便
 
 ### 设置Ctrl+E弹层的文件个数
 
