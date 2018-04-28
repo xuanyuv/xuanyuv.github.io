@@ -158,9 +158,9 @@ settings---keymap---快捷键搜索Ctrl+F4（搜索到的是Window--Editor Tabs-
 
 ### 修改类方法列表快捷键
 
-settings---keymap---快捷键搜索Ctrl+F12（搜索到的是Main menu--Navigate--File Structure）---Ctrl+O
+settings---keymap---快捷键搜索Ctrl+F12（搜索到的是Main menu--Navigate--File Structure）---添加Ctrl+O
 
-另外，显示类结构视图的快捷键默认为Alt+7（搜索到的是Tool Windows--Structure），这个感觉不如Ctrl+F12方便
+另外，显示类结构视图的快捷键默认为Alt+7（搜索到的是Tool Windows--Structure），感觉它不如Ctrl+F12方便
 
 ### 设置Ctrl+E弹层的文件个数
 
@@ -172,7 +172,7 @@ settings---Editor---General---Auto Import---Add unambiguous...fly 以及 Optimiz
 
 未生效可检查settings---Editor---inspections---Java---Imports---Unused import(editor light)---勾选
 
-注意：通过 Ctrl+X 的方式不会有效果，只有 Ctrl+Y 或全选后按键盘回退或 Delete 删除时才会有效果
+注意：通过 Ctrl+X 的方式可能不会有效果，只有 Ctrl+Y 或全选后按键盘回退或 Delete 删除时有效果
 
 ### 显示行号
 
@@ -180,7 +180,7 @@ settings---Editor---General---Appearance---Show line numbers
 
 ### 取消面包屑导航
 
-即打开HTML/XML文件时隐藏html/header/script等标签
+即打开 HTML／XML 文件时隐藏 html／header／script 等标签
 
 settings---Editor---General---Breadcrumbs---取消勾选Show breadcrumbs
 
@@ -216,7 +216,7 @@ Windows-Vista发布时，一款全新的中英文字体也跟着面世了：微�
 
 据说微软为了打造这个字体，做每个字的成本几乎达到100美元，也被戏称有史以来最昂贵的一套中文字体
 
-其中Consolas是一种专门为编程人员设计的字体，它特性是所有字母、数字与符号都很容易辨认，且都具有相同的宽度，看着很舒服
+其中Consolas是专为编程人员设计的字体，它特性是所有字母、数字与符号都很容易辨认，且具有相同的宽度，看着很舒服
 
 所以 `Yahei Consolas Hybrid` 就出现了，它是上面两种字体的结合（程序员字体＋最昂贵的中文字体）
 
@@ -238,7 +238,7 @@ settings---Editor---Color Scheme---Console Font---勾选Use console font instead
 
 ### 控制台颜色输出
 
-对于SpringBoot那种main(String[] args)方法直接启动的（Maven或者Gradle启动的，与之类似，也是右上角配置JVM参数）
+对于SpringBoot那种main(String[] args)方法直接启动的（Maven或者Gradle与之类似，也是右上角配置JVM参数）
 
 右上角---Edit Configurations...--- VM option 里面输入：`-Dspring.output.ansi.enabled=ALWAYS` 即可
 
@@ -248,17 +248,17 @@ settings---Editor---Colors Style---Java---Wrapping and Braces---Braces placement
 
 ### import每个类而非整个包
 
-settings---Editor---Colors Style---Java---Imports---Class count to use import with '*'设置大一点
+settings---Editor---Colors Style---Java---Imports---Class count to use import with '*' 设置大一点
 
 当Java类中import某个包下的类超过这里设置的个数，就会换成用星号来代替，比如 `import java.util.*`
 
-### 注释时双斜杠置为代码头部
+### 注释时双斜杠位置为代码头部
 
 settings---Editor---Colors Style---Java---Code Generation---取消勾选Line comment at first column
 
 ### 自定义文件代码模板
 
-settings---Editor---File and Code Templates---Includes---File Header---修改如下
+settings---Editor---File and Code Templates---Includes---File Header---编辑为如下
 
 ```
 /**
@@ -392,13 +392,13 @@ settings---Editor---Inspections---Spring---Spring Core---Setup---取消勾选Spr
 
 ## 其它
 
-### 省电模式
-
-File---Power Save Mode---此时会关掉代码检查、代码提示等功能，适合读代码，所以也称为阅读模式
-
 ### Project视图折叠空包显示
 
 Project视图---右上角倒数第二个齿轮图标---Hide Empty Middle Packeages
+
+### 省电模式
+
+File---Power Save Mode---此时会关掉代码检查、代码提示等功能，适合读代码，所以也称为阅读模式
 
 ### 编译报错
 
