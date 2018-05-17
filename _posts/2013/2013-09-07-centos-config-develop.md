@@ -136,7 +136,7 @@ alias ipv6 off
 
 ## 安装Subversion
 
-下载地址为：[https://www.open.collab.net/files/documents/60/11125/CollabNetSubversion-client-1.8.13-1.x86_64.rpm](https://www.open.collab.net/files/documents/60/11125/CollabNetSubversion-client-1.8.13-1.x86_64.rpm)
+下载地址为：https://www.open.collab.net/files/documents/60/11125/CollabNetSubversion-client-1.8.13-1.x86_64.rpm
 
 ```sh
 [Jadyer@localhost ~]$ rpm -q Subversion
@@ -153,6 +153,46 @@ Preparing...                ########################################### [100%]
 [root@localhost Jadyer]# source /etc/profile
 [root@localhost Jadyer]# svn --version
 [Jadyer@localhost ~]$ svn --version
+```
+
+## 安装wkhtmltopdf
+
+下载地址为：https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+
+```sh
+[Jadyer@localhost ~]$ cd /app/software/
+[Jadyer@localhost software]$ tar -xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz（该压缩包没有用gzip格式压缩，不用加-z）
+[Jadyer@localhost software]$ mv wkhtmltox ..
+[Jadyer@localhost app]$ cd ..
+[Jadyer@localhost app]$ vim /etc/profile
+                        # Set wkhtmltopdf Environment Variable
+                        WKHTMLTOPDF_HOME=/app/wkhtmltox
+                        PATH=$WKHTMLTOPDF_HOME/bin:$PATH
+                        export WKHTMLTOPDF_HOME PATH
+[Jadyer@localhost app]$ source /etc/profile
+[Jadyer@localhost app]$ echo $PATH
+[Jadyer@localhost app]$ wkhtmltopdf -V
+wkhtmltopdf 0.12.4 (with patched qt)
+[Jadyer@localhost app]$ yum install -y fontconfig mkfontscale  # 安装字体
+[Jadyer@localhost app]$ fc-list                                # 查看系统中已安装的字体
+[Jadyer@localhost app]$ fc-list :lang=zh                       # 查看系统中已安装的中文字体
+[Jadyer@localhost app]$ cd /usr/share/fonts/
+[Jadyer@localhost fonts]$ rz simsun.ttc                        # 上传字体文件至/usr/share/fonts/
+[Jadyer@localhost fonts]$ mkfontscale
+[Jadyer@localhost fonts]$ mkfontdir
+[Jadyer@localhost fonts]$ fc-cache                             # 通过这三个命令建立字体索引信息、更新字体缓存
+[Jadyer@localhost fonts]$ fc-list :lang=zh                     # 查看系统中已安装的中文字体
+```
+
+```sh
+查看wkhtmltopdf版本时，可能会遇到下面几个错误
+wkhtmltopdf: error while loading shared libraries: libXrender.so.1: cannot open shared object file: No such file or directory
+wkhtmltopdf: error while loading shared libraries: libfontconfig.so.1: cannot open shared object file: No such file or directory
+wkhtmltopdf: error while loading shared libraries: libXext.so.6: cannot open shared object file: No such file or directory
+用这三个命令分别安装一下，就可以了
+yum install -y libXrender*
+yum install -y libfontconfig*
+yum install -y libXext*
 ```
 
 ## 修改RPM安装路径
