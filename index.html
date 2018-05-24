@@ -18,6 +18,8 @@ function categoryDisplay() {
         $('.post-list-body>ul>div[post-cate=' + cate + ']').show(400);
         if(cate == 'All'){
             $('.pagination').show(400);
+        }else{
+            $('.pagination').hide(250);
         }
     });
 }
