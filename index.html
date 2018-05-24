@@ -10,12 +10,12 @@ layout: default
  */
 function categoryDisplay() {
     /** only show All */
-    $('.post-list-body>ul>li[post-cate!=All]').hide();
+    $('.post-list-body>ul>div[post-cate!=All]').hide();
     /** show category when click categories list */
     $('.categories-list-item').click(function() {
         var cate = $(this).attr('cate');
-        $('.post-list-body>ul>li[post-cate!=' + cate + ']').hide(250);
-        $('.post-list-body>ul>li[post-cate=' + cate + ']').show(400);
+        $('.post-list-body>ul>div[post-cate!=' + cate + ']').hide(250);
+        $('.post-list-body>ul>div[post-cate=' + cate + ']').show(400);
         if(cate == 'All'){
             $('.pagination').show(400);
         }
@@ -32,24 +32,28 @@ $(document).ready(function() {
         <hr>
         <div class="post-list-body">
             <ul>
-                {% for post in paginator.posts %}
-                    <li post-cate="All">
-                        <a class="post-link" style="font-size:20px;" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                        <hr style="margin: 12px 0">
-                    </li>
-                {% endfor %}
+                <div post-cate="All">
+                    {% for post in paginator.posts %}
+                        <li>
+                            <a class="post-link" style="font-size:20px;" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                            <hr style="margin: 12px 0">
+                        </li>
+                    {% endfor %}
+                </div>
                 <!-- 玄玉201805241800：预置各分类文章列表，供首页点击分类时动态显示 -->
                 {% for category in site.categories %}
-                    {% for posts in category %}
-                        {% for post in posts %}
-                            {% if post.url %}
-                                <li post-cate="{{category | first}}">
-                                    <a class="post-link" style="font-size:20px;" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                                    <hr style="margin: 12px 0">
-                                </li>
-                            {% endif %}
+                    <div post-cate="{{category | first}}">
+                        {% for posts in category %}
+                            {% for post in posts %}
+                                {% if post.url %}
+                                    <li>
+                                        <a class="post-link" style="font-size:20px;" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                                        <hr style="margin: 12px 0">
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
                         {% endfor %}
-                    {% endfor %}
+                    </div>
                 {% endfor %}
             </ul>
             <!-- Pagination links -->
