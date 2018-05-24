@@ -7,26 +7,12 @@ layout: default
         <!--<h1>文章列表</h1>-->
         <small>站在云端，敲下键盘，望着通往世界另一头的那扇窗，只为做那读懂0和1的人。。</small>
         <hr>
-        <!--
         <ul>
             {% for post in paginator.posts %}
             <li>
                 <a class="post-link" style="font-size:20px;" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
                 <hr style="margin: 12px 0">
             </li>
-            {% endfor %}
-        </ul>
-        -->
-        <ul>
-            {% for posts in Linux  %}
-            {% for post in posts %}
-            {% if post.url %}
-            <li>
-                <a class="post-link" style="font-size:20px;" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                <hr style="margin: 12px 0">
-            </li>
-            {% endif %}
-            {% endfor %}
             {% endfor %}
         </ul>
         <!--
