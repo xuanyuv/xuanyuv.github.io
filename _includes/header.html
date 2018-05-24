@@ -1,20 +1,4 @@
 <header id="top">
-    <canvas id="canvas-bg" style="position: fixed; top: 0; pointer-events: none;" width="1903" height="52"></canvas>
-    <script>
-        var q = document.getElementById('canvas-bg'), w = q.width = document.body.clientWidth, h = q.height = window.innerHeight,
-            p = new Array(256).join(1).split(''), c = q.getContext('2d'), m = Math;
-        setInterval(function () {
-            c.fillStyle = 'rgba(0,0,0,0.05)';
-            c.fillRect(0, 0, w, h);
-            c.fillStyle = 'rgba(0,255,0,1)';
-            p = p.map(function (v, i) {
-                r = m.random();
-                c.fillText(String.fromCharCode(m.floor(2720 + r * 33)), i * 10, v);
-                v += 10;
-                return v > 768 + r * 1e4 ? 0 : v
-            })
-        }, 33)
-    </script>
     <div class="wrapper">
         <a href="{{ site.baseurl }}/" class="brand">{{ site.title }}</a>
         <small>{{site.brief-intro}}</small>
