@@ -81,7 +81,7 @@ function contentInit(content) {
             '   </h3>' +
             '   <p>主要技术：' + content[i].core_tech + '</p>' +
             '   <p>' + content[i].description +
-            '       <a href="' + content[i].code_link + '">源代码 <i class="fa fa-code" aria-hidden="true"></i></a>' +
+            '       <a href="' + content[i].code_link + '" target="_blank">源代码 <i class="fa fa-code" aria-hidden="true"></i></a>' +
             '   </p>' +
             '</div>'
     }
