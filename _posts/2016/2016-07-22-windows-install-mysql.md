@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Windows安装MySQL"
-categories: MySQL
-tags: mysql centos
+categories: 数据库
+tags: 数据库 mysql centos
 author: 玄玉
 excerpt: 详细介绍了Windows安装MySQL-5.7.14之后的配置细节。
 ---

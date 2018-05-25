@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "OraclePLSQL编程之条件控制及例外处理和分页"
-categories: Oracle
-tags: oracle
+categories: 数据库
+tags: 数据库 oracle
 author: 玄玉
 excerpt: 主要介绍Oracle-PLSQL编程中的条件分支语句、控制结构语句、例外处理、以及应用到Oracle分页中的例子。
 ---

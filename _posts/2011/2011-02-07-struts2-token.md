@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Struts2防止表单重复提交"
-categories: Struts2
-tags: struts2 token tokensession 重复提交
+categories: JavaEE
+tags: JavaEE struts2 token tokensession 重复提交
 author: 玄玉
 excerpt: 介绍Struts2中提供的防止表单重复提交的<s:token>用法，以及防止表单重复提交的实现原理。
 ---

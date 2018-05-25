@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "CXF之LinkageError异常及endorsed机制"
-categories: CXF
-tags: cxf java LinkageError
+categories: WebServices
+tags: WebServices cxf java LinkageError
 author: 玄玉
 excerpt: 介绍Apache-CXF启动时报告LinkageError异常的解决方法，以及Java中的endorsed机制。
 ---

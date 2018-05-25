@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "WebServices之详述思想用法"
-categories: JAX-WS
-tags: jax-ws webservices ejb soa
+categories: WebServices
+tags: WebServices jax-ws ejb soa
 author: 玄玉
 excerpt: 介绍WebServices的一些概念和规范，及其前世今生。
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "CXF之集成Spring"
-categories: CXF
-tags: cxf spring webservice jax-ws jax-ri
+categories: WebServices
+tags: WebServices cxf spring jax-ws jax-ri
 author: 玄玉
 excerpt: 介绍Apache-CXF与Spring集成的一些细节及完整示例。
 ---

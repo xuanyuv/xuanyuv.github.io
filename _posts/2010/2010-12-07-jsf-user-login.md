@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "JSF实现用户登录小例子"
-categories: JSF
-tags: jsf demo myfaces asp.net 事件绑定
+categories: JavaEE
+tags: JavaEE jsf myfaces asp.net 事件绑定
 author: 玄玉
 excerpt: 介绍JSF实现用户登录功能的入门示例代码。
 ---

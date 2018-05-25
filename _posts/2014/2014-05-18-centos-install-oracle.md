@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "CentOS安装Oracle"
-categories: Oracle
-tags: oracle centos
+categories: 数据库
+tags: 数据库 oracle centos
 author: 玄玉
 excerpt: 主要介绍CentOS-6.4-DVD系统中安装Oracle-11.2.0.4，以及RLwrap的安装和配置。
 ---

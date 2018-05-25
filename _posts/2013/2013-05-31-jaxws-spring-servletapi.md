@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "JAX-WS之集成Spring及获取ServletAPI"
-categories: JAX-WS
-tags: jax-ws spring servlet
+categories: WebServices
+tags: WebServices jax-ws spring servlet
 author: 玄玉
 excerpt: 介绍JAX-WS集成Spring的两种方式，以及获取ServletAPI的方法。
 ---

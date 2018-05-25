@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Oracle用户管理"
-categories: Oracle
-tags: oracle
+categories: 数据库
+tags: 数据库 oracle
 author: 玄玉
 excerpt: 主要介绍Oracle中的普通用户、特权用户的管理，包括找回密码等等。
 ---

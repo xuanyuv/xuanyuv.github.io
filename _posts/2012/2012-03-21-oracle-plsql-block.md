@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "OraclePLSQL编程之过程函数包及触发器和变量"
-categories: Oracle
-tags: oracle
+categories: 数据库
+tags: 数据库 oracle
 author: 玄玉
 excerpt: 主要介绍Oracle-PLSQL编程中的块、存储过程、函数、包、触发器、变量等用法。
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "CXF之契约优先及隐式声明头信息"
-categories: CXF
-tags: cxf xml jax-ws
+categories: WebServices
+tags: WebServices cxf xml jax-ws
 author: 玄玉
 excerpt: 介绍Apache-CXF中通过手工编写XML的方式定义WSDL的各种细节，以及隐式声明头信息的用法。
 ---

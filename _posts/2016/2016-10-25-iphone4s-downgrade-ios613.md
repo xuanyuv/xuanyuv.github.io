@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "iPhone4S从ios711降级到ios613"
-categories: iPhone
-tags: iPhone4S ios613 降级
+categories: 其它
+tags: 其它 iPhone4S ios613 降级
 author: 玄玉
 excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯经典，未越狱的，具有情怀的拟物图标的ios613的方法。
 ---

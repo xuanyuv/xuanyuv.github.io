@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "JAX-WS之契约优先及隐式声明头信息"
-categories: JAX-WS
-tags: jax-ws wrapped
+categories: WebServices
+tags: WebServices jax-ws wrapped
 author: 玄玉
 excerpt: 介绍在JAX-WS中通过手工编写XML的方式定义WSDL的各种细节，以及隐式声明头信息的用法。
 ---

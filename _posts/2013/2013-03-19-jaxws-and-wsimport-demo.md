@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "JAX-WS入门实例及wsimport的使用"
-categories: JAX-WS
-tags: jax-ws wsimport demo
+categories: WebServices
+tags: WebServices jax-ws wsimport
 author: 玄玉
 excerpt: 介绍JAX-WS的一个基础demo，以及通过wsimport生成WebService客户端代码的用法。
 ---

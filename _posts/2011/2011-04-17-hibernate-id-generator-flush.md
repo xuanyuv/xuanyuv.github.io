@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Hibernate不同主键策略下flush妙用"
-categories: Hibernate
-tags: hibernate flush 主键
+categories: JavaEE
+tags: JavaEE hibernate flush 主键
 author: 玄玉
 excerpt: 介绍Hibernate中的不同主键生成策略，结合flush()方法，产生不同的效果，的示例描述和代码。
 ---

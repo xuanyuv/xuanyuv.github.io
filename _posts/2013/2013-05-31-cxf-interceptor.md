@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "CXF之使用Interceptor"
-categories: CXF
-tags: cxf interceptor 拦截器
+categories: WebServices
+tags: WebServices cxf interceptor 拦截器
 author: 玄玉
 excerpt: 介绍Apache-CXF中的Interceptor的配置方法。
 ---

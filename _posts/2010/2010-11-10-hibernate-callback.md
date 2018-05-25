@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "回调演示的伪代码"
-categories: Hibernate
-tags: hibernate
+categories: JavaEE
+tags: JavaEE hibernate callback
 author: 玄玉
 excerpt: 演示模拟Hibernate回调示例，说明Spring中的Callback机制带来的好处。
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Oracle安装时先决条件检查失败的解决方案"
-categories: Oracle
-tags: oracle
+categories: 数据库
+tags: 数据库 oracle
 author: 玄玉
 excerpt: 主要介绍Oracle11g安装时先决条件检查失败的解决方案。
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "CentOS安装MySQL"
-categories: MySQL
-tags: mysql centos
+categories: 数据库
+tags: 数据库 mysql centos
 author: 玄玉
 excerpt: 详细介绍了CentOS-6.4-minimal版中源码安装MySQL-5.5.38的细节。
 ---

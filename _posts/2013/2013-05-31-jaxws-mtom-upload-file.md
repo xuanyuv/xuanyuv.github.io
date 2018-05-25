@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "JAX-WS之使用MTOM处理二进制文件"
-categories: JAX-WS
-tags: jax-ws mtom 文件
+categories: WebServices
+tags: WebServices jax-ws mtom
 author: 玄玉
 excerpt: 介绍在JAX-WS中通过motm机制处理文件上传等操作的方法。
 ---

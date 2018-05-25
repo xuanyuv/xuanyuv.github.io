@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Oracle命令小结"
-categories: Oracle
-tags: oracle
+categories: 数据库
+tags: 数据库 oracle
 author: 玄玉
 excerpt: 一些常用的Oracle命令。
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "OraclePLSQLDev运行在64bit环境下的方法"
-categories: Oracle
-tags: oracle plsqldev
+categories: 数据库
+tags: 数据库 oracle plsqldev
 author: 玄玉
 excerpt: 主要介绍Win7-64bit系统中，plsqldev的使用。
 ---
