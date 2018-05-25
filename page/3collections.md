@@ -23,7 +23,6 @@ type: page
 
 ## 站点
 
-* [OneCoder](http://www.coderli.com)
 * [HoltYin](https://holtyin.github.io/)
 * [Ticmy](http://www.ticmy.com)
 * [并发编程网](http://ifeve.com)
