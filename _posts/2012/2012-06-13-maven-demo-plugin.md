@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Maven入门及常用插件"
-categories: Maven
-tags: maven nexus plugin 插件 仓库 私服
+categories: 工具
+tags: 工具 maven nexus plugin 插件 仓库 私服
 author: 玄玉
 excerpt: 描述了Maven的一些基础知识，以及常用到的插件。
 ---
