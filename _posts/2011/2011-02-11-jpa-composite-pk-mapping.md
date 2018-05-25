@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "JPA中的联合主键映射"
-categories: JPA
-tags: jpa 映射
+categories: JavaEE
+tags: JavaEE jpa 映射
 author: 玄玉
 excerpt: 介绍JPA中的联合主键映射的示例代码。
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "iBatis中的一和多映射"
-categories: iBatis
-tags: ibatis 映射
+categories: JavaEE
+tags: JavaEE ibatis 映射
 author: 玄玉
 excerpt: 介绍iBatis中的一对多和一对一映射的不同写法，以及示例代码。
 ---

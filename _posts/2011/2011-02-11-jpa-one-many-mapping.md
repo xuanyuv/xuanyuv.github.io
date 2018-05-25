@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "JPA中的一和多映射"
-categories: JPA
-tags: jpa 映射
+categories: JavaEE
+tags: JavaEE jpa 映射
 author: 玄玉
 excerpt: 介绍JPA中的一对多、一对一、多对多映射的不同写法，以及示例代码。
 ---

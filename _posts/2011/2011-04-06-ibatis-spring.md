@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "iBatis集成Spring"
-categories: iBatis
-tags: ibatis spring
+categories: JavaEE
+tags: JavaEE ibatis spring
 author: 玄玉
 excerpt: 介绍iBatis与Spring的三种集成方式。
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "iBatis入门例子"
-categories: iBatis
-tags: ibatis demo
+categories: JavaEE
+tags: JavaEE ibatis demo
 author: 玄玉
 excerpt: 介绍iBatis的基本用法。
 ---

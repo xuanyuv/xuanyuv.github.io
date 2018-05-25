@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "iBatis调用存储过程"
-categories: iBatis
-tags: ibatis 存储过程
+categories: JavaEE
+tags: JavaEE ibatis 存储过程
 author: 玄玉
 excerpt: 详细介绍了iBatis调用存储过程的写法。
 ---
