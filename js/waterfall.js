@@ -73,7 +73,7 @@ function contentInit(content) {
     for (var i = 0; i < content.length; i++) {
         htmlStr +=
             '<div class="grid-item">' +
-            '   <a class="a-img" href="' + content[i].demo_link + '">' +
+            '   <a class="a-img" href="' + content[i].demo_link + '" target="_blank">' +
             '       <img src="' + content[i].img_link + '">' +
             '   </a>' +
             '   <h3 class="demo-title">' +
