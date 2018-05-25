@@ -27,6 +27,8 @@ C:\Users\Jadyer>ruby -v
 ruby 2.4.1p111 (2017-03-22 revision 58053) [x64-mingw32]
 ```
 
+补充：最新版需要安装rubyinstaller-devkit-2.5.1-1-x64.exe（带开发版的），安装完成后，按照提示再安装MSYS2（在弹出的窗口选择 3 - MSYS2 and MINGW development toolchain）
+
 ## 安装Jekyll
 
 这里通过RubyGems安装Jekyll，所以先到官网 [https://rubygems.org/](https://rubygems.org/) 下载 1.01MB 大小的[rubygems-2.6.13.zip](https://rubygems.org/rubygems/rubygems-2.6.13.zip)

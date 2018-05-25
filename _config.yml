@@ -9,16 +9,13 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
-title: 半步多
-
-brief-intro: "玄玉的博客"
-
-# the subpath of your site, e.g. /blog
-baseurl: ""
-
 # the base hostname & protocol for your site
 # 配合页面头部<link rel="canonical" href="http://jadyer.cn/2016/10/17/first-blog/">
 url: "http://jadyer.cn"
+# the subpath of your site, e.g. /blog
+baseurl: ""
+title: 半步多
+brief-intro: "玄玉的博客"
 
 # footer下方显示的联系方式
 # weibo_username: jadyer
@@ -43,7 +40,8 @@ category_dir: category/
 tag_dir: tag/
 
 # 博文分页的配置
-gems: [jekyll-paginate]
+# gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
 paginate: 12
 
 # 博文的固定链接形式（若配置成/:categories/:title.html则表示按照/分类/文章.html生成链接）
