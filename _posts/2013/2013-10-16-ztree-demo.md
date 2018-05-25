@@ -84,20 +84,20 @@ var setting = {
     data: {
         simpleData: {
             enable: true,  //开启简单数据模式(Array)
-            pIdKey: 'pid'  //节点数据中保存其父节点唯一标识的属性名称,默认值为pId
+            pIdKey: 'pid'  //节点数据中保存其父节点唯一标识的属性名称，默认值为pId
         }
     },
     async: {
-        enable:true, //设置zTree开启异步加载模式,默认值为false(默认为异步的POST请求)
+        enable:true, //设置zTree开启异步加载模式，默认值为false
         url   :'${pageContext.request.contextPath}/servlet/ManageServlet'
     },
 };
 $(function(){
-    //开启异步加载后,将第三个参数zNodes填为null后表示根节点也异步加载
-    //由于这里的isSimpleData=true,故异步返回的数据格式应该是下面这种
+    //开启异步加载后，将第三个参数zNodes填为null后表示根节点也异步加载
+    //由于这里的isSimpleData=true，故异步返回的数据格式应该是下面这种
     //这是样例报文[{"checked":false,"chkDisabled":false,"id":1,"name":"测试1","open":true,"pid":0,"value":"值value1"},{"checked":false,"chkDisabled":false,"id":2,"name":"test2","open":true,"pid":1,"value":"值value2"},{"checked":false,"chkDisabled":false,"id":3,"name":"test3","open":true,"pid":1,"value":"值value3"},{"checked":true,"chkDisabled":true,"id":4,"name":"test4","open":true,"pid":2,"value":"值value4"},{"checked":false,"chkDisabled":false,"id":5,"name":"test5","open":true,"pid":2,"value":"值value5"}]
-    //如果想对异步返回的数据进行加工,可以在setting.async中配置ajaxDataFilter属性,详见zTree的官方API
-    //注意：显示的树的二级菜单是与异步返回数据有关的,可以修改后台生成数据前针对各菜单元素存放的顺序来查看树的显示效果
+    //如果想对异步返回的数据进行加工，可以在setting.async中配置ajaxDataFilter属性，详见zTree的官方API：http://www.treejs.cn/v3/api.php
+    //注意：显示的树的二级菜单是与异步返回数据有关的，可以修改后台生成数据前针对各菜单元素存放的顺序来查看树的显示效果
     //注意：但一级菜单始终会显示在第一列的，可以在后台修改二级（乃至三级、四级）菜单的存放顺序
     $.fn.zTree.init($('#treeDemo'), setting, null);
 });
