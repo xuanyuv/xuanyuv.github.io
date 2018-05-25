@@ -29,4 +29,4 @@ type: page
 * [并发编程网](http://ifeve.com)
 * [会摇摆](http://www.huiyaobai.com/)
 * [前端踩坑那些事](https://www.febugs.com/)
-* [摘星少年](http://cmin.me/)
+* [摘星少年](http://www.cymin.cn/)
