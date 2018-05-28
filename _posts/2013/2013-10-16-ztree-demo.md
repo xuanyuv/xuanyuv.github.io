@@ -91,7 +91,19 @@ var setting = {
         enable:true, //设置zTree开启异步加载模式，默认值为false
         url   :'${pageContext.request.contextPath}/servlet/ManageServlet'
     },
+    view: {
+        dblClickExpand: false //屏蔽双击事件
+    },
+    callback: {
+        onClick: onClick      //取消双击展开折叠，改为单击展开折叠
+    }
 };
+
+function onClick(e,treeId, treeNode) {
+    var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+    zTree.expandNode(treeNode);
+}
+
 $(function(){
     //开启异步加载后，将第三个参数zNodes填为null后表示根节点也异步加载
     //由于这里的isSimpleData=true，故异步返回的数据格式应该是下面这种
