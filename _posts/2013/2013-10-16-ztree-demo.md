@@ -99,7 +99,7 @@ var setting = {
     }
 };
 
-function onClick(e,treeId, treeNode) {
+function onClick(e, treeId, treeNode) {
     var zTree = $.fn.zTree.getZTreeObj("treeDemo");
     zTree.expandNode(treeNode);
 }
