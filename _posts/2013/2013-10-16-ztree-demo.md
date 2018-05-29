@@ -71,11 +71,10 @@ WebRoot
  -->
 <link type="text/css" rel="stylesheet" href="./js/zTree/css/demo.css">
 <link type="text/css" rel="stylesheet" href="./js/zTree/css/zTreeStyle.css">
-<script src="./js/jquery-1.9.1.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="./js/zTree/jquery.ztree.all-3.5.min.js"></script>
 
 <script>
-<!--
 var setting = {
     check: {
         enable  : true,      //设置zTree的节点上显示勾选框(checkbox或radio)
@@ -100,8 +99,27 @@ var setting = {
 };
 
 function onClick(e, treeId, treeNode) {
-    var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-    zTree.expandNode(treeNode);
+    var zTreeObj = $.fn.zTree.getZTreeObj("treeDemo");
+    zTreeObj.expandNode(treeNode);
+    /*
+    //只有当被点击的节点是最后一级时，才异步加载数据
+    var sNodes = zTreeObj.getSelectedNodes();
+    if(sNodes.length > 0){
+        var isParent = sNodes[0].isParent;
+        if(!isParent){
+            //异步加载图片（后台返回的是@ResponseBody List<String>）
+            $.post("${ctxPath}/file/getImgs",
+                {caseNo:"${caseNo!0}", contractNo:"${contractNo!0}", categoryCodes:treeNode.value},
+                function(data){
+                    $('#photo li').remove();
+                    $.each(data, function(n,value){
+                        $("#photo").append("<li><img src='" + value + "'/></li>");
+                    });
+                }
+            );
+        }
+    }
+    */
 }
 
 $(function(){
@@ -133,11 +151,13 @@ function getZTreeValue(){
     alert(checkedIds);
     alert(checkedValues);
 }
-//-->
 </script>
 
 <div>
-    <ul id="treeDemo" class="ztree"></ul>
+    <ul id="treeDemo" class="ztree" style="float:left;"></ul>
+    <ul id="photo" style="margin-left:400px;">
+        <!--<li><img src="${ctxPath}/img/photo.png"/></li>-->
+    </ul>
 </div>
 <br/>
 <br/>
