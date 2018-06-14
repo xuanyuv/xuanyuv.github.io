@@ -42,7 +42,7 @@ master分支上工程上右键---Git---Repository---Merge Changes---Branches to 
 
 ### 查询某方法被其它地方调用
 
-Ctrl+Alt+H
+Ctrl+Alt+H（其实：Alt + F7 更好用）
 
 ### 定位文件或直接定位某一行
 
