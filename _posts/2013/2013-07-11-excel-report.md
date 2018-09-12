@@ -28,9 +28,9 @@ excerpt: 演示了Apache-POI框架操作Excel报表模板文件填充数据后�
 
 ## 模板文件
 
-[点此下载模板文件](/img/2013/2013-07-11-excel_report_ReportTemplate.xls)，内容截图如下
+[点此下载模板文件](/img/2013/2013-07-11-excel-report-ReportTemplate.xls)，内容截图如下
 
-![](/img/2013/2013-07-11-excel_report_ReportTemplate.png)
+![](/img/2013/2013-07-11-excel-report-ReportTemplate.png)
 
 ## 报表生成类
 
