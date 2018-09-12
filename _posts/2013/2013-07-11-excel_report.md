@@ -11,7 +11,7 @@ excerpt: 演示了Apache-POI框架操作Excel报表模板文件填充数据后�
 {:toc}
 
 
-## 引入POI及模板文件
+## POI依赖
 
 ```xml
 <dependency>
@@ -26,9 +26,11 @@ excerpt: 演示了Apache-POI框架操作Excel报表模板文件填充数据后�
 </dependency>
 ```
 
-模板文件下载地址：[/img/2013/2013-07-11-excel_report_ReportTemplate.xls](/img/2013/2013-07-11-excel_report_ReportTemplate.xls)
+## 模板文件
 
-模板文件内容截图：![](/img/2013/2013-07-11-excel_report_ReportTemplate.png)
+[点此下载模板文件](/img/2013/2013-07-11-excel_report_ReportTemplate.xls)，内容截图如下
+
+![](/img/2013/2013-07-11-excel_report_ReportTemplate.png)
 
 ## 报表生成类
 
@@ -49,6 +51,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 报表生成类
+ * ---------------------------------------------------------------------------
+ * 这里要用到：poi-3.9-20121203.jar和poi-ooxml-3.9-20121203.jar
+ * ---------------------------------------------------------------------------
  * Created by 玄玉<https://jadyer.cn/> on 2013/7/5 21:54.
  */
 public enum ExcelReport {
@@ -277,7 +283,7 @@ public class ExcelReportTest {
 }
 ```
 
-## 另附POI读写Demo
+## 另附POIDemo
 
 ```java
 package com.jadyer.demo;
@@ -297,7 +303,10 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 /**
+ * POI读写Excel的示例
+ * ---------------------------------------------------------------------------
  * 这里要用到：poi-3.9-20121203.jar和poi-ooxml-3.9-20121203.jar
+ * ---------------------------------------------------------------------------
  * Created by 玄玉<https://jadyer.cn/> on 2013/7/9 19:54.
  */
 public class POIDemo {
@@ -400,11 +409,11 @@ public class POIDemo {
                     str = new DecimalFormat("0").format(cell.getNumericCellValue());
                 }
                 break;
-            case Cell.CELL_TYPE_ERROR   : str = "错误";                                     break;
-            case Cell.CELL_TYPE_BLANK   : str = "";                                         break;
-            case Cell.CELL_TYPE_STRING  : str = cell.getStringCellValue();                  break;
-            case Cell.CELL_TYPE_BOOLEAN : str = String.valueOf(cell.getBooleanCellValue()); break;
-            case Cell.CELL_TYPE_FORMULA : str = String.valueOf(cell.getCellFormula());      break;
+            case Cell.CELL_TYPE_BLANK   : str = "";                                                                                  break;
+            case Cell.CELL_TYPE_ERROR   : str = "Error";                                                                             break;
+            case Cell.CELL_TYPE_STRING  : str = cell.getStringCellValue();                                                           break;
+            case Cell.CELL_TYPE_BOOLEAN : str = String.valueOf(cell.getBooleanCellValue());                                          break;
+            case Cell.CELL_TYPE_FORMULA : str = String.valueOf(cell.getCellFormula());                                               break;
             default                     : str = null==cell.getRichStringCellValue() ? "" : cell.getRichStringCellValue().toString(); break;
         }
         return str.trim();
