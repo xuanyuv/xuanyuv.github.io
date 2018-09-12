@@ -117,7 +117,7 @@ public class HelloServiceImpl implements HelloService {
 
 客户端只有一个用于演示调用服务端的`ClientApp.Java`
 
-它是通过wsimport生成的，关于其用法，可参考[http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/](http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/)
+它是通过wsimport生成的，关于其用法，可参考[https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/](https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/)
 
 ```java
 package com.jadyer.client;
@@ -130,8 +130,7 @@ import net.csdn.blog.jadyer.HelloServiceImplService;
 
 /**
  * wsimport -d D:/Download/ -keep -verbose http://127.0.0.1:8088/jaxws_tomcat/myHello?wsdl
- * @create May 31, 2013 7:49:51 PM
- * @author 玄玉<http://jadyer.cn/>
+ * Created by 玄玉<https://jadyer.cn/> on 2013/05/31 19:49.
  */
 public class ClientApp {
     public static void main(String[] args) throws SOAPException, IOException {

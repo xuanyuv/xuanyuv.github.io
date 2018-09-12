@@ -27,7 +27,7 @@ import java.sql.SQLException;
 
 /**
  * 回调演示的伪代码（这个类就相当于是我们自己写的应用程序）
- * Created by 玄玉<http://jadyer.cn/> on 2010/11/10 02:59.
+ * Created by 玄玉<https://jadyer.cn/> on 2010/11/10 02:59.
  */
 public class CallbackDemo {
     public static void main(String[] args) {

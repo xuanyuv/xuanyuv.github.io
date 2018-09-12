@@ -262,7 +262,7 @@ settings---Editor---File and Code Templates---Includes---File Header---编辑为
 
 ```
 /**
- * Created by 玄玉<http://jadyer.cn/> on ${DATE} ${TIME}.
+ * Created by 玄玉<https://jadyer.cn/> on ${DATE} ${TIME}.
  */
 ```
 

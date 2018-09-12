@@ -35,7 +35,7 @@ D:\>keytool -genkey -alias JadyerKeyStore -keyalg RSA -validity 1024 -keystore D
 您的名字与姓氏是什么？
   [Unknown]:  sso.jadyer.com（'根据实际情况填写服务器域名，否则会导致证书上的名称无效'）
 您的组织单位名称是什么？
-  [Unknown]:  http://jadyer.cn/
+  [Unknown]:  https://jadyer.cn/
 您的组织名称是什么？
   [Unknown]:  banbuduo
 您所在的城市或区域名称是什么?
@@ -44,7 +44,7 @@ D:\>keytool -genkey -alias JadyerKeyStore -keyalg RSA -validity 1024 -keystore D
   [Unknown]:  江北区
 该单位的双字母国家/地区代码是什么?
   [Unknown]:  ZH
-CN=sso.jadyer.com, OU=http://jadyer.cn/, O=banbuduo, L=重庆, ST=江北区,C=ZH是否正确?
+CN=sso.jadyer.com, OU=https://jadyer.cn/, O=banbuduo, L=重庆, ST=江北区,C=ZH是否正确?
   [否]:  y
 
 输入 <JadyerKeyStore> 的密钥口令
@@ -94,8 +94,8 @@ D:\>keytool -export -file D:/keys/Jadyer.crt -alias JadyerKeyStore -keystore D:/
 ```sh
 D:\>keytool -import -keystore D:\Develop\Java\jdk1.7.0_80\jre\lib\security\cacerts -file D:/keys/Jadyer.crt -alias JadyerKeyStore
 输入密钥库口令:  222222
-所有者: CN=sso.jadyer.com, OU=http://jadyer.cn/, O=banbuduo, L=重庆, ST=江北区, C=ZH
-发布者: CN=sso.jadyer.com, OU=http://jadyer.cn/, O=banbuduo, L=重庆, ST=江北区, C=ZH
+所有者: CN=sso.jadyer.com, OU=https://jadyer.cn/, O=banbuduo, L=重庆, ST=江北区, C=ZH
+发布者: CN=sso.jadyer.com, OU=https://jadyer.cn/, O=banbuduo, L=重庆, ST=江北区, C=ZH
 序列号: 1e3e16df
 有效期开始日期: Tue Nov 29 18:34:18 CST 2016, 截止日期: Thu Sep 19 18:34:18 CST 2019
 证书指纹:

@@ -112,8 +112,7 @@ import javax.xml.ws.soap.SOAPFaultException;
  * 3)配置Handler,自定义一个名字随意的xml
  * 4)在服务上启动过滤链
  *   在服务端或者客户端的Service实现类上使用@HandlerChain(file="myHandlerChain.xml")即可
- * @create May 17, 2013 12:07:54 AM
- * @author 玄玉<http://jadyer.cn/>
+ * Created by 玄玉<https://jadyer.cn/> on 2013/05/17 12:07.
  */
 public class LicenseHandler implements SOAPHandler<SOAPMessageContext> {
     @Override
@@ -210,17 +209,16 @@ import com.jadyer.service.HelloServiceImpl;
 
 /**
  * SOAP异常处理和Handler处理
- * @see ----------------------------------------------------------------------------------------------
- * @see 手工指定命名空间时,建议在SEI和SIB都使用@WebService注解,如下所示
- * @see @WebService(targetNamespace="http://blog.csdn.net/jadyer")
- * @see ----------------------------------------------------------------------------------------------
- * @see 通过Handler处理SOAP消息(Handler类似于过滤器,它分为SOAPHandler和LogicalHandler)
- * @see SOAPHandler-----可以获取SOAPMessage信息
- * @see LogicalHandler--只能获取SOAPBody信息
- * @see 客户端发出的消息始终都是LogicalHandler先处理,然后才是SOAPHandler处理,服务器端的消息处理顺序则与之相反
- * @see ----------------------------------------------------------------------------------------------
- * @create May 16, 2013 6:14:10 PM
- * @author 玄玉<http://jadyer.cn/>
+ * ---------------------------------------------------------------------------------------------------
+ * 手工指定命名空间时,建议在SEI和SIB都使用@WebService注解，如下所示
+ * @WebService(targetNamespace="http://blog.csdn.net/jadyer")
+ * ---------------------------------------------------------------------------------------------------
+ * 通过Handler处理SOAP消息(Handler类似于过滤器，它分为SOAPHandler和LogicalHandler)
+ * SOAPHandler-----可以获取SOAPMessage信息
+ * LogicalHandler--只能获取SOAPBody信息
+ * 客户端发出的消息始终都是LogicalHandler先处理，然后才是SOAPHandler处理，服务器端的消息处理顺序则与之相反
+ * ---------------------------------------------------------------------------------------------------
+ * Created by 玄玉<https://jadyer.cn/> on 2013/05/16 18:14.
  */
 public class ServerApp {
     public static void main(String[] args) {
@@ -315,7 +313,7 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
 
 最后是客户端调用服务端代码
 
-这里是由wsimport生成的，关于其用法，可参考[http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/](http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/)
+这里是由wsimport生成的，关于其用法，可参考[https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/](https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/)
 
 ```java
 package com.jadyer.client;

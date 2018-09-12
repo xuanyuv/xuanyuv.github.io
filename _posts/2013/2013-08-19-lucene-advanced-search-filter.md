@@ -39,7 +39,7 @@ import com.jadyer.custom.MyFilter;
 
 /**
  * Lucene系列第07节之高级搜索之Filter
- * Created by 玄玉<http://jadyer.cn/> on 2013/08/19 11:13.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/08/19 11:13.
  */
 public class AdvancedSearchByFilter {
     private Directory directory;
@@ -51,7 +51,7 @@ public class AdvancedSearchByFilter {
         /** 文件名 */
         String[] names = {"Michael.java", "Scofield.ini", "Tbag.txt", "Jack", "Jade", "Jadyer"};
         /** 文件内容 */
-        String[] contents = {"my blog is http://jadyer.cn/",
+        String[] contents = {"my blog is https://jadyer.cn/",
                              "my github is https://github.com/jadyer",
                              "my name is jadyer",
                              "I am a Java Developer",
@@ -202,7 +202,7 @@ import org.apache.lucene.util.OpenBitSet;
  * 而DocIdSet中每一条记录的索引号与文档编号是一一对应的
  * 所以当DocIdSet中的记录为1时，则对应文档编号的Document就会被添加到TopDocs中，为0就会被过滤掉
  * -----------------------------------------------------------------------------------------------
- * Created by 玄玉<http://jadyer.cn/> on 2013/08/06 19:28.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/08/06 19:28.
  */
 public class MyFilter extends Filter {
     private static final long serialVersionUID = -8955061358165068L;

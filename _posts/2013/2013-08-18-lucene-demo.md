@@ -81,7 +81,7 @@ import org.apache.lucene.util.Version;
 /**
  * Lucene系列第01节之基础用法
  * 这里只需用到一个lucene-core-3.6.2.jar
- * Created by 玄玉<http://jadyer.cn/> on 2013/08/18 15:26.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/08/18 15:26.
  */
 public class LuceneHelloWord {
     private static final String PATH_OF_FILE = "myExample/01_file/";   //待索引文件的目录

@@ -62,7 +62,7 @@ eureka:
       enabled: true                           # 开启健康检查（依赖spring-boot-starter-actuator）
 ```
 
-关于续期、心跳、发呆时间的关系，详见上一篇文章中的有关分析：[http://jadyer.cn/2017/01/16/springcloud-eureka/](http://jadyer.cn/2017/01/16/springcloud-eureka/)
+关于续期、心跳、发呆时间的关系，详见上一篇文章中的有关分析：[https://jadyer.cn/2017/01/16/springcloud-eureka/](https://jadyer.cn/2017/01/16/springcloud-eureka/)
 
 > 注意：更改 Eureka Server 的更新频率将打破注册中心的的自我保护功能<br>
 　　　生产环境不建议自定义这些配置，详见[https://github.com/spring-cloud/spring-cloud-netflix/issues/373](https://github.com/spring-cloud/spring-cloud-netflix/issues/373)

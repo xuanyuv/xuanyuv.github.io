@@ -34,7 +34,7 @@ package com.jadyer.demo.mina.model;
  * 你好！！Hello World!!              //短信的内容
  * 上面每行的末尾使用ASCII的10（\n）作为换行符
  * ----------------------------------------------------------------------------
- * Created by 玄玉<http://jadyer.cn/> on 2012/10/19 11:21.
+ * Created by 玄玉<https://jadyer.cn/> on 2012/10/19 11:21.
  */
 public class SmsInfo {
     private String sender;
@@ -76,7 +76,7 @@ import java.nio.charset.Charset;
 
 /**
  * 服务端示例
- * Created by 玄玉<http://jadyer.cn/> on 2012/10/19 11:21.
+ * Created by 玄玉<https://jadyer.cn/> on 2012/10/19 11:21.
  */
 public class MyServer {
     public static void main(String[] args) throws IOException {
@@ -126,7 +126,7 @@ import java.nio.charset.Charset;
 
 /**
  * 客户端示例
- * Created by 玄玉<http://jadyer.cn/> on 2012/10/19 11:21.
+ * Created by 玄玉<https://jadyer.cn/> on 2012/10/19 11:21.
  */
 public class MyClient {
     public static void main(String[] args) {
@@ -176,7 +176,7 @@ import java.nio.charset.CharsetEncoder;
 
 /**
  * 自定义的编码器
- * Created by 玄玉<http://jadyer.cn/> on 2012/10/19 11:21.
+ * Created by 玄玉<https://jadyer.cn/> on 2012/10/19 11:21.
  */
 public class CmccSipcEncoder extends ProtocolEncoderAdapter {
     private final CharsetEncoder charsetEncoder;
@@ -281,7 +281,7 @@ import java.nio.charset.CharsetDecoder;
 
 /**
  * 自定义的解码器（适用于客户端发送的数据是一次全部发送完整的情况）
- * Created by 玄玉<http://jadyer.cn/> on 2012/10/19 11:21.
+ * Created by 玄玉<https://jadyer.cn/> on 2012/10/19 11:21.
  */
 public class CmccSipcDecoder extends CumulativeProtocolDecoder {
     private final CharsetDecoder charsetDecoder;
@@ -416,7 +416,7 @@ import java.nio.charset.CharsetDecoder;
 
 /**
  * 自定义的解码器（适用于客户端发送的数据被拆分为多次后发送的情况）
- * Created by 玄玉<http://jadyer.cn/> on 2012/10/19 11:21.
+ * Created by 玄玉<https://jadyer.cn/> on 2012/10/19 11:21.
  */
 public class CmccSipcDecoder extends CumulativeProtocolDecoder {
     private final CharsetDecoder charsetDecoder;

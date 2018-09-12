@@ -30,7 +30,7 @@ import org.apache.lucene.analysis.tokenattributes.TypeAttribute;
 
 /**
  * Lucene系列第05节之自定义停用词和同义词分词器
- * Created by 玄玉<http://jadyer.cn/> on 2013/08/18 18:10.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/08/18 18:10.
  */
 public class HelloCustomAnalyzer {
     /**
@@ -95,7 +95,7 @@ import org.apache.lucene.util.Version;
 
 /**
  * 自定义的停用词分词器（这里主要用来过滤忽略大小写的指定的字符串）
- * Created by 玄玉<http://jadyer.cn/> on 2013/08/05 13:55.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/08/05 13:55.
  */
 public class MyStopAnalyzer extends Analyzer {
     //存放停用的分词信息
@@ -144,7 +144,7 @@ import com.chenlb.mmseg4j.analysis.MMSegTokenizer;
 
 /**
  * 自定义的同义词分词器
- * Created by 玄玉<http://jadyer.cn/> on 2013/08/05 17:11.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/08/05 17:11.
  */
 public class MySynonymAnalyzer extends Analyzer {
     @Override
@@ -159,7 +159,7 @@ public class MySynonymAnalyzer extends Analyzer {
 
 /**
  * 自定义的TokenFilter
- * Created by 玄玉<http://jadyer.cn/> on 2013/08/05 17:11.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/08/05 17:11.
  */
 class MySynonymTokenFilter extends TokenFilter {
     private CharTermAttribute cta;            //用于获取TokenStream中的语汇单元

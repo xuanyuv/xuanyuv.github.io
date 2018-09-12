@@ -161,17 +161,16 @@ import com.jadyer.model.User;
 
 /**
  * 借助SAAJ创建SOAP消息并访问服务
- * @see SAAJ(SOAP with Attachments API for Java)是JAXM(Java API for XML Messaging)的一个分支
- * @see ----------------------------------------------------------------------------------------------
- * @see Web服务的基础是以标准格式发送和接收消息,这种标准格式是SOAP
- * @see 使用SAAJ可以手工生成SOAP消息,并发送给服务端,同样可以接收服务端响应
- * @see ----------------------------------------------------------------------------------------------
- * @see 这里推荐一个WebServices必用的一个免费工具soapUI(http://www.soapui.org/)
- * @see 通过它new一个soapUI Project后,我们可以清晰的看到需要发送的SOAP消息和响应的SOAP消息格式
- * @see 这对于理解本文,有莫大的帮助..类似的还有Apache的TCPMon(http://ws.apache.org/commons/tcpmon/)
- * @see ----------------------------------------------------------------------------------------------
- * @create Mar 18, 2013 2:47:18 PM
- * @author 玄玉<http://jadyer.cn/>
+ * SAAJ(SOAP with Attachments API for Java)是JAXM(Java API for XML Messaging)的一个分支
+ * ----------------------------------------------------------------------------------------------
+ * Web服务的基础是以标准格式发送和接收消息,这种标准格式是SOAP
+ * 使用SAAJ可以手工生成SOAP消息,并发送给服务端,同样可以接收服务端响应
+ * ----------------------------------------------------------------------------------------------
+ * 这里推荐一个WebServices必用的一个免费工具soapUI(http://www.soapui.org/)
+ * 通过它new一个soapUI Project后,我们可以清晰的看到需要发送的SOAP消息和响应的SOAP消息格式
+ * 这对于理解本文,有莫大的帮助..类似的还有Apache的TCPMon(http://ws.apache.org/commons/tcpmon/)
+ * ----------------------------------------------------------------------------------------------
+ * Created by 玄玉<https://jadyer.cn/> on 2013/05/18 14:47.
  */
 public class TestSAAJ {
     //Web服务端公布的服务地址
@@ -181,29 +180,29 @@ public class TestSAAJ {
 
     /**
      * 以MESSAGE方式与Web服务交互SOAP消息
-     * @see 这里请求的是Web服务端login()方法
-     * @see ---------------------------------------------------------------------------------
-     * @see 下面是请求的SOAP消息
-     * @see <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
-     * @see     <SOAP-ENV:Header />
-     * @see     <SOAP-ENV:Body>
-     * @see         <nn:login xmlns:nn="http://service.jadyer.com/">
-     * @see             <username>admin</username>
-     * @see             <password>222222</password>
-     * @see         </nn:login>
-     * @see     </SOAP-ENV:Body>
-     * @see </SOAP-ENV:Envelope>
-     * @see ---------------------------------------------------------------------------------
-     * @see 下面是响应的SOAP消息
-     * @see <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
-     * @see     <S:Header />
-     * @see     <S:Body>
-     * @see         <ns2:loginResponse xmlns:ns2="http://service.jadyer.com/">
-     * @see             <loginResult>用户[admin]登录成功</loginResult>
-     * @see         </ns2:loginResponse>
-     * @see     </S:Body>
-     * @see </S:Envelope>
-     * @see ---------------------------------------------------------------------------------
+     * 这里请求的是Web服务端login()方法
+     * ---------------------------------------------------------------------------------
+     * 下面是请求的SOAP消息
+     * <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+     *     <SOAP-ENV:Header />
+     *     <SOAP-ENV:Body>
+     *         <nn:login xmlns:nn="http://service.jadyer.com/">
+     *             <username>admin</username>
+     *             <password>222222</password>
+     *         </nn:login>
+     *     </SOAP-ENV:Body>
+     * </SOAP-ENV:Envelope>
+     * ---------------------------------------------------------------------------------
+     * 下面是响应的SOAP消息
+     * <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+     *     <S:Header />
+     *     <S:Body>
+     *         <ns2:loginResponse xmlns:ns2="http://service.jadyer.com/">
+     *             <loginResult>用户[admin]登录成功</loginResult>
+     *         </ns2:loginResponse>
+     *     </S:Body>
+     * </S:Envelope>
+     * ---------------------------------------------------------------------------------
      */
     private static void sendRequesetBySOAPMessage() throws Exception{
         /**
@@ -264,7 +263,7 @@ public class TestSAAJ {
 
     /**
      * 以MESSAGE方式与Web服务交互SOAP消息
-     * @see 这里请求的是Web服务端list()方法
+     * 这里请求的是Web服务端list()方法
      */
     private static void sendRequesetBySOAPMessageForList() throws Exception{
         SOAPMessage message = MessageFactory.newInstance().createMessage();
@@ -293,7 +292,7 @@ public class TestSAAJ {
 
     /**
      * 以PAYLOAD方式与Web服务交互SOAP消息
-     * @see 这里请求的是Web服务端addUser()方法
+     * 这里请求的是Web服务端addUser()方法
      */
     private static void sendRequesetByPAYLOAD() throws Exception{
         //JAXB编排

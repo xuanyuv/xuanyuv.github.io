@@ -145,7 +145,7 @@ skip-name-resolve
 8. 通过以上操作，若客户端仍无法连接MySQL，可尝试以下办法<br>
    修改`/etc/sysconfig/iptables`，增加一行：`-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT`<br>
    接着再执行`service iptables restart`命令重启防火墙即可，不需要重启Linux<br>
-   详细原理见：[http://jadyer.cn/2013/09/07/centos-config-develop/](http://jadyer.cn/2013/09/07/centos-config-develop/)
+   详细原理见：[https://jadyer.cn/2013/09/07/centos-config-develop/](https://jadyer.cn/2013/09/07/centos-config-develop/)
 
 ## 编译选项
 

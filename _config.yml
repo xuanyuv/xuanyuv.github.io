@@ -10,7 +10,7 @@ kramdown:
   syntax_highlighter: rouge
 
 # the base hostname & protocol for your site
-# 配合页面头部<link rel="canonical" href="http://jadyer.cn/2016/10/17/first-blog/">
+# 配合页面头部<link rel="canonical" href="https://jadyer.cn/2016/10/17/first-blog/">
 url: "https://jadyer.cn"
 # the subpath of your site, e.g. /blog
 baseurl: ""

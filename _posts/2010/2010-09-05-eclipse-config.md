@@ -61,7 +61,7 @@ Window-->preferences-->MyEclipse Enterprise Workbench-->File and Editors-->XML--
 ```
 /**
  * @create ${date} ${time}
- * @author 玄玉<http://jadyer.cn/>
+ * @author 玄玉<https://jadyer.cn/>
  */
 ```
 

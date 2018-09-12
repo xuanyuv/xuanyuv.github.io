@@ -28,7 +28,7 @@ import org.apache.solr.common.SolrInputDocument;
 
 /**
  * Solr系列第03节之高亮
- * Created by 玄玉<http://jadyer.cn/> on 2013/08/20 13:50.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/08/20 13:50.
  */
 public enum HelloSolrJHighLighter {
     INSTANCE;
@@ -51,7 +51,7 @@ public enum HelloSolrJHighLighter {
      * --------------------------------------------------------------------------------------------------
      * 这里之所以没有硬编码指定my_title和my_content的中文分词器
      * 是由于schema.xml中在定义这俩<field>时已通过type属性指定了中文分词器
-     * 关于指定中文分词器的具体方法，详见http://jadyer.cn/2013/08/20/solr-search-chinese-analyzer/
+     * 关于指定中文分词器的具体方法，详见https://jadyer.cn/2013/08/20/solr-search-chinese-analyzer/
      * --------------------------------------------------------------------------------------------------
      */
     private void addIndex(){
@@ -119,7 +119,7 @@ public enum HelloSolrJHighLighter {
      * 测试一下SolrJ的高亮效果
      * --------------------------------------------------------------------------------
      * 测试前记得启动Web服务器
-     * 关于Solr与Tomcat的整合，详见http://jadyer.cn/2013/08/20/solr-tomcat/
+     * 关于Solr与Tomcat的整合，详见https://jadyer.cn/2013/08/20/solr-tomcat/
      * --------------------------------------------------------------------------------
      */
     public static void main(String[] args) {

@@ -41,7 +41,7 @@ import com.jadyer.custom.MyQueryParser;
 
 /**
  * Lucene系列第09节之高级搜索之QueryParser
- * Created by 玄玉<http://jadyer.cn/> on 2013/08/19 14:07.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/08/19 14:07.
  */
 public class AdvancedSearch {
     private Directory directory;
@@ -53,7 +53,7 @@ public class AdvancedSearch {
         /** 文件名 */
         String[] names = {"Michael.java", "Scofield.ini", "Tbag.txt", "Jack", "Jade", "Jadyer"};
         /** 文件内容 */
-        String[] contents = {"my blog is http://jadyer.cn/",
+        String[] contents = {"my blog is https://jadyer.cn/",
                              "my github is https://github.com/jadyer",
                              "my name is jadyer",
                              "I am a Java Developer",
@@ -205,7 +205,7 @@ import org.apache.lucene.util.Version;
  * 思路就是继承QueryParser类后重载getRangeQuery()方法
  * 再针对数字和日期的'域'，做特殊处理（使用NumericRangeQuery.newIntRange()方法来搜索）
  * --------------------------------------------------------------------------------------------------
- * Created by 玄玉<http://jadyer.cn/> on 2013/08/06 16:13.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/08/06 16:13.
  */
 public class MyQueryParser extends QueryParser {
     public MyQueryParser(Version matchVersion, String f, Analyzer a) {

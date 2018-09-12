@@ -53,7 +53,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * LinkedBlockingQueue模拟的生产者消费者
- * Created by 玄玉<http://jadyer.cn/> on 2013/11/02 17:40.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/11/02 17:40.
  */
 public class ProducerConsumer {
     public static void main(String[] args) {

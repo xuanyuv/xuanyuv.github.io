@@ -116,7 +116,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by 玄玉<http://jadyer.cn/> on 2014/08/06 09:58.
+ * Created by 玄玉<https://jadyer.cn/> on 2014/08/06 09:58.
  */
 @Controller
 @RequestMapping("/demo")

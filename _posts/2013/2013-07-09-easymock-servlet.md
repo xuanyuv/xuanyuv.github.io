@@ -11,7 +11,7 @@ excerpt: 演示了EasyMock测试Servlet的用法。
 {:toc}
 
 
-实际应该用`Cactus`框架来测试`Servlet`，详见我的另一篇博文：[http://jadyer.cn/2013/07/11/cactus-servlet/](http://jadyer.cn/2013/07/11/cactus-servlet/)
+实际应该用`Cactus`框架来测试`Servlet`，详见我的另一篇博文：[https://jadyer.cn/2013/07/11/cactus-servlet/](https://jadyer.cn/2013/07/11/cactus-servlet/)
 
 这里只是用`EasyMock`模拟`HttpServletRequest`等对象
 
@@ -75,7 +75,7 @@ import com.jadyer.model.User;
 /**
  * EasyMock测试Servlet
  * 虽然示例代码是一个WebProject，但不需配置web.xml，因为EasyMock用不上它
- * Created by 玄玉<http://jadyer.cn/> on 2013/07/09 14:30.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/07/09 14:30.
  */
 public class LoginServletTest {
     private LoginServlet servlet;

@@ -390,7 +390,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * http://cloud.spring.io/spring-cloud-static/Camden.SR3/#_registering_with_eureka
  * https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka
  * --------------------------------------------------------------------------------------------
- * Created by 玄玉<http://jadyer.cn/> on 2017/1/9 16:00.
+ * Created by 玄玉<https://jadyer.cn/> on 2017/1/9 16:00.
  */
 @EnableEurekaClient
 @SpringBootApplication
@@ -447,4 +447,4 @@ public class DemoController {
 
 属性热加载前，都要手工调用各个应用的刷新接口，即便使用 Git 仓库的 Webhooks，维护起来也够费劲的
 
-解决办法也有，详见下一篇文章《[SpringCloud系列第09节之消息总线Bus](http://jadyer.cn/2017/04/19/springcloud-bus/)》中通过消息总线的方式，实现集群的自动更新
+解决办法也有，详见下一篇文章《[SpringCloud系列第09节之消息总线Bus](https://jadyer.cn/2017/04/19/springcloud-bus/)》中通过消息总线的方式，实现集群的自动更新

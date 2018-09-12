@@ -274,7 +274,7 @@ import com.jadyer.model.User;
  * spring-jdbc-3.1.4.RELEASE
  * spring-orm-3.1.4.RELEASE
  * spring-tx-3.1.4.RELEASE
- * Created by 玄玉<http://jadyer.cn/> on 2011/04/06 19:56.
+ * Created by 玄玉<https://jadyer.cn/> on 2011/04/06 19:56.
  */
 public class IbatisSpringTest {
     private static UserDaoImpl userDao;

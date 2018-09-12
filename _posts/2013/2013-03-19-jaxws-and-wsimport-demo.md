@@ -23,22 +23,21 @@ import javax.jws.WebService;
 
 /**
  * SEI(Service Endpoint Interface)
- * @see -------------------------------------------------------------------------------------------
- * @see 这里使用类级别注解@WebService是为了标注该接口的方法将公开为Web服务
- * @see 它默认会公开所有方法,若想屏蔽某个方法,可以使用@Method的exclude=true属性
- * @see -------------------------------------------------------------------------------------------
- * @see 默认的生成的wsdl中方法参数名是arg0,arg1,返回值是return
- * @see 这样很不便于观察,所以我们可以使用@WebResult和@WebParam注解
- * @see @WebResult和@WebParam可以指定生成的wsdl文件中的方法参数名和返回值
- * @see -------------------------------------------------------------------------------------------
- * @see 这里要注意:如果一个WebServices服务已经发布,再来修改服务细节,如方法参数名和返回值
- * @see 尽管没有修改方法内部逻辑,但再重新发布完服务后,相应的客户端也要做修改,如重新wsimport本地类
- * @see 这是因为wsdl文件已被修改(尽管改的只是参数名字),而客户端所请求的wsdl与新wsdl在内容上是不同的
- * @see 若客户端未重新wsimport,会导致请求服务成功(实际是假象的成功)但得不到正确的结果
- * @see 所以服务一旦发布就不要轻易修改
- * @see -------------------------------------------------------------------------------------------
- * @create Mar 17, 2013 12:11:24 AM
- * @author 玄玉<http://jadyer.cn/>
+ * -------------------------------------------------------------------------------------------
+ * 这里使用类级别注解@WebService是为了标注该接口的方法将公开为Web服务
+ * 它默认会公开所有方法，若想屏蔽某个方法，可以使用@Method的exclude=true属性
+ * -------------------------------------------------------------------------------------------
+ * 默认的生成的wsdl中方法参数名是arg0，arg1，返回值是return
+ * 这样很不便于观察，所以我们可以使用@WebResult和@WebParam注解
+ * @WebResult和@WebParam可以指定生成的wsdl文件中的方法参数名和返回值
+ * -------------------------------------------------------------------------------------------
+ * 这里要注意：如果一个WebServices服务已经发布，再来修改服务细节，如方法参数名和返回值
+ * 尽管没有修改方法内部逻辑，但再重新发布完服务后，相应的客户端也要做修改，如重新wsimport本地类
+ * 这是因为wsdl文件已被修改（尽管改的只是参数名字），而客户端所请求的wsdl与新wsdl在内容上是不同的
+ * 若客户端未重新wsimport，会导致请求服务成功（实际是假象的成功）但得不到正确的结果
+ * 所以服务一旦发布就不要轻易修改
+ * -------------------------------------------------------------------------------------------
+ * Created by 玄玉<https://jadyer.cn/> on 2013/05/17 12:11.
  */
 @WebService
 public interface HelloService {
@@ -58,14 +57,13 @@ import javax.jws.WebService;
 
 /**
  * SIB(Service Implemention Bean)
- * @see -----------------------------------------------------------------------------------------------
- * @see 如果该实现类还实现了其它接口,那么就需要在@WebService上使用endpointInterface指定SEI
- * @see 如@WebService(endpointInterface="com.jadyer.service.HelloService")
- * @see 有一个比较奇怪的现象是,本例中如果没有加endpointInterface属性,那么SEI中的@WebParam会失效
- * @see 这是因为endpointInterface属性的作用之一是让SEI中配置的注解生效,不过我们也可以在SIB中直接注解
- * @see -----------------------------------------------------------------------------------------------
- * @create Mar 17, 2013 12:11:24 AM
- * @author 玄玉<http://jadyer.cn/>
+ * -----------------------------------------------------------------------------------------------
+ * 如果该实现类还实现了其它接口，那么就需要在@WebService上使用endpointInterface指定SEI
+ * 如@WebService(endpointInterface="com.jadyer.service.HelloService")
+ * 有一个比较奇怪的现象是，本例中如果没有加endpointInterface属性，那么SEI中的@WebParam会失效
+ * 这是因为endpointInterface属性的作用之一是让SEI中配置的注解生效，不过我们也可以在SIB中直接注解
+ * -----------------------------------------------------------------------------------------------
+ * Created by 玄玉<https://jadyer.cn/> on 2013/05/17 12:11.
  */
 @WebService(endpointInterface="com.jadyer.service.HelloService")
 public class HelloServiceImpl implements HelloService {
@@ -96,19 +94,18 @@ import com.jadyer.service.HelloServiceImpl;
 
 /**
  * 基于JAX-WS的WebServices入门
- * @see JAX-WS(Java API for XML Webservices)
- * @see -------------------------------------------------------------------------------------------------
- * @see 两个常见的名词SEI和SIB
- * @see SEI(Service Endpoint Interface)--服务提供的接口,本例中指的就是HelloService.java
- * @see SIB(Service Implemention Bean)---服务实现的Bean,本例中指的就是HelloServiceImpl.java
- * @see -------------------------------------------------------------------------------------------------
- * @create Mar 16, 2013 10:04:52 PM
- * @author 玄玉<http://jadyer.cn/>
+ * JAX-WS(Java API for XML Webservices)
+ * -------------------------------------------------------------------------------------------------
+ * 两个常见的名词SEI和SIB
+ * SEI(Service Endpoint Interface)--服务提供的接口，本例中指的就是HelloService.java
+ * SIB(Service Implemention Bean)---服务实现的Bean，本例中指的就是HelloServiceImpl.java
+ * -------------------------------------------------------------------------------------------------
+ * Created by 玄玉<https://jadyer.cn/> on 2013/05/16 22:04.
  */
 public class MainApp {
     public static void main(String[] args) {
-        //发布服务,需指定发布的服务地址和实现类
-        //运行该类后,服务就发布出去了,然后浏览器访问http://127.0.0.1:8888/myHelloService?wsdl即可
+        //发布服务，需指定发布的服务地址和实现类
+        //运行该类后，服务就发布出去了，然后浏览器访问http://127.0.0.1:8888/myHelloService?wsdl即可
         Endpoint.publish("http://127.0.0.1:8888/myHelloService", new HelloServiceImpl());
     }
 }
@@ -166,14 +163,15 @@ import com.jadyer.service.HelloServiceImplService;
 
 /**
  * 借助wsimport实现WebServices客户端
- * @see wsimport是JDK6提供的工具,用于根据服务端发布的wsdl文件来生成客户端调用服务端时所需的*.java和*.class文件
- * @see wsimport -d D:/Download/ -keep -verbose http://127.0.0.1:8888/myHelloService?wsdl
- * @see '-d'--------指明生成的文件所存放的目录,注意该参数值对应的目录要存在,否则会报错
- * @see '-keep'-----指明生成class文件的同时也生成对应的java文件,否则它只会生成class文件
- * @see '-verbose'--指明生成文件时在控制台打印详细信息
- * @see '-p'--------指明生成文件的所属包名,默认为按照wsdl文件的targetNamespace属性来生成包名
- * @create Mar 16, 2013 10:49:18 PM
- * @author 玄玉<http://jadyer.cn/>
+ * --------------------------------------------------------------------------------------------------------------
+ * wsimport是JDK6提供的工具，用于根据服务端发布的wsdl文件来生成客户端调用服务端时所需的*.java和*.class文件
+ * wsimport -d D:/Download/ -keep -verbose http://127.0.0.1:8888/myHelloService?wsdl
+ * '-d'--------指明生成的文件所存放的目录，注意该参数值对应的目录要存在，否则会报错
+ * '-keep'-----指明生成class文件的同时也生成对应的java文件，否则它只会生成class文件
+ * '-verbose'--指明生成文件时在控制台打印详细信息
+ * '-p'--------指明生成文件的所属包名，默认为按照wsdl文件的targetNamespace属性来生成包名
+ * --------------------------------------------------------------------------------------------------------------
+ * Created by 玄玉<https://jadyer.cn/> on 2013/05/16 22:49.
  */
 public class ClientApp {
     public static void main(String[] args) {

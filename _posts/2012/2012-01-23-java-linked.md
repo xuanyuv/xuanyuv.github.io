@@ -52,7 +52,7 @@ package com.jadyer.demo;
 
 /**
  * 模拟单向链表
- * Created by 玄玉<http://jadyer.cn/> on 2012/01/23 19:55.
+ * Created by 玄玉<https://jadyer.cn/> on 2012/01/23 19:55.
  */
 class NodeOneWay {
     String data;     //存放节点数据本身
@@ -72,7 +72,7 @@ class NodeOneWay {
  * 通过node11获得node22的data属性值为：node22_data
  * 通过node11获得node33的data属性值为：node33_data
  * --------------------------------------------------------------
- * Created by 玄玉<http://jadyer.cn/> on 2012/01/23 19:56.
+ * Created by 玄玉<https://jadyer.cn/> on 2012/01/23 19:56.
  */
 public class NodeOneWayTest {
     public static void main(String[] args) {
@@ -114,7 +114,7 @@ package com.jadyer.demo;
 
 /**
  * 模拟双向循环链表
- * Created by 玄玉<http://jadyer.cn/> on 2012/01/23 20:16.
+ * Created by 玄玉<https://jadyer.cn/> on 2012/01/23 20:16.
  */
 class NodeTwoWay {
     NodeTwoWay previous; //存放指向前一个节点的引用
@@ -135,7 +135,7 @@ class NodeTwoWay {
  * 通过node11获得node22的data属性值为：node22_data
  * 通过node11获得node33的data属性值为：node33_data
  * --------------------------------------------------------------
- * Created by 玄玉<http://jadyer.cn/> on 2012/01/23 20:21.
+ * Created by 玄玉<https://jadyer.cn/> on 2012/01/23 20:21.
  */
 public class NodeTwoWayTest {
     public static void main(String[] args) {

@@ -46,8 +46,7 @@ import com.jadyer.dao.HelloDaoJDBC;
  * 1、SIB中直接使用@Resource注入javax.xml.ws.WebServiceContext
  * 2、使用wsc.getMessageContext().get(SOAPMessageContext.SERVLET_REQUEST)获取HttpServletRequest
  *    但前提是SIB已被Spring所管理...本例中的明显特征是SIB上使用了@Service注解
- * @create May 27, 2013 6:10:50 PM
- * @author 玄玉<http://jadyer.cn/>
+ * Created by 玄玉<https://jadyer.cn/> on 2013/05/27 18:10.
  */
 @WebService(serviceName="myHelloService",
             targetNamespace="http://blog.csdn.net/jadyer",
@@ -413,7 +412,7 @@ public class ClientService {
     <bean id="myServerWebService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
         <!--
         记得首先还是要使用wsimport生成客户端代码，然后将接口类全路径写在serviceInterface的值里
-        关于wsimport的使用，可参考http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/
+        关于wsimport的使用，可参考https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/
         wsimport -d D:/Download/ -keep -verbose http://127.0.0.1:8088/jaxws-spring/myService?wsdl
         -->
         <property name="serviceInterface" value="net.csdn.blog.jadyer.HelloService"/>
@@ -430,7 +429,7 @@ public class ClientService {
 
 最后是客户端调用服务端的模拟入口`ClientApp.java`
 
-它是通过wsimport生成的，关于其用法，可参考[http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/](http://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/)
+它是通过wsimport生成的，关于其用法，可参考[https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/](https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/)
 
 ```java
 package com.jadyer.client;

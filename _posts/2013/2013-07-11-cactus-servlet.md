@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 
     public boolean login(HttpServletRequest request){
         String loginUser = (String)request.getSession().getAttribute("loginUser");
-        if(null==loginUser || !"http://jadyer.cn/".equals(loginUser)){
+        if(null==loginUser || !"https://jadyer.cn/".equals(loginUser)){
             System.out.println("用户[" + loginUser + "]登录失败");
             return false;
         }
@@ -113,7 +113,7 @@ import com.meterware.httpunit.WebResponse;
  * nekoHTML.jar和xercesMinimal.jar均可从下载到的nekohtml-1.9.18.zip找到
  * nekoHTML的下载地址为http://sourceforge.net/projects/nekohtml/files/
  * ----------------------------------------------------------------------------------------------------
- * Created by 玄玉<http://jadyer.cn/> on 2013/07/11 10:49.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/07/11 10:49.
  */
 public class LoginServletTest extends ServletTestCase {
     private LoginServlet loginServlet;
@@ -134,10 +134,10 @@ public class LoginServletTest extends ServletTestCase {
         //获取GET参数
         Assert.assertEquals(request.getParameter("username"), "jadyer");
         //登录失败
-        //session.setAttribute("loginUser", "玄玉<http://jadyer.cn/>");
+        //session.setAttribute("loginUser", "玄玉<https://jadyer.cn/>");
         Assert.assertFalse(loginServlet.login(request));
         //登录成功
-        session.setAttribute("loginUser", "http://jadyer.cn/");
+        session.setAttribute("loginUser", "https://jadyer.cn/");
         Assert.assertTrue(loginServlet.login(request));
     }
 
@@ -160,7 +160,7 @@ public class LoginServletTest extends ServletTestCase {
 
 除公共部分的两个文件外，只需要写一个`JUnit3.8`的测试套件，就可以了
 
-**Tips：**关于JUnit测试套件，可参考我的另一篇博文[http://jadyer.cn/2010/11/17/junit-suite-param/](http://jadyer.cn/2010/11/17/junit-suite-param/)
+**Tips：**关于JUnit测试套件，可参考我的另一篇博文[https://jadyer.cn/2010/11/17/junit-suite-param/](https://jadyer.cn/2010/11/17/junit-suite-param/)
 
 ```java
 package com.jadyer.servlet;
@@ -171,7 +171,7 @@ import org.apache.cactus.extension.jetty.Jetty5xTestSetup;
 /**
  * 我们要在beginXxx之前启动Jetty，而Cactus不支持JUnit4中的@BeforeClass
  * 所以为了实现类似功能，我们就借助JUnit3.8的测试套件，最后测试时直接运行此测试套件即可
- * Created by 玄玉<http://jadyer.cn/> on 2013/07/11 10:49.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/07/11 10:49.
  */
 public class TestAllUseJetty {
     public static Test suite(){

@@ -23,7 +23,7 @@ excerpt: 记录了科目二考试通过的难忘瞬间。
 
 考试结果：同车共 4 名学员，除了我一杆过得了 100 分，其余 3 人都挂了
 
-科目三记录：[http://jadyer.cn/2016/03/03/car-driver-exam-third/](http://jadyer.cn/2016/03/03/car-driver-exam-third/)
+科目三记录：[https://jadyer.cn/2016/03/03/car-driver-exam-third/](https://jadyer.cn/2016/03/03/car-driver-exam-third/)
 
 
 ## 合场

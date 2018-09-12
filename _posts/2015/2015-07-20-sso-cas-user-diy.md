@@ -60,7 +60,7 @@ import com.jadyer.sso.model.User;
 
 /**
  * 自定义的返回给客户端相关信息
- * Created by 玄玉<http://jadyer.cn/> on 2015/07/18 17:52.
+ * Created by 玄玉<https://jadyer.cn/> on 2015/07/18 17:52.
  */
 @Component(value="attributeRepository")
 public class UserStubPersonAttributeDao extends StubPersonAttributeDao {
@@ -74,7 +74,7 @@ public class UserStubPersonAttributeDao extends StubPersonAttributeDao {
             attributes.put("userId", Collections.singletonList((Object)user.getUsercode()));
             attributes.put("username", Collections.singletonList((Object)user.getUsername()));
             attributes.put("usernamePlain", Collections.singletonList((Object)URLEncoder.encode(user.getUsernamePlain(), "UTF-8")));
-            attributes.put("blogURL", Collections.singletonList((Object)"http://jadyer.cn/"));
+            attributes.put("blogURL", Collections.singletonList((Object)"https://jadyer.cn/"));
             attributes.put("blogger", Collections.singletonList((Object)URLEncoder.encode("玄玉", "UTF-8")));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

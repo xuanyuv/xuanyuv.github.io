@@ -234,7 +234,7 @@ import org.jasig.cas.authentication.RememberMeUsernamePasswordCredential;
 
 /**
  * 自定义的接收登录验证码的实体类
- * Created by 玄玉<http://jadyer.cn/> on 2015/07/14 16:28.
+ * Created by 玄玉<https://jadyer.cn/> on 2015/07/14 16:28.
  */
 //public class UsernamePasswordCaptchaCredential extends UsernamePasswordCredential {
 public class UsernamePasswordCaptchaCredential extends RememberMeUsernamePasswordCredential {

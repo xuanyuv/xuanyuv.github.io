@@ -163,7 +163,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User list(String username) {
-        userDao.load("http://jadyer.cn/");
+        userDao.load("https://jadyer.cn/");
         userDao.delete(username);
         return userDao.load(username);
     }
@@ -212,7 +212,7 @@ import com.jadyer.service.impl.UserServiceImpl;
 
 /**
  * EasyMock测试普通Service
- * Created by 玄玉<http://jadyer.cn/> on 2013/07/09 14:15.
+ * Created by 玄玉<https://jadyer.cn/> on 2013/07/09 14:15.
  */
 public class UserServiceTest {
     /**
@@ -252,7 +252,7 @@ public class UserServiceTest {
         //若UserServiceImpl.getTwice()中调用两次load()传入参数都是jadyer
         //那么下面这两次的expect()操作便可写成一行
         //EasyMock.expect(dao.load("jadyer")).andReturn(user).times(2);
-        EasyMock.expect(dao.load("http://jadyer.cn/")).andReturn(user);
+        EasyMock.expect(dao.load("https://jadyer.cn/")).andReturn(user);
         //expectLastCall()是用来操作没有返回值的方法
         //此时要先执行dao中没有返回值的方法，然后再调用expectLastCall()方法
         dao.delete("jadyer");
