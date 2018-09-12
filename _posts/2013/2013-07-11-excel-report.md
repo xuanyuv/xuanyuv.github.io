@@ -230,20 +230,10 @@ public enum ExcelReport {
     public void writeToFile(String filepath){
         this.insertSerialNo();
         this.replaceConstantData();
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(filepath);
+        try (FileOutputStream fos = new FileOutputStream(filepath)) {
             wb.write(fos);
         } catch (Exception e) {
             throw new RuntimeException("Workbook写入文件失败，堆栈轨迹如下", e);
-        } finally {
-            if(null != fos){
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 }
