@@ -26,10 +26,11 @@ linkedIn_username: myjadyer
 github_username: jadyer
 email: jadyer@yeah.net
 
-# 评论功能（指定多说、网易云跟帖、Disqus的short_name）
+# 评论功能（多说、网易云跟帖、Disqus、Gitment）
 # disqus_shortname: jadyer
 # duoshuo_shortname: jadyer
 # wangyi_shortname: da96aa66335742ce9b5fac10a208f02d
+gitment_clientid: 2c359d0b86c2ee95e8e2
 
 # 统计功能（指定Baidu、Google的统计ID）
 # google_analytics_id: UA-12345678-9

@@ -1,3 +1,25 @@
+<!-- Gitment：https://github.com/settings/profile---Developer settings---OAuth Apps -->
+{% if site.gitment_clientid %}
+<div id="container"></div>
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    owner: 'jadyer',
+    repo: 'jadyer.github.io',
+    oauth: {
+        client_id: '{{site.gitment_clientid}}',
+        client_secret: '5031204739b1762359fe04b4a79951cc80531d61',
+    },
+})
+gitment.render('container')
+</script>
+{% endif %}
+
 <!-- 网易云跟帖：https://gentie.163.com -->
 {% if site.wangyi_shortname %}
 <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
