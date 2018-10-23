@@ -13,73 +13,34 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 
 > 本文所列配置项，已适配最新版：ideaIC-2018.2.5
 
-## 插件
+## 快捷键
 
-### Idea 2016.2 Icon Pack
+ * 自动补全：Alt + 回車
+ * 快速输入main函数：键入 main 再按 Ctrl+J 键（或者键入 psvm 再按 Tab 键）
+ * 快速输入System.out.println：键入 sout 再按 Tab 键（对应Eclipse中的syso）
+ * 快速生成普通for循环： 键入 fori 再按 Tab 键或 Ctrl+J 键
+ * 快速生成foreach循环：键入 iter 再按 Tab 键或 Ctrl+J 键
+ * 查询某方法被其它地方调用：Ctrl+Alt+H（其实：Alt + F7 更好用）
+ * 定位文件或直接定位某一行：Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，如 `LoanHelper:22`
+ * 合并develop分支到master：master分支上工程上右键---Git---Repository---Merge Changes---Branches to merge选择develop分支
+ * 常用快捷键：http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-introduce.html
+ * 缩进用Tab还是空格：http://ooxx.me/tabs-vs-spaces.orz
+
+## 橘黄色图标插件
 
 idea 从 2016.3 开始，文件夹图标全部换成那种有点蓝色的，单独拿出来看上去有点高科技，放在一起实则暴丑的图标
 
 对于习惯之前版本的橘黄色图标的人来说，可以用这个 Idea 2016.2 Icon Pack 插件来恢复，目前最新版为 v3.2
 
-插件介绍见：[https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack](https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack)
+插件介绍见：https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack
 
-这是 v3.2 的官方下载地址：[https://plugins.jetbrains.com/files/7285/47285/Idea11Icons.jar](https://plugins.jetbrains.com/files/7285/47285/Idea11Icons.jar)
+这是 v3.2 的官方下载地址：https://plugins.jetbrains.com/files/7285/47285/Idea11Icons.jar
 
-这是 v3.1.1 的我备份的地址：[http://oirr30q6q.bkt.clouddn.com/jadyer/idea/Idea11Icons_v3.1.1.jar](http://oirr30q6q.bkt.clouddn.com/jadyer/idea/Idea11Icons_v3.1.1.jar)
+这是 v3.1.1 的我备份的地址：http://oirr30q6q.bkt.clouddn.com/jadyer/idea/Idea11Icons_v3.1.1.jar
 
 安装时选择 Install plugin from disk... 再重启 idea 就会看到经典的橘黄色图标啦
 
-
-## 快捷键
-
-### 自动补全
-
-Alt + 回車
-
-### 合并develop分支到master
-
-master分支上工程上右键---Git---Repository---Merge Changes---Branches to merge选择develop分支
-
-合并完成后，若有冲突或替换的修改，idea会列出来，最后再 `Ctrl+Shift+K` 把合并后的代码push到master
-
-### 查询某方法被其它地方调用
-
-Ctrl+Alt+H（其实：Alt + F7 更好用）
-
-### 定位文件或直接定位某一行
-
-Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，如 `LoanHelper:22`
-
-### 快速输入main函数
-
-键入 main 再按 Ctrl+J 键（或者键入 psvm 再按 Tab 键）
-
-### 快速输入System.out.println
-
-键入 sout 再按 Tab 键（对应Eclipse中的syso）
-
-### 快速生成普通for循环
-
-键入 fori 再按 Tab 键或 Ctrl+J 键
-
-### 快速生成普通for-each循环
-
-键入 iter 再按 Tab 键或 Ctrl+J 键
-
-另附两篇文章：[常用快捷键](http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-introduce.html)　和　[缩进, Tab 还是空格?](http://ooxx.me/tabs-vs-spaces.orz)
-
-
 ## 首次运行前配置
-
-### idea64.exe需要JDK8
-
-若当前安装的是JDK7，idea201611版在启动 idea64.exe 时会提示需要 JDK8 来运行它
-
-安装 JDK8 之后，在我的电脑---右键---高级---系统变量---增加一个名为 `IDEA_JDK_64` 的系统变量
-
-`IDEA_JDK_64=D:\Develop\Java\jdk1.8.0_77`，接着便可直接启动idea，**不需要 path 中增加 IDEA_JDK_64**
-
-关于 idea64.exe 的更详细介绍见[http://www.iflym.com/index.php/code/201404190001.html](http://www.iflym.com/index.php/code/201404190001.html)
 
 ### idea64.exe.vmoptions
 
@@ -115,7 +76,7 @@ Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，�
 
 导致不能自动输出后面的日志，这时可以禁用该值或增大 `idea.cycle.buffer.size=1024` 的配置
 
-## 欢迎窗口下的配置
+## 欢迎窗口的配置
 
 ### 设置JDK
 
@@ -445,3 +406,13 @@ Would you like to continue?
 一般建议点击 Invalidate and Restart，这样会清除的比较干净
 
 **注意**：若项目未加入版本控制，而又需要项目文件的历史更改记录，那么最好备份下 idea.properties 文件中的 ${idea.system.path}\LocalHistory\ 目录
+
+### idea64.exe需要JDK8
+
+若当前安装的是JDK7，idea201611版在启动 idea64.exe 时会提示需要 JDK8 来运行它
+
+安装 JDK8 之后，在我的电脑---右键---高级---系统变量---增加一个名为 `IDEA_JDK_64` 的系统变量
+
+`IDEA_JDK_64=D:\Develop\Java\jdk1.8.0_77`，接着便可直接启动idea，**不需要 path 中增加 IDEA_JDK_64**
+
+关于 idea64.exe 的更详细介绍见[http://www.iflym.com/index.php/code/201404190001.html](http://www.iflym.com/index.php/code/201404190001.html)
