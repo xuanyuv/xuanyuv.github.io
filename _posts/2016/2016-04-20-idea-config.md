@@ -11,21 +11,23 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 {:toc}
 
 
+> 本文所列配置项，已适配最新版：ideaIC-2018.2.5
+
 ## 插件
 
 ### Idea 2016.2 Icon Pack
 
 idea 从 2016.3 开始，文件夹图标全部换成那种有点蓝色的，单独拿出来看上去有点高科技，放在一起实则暴丑的图标
 
-对于习惯之前版本的橘黄色图标的人来说，可以用这个 Idea 2016.2 Icon Pack 插件来恢复，目前最新版为 v3.1.1
+对于习惯之前版本的橘黄色图标的人来说，可以用这个 Idea 2016.2 Icon Pack 插件来恢复，目前最新版为 v3.2
 
 插件介绍见：[https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack](https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack)
 
-这是 v3.1.1 的官方下载地址：[https://plugins.jetbrains.com/files/7285/31093/Idea11Icons.jar](https://plugins.jetbrains.com/files/7285/31093/Idea11Icons.jar)
+这是 v3.2 的官方下载地址：[https://plugins.jetbrains.com/files/7285/47285/Idea11Icons.jar](https://plugins.jetbrains.com/files/7285/47285/Idea11Icons.jar)
 
 这是 v3.1.1 的我备份的地址：[http://oirr30q6q.bkt.clouddn.com/jadyer/idea/Idea11Icons_v3.1.1.jar](http://oirr30q6q.bkt.clouddn.com/jadyer/idea/Idea11Icons_v3.1.1.jar)
 
-安装的时候，选择 Install plugin from disk... 然后重启 idea 就会看到经典的橘黄色图标啦
+安装时选择 Install plugin from disk... 再重启 idea 就会看到经典的橘黄色图标啦
 
 
 ## 快捷键
@@ -83,18 +85,19 @@ Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，�
 
 ```
 -server
--Xms1024m
--Xmx1024m
--XX:MaxPermSize=512m
--XX:ReservedCodeCacheSize=256m
+-Xms2048m
+-Xmx2048m
+-XX:MaxPermSize=1024m
+-XX:ReservedCodeCacheSize=512m
 -XX:+UseConcMarkSweepGC
 -XX:+UseCodeCacheFlushing
--XX:SoftRefLRUPolicyMSPerMB=50
+-XX:SoftRefLRUPolicyMSPerMB=100
 -ea
 -Dsun.io.useCanonCaches=false
 -Dsun.awt.keepWorkingSetOnMinimize=true
 -Djava.net.preferIPv4Stack=true
 -Djsse.enablesSNIExtension=false
+-Djdk.http.auth.tunneling.disabledSchemes=""
 -XX:+HeapDumpOnOutOfMemoryError
 -XX:-OmitStackTraceInFastThrow
 
@@ -112,19 +115,25 @@ Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，�
 
 导致不能自动输出后面的日志，这时可以禁用该值或增大 `idea.cycle.buffer.size=1024` 的配置
 
-## 欢迎窗口的配置
+## 欢迎窗口下的配置
 
 ### 设置JDK
 
 Configure---Project Defaults---Project Structure---Project Settings---Project---设置JDK和编译级别
 
+### 应用控制台颜色输出
+
+Configure---Project Defaults---Run Configurations---Templates---Application---VM options: -Dspring.output.ansi.enabled=ALWAYS
+
+对于 SpringBoot 那种 main(String[] args) 方法直接启动的（Maven或者Gradle与之类似，也是右上角配置JVM参数），控制台会彩色输出日志信息
+
 ### 黑色主题及避免中文乱码
 
 settings---Appearance & Behavior---Appearance---Theme---Darcula
 
-并勾选 Override default fonts by，同时选择 Microsoft YaHei UI 字体
+并勾选 Override default fonts by，同时使用 Microsoft YaHei UI 字体
 
-注意：此处若选了 Yahei Consolas Hybrid 字体，会使得配置窗口很难看，非常难看！！
+注意：此处若选 Yahei Consolas Hybrid 字体，会使得配置窗口很难看，非常难看
 
 ### 打开内存使用状态
 
@@ -184,43 +193,45 @@ settings---Editor---General---Appearance---Show line numbers
 
 settings---Editor---General---Breadcrumbs---取消勾选Show breadcrumbs
 
-### 代码提示忽略大小写
+### 代码提示区分大小写
 
-settings---Editor---General---Code Completion---Case sensitive completion---None
+settings---Editor---General---Code Completion---Match case---选择First letter only（即：仅首字母）
 
 ### 设定折叠或展开的代码类型
 
 settings---Editor---General---Code Folding---勾选表示该类型代码在文件被打开时默认是被折叠的
 
+这里我勾了Inner classes和Anonymous classes
+
 ### 移除文件编辑Tab的后缀
 
-settings---Editor---General---Editor Tabs---Hide file extension in editor tabs
+settings---Editor---General---Editor Tabs---取消勾选Show file extension
 
 ### 移除文件编辑Tab的`×`
 
-settings---Editor---General---Editor Tabs---Show "close" button on editor tabs
+settings---Editor---General---Editor Tabs---Close button position下拉框选择None
 
 ### 星号标识编辑过的文件
 
-settings---Editor---General---Editor Tabs---Mark modified tabs with asterisk
+settings---Editor---General---Editor Tabs---勾选Mark modified (*)
 
 ### 设置文件编辑Tab的最多数
 
 当我们打开的文件数超过该设置时，最先打开的文件会被关闭
 
-settings---Editor---General---Editor Tabs--Tab Closing Policy---Tab limit---默认为10个
+settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---默认为10个
 
 ### 代码字体
 
-Windows-Vista发布时，一款全新的中英文字体也跟着面世了：微软雅黑体
+Windows Vista 发布时，一款全新的中英文字体也随之面世：微软雅黑体（Yahei Consolas Hybrid）
 
 据说微软为了打造这个字体，做每个字的成本几乎达到100美元，也被戏称有史以来最昂贵的一套中文字体
 
-其中Consolas是专为编程人员设计的字体，它特性是所有字母、数字与符号都很容易辨认，且具有相同的宽度，看着很舒服
+其中 Consolas 是专为编程人员设计的字体
 
-所以 `Yahei Consolas Hybrid` 就出现了，它是上面两种字体的结合（程序员字体＋最昂贵的中文字体）
+它特性是：所有字母、数字与符号都很容易辨认，且具有相同的宽度，看着很舒服
 
-下载地址如下：（下面三个地址的文件的内容，都是一样的）
+下载地址如下：（三个地址都是同一个文件）
 
 [http://oirr30q6q.bkt.clouddn.com/jadyer/idea/YaHei_Consolas_Hybrid.rar](http://oirr30q6q.bkt.clouddn.com/jadyer/idea/YaHei_Consolas_Hybrid.rar)
 
@@ -228,19 +239,13 @@ Windows-Vista发布时，一款全新的中英文字体也跟着面世了：微�
 
 [http://www.intellij.org/downloads/YaHei.Consolas.1.12.zip](http://www.intellij.org/downloads/YaHei.Consolas.1.12.zip)
 
-安装方法为：拷贝 `ttf` 文件到 `C:\Windows\Fonts\` 目录即可，然后就可以回到 idea 里面配置了
+安装方法为：拷贝 `ttf` 文件到 `C:\Windows\Fonts\` 目录即可，然后重启 idea 进行配置
 
-settings---Editor---Font---Font---Yahei Consolas Hybrid，Size=14
+settings---Editor---Font---Font---取消勾选 Show only monospaced fonts，然后选择 Yahei Consolas Hybrid，Size=14
 
 ### 控制台字号
 
 settings---Editor---Color Scheme---Console Font---勾选Use console font instead---Size=12（字体不变）
-
-### 控制台颜色输出
-
-对于SpringBoot那种main(String[] args)方法直接启动的（Maven或者Gradle与之类似，也是右上角配置JVM参数）
-
-右上角---Edit Configurations...--- VM option 里面输入：`-Dspring.output.ansi.enabled=ALWAYS` 即可
 
 ### 函数花括号显示为对称结构
 
@@ -345,7 +350,7 @@ settings---Editor---Inspections---Java---Java language level migration aids---Ja
 
 ### @see@create@author
 
-settings---Editor---Inspections---Java---Javadoc issues---
+settings---Editor---Inspections---Java---Javadoc---
 
 取消勾选Declaration has Javadoc problems（适用@create@author）
 
@@ -354,10 +359,6 @@ settings---Editor---Inspections---Java---Javadoc issues---
 ### 方法和类同名
 
 settings---Editor---Inspections---Java---Naming conventions---取消勾选Method name same as class name
-
-### String代替StringBuilder
-
-settings---Editor---Inspections---Java---Performance issues---取消勾选StringBuffer can be replaced with String
 
 ### 未处理方法返回值
 
@@ -368,6 +369,12 @@ settings---Editor---Inspections---Java---Probable bugs---取消勾选Result of m
 ### 未生成serialVersionUID
 
 settings---Editor---Inspections---Java---Serialization issues---勾选Serializable class without 'serialVersionUID'
+
+### 无需定义serialVersionUID
+
+settings—Editor—Inspections—Java—Serialization issues—勾选Non-serializable class with 'serialVersionUID'
+
+即非序列化的类，不需要定义serialVersionUID
 
 然后回到我们的类文件中，将光标放到类名上，再按 Alt+Enter 键就会提示生成serialVersionUID
 
@@ -394,7 +401,7 @@ settings---Editor---Inspections---Spring---Spring Core---Setup---取消勾选Spr
 
 ### Project视图折叠空包显示
 
-Project视图---右上角倒数第二个齿轮图标---Hide Empty Middle Packeages
+Project视图---右上角倒数第二个齿轮图标---点击齿轮后选择Compact Middle Packeages
 
 ### 省电模式
 
@@ -437,8 +444,4 @@ Would you like to continue?
 
 一般建议点击 Invalidate and Restart，这样会清除的比较干净
 
-**注意**：若项目未加入版本控制，而你又需要项目文件的历史更改记录，那么最好备份下 LocalHistory 目录
-
-LocalHistory=C:\Users\Jadyer\.IntelliJIdea2016.1\system\LocalHistory
-
-即 idea.properties 文件中的 ${idea.system.path}\LocalHistory\ 目录
+**注意**：若项目未加入版本控制，而又需要项目文件的历史更改记录，那么最好备份下 idea.properties 文件中的 ${idea.system.path}\LocalHistory\ 目录
