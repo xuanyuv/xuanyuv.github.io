@@ -36,7 +36,7 @@ idea 从 2016.3 开始，文件夹图标全部换成那种有点蓝色的，单�
 
 这是 v3.2 的官方下载地址：https://plugins.jetbrains.com/files/7285/47285/Idea11Icons.jar
 
-这是 v3.1.1 的我备份的地址：http://oirr30q6q.bkt.clouddn.com/jadyer/idea/Idea11Icons_v3.1.1.jar
+这是 v3.2 的我备份的地址：http://oirr30q6q.bkt.clouddn.com/jadyer/idea/Idea11Icons_v3.2.jar
 
 安装时选择 Install plugin from disk... 再重启 idea 就会看到经典的橘黄色图标啦
 
@@ -258,7 +258,7 @@ settings---Editor---Live Templates---右上角 `+` 选择 Template Group---我�
 
 ### 隐藏文件和文件夹
 
-settings---Editor---File Types---Ignore files and folders---`target;*.iml;*.idea;`
+settings---Editor---File Types---Ignore files and folders---`target;.gradle;*.iml;*.idea;`
 
 ### 版本控制下文件变化的显示
 
@@ -321,6 +321,10 @@ settings---Editor---Inspections---Java---Javadoc---
 
 settings---Editor---Inspections---Java---Naming conventions---取消勾选Method name same as class name
 
+### String代替StringBuffer
+
+settings---Editor---Inspections---Java---Performance issues---取消勾选StringBuilder can be replaced with String
+
 ### 未处理方法返回值
 
 比如`java.io.File.delete()`
@@ -360,7 +364,7 @@ settings---Editor---Inspections---Spring---Spring Core---Setup---取消勾选Spr
 
 ## 其它
 
-### Project视图折叠空包显示
+### Project视图折叠空包
 
 Project视图---右上角倒数第二个齿轮图标---点击齿轮后选择Compact Middle Packeages
 
@@ -377,7 +381,7 @@ settings---Build,Execution,Deployment---Compiler---Build process heap size(Mbyte
 
 * 报告：找不到符号、未结束的字符串文字
 
-    > 1、UTF-8文件分有BOM和无BOM，idea默认使用的编译器是javac，而其只能编译无BOM的文件<br/>
+    > 1、UTF-8文件分有BOM和无BOM，idea默认使用的编译器是javac，而其只能编译无BOM的文件（settings---Editor---File Encodings---右侧最下方BOM设置）<br/>
 　　很多eclipse用户在使用idea开发eclipse项目时会遇到此问题<br/>
 　　主要是因为eclipse的编译器是eclipse，其支持有BOM的文件编译。故需对文件进行BOM去除<br/>
 2、批量去除BOM，可以Google：批量去除BOM、批量转换无BOM等关键字，网上已有各种方案<br/>
@@ -406,13 +410,3 @@ Would you like to continue?
 一般建议点击 Invalidate and Restart，这样会清除的比较干净
 
 **注意**：若项目未加入版本控制，而又需要项目文件的历史更改记录，那么最好备份下 idea.properties 文件中的 ${idea.system.path}\LocalHistory\ 目录
-
-### idea64.exe需要JDK8
-
-若当前安装的是JDK7，idea201611版在启动 idea64.exe 时会提示需要 JDK8 来运行它
-
-安装 JDK8 之后，在我的电脑---右键---高级---系统变量---增加一个名为 `IDEA_JDK_64` 的系统变量
-
-`IDEA_JDK_64=D:\Develop\Java\jdk1.8.0_77`，接着便可直接启动idea，**不需要 path 中增加 IDEA_JDK_64**
-
-关于 idea64.exe 的更详细介绍见[http://www.iflym.com/index.php/code/201404190001.html](http://www.iflym.com/index.php/code/201404190001.html)
