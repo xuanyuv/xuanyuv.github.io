@@ -156,7 +156,7 @@ settings---Editor---General---Breadcrumbs---取消勾选Show breadcrumbs
 
 ### 代码提示区分大小写
 
-settings---Editor---General---Code Completion---Match case---选择First letter only（即：仅首字母）
+settings---Editor---General---Code Completion---取消勾选Match case
 
 ### 设定折叠或展开的代码类型
 
