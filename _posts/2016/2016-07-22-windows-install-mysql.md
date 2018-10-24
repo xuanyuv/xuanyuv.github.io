@@ -11,7 +11,7 @@ excerpt: 详细介绍了Windows安装MySQL-5.7.14之后的配置细节。
 {:toc}
 
 
-> 关于 CentOS-6.4-minimal 上面通过源码来安装 MySQL-5.5.38，详见这里传送门：[CentOS安装MySQL](https://jadyer.cn/2014/09/29/centos-install-mysql/)
+> 关于 CentOS-6.4-minimal 上面通过源码来安装 MySQL-5.5.38，传送门在此：[CentOS安装MySQL](https://jadyer.cn/2014/09/29/centos-install-mysql/)
 
 Windows 上安装完 MySQL，以前都会有一个配置向导工具，一路点下去就可以了
 
@@ -21,7 +21,7 @@ Windows 上安装完 MySQL，以前都会有一个配置向导工具，一路点
 
 # 下载
 
-官网下载社区版的页面是：[http://dev.mysql.com/downloads/mysql/](http://dev.mysql.com/downloads/mysql/)
+官网下载社区版的页面是：<http://dev.mysql.com/downloads/mysql/>
 
 这里 `5.7.14` 的安装包有300多MB，有点太大了（里面包含了一堆令人不感冒的附加管理工具）
 
@@ -43,17 +43,17 @@ mysql-8.0.13-winx64.msi（106MB）：<http://cdn.mysql.com/Downloads/MySQL-8.0/m
 
 # 安装
 
-双击 mysql-5.7.14-winx64.msi 然后一路 Next 下去（注意安装路径）
+下面以 mysql-8.0.13-winx64.msi 为例：双击安装包后，一路Next 下去（注意安装路径）
 
 # 配置
 
-这是在我的电脑上，安装后的目录结构
+这是在我的电脑上，安装后的目录结构（以前的图片）
 
 ![](/img/2016/2016-07-22-windows-install-mysql.png)
 
 ### 配置my.ini
 
-先备份 my-default.ini，再重命名为 my.ini
+先备份 my-default.ini，再重命名为 my.ini（mysql-8.0.13-winx64安装后没有my-default.ini，那么直接新建my.ini就可以了）
 
 下面是 my-default.ini 的内容
 
@@ -91,7 +91,7 @@ mysql-8.0.13-winx64.msi（106MB）：<http://cdn.mysql.com/Downloads/MySQL-8.0/m
 sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 ```
 
-下面是 my.ini 的内容（data目录是自己创建的）
+下面是 my.ini 的内容
 
 ```sh
 [mysql]
@@ -101,38 +101,96 @@ default-character-set=utf8
 # skip-grant-tables
 port=3306
 # 设置mysql的安装目录
-basedir=D:\\Develop\\MySQL\\MySQLServer5714
-# 设置mysql数据库的数据的存放目录
-datadir=D:\\Develop\\MySQL\\MySQLServer5714\\data
+basedir=D:\\Develop\\MySQL\\MySQLServer80
+# 设置mysql数据库的数据的存放目录（data目录在下面初始化时会自动创建，不需要我们手动创建）
+datadir=D:\\Develop\\MySQL\\MySQLServer80\\data
 # 允许最大连接数
 max_connections=200
+# 允许连接失败的次数（防止有人从该主机试图攻击数据库系统）
+max_connect_errors=10
 # 服务端使用的字符集默认为8比特编码的latin1字符集
 character-set-server=utf8
 # 创建新表时将使用的默认存储引擎
 default-storage-engine=INNODB
+# mysql-8.0.4开始，其密码认证插件就由mysql_native_password改为了caching_sha2_password，而很多数据库工具和链接包暂时还不支持caching_sha2_password
+default_authentication_plugin=mysql_native_password
 ```
 
 ### 设置环境变量
 
 ```sh
 # 计算机---属性---高级系统设置---环境变量---系统变量
-MYSQL_HOME=D:\Develop\MySQL\MySQLServer5714
+MYSQL_HOME=D:\Develop\MySQL\MySQLServer80
 path=%MYSQL_HOME%\bin;......
 ```
 
 ### 初始化data目录
 
-管理员身份运行CMD：`D:\Develop\MySQL\MySQLServer5714\bin>mysqld --initialize`（注意：两个横杠）
+管理员身份运行CMD
+
+```sh
+C:\Users\Jadyer>mysqld --initialize --console（注意：两个横杠）
+2018-10-24T03:06:20.534951Z 0 [System] [MY-013169] [Server] D:\Develop\MySQL\MySQLServer80\bin\mysqld.exe (mysqld 8.0.13) initializing of server in progress as process 9812
+2018-10-24T03:06:20.538000Z 0 [Warning] [MY-013242] [Server] --character-set-server: 'utf8' is currently an alias for the character set UTF8MB3, but will be an alias for UTF8MB4 in a future release. Please consider using UTF8MB4 in order to be unambiguous.
+2018-10-24T03:06:23.423916Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: lMiZMiu*e43:
+2018-10-24T03:06:24.774539Z 0 [System] [MY-013170] [Server] D:\Develop\MySQL\MySQLServer80\bin\mysqld.exe (mysqld 8.0.13) initializing of server has completed
+
+C:\Users\Jadyer>
+```
+
+执行完成后，会打印 root 用户的初始默认密码，也就是上面的 `lMiZMiu*e43:`（后面修改Root密码时会用到它）
 
 ### 安装MySQL服务
 
-管理员身份运行CMD：`D:\Develop\MySQL\MySQLServer5714\bin>mysqld install`
+管理员身份运行CMD：`C:\Users\Jadyer>mysqld install`，安装成功会提示 Service successfully installed.
 
-安装成功会提示 Service successfully installed.
+启动的话，可以运行 services.msc 手工启动，也可以：`C:\Users\Jadyer>net start mysql`
 
-启动的话，可以运行 services.msc 手工启动，也可以：`D:\Develop\MySQL\MySQLServer5714\bin>net start mysql`
+### 修改Root密码（MySQL-8.0.13）
 
-### 修改Root密码
+管理员身份运行CMD
+
+```sh
+C:\Users\hongyu.lu>mysql -uroot -p
+Enter password: ************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.13
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use mysql;
+ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
+mysql> set PASSWORD = PASSWORD("xuanyu");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PASSWORD("xuanyu")' at line 1
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'xuanyu';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> use mysql;
+Database changed
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.01 sec)
+
+mysql>
+```
+
+至此，MySQL-8.0.13 配置完毕
+
+### 修改Root密码（MySQL-5.7.14）
 
 首次安装后，修改 Root 密码时，会报告下面的错误
 
@@ -198,4 +256,4 @@ Query OK, 0 rows affected, 1 warning (0.00 sec)
 
 然后用刚才新设置的密码，重新登录，就可以执行 SQL 指令了
 
-至此，配置完毕
+至此，MySQL-5.7.14 配置完毕

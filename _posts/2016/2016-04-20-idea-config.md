@@ -23,8 +23,8 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
  * 查询某方法被其它地方调用：Ctrl+Alt+H（其实：Alt + F7 更好用）
  * 定位文件或直接定位某一行：Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，如 `LoanHelper:22`
  * 合并develop分支到master：master分支上工程上右键---Git---Repository---Merge Changes---Branches to merge选择develop分支
- * 常用快捷键：http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-introduce.html
- * 缩进用Tab还是空格：http://ooxx.me/tabs-vs-spaces.orz
+ * 常用快捷键：<http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-introduce.html>
+ * 缩进用Tab还是空格：<http://ooxx.me/tabs-vs-spaces.orz>
 
 ## 橘黄色图标插件
 
@@ -32,11 +32,11 @@ idea 从 2016.3 开始，文件夹图标全部换成那种有点蓝色的，单�
 
 对于习惯之前版本的橘黄色图标的人来说，可以用这个 Idea 2016.2 Icon Pack 插件来恢复，目前最新版为 v3.2
 
-插件介绍见：https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack
+插件介绍见：<https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack>
 
-这是 v3.2 的官方下载地址：https://plugins.jetbrains.com/files/7285/47285/Idea11Icons.jar
+这是 v3.2 的官方下载地址：<https://plugins.jetbrains.com/files/7285/47285/Idea11Icons.jar>
 
-这是 v3.2 的我备份的地址：http://oirr30q6q.bkt.clouddn.com/jadyer/idea/Idea11Icons_v3.2.jar
+这是 v3.2 的我备份的地址：<http://oirr30q6q.bkt.clouddn.com/jadyer/idea/Idea11Icons_v3.2.jar>
 
 安装时选择 Install plugin from disk... 再重启 idea 就会看到经典的橘黄色图标啦
 
@@ -194,11 +194,11 @@ Windows Vista 发布时，一款全新的中英文字体也随之面世：微软
 
 下载地址如下：（三个地址都是同一个文件）
 
-[http://oirr30q6q.bkt.clouddn.com/jadyer/idea/YaHei_Consolas_Hybrid.rar](http://oirr30q6q.bkt.clouddn.com/jadyer/idea/YaHei_Consolas_Hybrid.rar)
+<http://oirr30q6q.bkt.clouddn.com/jadyer/idea/YaHei_Consolas_Hybrid.rar>
 
-[http://download.csdn.net/detail/jadyer/9719438](http://download.csdn.net/detail/jadyer/9719438)
+<http://download.csdn.net/detail/jadyer/9719438>
 
-[http://www.intellij.org/downloads/YaHei.Consolas.1.12.zip](http://www.intellij.org/downloads/YaHei.Consolas.1.12.zip)
+<http://www.intellij.org/downloads/YaHei.Consolas.1.12.zip>
 
 安装方法为：拷贝 `ttf` 文件到 `C:\Windows\Fonts\` 目录即可，然后重启 idea 进行配置
 
