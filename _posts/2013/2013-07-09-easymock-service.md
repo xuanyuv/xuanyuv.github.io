@@ -99,7 +99,7 @@ public class User {
 }
 ```
 
-然后是用到的两个DAO接口类`UserDao.java`以及`Blog.java`
+然后是用到的两个DAO接口类`UserDao.java`以及`BlogDao.java`
 
 ```java
 package com.jadyer.dao;
