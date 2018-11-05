@@ -1,4 +1,4 @@
-# 已同步至https://github.com/Gaohaoyang/gaohaoyang.github.io/commit/e4bc128abe515eb2b51343f8120b2a0460f0f065
+# https://github.com/Gaohaoyang/gaohaoyang.github.io/commit/588ae839b24513484b1c438e3f0aef4b00915dfe
 
 # 指定启动Jekyll服务时的端口号，访问的地址为http://127.0.0.1:port/，不配置则默认为4000
 port: 1234
