@@ -112,7 +112,7 @@ settings---Appearance & Behavior---System Settings---Reopen last project on star
 
 settings---Appearance & Behavior---System Settings---Project Opening---Confirm window to open project in
 
-这样在菜单栏 File---Open Recent---选择某个工程师，会弹出提示框询问在当前窗口（This Window）打开还是新窗口（New Window）
+然后在菜单栏 File---Open Recent---选择某个工程后，会询问在当前窗口（This Window）打开还是新窗口（New Window）打开
 
 ### 取消自动更新
 
