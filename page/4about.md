@@ -18,3 +18,6 @@ type: page
 * 来自：哈尔滨
 * 邮箱：[jadyer@yeah.net](mailto:jadyer@yeah.net)
 * 订阅：[https://jadyer.cn/feed.xml](https://jadyer.cn/feed.xml)
+
+<h2 id="comments">Comments</h2>
+{% include comments.html %}
