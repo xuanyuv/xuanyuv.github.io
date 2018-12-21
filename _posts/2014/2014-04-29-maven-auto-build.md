@@ -192,11 +192,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class DiabloIISL {
-    //SL之前的Save文件夹路径
+    //SL前的Save文件夹路径
     private static final String SAVE_PATH_BACKUP = "C:\\Users\\Jadyer\\Desktop\\Save";
-    //保存游戏目录中删掉的Save的文件夹完整路径
+    //SL次数记录的文件夹路径
     private static final String SAVE_PATH_DELETETO = "C:\\Users\\Jadyer\\Desktop\\Save_del";
-    //游戏目录Save文件夹完整路径
+    //游戏目录Save文件夹路径
     private static final String SAVE_PATH_DIABLOII = "D:\\ProgramFiles\\DiabloII\\Save";
     public static void main(String[] args) throws IOException {
         FileUtils.deleteDirectory(new File(SAVE_PATH_DIABLOII));
