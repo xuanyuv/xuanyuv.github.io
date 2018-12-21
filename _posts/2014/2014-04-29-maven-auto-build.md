@@ -11,6 +11,8 @@ excerpt: 通过在批处理脚本中调用Maven命令实现的自动打包工程
 {:toc}
 
 
+## 打包War
+
 这只是针对我现在的工程结构编写的
 
 它能够自动调用Maven命令打包，并把生成的war复制到桌面上
@@ -64,6 +66,8 @@ echo War包已经拷贝至桌面 =================================
 echo;
 pause
 ```
+
+## 打包War并上传FTP
 
 时隔两年后的`2016-07-27 20:30`更新：增加了自动上传war包到FTP的功能（**也是我前阵子在用的**）
 
@@ -138,4 +142,66 @@ echo zip包传上传至FTP ==========================================
 
 echo;
 pause
+```
+
+## 普通调用java执行class
+
+```bash
+@echo off
+
+java -cp .;commons-io-2.6.jar com.jadyer.seed.simcoder.DiabloIISL
+```
+
+批处理文件所在的目录结构如下
+
+```sh
+$ tree
+.
+|-- DiabloIISL.bat
+|-- Save
+|   |-- _LOD_SharedStashSave.sss
+|   |-- xuanyu.d2s
+|   |-- xuanyu.d2x
+|   |-- xuanyu.key
+|   |-- xuanyu.ma0
+|   |-- xuanyu.ma1
+|   |-- xuanyu.ma2
+|   |-- xuanyu.ma3
+|   `-- xuanyu.map
+|-- Save_del
+|   `-- 104671343253324.txt
+|-- com
+|   `-- jadyer
+|       `-- seed
+|           `-- simcoder
+|               |-- DiabloIISL.class
+|               `-- DiabloIISL.java
+`-- commons-io-2.6.jar
+
+6 directories, 14 files
+```
+
+DiabloIISL.java 的内容如下
+
+```java
+package com.jadyer.seed.simcoder;
+
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
+
+public class DiabloIISL {
+    //SL之前的Save文件夹路径
+    private static final String SAVE_PATH_BACKUP = "C:\\Users\\Jadyer\\Desktop\\Save";
+    //保存游戏目录中删掉的Save的文件夹完整路径
+    private static final String SAVE_PATH_DELETETO = "C:\\Users\\Jadyer\\Desktop\\Save_del";
+    //游戏目录Save文件夹完整路径
+    private static final String SAVE_PATH_DIABLOII = "D:\\ProgramFiles\\DiabloII\\Save";
+    public static void main(String[] args) throws IOException {
+        FileUtils.deleteDirectory(new File(SAVE_PATH_DIABLOII));
+        FileUtils.copyDirectory(new File(SAVE_PATH_BACKUP), new File(SAVE_PATH_DIABLOII));
+        FileUtils.writeStringToFile(new File(SAVE_PATH_DELETETO, System.currentTimeMillis()+".txt"), "1", "UTF-8");
+    }
+}
 ```
