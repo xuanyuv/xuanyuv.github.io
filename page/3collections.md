@@ -12,6 +12,7 @@ type: page
 
 ## 收藏
 
+* [英雄志-讲武堂](http://www.jiang-wu-tang.com/JWTphpBBS/index.php)、[天之下](http://sanxian111.lofter.com)
 * [我爱卡](https://bbs.51credit.com)、[知轩藏书](http://www.zxcs8.com)、[12306分流抢票](https://www.12306bypass.com)、[12306订票助手](http://www.fishlee.net)
 * [HTML5炫画](http://www.html5tricks.com)、[素材网](http://www.xwcms.net)、[懒人图库](http://www.lanrentuku.com)、[懒人之家](http://www.lanrenzhijia.com)、[网站模板](http://www.mycodes.net/153)
 * [新浪微博图床](http://weibo.com/minipublish)、[新浪微博图床Chrome扩展](https://github.com/Suxiaogang/WeiboPicBed)、[另一个提供API的图床](https://sm.ms)
