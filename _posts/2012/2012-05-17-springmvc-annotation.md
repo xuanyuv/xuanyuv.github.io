@@ -13,7 +13,7 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
 
 这里只列举比较常用的，需要关注的配置，以及各种注解的写法
 
-首先是 `web.xml`
+## web.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -120,7 +120,9 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
 </web-app>
 ```
 
-然后是 SpringMVC 的配置文件 `jadyer-servlet.xml`
+## jadyer-servlet.xml
+
+这是 SpringMVC 的配置文件
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -178,7 +180,7 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
 </beans>
 ```
 
-最后是核心的Controller
+## Controller
 
 ```java
 package com.jadyer.demo.controller;
@@ -286,11 +288,11 @@ public class UserController {
                 out.flush();
                 return null;
             }else{
-                System.out.println("文件原名：" + myfile.getOriginalFilename());
-                System.out.println("文件名称：" + myfile.getName());
-                System.out.println("文件长度：" + myfile.getSize());
-                System.out.println("文件类型：" + myfile.getContentType());
-                System.out.println("===================================================");
+                System.out.println("文件名称：" + myfile.getName());             //myfiles
+                System.out.println("文件原名：" + myfile.getOriginalFilename()); //观海云远.jpg
+                System.out.println("文件类型：" + myfile.getContentType());      //application/octet-stream
+                System.out.println("文件大小：" + myfile.getSize());             //2667993=2,667,993字节=2.54MB
+                System.out.println("=========================================================================");
                 //以下两种方式都能实现文件的保存
                 //myfile.transferTo(new File(""));
                 //FileUtils.copyInputStreamToFile(myfile.getInputStream(), new File(""));
@@ -302,6 +304,8 @@ public class UserController {
     }
 }
 ```
+
+## 405
 
 再顺手补充一个 `405.html`
 
