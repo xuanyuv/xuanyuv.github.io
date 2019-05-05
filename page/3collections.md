@@ -30,3 +30,4 @@ type: page
 * [会摇摆](http://www.huiyaobai.com)
 * [前端踩坑那些事](https://www.febugs.com)
 * [摘星少年](http://www.cymin.cn)
+* [中文GoogleCDN](https://google-api.ac.cn)
