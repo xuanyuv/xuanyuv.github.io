@@ -26,6 +26,14 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
  * 常用快捷键：<http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-introduce.html>
  * 缩进用Tab还是空格：<http://ooxx.me/tabs-vs-spaces.orz>
 
+## 设置背景图
+
+Ctrl + Shift + A（或者菜单栏Help---Find Action...），然后再弹窗中输入“Set Background Image”
+
+回车后，在 Image: 中选择喜欢的图片，在 Opacity: 处可以保持默认的15透明度，最后保存即可
+
+若不想要背景图片了，同样打开这个弹窗，点击右下方“Clear and Close”即可
+
 ## 橘黄色图标插件
 
 idea 从 2016.3 开始，文件夹图标全部换成那种有点蓝色的，单独拿出来看上去有点高科技，放在一起实则暴丑的图标
