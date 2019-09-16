@@ -25,6 +25,7 @@ type: page
 * [CODELF](https://unbug.github.io/codelf)
 * [CodeSheep](http://www.codesheep.cn)
 * [HoltYin](https://holtyin.github.io)
+* [KLBLOG](http://www.kailing.pub)
 * [并发编程网](http://ifeve.com)
 * [程序猿DD](http://blog.didispace.com)
 * [会摇摆](http://www.huiyaobai.com)
