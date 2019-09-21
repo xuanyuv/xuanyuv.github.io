@@ -276,7 +276,7 @@ public class ExcelReportTest {
 ## 另附POIReadDemo
 
 ```java
-package com.jadyer.demo;
+package com.jadyer.seed;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
@@ -382,7 +382,7 @@ public class POIReadDemo {
 ## 另附POIWriteDemo
 
 ```java
-package com.jadyer.demo;
+package com.jadyer.seed;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
