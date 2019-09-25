@@ -489,7 +489,14 @@ public class POIWriteDemo {
                 cell.setCellStyle(style);
             }
         }
-        FileOutputStream fos = new FileOutputStream(pathname);
+        //校验目录
+        File file = new File(pathname);
+        if(file.isDirectory()){
+            throw new IOException("File '" + file + "' should not be a directory");
+        }
+        FileUtils.forceMkdirParent(file);
+        //写入文件
+        FileOutputStream fos = new FileOutputStream(file);
         wb.write(fos);
         fos.close();
         wb.close();
