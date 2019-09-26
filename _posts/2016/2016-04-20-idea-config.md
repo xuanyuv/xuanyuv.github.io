@@ -12,7 +12,7 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 
 
 > 本文所列配置项，已适配最新版：ideaIC-2018.2.5<br/>
-  idea历史版本下载：http://www.jetbrains.com/idea/download/other.html
+  idea历史版本下载：<http://www.jetbrains.com/idea/download/other.html>
 
 ## 快捷键
 
