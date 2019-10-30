@@ -32,4 +32,4 @@ type: page
 * [前端踩坑那些事](https://www.febugs.com)
 * [松花皮蛋](http://www.liangsonghua.me)
 * [摘星少年](http://www.cymin.cn)
-* [中文GoogleCDN](https://google-api.ac.cn)
+* [证监会](http://www.csrc.gov.cn)
