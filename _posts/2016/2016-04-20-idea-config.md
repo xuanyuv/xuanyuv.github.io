@@ -223,6 +223,10 @@ settings---Editor---Font---Font---取消勾选 Show only monospaced fonts，然�
 
 settings---Editor---Color Scheme---Console Font---勾选Use console font instead---Size=12（字体不变）
 
+### 文件换行符使用Unix格式
+
+settings---Editor---Colors Style---Line separator---选择 Unix and OS X (\n)
+
 ### 函数花括号显示为对称结构
 
 settings---Editor---Colors Style---Java---Wrapping and Braces---Braces placement---三项均改为Next line
@@ -235,7 +239,9 @@ settings---Editor---Colors Style---Java---Imports---Class count to use import wi
 
 ### 注释时双斜杠位置为代码头部
 
-settings---Editor---Colors Style---Java---Code Generation---取消勾选Line comment at first column
+settings---Editor---Colors Style---Java---Code Generation---取消勾选 Line comment at first column
+
+注：若需要设置注释的双斜线与注释内容之间有且仅有一个空格，那就勾选下方紧挨着的 Add a space at comment start
 
 ### 自定义文件代码模板
 
