@@ -33,3 +33,4 @@ type: page
 * [松花皮蛋](http://www.liangsonghua.me)
 * [摘星少年](http://www.cymin.cn)
 * [证监会](http://www.csrc.gov.cn)
+* [银保监](http://www.cbirc.gov.cn)
