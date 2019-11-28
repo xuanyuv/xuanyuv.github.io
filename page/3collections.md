@@ -12,8 +12,8 @@ type: page
 
 ## 收藏
 
+* [我爱卡](https://bbs.51credit.com)、[吾爱破解](https://www.52pojie.cn)、[我爱斗图](https://www.52doutu.cn)
 * [英雄志讲武堂](http://www.jiang-wu-tang.com/JWTphpBBS/index.php)、[知轩藏书](http://www.zxcs.me)、[书荒部落](http://noveless.com)
-* [Mc洪磊](http://www.9945678.vip)、[我爱卡](https://bbs.51credit.com)、[吾爱破解](https://www.52pojie.cn)、[12306分流抢票](https://www.12306bypass.com)、[12306订票助手](http://www.fishlee.net)
 * [HTML5炫画](http://www.html5tricks.com)、[素材网](http://www.xwcms.net)、[懒人图库](http://www.lanrentuku.com)、[懒人之家](http://www.lanrenzhijia.com)、[网站模板](http://www.mycodes.net/153)
 * [新浪微博图床](http://weibo.com/minipublish)、[新浪微博图床Chrome扩展](https://github.com/Suxiaogang/WeiboPicBed)、[另一个提供API的图床](https://sm.ms)
 * [心海e站](https://hrtsea.com)、[小众软件](http://www.appinn.com)、[绿色便携软件](https://www.portablesoft.org)、[汉化新世纪](http://www.hanzify.org)、[阿斯兰萨拉](https://www.ssdax.com)、[恶意网站实验室](http://www.mwsl.org.cn)
