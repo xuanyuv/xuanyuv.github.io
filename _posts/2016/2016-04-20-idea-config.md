@@ -23,6 +23,7 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
  * 快速生成foreach循环：键入 iter 再按 Tab 键或 Ctrl+J 键
  * 查询某方法被其它地方调用：Ctrl+Alt+H（其实：Alt + F7 更好用）
  * 定位文件或直接定位某一行：Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，如 `LoanHelper:22`
+ * 返回上一个方法： Ctrl + Alt + 方向键左
  * 合并develop分支到master：master分支上工程上右键---Git---Repository---Merge Changes---Branches to merge选择develop分支
  * 常用快捷键：<http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-introduce.html>
  * 缩进用Tab还是空格：<http://ooxx.me/tabs-vs-spaces.orz>
