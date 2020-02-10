@@ -383,7 +383,7 @@ The message received from Client is [hello]
 
 其中的`68 65 6C 6C 6F 0A`可以在`Editplus`中查到各自代表什么，如下图所示
 
-![](/img/2012/2012-10-31-mina-spring.png)
+![](https://ae01.alicdn.com/kf/U2c0252cd605042b6b0b497e4a11bcd17G.png)
 
 也可以在Linux执行命令`man ascii`来查看
 
