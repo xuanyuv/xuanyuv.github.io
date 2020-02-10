@@ -157,7 +157,7 @@ D:\Develop\Code\Jekyll>
 
 创建完毕，我们回到本地目录看一下
 
-![](/img/2016/2016-10-17-jekyll-build-blog-01.png)
+![](https://ae01.alicdn.com/kf/U1ebc13e1d5924d5db6025019ba51438bJ.png)
 
 接下来到博客文件夹中，启动Jekyll服务
 
@@ -180,7 +180,7 @@ Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
 
 访问[http://127.0.0.1:4000/](http://127.0.0.1:4000/)会看到下面的页面
 
-![](/img/2016/2016-10-17-jekyll-build-blog-02.png)
+![](https://ae01.alicdn.com/kf/U896f4fddfe2247099375e10763022a3fI.png)
 
 ## 复制主题
 
@@ -238,7 +238,7 @@ Configuration file: C:/Users/Jadyer/Desktop/gaohaoyang.github.io-master/_config.
 
 访问[http://127.0.0.1:4000/](http://127.0.0.1:4000/)就看到本地页面了
 
-![](/img/2016/2016-10-17-jekyll-build-blog-03.png)
+![](https://ae01.alicdn.com/kf/U158f562ad899454487c007694884532bu.png)
 
 ## Jekyll补充
 

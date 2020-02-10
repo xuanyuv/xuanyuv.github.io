@@ -101,7 +101,7 @@ public class BootStrap extends SpringBootServletInitializer {
 
 （若在Maven Projects视图执行，还可展开main-boss-->Plugins-->spring-boot-->spring-boot:run-->Run）
 
-![](/img/2016/2016-07-29-idea-springboot-jsp-02.png)
+![](https://ae01.alicdn.com/kf/U5dafb4d57e4246d49649e7dde6c31d249.png)
 
 #### DEBUG模式
 
@@ -127,7 +127,7 @@ public class BootStrap extends SpringBootServletInitializer {
 
 `idea顶部菜单-->Run-->Edit Configurations--> + -->选择Remote`使用默认的配置并命名为`BossRunRemote`
 
-![](/img/2016/2016-07-29-idea-springboot-jsp-03.png)
+![](https://ae01.alicdn.com/kf/U33be703fef784c67b21d98c4a5aaa6c3P.png)
 
 3、启动
 
