@@ -22,7 +22,7 @@ OS X 10.11 El Capitan GM by TechReviews.vmdk（我的百度网盘里面有，这
 
 ### 创建虚拟机
 
-![](/img/2016-10-17-virtualbox-macos-01.png)
+![](https://ae01.alicdn.com/kf/Hc1e6a752e6e648dcaff4cba31962f19am.png)
 
 * 我的电脑是 Win10-64bit 8G 内存，这里给了它 4G
 * 我的 vmdk 放在 D:\Develop\Oracle\VirtualBox\JadyerData\vmdk\ 目录下，**以后不要改位置，就一直放在这里**
@@ -50,7 +50,7 @@ VBoxManage setextradata MacOS-10.11 "VBoxInternal/Devices/smc/0/Config/DeviceKey
 VBoxManage setextradata MacOS-10.11 "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
 ```
 
-![](/img/2016-10-17-virtualbox-macos-02.png)
+![](https://ae01.alicdn.com/kf/H3b705a36ca564846b54eb0baf0a824det.png)
 
 然后关闭命令行即可
 
@@ -62,11 +62,11 @@ VBoxManage setextradata MacOS-10.11 "VBoxInternal/Devices/smc/0/Config/GetKeyFro
 
 过一会就会看到苹果系统的引导界面了，一步步设置就好了
 
-![](/img/2016-10-17-virtualbox-macos-03.png)
+![](https://ae01.alicdn.com/kf/H7bad2c45cde34b09a2aa31b0205ac055E.png)
 
-![](/img/2016-10-17-virtualbox-macos-04.png)
+![](https://ae01.alicdn.com/kf/Hda3ad2577c0c485daf3bc5b1b3a50e7dS.png)
 
-![](/img/2016-10-17-virtualbox-macos-05.png)
+![](https://ae01.alicdn.com/kf/H8da8134e393d4fed88a2ca76901a6768C.png)
 
 * 语言选择：勾选 Show All 之后才会看见 China
 * 键盘选择：简体中文，拼音模式
@@ -82,7 +82,7 @@ VBoxManage setextradata MacOS-10.11 "VBoxInternal/Devices/smc/0/Config/GetKeyFro
 
 我们看看开发时最常用的终端界面
 
-![](/img/2016-10-17-virtualbox-macos-06.png)
+![](https://ae01.alicdn.com/kf/H7ce84293628941e08b3e81f520bdd5efq.png)
 
 ### 升级稳定版本
 
@@ -92,8 +92,8 @@ VBoxManage setextradata MacOS-10.11 "VBoxInternal/Devices/smc/0/Config/GetKeyFro
 
 另补充 MacOS 各版本对应的版本号：[https://support.apple.com/zh-cn/HT201260](https://support.apple.com/zh-cn/HT201260)
 
-![](/img/2016-10-17-virtualbox-macos-07.png)
+![](https://ae01.alicdn.com/kf/Hee107905e16642a39f22312d9ec481d6Z.png)
 
-![](/img/2016-10-17-virtualbox-macos-08.png)
+![](https://ae01.alicdn.com/kf/Heb82f15df836435c91811b7347e978cfT.png)
 
-![](/img/2016-10-17-virtualbox-macos-09.png)
+![](https://ae01.alicdn.com/kf/Hcd539927a712483d8a957de544a0163dU.png)
