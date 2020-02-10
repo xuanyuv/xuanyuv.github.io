@@ -11,7 +11,7 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 {:toc}
 
 
-> 本文所列配置项，已适配最新版：ideaIC-2018.2.5<br/>
+> 本文所列配置项，已适配最新版：ideaIC-2018.3.6<br/>
   idea历史版本下载：<http://www.jetbrains.com/idea/download/other.html>
 
 ## 快捷键
@@ -26,15 +26,7 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
  * 返回上一个方法： Ctrl + Alt + 方向键左
  * 合并develop分支到master：master分支上工程上右键---Git---Repository---Merge Changes---Branches to merge选择develop分支
  * 常用快捷键：<http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-introduce.html>
- * 缩进用Tab还是空格：<http://ooxx.me/tabs-vs-spaces.orz>
-
-## 设置背景图
-
-Ctrl + Shift + A（或者菜单栏Help---Find Action...），然后再弹窗中输入“Set Background Image”
-
-回车后，在 Image: 中选择喜欢的图片，在 Opacity: 处可以保持默认的15透明度，最后保存即可
-
-若不想要背景图片了，同样打开这个弹窗，点击右下方“Clear and Close”即可
+ * 缩进用Tab还是空格：<https://bigc.at/tabs-vs-spaces.orz>
 
 ## 橘黄色图标插件
 
@@ -49,6 +41,8 @@ idea 从 2016.3 开始，文件夹图标全部换成那种有点蓝色的，单�
 这是 v3.2 的我备份的地址：<http://oirr30q6q.bkt.clouddn.com/jadyer/idea/Idea11Icons_v3.2.jar>
 
 安装时选择 Install plugin from disk... 再重启 idea 就会看到经典的橘黄色图标啦
+
+补充：经测试，ideaIC-2019.3.2中该插件无效，ideaIC-2018.3.6没问题
 
 ## 首次运行前配置
 
@@ -88,23 +82,27 @@ idea 从 2016.3 开始，文件夹图标全部换成那种有点蓝色的，单�
 
 ## 欢迎窗口的配置
 
+### 关闭非必要的插件
+
+Configure---Settings---Plugins---Installed---取消勾选后，重启idea
+
 ### 设置JDK
 
-Configure---Project Defaults---Project Structure---Project Settings---Project---设置JDK和编译级别
+Configure---Project Defaults---Project Structure---Project Settings---Project---设置JDK
 
 ### 应用控制台颜色输出
 
-Configure---Project Defaults---Run Configurations---Templates---Application---VM options: -Dspring.output.ansi.enabled=ALWAYS
+Configure---Project Defaults---Run Configurations---选择Application---VM options: -Dspring.output.ansi.enabled=ALWAYS
 
-对于 SpringBoot 那种 main(String[] args) 方法直接启动的（Maven或者Gradle与之类似，也是右上角配置JVM参数），控制台会彩色输出日志信息
+对于 SpringBoot 那种 main() 方法直接启动的（Maven或Gradle与之类似，也是右上角配置JVM参数），控制台会彩色输出日志信息
 
 ### 黑色主题及避免中文乱码
 
 settings---Appearance & Behavior---Appearance---Theme---Darcula
 
-并勾选 Override default fonts by，同时使用 Microsoft YaHei UI 字体
+并勾选 Use custom font，同时选择 Microsoft YaHei UI 字体（Size=12不变）
 
-注意：此处若选 Yahei Consolas Hybrid 字体，会使得配置窗口很难看，非常难看
+注意：此处若选 Yahei Consolas Hybrid，会使得配置窗口很难看，非常难看
 
 ### 打开内存使用状态
 
@@ -124,17 +122,27 @@ settings---Appearance & Behavior---System Settings---Project Opening---Confirm w
 
 然后在菜单栏 File---Open Recent---选择某个工程后，会询问在当前窗口（This Window）打开还是新窗口（New Window）打开
 
+### 应用空闲时自动保存文件
+
+settings---Appearance & Behavior---System Settings---Save files automatically if application is idle for 15 sec
+
+### 不发送统计文件给JetBrains
+
+settings---Appearance & Behavior---System Settings---Data Sharing---Send usage statistics
+
 ### 取消自动更新
 
 settings---Appearance & Behavior---System Settings---Updates---Automatically check updates
 
 ### 修改代码提示快捷键
 
+`先拷贝一份 keymap 的 Default 配置，新命名为 Default_Jadyer`
+
 settings---keymap---搜索框输入basic（idea默认的是Ctrl+空格，和我们输入法冲突）---Ctrl+B
 
 ### 设置全屏模式快捷键
 
-即工具类View菜单下面的Enter Full Screen
+即工具类 View 菜单下面的 Enter Full Screen
 
 settings---keymap---搜索框输入full screen（搜索到的是Toggle Full Screen mode）---F11
 
@@ -156,7 +164,7 @@ settings---Editor---General---Limits---Recent files limit---默认为50个
 
 settings---Editor---General---Auto Import---Add unambiguous...fly 以及 Optimize imports...fly
 
-未生效可检查settings---Editor---inspections---Java---Imports---Unused import(editor light)---勾选
+未生效可检查settings---Editor---inspections---Java---Imports---Unused import---勾选
 
 注意：通过 Ctrl+X 的方式可能不会有效果，只有 Ctrl+Y 或全选后按键盘回退或 Delete 删除时有效果
 
@@ -178,19 +186,19 @@ settings---Editor---General---Code Completion---取消勾选Match case
 
 settings---Editor---General---Code Folding---勾选表示该类型代码在文件被打开时默认是被折叠的
 
-这里我勾了Inner classes和Anonymous classes
+这里我勾了 Inner classes 、 Anonymous classes
 
 ### 移除文件编辑Tab的后缀
 
-settings---Editor---General---Editor Tabs---取消勾选Show file extension
-
-### 移除文件编辑Tab的`×`
-
-settings---Editor---General---Editor Tabs---Close button position下拉框选择None
+settings---Editor---General---Editor Tabs---取消勾选 Show file extension
 
 ### 星号标识编辑过的文件
 
-settings---Editor---General---Editor Tabs---勾选Mark modified (*)
+settings---Editor---General---Editor Tabs---勾选`Mark modified (*)`
+
+### 移除文件编辑Tab的`×`
+
+settings---Editor---General---Editor Tabs---Close button position 下拉框选择 None
 
 ### 设置文件编辑Tab的最多数
 
@@ -208,41 +216,51 @@ Windows Vista 发布时，一款全新的中英文字体也随之面世：微软
 
 它特性是：所有字母、数字与符号都很容易辨认，且具有相同的宽度，看着很舒服
 
-下载地址如下：（三个地址都是同一个文件）
+下载地址如下：（五个地址都是同一个文件）
 
 <http://oirr30q6q.bkt.clouddn.com/jadyer/idea/YaHei_Consolas_Hybrid.rar>
 
 <http://download.csdn.net/detail/jadyer/9719438>
 
+<https://gitee.com/a42/YaHei-Consolas-Hybrid-1.12>
+
+<https://github.com/GitHubNull/YaHei-Consolas-Hybrid-1.12>
+
 <http://www.intellij.org/downloads/YaHei.Consolas.1.12.zip>
 
 安装方法为：拷贝 `ttf` 文件到 `C:\Windows\Fonts\` 目录即可，然后重启 idea 进行配置
 
-settings---Editor---Font---Font---取消勾选 Show only monospaced fonts，然后选择 Yahei Consolas Hybrid，Size=14
+settings---Editor---Font---选择 Yahei Consolas Hybrid，Size=14
 
 ### 控制台字号
 
-settings---Editor---Color Scheme---Console Font---勾选Use console font instead---Size=12（字体不变）
+`先拷贝一份 Scheme 的 Darcula 配置，新命名为 Darcula_Jadyer`
+
+settings---Editor---Color Scheme---Console Font---勾选 Use console font instead---Size=12
 
 ### 文件换行符使用Unix格式
 
-settings---Editor---Colors Style---Line separator---选择 Unix and OS X (\n)
+`先拷贝一份 Scheme 的 Default 配置，新命名为 Default_Jadyer`
+
+settings---Editor---Colors Style---Line separator 下拉框选择 Unix and OS X (\n)
 
 ### 函数花括号显示为对称结构
 
-settings---Editor---Colors Style---Java---Wrapping and Braces---Braces placement---三项均改为Next line
+settings---Editor---Colors Style---Java---Wrapping and Braces---Braces placement---Next line
+
+这里我没有改，还是用的默认 End of line
 
 ### import每个类而非整个包
 
-settings---Editor---Colors Style---Java---Imports---Class count to use import with '*' 设置大一点
+settings---Editor---Colors Style---Java---Imports---Class count to use import with 星号设置大一点
 
-当Java类中import某个包下的类超过这里设置的个数，就会换成用星号来代替，比如 `import java.util.*`
+当 Java 类中 import 某个包下的类超过这里设置的个数，就会换成用星号来代替，比如 `import java.util.*`
 
 ### 注释时双斜杠位置为代码头部
 
 settings---Editor---Colors Style---Java---Code Generation---取消勾选 Line comment at first column
 
-注：若需要设置注释的双斜线与注释内容之间有且仅有一个空格，那就勾选下方紧挨着的 Add a space at comment start
+注：若需要设置注释的双斜线与注释内容之间有且仅有一个空格，那就勾选下方的 Add a space at comment start
 
 ### 自定义文件代码模板
 
@@ -312,8 +330,14 @@ settings---Build,Execution,Deployment---Build Tools---Maven---Runner---JRE---选
 
 settings---Build,Execution,Deployment---Compiler---Build project automatically
 
+### 编译报告OutOfMemoryError
+
+settings---Build,Execution,Deployment---Compiler---Build process heap size(Mbytes)---默认的700改为1024或更大
+
 
 ## 关闭警告
+
+`先拷贝一份 Profile 的 Default 配置，新命名为 Default_Jadyer`
 
 ### DefaultFileTemplate
 
@@ -335,17 +359,17 @@ settings---Editor---Inspections---Java---Java language level migration aids---Ja
 
 settings---Editor---Inspections---Java---Javadoc---
 
-取消勾选Declaration has Javadoc problems（适用@create@author）
+取消勾选 Declaration has Javadoc problems（适用@create@author）
 
-取消勾选Declaration has problems in Javadoc references（适用@see）
+取消勾选 Declaration has problems in Javadoc references（适用@see）
 
 ### 方法和类同名
 
 settings---Editor---Inspections---Java---Naming conventions---取消勾选Method name same as class name
 
-### String代替StringBuffer
+### String代替StringBuilder
 
-settings---Editor---Inspections---Java---Performance issues---取消勾选StringBuilder can be replaced with String
+settings---Editor---Inspections---Java---Performance---取消勾选StringBuilder can be replaced with String
 
 ### 未处理方法返回值
 
@@ -359,7 +383,7 @@ settings---Editor---Inspections---Java---Serialization issues---勾选Serializab
 
 ### 无需定义serialVersionUID
 
-settings—Editor—Inspections—Java—Serialization issues—勾选Non-serializable class with 'serialVersionUID'
+settings---Editor---Inspections---Java---Serialization issues---勾选Non-serializable class with 'serialVersionUID'
 
 即非序列化的类，不需要定义serialVersionUID
 
@@ -367,9 +391,9 @@ settings—Editor—Inspections—Java—Serialization issues—勾选Non-serial
 
 ### properties的属性未使用
 
-settings---Editor---Inspections---Properties Files---Unused Property---取消勾选
+settings---Editor---Inspections---Properties Files---取消勾选Unused Property
 
-### 拼写检查
+### 取消拼写检查
 
 settings---Editor---Inspections---Spelling---取消勾选
 
@@ -396,11 +420,6 @@ File---Power Save Mode---此时会关掉代码检查、代码提示等功能，�
 
 ### 编译报错
 
-* 报告：OutOfMemoryError
-
-    > 将其默认的700MB增大（64位用户在内存足够的情况下，建议改为1500或以上）<br/>
-settings---Build,Execution,Deployment---Compiler---Build process heap size(Mbytes)
-
 * 报告：找不到符号、未结束的字符串文字
 
     > 1、UTF-8文件分有BOM和无BOM，idea默认使用的编译器是javac，而其只能编译无BOM的文件（settings---Editor---File Encodings---右侧最下方BOM设置）<br/>
@@ -412,6 +431,14 @@ settings---Build,Execution,Deployment---Compiler---Build process heap size(Mbyte
 　　那还有一种可能也会出现这种情况：项目配置文件有问题<br/>
 　　项目编码的配置文件在：/项目目录/.idea/encodings.xml。你要是能修改明白就修改<br/>
 　　要是不会修改，那就删掉.idea整个目录，重启idea重新配置这个项目即可
+
+### 设置背景图
+
+Ctrl + Shift + A（或者菜单栏Help---Find Action...），然后再弹窗中输入“Set Background Image”
+
+回车后，在 Image: 中选择喜欢的图片，在 Opacity: 处可以保持默认的15透明度，最后保存即可
+
+若不想要背景图片了，同样打开这个弹窗，点击右下方 “Clear and Close” 即可
 
 ### 清除缓存和索引
 
@@ -431,4 +458,4 @@ Would you like to continue?
 
 一般建议点击 Invalidate and Restart，这样会清除的比较干净
 
-**注意**：若项目未加入版本控制，而又需要项目文件的历史更改记录，那么最好备份下 idea.properties 文件中的 ${idea.system.path}\LocalHistory\ 目录
+**注意**：若项目未加入版本控制，而又需要文件的历史记录，则提前备份下 ${idea.system.path}\LocalHistory\ 目录
