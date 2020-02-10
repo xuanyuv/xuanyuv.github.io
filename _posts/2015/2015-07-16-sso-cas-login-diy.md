@@ -126,8 +126,8 @@ body {background-color: #CBE0C9;}
 
 ## 效果图
 
-![](/img/2015/2015-07-16-sso-cas-login-diy-01.png)
+![](https://ae01.alicdn.com/kf/Ueaa149d29623475c9aa0b45b96d5c49fz.png)
 
-![](/img/2015/2015-07-16-sso-cas-login-diy-02.png)
+![](https://ae01.alicdn.com/kf/U0da9ea67ace04a899374ca5865da6192X.png)
 
-![](/img/2015/2015-07-16-sso-cas-login-diy-03.png)
+![](https://ae01.alicdn.com/kf/U945e1a6ce4e04ce88bcb799d7bc91b52f.png)

@@ -346,12 +346,12 @@ casClientServerName=http://risk.jadyer.com:8280
 
 先访问[http://boss.jadyer.com:8180/cas-client](http://boss.jadyer.com:8180/cas-client)，发现没登录会自动跳转到单点登录页
 
-![](/img/2015/2015-07-26-sso-cas-client-login-01.png)
+![](https://ae01.alicdn.com/kf/Uec15935ea5954de09c5588d78a30d2cdq.png)
 
 输入密码后登录成功
 
-![](/img/2015/2015-07-26-sso-cas-client-login-02.png)
+![](https://ae01.alicdn.com/kf/U73901511bf9048fb94ed8fbec192ba14a.png)
 
 再访问[http://risk.jadyer.com:8280/cas-client](http://risk.jadyer.com:8280/cas-client)，会发现自动登录成功，不用再登录了
 
-![](/img/2015/2015-07-26-sso-cas-client-login-03.png)
+![](https://ae01.alicdn.com/kf/U4b70416fa71b4e36b5905619c7c765c2F.png)

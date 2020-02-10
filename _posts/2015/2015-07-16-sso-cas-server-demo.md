@@ -64,9 +64,9 @@ Could not transfer artifact net.jradius:jradius-core:pom:1.0.0 from/to coova (ht
 
 4.0之后有所改变：其默认用户名密码为`casuser/Mellon`，它配置在`\WEB-INF\deployerConfigContext.xml`
 
-![](/img/2015/2015-07-16-sso-cas-server-demo-01.png)
+![](https://ae01.alicdn.com/kf/Ud0f93b050af847dea59ad9f74510594cA.png)
 
-![](/img/2015/2015-07-16-sso-cas-server-demo-02.png)
+![](https://ae01.alicdn.com/kf/U00a329f5b29749f9b90292cae21cf07cq.png)
 
 ## 导入MyEclipse
 
@@ -76,7 +76,7 @@ Could not transfer artifact net.jradius:jradius-core:pom:1.0.0 from/to coova (ht
 
 验证一下：把这个WebProject发布到Tomcat，看到的应该是一样的效果
 
-![](/img/2015/2015-07-16-sso-cas-server-demo-03.png)
+![](https://ae01.alicdn.com/kf/Ue769f10e11654ddd8f80f5831e0735979.png)
 
 注意：导入时，这两个jar也是CAS的：`person-directory-api-1.5.1.jar`、`person-directory-impl-1.5.1.jar`
 

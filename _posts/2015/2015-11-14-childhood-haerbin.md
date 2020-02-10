@@ -13,17 +13,17 @@ excerpt: 小时候的哈尔滨生活点滴。
 
 ## 柿子
 
-![](/img/2015/2015-11-14-childhood-haerbin-01.jpeg)
+![](https://ae01.alicdn.com/kf/U1ec92e55b94a45dbab2ff32f0bbe1c05i.jpeg)
 
 ## 米饭
 
 最出名的：`东北五常大米`，好久没吃过这么香的米了
 
-![](/img/2015/2015-11-14-childhood-haerbin-02.jpeg)
+![](https://ae01.alicdn.com/kf/Ud22d7b5eca04446f9a2336d893f7f1b1a.jpeg)
 
 ## 婆婆丁
 
-![](/img/2015/2015-11-14-childhood-haerbin-03.jpeg)
+![](https://ae01.alicdn.com/kf/Uf051cfb0be78446e8673dc2e8969e3f6N.jpeg)
 
 ## 打饭包
 
@@ -41,11 +41,11 @@ excerpt: 小时候的哈尔滨生活点滴。
 
 `两手捧着吃，简直不敢想了，太特么好吃了！！`
 
-![](/img/2015/2015-11-14-childhood-haerbin-04.jpeg)
+![](https://ae01.alicdn.com/kf/Uc68f81ab65a74e5d8ae89a1ce03c5cdep.jpeg)
 
 ## 土豆干
 
-![](/img/2015/2015-11-14-childhood-haerbin-05.jpeg)
+![](https://ae01.alicdn.com/kf/U9242a36c7a284da594efe1f1615a0cd5b.jpeg)
 
 ## 锅包肉
 
@@ -55,21 +55,21 @@ excerpt: 小时候的哈尔滨生活点滴。
 
 嗅觉不知所以，口水不能自已，百吃其所不厌
 
-![](/img/2015/2015-11-14-childhood-haerbin-06.jpeg)
+![](https://ae01.alicdn.com/kf/Uab9f643e1c3d475e9a78e18aab37d044j.jpeg)
 
 ## 地三鲜
 
 地三鲜的主要食材是土豆、茄子、青椒
 
-![](/img/2015/2015-11-14-childhood-haerbin-07.png)
+![](https://ae01.alicdn.com/kf/Ub852897dfb4a4fd0a050516b4911433bC.png)
 
 ## 杀猪菜
 
-![](/img/2015/2015-11-14-childhood-haerbin-08.jpeg)
+![](https://ae01.alicdn.com/kf/U8a037307e8d840ffb3576f6362d13570a.jpeg)
 
 ## 鼓酿悠悠
 
-![](/img/2015/2015-11-14-childhood-haerbin-09.jpeg)
+![](https://ae01.alicdn.com/kf/Uaa0e3d8ae4e94c02b1bd2d21bf20307dh.jpeg)
 
 ## 排骨炖豆角
 
@@ -89,7 +89,7 @@ excerpt: 小时候的哈尔滨生活点滴。
 
 后来黑龙江农户家里来了贵宾时也都用这道菜来招待客人
 
-![](/img/2015/2015-11-14-childhood-haerbin-10.jpeg)
+![](https://ae01.alicdn.com/kf/U8ef03753b3a640c8bcebda91216fc5084.jpeg)
 
 ## 小鸡炖蘑菇
 
@@ -105,7 +105,7 @@ excerpt: 小时候的哈尔滨生活点滴。
 
 这道菜做出来色泽红亮，骨酥肉烂、汤鲜味浓，是增强免疫力、补脾益气、提神开胃的理想佳肴
 
-![](/img/2015/2015-11-14-childhood-haerbin-11.jpg)
+![](https://ae01.alicdn.com/kf/Ub381651b980b419fb2e7359832ec0bc72.jpg)
 
 ## 猪肉炖粉条
 
@@ -125,4 +125,4 @@ excerpt: 小时候的哈尔滨生活点滴。
 
 这种本地特产的土豆粉条特别易熟，而且非常耐煮，与肉同炖，鲜香扑鼻
 
-![](/img/2015/2015-11-14-childhood-haerbin-12.jpeg)
+![](https://ae01.alicdn.com/kf/U699626147d1d44b49bae90781ad1ff9d1.jpeg)

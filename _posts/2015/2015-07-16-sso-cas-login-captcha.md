@@ -439,14 +439,14 @@ out = pageContext.pushBody();
 
 ## 效果图
 
-![](/img/2015/2015-07-16-sso-cas-login-captcha-01.png)
+![](https://ae01.alicdn.com/kf/U720c6e87cad24584b28b503d63294b704.png)
 
-![](/img/2015/2015-07-16-sso-cas-login-captcha-02.png)
+![](https://ae01.alicdn.com/kf/U33e13f571ba34c6f9149f29f2a8620feW.png)
 
-![](/img/2015/2015-07-16-sso-cas-login-captcha-03.png)
+![](https://ae01.alicdn.com/kf/U316bd9f2ed9a49048504e1798525aa60g.png)
 
-![](/img/2015/2015-07-16-sso-cas-login-captcha-04.png)
+![](https://ae01.alicdn.com/kf/Uedcd564189df470087b0e658ff78493dD.png)
 
-![](/img/2015/2015-07-16-sso-cas-login-captcha-05.png)
+![](https://ae01.alicdn.com/kf/Uefe1d8167b1b4987b03b1d0d343c50d4i.png)
 
-![](/img/2015/2015-07-16-sso-cas-login-captcha-06.png)
+![](https://ae01.alicdn.com/kf/U6136e24a004b420d88e61bbae409d336m.png)

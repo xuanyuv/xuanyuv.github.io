@@ -265,4 +265,4 @@ public class User {
 
 （今天头疼还发烧，明天再发客户端的配置方法）
 
-![](/img/2015/2015-07-20-sso-cas-user-diy.png)
+![](https://ae01.alicdn.com/kf/Uf80d9570637547d9bef10a4fcf2da6f2c.png)
