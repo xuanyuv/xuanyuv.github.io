@@ -13,7 +13,7 @@ excerpt: 演示ztree插件的一些用法。
 
 先放一张效果图
 
-![](/img/2013/2013-10-16-ztree-demo.png)
+![](https://ae01.alicdn.com/kf/U2d08dc941a6f4c0182f1353434bd2a4dd.png)
 
 下面是一个服务端由`Servlet`提供数据给前端显示的完整示例代码
 

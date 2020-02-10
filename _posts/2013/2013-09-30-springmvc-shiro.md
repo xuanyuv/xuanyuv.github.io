@@ -527,17 +527,17 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 
 下面是对应控制台输出的一些辅助截图
 
-![](/img/2013/2013-09-30-springmvc-shiro-01.png)
+![](https://ae01.alicdn.com/kf/Ud69327e761754a98a2c8eaa1e2eaef25J.png)
 
-![](/img/2013/2013-09-30-springmvc-shiro-02.png)
+![](https://ae01.alicdn.com/kf/U7278660dd43843b2af167d32e305012ef.png)
 
-![](/img/2013/2013-09-30-springmvc-shiro-03.png)
+![](https://ae01.alicdn.com/kf/U6ffc0ed1c3b64decaa8a14a9d5304d878.png)
 
-![](/img/2013/2013-09-30-springmvc-shiro-04.png)
+![](https://ae01.alicdn.com/kf/U1e8ff04c64284d8ba35d27ae93dab3014.png)
 
-![](/img/2013/2013-09-30-springmvc-shiro-05.png)
+![](https://ae01.alicdn.com/kf/Ua1a885ba44fe4ca4815a1336b39c407ej.png)
 
-![](/img/2013/2013-09-30-springmvc-shiro-06.png)
+![](https://ae01.alicdn.com/kf/U5b41dbe125bb45fda140bab7c3e6d055J.png)
 
 ## 内置的FilterChain
 

@@ -141,4 +141,4 @@ worker.tomcat.port=8009
 4. 删除用户：`htpasswd -D .htpasswd 用户名`
 5. 最后重启apache就可以了，下面是效果图
 
-![](/img/2014/2014-09-27-tomcat-apache-jk.png)
+![](https://ae01.alicdn.com/kf/U25b231b8cf904ec2ba591bdc122cff16s.png)

@@ -120,9 +120,9 @@ public class CalculatorTest {
 
 下面为201612031536补充的测试报告截图
 
-![](/img/2013/2013-07-09-junit-cobertura-01.png)
+![](https://ae01.alicdn.com/kf/Uadfd8f404584403a85706a632ab8148bN.png)
 
-![](/img/2013/2013-07-09-junit-cobertura-02.png)
+![](https://ae01.alicdn.com/kf/U8f36dd16e0f143a1af4ebae1edc28e09d.png)
 
 ## Ant脚本生成报告
 

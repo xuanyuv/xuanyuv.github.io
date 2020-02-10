@@ -102,8 +102,8 @@ public class JProgressBarDemo {
 
 第一张：
 
-![](/img/2013/2013-04-24-java-swing-progressbar-01.png)
+![](https://ae01.alicdn.com/kf/Ud02b75b0ed634a7588424992b726f8abR.png)
 
 第二张：
 
-![](/img/2013/2013-04-24-java-swing-progressbar-02.png)
+![](https://ae01.alicdn.com/kf/U2de00d89d80145f1a770930735be0db4V.png)

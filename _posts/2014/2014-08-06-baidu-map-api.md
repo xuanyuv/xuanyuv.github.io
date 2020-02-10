@@ -15,7 +15,7 @@ excerpt: 主要演示了百度地图API中的地址解析、浏览器定位、IP
 
 效果图如下
 
-![](/img/2014/2014-08-06-baidu-map-api.png)
+![](https://ae01.alicdn.com/kf/U155f78a138074c1796e45883a2a3416fC.png)
 
 下面是代码
 

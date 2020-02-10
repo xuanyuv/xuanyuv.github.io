@@ -35,4 +35,4 @@ Oracle的版本是Oracle Database 11g Release 2 (11.2.0.1.0) for Microsoft Windo
 
 修改完后，退出Oracle，再从头开始重新安装Oracle，即可
 
-![](/img/2013/2013-06-26-oracle-condition-error.png)
+![](https://ae01.alicdn.com/kf/U73409c5506fd40d092833874d6fd57c1x.png)
