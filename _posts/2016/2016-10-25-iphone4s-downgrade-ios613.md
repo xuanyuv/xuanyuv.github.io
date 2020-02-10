@@ -23,7 +23,7 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 
 `盘古越狱`可能导致降级过程中一定几率失败：最后一步执行命令后，卡在`Sending iBEC (279576 bytes)...`
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-01.png)
+![](https://ae01.alicdn.com/kf/U5950c7c2639a4e3ca5a7c858ba8cb55bk.png)
 
 这时有两个解决办法
 
@@ -38,11 +38,11 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 
 另外，如果安装`openSSH`报错，可以多试几次直到安装上为止
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-02.png)
+![](https://ae01.alicdn.com/kf/U28cf5d602f204a908cfd54fe10e45f52l.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-03.png)
+![](https://ae01.alicdn.com/kf/Ube375b7215e441549287ba62ea86031cU.png)
 
 ## 准备文件
 
@@ -66,31 +66,31 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 
 　　然后打开手机`设置--->无线局域网--->找到连接的WiFi`，查看信息找到手机IP（本文假设10.0.0.66）
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-04.png)
+![](https://ae01.alicdn.com/kf/U841b8a00af8e48849734353f836e5be3c.png)
 
 2、打开WinSCP，文件协议选择`SCP`，主机名填手机IP，用户名为`root`，密码默认为`alpine`，点击**登录**
 
 　　如果弹出对话框**警告 - 潜在的安全问题**，继续点弹窗上面的**登录**（有的版本也叫**更新**）按钮
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-05.png)
+![](https://ae01.alicdn.com/kf/U45e3a00fc159452890246e2f204e7098X.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-06.png)
+![](https://ae01.alicdn.com/kf/U6cca84e8206b4dd59d924b9bac7205e9b.png)
 
 3、将上面的`kloader`和`pwnediBSS`文件拖到WinSCP显示的手机窗口
 
 　然后选中右侧右窗口中的这两个文件，右键选择属性，将属性里的`w r x`全部打勾，点击确认。
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-07.png)
+![](https://ae01.alicdn.com/kf/U85b210d79b32462fbd8f256ada88f5faI.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-08.png)
+![](https://ae01.alicdn.com/kf/Uf31b3ef528104ea797b8cd8328ef4079Z.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-09.png)
+![](https://ae01.alicdn.com/kf/U9aab224b40d647e39761f064840c1c2cC.png)
 
 ## 进入DFU模式
 
@@ -102,15 +102,15 @@ excerpt: 详细介绍了iPhone4S机型操作系统从ios711，降级到乔布斯
 
 同时WinSCP会弹出提醒窗口，告诉你手机没有响应通信，直接点击`中止(A)`即可
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-10.png)
+![](https://ae01.alicdn.com/kf/U47375b8e3cda41aead8ce4c80c0718a4Y.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-11.png)
+![](https://ae01.alicdn.com/kf/U407eee5910764aefaf4d6e17f9c3228e8.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-12.png)
+![](https://ae01.alicdn.com/kf/U3754390acd9c4be999b92b1a7e86ba66C.png)
 
 到了这步，正常情况就进入了DFU模式（前提是已装苹果驱动，上文有提及），若进入失败可尝试下面的方法
 
@@ -131,66 +131,66 @@ cd idevicerestore for Windows
 idevicerestore.exe -e fistmedaddy.ipsw
 ```
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-13.png)
+![](https://ae01.alicdn.com/kf/U48051d6939b44800a9e489f4201e85954.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-14.png)
+![](https://ae01.alicdn.com/kf/Uf45cb09bbbcf4b2f8d7b746515f388fc2.png)
 
 ## 回味经典
 
 让我们从激活开始，看看降级成功的效果吧！！
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-15.png)
+![](https://ae01.alicdn.com/kf/U96a4fe06e536458bb1df8f60ab0ff369l.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-16.png)
+![](https://ae01.alicdn.com/kf/Ue8945d6874004d75992fdebe55c3e867a.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-17.png)
+![](https://ae01.alicdn.com/kf/Uc847323ccaa94d68b86666f7c76c5017e.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-18.png)
+![](https://ae01.alicdn.com/kf/U7815046821de409483559f9fb99b0d082.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-19.png)
+![](https://ae01.alicdn.com/kf/Uce485ef3de784784a7071e974b2df955F.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-20.png)
+![](https://ae01.alicdn.com/kf/Ub2d2e032b3c6497da63ef1bc31006684l.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-21.png)
+![](https://ae01.alicdn.com/kf/Uba5192f072784600b8b22cef4df9d12cJ.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-22.png)
+![](https://ae01.alicdn.com/kf/U6fcfbb807eaa422197f89b598514aeccG.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-23.png)
+![](https://ae01.alicdn.com/kf/U5ce7a50d31a641c885e0f3685c6866act.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-24.png)
+![](https://ae01.alicdn.com/kf/Uc86e3b9430bb4568bc9d22f58a4016cda.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-25.jpg)
+![](https://ae01.alicdn.com/kf/U501d1ef9340b43f5bc851c5db9713bc4k.jpg)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-26.png)
+![](https://ae01.alicdn.com/kf/Uf019519529364493965a3709f240e781A.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-27.png)
+![](https://ae01.alicdn.com/kf/U4d9197deec094d79a895e027c185424ej.png)
 
 <br/>
 
-![](/img/2016/2016-10-25-iphone4s-downgrade-ios613-28.jpg)
+![](https://ae01.alicdn.com/kf/U848774984c04474e865c3e8a1d9410dbr.jpg)
