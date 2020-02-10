@@ -294,7 +294,7 @@ settings---Editor---Live Templates---右上角 `+` 选择 Template Group---我�
 
 其中时间位置可以用 `$date$` 或者 `$time$` 占位，并点击 Edit variables 按钮，然后在下拉框选择 `date()` 和 `time()`
 
-![](/img/2016/2016-04-20-idea-config.png)
+![](https://ae01.alicdn.com/kf/H7ad4863359204e2a857bf832bc20b055M.png)
 
 ### 隐藏文件和文件夹
 

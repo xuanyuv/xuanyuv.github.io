@@ -560,4 +560,4 @@ public class ConsumerController {
 
 最後，補充一張註冊中心的頁面截圖：
 
-![](/img/2017/2017-01-19-springcloud-ribbon-feign.png)
+![](https://ae01.alicdn.com/kf/Hcb52278614874a50a45708b8234b5164z.png)

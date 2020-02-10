@@ -49,7 +49,7 @@ mysql-8.0.13-winx64.msi（106MB）：<http://cdn.mysql.com/Downloads/MySQL-8.0/m
 
 这是在我的电脑上，安装后的目录结构（以前的图片）
 
-![](/img/2016/2016-07-22-windows-install-mysql.png)
+![](https://ae01.alicdn.com/kf/H432e67d5f1394f65ba00f7e24f2ba60eF.png)
 
 ### 配置my.ini
 

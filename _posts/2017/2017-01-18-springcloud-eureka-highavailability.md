@@ -41,7 +41,7 @@ Eureka Client 在启动时需要指定 Zone，它会优先请求自己 Zone 的 
 
 如下图所示
 
-![](/img/2017/2017-01-18-springcloud-eureka-high-availability.png)
+![](https://ae01.alicdn.com/kf/H3ee2aebf91d74804ac10504a8b1abf0dF.png)
 
 这是公共的 `pom.xml`
 
