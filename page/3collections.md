@@ -22,15 +22,11 @@ type: page
 
 ## 站点
 
-* [CODELF](https://unbug.github.io/codelf)
 * [CodeSheep](http://www.codesheep.cn)
-* [HoltYin](https://holtyin.github.io)
 * [KLBLOG](http://www.kailing.pub)
 * [并发编程网](http://ifeve.com)
 * [程序猿DD](http://blog.didispace.com)
-* [会摇摆](http://www.huiyaobai.com)
 * [前端踩坑那些事](https://www.febugs.com)
 * [松花皮蛋](http://www.liangsonghua.me)
-* [摘星少年](http://www.cymin.cn)
-* [证监会](http://www.csrc.gov.cn)
 * [银保监](http://www.cbirc.gov.cn)
+* [证监会](http://www.csrc.gov.cn)
