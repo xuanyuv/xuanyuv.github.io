@@ -151,7 +151,7 @@ C:\Users\Jadyer>
 管理员身份运行CMD
 
 ```sh
-C:\Users\hongyu.lu>mysql -uroot -p
+C:\Users\Jadyer>mysql -uroot -p
 Enter password: ************
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 8

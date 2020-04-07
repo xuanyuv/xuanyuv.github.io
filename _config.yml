@@ -1,7 +1,7 @@
 # https://github.com/Gaohaoyang/gaohaoyang.github.io/commit/588ae839b24513484b1c438e3f0aef4b00915dfe
 
 # 指定启动Jekyll服务时的端口号，访问的地址为http://127.0.0.1:port/，不配置则默认为4000
-port: 1234
+port: 4000
 
 # 指定并配置Markdown解析器（2016年05月01日起，GitHubPages将只支持kramdown作为唯一的Markdown引擎）
 markdown: kramdown
