@@ -24,6 +24,18 @@ published: false
 
 
 
+1、关闭安全启动（Secure Boot）
+2、设置电脑为UEFI启动
+3、设置U盘为第一启动项
+注：进入BIOS前记得先插上U盘，退出BIOS前记得保存
+
+傲腾内存：https://www.zhihu.com/question/344637683
+https://downloadcenter.intel.com/zh-cn/download/29339/
+
+
+
+
+
 不忘初心精简系统博客
 https://www.pc521.net/streamlined-system
 【不忘初心】 Win10_LTSC2019 X64 17763.914 五合一 [纯净精简版] 2020.01.01
