@@ -77,6 +77,10 @@ http://i.pcbeta.com/space-uid-3854607.html
 2、任务栏右键任务管理器---启动选项卡---右键Windows Security notification icon---禁用即可
 3、注销或重启电脑，确保Defender被关掉（重启完，再打开任务管理器，检查进程选项卡下的任务列表）
 
+待测试：运行gpedit.msc计算机配置--管理模板--windows组件--microsoft defender 防病毒--实时保护--配置监视传入和传出文件和程序活动（启用）这里有3个选项，选仅扫描传入文件，然后享受丝滑
+
+
+
 激活
 可以到网上下载 HWIDGen_62.01_汉化版 压缩包，解压出来得到 HWIDGen_62.01_汉化版.exex，重命名为exe文件
 双击执行，在打开的界面右上角工作模式选择KMS38激活，然后点击左下角开始按钮，等待即可
