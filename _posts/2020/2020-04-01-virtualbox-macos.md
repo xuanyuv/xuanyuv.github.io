@@ -12,8 +12,6 @@ published: true
 {:toc}
 
 
-> 注：这是2018-11-20做的实验
-
 ## 软件版本
 
 VirtualBox-5.2.20
@@ -58,11 +56,13 @@ VBoxManage setextradata MacOS-10.11 "VBoxInternal/Devices/smc/0/Config/GetKeyFro
 
 ### 启动虚拟机
 
-重新打开 VirtualBox，启动之前创建的“MacOS-10.11”
+重新打开 VirtualBox，启动之前创建的【MacOS-10.11】
 
 这时苹果会初始化一些东西，大约一分钟（如果报错，说明配置虚拟机时的命令输错了）
 
 过一会就会看到苹果系统的引导界面了，一步步设置就好了
+
+说明：下面截图中的日期2018-11-13，实际是第一次安装时截的图，后面编辑文章时拿来用的
 
 ![](https://ae01.alicdn.com/kf/H7bad2c45cde34b09a2aa31b0205ac055E.png)
 
@@ -86,7 +86,7 @@ VBoxManage setextradata MacOS-10.11 "VBoxInternal/Devices/smc/0/Config/GetKeyFro
 
 ![](https://ae01.alicdn.com/kf/H7ce84293628941e08b3e81f520bdd5efq.png)
 
-### 升级稳定版本
+### 升级稳定版
 
 10.11 系列最稳定的就是 10.11.6 版本，所以我们要通过 Combo Update 升上去
 
