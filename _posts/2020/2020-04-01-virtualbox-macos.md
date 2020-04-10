@@ -62,7 +62,7 @@ VBoxManage setextradata MacOS-10.11 "VBoxInternal/Devices/smc/0/Config/GetKeyFro
 
 过一会就会看到苹果系统的引导界面了，一步步设置就好了
 
-说明：下面截图中的日期2018-11-13，实际是第一次安装时截的图，后面编辑文章时拿来用的
+说明：下面截图中的日期2018-11-13，实际是第一次安装时截的图，后面编辑文章就拿来用了
 
 ![](https://ae01.alicdn.com/kf/H7bad2c45cde34b09a2aa31b0205ac055E.png)
 
