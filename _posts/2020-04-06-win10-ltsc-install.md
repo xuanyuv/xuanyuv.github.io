@@ -25,7 +25,7 @@ published: false
 1. 一个 8G U 盘（提前格式化）
 2. 一个官方镜像文件（MSDN下载 [Windows 10 Enterprise LTSC 2019](https://msdn.itellyou.cn)）
 4. 傲腾内存官方驱动（要用到 [SetupRST 和 SetupOptaneMemory](https://downloadcenter.intel.com/zh-cn/download/29339/) 两个文件）
-3. 无线网卡官方驱动（我的是 [Intel WiFi6 AX201](https://downloadcenter.intel.com/zh-cn/download/29455?product=130293) 产品，[或联想官网下载](https://think.lenovo.com.cn/support/driver/mainpage.aspx#ThinkPad)，更全面一些）
+3. 无线网卡官方驱动（我的是 [Intel WiFi6 AX201](https://downloadcenter.intel.com/zh-cn/download/29455?product=130293) 产品，或者到 [联想官网下载](https://think.lenovo.com.cn/support/driver/mainpage.aspx#ThinkPad)）
 
 关于系统版本，这里可以看到官方的版本历史：<https://docs.microsoft.com/zh-cn/windows/release-information>
 
@@ -107,6 +107,24 @@ published: false
 
 在上面的步骤中，`硬盘所有分区全部删除，形成一个未分配的空间` 的时候，系统就已经把磁盘4K对齐了
 
+然后再分配一下 D 盘：运行compmgmt.msc---磁盘管理---未分配的分区上右键---新建简单卷---卷大小默认全满（就是上面预留的376.9G）
+
+注：新建简单卷过程中，卷标名若清空，那么最终我的电脑里显示出来的盘符名称就是常见的：本地磁盘 (D:)
+
+### 激活系统
+
+这里用的是 **HWIDGen_62.01_汉化版.exe**，文件大小为 863KB（注意：它在激活系统时，不需要联网！！不需要联网！！不需要联网！！）
+
+打开 HWIDGen，右上角工作模式选择 **KMS38激活**（也就是激活到2038年），然后点左下角开始按钮，等待一分钟左右，激活成功
+
+![](https://ae01.alicdn.com/kf/Hcfdebb217f4b4d0e98097d70700d7199c.png)
+
+查看激活结果：运行---slmgr.vbs -xpr（就会弹出上面的对话框）
+
+查看激活状态：运行---slmgr.vbs -dlv
+
+查看内部版本：运行---winver
+
 ### 配置傲腾
 
 买电脑时，自带了傲腾32G，它和本身的固态硬盘组建成 raid0，效果是这样的
@@ -117,13 +135,13 @@ published: false
 
 ![](https://ae01.alicdn.com/kf/H975e6b07d84140429a0e0c1da1b3616da.png)
 
-现在重做系统后，显然傲腾内存是无法识别的（在我的电脑里面会看到一块独立的硬盘，大小显示为 27.2G）
+现在重做系统了，显然傲腾内存是无法识别的（在我的电脑里面会看到一块独立的硬盘，大小显示为 27.2G）
 
-我们要做的就是，安装傲腾驱动，然后在驱动管理界面启用它，这样就会和固态硬盘组建 radi0 了
+我们要做的就是，安装傲腾内存驱动，然后在驱动管理界面启用它，这样就会和固态硬盘组建 radi0 了
 
 装驱动时，我先装的 SetupOptaneMemory，然后打开其管理程序，发现显示：没有兼容英特尔傲腾内存的磁盘
 
-这个时候，我是这样解决的：
+这时，我是这样解决的：
 
 1. 卸载 SetupOptaneMemory，重启
 2. 安装 SetupRST，重启
@@ -143,7 +161,49 @@ published: false
 
 运行gpedit.msc---计算机配置---管理模板---Windows组件---WD防病毒程序---实时保护---置监视传入和传出文件和程序活动---启用
 
-### 关闭索引
+### 关闭自动更新
+
+![](https://ae01.alicdn.com/kf/Hd332ea5bb18c419b82ca59804e5e88ebU.png)
+
+1. 运行gpedit.msc---计算机配置---管理模板---Windows组件---Windows更新---指定 Intranet Microsoft 更新服务位置---启用
+　　<br/>然后在下面的三个输入框（Intranet更新、统计、备用下载服务地址）均填入 127.0.0.1，如上图所示
+2. 运行gpedit.msc---计算机配置---管理模板---Windows组件---Windows更新---配置自动更新---禁用
+3. 运行compmgmt.msc---系统工具---任务计划程序---任务计划程序库---Microsoft---Windows---WindowsUpdate---禁用所有任务
+　　<br/>再找到UpdateOrchestrator，同样禁用它的所有任务（不过失败了，提示：你所使用的用户账户没有禁用此任务的权限，于是作罢）
+4. 运行services.msc---Windows Update---停止并禁用---右键属性恢复选项卡---三次失败下拉框均改为无操作
+5. 运行services.msc---Windows Update Medic Service---这里禁用时会提示拒绝访问，那改它的注册表就行了
+　　<br/>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc
+　　<br/>双击右侧Start值，修改其值为4（十六进制不变）（原值为3，表示手动）
+　　<br/>双击右侧FailureActions值，修改它的二进制数据：将0010、0018行的左起第5个数值由原来的01改为00
+　　<br/>补充：该服务是Win10升级到1809版后新增的，作为Windows Update服务的保镖，它开机会自动运行Windows Update服务
+
+下面补充一下网上的其它方法（有的很暴力，但还是不如巨硬暴力），**由于未亲自验证最终效果，故仅供参考**
+
+1. 运行services.msc---Update Orchestrator Service---停止并禁用---右键属性恢复选项卡---三次失败下拉框均改为无操作
+　　<br/>专业版发现：停止服务后，左下角开始菜单，设置，Windows更新面板，还是能更新，再回到服务面板发现它又自动启动了
+　　<br/>LTSC版发现：停止服务后，到Windows更新面板去看，显示的是一片空白且有卡顿现象，然后再启动这个服务，又没有空白了
+2. 卸载掉应用程序列表（不是已安装更新里面）里的KB4023057补丁，它负责的是系统更新，会偷偷打开WindowsUpdate服务
+3. 底层入手，斩草除根，直接干掉负责系统更新服务的系统文件C:\Windows\System32\wuaueng.dll
+
+### 关闭自动驱动
+
+Win10 有个特点：自动扫描硬件，并安装相应的驱动
+
+不过自动装的驱动可能不是最新的，还是提前到品牌电脑或硬件官网下载驱动，等激活完系统后，自己装驱动
+
+按理来说，上面已经关了自动更新，它就不会扫描硬件安装驱动了，不过保险起见，还是手动关闭自动装驱动的功能吧
+
+1. 此电脑---右键属性---高级系统设置---硬件--设备安装设置---否
+2. 运行gpedit.msc---计算机配置---管理模板---Windows组件---Windows更新---Windows 更新不包括驱动程序---已启用
+3. 运行gpedit.msc---计算机配置---管理模板---系统---设备安装---设备安装限制---禁止安装未由其他策略设置描述的设备---已启用
+
+另外，也可设置针对某个硬件不自动驱动，同样在设备安装限制下面，选择阻止使用与下列设备安装程序类相匹配的驱动程序安装设备
+
+更改为已启用，然后点击下面的【显示】按钮，输入设备的GUID值，确定后再勾选也适用于匹配已安装的设备
+
+找设备的GUID值：运行compmgmt.msc---设备管理器---展开某设备---属性---详细信息选项卡---属性下拉框选择类Guid，右键复制显示的值
+
+### 关闭索引服务
 
 运行services.msc---Windows Search---停止服务并禁用
 
@@ -214,71 +274,11 @@ Windows Registry Editor Version 5.00
 
 然后注销或重启电脑，就能看到 txt 或 word 文件背景色变成了淡绿色
 
-### 关闭自动更新
-
-![](https://ae01.alicdn.com/kf/Hd332ea5bb18c419b82ca59804e5e88ebU.png)
-
-1. 运行gpedit.msc---计算机配置---管理模板---Windows组件---Windows更新---指定 Intranet Microsoft 更新服务位置---启用
-　　<br/>然后在下面的三个输入框（Intranet更新、统计、备用下载服务地址）均填入 127.0.0.1，如上图所示
-2. 运行gpedit.msc---计算机配置---管理模板---Windows组件---Windows更新---配置自动更新---禁用
-3. 运行compmgmt.msc---系统工具---任务计划程序---任务计划程序库---Microsoft---Windows---WindowsUpdate---禁用所有任务
-　　<br/>再找到UpdateOrchestrator，同样禁用它的所有任务（不过失败了，提示：你所使用的用户账户没有禁用此任务的权限，于是作罢）
-4. 运行services.msc---Windows Update---停止并禁用---右键属性恢复选项卡---三次失败下拉框均改为无操作
-5. 运行services.msc---Windows Update Medic Service---这里禁用时会提示拒绝访问，那改它的注册表就行了
-　　<br/>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc
-　　<br/>双击右侧Start值，修改其值为4（十六进制不变）（原值为3，表示手动）
-　　<br/>双击右侧FailureActions值，修改它的二进制数据：将0010、0018行的左起第5个数值由原来的01改为00
-　　<br/>补充：该服务是Win10升级到1809版后新增的，作为Windows Update服务的保镖，它开机会自动运行Windows Update服务
-
-下面补充一下网上的其它方法（有的很暴力，但还是不如巨硬暴力），**由于未亲自验证最终效果，故仅供参考**
-
-1. 运行services.msc---Update Orchestrator Service---停止并禁用---右键属性恢复选项卡---三次失败下拉框均改为无操作
-　　<br/>专业版发现：停止服务后，左下角开始菜单，设置，Windows更新面板，还是能更新，再回到服务面板发现它又自动启动了
-　　<br/>LTSC版发现：停止服务后，到Windows更新面板去看，显示的是一片空白且有卡顿现象，然后再启动这个服务，又没有空白了
-2. 卸载掉应用程序列表（不是已安装更新里面）里的KB4023057补丁，它负责的是系统更新，会偷偷打开WindowsUpdate服务
-3. 底层入手，斩草除根，直接干掉负责系统更新服务的系统文件C:\Windows\System32\wuaueng.dll
-
-### 关闭自动驱动
-
-Win10 有个特点：自动扫描硬件，并安装相应的驱动
-
-不过自动装的驱动可能不是最新的，还是提前到品牌电脑或硬件官网下载驱动，等激活完系统后，自己装驱动
-
-按理来说，上面已经关了自动更新，它就不会扫描硬件安装驱动了，不过保险起见，还是手动关闭自动装驱动的功能吧
-
-1. 此电脑---右键属性---高级系统设置---硬件--设备安装设置---否
-2. 运行gpedit.msc---计算机配置---管理模板---Windows组件---Windows更新---Windows 更新不包括驱动程序---已启用
-3. 运行gpedit.msc---计算机配置---管理模板---系统---设备安装---设备安装限制---禁止安装未由其他策略设置描述的设备---已启用
-
-另外，也可设置针对某个硬件不自动驱动，同样在设备安装限制下面，选择阻止使用与下列设备安装程序类相匹配的驱动程序安装设备
-
-更改为已启用，然后点击下面的【显示】按钮，输入设备的GUID值，确定后再勾选也适用于匹配已安装的设备
-
-找设备的GUID值：运行compmgmt.msc---设备管理器---展开某设备---属性---详细信息选项卡---属性下拉框选择类Guid，右键复制显示的值
-
-### 激活系统
-
-这里用的是 **HWIDGen_62.01_汉化版.exe**，文件大小为 863KB（注意：它在激活系统时，不需要联网！！不需要联网！！不需要联网！！）
-
-打开 HWIDGen，右上角工作模式选择 **KMS38激活**（也就是激活到2038年），然后点左下角开始按钮，等待一分钟左右，激活成功
-
-![](https://ae01.alicdn.com/kf/Hcfdebb217f4b4d0e98097d70700d7199c.png)
-
-查看激活结果：运行---slmgr.vbs -xpr（就会弹出上面的对话框）
-
-查看激活状态：运行---slmgr.vbs -dlv
-
-查看内部版本：运行---winver
-
-### 分配D盘
-
-运行compmgmt.msc---磁盘管理---未分配的分区上右键---新建简单卷---简单卷大小默认全满（就是上面留下的376.9G）---即可
-
-注：新建时，卷标名若清空，那么最终我的电脑里显示出来的盘符名称就是：本地磁盘 (D:)
-
-### 装驱动
+### 安装驱动
 
 没啥说的，咔咔咔一顿安装一顿重启，就是了
+
+重启之后，就可以联网了：世界那么大，去网上看看
 
 ### 补充
 
