@@ -5,7 +5,7 @@ categories: 工具
 tags: win10 ltsc
 author: 玄玉
 excerpt: 主要介绍Win10-ltsc版安装和配置图解。
-published: false
+published: true
 ---
 
 * content

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Office版本划分及下载地址"
-categories: 其它
+categories: 工具
 tags: office download retail vol
 author: 玄玉
 excerpt: 介绍Office镜像下载地址，以及它那复杂的版本划分情况。

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Outlook点击关闭时最小化任务栏"
-categories: 其它
+categories: 工具
 tags: office outlook 关闭 任务栏
 author: 玄玉
 excerpt: 详细介绍了outlook里面，如何实现点击右上角关闭按钮后，自动隐藏到任务栏的方法。

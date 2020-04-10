@@ -5,12 +5,14 @@ categories: 工具
 tags: virtualbox mac macos eicapitan
 author: 玄玉
 excerpt: 详细介绍了在虚拟机VirtualBox里面安装Mac OS 10.11.6 EI Capitan的过程。
-published: false
+published: true
 ---
 
 * content
 {:toc}
 
+
+> 注：这是2018-11-20做的实验
 
 ## 软件版本
 
