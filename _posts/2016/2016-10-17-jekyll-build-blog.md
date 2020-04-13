@@ -5,7 +5,6 @@ categories: 工具
 tags: jekyll rubygems github blog
 author: 玄玉
 excerpt: 详细介绍了通过Jekyll在GithubPages（github.io）上创建静态博客的方法。
-mathjax: true
 published: true
 ---
 
@@ -274,13 +273,3 @@ color 02
 
 call jekyll s --watch
 ```
-
-## 数学表达式
-
-目前该博客模板已支持 MathJax（需要在文章头部增加配置：`mathjax: true`），示例如下
-
-$$
-f(x) = ax + b
-$$
-
-Inline Mathjax $a \neq b$
