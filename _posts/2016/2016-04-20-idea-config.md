@@ -208,25 +208,13 @@ settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---默认�
 
 ### 代码字体
 
-Windows Vista 发布时，一款全新的中英文字体也随之面世：微软雅黑体（Yahei Consolas Hybrid）
-
-据说微软为了打造这个字体，做每个字的成本几乎达到100美元，也被戏称有史以来最昂贵的一套中文字体
-
-其中 Consolas 是专为编程人员设计的字体
-
-它特性是：所有字母、数字与符号都很容易辨认，且具有相同的宽度，看着很舒服
-
-下载地址如下：（五个地址都是同一个文件）
-
-<http://oirr30q6q.bkt.clouddn.com/jadyer/idea/YaHei_Consolas_Hybrid.rar>
+用的是网上推荐的 Yahei Consolas Hybrid 字体，下载地址如下（三个地址都是同一个文件）
 
 <http://download.csdn.net/detail/jadyer/9719438>
 
 <https://gitee.com/a42/YaHei-Consolas-Hybrid-1.12>
 
 <https://github.com/GitHubNull/YaHei-Consolas-Hybrid-1.12>
-
-<http://www.intellij.org/downloads/YaHei.Consolas.1.12.zip>
 
 安装方法为：拷贝 `ttf` 文件到 `C:\Windows\Fonts\` 目录即可，然后重启 idea 进行配置
 
