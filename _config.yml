@@ -27,7 +27,7 @@ email: jadyer@yeah.net
 # wangyi_shortname: da96aa66335742ce9b5fac10a208f02d
 gitment_clientid: 2c359d0b86c2ee95e8e2
 
-# 统计功能（指定Baidu、Google的统计ID）
+# Baidu统计ID
 baidu_tongji_id: 1f87740e3559cc312b3f12581e6264fb
 
 # 指定页面右侧分类和标签框的链接地址
