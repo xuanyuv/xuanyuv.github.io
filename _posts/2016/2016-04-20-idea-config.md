@@ -30,15 +30,13 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 
 ## 橘黄色图标插件
 
-idea 从 2016.3 开始，文件夹图标全部换成那种有点蓝色的，单独拿出来看上去有点高科技，放在一起实则暴丑的图标
+从 idea.2016.3 开始，文件夹图标全部换成那种有点蓝色的，单独拿出来看上去高科技，放一起实则暴丑的图标
 
 对于习惯之前版本的橘黄色图标的人来说，可以用这个 Idea 2016.2 Icon Pack 插件来恢复，目前最新版为 v3.2
 
-插件介绍见：<https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack>
+插件介绍：<https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack>
 
-这是 v3.2 的官方下载地址：<https://plugins.jetbrains.com/files/7285/47285/Idea11Icons.jar>
-
-这是 v3.2 的我备份的地址：<http://oirr30q6q.bkt.clouddn.com/jadyer/idea/Idea11Icons_v3.2.jar>
+下载地址：<https://plugins.jetbrains.com/files/7285/47285/Idea11Icons.jar>（或者点介绍页右上角 Get 按钮）
 
 安装时选择 Install plugin from disk... 再重启 idea 就会看到经典的橘黄色图标啦
 
