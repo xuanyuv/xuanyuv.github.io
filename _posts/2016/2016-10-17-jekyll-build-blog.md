@@ -262,7 +262,7 @@ C:\Users\Jadyer>
 
 ## 启动脚本
 
-另附我的启动脚本 `startup.bat` （idea中可以把 bat 配置到 External Tools 中）
+另附我的启动脚本 `startup.bat` （idea 中可以把 bat 配置到 External Tools 里）
 
 注意：应使用 ANSI 编码保存批处理文件，否则Windows系统不认识
 
