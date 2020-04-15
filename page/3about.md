@@ -12,8 +12,6 @@ type: page
 
 ## 简介
 
-![](/img/myself.jpg)
-
 我是玄玉
 
 * 现居：重庆
