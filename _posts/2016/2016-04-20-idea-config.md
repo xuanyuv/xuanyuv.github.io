@@ -214,9 +214,13 @@ settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---默认�
 
 <https://github.com/GitHubNull/YaHei-Consolas-Hybrid-1.12>
 
-安装方法为：拷贝 `ttf` 文件到 `C:\Windows\Fonts\` 目录即可，然后重启 idea 进行配置
+之前的两种安装方法：双击 ttf 文件再点击安装按钮，或者把ttf 文件拷贝到 C:\Windows\Fonts\ 目录
 
-settings---Editor---Font---选择 Yahei Consolas Hybrid，Size=14
+但新版 Win10 有一个特性是默认安装字体是只给当前用户安装的，而 2018.3 版本无法良好的适配这一特性，导致获取不到新安装字体
+
+解决办法就是：右键 ttf 文件，选择为所有用户安装即可
+
+再回到 idea 配置：settings---Editor---Font---选择 Yahei Consolas Hybrid，Size=14
 
 ### 控制台字号
 
