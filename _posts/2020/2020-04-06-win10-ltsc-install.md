@@ -283,4 +283,4 @@ Windows Registry Editor Version 5.00
 ### 补充
 
 1. 至于其它的优化工具，软媒魔方是一个选择，另外就是网上呼声最高的 Dism++
-2. 有兴趣根据 MSDN 母盘来自己精简系统组件，封装 iso 系统的，可以尝试 NTLite
+2. 有兴趣根据 MSDN 母盘精简系统组件，初始化系统配置，再封装成 iso 的，可以尝试 NTLite
