@@ -282,6 +282,5 @@ Windows Registry Editor Version 5.00
 
 ### 补充
 
-至于其它的一些优化，软媒魔方也是一个选择，官网地址：<https://mofang.ruanmei.com/>
-
-另外，网上呼声最高的当属 Dism++，B 站有它的一个优化实战视频：<https://www.bilibili.com/video/BV1X7411974j>
+1. 至于其它的优化工具，软媒魔方是一个选择，另外就是网上呼声最高的 Dism++
+2. 有兴趣根据 MSDN 母盘来自己精简系统组件，封装 iso 系统的，可以尝试 NTLite
