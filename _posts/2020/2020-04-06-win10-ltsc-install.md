@@ -127,17 +127,11 @@ published: true
 
 ### 配置傲腾
 
-买电脑时，自带了傲腾32G，它和本身的固态硬盘组建成 raid0，效果是这样的
-
-（如果你们的没带，这一步就跳过）
-
-![](https://ae01.alicdn.com/kf/Hee7009dc09bb4afd87e06caef51909aaH.png)
-
-![](https://ae01.alicdn.com/kf/H975e6b07d84140429a0e0c1da1b3616da.png)
+买电脑时，自带了 32G 傲腾，它和电脑的固态硬盘组成 Raid0（如果你们的没带，这一步就跳过）
 
 现在重做系统了，显然傲腾内存是无法识别的（在我的电脑里面会看到一块独立的硬盘，大小显示为 27.2G）
 
-我们要做的就是，安装傲腾内存驱动，然后在驱动管理界面启用它，这样就会和固态硬盘组建 radi0 了
+我们要做的就是，安装傲腾内存驱动，然后在驱动管理界面启用它，就行了
 
 装驱动时，我先装的 SetupOptaneMemory，然后打开其管理程序，发现显示：没有兼容英特尔傲腾内存的磁盘
 
@@ -149,7 +143,11 @@ published: true
 4. 安装 SetupOptaneMemory，重启
 5. 打开 SetupOptaneMemory 驱动管理界面，启用傲腾，重启
 
-于是，raid0 就组建成功了（可以结合上面两张图片显示效果，验证一下）
+这样，Raid0 就组成了，可以结合下面这两张图片来验证效果
+
+![](https://ae01.alicdn.com/kf/Hee7009dc09bb4afd87e06caef51909aaH.png)
+
+![](https://ae01.alicdn.com/kf/H975e6b07d84140429a0e0c1da1b3616da.png)
 
 ### 关闭WD
 
