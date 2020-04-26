@@ -27,6 +27,9 @@ excerpt: 主要演示了百度地图API中的地址解析、浏览器定位、IP
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <script src="http://api.map.baidu.com/api?v=2.0&ak=4itF2ygdKkIfshFlQggs7DZA"></script>
+    <!--
+    <script src="http://api.map.baidu.com/getscript?v=2.0&ak=4itF2ygdKkIfshFlQggs7DZA"></script>
+    -->
 </head>
 <body>
     <input type="text" id="address"/>
