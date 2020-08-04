@@ -42,6 +42,10 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 
 补充：经测试，ideaIC-2019.3.2中该插件无效，ideaIC-2018.3.6没问题
 
+补充：ideaIC-2018.3.6在线安装 lombok 插件时可能出现搜索不到的情况，这时离线安装就好了（也比较推荐离线安装）
+
+　　　[到这里下载](https://plugins.jetbrains.com/plugin/6317-lombok/versions)对应版本的插件，取出里面的lombok-plugin-0.29-2018.3.jar放到本地，再回到idea里面安装即可
+
 ## 首次运行前配置
 
 ### idea64.exe.vmoptions
