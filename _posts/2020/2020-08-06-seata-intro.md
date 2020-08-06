@@ -80,7 +80,7 @@ Saga：它是基于异步补偿的模型，业务实现时需要写正向和逆�
 
 *一般可以选择 TCC 或 Saga（他俩的一致性基本是一样的），如果对一致性要求没有那么高，就可以用事务消息*
 
-### 事务模型对比
+### 事务模式对比
 
 性能损耗：XA > TCC = Saga = 事务消息
 
@@ -92,18 +92,18 @@ Saga：它是基于异步补偿的模型，业务实现时需要写正向和逆�
 
 Seata：Simple Extensible Autonomous Transaction Architecture，简单可扩展自治事务框架
 
+Seata 的愿景就是像使用本地事务一样使用分布式事务，目标是提供一站式的分布式事务解决方案
+
 它的演进历史是这样的：
 
-1. TXC（Taobao Transaction Constructor）：阿里巴巴中间件团队自 2014 年起启动该项目，以解决分布式事务的问题
+1. TXC（Taobao Transaction Constructor）：阿里巴巴中间件团队 2014 年启动该项目，以解决分布式事务的问题
 2. GTS（Global Transaction Service）：2016 年 TXC 作为阿里中间件的产品，更名为 GTS 发布
 3. Fescar（Fast & EaSy Commit And Rollback）：2019年01月09号基于阿里商用版的 GTS 开源了 Fescar
-4. Seata：随着蚂蚁金服的加入并贡献了 TCC 模式，更名成为 Seata，地址为<https://github.com/seata/seata>
-
-Seata 的愿景就是像使用本地事务一样使用分布式事务，目标是提供一站式的分布式事务解决方案
+4. Seata：随着蚂蚁金服的加入并贡献了 TCC 模式，更名为 Seata，地址为<https://github.com/seata/seata>
 
 ### Seata事务模式
 
-它提供了以下四种事务模型
+它提供了以下四种事务模式
 
 * AT模式：原始支持，早期还有MT模式（0.4.2废弃）
 * TCC模式：0.4版本支持，2019.03.19
