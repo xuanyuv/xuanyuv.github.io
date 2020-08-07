@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "分布式事务01之事务详解和Seata简述"
+title: "分布式事务01之事务详解和Seata浅尝"
 categories: 分布式
 tags: 分布式
 author: 玄玉
