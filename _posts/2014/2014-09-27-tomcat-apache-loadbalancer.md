@@ -98,7 +98,7 @@ while(e.hasMoreElements()){
 
 另附，jkstatus的效果图，如下所示
 
-![](/img/2014/2014-09-27-tomcat-apache-jk.png)
+![](https://ae01.alicdn.com/kf/U25b231b8cf904ec2ba591bdc122cff16s.png)
 
 ## workers.properties
 
