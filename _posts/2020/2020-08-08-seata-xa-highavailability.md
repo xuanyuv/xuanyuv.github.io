@@ -55,7 +55,7 @@ XA 模式的优劣势：
 
 该模式也是有前提的：需要支持 XA 事务的数据库，并且 Java 应用通过 JDBC 访问数据库
 
-![](https://img.alicdn.com/tfs/TB1hSpccIVl614jSZKPXXaGjpXa-1330-924.png)
+![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1185719851/p88923.png)
 
 它也是分成以下两个阶段
 
@@ -88,7 +88,7 @@ XA 模式 XAConnection，一般有两种方案：
 
 这点在 Oracle 上体现非常明显。参见 Druid issue：<https://github.com/alibaba/druid/issues/3707>
 
-并且第一种基于 XA 数据源进行代理的方式：其实业务上的改动并不大，是可以接受的
+并且第一种方案基于 XA 数据源进行代理的方式：其实业务上的改动并不大，是可以接受的
 
 ## Seata高可用
 
