@@ -101,9 +101,9 @@ Seata 的愿景就是像使用本地事务一样使用分布式事务，目标�
 它的演进历史是这样的：
 
 1. TXC（Taobao Transaction Constructor）：阿里巴巴中间件团队 2014 年启动该项目，以解决分布式事务的问题
-2. GTS（Global Transaction Service）：2016 年 TXC 作为阿里中间件的产品，更名为![ GTS ](https://www.aliyun.com/aliware/txc)发布
+2. GTS（Global Transaction Service）：2016 年 TXC 作为阿里中间件的产品，![更名为 GTS 发布](https://www.aliyun.com/aliware/txc)
 3. Fescar（Fast & EaSy Commit And Rollback）：2019年01月09号基于阿里商用版的 GTS 开源了 Fescar
-4. Seata：随着蚂蚁金服的加入并贡献了 TCC 模式，更名为 Seata，地址为<https://github.com/seata/seata>
+4. Seata：随着蚂蚁金服的加入并贡献了 TCC 模式，更名为 Seata，地址为 <https://github.com/seata/seata>
 
 它具有以下特性
 
@@ -124,7 +124,7 @@ Seata 的愿景就是像使用本地事务一样使用分布式事务，目标�
 * Saga模式：0.9版本支持，2019.10.16
 * XA模式：1.2版本支持，2020.04.21
 
-其中 AT（Automatic Transaction）模式是 Seata 额外支持的，其好处在于：开发同学不需关心事务，只关注自己的业务SQL就行了
+其中 AT（Automatic Transaction）模式是 Seata 独有的，好处在于：业务不需关心事务，只关注自己的逻辑SQL就行了
 
 使用 AT 模式就类似于在使用 XA 模式，而它的性能衰减更友好一些，没有 XA 这么大
 
@@ -156,6 +156,6 @@ RM：资源管理器。控制分支事务的边界和行为，负责分支注册
 
 ![](https://img02.sogoucdn.com/app/a/100520146/ee622e3c8d59c2df167a23c57ddca57a)
 
-Seata 支持的四种事务模式都是在该框架里跑的（不同事务模式体现在 RM 的实现方式不同）
-
 **这个框架图非常重要，理解了他，再去理解后面文章中介绍的四种事务模式就易如反掌了**
+
+Seata 的四种事务模式都是在该框架里跑的，不同事务模式体现在 RM 内部驱动的方式不同
