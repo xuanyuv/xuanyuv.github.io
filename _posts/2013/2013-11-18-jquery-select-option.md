@@ -2,7 +2,7 @@
 layout: post
 title: "jQuery操作SelectOption上下移动"
 categories: 前端
-tags: jquery select option
+tags: 前端
 author: 玄玉
 excerpt: 演示jQuery操作Select标签的各种用法。
 ---

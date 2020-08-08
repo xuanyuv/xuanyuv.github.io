@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "百度地图API小例子"
-categories: 坐享其成
-tags: baidu map api demo
+categories: JavaEE
+tags: JavaEE
 author: 玄玉
 excerpt: 主要演示了百度地图API中的地址解析、浏览器定位、IP定位、可拖拽标注等功能。
 ---

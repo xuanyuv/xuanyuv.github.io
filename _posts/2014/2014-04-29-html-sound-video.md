@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "网页播放声音和视频"
-categories: 坐享其成
-tags: 播放 声音 embed audio
+categories: JavaEE
+tags: JavaEE
 author: 玄玉
 excerpt: 介绍如何实现网页在不同浏览器下的声音自动播放功能，以及视频播放。
 ---
