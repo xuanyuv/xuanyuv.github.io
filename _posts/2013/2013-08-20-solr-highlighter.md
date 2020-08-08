@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Solr系列第03节之高亮"
-categories: Solr
-tags: solr
+categories: Lucene
+tags: Lucene
 author: 玄玉
 excerpt: 介绍Solr-3.6.2高亮显示搜索结果的方法。
 ---

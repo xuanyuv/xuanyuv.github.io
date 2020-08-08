@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Solr系列第01节之整合Tomcat"
-categories: Solr
-tags: solr demo
+categories: Lucene
+tags: Lucene
 author: 玄玉
 excerpt: 介绍Solr-3.6.2整合Tomcat的细节。
 ---
@@ -11,7 +11,7 @@ excerpt: 介绍Solr-3.6.2整合Tomcat的细节。
 {:toc}
 
 
-除非特别说明，本系列采用的都是`Solr-3.6.2`
+除非特别说明，本系列采用的都是 **Solr-3.6.2**
 
 Solr官网：[http://lucene.apache.org/solr/](http://lucene.apache.org/solr/)
 
@@ -35,7 +35,7 @@ Solr是一个高性能的，采用Java开发的，基于HTTP和Lucene实现的�
 
 再粗暴一点理解为：Lucene和Solr的关系类似于，Ajax和jQuery，Servlet和Struts2，JAX-WS和CXF，NIO和Mina的关系
 
-而SolrJ是Solr提供的基于Java的访问Solr服务器的接口，它提供了对Solr服务器进行索引的CRUD和优化的相关接口
+而 SolrJ 是 Solr 提供的基于 Java 的访问 Solr 服务器的接口，它提供了对Solr服务器进行索引的CRUD和优化的相关接口
 
 ## 启动
 

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Solr系列第02节之搜索和中文分词"
-categories: Solr
-tags: solr
+categories: Lucene
+tags: Lucene
 author: 玄玉
 excerpt: 介绍Solr-3.6.2操作索引、搜索文档、以及整合中文分词。
 ---
