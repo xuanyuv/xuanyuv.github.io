@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "使用SAX和DOM读取XML文件"
-categories: XML
-tags: xml sax dom
+categories: JavaSE
+tags: JavaSE
 author: 玄玉
 excerpt: 介绍SAX和DOM读取XML文件的方法。
 ---

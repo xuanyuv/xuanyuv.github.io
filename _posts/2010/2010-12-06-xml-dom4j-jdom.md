@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "使用Dom4j和Jdom读写XML文件"
-categories: XML
-tags: xml dom4j jdom
+categories: JavaSE
+tags: JavaSE
 author: 玄玉
 excerpt: 介绍Dom4j和Jdom读写XML文件的方法。
 ---
