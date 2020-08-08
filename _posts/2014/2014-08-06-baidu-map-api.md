@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "百度地图API小例子"
-categories: JavaEE
-tags: JavaEE
+categories: 前端
+tags: 前端
 author: 玄玉
 excerpt: 主要演示了百度地图API中的地址解析、浏览器定位、IP定位、可拖拽标注等功能。
 ---
