@@ -129,7 +129,7 @@ CC 调用的事（包括重试）都由 TC 帮我们做了（当然，前提还�
 
 状态机引擎原理如下：
 
-![](https://i.loli.net/2020/08/07/846Pk3KE5cIWVRh.png)
+![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2020/2020-08-08-seata-tcc-saga-03.png)
 
 状态机启动时，先向 TM 注册（这样 TM 就能告诉 TC，我开启了一个全局事务），然后它会调 RM（RM 就会注册分支事务到 TC）
 
@@ -143,7 +143,7 @@ CC 调用的事（包括重试）都由 TC 帮我们做了（当然，前提还�
 
 ### 状态机高可用
 
-![](https://i.loli.net/2020/08/07/soAYpBry9RDP2En.png)
+![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2020/2020-08-08-seata-tcc-saga-04.png)
 
 * 应用正常运行时：
 1. 状态机引擎是无状态的，它是内嵌在应用中（继承在业务模块里）
