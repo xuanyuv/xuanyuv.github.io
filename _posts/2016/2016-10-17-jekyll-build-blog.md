@@ -273,3 +273,15 @@ color 02
 
 call jekyll s --watch
 ```
+
+## 图床
+
+写博客就一定会用到图片，压缩图片的话可以用 [色彩笔](https://www.secaibi.com/tools/) 在线工具批量压缩
+
+目前我大部分用的都是阿里云图床，现在上传入口好多都失效了
+
+所以找到了 jsDelivr + GitHub 这个办法来做图床，即稳定又免费还支持全球CDN
+
+做法就是在 Github 建一个 Public 的仓库，用来放图片
+
+然后用这个地址就行了：**https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名/文件路径**
