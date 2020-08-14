@@ -205,6 +205,21 @@ mysql> SELECT user, host, plugin, authentication_string FROM mysql.user;
 +------------------+-----------+-----------------------+------------------------------------------------------------------------+
 5 rows in set (0.00 sec)
 
+mysql> show variables like "%char%";
++--------------------------+----------------------------------------------+
+| Variable_name            | Value                                        |
++--------------------------+----------------------------------------------+
+| character_set_client     | utf8mb4                                      |
+| character_set_connection | utf8mb4                                      |
+| character_set_database   | utf8mb4                                      |
+| character_set_filesystem | binary                                       |
+| character_set_results    | utf8mb4                                      |
+| character_set_server     | utf8mb4                                      |
+| character_set_system     | utf8                                         |
+| character_sets_dir       | D:\Develop\MySQL\MySQLServer\share\charsets\ |
++--------------------------+----------------------------------------------+
+8 rows in set, 1 warning (0.00 sec)
+
 mysql>
 ```
 
@@ -277,24 +292,3 @@ Query OK, 0 rows affected, 1 warning (0.00 sec)
 然后用刚才新设置的密码，重新登录，就可以执行 SQL 指令了
 
 至此，MySQL-5.7.14 配置完毕
-
-## 查看字符集
-
-```sql
-mysql> show variables like "%char%";
-+--------------------------+----------------------------------------------+
-| Variable_name            | Value                                        |
-+--------------------------+----------------------------------------------+
-| character_set_client     | utf8mb4                                      |
-| character_set_connection | utf8mb4                                      |
-| character_set_database   | utf8mb4                                      |
-| character_set_filesystem | binary                                       |
-| character_set_results    | utf8mb4                                      |
-| character_set_server     | utf8mb4                                      |
-| character_set_system     | utf8                                         |
-| character_sets_dir       | D:\Develop\MySQL\MySQLServer\share\charsets\ |
-+--------------------------+----------------------------------------------+
-8 rows in set, 1 warning (0.00 sec)
-
-mysql>
-```
