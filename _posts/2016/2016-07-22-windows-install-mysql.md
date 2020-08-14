@@ -94,26 +94,35 @@ sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 下面是 my.ini 的内容
 
 ```sh
-[mysql]
-# 设置mysql客户端默认字符集
-default-character-set=utf8
 [mysqld]
 # skip-grant-tables
 port=3306
 # 设置mysql的安装目录
-basedir=D:\\Develop\\MySQL\\MySQLServer80
+basedir=D:\\Develop\\MySQL\\MySQLServer
 # 设置mysql数据库的数据的存放目录（data目录在下面初始化时会自动创建，不需要我们手动创建）
-datadir=D:\\Develop\\MySQL\\MySQLServer80\\data
+datadir=D:\\Develop\\MySQL\\MySQLServer\\data
 # 允许最大连接数
 max_connections=200
 # 允许连接失败的次数（防止有人从该主机试图攻击数据库系统）
 max_connect_errors=10
-# 服务端使用的字符集默认为8比特编码的latin1字符集
-character-set-server=utf8
+# 服务端使用的字符集
+# character-set-server=utf8
+init_connect='SET collation_connection = utf8mb4_unicode_ci'
+init_connect='SET NAMES utf8mb4'
+character-set-server=utf8mb4
+collation-server=utf8mb4_unicode_ci
+skip-character-set-client-handshake
 # 创建新表时将使用的默认存储引擎
 default-storage-engine=INNODB
 # mysql-8.0.4开始，其密码认证插件就由mysql_native_password改为了caching_sha2_password，而很多数据库工具和链接包暂时还不支持caching_sha2_password
 default_authentication_plugin=mysql_native_password
+
+[mysql]
+# default-character-set=utf8
+default-character-set=utf8mb4
+
+[client]
+default-character-set=utf8mb4
 ```
 
 ### 设置环境变量
@@ -146,7 +155,7 @@ C:\Users\Jadyer>
 
 启动的话，可以运行 services.msc 手工启动，也可以：`C:\Users\Jadyer>net start mysql`
 
-### 修改Root密码（MySQL-8.0.13）
+### 修改root密码（8.0.13）
 
 管理员身份运行CMD
 
@@ -196,22 +205,12 @@ mysql> SELECT user, host, plugin, authentication_string FROM mysql.user;
 +------------------+-----------+-----------------------+------------------------------------------------------------------------+
 5 rows in set (0.00 sec)
 
-mysql> SHOW GRANTS FOR 'root'@localhost;
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Grants for root@localhost                                                                                                                                                                                                                                                                                                                                                                                |
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, SHUTDOWN, PROCESS, FILE, REFERENCES, INDEX, ALTER, SHOW DATABASES, SUPER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER, CREATE TABLESPACE, CREATE ROLE, DROP ROLE ON *.* TO `root`@`localhost` WITH GRANT OPTION   |
-| GRANT BACKUP_ADMIN,BINLOG_ADMIN,CONNECTION_ADMIN,ENCRYPTION_KEY_ADMIN,GROUP_REPLICATION_ADMIN,PERSIST_RO_VARIABLES_ADMIN,REPLICATION_SLAVE_ADMIN,RESOURCE_GROUP_ADMIN,RESOURCE_GROUP_USER,ROLE_ADMIN,SET_USER_ID,SYSTEM_VARIABLES_ADMIN,XA_RECOVER_ADMIN ON *.* TO `root`@`localhost` WITH GRANT OPTION                                                                                                    |
-| GRANT PROXY ON ''@'' TO 'root'@'localhost' WITH GRANT OPTION                                                                                                                                                                                                                                                                                                                                             |
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-3 rows in set (0.00 sec)
-
 mysql>
 ```
 
 至此，MySQL-8.0.13 配置完毕
 
-### 修改Root密码（MySQL-5.7.14）
+### 修改root密码（5.7.14）
 
 首次安装后，修改 Root 密码时，会报告下面的错误
 
@@ -278,3 +277,24 @@ Query OK, 0 rows affected, 1 warning (0.00 sec)
 然后用刚才新设置的密码，重新登录，就可以执行 SQL 指令了
 
 至此，MySQL-5.7.14 配置完毕
+
+## 查看字符集
+
+```sql
+mysql> show variables like "%char%";
++--------------------------+----------------------------------------------+
+| Variable_name            | Value                                        |
++--------------------------+----------------------------------------------+
+| character_set_client     | utf8mb4                                      |
+| character_set_connection | utf8mb4                                      |
+| character_set_database   | utf8mb4                                      |
+| character_set_filesystem | binary                                       |
+| character_set_results    | utf8mb4                                      |
+| character_set_server     | utf8mb4                                      |
+| character_set_system     | utf8                                         |
+| character_sets_dir       | D:\Develop\MySQL\MySQLServer\share\charsets\ |
++--------------------------+----------------------------------------------+
+8 rows in set, 1 warning (0.00 sec)
+
+mysql>
+```
