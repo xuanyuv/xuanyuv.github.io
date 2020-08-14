@@ -292,7 +292,7 @@ mysql> SHOW variables WHERE Variable_name LIKE 'character_set_%' OR Variable_nam
 | character_set_results    | utf8mb4                                      |
 | character_set_server     | utf8mb4                                      |
 | character_set_system     | utf8                                         |
-| character_sets_dir       | D:\Develop\MySQL\MySQLServer\share\charsets\ |
+| character_sets_dir       | D:/Develop/MySQL/MySQLServer/share/charsets/ |
 | collation_connection     | utf8mb4_unicode_ci                           |
 | collation_database       | utf8mb4_unicode_ci                           |
 | collation_server         | utf8mb4_unicode_ci                           |
