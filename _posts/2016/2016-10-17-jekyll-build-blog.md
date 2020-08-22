@@ -16,7 +16,7 @@ published: true
 
 ## 安装Ruby
 
-Windows 用户访问 [http://rubyinstaller.org/](http://rubyinstaller.org/) 下载 130MB 大小的 [rubyinstaller-devkit-2.7.0-1-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.0-1/rubyinstaller-devkit-2.7.0-1-x64.exe)
+Windows 用户访问 [http://rubyinstaller.org/](http://rubyinstaller.org/) 下载 130.9MB 大小的 [rubyinstaller-devkit-2.7.1-1-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.1-1/rubyinstaller-devkit-2.7.1-1-x64.exe)
 
 安装时注意勾选 `Add Ruby executables to your PATH`，没选的话可以手工配置一下 `Path=D:\Develop\Ruby27-x64\bin;...`
 
@@ -26,26 +26,26 @@ Windows 用户访问 [http://rubyinstaller.org/](http://rubyinstaller.org/) 下�
 
 ```
 C:\Users\Jadyer>ruby -v
-ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x64-mingw32]
+ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x64-mingw32]
 ```
 
 ## 安装Jekyll
 
-这里通过 RubyGems 安装 Jekyll，所以先到官网 [https://rubygems.org/](https://rubygems.org/) 下载 1.26MB 大小的[rubygems-3.1.2.zip](https://rubygems.org/rubygems/rubygems-3.1.2.zip)
+这里通过 RubyGems 安装 Jekyll，所以先到官网 [https://rubygems.org/](https://rubygems.org/) 下载 1.27MB 大小的[rubygems-3.1.4.zip](https://rubygems.org/rubygems/rubygems-3.1.4.zip)
 
 接着解压压缩包到桌面，并在命令提示符中执行安装命令
 
 ```
-C:\Users\Jadyer\Desktop\rubygems-3.1.2>ruby setup.rb
+C:\Users\Jadyer\Desktop\rubygems-3.1.4>ruby setup.rb
   Successfully built RubyGem
   Name: bundler
-  Version: 2.1.2
-  File: bundler-2.1.2.gem
-Bundler 2.1.2 installed
-RubyGems 3.1.2 installed
+  Version: 2.1.4
+  File: bundler-2.1.4.gem
+Bundler 2.1.4 installed
+RubyGems 3.1.4 installed
 Regenerating binstubs
-Parsing documentation for rubygems-3.1.2
-Installing ri documentation for rubygems-3.1.2
+Parsing documentation for rubygems-3.1.4
+Installing ri documentation for rubygems-3.1.4
 ...
 ...
 ...
@@ -62,30 +62,30 @@ If you do not wish to install this documentation in the future, use the
 --no-document flag, or set it as the default in your ~/.gemrc file. See
 'gem help env' for details.
 
-D:\Develop\rubygems-3.1.2>
+D:\Develop\rubygems-3.1.4>
 ```
 
-然后删掉 rubygems-3.1.2 文件夹，它没用了
+然后删掉 rubygems-3.1.4 文件夹，它没用了
 
 **下面进入正题：用 RubyGems 来安装 Jekyll**（这个耗时也有点长...）
 
 ```
 C:\Users\Jadyer>gem install jekyll
-Fetching public_suffix-4.0.3.gem
+Fetching public_suffix-4.0.5.gem
 Fetching addressable-2.7.0.gem
 Fetching colorator-1.1.0.gem
 ...
 ...
 ...
-Successfully installed public_suffix-4.0.3
+Successfully installed public_suffix-4.0.5
 Successfully installed addressable-2.7.0
 Successfully installed colorator-1.1.0
 ...
 ...
 ...
-Successfully installed jekyll-4.0.0
-Parsing documentation for public_suffix-4.0.3
-Installing ri documentation for public_suffix-4.0.3
+Successfully installed jekyll-4.1.1
+Parsing documentation for public_suffix-4.0.5
+Installing ri documentation for public_suffix-4.0.5
 Parsing documentation for addressable-2.7.0
 Installing ri documentation for addressable-2.7.0
 Parsing documentation for colorator-1.1.0
@@ -93,9 +93,9 @@ Installing ri documentation for colorator-1.1.0
 ...
 ...
 ...
-Parsing documentation for jekyll-4.0.0
-Installing ri documentation for jekyll-4.0.0
-Done installing documentation for public_suffix, addressable, colorator, http_parser.rb, eventmachine, em-websocket, concurrent-ruby, i18n, ffi, sassc, jekyll-sass-converter, rb-fsevent, rb-inotify, listen, jekyll-watch, kramdown, kramdown-parser-gfm, liquid, mercenary, forwardable-extended, pathutil, rouge, safe_yaml, unicode-display_width, terminal-table, jekyll after 27 seconds
+Parsing documentation for jekyll-4.1.1
+Installing ri documentation for jekyll-4.1.1
+Done installing documentation for public_suffix, addressable, colorator, http_parser.rb, eventmachine, em-websocket, concurrent-ruby, i18n, ffi, sassc, jekyll-sass-converter, rb-fsevent, rb-inotify, listen, jekyll-watch, kramdown, kramdown-parser-gfm, liquid, mercenary, forwardable-extended, pathutil, rouge, safe_yaml, unicode-display_width, terminal-table, jekyll after 21 seconds
 26 gems installed
 
 C:\Users\Jadyer>
@@ -113,15 +113,15 @@ Running bundle install in D:/Develop/Code/Jekyll/myblog...
   Bundler: Fetching gem metadata from https://rubygems.org/...........
   Bundler: Fetching gem metadata from https://rubygems.org/.
   Bundler: Resolving dependencies...
-  Bundler: Using public_suffix 4.0.3
+  Bundler: Using public_suffix 4.0.5
   Bundler: Using addressable 2.7.0
-  Bundler: Using bundler 2.1.2
+  Bundler: Using bundler 2.1.4
 ...
 ...
 ...
   Bundler: Fetching wdm 0.1.1
   Bundler: Installing wdm 0.1.1 with native extensions
-  Bundler: Bundle complete! 6 Gemfile dependencies, 34 gems now installed.
+  Bundler: Bundle complete! 6 Gemfile dependencies, 35 gems now installed.
   Bundler: Use `bundle info [gemname]` to see where a bundled gem is installed.
 New jekyll site installed in D:/Develop/Code/Jekyll/myblog.
 
@@ -139,14 +139,14 @@ pendencies installed. In order to use Jekyll as currently configured, you'll nee
 d to install this gem. The full error message from Ruby is: 'cannot load such fi
 le -- bundler' If you run into trouble, you can find helpful resources at http:/
 /jekyllrb.com/help/!
-jekyll 3.3.0 | Error:  bundler
+jekyll 4.1.1 | Error:  bundler
 
 
 D:\Develop\Code\Jekyll>gem install bundler
-Fetching: bundler-1.15.4.gem (100%)
-Successfully installed bundler-1.15.4
-Parsing documentation for bundler-1.15.4
-Installing ri documentation for bundler-1.15.4
+Fetching bundler-2.1.4.gem
+Successfully installed bundler-2.1.4
+Parsing documentation for bundler-2.1.4
+Installing ri documentation for bundler-2.1.4
 Done installing documentation for bundler after 4 seconds
 1 gem installed
 
@@ -193,32 +193,15 @@ Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
 
 ```
 C:\Users\Jadyer\Desktop\jadyer.github.io>jekyll s
-Configuration file: D:/Develop/Code/workspace_jadyer/jadyer.github.io/_config.yml
+Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
   Dependency Error: Yikes! It looks like you don't have jekyll-paginate or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. If you've run Jekyll with `bundle exec`, ensure that you have included the jekyll-paginate gem in your Gemfile as well. The full error message from Ruby is: 'cannot load such file -- jekyll-paginate' If you run into trouble, you can find helpful resources at https://jekyllrb.com/help/!
                     ------------------------------------------------
-      Jekyll 4.0.0   Please append `--trace` to the `serve` command
+      Jekyll 4.1.1   Please append `--trace` to the `serve` command
                      for any additional information or backtrace.
                     ------------------------------------------------
-D:/Develop/Ruby27-x64/lib/ruby/gems/2.7.0/gems/jekyll-4.0.0/lib/jekyll/external.rb:73:in `rescue in block in require_with_graceful_fail': jekyll-paginate (Jekyll::Errors::MissingDependencyException)
-	from D:/Develop/Ruby27-x64/lib/ruby/gems/2.7.0/gems/jekyll-4.0.0/lib/jekyll/external.rb:58:in `block in require_with_graceful_fail'
-	from D:/Develop/Ruby27-x64/lib/ruby/gems/2.7.0/gems/jekyll-4.0.0/lib/jekyll/external.rb:57:in `each'
-	from D:/Develop/Ruby27-x64/lib/ruby/gems/2.7.0/gems/jekyll-4.0.0/lib/jekyll/external.rb:57:in `require_with_graceful_fail'
 ...
 ...
 ...
-	from D:/Develop/Ruby27-x64/lib/ruby/gems/2.7.0/gems/jekyll-4.0.0/exe/jekyll:15:in `<top (required)>'
-	from D:/Develop/Ruby27-x64/bin/jekyll:23:in `load'
-	from D:/Develop/Ruby27-x64/bin/jekyll:23:in `<main>'
-D:/Develop/Ruby27-x64/lib/ruby/site_ruby/2.7.0/rubygems/core_ext/kernel_require.rb:92:in `require': cannot load such file -- jekyll-paginate (LoadError)
-	from D:/Develop/Ruby27-x64/lib/ruby/site_ruby/2.7.0/rubygems/core_ext/kernel_require.rb:92:in `require'
-	from D:/Develop/Ruby27-x64/lib/ruby/gems/2.7.0/gems/jekyll-4.0.0/lib/jekyll/external.rb:60:in `block in require_with_graceful_fail'
-	from D:/Develop/Ruby27-x64/lib/ruby/gems/2.7.0/gems/jekyll-4.0.0/lib/jekyll/external.rb:57:in `each'
-...
-...
-...
-	from D:/Develop/Ruby27-x64/lib/ruby/gems/2.7.0/gems/jekyll-4.0.0/exe/jekyll:15:in `<top (required)>'
-	from D:/Develop/Ruby27-x64/bin/jekyll:23:in `load'
-	from D:/Develop/Ruby27-x64/bin/jekyll:23:in `<main>'
 
 C:\Users\Jadyer\Desktop\jadyer.github.io>
 ```
