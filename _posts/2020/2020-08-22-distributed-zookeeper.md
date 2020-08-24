@@ -96,10 +96,28 @@ zk 是一个分布式数据一致性的解决方案，其设计目的是为了�
 
 | 四种类型的事件 | 描述 |
 |:--------|:-----|
-| NodeDeleted         | 删除节点时，触发该事件 |
 | NodeCreated         | 创建节点时，触发该事件 |
+| NodeDeleted         | 删除节点时，触发该事件 |
 | NodeDataChanged     | 修改节点数据时，触发该事件 |
 | NodeChildrenChanged | 当前节点下创建或删除子节点时，触发该事件（修改子节点的数据不触发该事件） |
+
+zk 提供了以上四种事件类型
+
+并提供了以下三种监听的API：
+
+* zookeeper.exists()
+* zookeeper.getData()
+* zookeeper.getChildren()
+
+以及触发监听的三种方法：
+
+* zookeeper.create()
+* zookeeper.delete()
+* zookeeper.setData()
+
+三者之间的关系，如下图所示：
+
+![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2020/2020-08-22-distributed-zookeeper-01.png)
 
 **注意：注册的监听在事件响应（回调客户端）之后就失效了，所以要想连续监听，就要在回调 process() 方法中主动再去监听**
 
