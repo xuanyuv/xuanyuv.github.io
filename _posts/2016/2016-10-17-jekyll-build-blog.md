@@ -269,4 +269,4 @@ call jekyll s --watch
 
 然后用这个地址就行了：**https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名/文件路径**
 
-若想手动刷新 jsDelivr 缓存，只需把链接中的 https://cdn.jsdelivr.net/ 替换成 https://purge.jsdelivr.net/ 即可
+若想手动刷新 jsDelivr 缓存，只需把链接中的 https://**cdn**.jsdelivr.net/ 替换成 https://**purge**.jsdelivr.net/ 即可
