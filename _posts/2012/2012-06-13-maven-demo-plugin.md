@@ -45,7 +45,7 @@ mvn archetype:generate -->Maven有一些固定的生成模式，其中使用该�
 
 Maven中的依赖都是通过坐标进行存储的`GAV：groupId,artifactId,version`
 
-有一些网上的仓库提供了坐标的查询，比如[http://mvnrepository.com](http://mvnrepository.com)或者[http://search.maven.org](http://search.maven.org)
+有一些网上的仓库提供了坐标的查询，比如<https://www.mvnjar.com>、<https://mvnrepository.com>、<https://search.maven.org>
 
 另外，关于版本的约定，通常是像下面这样的
 
