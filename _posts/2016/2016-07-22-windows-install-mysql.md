@@ -37,9 +37,9 @@ Windows 上安装完 MySQL，以前都会有一个配置向导工具，一路点
 
 mysql-5.6.32-winx64.msi（37.0MB）：<http://cdn.mysql.com/Downloads/MySQL-5.6/mysql-5.6.32-winx64.msi>
 
-mysql-5.7.14-winx64.msi（95.2MB）：<http://cdn.mysql.com/Downloads/MySQL-5.7/mysql-5.7.14-winx64.msi>
+mysql-5.7.31-winx64.msi（117MB）：<http://cdn.mysql.com/Downloads/MySQL-5.7/mysql-5.7.31-winx64.msi>
 
-mysql-8.0.13-winx64.msi（106MB）：<http://cdn.mysql.com/Downloads/MySQL-8.0/mysql-8.0.13-winx64.msi>
+mysql-8.0.21-winx64.msi（140MB）：<http://cdn.mysql.com/Downloads/MySQL-8.0/mysql-8.0.21-winx64.msi>
 
 # 安装
 
