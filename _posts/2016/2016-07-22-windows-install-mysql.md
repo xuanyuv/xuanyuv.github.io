@@ -53,7 +53,7 @@ mysql-8.0.21-winx64.msi（140MB）：<http://cdn.mysql.com/Downloads/MySQL-8.0/m
 
 ### 配置my.ini
 
-先备份 my-default.ini，再重命名为 my.ini（mysql-8.0.13-winx64安装后没有my-default.ini，那么直接新建my.ini就可以了）
+先备份 my-default.ini，再重命名为 my.ini（5.7 的后面版本以及 8.x 安装后没有my-default.ini，那直接新建 my.ini 即可）
 
 下面是 my-default.ini 的内容
 
