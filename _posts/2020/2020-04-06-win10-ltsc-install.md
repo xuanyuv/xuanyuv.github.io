@@ -224,6 +224,37 @@ C 盘右键属性---工具选项卡---优化---更改设置---取消勾选按计
 
 即便如此，我们还是可以通过：运行---compmgmt.msc 来打开计算机管理面板
 
+### 隐藏此电脑默认文件夹
+
+将以下内容另存为 reg 文件，双击导入注册表
+
+如果发现导入注册表后，没有隐藏，那就手动一个一个去删掉就行了
+
+```
+Windows Registry Editor Version 5.00
+
+;隐藏此电脑"视频"文件夹
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}]
+
+;隐藏此电脑"文档"文件夹
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{d3162b92-9365-467a-956b-92703aca08af}]
+
+;隐藏此电脑"桌面"文件夹
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}]
+
+;隐藏此电脑"音乐"文件夹
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}]
+
+;隐藏此电脑"下载"文件夹
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088e3905-0323-4b02-9826-5d99428e115f}]
+
+;隐藏此电脑"图片"文件夹
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24ad3ad4-a569-4530-98e1-ab02f9417aa8}]
+
+;隐藏此电脑"3D对象"文件夹
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
+```
+
 ### 找回Windows照片查看器
 
 将以下内容另存为 reg 文件，双击导入注册表即可
@@ -232,6 +263,7 @@ C 盘右键属性---工具选项卡---优化---更改设置---取消勾选按计
 
 ```
 Windows Registry Editor Version 5.00
+
 ; Change Extension's File Type
 [HKEY_CURRENT_USER\Software\Classes\.jpg]
 @="PhotoViewer.FileAssoc.Tiff"
