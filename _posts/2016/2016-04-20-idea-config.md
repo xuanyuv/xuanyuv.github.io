@@ -454,6 +454,8 @@ settings---Appearancd & Behavior---System Settings---Show Welcome screen
 
 默认是直接进默认工作空间，不像 idea 那样会让你来选择打开哪个项目
 
+其实 datagrip 也有 project 的概念（在欢迎屏幕上就能看见），默认是叫 default 的
+
 ### 快捷键
 
 Ctrl + Alt + L：格式化SQL
