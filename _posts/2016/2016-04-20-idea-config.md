@@ -17,22 +17,19 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 ## 快捷键
 
  * 自动补全：Alt + 回車
+ * 返回上一个方法： Ctrl + Alt + 方向键左
  * 快速输入main函数：键入 main 再按 Ctrl+J 键（或者键入 psvm 再按 Tab 键）
  * 快速输入System.out.println：键入 sout 再按 Tab 键（对应Eclipse中的syso）
- * 快速生成普通for循环： 键入 fori 再按 Tab 键或 Ctrl+J 键
- * 快速生成foreach循环：键入 iter 再按 Tab 键或 Ctrl+J 键
- * 查询某方法被其它地方调用：Ctrl+Alt+H（其实：Alt + F7 更好用）
+ * 查询某方法被其它地方调用：Ctrl+Alt+H（另外：Alt + F7 也挺好用）
  * 定位文件或直接定位某一行：Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，如 `LoanHelper:22`
- * 返回上一个方法： Ctrl + Alt + 方向键左
- * 合并develop分支到master：master分支上工程上右键---Git---Repository---Merge Changes---Branches to merge选择develop分支
  * 常用快捷键：<http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-introduce.html>
  * 缩进用Tab还是空格：<https://bigc.at/tabs-vs-spaces.orz>
 
 ## 橘黄色图标插件
 
-从 idea.2016.3 开始，文件夹图标全部换成那种有点蓝色的，单独拿出来看上去高科技，放一起实则暴丑的图标
+从 idea.2016.3 开始，文件夹图标全部换成那种蓝色的，单独拿出来看着有点高科技，放一起实则暴丑
 
-对于习惯之前版本的橘黄色图标的人来说，可以用这个 Idea 2016.2 Icon Pack 插件来恢复，目前最新版为 v3.2
+如果想回到之前版本的橘黄色图标，可以用这个 Idea 2016.2 Icon Pack 插件，目前最新版为 v3.2
 
 插件介绍：<https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack>
 
@@ -304,19 +301,11 @@ settings---Version Control---Show directories with changed descendants
 
 settings---Build,Execution,Deployment---Build Tools---Maven---选择本机Maven及本地仓库，并勾选Print exception stack traces
 
-### Maven自动刷新
-
 settings---Build,Execution,Deployment---Build Tools---Maven---Importing---Import Maven projects automatically
-
-### Maven自动导入源码
 
 settings---Build,Execution,Deployment---Build Tools---Maven---Importing---Automatically download---勾选Sources
 
-### Maven导入时的JDK
-
 settings---Build,Execution,Deployment---Build Tools---Maven---Importing---JDK for importer---选择本机安装的1.8
-
-### Maven运行时的JDK
 
 settings---Build,Execution,Deployment---Build Tools---Maven---Runner---JRE---选择本机安装的1.8
 
@@ -401,7 +390,6 @@ settings---Editor---Inspections---Spring---Spring Boot---取消勾选Spring Boot
 
 settings---Editor---Inspections---Spring---Spring Core---Setup---取消勾选Spring Facet Code Configuration
 
-
 ## 其它
 
 ### Project视图折叠空包
@@ -411,20 +399,6 @@ Project视图---右上角倒数第二个齿轮图标---点击齿轮后选择Comp
 ### 省电模式
 
 File---Power Save Mode---此时会关掉代码检查、代码提示等功能，适合读代码，所以也称为阅读模式
-
-### 编译报错
-
-* 报告：找不到符号、未结束的字符串文字
-
-    > 1、UTF-8文件分有BOM和无BOM，idea默认使用的编译器是javac，而其只能编译无BOM的文件（settings---Editor---File Encodings---右侧最下方BOM设置）<br/>
-　　很多eclipse用户在使用idea开发eclipse项目时会遇到此问题<br/>
-　　主要是因为eclipse的编译器是eclipse，其支持有BOM的文件编译。故需对文件进行BOM去除<br/>
-2、批量去除BOM，可以Google：批量去除BOM、批量转换无BOM等关键字，网上已有各种方案<br/>
-3、除了通过去除BOM，还有设置idea的编译器为eclipse，但是一般不建议这样做<br/>
-4、若仍无法解决，而且也确认了idea各配置编码都是UTF-8，报错文件编码也是UTF-8无BOM的<br/>
-　　那还有一种可能也会出现这种情况：项目配置文件有问题<br/>
-　　项目编码的配置文件在：/项目目录/.idea/encodings.xml。你要是能修改明白就修改<br/>
-　　要是不会修改，那就删掉.idea整个目录，重启idea重新配置这个项目即可
 
 ### 设置背景图
 
@@ -453,3 +427,114 @@ Would you like to continue?
 一般建议点击 Invalidate and Restart，这样会清除的比较干净
 
 **注意**：若项目未加入版本控制，而又需要文件的历史记录，则提前备份下 ${idea.system.path}\LocalHistory\ 目录
+
+### 编译报错
+
+* 报告：找不到符号、未结束的字符串文字
+
+    > 1、UTF-8文件分有BOM和无BOM，idea默认使用的编译器是javac，而其只能编译无BOM的文件（settings---Editor---File Encodings---右侧最下方BOM设置）<br/>
+　　很多eclipse用户在使用idea开发eclipse项目时会遇到此问题<br/>
+　　主要是因为eclipse的编译器是eclipse，其支持有BOM的文件编译。故需对文件进行BOM去除<br/>
+2、批量去除BOM，可以Google：批量去除BOM、批量转换无BOM等关键字，网上已有各种方案<br/>
+3、除了通过去除BOM，还有设置idea的编译器为eclipse，但是一般不建议这样做<br/>
+4、若仍无法解决，而且也确认了idea各配置编码都是UTF-8，报错文件编码也是UTF-8无BOM的<br/>
+　　那还有一种可能也会出现这种情况：项目配置文件有问题<br/>
+　　项目编码的配置文件在：/项目目录/.idea/encodings.xml。你要是能修改明白就修改<br/>
+　　要是不会修改，那就删掉.idea整个目录，重启idea重新配置这个项目即可
+
+## datagrip的几个配置
+
+### 快捷键
+
+Ctrl + Alt + L：格式化SQL
+
+Ctrl + Shift + J：多行SQL整理成一行，选中SQL按快捷键即可（注意整理后的SQL，有的地方需要手动加空格，比如 `*FROM`）
+
+Ctrl + Shift + U：大小写转换，光标放到待转换的任意SQL单词上（关键字、表名、字段名等），按快捷键即可
+
+Ctrl + Shift + /：注释SQL
+
+Ctrl + /：注释SQL
+
+Ctrl + Enter：执行SQL（未选中SQL的情况下，会弹框询问你执行哪条SQL）
+
+Ctrl + N：快速导航到指定的表、视图、函数等（跟 idea 一样）
+
+Shift + Shift：可以搜索任何想搜索的内容（跟 idea 一样）
+
+sel：输入 sel 后按 Tab 键，就会输出 `SELECT * FROM 表名;`
+
+ins：输入 ins 后按 Tab 键，就会输出 `INSERT INTO 表名 () VALUES ();`
+
+upd：输入 ins 后按 Tab 键，就会输出 `UPDATE 表名 SET  = WHERE;`
+
+实际上，这三个都是在 settings---Editor---Live Templates---SQL 里面定义的
+
+### 消除绿框
+
+默认在手写SQL时，会有一个绿框跟随着，可以把它取消掉
+
+settings---Editor---Code Scheme---Database---Effects---取消勾选
+
+### 关键词大写
+
+settings---Editor---Code Style---SQL---Case选项卡---Word Case---Keywords---To Upper
+
+### 执行光标所在的语句
+
+settings---Database---General---Execute---When inside statement execute---Smallest statement
+
+注：此时SQL须以分号结尾，除非手动选中整个SQL，那就无所谓了，就会直接执行选中的SQL
+
+### 结果集中设置字段值为NULL
+
+在查询出来的结果集中，字段上右键，Set NULL，即可
+
+### 多窗口查看结果
+
+若希望查询在新的 tab 中展示，而保留当前查询出来的结果集，那么点击现有结果集上方的 Pin Tab（像针的图标）即可
+
+### 以列的方式查看单条数据信息
+
+在表的数据列表的某个字段值上，或，查询出来的结果集的某个字段上，按 Ctrl + Q 键，就能以列的方式查看这一条数据
+
+### 查看本地历史SQL
+
+查询控制台上，右键，Local History，Show History、
+
+### 结果集中搜索
+
+在查询出来的结果集上，按 Ctrl + F 搜索内容（支持正则）
+
+### 关键字导航
+
+查询控制台上，鼠标放到表名上（也可以是字段名或函数名），按下 Ctrl，再点击鼠标左键，就会立即定位到具体表上
+
+### 连接数据库失败
+
+一般来讲，有以下三种情况
+
+* 驱动版本的问题
+* 配置数据库连接信息时，在数据库连接URL上，或者 Advanced 选项卡上，设置 serverTimezone=Asia/Shanghai
+* 密码过期，此时可以在 MySQL 控制台用命令登录一下，它会提示你设置新密码，然后再拿 datagrip 去连
+
+注：serverTimezone改成上海，还能避免SQL查询出的时间比真实落库时间早 8 个小时的问题
+
+### 提示字符集混用或无效
+
+当数据库服务端设置为 UTF8MB4 后，datagrip 在操作数据库时，可能会提示下面信息
+
+`llegal mix of collations (utf8mb4_general_ci,IMPLICIT) and (utf8mb4_0900_ai_ci,IMPLICIT) for operation '='`
+
+这时，可以在查询控制台确认一下
+
+```
+SHOW VARIABLES LIKE 'COLLATION_%';
+
+Variable_name           Value
+collation_connection	utf8mb4_general_ci
+collation_database	    utf8mb4_unicode_ci
+collation_server	    utf8mb4_unicode_ci
+```
+
+解决办法就是在数据库连接URL上增加：connectionCollation=utf8mb4_general_ci
