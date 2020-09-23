@@ -489,6 +489,8 @@ settings---Appearancd & Behavior---System Settings---Default directory---配置�
 
 settings---Appearancd & Behavior---System Settings---Show Welcome screen
 
+注：初次启动时，配置向导有一步 Attaching a directory... 不用理它，它不是配置工作空间
+
 ### 快捷键
 
 Ctrl + Alt + L：格式化SQL
