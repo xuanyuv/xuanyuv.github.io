@@ -444,17 +444,50 @@ Would you like to continue?
 
 ## datagrip的几个配置
 
+### datagrip64.exe.vmoptions
+
+```
+-server
+-Xms1024m
+-Xmx1024m
+-XX:MaxPermSize=512m
+-XX:ReservedCodeCacheSize=256m
+-XX:+UseConcMarkSweepGC
+-XX:+UseCodeCacheFlushing
+-XX:SoftRefLRUPolicyMSPerMB=100
+-ea
+-Dsun.io.useCanonCaches=false
+-Dsun.awt.keepWorkingSetOnMinimize=true
+-Djava.net.preferIPv4Stack=true
+-Djsse.enablesSNIExtension=false
+-Djdk.http.auth.tunneling.disabledSchemes=""
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:-OmitStackTraceInFastThrow
+-javaagent:./JetbrainsIdesCrack-4.2-release-sha1-3323d5d0b82e716609808090d3dc7cb3198b8c4b.jar
+
+```
+
+### idea.properties
+
+`idea.config.path=D:/Develop/DataGrip/JadyerData/config`，配置datagrip个性化配置目录
+
+`idea.system.path=D:/Develop/DataGrip/JadyerData/system`，配置datagrip系统文件目录
+
+私以为，配置这俩就够用了，不用像 idea 那样再配置 filesize buffer 什么的
+
 ### 配置工作空间
+
+其实 datagrip 也有工作空间和项目的概念的（在欢迎屏幕上才能看见）
+
+默认的，是直接进默认工作空间（不像 idea 那样会让你来选择打开哪个项目）
+
+datagrip 默认的工作空间是在 idea.config.path/projects/ 目录里面的，项目名叫 default
+
+我们也可以自定义工作空间，并显示欢迎屏幕
 
 settings---Appearancd & Behavior---System Settings---Default directory---配置目录
 
-### 显式欢迎屏幕
-
 settings---Appearancd & Behavior---System Settings---Show Welcome screen
-
-默认是直接进默认工作空间，不像 idea 那样会让你来选择打开哪个项目
-
-其实 datagrip 也有 project 的概念（在欢迎屏幕上就能看见），默认是叫 default 的
 
 ### 快捷键
 
