@@ -444,6 +444,10 @@ Would you like to continue?
 
 ## datagrip的几个配置
 
+### 配置默认工作空间
+
+settings---Appearancd & Behavior---System Settings---Default directory---配置目录
+
 ### 快捷键
 
 Ctrl + Alt + L：格式化SQL
