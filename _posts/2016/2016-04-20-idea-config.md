@@ -510,16 +510,6 @@ settings---Database---General---Execute---When inside statement execute---Smalle
 
 查询控制台上，鼠标放到表名上（也可以是字段名或函数名），按下 Ctrl，再点击鼠标左键，就会立即定位到具体表上
 
-### 连接数据库失败
-
-一般来讲，有以下三种情况
-
-* 驱动版本的问题
-* 配置数据库连接信息时，在数据库连接URL上，或者 Advanced 选项卡上，设置 serverTimezone=Asia/Shanghai
-* 密码过期，此时可以在 MySQL 控制台用命令登录一下，它会提示你设置新密码，然后再拿 datagrip 去连
-
-注：serverTimezone改成上海，还能避免SQL查询出的时间比真实落库时间早 8 个小时的问题
-
 ### 提示字符集混用或无效
 
 当数据库服务端设置为 UTF8MB4 后，datagrip 在操作数据库时，可能会提示下面信息
@@ -538,3 +528,17 @@ collation_server	    utf8mb4_unicode_ci
 ```
 
 解决办法就是在数据库连接URL上增加：connectionCollation=utf8mb4_general_ci
+
+### 连接数据库失败
+
+一般来讲，有以下三种情况
+
+* 驱动版本的问题
+* 配置数据库连接信息时，在数据库连接URL上，或者 Advanced 选项卡上，设置 serverTimezone=Asia/Shanghai
+* 密码过期，此时可以在 MySQL 控制台用命令登录一下，它会提示你设置新密码，然后再拿 datagrip 去连
+
+注：serverTimezone改成上海，还能避免SQL查询出的时间比真实落库时间早 8 个小时的问题（可以配置成全局的）
+
+### 配置全局数据库连接默认信息
+
+File---Data Sources and Drivers---Drivers---设置连接时使用本地 jar 以及 serverTimezone 等参数
