@@ -444,9 +444,15 @@ Would you like to continue?
 
 ## datagrip的几个配置
 
-### 配置默认工作空间
+### 配置工作空间
 
 settings---Appearancd & Behavior---System Settings---Default directory---配置目录
+
+### 显式欢迎屏幕
+
+settings---Appearancd & Behavior---System Settings---Show Welcome screen
+
+默认是直接进默认工作空间，不像 idea 那样会让你来选择打开哪个项目
 
 ### 快捷键
 
