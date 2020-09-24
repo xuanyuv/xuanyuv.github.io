@@ -473,7 +473,7 @@ Would you like to continue?
 
 `idea.system.path=D:/Develop/DataGrip/JadyerData/system`，配置datagrip系统文件目录
 
-私以为，配置这俩就够用了，不用像 idea 那样再配置 filesize buffer 什么的
+配置这俩项基本就够用了，不用像 idea 那样再配置 filesize buffer 什么的
 
 ### 配置工作空间
 
@@ -489,7 +489,7 @@ settings---Appearancd & Behavior---System Settings---Default directory---配置�
 
 settings---Appearancd & Behavior---System Settings---Show Welcome screen
 
-注：初次启动时，配置向导有一步 Attaching a directory... 不用理它，它不是配置工作空间
+**注：初次启动时，配置向导有一步 Attaching a directory... 不用理它，它不是配置工作空间**
 
 ### 快捷键
 
@@ -521,7 +521,7 @@ upd：输入 ins 后按 Tab 键，就会输出 `UPDATE 表名 SET  = WHERE;`
 
 默认在手写SQL时，会有一个绿框跟随着，可以把它取消掉
 
-settings---Editor---Code Scheme---Database---Effects---取消勾选
+settings---Editor---Code Scheme---Database---Console---Statement to execucte---取消勾选Effects
 
 ### 关键词大写
 
@@ -570,8 +570,8 @@ SHOW VARIABLES LIKE 'COLLATION_%';
 
 Variable_name           Value
 collation_connection	utf8mb4_general_ci
-collation_database	    utf8mb4_unicode_ci
-collation_server	    utf8mb4_unicode_ci
+collation_database	utf8mb4_unicode_ci
+collation_server	utf8mb4_unicode_ci
 ```
 
 解决办法就是在数据库连接URL上增加：connectionCollation=utf8mb4_general_ci
@@ -585,7 +585,5 @@ collation_server	    utf8mb4_unicode_ci
 * 密码过期，此时可以在 MySQL 控制台用命令登录一下，它会提示你设置新密码，然后再拿 datagrip 去连
 
 注：serverTimezone改成上海，还能避免SQL查询出的时间比真实落库时间早 8 个小时的问题（可以配置成全局的）
-
-### 配置全局数据库连接默认信息
 
 File---Data Sources and Drivers---Drivers---设置连接时使用本地 jar 以及 serverTimezone 等参数
