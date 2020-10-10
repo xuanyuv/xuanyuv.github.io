@@ -594,9 +594,9 @@ collation_server	utf8mb4_unicode_ci
 
 ```sql
 C:\Users\Jadyer>mysqldump -h127.0.0.1 -uroot -pxuanyu -d ifs --single-transaction --default-character-set=UTF8 > C:\Users\Jadyer\Desktop\ifs.sql
-# ifs 代表数据库名
-# -d 表示只导出表结构，不导出数据，若需导出数据，去掉该参数即可
-# --single-transaction 则用于解决该问题mysqldump: Got error: 1044: Access denied for user 'report'@'%' to database 'bi' when using LOCK TABLES
+--                  ifs 代表数据库名
+--                   -d 表示只导出表结构，不导出数据，若需导出数据，去掉该参数即可
+-- --single-transaction 用来解决mysqldump: Got error: 1044: Access denied for user 'report'@'%' to database 'bi' when using LOCK TABLES
 ```
 
 另外，导出时，可能会出现下面的提示，可以不理它（不会影响导出的表结构和数据量）
@@ -604,7 +604,7 @@ C:\Users\Jadyer>mysqldump -h127.0.0.1 -uroot -pxuanyu -d ifs --single-transactio
 mysqldump: Error: 'Access denied; you need (at least one of) the PROCESS privilege(s) for this operation' when trying to dump tablespaces
 ```
 
-导入时先创建数据库，然后在 datagrip 里的新数据库上右键，选择 Run SQL Script... 即可
+导入就简单了：先创建数据库，然后在 datagrip 里的新数据库上右键，选择 Run SQL Script... 即可
 
 ```sql
 CREATE DATABASE IF NOT EXISTS yourdbname DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;
