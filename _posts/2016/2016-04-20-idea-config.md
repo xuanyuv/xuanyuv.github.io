@@ -594,13 +594,14 @@ collation_server	utf8mb4_unicode_ci
 
 ```sql
 C:\Users\Jadyer>mysqldump -h127.0.0.1 -uroot -pxuanyu -d ifs --single-transaction --default-character-set=UTF8 > C:\Users\Jadyer\Desktop\ifs.sql
---                  ifs 代表数据库名
---                   -d 表示只导出表结构，不导出数据，若需导出数据，去掉该参数即可
--- --single-transaction 用来解决mysqldump: Got error: 1044: Access denied for user 'report'@'%' to database 'bi' when using LOCK TABLES
-```
 
-另外，导出时，可能会出现下面的提示，可以不理它（不会影响导出的表结构和数据量）
-```sql
+-- ifs 代表数据库名
+--  -d 表示只导出表结构，不导出数据，若需导出数据，去掉该参数即可
+
+-- 如果出现下面的提示，那就加上 --single-transaction 参数（否则不用）
+mysqldump: Got error: 1044: Access denied for user 'report'@'%' to database 'bi' when using LOCK TABLES
+
+-- 另外，导出时，可能会出现下面的提示，可以不理它（不会影响导出的表结构和数据量）
 mysqldump: Error: 'Access denied; you need (at least one of) the PROCESS privilege(s) for this operation' when trying to dump tablespaces
 ```
 
