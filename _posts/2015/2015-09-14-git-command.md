@@ -134,7 +134,7 @@ $ git checkout master
 Switched to branch 'master'
 Your branch is up-to-date with 'origin/master'.
 # 切换到本地的develop分支
-$ git checkout master
+$ git checkout develop
 Switched to branch 'develop'
 Your branch is up-to-date with 'origin/develop'.
 
