@@ -84,7 +84,7 @@ idea.cycle.buffer.size=disabled
 
 ## 全局配置
 
-在欢迎界面，左侧 Customize 下的 All settings...
+**在欢迎界面，左侧 Customize 下的 All settings...**
 
 ### 关闭非必要插件
 Plugins---Installed---取消勾选后，重启idea
@@ -105,24 +105,6 @@ Appearance & Behavior---System Settings---Data Sharing---反选Send usage statis
 
 # 取消自动更新
 Appearance & Behavior---System Settings---Updates---反选Automatically check updates
-```
-
-### 快捷键
-
-先拷贝一份 keymap 的 Windows 配置，新命名为 Windows_Jadyer
-
-```
-# 修改代码提示快捷键
-keymap---搜索框输入basic（idea默认的是Ctrl+空格，和我们输入法冲突）---Ctrl+B
-
-# 设置全屏模式快捷键（即工具类 View 菜单下面的 Enter Full Screen）
-keymap---搜索框输入full screen（搜索到的是Toggle Full Screen mode）---F11
-
-# 修改文件关闭快捷键
-keymap---快捷键搜索Ctrl+F4（搜索到的是Window--Editor Tabs--Close）---Ctrl+W
-
-# 修改类方法列表快捷键
-keymap---快捷键搜索Ctrl+F12（搜索到的是Main menu--Navigate--File Structure）---Ctrl+O
 ```
 
 ### 编辑器之通用配置
@@ -254,7 +236,7 @@ Editor---Live Templates---右上角 `+` 选择 Template Group---输入模板组�
 
 再点击 JadyerGroup---右上角 `+` 加号选择 Live Template---设置自定义的触发注释输出的字母
 
-然后在最下方的 No applicable contexts. Define 处选择模板适用范围（截图中我勾选的是**Java**范围）
+然后在最下方的 No applicable contexts. Define 处选择模板适用范围（截图中我勾选的是 **Java** 范围）
 
 接下来填写自定义的注释内容，如截图所示（我设置的就是输入 `c` ，然后按 `Tab` 键，就会生成方法注释）
 
@@ -286,6 +268,24 @@ Version Control---Show directories with changed descendants
 
 # Markdown文件默认以编辑模式打开
 Languages & Frameworks---Default layout---Editor only
+```
+
+### 快捷键
+
+先拷贝一份 keymap 的 Windows 配置，新命名为 Windows_Jadyer
+
+```
+# 修改代码提示快捷键
+keymap---搜索框输入basic（idea默认的是Ctrl+空格，和我们输入法冲突）---Ctrl+B
+
+# 设置全屏模式快捷键（即工具类 View 菜单下面的 Enter Full Screen）
+keymap---搜索框输入full screen（搜索到的是Toggle Full Screen mode）---F11
+
+# 修改文件关闭快捷键
+keymap---快捷键搜索Ctrl+F4（搜索到的是Window--Editor Tabs--Close）---Ctrl+W
+
+# 修改类方法列表快捷键
+keymap---快捷键搜索Ctrl+F12（搜索到的是Main menu--Navigate--File Structure）---Ctrl+O
 ```
 
 ### Maven及构建配置
@@ -324,6 +324,19 @@ Build,Execution,Deployment---Compiler---Shared build process heap size(Mbytes)--
 
 打开之后，File---Project Structure---设置JDK
 
+### 编译报错
+
+* 报告：找不到符号、未结束的字符串文字
+  > 1、UTF-8文件分有BOM和无BOM，idea默认使用的编译器是javac，而其只能编译无BOM的文件（settings---Editor---File Encodings---右侧BOM设置）<br/>
+  　　很多eclipse用户在使用idea开发eclipse项目时会遇到此问题<br/>
+  　　主要是因为eclipse的编译器是eclipse，其支持有BOM的文件编译。故需对文件进行BOM去除<br/>
+  2、批量去除BOM，可以Google：批量去除BOM、批量转换无BOM等关键字，网上已有各种方案<br/>
+  3、除了通过去除BOM，还有设置idea的编译器为eclipse，但是一般不建议这样做<br/>
+  4、若仍无法解决，而且也确认了idea各配置编码都是UTF-8，报错文件编码也是UTF-8无BOM的<br/>
+  　　那还有一种可能也会出现这种情况：项目配置文件有问题<br/>
+  　　项目编码的配置文件在：/项目目录/.idea/encodings.xml。你要是能修改明白就修改<br/>
+  　　要是不会修改，那就删掉.idea整个目录，重启idea重新配置这个项目即可
+
 ### 清除缓存和索引
 
 idea的缓存和索引主要用来加快文件查询、代码提示等操作的速度，但其缓存和索引文件偶尔会莫名损坏
@@ -343,20 +356,6 @@ Would you like to continue?
 一般建议点击 Invalidate and Restart，这样会清除的比较干净
 
 **注意**：若项目未加入版本控制，而又需要文件的历史记录，则提前备份下 ${idea.system.path}\LocalHistory\ 目录
-
-### 编译报错
-
-* 报告：找不到符号、未结束的字符串文字
-
-    > 1、UTF-8文件分有BOM和无BOM，idea默认使用的编译器是javac，而其只能编译无BOM的文件（settings---Editor---File Encodings---右侧最下方BOM设置）<br/>
-　　很多eclipse用户在使用idea开发eclipse项目时会遇到此问题<br/>
-　　主要是因为eclipse的编译器是eclipse，其支持有BOM的文件编译。故需对文件进行BOM去除<br/>
-2、批量去除BOM，可以Google：批量去除BOM、批量转换无BOM等关键字，网上已有各种方案<br/>
-3、除了通过去除BOM，还有设置idea的编译器为eclipse，但是一般不建议这样做<br/>
-4、若仍无法解决，而且也确认了idea各配置编码都是UTF-8，报错文件编码也是UTF-8无BOM的<br/>
-　　那还有一种可能也会出现这种情况：项目配置文件有问题<br/>
-　　项目编码的配置文件在：/项目目录/.idea/encodings.xml。你要是能修改明白就修改<br/>
-　　要是不会修改，那就删掉.idea整个目录，重启idea重新配置这个项目即可
 
 ## datagrip的几个配置
 
