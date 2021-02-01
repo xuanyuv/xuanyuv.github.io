@@ -11,7 +11,7 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 {:toc}
 
 
-> 本文所列配置项，已适配最新版：ideaIC-2018.3.6<br/>
+> 本文所列配置项，已适配最新版：ideaIC-2020.3.1<br/>
   idea历史版本下载：<http://www.jetbrains.com/idea/download/other.html>
 
 ## 快捷键
@@ -21,7 +21,6 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
  * 快速输入main函数：键入 main 再按 Ctrl+J 键（或者键入 psvm 再按 Tab 键）
  * 快速输入System.out.println：键入 sout 再按 Tab 键（对应Eclipse中的syso）
  * 查询某方法被其它地方调用：Ctrl+Alt+H（另外：Alt + F7 也挺好用）
- * 定位文件或直接定位某一行：Ctrl+N 或者 Ctrl+Shift+N 时输入文件名后，再跟上冒号和行号，如 `LoanHelper:22`
  * 常用快捷键：<http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-introduce.html>
  * 缩进用Tab还是空格：<https://bigc.at/tabs-vs-spaces.orz>
 
@@ -31,22 +30,21 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 
 如果想回到之前版本的橘黄色图标，可以用这个 Idea 2016.2 Icon Pack 插件，目前最新版为 v3.2
 
-插件介绍：<https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack>
-
-下载地址：<https://plugins.jetbrains.com/files/7285/47285/Idea11Icons.jar>（或者点介绍页右上角 Get 按钮）
+插件地址：<https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack>
 
 安装时选择 Install plugin from disk... 再重启 idea 就会看到经典的橘黄色图标啦
 
-补充：经测试，ideaIC-2019.3.2中该插件无效，ideaIC-2018.3.6没问题
+另外，ideaIC-2019.3.2中该插件无效，ideaIC-2018.3.6没问题
 
-补充：ideaIC-2018.3.6在线安装 lombok 插件时可能出现搜索不到的情况，这时离线安装就好了（也比较推荐离线安装）
+这时，可以用这个插件：<https://plugins.jetbrains.com/plugin/10777-legacy-icon-pack-for-2018-2->
+
+补充：ideaIC-2018.3.6在线安装 lombok 插件时可能出现搜索不到的情况，那就离线安装吧
 
 　　　[到这里下载](https://plugins.jetbrains.com/plugin/6317-lombok/versions)对应版本的插件，取出里面的lombok-plugin-0.29-2018.3.jar放到本地，再回到idea里面安装即可
 
-## 首次运行前配置
+## 首次运行前的配置
 
 ### idea64.exe.vmoptions
-
 ```
 -server
 -Xms2048m
@@ -56,156 +54,113 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 -XX:+UseConcMarkSweepGC
 -XX:+UseCodeCacheFlushing
 -XX:SoftRefLRUPolicyMSPerMB=100
+-XX:CICompilerCount=2
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:-OmitStackTraceInFastThrow
 -ea
 -Dsun.io.useCanonCaches=false
+-Djdk.http.auth.tunneling.disabledSchemes=""
+-Djdk.attach.allowAttachSelf=true
+-Djdk.module.illegalAccess.silent=true
+-Dkotlinx.coroutines.debug=off
 -Dsun.awt.keepWorkingSetOnMinimize=true
 -Djava.net.preferIPv4Stack=true
 -Djsse.enablesSNIExtension=false
--Djdk.http.auth.tunneling.disabledSchemes=""
--XX:+HeapDumpOnOutOfMemoryError
--XX:-OmitStackTraceInFastThrow
 
 ```
 
 ### idea.properties
+```properties
+idea.config.path=D:/Develop/JetBrains/ideaIC/JadyerData/config
+idea.system.path=D:/Develop/JetBrains/ideaIC/JadyerData/system
+idea.plugins.path=${idea.config.path}/plugins
+idea.log.path=${idea.system.path}/log
+# 编辑大文件时idea容易卡顿：可适当提高该属性值
+idea.max.intellisense.filesize=2500
+# 禁用控制台输出缓存：大项目开启很多输出时，控制台会很快刷满，导致不能自动输出后面的日志
+# 这时可以禁用该值或增大 `idea.cycle.buffer.size=1024` 的配置
+idea.cycle.buffer.size=disabled
+```
 
-`idea.config.path=D:/Develop/ideaIC/JadyerData/config`，配置idea个性化配置目录
+## 全局配置
 
-`idea.system.path=D:/Develop/ideaIC/JadyerData/system`，配置idea系统文件目录
-
-`idea.max.intellisense.filesize=2500`，编辑大文件时idea容易卡顿，可适当提高该属性值
-
-`idea.cycle.buffer.size=disabled`，禁用控制台输出缓存，大项目开启很多输出时，控制台会很快刷满
-
-导致不能自动输出后面的日志，这时可以禁用该值或增大 `idea.cycle.buffer.size=1024` 的配置
-
-## 欢迎窗口的配置
+在欢迎界面，左侧 Customize 下的 All settings...
 
 ### 关闭非必要的插件
+Plugins---Installed---取消勾选后，重启idea
 
-Configure---Settings---Plugins---Installed---取消勾选后，重启idea
+### 外观及行为配置
+```
+# 黑色主题及避免中文乱码（此处若选 Yahei Consolas Hybrid，会使得配置窗口很难看，非常难看）
+Appearance & Behavior---Appearance---Theme---Darcula，Use custom font，Microsoft YaHei UI，Size=12
 
-### 设置JDK
+# 隐藏工具栏快捷键下划线
+Appearance & Behavior---Appearance---反选Enable mnemonics in menu
 
-Configure---Project Defaults---Project Structure---Project Settings---Project---设置JDK
+# 应用空闲时自动保存文件
+Appearance & Behavior---System Settings---Save files if the IDE is idle for 15 seconds
 
-### 应用控制台颜色输出
+# 不发送统计文件给JetBrains
+Appearance & Behavior---System Settings---Data Sharing---反选Send usage statistics
 
-Configure---Project Defaults---Run Configurations---选择Application---VM options: -Dspring.output.ansi.enabled=ALWAYS
+# 取消自动更新
+Appearance & Behavior---System Settings---Updates---反选Automatically check updates
+```
 
-对于 SpringBoot 那种 main() 方法直接启动的（Maven或Gradle与之类似，也是右上角配置JVM参数），控制台会彩色输出日志信息
+### 快捷键
 
-### 黑色主题及避免中文乱码
+先拷贝一份 keymap 的 Windows 配置，新命名为 Windows_Jadyer
 
-settings---Appearance & Behavior---Appearance---Theme---Darcula
+```
+# 修改代码提示快捷键
+keymap---搜索框输入basic（idea默认的是Ctrl+空格，和我们输入法冲突）---Ctrl+B
 
-并勾选 Use custom font，同时选择 Microsoft YaHei UI 字体（Size=12不变）
+# 设置全屏模式快捷键（即工具类 View 菜单下面的 Enter Full Screen）
+keymap---搜索框输入full screen（搜索到的是Toggle Full Screen mode）---F11
 
-注意：此处若选 Yahei Consolas Hybrid，会使得配置窗口很难看，非常难看
+# 修改文件关闭快捷键
+keymap---快捷键搜索Ctrl+F4（搜索到的是Window--Editor Tabs--Close）---Ctrl+W
 
-### 打开内存使用状态
+# 修改类方法列表快捷键
+keymap---快捷键搜索Ctrl+F12（搜索到的是Main menu--Navigate--File Structure）---Ctrl+O
+```
 
-settings---Appearance & Behavior---Appearance---Show memory indicator
+### 编辑器之通用配置
+```
+# 设置Ctrl+E弹层的文件个数
+Editor---General---Limits---Recent files limit---16
 
-### 隐藏工具栏快捷键下划线
+# 自动移除UnuseImport
+Editor---General---Auto Import---Add unambiguous...fly 以及 Optimize imports...fly
 
-settings---Appearance & Behavior---Appearance---Disable mnemonics in menu
+# 显示行号
+Editor---General---Appearance---Show line numbers
 
-### 启动时不打开工程
+# 取消面包屑导航（即打开 HTML／XML 文件时隐藏 html／header／script 等标签）
+Editor---General---Breadcrumbs---反选Show breadcrumbs
 
-settings---Appearance & Behavior---System Settings---Reopen last project on startup
+# 代码提示区分大小写
+Editor---General---Code Completion---反选Match case
 
-### 打开工程时询问打开窗口
+# 设定折叠或展开的代码类型（勾选则表示该类型代码在文件被打开时默认是被折叠显示的）
+Editor---General---Code Folding---勾选Inner classes、Anonymous classes
 
-settings---Appearance & Behavior---System Settings---Project Opening---Confirm window to open project in
+Editor---General---Console---Default Encoding---UTF-8
 
-然后在菜单栏 File---Open Recent---选择某个工程后，会询问在当前窗口（This Window）打开还是新窗口（New Window）打开
+# 移除文件编辑Tab上的文件icon和后缀
+Editor---General---Editor Tabs---反选Show file icon和Show file extension
 
-### 应用空闲时自动保存文件
+# 星号标识编辑过的文件
+Editor---General---Editor Tabs---勾选Mark modified (*)
 
-settings---Appearance & Behavior---System Settings---Save files automatically if application is idle for 15 sec
+# 移除文件编辑Tab上的茬叉
+Editor---General---Editor Tabs---Close button position---None
 
-### 不发送统计文件给JetBrains
+# 设置文件编辑Tab的最多数
+Editor---General---Editor Tabs--Closing Policy---Tab limit---8
+```
 
-settings---Appearance & Behavior---System Settings---Data Sharing---Send usage statistics
-
-### 取消自动更新
-
-settings---Appearance & Behavior---System Settings---Updates---Automatically check updates
-
-### 修改代码提示快捷键
-
-`先拷贝一份 keymap 的 Default 配置，新命名为 Default_Jadyer`
-
-settings---keymap---搜索框输入basic（idea默认的是Ctrl+空格，和我们输入法冲突）---Ctrl+B
-
-### 设置全屏模式快捷键
-
-即工具类 View 菜单下面的 Enter Full Screen
-
-settings---keymap---搜索框输入full screen（搜索到的是Toggle Full Screen mode）---F11
-
-### 修改文件关闭快捷键
-
-settings---keymap---快捷键搜索Ctrl+F4（搜索到的是Window--Editor Tabs--Close）---Ctrl+W
-
-### 修改类方法列表快捷键
-
-settings---keymap---快捷键搜索Ctrl+F12（搜索到的是Main menu--Navigate--File Structure）---添加Ctrl+O
-
-另外，显示类结构视图的快捷键默认为Alt+7（搜索到的是Tool Windows--Structure），感觉它不如Ctrl+F12方便
-
-### 设置Ctrl+E弹层的文件个数
-
-settings---Editor---General---Limits---Recent files limit---默认为50个
-
-### 自动移除UnuseImport
-
-settings---Editor---General---Auto Import---Add unambiguous...fly 以及 Optimize imports...fly
-
-未生效可检查settings---Editor---inspections---Java---Imports---Unused import---勾选
-
-注意：通过 Ctrl+X 的方式可能不会有效果，只有 Ctrl+Y 或全选后按键盘回退或 Delete 删除时有效果
-
-### 显示行号
-
-settings---Editor---General---Appearance---Show line numbers
-
-### 取消面包屑导航
-
-即打开 HTML／XML 文件时隐藏 html／header／script 等标签
-
-settings---Editor---General---Breadcrumbs---取消勾选Show breadcrumbs
-
-### 代码提示区分大小写
-
-settings---Editor---General---Code Completion---取消勾选Match case
-
-### 设定折叠或展开的代码类型
-
-settings---Editor---General---Code Folding---勾选表示该类型代码在文件被打开时默认是被折叠的
-
-这里我勾了 Inner classes 、 Anonymous classes
-
-### 移除文件编辑Tab的后缀
-
-settings---Editor---General---Editor Tabs---取消勾选 Show file extension
-
-### 星号标识编辑过的文件
-
-settings---Editor---General---Editor Tabs---勾选`Mark modified (*)`
-
-### 移除文件编辑Tab的`×`
-
-settings---Editor---General---Editor Tabs---Close button position 下拉框选择 None
-
-### 设置文件编辑Tab的最多数
-
-当我们打开的文件数超过该设置时，最先打开的文件会被关闭
-
-settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---默认为10个
-
-### 代码字体
+### 编辑器之代码字体
 
 用的是网上推荐的 Yahei Consolas Hybrid 字体，下载地址如下（三个地址都是同一个文件）
 
@@ -221,41 +176,71 @@ settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---默认�
 
 解决办法就是：右键 ttf 文件，选择为所有用户安装即可
 
-再回到 idea 配置：settings---Editor---Font---选择 Yahei Consolas Hybrid，Size=14
+再回到 idea 配置：Editor---Font---Yahei Consolas Hybrid，Size=14
 
-### 控制台字号
+### 编辑器之代码风格
+```
+# 控制台字号（先拷贝一份 Scheme 的 Darcula 配置，新命名为 Darcula_Jadyer）
+Editor---Color Scheme---Console Font---Use console font instead of the default---Size=12
 
-`先拷贝一份 Scheme 的 Darcula 配置，新命名为 Darcula_Jadyer`
+# 文件换行符使用Unix格式（先拷贝一份 Scheme 的 Default 配置，新命名为 Default_Jadyer）
+Editor---Colors Style---Line separator---Unix and OS X (\n)
 
-settings---Editor---Color Scheme---Console Font---勾选 Use console font instead---Size=12
+# 函数花括号显示为对称结构（这里我没有改，还是默认的End of line）
+Editor---Colors Style---Java---Wrapping and Braces---Braces placement---Next line
 
-### 文件换行符使用Unix格式
+# import每个类而非整个包（当import某个包下的类超过这里设置的个数时，就会换成星号来代替，比如import java.util.*）
+Editor---Colors Style---Java---Imports---Class count to use import with---64
 
-`先拷贝一份 Scheme 的 Default 配置，新命名为 Default_Jadyer`
+# 注释时双斜杠位置为代码头部
+Editor---Colors Style---Java---Code Generation---反选Line comment at first column
 
-settings---Editor---Colors Style---Line separator 下拉框选择 Unix and OS X (\n)
+# 注释的双斜线与注释内容之间有且仅有一个空格
+Editor---Colors Style---Java---Code Generation---勾选Add a space at comment start
+```
 
-### 函数花括号显示为对称结构
+### 编辑器之关闭检查
 
-settings---Editor---Colors Style---Java---Wrapping and Braces---Braces placement---Next line
+先拷贝一份 Profile 的 Default 配置，新命名为 Default_Jadyer
 
-这里我没有改，还是用的默认 End of line
+```
+# DefaultFileTemplate
+Editor---Inspections---General---反选Default File Template Usage
 
-### import每个类而非整个包
+# 方法参数是相同值
+Editor---Inspections---Java---Declaration redundancy---反选Actual method parameter is the same constant
 
-settings---Editor---Colors Style---Java---Imports---Class count to use import with 星号设置大一点
+# neverused
+Editor---Inspections---Java---Declaration redundancy---反选Unused declaration
 
-当 Java 类中 import 某个包下的类超过这里设置的个数，就会换成用星号来代替，比如 `import java.util.*`
+# lamba转化
+Editor---Inspections---Java---Java language level migration aids---Java 8---反选Anonymous type can be replaced with lambda
 
-### 注释时双斜杠位置为代码头部
+# @create@author@see（前者针对@create@author，后者针对@see）
+Editor---Inspections---Java---Javadoc---反选Declaration has Javadoc problems和Declaration has problems in Javadoc references
 
-settings---Editor---Colors Style---Java---Code Generation---取消勾选 Line comment at first column
+# 方法和类同名
+Editor---Inspections---Java---Naming conventions---反选Method name same as class name
 
-注：若需要设置注释的双斜线与注释内容之间有且仅有一个空格，那就勾选下方的 Add a space at comment start
+# 未处理方法返回值（比如java.io.File.delete()）
+Editor---Inspections---Java---Probable bugs---反选Result of method call ignored
 
-### 自定义文件代码模板
+# serialVersionUID（然后回到类文件中，光标放到类名上，Alt+Enter就会提示生成serialVersionUID）
+Editor---Inspections---Java---Serialization issues---勾选Serializable class without serialVersionUID
+Editor---Inspections---Java---Serialization issues---勾选Non-serializable class with serialVersionUID
 
-settings---Editor---File and Code Templates---Includes---File Header---编辑为如下
+# 取消拼写检查
+Editor---Inspections---Proofreading---反选
+
+# properties的属性未使用
+Editor---Inspections---Properties Files---反选Unused Property
+```
+
+### 编辑器之注释模板
+
+这是设置文件头注释（创建新文件时的）
+
+Editor---File and Code Templates---Includes---File Header---编辑为如下
 
 ```
 /**
@@ -263,21 +248,11 @@ settings---Editor---File and Code Templates---Includes---File Header---编辑为
  */
 ```
 
-### 资源文件的中文显示
+接下来是自定义方法上的注释
 
-settings---Editor---File Encodings---Global Encoding---UTF-8
+Editor---Live Templates---右上角 `+` 选择 Template Group---输入模板组名：JadyerGroup
 
-settings---Editor---File Encodings---Project Encoding---UTF-8
-
-settings---Editor---File Encodings---Default encoding for properties files---UTF-8
-
-settings---Editor---File Encodings---Transparent native-to-ascii conversion
-
-### 自定义方法上的注释
-
-settings---Editor---Live Templates---右上角 `+` 选择 Template Group---我输入的模板组名是 JadyerGroup
-
-然后点击 JadyerGroup---右上角 `+` 加号选择 Live Template---设置自定义的触发注释输出的字母
+再点击 JadyerGroup---右上角 `+` 加号选择 Live Template---设置自定义的触发注释输出的字母
 
 然后在最下方的 No applicable contexts. Define 处选择模板适用范围（截图中我勾选的是**Java**范围）
 
@@ -285,128 +260,69 @@ settings---Editor---Live Templates---右上角 `+` 选择 Template Group---我�
 
 其中时间位置可以用 `$date$` 或者 `$time$` 占位，并点击 Edit variables 按钮，然后在下拉框选择 `date()` 和 `time()`
 
+```
+/**
+ *
+ * Comment by 玄玉<https://jadyer.cn/> on $date$ $time$.
+ */
+```
+
 ![](https://ae01.alicdn.com/kf/H7ad4863359204e2a857bf832bc20b055M.png)
 
-### 隐藏文件和文件夹
+### 编辑器之其它
 
-settings---Editor---File Types---Ignore files and folders---`target;.gradle;*.iml;*.idea;`
+```
+# 资源文件的中文显示
+Editor---File Encodings---Global Encoding---UTF-8
+Editor---File Encodings---Project Encoding---UTF-8
+Editor---File Encodings---Default encoding for properties files---UTF-8
+Editor---File Encodings---Transparent native-to-ascii conversion
 
-### 版本控制下文件变化的显示
+# 隐藏文件和文件夹
+Editor---File Types---Ignore files and folders---target;.gradle;*.iml;*.idea;
 
-settings---Version Control---Show directories with changed descendants
+# 版本控制下文件变化的显示（调整文件夹显示颜色，配置在Version Control---File Status Color）
+Version Control---Show directories with changed descendants
 
-开启后若想调整文件夹的显示颜色：settings---Version Control---File Status Color
+# Markdown文件默认以编辑模式打开
+Languages & Frameworks---Default layout---Editor only
+```
 
-### Maven配置
+### Maven及构建配置
 
-settings---Build,Execution,Deployment---Build Tools---Maven---选择本机Maven及本地仓库，并勾选Print exception stack traces
+```
+# Maven配置
+Build,Execution,Deployment---Build Tools---Maven---勾选Print exception stack traces，并选择本机Maven及本地仓库
+Build,Execution,Deployment---Build Tools---Maven---Importing---Automatically download---勾选Sources
+Build,Execution,Deployment---Build Tools---Maven---Importing---JDK for importer---选择本机安装的1.8
+Build,Execution,Deployment---Build Tools---Maven---Runner---JRE---选择本机安装的1.8
 
-settings---Build,Execution,Deployment---Build Tools---Maven---Importing---Import Maven projects automatically
+# 自动编译
+Build,Execution,Deployment---Compiler---Build project automatically
 
-settings---Build,Execution,Deployment---Build Tools---Maven---Importing---Automatically download---勾选Sources
+# 编译报告OutOfMemoryError
+Build,Execution,Deployment---Compiler---Shared build process heap size(Mbytes)---1024
+```
 
-settings---Build,Execution,Deployment---Build Tools---Maven---Importing---JDK for importer---选择本机安装的1.8
+## 主窗口配置
 
-settings---Build,Execution,Deployment---Build Tools---Maven---Runner---JRE---选择本机安装的1.8
+### 打开内存使用状态
 
-### 自动编译
+主窗口双击Shift，输入Show memory indicator开启
 
-settings---Build,Execution,Deployment---Compiler---Build project automatically
+（以前是在settings---Appearance & Behavior---Appearance---Show memory indicator）
 
-### 编译报告OutOfMemoryError
+### 设置应用启动参数
 
-settings---Build,Execution,Deployment---Compiler---Build process heap size(Mbytes)---默认的700改为1024或更大
+主窗口右上角---Edit Configurations...---Templates---Application---VM options: -Dspring.output.ansi.enabled=ALWAYS
 
+对于 SpringBoot 那种 main() 方法直接启动的（Maven或Gradle与之类似，也是右上角配置JVM参数），控制台会彩色输出日志信息
 
-## 关闭警告
+### 设置JDK
 
-`先拷贝一份 Profile 的 Default 配置，新命名为 Default_Jadyer`
+在即将使用的本地工作空间，创建一个空项目Empty Project（项目名随意）
 
-### DefaultFileTemplate
-
-settings---Editor---Inspections---General---取消勾选Default File Template Usage
-
-### 方法参数是相同值
-
-settings---Editor---Inspections---Java---Declaration redundancy---取消勾选Actual method parameter is the same constant
-
-### neverused
-
-settings---Editor---Inspections---Java---Declaration redundancy---取消勾选Unused declaration
-
-### lamba转化
-
-settings---Editor---Inspections---Java---Java language level migration aids---Java 8---取消勾选Anonymous type can be replaced with lambda
-
-### @see@create@author
-
-settings---Editor---Inspections---Java---Javadoc---
-
-取消勾选 Declaration has Javadoc problems（适用@create@author）
-
-取消勾选 Declaration has problems in Javadoc references（适用@see）
-
-### 方法和类同名
-
-settings---Editor---Inspections---Java---Naming conventions---取消勾选Method name same as class name
-
-### String代替StringBuilder
-
-settings---Editor---Inspections---Java---Performance---取消勾选StringBuilder can be replaced with String
-
-### 未处理方法返回值
-
-比如`java.io.File.delete()`
-
-settings---Editor---Inspections---Java---Probable bugs---取消勾选Result of method call ignored
-
-### 未生成serialVersionUID
-
-settings---Editor---Inspections---Java---Serialization issues---勾选Serializable class without 'serialVersionUID'
-
-### 无需定义serialVersionUID
-
-settings---Editor---Inspections---Java---Serialization issues---勾选Non-serializable class with 'serialVersionUID'
-
-即非序列化的类，不需要定义serialVersionUID
-
-然后回到我们的类文件中，将光标放到类名上，再按 Alt+Enter 键就会提示生成serialVersionUID
-
-### properties的属性未使用
-
-settings---Editor---Inspections---Properties Files---取消勾选Unused Property
-
-### 取消拼写检查
-
-settings---Editor---Inspections---Spelling---取消勾选
-
-### spring的一些警告
-
-关闭Can not resolve configuration property 'jasypt.file.****' 的警告
-
-settings---Editor---Inspections---Spring---Spring Boot---取消勾选Spring Boot application.yml
-
-关闭Application context not configured for this file的警告
-
-settings---Editor---Inspections---Spring---Spring Core---Setup---取消勾选Spring Facet Code Configuration
-
-## 其它
-
-### Project视图折叠空包
-
-Project视图---右上角倒数第二个齿轮图标---点击齿轮后选择Compact Middle Packeages
-
-### 省电模式
-
-File---Power Save Mode---此时会关掉代码检查、代码提示等功能，适合读代码，所以也称为阅读模式
-
-### 设置背景图
-
-Ctrl + Shift + A（或者菜单栏Help---Find Action...），然后再弹窗中输入“Set Background Image”
-
-回车后，在 Image: 中选择喜欢的图片，在 Opacity: 处可以保持默认的15透明度，最后保存即可
-
-若不想要背景图片了，同样打开这个弹窗，点击右下方 “Clear and Close” 即可
+打开之后，File---Project Structure---设置JDK
 
 ### 清除缓存和索引
 
@@ -446,34 +362,38 @@ Would you like to continue?
 
 ### datagrip64.exe.vmoptions
 
-```
+```properties
 -server
 -Xms1024m
 -Xmx1024m
 -XX:MaxPermSize=512m
--XX:ReservedCodeCacheSize=256m
+-XX:ReservedCodeCacheSize=512m
 -XX:+UseConcMarkSweepGC
 -XX:+UseCodeCacheFlushing
 -XX:SoftRefLRUPolicyMSPerMB=100
+-XX:CICompilerCount=2
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:-OmitStackTraceInFastThrow
 -ea
 -Dsun.io.useCanonCaches=false
+-Djdk.http.auth.tunneling.disabledSchemes=""
+-Djdk.attach.allowAttachSelf=true
+-Djdk.module.illegalAccess.silent=true
+-Dkotlinx.coroutines.debug=off
 -Dsun.awt.keepWorkingSetOnMinimize=true
 -Djava.net.preferIPv4Stack=true
 -Djsse.enablesSNIExtension=false
--Djdk.http.auth.tunneling.disabledSchemes=""
--XX:+HeapDumpOnOutOfMemoryError
--XX:-OmitStackTraceInFastThrow
--javaagent:./JetbrainsIdesCrack-4.2-release-sha1-3323d5d0b82e716609808090d3dc7cb3198b8c4b.jar
 
 ```
 
 ### idea.properties
 
-`idea.config.path=D:/Develop/DataGrip/JadyerData/config`，配置datagrip个性化配置目录
-
-`idea.system.path=D:/Develop/DataGrip/JadyerData/system`，配置datagrip系统文件目录
-
-配置这俩项基本就够用了，不用像 idea 那样再配置 filesize buffer 什么的
+```properties
+idea.config.path=D:/Develop/JetBrains/DataGrip/JadyerData/config
+idea.system.path=D:/Develop/JetBrains/DataGrip/JadyerData/system
+idea.plugins.path=${idea.config.path}/plugins
+idea.log.path=${idea.system.path}/log
+```
 
 ### 配置工作空间
 
@@ -485,9 +405,9 @@ datagrip 默认的工作空间是在 idea.config.path/projects/ 目录里面的�
 
 我们也可以自定义工作空间，并显示欢迎屏幕
 
-settings---Appearancd & Behavior---System Settings---Default directory---配置目录
+欢迎界面Customize---All settings...---Appearancd & Behavior---System Settings---Default directory
 
-settings---Appearancd & Behavior---System Settings---Show Welcome screen
+欢迎界面Customize---All settings...---Appearancd & Behavior---System Settings---Show Welcome screen
 
 **注：初次启动时，配置向导有一步 Attaching a directory... 不用理它，它不是配置工作空间**
 
@@ -527,21 +447,21 @@ upd：输入 ins 后按 Tab 键，就会输出 `UPDATE 表名 SET  = WHERE;`
 
 注：serverTimezone改成上海，还能避免SQL查询出的时间比真实落库时间早 8 个小时的问题（可以配置成全局的）
 
-File---Data Sources and Drivers---Drivers---设置连接时使用本地 jar 以及 serverTimezone 等参数
+File---Data Sources...---Drivers---设置连接时使用本地 jar 以及 serverTimezone 等参数
 
 ### 消除绿框
 
 默认在手写SQL时，会有一个绿框跟随着，可以把它取消掉
 
-settings---Editor---Code Scheme---Database---Console---Statement to execucte---取消勾选Effects
+欢迎界面Customize---All settings...---Editor---Code Scheme---Database---Console---Statement to execucte---取消勾选Effects
 
 ### 关键词大写
 
-settings---Editor---Code Style---SQL---Case选项卡---Word Case---Keywords---To Upper
+欢迎界面Customize---All settings...---Editor---Code Style---SQL---General---Case选项卡---Word Case---Keywords---To Upper
 
 ### 执行光标所在的语句
 
-settings---Database---General---Execute---When inside statement execute---Smallest statement
+欢迎界面Customize---All settings...---Database---General---Execute---When inside statement execute---Smallest statement
 
 注：此时SQL须以分号结尾，除非手动选中整个SQL，那就无所谓了，就会直接执行选中的SQL
 
