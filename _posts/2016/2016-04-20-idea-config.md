@@ -86,7 +86,7 @@ idea.cycle.buffer.size=disabled
 
 在欢迎界面，左侧 Customize 下的 All settings...
 
-### 关闭非必要的插件
+### 关闭非必要插件
 Plugins---Installed---取消勾选后，重启idea
 
 ### 外观及行为配置
@@ -362,7 +362,7 @@ Would you like to continue?
 
 ### datagrip64.exe.vmoptions
 
-```properties
+```
 -server
 -Xms1024m
 -Xmx1024m
