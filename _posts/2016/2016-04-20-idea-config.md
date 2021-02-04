@@ -11,7 +11,7 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 {:toc}
 
 
-> 本文所列配置项，已适配最新版：ideaIC-2019.3.5<br/>
+> 本文所列配置项，已适配：ideaIC-2019.3.5<br/>
   idea历史版本下载：<http://www.jetbrains.com/idea/download/other.html>
 
 ## 快捷键
@@ -79,7 +79,7 @@ idea.cycle.buffer.size=disabled
 
 ## 全局配置
 
-** 在欢迎界面，点击右下方 Configure ，开始进行下列配置 **
+**在欢迎界面，点击右下方 Configure ，开始进行下列配置**
 
 ### 项目参数及JDK
 ```
@@ -402,19 +402,17 @@ datagrip 默认的工作空间是在 idea.config.path/projects/ 目录里面的�
 
 欢迎界面Customize---All settings...---Appearancd & Behavior---System Settings---Show Welcome screen
 
-** 注：初次启动时，配置向导有一步 Attaching a directory... 不用理它，它不是配置工作空间 **
+**注：初次启动时，配置向导有一步 Attaching a directory... 不用理它，它不是配置工作空间**
 
 ### 快捷键
 
-Ctrl + Shift + /：注释SQL
-
-Ctrl + /：注释SQL
-
-Ctrl + Enter：执行SQL（未选中SQL的情况下，会弹框询问你执行哪条SQL）
-
-Ctrl + N：快速导航到指定的表、视图、函数等（跟 idea 一样）
-
-Shift + Shift：可以搜索任何想搜索的内容（跟 idea 一样）
+| 快捷键 | 用途 |
+|:-----------------|:--------|
+| Ctrl + /         | 注释SQL |
+| Ctrl + Shift + / | 注释SQL |
+| Ctrl + Enter     | 执行SQL（未选中SQL的情况下，会弹框询问你执行哪条SQL） |
+| Ctrl + N         | 快速导航到指定的表、视图、函数等（跟 idea 一样） |
+| Shift + Shift    | 可以搜索任何想搜索的内容（跟 idea 一样） |
 
 ### 常用配置
 ```
