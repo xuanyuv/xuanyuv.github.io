@@ -453,6 +453,9 @@ settings----Database---General---Execute---When inside statement execute---Small
 查询控制台上，鼠标放到表名上（也可以是字段名或函数名），按下 Ctrl，再点击鼠标左键，就会立即定位到具体表上
 ```
 
+### 表名后面显示注释
+标题栏---View---Appearance---Details in Tree View
+
 ### 字符集混用或无效
 
 当数据库服务端设置为 UTF8MB4 后，datagrip 在操作数据库时，可能会提示下面信息
