@@ -11,7 +11,7 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 {:toc}
 
 
-> 本文所列配置项，已适配：ideaIC-2019.3.5<br/>
+> 本文所列配置项，已适配：ideaIC-2021.2.1<br/>
   idea历史版本下载：<http://www.jetbrains.com/idea/download/other.html>
 
 ## 快捷键
@@ -38,32 +38,6 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 
 ## 首次运行前的配置
 
-### 64.exe.vmoptions
-```
--server
--Xms2048m
--Xmx2048m
--XX:MaxPermSize=1024m
--XX:ReservedCodeCacheSize=512m
--XX:+UseConcMarkSweepGC
--XX:+UseCodeCacheFlushing
--XX:SoftRefLRUPolicyMSPerMB=100
--XX:CICompilerCount=2
--XX:+HeapDumpOnOutOfMemoryError
--XX:-OmitStackTraceInFastThrow
--ea
--Dsun.io.useCanonCaches=false
--Dsun.io.useCanonPrefixCache=false
--Djdk.http.auth.tunneling.disabledSchemes=""
--Djdk.attach.allowAttachSelf=true
--Djdk.module.illegalAccess.silent=true
--Dkotlinx.coroutines.debug=off
--Dsun.awt.keepWorkingSetOnMinimize=true
--Djava.net.preferIPv4Stack=true
--Djsse.enablesSNIExtension=false
-
-```
-
 ### idea.properties
 ```properties
 idea.config.path=D:/Develop/JetBrains/ideaIC/JadyerData/config
@@ -73,19 +47,36 @@ idea.log.path=${idea.system.path}/log
 # 编辑大文件时idea容易卡顿：可适当提高该属性值
 idea.max.intellisense.filesize=2500
 # 禁用控制台输出缓存：大项目开启很多输出时，控制台会很快刷满，导致不能自动输出后面的日志
-# 这时可以禁用该值或增大 `idea.cycle.buffer.size=1024` 的配置
+# 这时可以禁用该值或增大其配置
 idea.cycle.buffer.size=disabled
+```
+
+### idea64.exe.vmoptions
+```
+-XX:ReservedCodeCacheSize=512m
+-Xms2048m
+-Xmx2048m
+-XX:+UseG1GC
+-XX:SoftRefLRUPolicyMSPerMB=100
+-XX:CICompilerCount=2
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:-OmitStackTraceInFastThrow
+-ea
+-Dsun.io.useCanonCaches=false
+-Djdk.http.auth.tunneling.disabledSchemes=""
+-Djdk.attach.allowAttachSelf=true
+-Djdk.module.illegalAccess.silent=true
+-Dkotlinx.coroutines.debug=off
+
 ```
 
 ## 全局配置
 
-**在欢迎界面，点击右下方 Configure ，开始进行下列配置**
+**在欢迎界面，点击左侧 Customize，再点击 All settings，开始下列配置**
 
 ### 项目参数及JDK
-```
-# 关闭插件
-Plugins---Installed---取消勾选后，重启idea
 
+```
 # 设置JDK
 Structure for New Projects---Project Settings---Project---设置JDK
 Structure for New Projects---Platform Settings---SDKs---删除自带的jdk11
@@ -97,6 +88,8 @@ Run Configuration Templates for New Projects---Application---VM options: -Dsprin
 # 应用启动参数短命令行
 Run Configuration Templates for New Projects---Application---jre---1.8
 Run Configuration Templates for New Projects---Application---Shorten command line---classpath file
+
+# 注：新版idea要在配置全局参数，并打开一个工程后，才能配置以下项
 ```
 
 ### 外观及行为配置
@@ -104,30 +97,21 @@ Run Configuration Templates for New Projects---Application---Shorten command lin
 # 黑色主题及避免中文乱码（此处若选 Yahei Consolas Hybrid，会使得配置窗口很难看，非常难看）
 settings---Appearance & Behavior---Appearance---Theme---Darcula，Use custom font，Microsoft YaHei UI，Size=12
 
-# 打开内存使用状态
-settings---Appearance & Behavior---Appearance---Show memory indicator
-
 # 隐藏工具栏快捷键下划线
-settings---Appearance & Behavior---Appearance---Disable mnemonics in menu
-
-# 打开工程时询问打开窗口（这样在idea选择某个工程打开时，会询问在 This Window 还是 New Window 打开）
-settings---Appearance & Behavior---System Settings---Project Opening---Confirm window to open project in
+settings---Appearance & Behavior---Appearance---Enable mnemonics in menu
 
 # 应用空闲时自动保存文件
-settings---Appearance & Behavior---System Settings---Save files if the IDE is idle for 15 seconds
+settings---Appearance & Behavior---System Settings---Autosave---Save files if the IDE is idle for 15 seconds
 
 # 不发送统计文件给JetBrains
-settings---Appearance & Behavior---System Settings---Data Sharing---Send usage statistics
+settings---Appearance & Behavior---System Settings---Data Sharing
 
 # 取消自动更新
-settings---Appearance & Behavior---System Settings---Updates---Automatically check updates
+settings---Appearance & Behavior---System Settings---Updates
 ```
 
 ### 编辑器之通用配置
 ```
-# 设置Ctrl+E弹层的文件个数
-settings---Editor---General---Limits---Recent files limit---16
-
 # 自动移除UnuseImport
 settings---Editor---General---Auto Import---Add unambiguous...fly 以及 Optimize imports...fly
 
@@ -149,7 +133,7 @@ settings---Editor---General---Editor Tabs---Show file extension
 # 星号标识编辑过的文件
 settings---Editor---General---Editor Tabs---勾选Mark modified (*)
 
-# 移除文件编辑Tab上的茬叉
+# 移除文件编辑Tab上的叉
 settings---Editor---General---Editor Tabs---Close button position---None
 
 # 设置文件编辑Tab的最多数
@@ -180,13 +164,13 @@ settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---8
 settings---Editor---Color Scheme---Console Font---Use console font instead of the default---Size=12
 
 # 文件换行符使用Unix格式（先拷贝一份 Scheme 的 Default 配置，新命名为 Default_Jadyer）
-settings---Editor---Colors Style---Line separator---Unix and OS X (\n)
+settings---Editor---Colors Style---Line separator---Unix and macOS (\n)
 
-# 函数花括号显示为对称结构（这里我没有改，还是默认的End of line）
+# 函数花括号显示为对称结构（这里我还是用的默认End of line）
 settings---Editor---Colors Style---Java---Wrapping and Braces---Braces placement---Next line
 
 # import每个类而非整个包（当import某个包下的类超过这里设置的个数时，就会换成星号来代替，比如import java.util.*）
-settings---Editor---Colors Style---Java---Imports---Class count to use import with---64
+settings---Editor---Colors Style---Java---Imports---Class count to use import with *---64
 
 # 注释时双斜杠位置为代码头部
 settings---Editor---Colors Style---Java---Code Generation---不勾选Line comment at first column
@@ -212,14 +196,14 @@ settings---Editor---Inspections---Java---Declaration redundancy---不勾选Metho
 # neverused
 settings---Editor---Inspections---Java---Declaration redundancy---不勾选Unused declaration
 
-# lamba转化
-settings---Editor---Inspections---Java---Java language level migration aids---Java 8---不勾选Anonymous type can be replaced with lambda
+# lamba转化（这里我还是用的默认勾选）
+settings---Editor---Inspections---Java---Java language level migration aids---Java 8---Anonymous type can be replaced with lambda
 
 # @create@author@see（前者针对@create@author，后者针对@see）
 settings---Editor---Inspections---Java---Javadoc---不勾选Declaration has Javadoc problems和Declaration has problems in Javadoc references
 
 # 方法和类同名
-settings---Editor---Inspections---Java---Naming conventions---不勾选Method name same as class name
+settings---Editor---Inspections---Java---Naming conventions---Method---不勾选Method name same as class name
 
 # 未处理方法返回值（比如java.io.File.delete()）
 settings---Editor---Inspections---Java---Probable bugs---不勾选Result of method call ignored
@@ -230,9 +214,6 @@ settings---Editor---Inspections---Java---Serialization issues---勾选Non-serial
 
 # properties的属性未使用
 settings---Editor---Inspections---Properties Files---不勾选Unused Property
-
-# 取消拼写检查
-settings---Editor---Inspections---Spelling---不勾选
 ```
 
 ### 编辑器之注释模板
@@ -284,7 +265,7 @@ settings---Editor---File Types---Ignore files and folders---target;.gradle;*.iml
 settings---Version Control---Show directories with changed descendants
 
 # Markdown文件默认以编辑模式打开
-settings---Languages & Frameworks---Default layout---Editor only
+settings---Languages & Frameworks---Markdown---Default layout---Editor only
 ```
 
 ### 快捷键
@@ -310,7 +291,6 @@ settings---keymap---快捷键搜索Ctrl+F12（搜索到的是Main menu--Navigate
 ```
 # Maven配置
 settings---Build,Execution,Deployment---Build Tools---Maven---勾选Print exception stack traces，并选择本机Maven及本地仓库
-settings---Build,Execution,Deployment---Build Tools---Maven---Importing---Import Maven projects automatically
 settings---Build,Execution,Deployment---Build Tools---Maven---Importing---Automatically download---勾选Sources
 settings---Build,Execution,Deployment---Build Tools---Maven---Importing---JDK for importer---选择本机安装的1.8
 settings---Build,Execution,Deployment---Build Tools---Maven---Runner---JRE---选择本机安装的1.8
