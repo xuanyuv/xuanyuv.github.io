@@ -20,7 +20,7 @@ RSA key fingerprint is 42:e8:0d:6b:77:8c:05:5a:1b:21:d7:1c:bb:76:49:48.
 Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added '10.16.30.72' (RSA) to the list of known hosts.
 root@10.16.30.72's password:
-mongodb-linux-x86_64-3.2.10.tgz                                                                                                                                 100%   73MB  73.3MB/s   00:01
+mongodb-linux-x86_64-3.2.10.tgz                                                               100%   73MB  73.3MB/s   00:01
 ```
 
 ## wget
@@ -34,7 +34,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 76836431 (73M) [application/x-gzip]
 Saving to: "mongodb-linux-x86_64-3.2.10.tgz"
 
-100%[========================================================================================================================================================>] 76,836,431  3.70M/s   in 22s
+100%[======================================================================================>] 76,836,431  3.70M/s   in 22s
 
 2016-11-08 12:14:40 (3.36 MB/s) - "mongodb-linux-x86_64-3.2.10.tgz" saved [76836431/76836431]
 ```

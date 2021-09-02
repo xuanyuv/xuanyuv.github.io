@@ -89,7 +89,7 @@ Run Configuration Templates for New Projects---Application---VM options: -Dsprin
 Run Configuration Templates for New Projects---Application---jre---1.8
 Run Configuration Templates for New Projects---Application---Shorten command line---classpath file
 
-# 注：新版idea要在配置全局参数，并打开一个工程后，才能配置以下项
+# 注：新版idea要在配置全局参数，并打开一个工程后，才能配置以上项
 ```
 
 ### 外观及行为配置
