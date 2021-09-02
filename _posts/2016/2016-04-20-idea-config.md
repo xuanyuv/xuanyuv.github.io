@@ -52,7 +52,7 @@ idea.cycle.buffer.size=disabled
 ```
 
 ### idea64.exe.vmoptions
-```
+```properties
 -XX:ReservedCodeCacheSize=512m
 -Xms2048m
 -Xmx2048m
@@ -76,7 +76,7 @@ idea.cycle.buffer.size=disabled
 
 ### 项目参数及JDK
 
-```
+```properties
 # 设置JDK
 Structure for New Projects---Project Settings---Project---设置JDK
 Structure for New Projects---Platform Settings---SDKs---删除自带的jdk11
@@ -93,7 +93,7 @@ Run Configuration Templates for New Projects---Application---Shorten command lin
 ```
 
 ### 外观及行为配置
-```
+```properties
 # 黑色主题及避免中文乱码（此处若选 Yahei Consolas Hybrid，会使得配置窗口很难看，非常难看）
 settings---Appearance & Behavior---Appearance---Theme---Darcula，Use custom font，Microsoft YaHei UI，Size=12
 
