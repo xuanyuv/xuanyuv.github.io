@@ -379,8 +379,9 @@ idea.log.path=${idea.system.path}/log
 | Ctrl + /         | 注释SQL |
 | Ctrl + Shift + / | 注释SQL |
 | Ctrl + Enter     | 执行SQL（未选中SQL的情况下，会弹框询问你执行哪条SQL） |
-| Ctrl + N         | 快速导航到指定的表、视图、函数等（跟 idea 一样） |
-| Shift + Shift    | 可以搜索任何想搜索的内容        （跟 idea 一样） |
+| Ctrl + B         | 快速查看表结构（左侧表列表中，选中表，按下此组合键）  |
+| Ctrl + N         | 快速导航到指定的表、视图、函数等（跟 idea 一样）      |
+| Shift + Shift    | 可以搜索任何想搜索的内容        （跟 idea 一样）      |
 
 ```
 # 结果集中设置字段值为NULL
@@ -409,11 +410,14 @@ idea.log.path=${idea.system.path}/log
 注：有的配置可参考上方 idea 配置，故不再重复列出
 
 ```
-# 其实 datagrip 也有工作空间和项目的概念（欢迎屏幕上能看见，默认个人目录），可通过下面配置来自定义
-settings---Appearancd & Behavior---System Settings---Default directory
-
 # 执行光标所在的语句（此时SQL须以分号结尾，除非手动选中整个SQL，那时就会直接执行选中的SQL）
 settings----Database---General---Execute---When inside statement execute---Smallest statement
+
+# 设置SQL方言
+settings----Database---SQL Dialects---Global 和 Project 级别的都设置成 MySQL
+
+# 其实 datagrip 也有工作空间和项目的概念（欢迎屏幕上能看见，默认个人目录），可通过下面配置来自定义
+settings---Appearancd & Behavior---System Settings---Default directory
 
 # 消除绿框（默认在手写SQL时，会有一个绿框跟随着）
 settings---Editor---Code Scheme---Database---Console---Statement to execucte---取消勾选Effects
