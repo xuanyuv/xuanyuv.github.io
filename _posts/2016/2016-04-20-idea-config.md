@@ -376,8 +376,7 @@ idea.log.path=${idea.system.path}/log
 
 | 快捷键 | 用途 | 备注 |
 |:-----------------|:--------|:--------|
-| Ctrl + /         | 注释SQL ||
-| Ctrl + Shift + / | 注释SQL ||
+| Ctrl + /         | 注释SQL                          | 或者：Ctrl + Shift + /                     |
 | Ctrl + Enter     | 执行SQL                          | 未选中SQL的情况下，会弹框询问你执行哪条SQL |
 | Ctrl + B         | 快速查看表结构                   | 左侧表列表中，选中表，按下此组合键         |
 | Ctrl + Q         | 以纵向列的方式查看数据信息       | 选中此行，就会显示此行所有的字段值         |
