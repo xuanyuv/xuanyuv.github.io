@@ -218,6 +218,9 @@ settings---Editor---Inspections---Java---Probable bugs---不勾选Result of meth
 settings---Editor---Inspections---Java---Serialization issues---勾选Serializable class without serialVersionUID
 settings---Editor---Inspections---Java---Serialization issues---勾选Non-serializable class with serialVersionUID
 
+# 关闭语法拼写检查
+settings---Editor---Inspections---Proofreading---全部不勾选
+
 # properties的属性未使用
 settings---Editor---Inspections---Properties Files---不勾选Unused Property
 ```
