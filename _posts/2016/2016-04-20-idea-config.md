@@ -16,11 +16,13 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 
 ## 快捷键
 
- * 自动补全：Alt + 回車
- * 返回上一个方法： Ctrl + Alt + 方向键左
- * 查询某方法被其它地方调用：Ctrl+Alt+H（另外：Alt + F7 也挺好用）
- * 快速输入main函数：键入 main 再按 Ctrl+J 键（或者键入 psvm 再按 Tab 键）
- * 快速输入System.out.println：键入 sout 再按 Tab 键（对应Eclipse中的syso）
+| 快捷键 | 用途 |
+|:-------------------------|:---------------|
+| Alt + 回车               | 自动补全       |
+| Ctrl + Alt + 方向键左    | 返回上一个方法 |
+| Ctrl+Alt+H               | 查询某方法被其它地方调用（另外：Alt + F7 也挺好用） |
+| 键入 main 再按 Ctrl+J 键 | 快速输入main函数（或者键入 psvm 再按 Tab 键）       |
+| 键入 sout 再按 Tab 键    | 快速输入System.out.println（对应Eclipse中的syso）   |
 
 ## 橘黄色图标插件
 
@@ -94,6 +96,10 @@ Run Configuration Templates for New Projects---Application---Shorten command lin
 
 ### 外观及行为配置
 ```
+# 打开内存使用状态
+以前的方式：settings---Appearance & Behavior---Appearance---Show memory indicator
+现在是方式：主界面双击Shift，在弹出的搜索栏输入Show memory indicator，再启用即可
+
 # 黑色主题及避免中文乱码（此处若选 Yahei Consolas Hybrid，会使得配置窗口很难看，非常难看）
 settings---Appearance & Behavior---Appearance---Theme---Darcula，Use custom font，Microsoft YaHei UI，Size=12
 
@@ -121,7 +127,7 @@ settings---Editor---General---Appearance---Show line numbers
 # 取消面包屑导航（即打开 HTML／XML 文件时隐藏 html／header／script 等标签）
 settings---Editor---General---Breadcrumbs---Show breadcrumbs
 
-# 代码提示区分大小写
+# 代码提示不区分大小写
 settings---Editor---General---Code Completion---不勾选Match case
 
 # 设定折叠或展开的代码类型（勾选则表示该类型代码在文件被打开时默认是被折叠显示的）
@@ -337,29 +343,24 @@ Would you like to continue?
 
 ## datagrip的几个配置
 
+> 此处已适配：DataGrip-2021.2.2
+
 ### 64.exe.vmoptions
 ```
--server
--Xms1024m
--Xmx1024m
--XX:MaxPermSize=512m
 -XX:ReservedCodeCacheSize=512m
--XX:+UseConcMarkSweepGC
--XX:+UseCodeCacheFlushing
+-Xmx1024m
+-Xms1024m
+-XX:+UseG1GC
 -XX:SoftRefLRUPolicyMSPerMB=100
 -XX:CICompilerCount=2
 -XX:+HeapDumpOnOutOfMemoryError
 -XX:-OmitStackTraceInFastThrow
 -ea
 -Dsun.io.useCanonCaches=false
--Dsun.io.useCanonPrefixCache=false
 -Djdk.http.auth.tunneling.disabledSchemes=""
 -Djdk.attach.allowAttachSelf=true
 -Djdk.module.illegalAccess.silent=true
 -Dkotlinx.coroutines.debug=off
--Dsun.awt.keepWorkingSetOnMinimize=true
--Djava.net.preferIPv4Stack=true
--Djsse.enablesSNIExtension=false
 
 ```
 
@@ -371,23 +372,7 @@ idea.plugins.path=${idea.config.path}/plugins
 idea.log.path=${idea.system.path}/log
 ```
 
-### 配置工作空间
-
-其实 datagrip 也有工作空间和项目的概念的（在欢迎屏幕上才能看见）
-
-默认的，是直接进默认工作空间（不像 idea 那样会让你来选择打开哪个项目）
-
-datagrip 默认的工作空间是在 idea.config.path/projects/ 目录里面的，项目名叫 default
-
-我们也可以自定义工作空间，并显示欢迎屏幕
-
-欢迎界面Customize---All settings...---Appearancd & Behavior---System Settings---Default directory
-
-欢迎界面Customize---All settings...---Appearancd & Behavior---System Settings---Show Welcome screen
-
-**注：初次启动时，配置向导有一步 Attaching a directory... 不用理它，它不是配置工作空间**
-
-### 快捷键
+### 快捷键等常见用法
 
 | 快捷键 | 用途 |
 |:-----------------|:--------|
@@ -395,24 +380,8 @@ datagrip 默认的工作空间是在 idea.config.path/projects/ 目录里面的�
 | Ctrl + Shift + / | 注释SQL |
 | Ctrl + Enter     | 执行SQL（未选中SQL的情况下，会弹框询问你执行哪条SQL） |
 | Ctrl + N         | 快速导航到指定的表、视图、函数等（跟 idea 一样） |
-| Shift + Shift    | 可以搜索任何想搜索的内容（跟 idea 一样） |
+| Shift + Shift    | 可以搜索任何想搜索的内容        （跟 idea 一样） |
 
-### 常用配置
-```
-# 连接数据库失败（serverTimezone改成上海，还能避免SQL查询出的时间比真实落库时间早 8 个小时的问题）
-File---Data Sources...---Drivers---MySQL---设置连接时使用本地 jar 以及 serverTimezone 等参数
-
-# 消除绿框（默认在手写SQL时，会有一个绿框跟随着）
-settings---Editor---Code Scheme---Database---Console---Statement to execucte---取消勾选Effects
-
-# 关键词大写
-settings---Editor---Code Style---SQL---General---Case选项卡---Word Case---Keywords---To Upper
-
-### 执行光标所在的语句（此时SQL须以分号结尾，除非手动选中整个SQL，那时就会直接执行选中的SQL）
-settings----Database---General---Execute---When inside statement execute---Smallest statement
-```
-
-### 常见用法
 ```
 # 结果集中设置字段值为NULL
 在查询出来的结果集中，字段上右键，Set NULL，即可
@@ -433,8 +402,31 @@ settings----Database---General---Execute---When inside statement execute---Small
 查询控制台上，鼠标放到表名上（也可以是字段名或函数名），按下 Ctrl，再点击鼠标左键，就会立即定位到具体表上
 ```
 
-### 表名后面显示注释
+### 常用配置
+
+在欢迎界面，点击左侧 Customize，再点击 All settings，开始下列配置
+
+注：有的配置可参考上方 idea 配置，故不再重复列出
+
+```
+# 其实 datagrip 也有工作空间和项目的概念（欢迎屏幕上能看见，默认个人目录），可通过下面配置来自定义
+settings---Appearancd & Behavior---System Settings---Default directory
+
+# 执行光标所在的语句（此时SQL须以分号结尾，除非手动选中整个SQL，那时就会直接执行选中的SQL）
+settings----Database---General---Execute---When inside statement execute---Smallest statement
+
+# 消除绿框（默认在手写SQL时，会有一个绿框跟随着）
+settings---Editor---Code Scheme---Database---Console---Statement to execucte---取消勾选Effects
+
+# 关键词大写
+settings---Editor---Code Style---SQL---General---Case选项卡---Word Case---Keywords---To Upper
+
+# 连接数据库失败（serverTimezone改成上海，还能避免SQL查询出的时间比真实落库时间早 8 个小时的问题）
+标题栏---File---Data Sources...---Drivers---MySQL---设置本地 jar 及 serverTimezone=Asia/Shanghai
+
+# 表名后面显示注释
 标题栏---View---Appearance---Details in Tree View
+```
 
 ### 字符集混用或无效
 
