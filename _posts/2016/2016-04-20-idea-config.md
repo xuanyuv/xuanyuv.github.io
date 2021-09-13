@@ -379,6 +379,7 @@ idea.log.path=${idea.system.path}/log
 
 | 快捷键 | 用途 | 备注 |
 |:-----------------|:--------|:--------|
+| Ctrl + F5        | 刷新                             |                                            |
 | Ctrl + /         | 注释SQL                          | 或者：Ctrl + Shift + /                     |
 | Ctrl + Enter     | 执行SQL                          | 未选中SQL的情况下，会弹框询问你执行哪条SQL |
 | Ctrl + B         | 快速查看表结构                   | 左侧表列表中，选中表，按下此组合键         |
