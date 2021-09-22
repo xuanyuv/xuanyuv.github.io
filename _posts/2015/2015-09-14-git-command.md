@@ -101,13 +101,6 @@ Checking connectivity... done.
 
 $ cd seed/
 
-$ git rev-list master
-0af3137946011e8924c152fec86b8610368512d4
-00e01709d85a4dd5b2d75d2eeab6933d6a4bdf0c
-
-$ git rev-list master --max-count=1
-0af3137946011e8924c152fec86b8610368512d4
-
 $ git rev-list master --max-count=10
 0af3137946011e8924c152fec86b8610368512d4
 00e01709d85a4dd5b2d75d2eeab6933d6a4bdf0c
@@ -121,22 +114,22 @@ $ git log --pretty=oneline
 
 ```bash
 # 直接克隆（默认只会拉取远程的master分支代码）
-$ cd workspace_folder
 $ git clone http://git.yourcompany.cn/open/mpp.git
+
 # 克隆指定分支代码（此时拉取下来后，本地分支名称是与远程相同的，并且无法做到拉取之前自定义本地分支名称）
 $ git clone -b remote_branch_name http://git.yourcompany.cn/open/mpp.git
 
 # 创建并切换至本地分支develop，同时关联远程origin/develop分支（本地develop分支的初始代码与远程origin/develop分支的初始代码相同）
-$ cd mpp
 $ git checkout -b develop origin/develop
 # 切换到本地的master分支
 $ git checkout master
-Switched to branch 'master'
-Your branch is up-to-date with 'origin/master'.
 # 切换到本地的develop分支
 $ git checkout develop
-Switched to branch 'develop'
-Your branch is up-to-date with 'origin/develop'.
+
+# 根据COMMIT-ID创建一个新的本地分支，并立即切换到这个新的本地分支，最后提交到远程
+$ git clone -b feature/v1.3.2 http://git.yourcompany.com/open/mpp.git
+$ git checkout -b release/demo a936a17720bceb201a701bf3972a856c69c3b0fa
+$ git push origin release/demo:release/demo
 
 # 查看当前项目的远程git地址
 $ git remote -v
