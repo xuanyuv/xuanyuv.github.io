@@ -52,7 +52,9 @@ grep -n "无磁无密" default.log
 grep --color -n "无磁无密" default.log
 grep --color=auto -n "无磁无密" default.log
 
-# "keyword"颜色增强显示，并显示它出现在日志中行数，同时把前两行与后三行也显示出来
+# "keyword"颜色增强显示，并显示它出现在日志中行数，同时把前 3 行与后 3 行内容也显示出来
+grep --color -n -C3 "20170815193506520" union.log
+# "keyword"颜色增强显示，并显示它出现在日志中行数，同时把前 2 行与后 3 行内容也显示出来
 grep --color -n -A3 -B2 "20170815193506520" union.log
 
 # 当前目录搜索内容包含"keyword"的文件，并显示其所在那一行的内容及行数，同时颜色增强显示"keyword"
