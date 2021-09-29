@@ -128,6 +128,7 @@ $ git checkout develop
 
 # 根据COMMIT-ID创建一个新的本地分支，并立即切换到这个新的本地分支，最后提交到远程
 $ git clone -b feature/v1.3.2 http://git.yourcompany.com/open/mpp.git
+$ git cd mpp/
 $ git checkout -b release/demo a936a17720bceb201a701bf3972a856c69c3b0fa
 $ git push origin release/demo:release/demo
 
