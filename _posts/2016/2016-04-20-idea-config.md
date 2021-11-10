@@ -218,7 +218,7 @@ settings---Editor---Inspections---Java---Probable bugs---不勾选Result of meth
 settings---Editor---Inspections---Java---Serialization issues---勾选Serializable class without serialVersionUID
 settings---Editor---Inspections---Java---Serialization issues---勾选Non-serializable class with serialVersionUID
 
-# 关闭Gradle和Maven包升级检查
+# 关闭jar包升级检查
 settings---Editor---Inspections---Package Search---全部不勾选
 
 # 关闭语法拼写检查
