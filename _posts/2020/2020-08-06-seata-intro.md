@@ -101,7 +101,7 @@ Seata 的愿景就是像使用本地事务一样使用分布式事务，目标�
 它的演进历史是这样的：
 
 1. TXC（Taobao Transaction Constructor）：阿里巴巴中间件团队 2014 年启动该项目，以解决分布式事务的问题
-2. GTS（Global Transaction Service）：2016 年 TXC 作为阿里中间件的产品，![更名为 GTS 发布](https://www.aliyun.com/aliware/txc)
+2. GTS（Global Transaction Service）：2016 年 TXC 作为阿里中间件的产品，[更名为 GTS 发布](https://www.aliyun.com/aliware/txc)
 3. Fescar（Fast & EaSy Commit And Rollback）：2019年01月09号基于阿里商用版的 GTS 开源了 Fescar
 4. Seata：随着蚂蚁金服的加入并贡献了 TCC 模式，更名为 Seata，地址为 <https://github.com/seata/seata>
 
