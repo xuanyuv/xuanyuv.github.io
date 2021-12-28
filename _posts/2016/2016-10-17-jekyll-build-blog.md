@@ -36,7 +36,7 @@ ruby 3.0.3p157 (2021-11-24 revision 3fb7d2cadc) [x64-mingw32]
 接着解压压缩包到桌面，并在命令提示符中执行安装命令
 
 ```
-C:\Users\Jadyer\Desktop\rubygems-3.1.4>ruby setup.rb
+C:\Users\Jadyer\Desktop\rubygems-3.3.3>ruby setup.rb
   Successfully built RubyGem
   Name: bundler
   Version: 2.3.3
@@ -160,7 +160,7 @@ Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
 启动过程中，会报告下面的错误提示：
 
 ```
- Auto-regeneration: enabled for 'C:/Users/hongyu.lu/Desktop/11/myblog'
+ Auto-regeneration: enabled for 'D:/Develop/Code/Jekyll/myblog'
                     ------------------------------------------------
       Jekyll 4.2.1   Please append `--trace` to the `serve` command
                      for any additional information or backtrace.
