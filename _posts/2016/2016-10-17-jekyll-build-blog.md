@@ -130,10 +130,6 @@ Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
   Server running... press ctrl-c to stop.
 ```
 
-访问 [http://127.0.0.1:4000/](http://127.0.0.1:4000/) 会看到下面的页面
-
-![](https://ae01.alicdn.com/kf/H4dcc32f6d61247eaa92b26c4eb206409T.png)
-
 启动过程中，会报告下面的错误提示：
 
 ```
@@ -165,6 +161,10 @@ Installing webrick 1.7.0
 
 D:\Develop\Code\Jekyll\myblog>
 ```
+
+最后，重新启动，访问 [http://127.0.0.1:4000/](http://127.0.0.1:4000/) 会看到下面的页面
+
+![](https://ae01.alicdn.com/kf/H4dcc32f6d61247eaa92b26c4eb206409T.png)
 
 ## 复制主题
 
