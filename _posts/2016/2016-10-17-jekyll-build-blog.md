@@ -89,6 +89,8 @@ C:\Users\Jadyer>
 
 先建一个文件夹（这里命名为 Jekyll）用于存放博客内容，然后在命令提示符中执行以下命令创建 Jekyll 工作区
 
+注：执行完命令后，若过了一段时间控制台还是没有动静，不妨敲一下回车（堵了，执行结果没有输出在控制台上）
+
 ```
 D:\Develop\Code\Jekyll>jekyll new myblog
 Running bundle install in D:/Develop/Code/Jekyll/myblog...
@@ -100,31 +102,6 @@ Running bundle install in D:/Develop/Code/Jekyll/myblog...
   Bundler: Bundle complete! 6 Gemfile dependencies, 35 gems now installed.
   Bundler: Use `bundle info [gemname]` to see where a bundled gem is installed.
 New jekyll site installed in D:/Develop/Code/Jekyll/myblog.
-
-D:\Develop\Code\Jekyll>
-```
-
-注①：在执行完命令后，若过了一段时间控制台还是没有动静，不妨敲一下回车（堵了，执行结果没有输出在控制台上）
-
-注②：以前的 Jekyll 版本曾遇到下面的错误提示，此时需安装 bundler，然后再重新执行命令（记得先删掉上面 new 的 myblog 目录）
-
-```
-New jekyll site installed in D:/Develop/Code/Jekyll/myblog.
-  Dependency Error: Yikes! It looks like you don't have bundler or one of its de
-pendencies installed. In order to use Jekyll as currently configured, you'll nee
-d to install this gem. The full error message from Ruby is: 'cannot load such fi
-le -- bundler' If you run into trouble, you can find helpful resources at http:/
-/jekyllrb.com/help/!
-jekyll 4.1.1 | Error:  bundler
-
-
-D:\Develop\Code\Jekyll>gem install bundler
-Fetching bundler-2.1.4.gem
-Successfully installed bundler-2.1.4
-Parsing documentation for bundler-2.1.4
-Installing ri documentation for bundler-2.1.4
-Done installing documentation for bundler after 4 seconds
-1 gem installed
 
 D:\Develop\Code\Jekyll>
 ```
