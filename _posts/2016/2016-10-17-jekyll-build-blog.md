@@ -16,22 +16,22 @@ published: true
 
 ## 安装Ruby
 
-Windows 用户访问 [http://rubyinstaller.org/](http://rubyinstaller.org/) 下载 130.9MB 大小的 [rubyinstaller-devkit-2.7.1-1-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.1-1/rubyinstaller-devkit-2.7.1-1-x64.exe)
+Windows 用户访问 [http://rubyinstaller.org/](http://rubyinstaller.org/) 下载 149MB 大小的 [rubyinstaller-devkit-3.0.3-1-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.3-1/rubyinstaller-devkit-3.0.3-1-x64.exe)
 
-安装时注意勾选 `Add Ruby executables to your PATH`，没选的话可以手工配置一下 `Path=D:\Develop\Ruby27-x64\bin;...`
+安装时注意勾选 `Add Ruby executables to your PATH`，没选的话可以手工配置一下 `Path=D:\Develop\Ruby30-x64\bin;...`
 
 安装完成后，按照提示再安装 MSYS2（在弹出的窗口选择 3 - MSYS2 and MINGW development toolchain）（这个耗时有点长，慢慢等待...）
 
-然后在命令提示符中验证一下安装结果
+最后，在命令提示符中验证一下安装结果
 
 ```
 C:\Users\Jadyer>ruby -v
-ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x64-mingw32]
+ruby 3.0.3p157 (2021-11-24 revision 3fb7d2cadc) [x64-mingw32]
 ```
 
 ## 安装Jekyll
 
-这里通过 RubyGems 安装 Jekyll，所以先到官网 [https://rubygems.org/](https://rubygems.org/) 下载 1.27MB 大小的[rubygems-3.1.4.zip](https://rubygems.org/rubygems/rubygems-3.1.4.zip)
+这里通过 RubyGems 安装 Jekyll，所以先到官网 [https://rubygems.org/](https://rubygems.org/) 下载 1.52MB 大小的[rubygems-3.3.3.zip](https://rubygems.org/rubygems/rubygems-3.3.3.zip)
 
 接着解压压缩包到桌面，并在命令提示符中执行安装命令
 
@@ -39,19 +39,17 @@ ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x64-mingw32]
 C:\Users\Jadyer\Desktop\rubygems-3.1.4>ruby setup.rb
   Successfully built RubyGem
   Name: bundler
-  Version: 2.1.4
-  File: bundler-2.1.4.gem
-Bundler 2.1.4 installed
-RubyGems 3.1.4 installed
-Regenerating binstubs
-Parsing documentation for rubygems-3.1.4
-Installing ri documentation for rubygems-3.1.4
+  Version: 2.3.3
+  File: bundler-2.3.3.gem
+Bundler 2.3.3 installed
+RubyGems 3.3.3 installed
 ...
 ...
 ...
 RubyGems installed the following executables:
-        D:/Develop/Ruby27-x64/bin/gem
-        D:/Develop/Ruby27-x64/bin/bundle
+        D:/Develop/Ruby30-x64/bin/gem
+        D:/Develop/Ruby30-x64/bin/bundle
+        D:/Develop/Ruby30-x64/bin/bundler
 
 Ruby Interactive (ri) documentation was installed. ri is kind of like man
 pages for Ruby libraries. You may access it like this:
@@ -62,40 +60,24 @@ If you do not wish to install this documentation in the future, use the
 --no-document flag, or set it as the default in your ~/.gemrc file. See
 'gem help env' for details.
 
-D:\Develop\rubygems-3.1.4>
+D:\Develop\rubygems-3.3.3>
 ```
 
-然后删掉 rubygems-3.1.4 文件夹，它没用了
+然后删掉 rubygems-3.3.3 文件夹，它没用了
 
 **下面进入正题：用 RubyGems 来安装 Jekyll**（这个耗时也有点长...）
 
 ```
 C:\Users\Jadyer>gem install jekyll
-Fetching public_suffix-4.0.5.gem
-Fetching addressable-2.7.0.gem
-Fetching colorator-1.1.0.gem
+Fetching terminal-table-2.0.0.gem
+Fetching unicode-display_width-1.8.0.gem
+Fetching safe_yaml-1.0.5.gem
 ...
 ...
 ...
-Successfully installed public_suffix-4.0.5
-Successfully installed addressable-2.7.0
-Successfully installed colorator-1.1.0
-...
-...
-...
-Successfully installed jekyll-4.1.1
-Parsing documentation for public_suffix-4.0.5
-Installing ri documentation for public_suffix-4.0.5
-Parsing documentation for addressable-2.7.0
-Installing ri documentation for addressable-2.7.0
-Parsing documentation for colorator-1.1.0
-Installing ri documentation for colorator-1.1.0
-...
-...
-...
-Parsing documentation for jekyll-4.1.1
-Installing ri documentation for jekyll-4.1.1
-Done installing documentation for public_suffix, addressable, colorator, http_parser.rb, eventmachine, em-websocket, concurrent-ruby, i18n, ffi, sassc, jekyll-sass-converter, rb-fsevent, rb-inotify, listen, jekyll-watch, kramdown, kramdown-parser-gfm, liquid, mercenary, forwardable-extended, pathutil, rouge, safe_yaml, unicode-display_width, terminal-table, jekyll after 21 seconds
+Parsing documentation for jekyll-4.2.1
+Installing ri documentation for jekyll-4.2.1
+Done installing documentation for unicode-display_width, terminal-table, safe_yaml, rouge, forwardable-extended, pathutil, mercenary, liquid, kramdown, kramdown-parser-gfm, ffi, rb-inotify, rb-fsevent, listen, jekyll-watch, sassc, jekyll-sass-converter, concurrent-ruby, i18n, http_parser.rb, eventmachine, em-websocket, colorator, public_suffix, addressable, jekyll after 52 seconds
 26 gems installed
 
 C:\Users\Jadyer>
@@ -110,17 +92,11 @@ C:\Users\Jadyer>
 ```
 D:\Develop\Code\Jekyll>jekyll new myblog
 Running bundle install in D:/Develop/Code/Jekyll/myblog...
-  Bundler: Fetching gem metadata from https://rubygems.org/...........
-  Bundler: Fetching gem metadata from https://rubygems.org/.
+  Bundler: Fetching gem metadata from https://rubygems.org/..........
   Bundler: Resolving dependencies...
-  Bundler: Using public_suffix 4.0.5
-  Bundler: Using addressable 2.7.0
-  Bundler: Using bundler 2.1.4
 ...
 ...
 ...
-  Bundler: Fetching wdm 0.1.1
-  Bundler: Installing wdm 0.1.1 with native extensions
   Bundler: Bundle complete! 6 Gemfile dependencies, 35 gems now installed.
   Bundler: Use `bundle info [gemname]` to see where a bundled gem is installed.
 New jekyll site installed in D:/Develop/Code/Jekyll/myblog.
@@ -180,6 +156,38 @@ Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
 访问 [http://127.0.0.1:4000/](http://127.0.0.1:4000/) 会看到下面的页面
 
 ![](https://ae01.alicdn.com/kf/H4dcc32f6d61247eaa92b26c4eb206409T.png)
+
+启动过程中，会报告下面的错误提示：
+
+```
+ Auto-regeneration: enabled for 'C:/Users/hongyu.lu/Desktop/11/myblog'
+                    ------------------------------------------------
+      Jekyll 4.2.1   Please append `--trace` to the `serve` command
+                     for any additional information or backtrace.
+                    ------------------------------------------------
+D:/Develop/Ruby30-x64/lib/ruby/gems/3.0.0/gems/jekyll-4.2.1/lib/jekyll/commands/serve/servlet.rb:3:in `require': cannot load such file -- webrick (LoadError)
+        from D:/Develop/Ruby30-x64/lib/ruby/gems/3.0.0/gems/jekyll-4.2.1/lib/jekyll/commands/serve/servlet.rb:3:in `<top (required)>'
+        from D:/Develop/Ruby30-x64/lib/ruby/gems/3.0.0/gems/jekyll-4.2.1/lib/jekyll/commands/serve.rb:179:in `require_relative'
+```
+
+这是因为从Ruby-3.0开始，webrick已经不再绑定到Ruby中了，详见：[Ruby 3.0.0 Released](https://www.ruby-lang.org/en/news/2020/12/25/ruby-3-0-0-released/)，那么手动添加即可
+
+```
+D:\Develop\Code\Jekyll\myblog>bundle add webrick
+Fetching gem metadata from https://rubygems.org/.........
+Resolving dependencies...
+...
+...
+...
+...
+Using jekyll 4.2.1
+Using jekyll-feed 0.15.1
+Using jekyll-seo-tag 2.7.1
+Using minima 2.5.1
+Installing webrick 1.7.0
+
+D:\Develop\Code\Jekyll\myblog>
+```
 
 ## 复制主题
 
