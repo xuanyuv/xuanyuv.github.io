@@ -38,6 +38,8 @@ idea.2016.3 开始，文件夹图标全部换成了暴丑的蓝色，可以用�
 ```properties
 idea.config.path=D:/Develop/JetBrains/ideaIC/JadyerData/config
 idea.system.path=D:/Develop/JetBrains/ideaIC/JadyerData/system
+idea.plugins.path=${idea.config.path}/plugins
+idea.log.path=${idea.system.path}/log
 # 编辑大文件时idea容易卡顿：可适当提高该属性值
 idea.max.intellisense.filesize=2500
 # 禁用控制台输出缓存：大项目开启很多输出时，控制台会很快刷满，导致不能自动输出后面的日志
@@ -323,6 +325,8 @@ settings---Build,Execution,Deployment---Compiler---Shared build process heap siz
 ```properties
 idea.config.path=D:/Develop/JetBrains/DataGrip/JadyerData/config
 idea.system.path=D:/Develop/JetBrains/DataGrip/JadyerData/system
+idea.plugins.path=${idea.config.path}/plugins
+idea.log.path=${idea.system.path}/log
 ```
 
 ### 快捷键等常见用法
