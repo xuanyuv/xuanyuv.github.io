@@ -113,8 +113,6 @@ D:\Develop\Code\Jekyll>
 接下来到博客文件夹中，启动Jekyll服务
 
 ```
-D:\Develop\Code\Jekyll>cd myblog
-
 D:\Develop\Code\Jekyll\myblog>jekyll serve --watch
 Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
             Source: D:/Develop/Code/Jekyll/myblog
@@ -143,7 +141,9 @@ D:/Develop/Ruby30-x64/lib/ruby/gems/3.0.0/gems/jekyll-4.2.1/lib/jekyll/commands/
         from D:/Develop/Ruby30-x64/lib/ruby/gems/3.0.0/gems/jekyll-4.2.1/lib/jekyll/commands/serve.rb:179:in `require_relative'
 ```
 
-这是因为从Ruby-3.0开始，webrick已经不再绑定到Ruby中了，详见：[Ruby 3.0.0 Released](https://www.ruby-lang.org/en/news/2020/12/25/ruby-3-0-0-released/)，那么手动添加即可
+这是因为从Ruby-3.0开始，webrick已经不再绑定到Ruby中了，详见：[Ruby 3.0.0 Released](https://www.ruby-lang.org/en/news/2020/12/25/ruby-3-0-0-released/)
+
+那么手动添加即可
 
 ```
 D:\Develop\Code\Jekyll\myblog>bundle add webrick
@@ -159,7 +159,7 @@ Using jekyll-seo-tag 2.7.1
 Using minima 2.5.1
 Installing webrick 1.7.0
 
-D:\Develop\Code\Jekyll\myblog>
+D:\Develop\Code\Jekyll\myblog>jekyll serve --watch
 ```
 
 最后，重新启动，访问 [http://127.0.0.1:4000/](http://127.0.0.1:4000/) 会看到下面的页面
@@ -191,9 +191,7 @@ Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
 C:\Users\Jadyer\Desktop\jadyer.github.io>
 ```
 
-这是因为 Jekyll 中默认安装已没有此分页组件，官方将其插件化了，故需独立安装
-
-详见[https://jekyllrb.com/docs/pagination/](https://jekyllrb.com/docs/pagination/)
+这是因为 Jekyll 中默认安装已没有此分页组件，[官方将其插件化了](https://jekyllrb.com/docs/pagination/)，故需独立安装
 
 ```
 C:\Users\Jadyer>gem install jekyll-paginate

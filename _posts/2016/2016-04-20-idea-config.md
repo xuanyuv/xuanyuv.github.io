@@ -11,7 +11,7 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 {:toc}
 
 
-> 本文所列配置项，已适配：ideaIC-2021.2.1<br/>
+> 本文所列配置项，已适配：ideaIC-2021.3<br/>
   idea历史版本下载：<http://www.jetbrains.com/idea/download/other.html>
 
 ## 快捷键
@@ -26,17 +26,11 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 
 ## 橘黄色图标插件
 
-从 idea.2016.3 开始，文件夹图标全部换成那种蓝色的，单独拿出来看着有点高科技，放一起实则暴丑
+idea.2016.3 开始，文件夹图标全部换成了暴丑的蓝色，可以用这个插件：[Idea 2016.2 Icon Pack](https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack)，回到原来的橘黄色图标
 
-如果想回到之前版本的橘黄色图标，可以用这个 Idea 2016.2 Icon Pack 插件，目前最新版为 v3.2
+安装时选择 Install plugin from disk... 再重启 idea 即可
 
-插件地址：<https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack>
-
-安装时选择 Install plugin from disk... 再重启 idea 就会看到经典的橘黄色图标啦
-
-另外，ideaIC-2019.3.2中该插件无效，ideaIC-2018.3.6没问题
-
-这时，可以用这个插件：<https://plugins.jetbrains.com/plugin/10777-legacy-icon-pack-for-2018-2->
+另外，ideaIC-2019.3.2 中该插件无效，ideaIC-2018.3.6 没问题，这时可以用这个插件：[Legacy Icon Pack for 2018.2+](https://plugins.jetbrains.com/plugin/10777-legacy-icon-pack-for-2018-2-)
 
 ## 首次运行前的配置
 
@@ -44,8 +38,6 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 ```properties
 idea.config.path=D:/Develop/JetBrains/ideaIC/JadyerData/config
 idea.system.path=D:/Develop/JetBrains/ideaIC/JadyerData/system
-idea.plugins.path=${idea.config.path}/plugins
-idea.log.path=${idea.system.path}/log
 # 编辑大文件时idea容易卡顿：可适当提高该属性值
 idea.max.intellisense.filesize=2500
 # 禁用控制台输出缓存：大项目开启很多输出时，控制台会很快刷满，导致不能自动输出后面的日志
@@ -55,9 +47,10 @@ idea.cycle.buffer.size=disabled
 
 ### 64.exe.vmoptions
 ```
--XX:ReservedCodeCacheSize=512m
 -Xms2048m
 -Xmx2048m
+-XX:ReservedCodeCacheSize=512m
+-XX:+IgnoreUnrecognizedVMOptions
 -XX:+UseG1GC
 -XX:SoftRefLRUPolicyMSPerMB=100
 -XX:CICompilerCount=2
@@ -97,35 +90,32 @@ Run Configuration Templates for New Projects---Application---Shorten command lin
 ### 外观及行为配置
 ```
 # 打开内存使用状态
-以前的方式：settings---Appearance & Behavior---Appearance---Show memory indicator
-现在是方式：主界面双击Shift，在弹出的搜索栏输入Show memory indicator，再启用即可
+旧版：settings---Appearance & Behavior---Appearance---Show memory indicator
+新版：主界面双击Shift，在弹出的搜索栏输入Show memory indicator，再启用即可
 
 # 黑色主题及避免中文乱码（此处若选 Yahei Consolas Hybrid，会使得配置窗口很难看，非常难看）
-settings---Appearance & Behavior---Appearance---Theme---Darcula，Use custom font，Microsoft YaHei UI，Size=12
+settings---Appearance & Behavior---Appearance---Theme---默认即可：Darcula，Use custom font，Microsoft YaHei UI，Size=12
 
 # 隐藏工具栏快捷键下划线
-settings---Appearance & Behavior---Appearance---Enable mnemonics in menu
+settings---Appearance & Behavior---Appearance---UI Options---不勾选Enable mnemonics in menu
 
 # 应用空闲时自动保存文件
-settings---Appearance & Behavior---System Settings---Autosave---Save files if the IDE is idle for 15 seconds
+settings---Appearance & Behavior---System Settings---Autosave---勾选Save files if the IDE is idle for 15 seconds
 
-# 不发送统计文件给JetBrains
-settings---Appearance & Behavior---System Settings---Data Sharing
-
-# 取消自动更新
-settings---Appearance & Behavior---System Settings---Updates
+# 不发送统计文件给JetBrains & 取消自动更新 
+settings---Appearance & Behavior---System Settings---Data Sharing & Updates
 ```
 
 ### 编辑器之通用配置
 ```
 # 自动移除UnuseImport
-settings---Editor---General---Auto Import---Add unambiguous...fly 以及 Optimize imports...fly
+settings---Editor---General---Auto Import---勾选Add unambiguous...fly 以及 Optimize imports...fly
 
 # 显示行号
-settings---Editor---General---Appearance---Show line numbers
+settings---Editor---General---Appearance---勾选Show line numbers
 
 # 取消面包屑导航（即打开 HTML／XML 文件时隐藏 html／header／script 等标签）
-settings---Editor---General---Breadcrumbs---Show breadcrumbs
+settings---Editor---General---Breadcrumbs---不勾选Show breadcrumbs
 
 # 代码提示不区分大小写
 settings---Editor---General---Code Completion---不勾选Match case
@@ -133,16 +123,16 @@ settings---Editor---General---Code Completion---不勾选Match case
 # 设定折叠或展开的代码类型（勾选则表示该类型代码在文件被打开时默认是被折叠显示的）
 settings---Editor---General---Code Folding---勾选Inner classes、Anonymous classes
 
-# 移除文件编辑Tab上的文件icon和后缀
-settings---Editor---General---Editor Tabs---Show file extension
+# Tab上移除文件后缀
+settings---Editor---General---Editor Tabs---不勾选Show file extension
 
-# 星号标识编辑过的文件
+# Tab上星号标识编辑过且未保存的文件
 settings---Editor---General---Editor Tabs---勾选Mark modified (*)
 
-# 移除文件编辑Tab上的叉
+# Tab上移除文件上的叉
 settings---Editor---General---Editor Tabs---Close button position---None
 
-# 设置文件编辑Tab的最多数
+# Tab上打开文件的最多数
 settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---8
 ```
 
@@ -162,7 +152,7 @@ settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---8
 
 解决办法就是：右键 ttf 文件，选择为所有用户安装即可
 
-再回到 idea 配置：settings---Editor---Font---Yahei Consolas Hybrid，Size=14
+再回到 idea 配置：`settings---Editor---Font---Yahei Consolas Hybrid，Size=14`
 
 ### 编辑器之代码风格
 ```
@@ -172,17 +162,11 @@ settings---Editor---Color Scheme---Console Font---Use console font instead of th
 # 文件换行符使用Unix格式（先拷贝一份 Scheme 的 Default 配置，新命名为 Default_Jadyer）
 settings---Editor---Colors Style---Line separator---Unix and macOS (\n)
 
-# 函数花括号显示为对称结构（这里我还是用的默认End of line）
-settings---Editor---Colors Style---Java---Wrapping and Braces---Braces placement---Next line
-
 # import每个类而非整个包（当import某个包下的类超过这里设置的个数时，就会换成星号来代替，比如import java.util.*）
 settings---Editor---Colors Style---Java---Imports---Class count to use import with *---64
 
-# 注释时双斜杠位置为代码头部
-settings---Editor---Colors Style---Java---Code Generation---不勾选Line comment at first column
-
-# 注释的双斜线与注释内容之间有且仅有一个空格
-settings---Editor---Colors Style---Java---Code Generation---勾选Add a space at comment start
+# 通过快捷键注释时，双斜杠位置为：与代码对齐（默认在行首），且注释的双斜线与注释内容之间有且仅有一个空格
+settings---Editor---Colors Style---Java---Code Generation---不勾选Line comment at first column，勾选Add a space at comment start
 ```
 
 ### 编辑器之关闭检查
@@ -218,7 +202,7 @@ settings---Editor---Inspections---Java---Probable bugs---不勾选Result of meth
 settings---Editor---Inspections---Java---Serialization issues---勾选Serializable class without serialVersionUID
 settings---Editor---Inspections---Java---Serialization issues---勾选Non-serializable class with serialVersionUID
 
-# 关闭jar包升级检查
+# 关闭Maven-jar包最新版检查
 settings---Editor---Inspections---Package Search---全部不勾选
 
 # 关闭语法拼写检查
@@ -274,7 +258,8 @@ settings---Editor---File Encodings---Transparent native-to-ascii conversion
 settings---Editor---File Types---Ignore files and folders---target;.gradle;*.iml;*.idea;
 
 # 版本控制下文件变化的显示（调整文件夹显示颜色，配置在Version Control---File Status Color）
-settings---Version Control---Show directories with changed descendants
+旧版：settings---Version Control---勾选Show directories with changed descendants
+新版：settings---Version Control---Confirmation---勾选Highlight directories that contain modified files in the Project tree
 
 # Markdown文件默认以编辑模式打开
 settings---Languages & Frameworks---Markdown---Default layout---Editor only
@@ -298,58 +283,22 @@ settings---keymap---快捷键搜索Ctrl+F4（搜索到的是Window--Editor Tabs-
 settings---keymap---快捷键搜索Ctrl+F12（搜索到的是Main menu--Navigate--File Structure）---Ctrl+O
 ```
 
-### Maven及构建配置
+### Maven
 
 ```
-# Maven配置
 settings---Build,Execution,Deployment---Build Tools---Maven---勾选Print exception stack traces，并选择本机Maven及本地仓库
-settings---Build,Execution,Deployment---Build Tools---Maven---Importing---Automatically download---勾选Sources
+settings---Build,Execution,Deployment---Build Tools---Maven---Importing---Automatically download---勾选Sources和Annotations
 settings---Build,Execution,Deployment---Build Tools---Maven---Importing---JDK for importer---选择本机安装的1.8
 settings---Build,Execution,Deployment---Build Tools---Maven---Runner---JRE---选择本机安装的1.8
 
-# 自动编译
 settings---Build,Execution,Deployment---Compiler---Build project automatically
 
-# 编译报告OutOfMemoryError
 settings---Build,Execution,Deployment---Compiler---Shared build process heap size(Mbytes)---1024
 ```
 
-### 编译报错
-
-* 报告：找不到符号、未结束的字符串文字
-  > 1、UTF-8文件分有BOM和无BOM，idea默认使用的编译器是javac，而其只能编译无BOM的文件（settings---settings---Editor---File Encodings---右侧BOM设置）<br/>
-  　　很多eclipse用户在使用idea开发eclipse项目时会遇到此问题<br/>
-  　　主要是因为eclipse的编译器是eclipse，其支持有BOM的文件编译。故需对文件进行BOM去除<br/>
-  2、批量去除BOM，可以Google：批量去除BOM、批量转换无BOM等关键字，网上已有各种方案<br/>
-  3、除了通过去除BOM，还有设置idea的编译器为eclipse，但是一般不建议这样做<br/>
-  4、若仍无法解决，而且也确认了idea各配置编码都是UTF-8，报错文件编码也是UTF-8无BOM的<br/>
-  　　那还有一种可能也会出现这种情况：项目配置文件有问题<br/>
-  　　项目编码的配置文件在：/项目目录/.idea/encodings.xml。你要是能修改明白就修改<br/>
-  　　要是不会修改，那就删掉.idea整个目录，重启idea重新配置这个项目即可
-
-### 清除缓存和索引
-
-idea的缓存和索引主要用来加快文件查询、代码提示等操作的速度，但其缓存和索引文件偶尔会莫名损坏
-
-此时打开idea，很有可能idea会报告各种奇妙的错误，甚至打不开项目，idea主题还原为默认状态等等
-
-此时便需清除缓存和索引，清除之后下次启动时就会重建
-
-File-->Invalidate Caches / Restart（此时会弹出一个提示框，内容如下）
-
-```
-The caches will be invalidated and rebuilt on the next startup.
-WARNING: Local History will be also cleared.
-Would you like to continue?
-```
-
-一般建议点击 Invalidate and Restart，这样会清除的比较干净
-
-**注意**：若项目未加入版本控制，而又需要文件的历史记录，则提前备份下 ${idea.system.path}\LocalHistory\ 目录
-
 ## datagrip的几个配置
 
-> 此处已适配：DataGrip-2021.2.2
+> 此处已适配：DataGrip-2021.2.2（2021.2.3版本起，就要求登录JetBrains帐号，所以无限试用插件也跟着失效了）
 
 ### 64.exe.vmoptions
 ```
@@ -374,8 +323,6 @@ Would you like to continue?
 ```properties
 idea.config.path=D:/Develop/JetBrains/DataGrip/JadyerData/config
 idea.system.path=D:/Develop/JetBrains/DataGrip/JadyerData/system
-idea.plugins.path=${idea.config.path}/plugins
-idea.log.path=${idea.system.path}/log
 ```
 
 ### 快捷键等常见用法
@@ -414,11 +361,11 @@ idea.log.path=${idea.system.path}/log
 # 执行光标所在的语句（此时SQL须以分号结尾，除非手动选中整个SQL，那时就会直接执行选中的SQL）
 settings----Database---General---Execute---When inside statement execute---Smallest statement
 
-# 设置SQL方言
+# 设置SQL方言（创建个项目，进去后，才会显示该配置）
 settings----Database---SQL Dialects---Global 和 Project 级别的都设置成 MySQL
 
 # 其实 datagrip 也有工作空间和项目的概念（欢迎屏幕上能看见，默认个人目录），可通过下面配置来自定义
-settings---Appearancd & Behavior---System Settings---Default directory
+settings---Appearancd & Behavior---System Settings---Default project directory
 
 # 消除绿框（默认在手写SQL时，会有一个绿框跟随着）
 settings---Editor---Code Scheme---Database---Console---Statement to execucte---取消勾选Effects
