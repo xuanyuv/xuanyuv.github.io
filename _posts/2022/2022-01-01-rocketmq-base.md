@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "RocketMQ入门01之基础原理"
+title: "RocketMQ原理01之高可用与消息存储"
 categories: 分布式
 tags: 分布式
 author: 玄玉
@@ -12,11 +12,11 @@ published: false
 {:toc}
 
 
-常见的主流消息队列，一般有如下三款，其各自定位也有不同
+常见的主流消息队列有以下三款，各自定位也有所不同
 
 * RocketMQ：高性能可靠消息传输
 * RabbitMQ：可靠消息传输
-* Kafka：系统间的数据流通道（海量的数据通过它走通道，比如大数据日志分析，它要的就是大量数据的吞吐量）
+* Kafka：系统间的数据流通道（海量的数据通过它走通道，比如大数据日志分析，要的就是大量数据的吞吐量）
 
 可以看出，RocketMQ 和 RabbitMQ 是扛业务流量的（属于OLTP），Kafka 偏重数据分析领域（属于OLAP）
 
@@ -24,7 +24,7 @@ published: false
 
 *支持分布式则说明扩展能力好，扩展能力好就能存很多消息，能存的消息多则表示堆积能力好*
 
-*堆积能力好就能更好的实现削峰填谷（即：把请求先缓存在MQ，再慢慢消费，它考验的是 MQ 的堆积能力）*
+*堆积能力好就能更好的实现削峰填谷（即把请求先缓存在MQ，再慢慢消费，它考验的是 MQ 的堆积能力）*
 
  |  | RocketMQ | RabbitMQ | Kafka |
  |:-|:---------|:---------|:------|
@@ -41,26 +41,28 @@ published: false
 
 ## 高可用
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-04-rocketmq-base-01.png)
+![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-01-rocketmq-base-01.png)
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-04-rocketmq-base-02.png)
+![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-01-rocketmq-base-02.png)
 
-上面是RocketMQ的拓扑图和架构图，可以看出，它主要有四个结构：
+上面是 RocketMQ 的拓扑图和架构图，可以看出，它主要有四个结构：
 
 * NameServer：集群管理
 * Broker：存储消息
 * Producer：生产者
 * Consumer：消费者
 
+其特点如下：
+
 1. 每组Broker都是主从部署的，且都会注册自身信息到nameserver
 2. 每组Broker之间是没有数据同步的（即各个master之间都是独立的）
 3. 消费消息时，consumer会从nameserver获取topic所在的broker信息，然后建立broker连接，消费消息
 4. 生产消息时，producer会从nameserver获取可以存储topic的borker信息，然后建立broker连接，投递消息
-5. producer只会把消息投递到主broker，不会投递到从，而consumer则主从都会去消费（这是高可用的一个手段）
+5. producer只会把消息投递到主broker（不会投递到从），而consumer则主从都会去消费（这是高可用的一个手段）
 6. nameserver集群的各个节点之间相互独立，且无任何的数据通信（它们并不知道彼此的存在）<br/>
 所以broker在注册时要注册到nameserver的所有节点上，不过nameserver节点很少，再加上还有hearbeat<br/>
-即便注册失败还会通过心跳不停的注册来保证nameserver的数据一致性（所以它的节点很快就对齐了）<br/>
-同样，在做服务发现时，随便连到某一个节点上就可以了
+即便注册失败，还会通过心跳不停的注册来保证nameserver的数据一致性（所以它的节点很快就对齐了）<br/>
+同样，在做服务发现时，随便连到某一个节点上就可以找到broker了
 
 虽然nameserver集群的实现方式有点偷懒，但broker节点的变化频率并不高，所以这并不会消耗过多的资源
 
@@ -72,9 +74,9 @@ published: false
 
 **数据可靠，无非就是说数据不丢**
 
-通常从两个角度来看：固化（即刷盘，保证本地的数据可靠）和同步（即broker的主从部署，避免单点）
+这通常要从两个角度来看：固化（即刷盘，保证本地的数据可靠）和同步（即broker的主从部署，避免单点）
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-04-rocketmq-base-03.jpg)
+![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-01-rocketmq-base-03.jpg)
 
 固化方式有两种：
 * 同步刷盘：性能低，可靠性高<br/>
@@ -86,7 +88,8 @@ published: false
 　　　　　而丢数据的话，最多也就是丢两次刷盘之间的数据，但是性能高
 
 > 通过刷盘，保证了本地的数据的可靠，但这还不够，因为分布式系统，就要避免单点<br/>
-现在主库的数据可靠了，那从库呢（或者说多副本），所以要做到一致性写入，就得来看一下数据同步的方式
+现在主库的数据可靠了，那从库呢（或者说多副本）？<br/>
+所以要做到一致性写入，就得来看一下数据同步的方式
 
 同步方式也有两种：
 * 同步双写：性能低，可靠性高（比如master挂了，没关系，slave有全量消息，能保证被消费）
@@ -116,42 +119,68 @@ published: false
 * 多master模式（可用性稍好些，但若挂了一个master，里面数据容易丢，所以这个模式意义不大）
 * 多master多slave模式（具体固化和同步方式，根据实际情况选择）
 
-## 数据存储方式
+## 消息存储
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-04-rocketmq-base-04.jpg)
+![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-01-rocketmq-base-04.jpg)
 
 这里有几个概念：
-* CommitLog：存储消息主体（虽然名字里有log，但它不是日志，它存的是消息数据）
+* CommitLog：存储消息主体（虽然名字里有log，但不是日志，它存的是消息数据）
 * ConsumeQueue：消息消费队列
 * IndexFile：消息索引文件（它跟存储没啥太大关系，是给运维用的）
 
+### commitlog
 
-1. 追加写commitlog<br/>
-所有producer生产的消息，都会追加写到commitlog里面<br/>
-注意：这里是谁先到commitlog，谁就先写进去，保证了它是顺序写的<br/>
-所以会出现前俩消息是topic1的，第三个是topic2的，第四个是topic1的，第五六个是topic2的情形
-2. 分发消费队列<br/>
-由于commitlog并没有做什么优化（比如按照topic分类），所以就有了消费队列<br/>
-我们在追加写commitlog的过程中，会有dispatch线程会按照偏移量一点点往下分发<br/>
-每来一个消息，它都会根据topic来把消息分发到某个队列里面（注意是某个队列，不是所有队列）<br/>
-而且一个topic可以对应到多个队列，具体分发给哪个队列则由负载均衡决定（该方案是在producer做的）<br/>
+所有producer生产的消息，都会追加写到commitlog里面
+
+**注意：这里是谁先到commitlog，谁就先写进去，保证了它是顺序写的**
+
+所以可能会出现：前俩消息是 topic1 的，第三个是 topic2 的，第四个是 topic1 的，第五六个是 topic2 的交叉情形
+
+### 消费队列
+
+由于commitlog并没有做什么优化（比如按照topic分类），所以就有了消费队列
+
+在追加写commitlog的过程中，dispatch线程会按照偏移量一点点往下分发
+
+每来一个消息，它都会根据topic来把消息分发到某个队列里面（注意是某个队列，不是所有队列）
+
+而且一个topic可以对应到多个队列，具体分发给哪个队列则由负载均衡决定（该方案是在producer端做的）
+
 这样一来，消息的写入和消费就会很快，因为它不是由固定队列来承担某个topic的所有消息，而是分摊的
-3. 实际消费
-队列里存的不是消息实体（如果存消息内容，那commitlog也就没啥意义了）<br/>
-而是消息的索引（即该消息在commitlog里的偏移量，以及消息实体的大小，和tags）<br/>
+
+### 实际消费
+
+队列里存的不是消息实体（如果存消息内容，那commitlog也就没啥意义了）
+
+而是消息的索引（即该消息在commitlog里的偏移量，以及消息实体的大小，和tags）
+
 所以实际消费时就会根据偏移量到commitlog找到消息，然后取出消息内容，接着被消费端消费
-4. 随机消费
-这里就有一个问题：topic是顺序写的，而消费则不是顺序消费的<br/>
-即同一个topic连续投递过来的两个顺序消息，可能会被分发到不同的队列，导致消费不一定是连续的<br/>
-所以会出现topic是顺序写到commitlog的，而消费则是在commitlog的一段范围内随机读的<br/>
+
+### 随机消费
+
+这里就有一个问题：topic是顺序写的，而消费则不是顺序消费的
+
+即同一个topic连续投递过来的两个顺序消息，可能会被分发到不同的队列，导致消费不一定是连续的
+
+所以会出现topic是顺序写到commitlog的，而消费则是在commitlog的一段范围内随机读的
+
 虽然顺序写随机读这个问题，不如顺序读性能高，但其实影响不是很大（只是在做时间轮时有点影响）
-5. 保证消息不丢，但不保证消息不重复
-consumer在从消费队列取数据时，不是一条一条取的，而是一次取N条，然后去慢慢消费<br/>
-若这个过程中consumer挂了，那么下次消费时，所取的数据还是会包括这一次的消息<br/>
-直到consumer显式的回复ack给消费队列，消费队列才会去偏移（即移动offset）<br/>
+
+### 重复消费
+
+它只保证消息不丢，但不保证消息不重复
+
+因为consumer在从消费队列取数据时，不是一条一条取的，而是一次取 N 条，然后去慢慢消费
+
+若这个过程中consumer挂了，那么下次消费时，所取的数据还是会包括这一次的消息
+
+直到consumer显式的回复 ack 给消费队列，消费队列才会去偏移（即移动offset）
+
 所以，如果我们不能接受重复消息，那就得做幂等
 
-优化的话，可以从这三个角度着手：
+### 优化
+
+如果有优化需求，可以考虑从以下三个角度着手：
 
 * CommitLog文件切分（默认1G）<br/>
 假设某业务堆积了很多消息，然后它突然开始消费，此时堆积消息可能位于commitlog的中部或顶部<br/>
