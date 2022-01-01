@@ -5,7 +5,7 @@ categories: 分布式
 tags: 分布式
 author: 玄玉
 excerpt: 介绍RocketMQ的基本存储和集群原理。
-published: false
+published: true
 ---
 
 * content
