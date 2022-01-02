@@ -5,7 +5,7 @@ categories: 分布式
 tags: 分布式
 author: 玄玉
 excerpt: 介绍RocketMQ的消息数据生产和消费逻辑与负载均衡设计原理。
-published: false
+published: true
 ---
 
 * content
