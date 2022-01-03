@@ -5,7 +5,7 @@ categories: 分布式
 tags: 分布式
 author: 玄玉
 excerpt: 介绍RocketMQ的事务消息和延时消息的工作原理。
-published: false
+published: true
 ---
 
 * content
