@@ -111,7 +111,7 @@ MySQL 从磁盘装载数据到内存时，是以页为单位的，一次装载�
 
 ![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-21-mysql-page-index-07.png)
 
-它跟聚簇不一样的地方是在 Data 域上，它的 Data 存的是主键的值
+它跟聚簇不一样的地方是在 Data 域上：它的 Data 存的是主键的值
 
 当我们用非主键索引去查询的时候，比如要找索引值等于 5 的数据，实际找到的是主键值，而非真正的数据
 
