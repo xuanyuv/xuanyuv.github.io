@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "RocketMQ原理03之事务消息与延时消息"
+title: "研习RocketMQ03之事务消息与延时消息"
 categories: 分布式
 tags: 分布式
 author: 玄玉

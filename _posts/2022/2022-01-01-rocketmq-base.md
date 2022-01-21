@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "RocketMQ原理01之高可用与消息存储"
+title: "研习RocketMQ01之高可用与消息存储"
 categories: 分布式
 tags: 分布式
 author: 玄玉

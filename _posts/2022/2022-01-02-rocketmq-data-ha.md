@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "RocketMQ原理02之生产消费与负载均衡"
+title: "研习RocketMQ02之生产消费与负载均衡"
 categories: 分布式
 tags: 分布式
 author: 玄玉
