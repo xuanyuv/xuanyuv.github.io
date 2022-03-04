@@ -182,6 +182,9 @@ settings---Editor---Inspections---General---不勾选Default File Template Usage
 # 方法参数是相同值
 settings---Editor---Inspections---Java---Declaration redundancy---不勾选Actual method parameter is the same constant
 
+# 取消注释内容中含有代码的提示
+settings---Editor---Inspections---Java---Code maturity---不勾选Commented out code
+
 # Return value of the method is never used
 settings---Editor---Inspections---Java---Declaration redundancy---不勾选Method can be void
 
