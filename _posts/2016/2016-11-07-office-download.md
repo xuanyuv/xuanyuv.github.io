@@ -15,26 +15,26 @@ excerpt: 介绍Office镜像下载地址，以及它那复杂的版本划分情�
 
 Office本身分为：家庭和学生版、小型企业版、专业版、Office365家庭高级版
 
-而这些版本中，又分为：`零售版（RETAIL）` 以及 `大客户批量授权版（VOL）`
+而这些版本中，又分为：`大客户批量授权版（VOL）` 以及 `零售版（RETAIL）`
 
-## RETAIL和VOL
+## Vol和Retail
 
 这两个版本的区别，可以简单用以下五点来概括
 
 * 功能：完全相同
-* 安装：VOL安装时不用输入序列号，Retail则必须输入（据说Retail不能选择安装路径和自定义组件）
-* 授权：VOL可以使用`KMS`服务器或`MAK`密钥永久激活，RETAIL则不适用于KMS（目前可使用电话激活方式）<br/>
-　　　相对而言，VOL更容易激活一些
-* 发售：平时在商店买的Office安装光盘的版本，其实就是RETAIL，而VOL则不是（且其只有PROFESSIONAL版本）
-* 镜像：VOL的文件名一般以`SW_DVD5_Office_Professional_Plus_2016`打头<br/>
-　　　Retail的一般以`cn_office_professional_plus_2016`打头<br/>
-　　　比如说Office2016VOL是`SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO`<br/>
-　　　它的RETAIL是`cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso（大小为2.41GB）`<br/>
+* 安装：Vol安装时不用输入序列号，Retail则必须输入（据说Retail不能选择安装路径和自定义组件，未验证过）
+* 授权：Vol可以使用`KMS`服务器或`MAK`密钥永久激活，Retail则不适用于KMS（目前可以使用电话激活方式）<br/>
+　　　相对而言，Vol更容易激活一些
+* 发售：平时在商店买的Office安装光盘的版本，其实就是Retail，而Vol则不是（且其只有Professional版本）
+* 镜像：Vol的文件名一般以`SW_DVD5_Office_Professional_Plus_2016`打头<br/>
+　　　Retail文件名一般以`cn_office_professional_plus_2016`打头<br/>
+　　　比如Office2016的Vol是`SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO`<br/>
+　　　而它的Retail版本是`cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso（大小为2.41GB）`<br/>
 　　　其下载地址如下
 ```
 ed2k://|file|cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso|2588266496|27EEA4FE4BB13CD0ECCDFC24167F9E01|/
 ```
-　　　之所以RETAIL版的容量要大些，是因为它同时包含了32bit和64bit的安装文件<br/>
+　　　之所以Retail版的容量要大些，是因为它同时包含了 32bit 和 64bit 的安装文件<br/>
 　　　另外，关于镜像文件名上经常出现的几个单词缩写，其完整描述可以理解成下面这样
 ```
 SW - Software
@@ -44,7 +44,7 @@ CORE – software meant for Core based License
 
 ## 下载地址
 
-下面列出的是VOL版的中文安装包下载地址
+下面列出的是Vol版的中文安装包下载地址
 
 ```
 版本：Office 2016 Pro Plus 64位
@@ -54,16 +54,6 @@ MD5: 60DC8B1892F611E41140DD3631F39793
 SHA1: AEB58DE1BC97685F8BC6BFB0A614A8EF6903E318
 CRC32: 8D8AC6D1
 下载地址：ed2k://|file|SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO|1123452928|31087A00FF67D4F5B4CBF4AA07C3433B|/
-```
-
-```
-版本：Office 2016 Pro Plus 32位
-文件名：SW_DVD5_Office_Professional_Plus_2016_W32_ChnSimp_MLF_X20-41351.ISO
-文件大小：986441728 字节
-MD5: 49D97BD1B4DFEAAA6B45E3DD3803DAC1
-SHA1: 0218F50774AAB63AF7755B0986CDB9972B853E44
-CRC32: FF96B0B5
-下载地址：ed2k://|file|SW_DVD5_Office_Professional_Plus_2016_W32_ChnSimp_MLF_X20-41351.ISO|986441728|2DE74581C10096137481873B3AD57D43|/
 ```
 
 ```
@@ -77,16 +67,6 @@ CRC32: 6AB6A570
 ```
 
 ```
-版本：Office 2016 Project 专业版 32位版
-文件名：SW_DVD5_Project_Pro_2016_W32_ChnSimp_MLF_X20-41511.ISO
-文件大小：555210752 字节
-MD5: 0EE0C8334E9F38EFA9848A8B673FED45
-SHA1: 9102ADDC3E171A1DF314F91F3467BA553518FA43
-CRC32: C73DA2D7
-下载地址：ed2k://|file|SW_DVD5_Project_Pro_2016_W32_ChnSimp_MLF_X20-41511.ISO|555210752|CA3BD5F8C7B3E263105B041DDD4104AB|/
-```
-
-```
 版本：Office 2016 Visio 专业版 64位版
 文件名：SW_DVD5_Visio_Pro_2016_64Bit_ChnSimp_MLF_X20-42759.ISO
 文件大小：714913792 字节
@@ -94,14 +74,4 @@ MD5: 93BEB874F5A5870D5854519856047103
 SHA1: 71E082174812F748AB1A70CA33E6004E1E1AACA8
 CRC32: F813794B
 下载地址：ed2k://|file|SW_DVD5_Visio_Pro_2016_64Bit_ChnSimp_MLF_X20-42759.ISO|714913792|FC930AB97B366B3595FC2F28ABAC2A6F|/
-```
-
-```
-版本：Office 2016 Visio 专业版 32位版
-文件名：SW_DVD5_Visio_Pro_2016_W32_ChnSimp_MLF_X20-41580.ISO
-文件大小：609447936 字节
-MD5: 96E008B110F308F1E424D11964D82CE0
-SHA1: 780046411EB18874AA2DA7E4A11322557EB00D92
-CRC32: 42E1653D
-下载地址：ed2k://|file|SW_DVD5_Visio_Pro_2016_W32_ChnSimp_MLF_X20-41580.ISO|609447936|91EB248558F236AA66D234EA03FAD9A9|/
 ```
