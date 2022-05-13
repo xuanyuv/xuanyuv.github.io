@@ -205,7 +205,7 @@ settings---Editor---Inspections---Java---Probable bugs---不勾选Result of meth
 
 # serialVersionUID（然后回到类文件中，光标放到类名上，Alt+Enter就会提示生成serialVersionUID）
 settings---Editor---Inspections---Java---Serialization issues---勾选Serializable class without serialVersionUID
-settings---Editor---Inspections---Java---Serialization issues---勾选Non-serializable class with serialVersionUID
+settings---Editor---Inspections---JVM languages---勾选Non-serializable class with serialVersionUID
 
 # 关闭Maven-jar包最新版检查
 settings---Editor---Inspections---Package Search---全部不勾选
