@@ -26,12 +26,12 @@ Office本身分为：家庭和学生版、小型企业版、专业版、Office36
 * 授权：Vol可以使用 **KMS** 服务器或 **MAK** 密钥永久激活，Retail则不适用于KMS（可以使用邮件或电话激活）<br/>
 　　　相对而言，Vol更容易激活一些
 * 发售：平时在商店买的Office安装光盘的版本，其实就是Retail，而Vol则不是（且其只有Professional版本）<br/>
-　　　Vol 又称 Windows Installer 版本，Retail 又称即点即用版本<br/>
+　　　Vol 又称 **Windows Installer 版本**，Retail 又称 **即点即用版本**<br/>
 　　　Vol 安装包中，setup.exe 文件只有一个，而且和其他安装用文件在一个目录中<br/>
 　　　Retail 安装包中只有三个文件：setup.exe、autorun.inf、office文件夹（里面有 setup32.exe 和 setup64.exe）
 * 镜像：Vol的文件名一般以这个打头：SW_DVD5_Office_Professional_Plus_2016<br/>
 　　　Retail文件名一般以这个打头：cn_office_professional_plus_2016<br/>
-　　　比如Office2016的Vol是：SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO<br/>
+　　　比如office2016的Vol是：SW_DVD5_Office_Professional_Plus_2016_64Bit_ChnSimp_MLF_X20-42426.ISO<br/>
 　　　而它的Retail版本则是：cn_office_professional_plus_2016_x86_x64_dvd_6969182.iso<br/>
 　　　之所以Retail版的容量要大些，是因为它同时包含了 32bit 和 64bit 的安装文件
 
