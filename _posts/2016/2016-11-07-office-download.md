@@ -54,7 +54,7 @@ Office本身分为：家庭和学生版、小型企业版、专业版、Office36
 
 ## 下载地址
 
-下面列出的是Vol版的中文安装包下载地址（Retail版可以到 [MSDN](https://msdn.itellyou.cn/) 下载）
+下面列出的是Vol版的中文安装包下载地址
 
 ```
 版本：Office 2016 Pro Plus 64位
@@ -84,4 +84,22 @@ MD5: 93BEB874F5A5870D5854519856047103
 SHA1: 71E082174812F748AB1A70CA33E6004E1E1AACA8
 CRC32: F813794B
 下载地址：ed2k://|file|SW_DVD5_Visio_Pro_2016_64Bit_ChnSimp_MLF_X20-42759.ISO|714913792|FC930AB97B366B3595FC2F28ABAC2A6F|/
+```
+
+下面列出的是Retail版的中文安装包下载地址（取自 [MSDN](https://msdn.itellyou.cn/)）
+
+```
+文件名：cn_visio_professional_2016_x86_x64_dvd_6970929.iso
+　SHA1：E16292B938A284E14A79E4998209F5A4143DBF8A
+文件大小：2.41GB
+发布时间：2015-09-22
+下载地址：ed2k://|file|cn_visio_professional_2016_x86_x64_dvd_6970929.iso|2588262400|52A997F3AF4E40B896C8E4677CF10E90|/
+```
+
+```
+文件名：cn_project_professional_2016_x86_x64_dvd_6966612.iso
+　SHA1：245787253622D4D790F62012B578398EA78D8EA2
+文件大小：2.41GB
+发布时间：2015-09-22
+下载地址：ed2k://|file|cn_project_professional_2016_x86_x64_dvd_6966612.iso|2588266496|DEF65A0A9B12D8A8B734528800F625D5|/
 ```
