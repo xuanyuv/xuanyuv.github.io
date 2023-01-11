@@ -74,6 +74,8 @@ idea.cycle.buffer.size=disabled
 ### 项目参数及JDK
 
 ```
+# 注：新版idea要在配置全局参数，并打开一个工程后，才能配置以上项
+
 # 设置JDK
 Structure for New Projects---Project Settings---Project---设置JDK
 Structure for New Projects---Platform Settings---SDKs---删除自带的jdk11
@@ -85,8 +87,6 @@ Run Configuration Templates for New Projects---Application---VM options: -Dsprin
 # 应用启动参数短命令行
 Run Configuration Templates for New Projects---Application---jre---1.8
 Run Configuration Templates for New Projects---Application---Shorten command line---classpath file
-
-# 注：新版idea要在配置全局参数，并打开一个工程后，才能配置以上项
 ```
 
 ### 外观及行为配置
