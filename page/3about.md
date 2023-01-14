@@ -19,13 +19,11 @@ type: page
 
 ## 收藏
 
-* [万能命令](https://wanneng.run/cn/)
-* [DJWMA](https://www.djwma.net/)、[DJ轮回舞曲](http://www.dj92cc.net/)、[DJ舞曲网](https://www.djyyy.com/)
-* [我爱卡](https://bbs.51credit.com)、[吾爱破解](https://www.52pojie.cn)、[我爱斗图](https://www.52doutu.cn)
+* [万能命令](https://wanneng.run/cn/)、[GithubRelease下载加速](https://doget.nocsdn.com/)
+* [烈火新站](https://apphot.cc/)、[吾爱破解](https://www.52pojie.cn)、[我爱卡](https://bbs.51credit.com)、[DJ轮回舞曲](http://www.dj92cc.net/)、[DJ舞曲网](https://www.djyyy.com/)
 * [英雄志讲武堂](http://www.jiang-wu-tang.com/JWTphpBBS/index.php)、[知轩藏书](http://www.zxcs.me)、[书荒部落](http://noveless.com)
-* [心海e站](https://hrtsea.com)、[绿色便携软件](https://www.portablesoft.org)、[恶意网站实验室](http://www.mwsl.org.cn)
-* [HTML5炫画](http://www.html5tricks.com)、[懒人图库](http://www.lanrentuku.com)、[懒人之家](http://www.lanrenzhijia.com)、[网站模板](http://www.mycodes.net/153)
-* [荔枝图床](http://i.nizdm.com)、[外链图床](https://www.ssdax.com/tool/pic/)、[阿里云图床](https://www.iprain.cn/pic/)、[新浪微博图床](http://weibo.com/minipublish)、[新浪微博图床Chrome扩展](https://github.com/Suxiaogang/WeiboPicBed)、[SMMS图床](https://sm.ms)
+* [HTML5炫画](http://www.html5tricks.com)、[懒人之家](http://www.lanrenzhijia.com)
+* [荔枝图床](http://i.nizdm.com)、[外链图床](https://www.ssdax.com/tool/pic/)、[新浪微博图床](http://weibo.com/minipublish)、[新浪微博图床Chrome扩展](https://github.com/Suxiaogang/WeiboPicBed)、[SMMS图床](https://sm.ms)
 * [CMCT](https://cmct.tv/?fromuid=72191)、[伊甸园](http://bbs.sfile2012.com)、[FIX字幕侠](http://www.zimuxia.cn)、[HQC资源组](https://www.gscq.me)、[BD影视](https://www.bd-film.cc)、[我爱看高清（待注册）](https://www.52khd.cn)、[UP云搜](https://upyunso3.com/)、[橘子盘搜](https://www.nmme.cc/)
 
 ## 站点
