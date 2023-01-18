@@ -41,9 +41,9 @@ published: true
 
 ## 高可用
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-01-rocketmq-base-01.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-01-rocketmq-base-01.png)
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-01-rocketmq-base-02.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-01-rocketmq-base-02.png)
 
 上面是 RocketMQ 的拓扑图和架构图，可以看出，它主要有四个结构：
 
@@ -76,7 +76,7 @@ published: true
 
 这通常要从两个角度来看：固化（即刷盘，保证本地的数据可靠）和同步（即broker的主从部署，避免单点）
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-01-rocketmq-base-03.jpg)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-01-rocketmq-base-03.jpg)
 
 固化方式有两种：
 * 同步刷盘：性能低，可靠性高<br/>
@@ -121,7 +121,7 @@ published: true
 
 ## 消息存储
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-01-rocketmq-base-04.jpg)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-01-rocketmq-base-04.jpg)
 
 这里有几个概念：
 * CommitLog：存储消息主体（虽然名字里有log，但不是日志，它存的是消息数据）

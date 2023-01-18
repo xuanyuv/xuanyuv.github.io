@@ -77,7 +77,7 @@ published: true
 * 区块体：存储交易数据
 * 区块头：存储区块的元数据，如上一个区块的哈希值，本区块生成时的时间戳和随机数等等
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-08-10-blockchain-bitcoin-01.jpg)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-08-10-blockchain-bitcoin-01.jpg)
 
 如上图所示，区块头存储了上一个区块的哈希值，本区块生成时的时间戳和随机数等等
 
@@ -168,7 +168,7 @@ for(int i=0 to 2^32){                         // 遍历所有整数
 
 所有的矿机都是在进行 sha256 计算，尝试同步全球最新的区块数据，并挖到矿
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-08-10-blockchain-bitcoin-02.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-08-10-blockchain-bitcoin-02.png)
 
 > 提升系统性能，不管是区块链还是做系统架构，无外乎这 2 个方法：scale up、scale out<br/>
 一种是提升软件性能，一种是提升硬件性能<br/>
@@ -242,7 +242,7 @@ for(int i=0 to 2^32){                         // 遍历所有整数
 
 （此时，大家都以为自己是在最新的节点上的，并继续挖矿）
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-08-10-blockchain-bitcoin-03.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-08-10-blockchain-bitcoin-03.png)
 
 如上图所示：
 

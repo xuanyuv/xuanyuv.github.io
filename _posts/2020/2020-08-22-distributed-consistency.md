@@ -121,7 +121,7 @@ Quorum 机制是分布式场景中常用的，用来保证数据安全，并且�
 * W：写操作成功的节点数，即每次数据写入写成功的副本数（W 小于等于 N）
 * R：读操作获取最新版本数据所需的最小节点数，即每次读取成功至少需要读取的副本数
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2020/2020-08-22-distributed-consistency-01.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2020/2020-08-22-distributed-consistency-01.png)
 
 如图所示：客户端写入 data01、data02、data03、data04 四条数据
 
@@ -158,7 +158,7 @@ CAP理论：一个分布式系统不可能同时满足 C、A、P 三个需求
 2. 放弃 A：网络分区或其他故障时，服务需要等待一段时间，等待时间内无法对外提供服务，即服务不可用
 3. 放弃 C：实际是指放弃数据的强一致性，而保留最终一致性，具体多久达到数据同步取决于存储系统的设计
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2020/2020-08-22-distributed-consistency-02.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2020/2020-08-22-distributed-consistency-02.png)
 
 * 对于单机软件，因为不用考虑 P，所以肯定是 CA 型，比如 MySQL
 * 对于分布式软件，因为一定会考虑 P，所以只能在 A 和 C 之间权衡，做到服务基本可用，并且数据最终一致性即可

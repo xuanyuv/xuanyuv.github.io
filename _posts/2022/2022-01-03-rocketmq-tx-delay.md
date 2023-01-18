@@ -16,7 +16,7 @@ published: true
 
 ### 实现流程
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-03-rocketmq-tx-delay-01.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-03-rocketmq-tx-delay-01.png)
 
 上图为 RocketMQ 事务消息实现流程，也是基于两阶段提交协议（2PC）
 
@@ -31,7 +31,7 @@ MQ收到针对事务消息的commit或rollback时，会将其储存在RMQ_SYS_TR
 
 ### 核心原理
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-03-rocketmq-tx-delay-02.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-03-rocketmq-tx-delay-02.png)
 
 结合上面这张图，大致描述一下核心原理：
 
@@ -53,7 +53,7 @@ MQ收到针对事务消息的commit或rollback时，会将其储存在RMQ_SYS_TR
 
 ### 自定义实现
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-03-rocketmq-tx-delay-03.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-03-rocketmq-tx-delay-03.png)
 
 在了解了基本原理后，也可以自己实现一套事务消息组件，如上图举例
 
@@ -77,7 +77,7 @@ RocketMQ 支持 18 个级别的延时等级，默认值为：1s 5s 10s 30s 1m 2m
 
 **注：其受 CommitLog 保存时间的限制，换句话说若 CommitLog 最长保存 7 天，那么延迟时间最长则为 7 天**
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-03-rocketmq-tx-delay-04.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-03-rocketmq-tx-delay-04.png)
 
 它的实现原理跟事务消息很像：实际RocketMQ很多功能都是类似方案，比如消息失败的重试，可以说是一通百通
 
