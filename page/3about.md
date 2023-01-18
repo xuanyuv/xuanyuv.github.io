@@ -39,3 +39,7 @@ type: page
 ## 台式机
 
 ![](https://ae01.alicdn.com/kf/H33a8d59057274e499275deb135b5f49dg.jpg)
+
+## 笔记本
+
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/myx220i.png)
