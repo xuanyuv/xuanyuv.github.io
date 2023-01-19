@@ -76,11 +76,29 @@ Current Index 每秒移动到一个 slot 时，就看它对应的 Set<Task> 中�
 涉及的命令就是 SET、LPOP、LPUSH 三个
 
 现在还有三个问题：
-1. 不同业务线不同延时需求怎么办？2 天？15 天？难道要搞一个大轮子？<br/>
-要知道 Cycle-Num 的方案也有缺点，因为会造成某个 solt 里的数据很多，导致操作它的代价就大了，性能下降<br/>
-这时候可以考虑 文件 + Redis 的方案，如下图所示<br/>
+
+### 不同延时需求
+
+第一个问题：不同业务线不同延时需求怎么办？2 天？15 天？难道要搞一个大轮子？
+
+要知道 Cycle-Num 的方案也有缺点，因为会造成某个 solt 里的数据很多，导致操作它的代价就大了，性能下降
+
+这时候可以考虑 **文件 + Redis** 的方案，如下图所示
+
 ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2023/2023-01-20-cron-time-wheel-02.png)
-2. 第二个问题就是：谁来移动游标（通过下面方式选到 leader 之后，波动轮子交给 leader 就可以了）
+
+### 谁移动游标
+
+第二个问题就是：谁来移动游标
+
+通过下面方式选到 leader 之后，拨动轮子交给 leader 就可以了
+
 ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2023/2023-01-20-cron-time-wheel-03.png)
-3. 最后一个问题是：调用方式（通常有以下两种考虑。另外就是采用 RocketMQ 的延时消息来实现，不过也有不足）
+
+### 怎么调用
+
+最后一个问题是：调用方式
+
+通常有以下两种考虑。（另外就是采用 RocketMQ 的延时消息来实现，不过也有不足）
+
 ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2023/2023-01-20-cron-time-wheel-04.png)
