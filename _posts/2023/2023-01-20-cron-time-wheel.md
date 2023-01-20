@@ -34,7 +34,7 @@ published: true
 1. Cycle-Num：当 Current Index 第几圈扫描到这个 slot 时，执行任务
 2. Task-Function：需要执行的任务指针
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2023/2023-01-20-cron-time-wheel-01.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2023/2023-01-20-cron-time-wheel-01.png)
 
 假设 Current Index 指向第一格，当有延时消息到达，例如希望 3610 秒之后触发一个延时消息任务，只需：
 
@@ -85,7 +85,7 @@ Current Index 每秒移动到一个 slot 时，就看它对应的 Set<Task> 中�
 
 这时候可以考虑 **文件 + Redis** 的方案，如下图所示
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2023/2023-01-20-cron-time-wheel-02.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2023/2023-01-20-cron-time-wheel-02.png)
 
 ### 谁来移动游标
 
@@ -93,7 +93,7 @@ Current Index 每秒移动到一个 slot 时，就看它对应的 Set<Task> 中�
 
 通过下面方式选到 leader 之后，拨动轮子交给 leader 就可以了
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2023/2023-01-20-cron-time-wheel-03.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2023/2023-01-20-cron-time-wheel-03.png)
 
 ### 要怎么调用
 
@@ -101,4 +101,4 @@ Current Index 每秒移动到一个 slot 时，就看它对应的 Set<Task> 中�
 
 通常有以下两种考虑。（另外就是采用 RocketMQ 的延时消息来实现，不过也有不足）
 
-![](https://cdn.jsdelivr.net/gh/jadyer/mydata/img/blog/2023/2023-01-20-cron-time-wheel-04.png)
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2023/2023-01-20-cron-time-wheel-04.png)
