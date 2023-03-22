@@ -242,7 +242,7 @@ call jekyll s --watch
 
 ## 图床
 
-写博客就一定会用到图片，压缩图片的话可以用 **[色彩笔](https://www.secaibi.com/tools/)** 在线工具批量压缩
+写博客就一定会用到图片，压缩图片的话可以用 **[tinypng](https://tinypng.com/)** 或者 **[色彩笔](https://www.secaibi.com/tools/)** 在线工具批量压缩
 
 目前我大部分用的都是阿里云图床，现在上传入口好多都失效了
 
