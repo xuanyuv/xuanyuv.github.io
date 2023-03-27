@@ -229,7 +229,45 @@ settings---Editor---File and Code Templates---Includes---File Header---编辑为
  */
 ```
 
-接下来是自定义方法上的注释
+**同样道理，也可以配置：创建枚举类时，默认的类内容**
+
+settings---Editor---File and Code Templates---Files---Enum---编辑为如下
+
+```
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+public enum ${NAME} {
+    ${NAME}_1 (1, "枚举值01"),
+    ${NAME}_2 (2, "枚举值02");
+
+    private final int code;
+    private final String msg;
+
+    ${NAME}(int code, String msg){
+        this.code = code;
+        this.msg = msg;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+    
+    public static String getMsgByCode(int code){
+        for(${NAME} obj : values()){
+            if(obj.getCode() == code){
+                return obj.getMsg();
+            }
+        }
+        throw new IllegalArgumentException("无法识别的Code=[" + code + "]");
+    }
+}
+```
+
+**接下来是自定义方法上的注释**
 
 settings---Editor---Live Templates---右上角 `+` 选择 Template Group---输入模板组名：JadyerGroup
 
