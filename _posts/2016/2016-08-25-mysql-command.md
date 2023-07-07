@@ -91,6 +91,25 @@ DROP INDEX idx_name_password ON t_account;
 ```sql
 -- 更新某字段值为另一个表的同名字段值
 UPDATE t_user u, t_account a SET u.account_type=a.type WHERE u.account_id=a.id
+
+-- 清空表数据（效率高于DELETE，不可带WHERE，不记录日志，不可恢复数据，序号ID重新从1开始）
+TRUNCATE TABLE t_user;
+-- 清空表数据（效率低于TRUNCATE，可带WHERE，记录日志，可恢复数据，序号ID会延续之前的而继续编号）
+DELETE FROM t_user;
+
+-- 通过 CASE WHEN 批量更新
+UPDATE t_user SET
+    realname = CASE id
+        WHEN  8 THEN '卢云'
+        WHEN  9 THEN '秦仲海'
+        WHEN 10 THEN '伍定远'
+    END,
+    nickname = CASE id
+        WHEN  8 THEN '剑神'
+        WHEN  9 THEN '怒王'
+        WHEN 10 THEN '一代真龙'
+    END
+WHERE realname IS NULL;
 ```
 
 ## 查询元数据
