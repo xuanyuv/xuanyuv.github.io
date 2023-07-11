@@ -159,7 +159,11 @@ shutdown(){
     fi
 }
 
-# [2>&1]表示把标准错误(stderr)重定向到标准输出(stdout)，否则会提示[nohup: redirecting stderr to stdout]
+# [2>&1]表示把错误输出(stderr)和标准输出(stdout)，都输出到同一个地方，否则会提示[nohup: redirecting stderr to stdout]
+# [>/dev/null]表示将标准输出重定向到/dev/null，而/dev/null代表Linux的空设备文件，所有向该文件写入的内容都会丢失，俗称“黑洞”
+# 由于nohup.log时间长了会非常大，很占用磁盘，因此：
+# 1. 如果不想输出任何东西到控制台，就可以用这个命令：nohup ../bin/$SHELL_NAME > /dev/null 2>&1 &
+# 2. 如果只想输出错误信息到控制台，就可以用这个命令：nohup ../bin/$SHELL_NAME > /dev/null 2>nohup.err &
 startupByNohup(){
     cd $APP_PATH/logs
     rm -rf nohup.log
