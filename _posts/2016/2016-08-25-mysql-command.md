@@ -97,7 +97,7 @@ TRUNCATE TABLE t_user;
 -- 清空表数据（效率低于TRUNCATE，可带WHERE，记录日志，可恢复数据，序号ID会延续之前的而继续编号）
 DELETE FROM t_user;
 
--- 通过 CASE WHEN 批量更新
+-- CASE WHEN 批量更新（若有条id=6的数据，因其未出现在WHEN中，会导致其realname&nickname被更新为NULL）
 UPDATE t_user SET
     realname = CASE id
         WHEN  8 THEN '卢云'
