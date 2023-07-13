@@ -259,6 +259,11 @@ drwxr-xr-x. 5 root root 4.0K Aug  5 18:29 oppp
 drwxrwxrwx. 4 root root 4.0K May 27  2016 ROOT
 drwxr-xr-x  4 root root 4.0K Oct 13 11:19 WEB-INF
 [root@wxtest webapps]#
+
+# 配置 ll 命令直接显示文件列表及大小
+[root@wxtest webapps]# cd ~
+[root@wxtest webapps]# vim .bashrc
+输入这个命令，保存即可：alias ll='ls -lh --color=auto'（含单引号）
 ```
 
 ## 文件解压缩
