@@ -182,7 +182,7 @@ java    17608 root  163u  IPv6 29073040      0t0  TCP bjgg-kfvm-31:http (LISTEN)
 [Jadyer@Jadyer-RHEL63 CucPayTradePortalLog]$ less -p "无磁无密" default.log
 [20121121 04:09:52][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->检查商户请求参数的有效性,检查结果:[参数有效]
 [20121121 04:09:52][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->对商户的请求参数进行验签,验签结果:[验签通过]
-[20121121 04:09:52][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->请求支付处理报文[000283`tea`GDB`YEEPAY`]
+[20121121 04:09:52][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->请求支付处理报文[000283`tea`GDB_2`YEEPAY`]
 [20121121 04:09:52][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->支付处理响应报文[000156信用卡^@^@^@^@@^@2012]
 
 # 1、也可以直接使用[less logfile]，然后再键入"/keyword"来按照关键字查询日志
