@@ -182,9 +182,8 @@ java    17608 root  163u  IPv6 29073040      0t0  TCP bjgg-kfvm-31:http (LISTEN)
 [Jadyer@Jadyer-RHEL63 CucPayTradePortalLog]$ less -p "无磁无密" default.log
 [20121121 04:09:52][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->检查商户请求参数的有效性,检查结果:[参数有效]
 [20121121 04:09:52][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->对商户的请求参数进行验签,验签结果:[验签通过]
-[20121121 04:09:52][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->发往支付处理的报文[0002831101520600001201211210409520673308396701248842791`tea`中国`GB18030`GDB_CREDIT`MD5`05_YEEPAY_1`]
-[20121121 04:09:52][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->支付处理的响应报文[00015610122502该支付方式只支持信用卡^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@
-^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@201210310000121846512012112104093520121031]
+[20121121 04:09:52][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->请求支付处理报文[00028391`tea`GDB_CREDIT`YEEPAY`]
+[20121121 04:09:52][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->支付处理响应报文[000156信用卡^@^@^@^@^@@^@2012]
 
 # 1、也可以直接使用[less logfile]，然后再键入"/keyword"来按照关键字查询日志
 #    当通过keyword找到日志后，就可以使用向上或向下箭头来查看前后的日志，退出日志查看时直接按下Q键（大小写均可）即可
@@ -194,6 +193,10 @@ java    17608 root  163u  IPv6 29073040      0t0  TCP bjgg-kfvm-31:http (LISTEN)
 #    [n]为向前搜索，[N]为向后搜索（注意这里的措辞：就是说当使用[?]时，[n]就是向上搜索，使用[/]时，[n]就是向下搜索）
 # 3、还有一个[tail]也是比较常用的，用法为[tail -1000f logfile]，作用是实时地显示日志的后1000行，达到实时监视的效果
 #    参数[-f]会不停地读取最新的内容，使用[Ctrl+c]可以终止日志显示
+
+# 清空日志
+# 比较常用的两种方式：[>nohup.log]、[echo "" > nohup.log]
+# 另：可以通过[lsof nohup.log]查看占用nohup.log的进程信息，然后再用[pwdx PID]就能看到该进程的工作路径
 ```
 
 ## 查看空间
