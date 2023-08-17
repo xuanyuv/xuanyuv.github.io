@@ -162,27 +162,21 @@ UNION ALL
 ```sql
 -- 11月份的注册量
 -- SELECT count(1) FROM t_account_info t WHERE month(t.create_time)=11;
-SELECT count(1) FROM t_account_info t WHERE date_format(t.apply_time,'%Y%m')=201611
+SELECT count(1) FROM t_account_info t WHERE date_format(t.apply_time, '%Y%m')=201611
 
 -- 累计扫描量
 SELECT t.tag, count(*) scanCounts FROM t_qq_qrcode t GROUP BY t.tag;
 
--- 今日扫描量
-SELECT t.tag, count(*) scanCountsOfToday FROM t_qq_qrcode t
-WHERE datediff(now(),t.create_time)=0 GROUP BY t.tag;
-
--- 昨日扫描量
-SELECT t.tag, count(*) scanCountsOfYesterday FROM t_qq_qrcode t
-WHERE datediff(now(),t.create_time)=1 GROUP BY t.tag;
-
--- 本周扫描量：WHERE yearweek(date_format(t.create_time,'%Y-%m-%d'))=yearweek(now())
--- 上周扫描量：WHERE yearweek(date_format(t.create_time,'%Y-%m-%d'))=yearweek(now())-1
--- 本月扫描量：WHERE date_format(t.create_time, '%Y%m')=date_format(now(), '%Y%m')
--- 上越扫描量：WHERE period_diff(date_format(now(),'%Y%m'), date_format(t.create_time,'%Y%m'))=1
-
 -- 指定日期的扫描量
 SELECT t.tag, date_format(t.create_time, '%Y%m%d') theDate, count(*) scanCountsOfToday FROM t_qq_qrcode t
 WHERE date_format(t.create_time, '%Y%m%d')='20160503' GROUP BY t.tag;
+
+-- 今日：datediff(now(), t.create_time)=0
+-- 昨日：datediff(now(), t.create_time)=1
+-- 本周：yearweek(now())=yearweek(date_format(t.create_time, '%Y-%m-%d'))
+-- 上周：yearweek(date_sub(now(), INTERVAL 7 DAY), 1)=yearweek(date_format(t.create_time, '%Y-%m-%d'), 1)
+-- 本月：date_format(now(), '%Y%m')=date_format(t.create_time, '%Y%m')
+-- 上月：period_diff(date_format(now(), '%Y%m'), date_format(t.create_time, '%Y%m'))=1
 ```
 
 ## 表中存在重复数据时的统计
