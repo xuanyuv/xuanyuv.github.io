@@ -175,9 +175,10 @@ WHERE datediff(now(),t.create_time)=0 GROUP BY t.tag;
 SELECT t.tag, count(*) scanCountsOfYesterday FROM t_qq_qrcode t
 WHERE datediff(now(),t.create_time)=1 GROUP BY t.tag;
 
--- 本周扫描量
-SELECT t.tag, count(*) scanCountsOfThisWeek FROM t_qq_qrcode t
-WHERE yearweek(date_format(t.create_time,'%Y-%m-%d'))=yearweek(now()) GROUP BY t.tag;
+-- 本周扫描量：WHERE yearweek(date_format(t.create_time,'%Y-%m-%d'))=yearweek(now())
+-- 上周扫描量：WHERE yearweek(date_format(t.create_time,'%Y-%m-%d'))=yearweek(now())-1
+-- 本月扫描量：WHERE date_format(t.create_time, '%Y%m')=date_format(now(), '%Y%m')
+-- 上越扫描量：WHERE period_diff(date_format(now(),'%Y%m'), date_format(t.create_time,'%Y%m'))=1
 
 -- 指定日期的扫描量
 SELECT t.tag, date_format(t.create_time, '%Y%m%d') theDate, count(*) scanCountsOfToday FROM t_qq_qrcode t
