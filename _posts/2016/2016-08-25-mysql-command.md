@@ -62,6 +62,24 @@ END
 -- 调用存储过程
 CALL pro_init('jadyer', @userId);
 SELECT @userId;
+
+-- 将相同的更新时间改为不同（按照一秒逐个累加）
+DROP PROCEDURE IF EXISTS task_updatetime_fix;
+DELIMITER //
+CREATE PROCEDURE task_updatetime_fix()
+BEGIN
+    DECLARE i int;
+    DECLARE d datetime;
+    SET i = 1;
+    SET d = '2023-08-24 17:36:40';
+    WHILE i <= 169 DO
+        SELECT i, d;
+        SET i = i + 1;
+        SET d = date_add(d, INTERVAL 1 SECOND);
+        UPDATE t_task_info SET update_time = d WHERE update_time = '2023-08-24 17:36:40' LIMIT 1;
+    END WHILE;
+END //
+CALL task_updatetime_fix();
 ```
 
 ## 修改表结构
