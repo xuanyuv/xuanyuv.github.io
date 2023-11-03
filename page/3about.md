@@ -20,6 +20,7 @@ type: page
 ## 收藏
 
 * [万能命令](https://wanneng.run/cn/)、[GithubRelease下载加速](https://doget.nocsdn.com/)
+* [歌词芊芊](http://opqnext.com/)、[lrc歌词编辑器](http://lrc.opqnext.com/)
 * [烈火新站](https://apphot.cc/)、[吾爱破解](https://www.52pojie.cn)、[我爱卡](https://bbs.51credit.com)、[DJ轮回舞曲](http://www.dj92cc.net/)、[DJ舞曲网](https://www.djyyy.com/)
 * [英雄志讲武堂](http://www.jiang-wu-tang.com/JWTphpBBS/index.php)、[知轩藏书](http://www.zxcs.me)、[知轩藏书2](https://zxcs.zip/)、[知轩藏书3](https://zxcs.info/)、[书荒部落](http://noveless.com)
 * [HTML5炫画](http://www.html5tricks.com)、[懒人之家](http://www.lanrenzhijia.com)
