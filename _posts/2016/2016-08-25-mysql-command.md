@@ -178,6 +178,10 @@ UNION ALL
 ## 统计时间段内的数据
 
 ```sql
+-- 查询结果集添加自增序号
+SET @i:=32;
+SELECT (@i:=@i+1) AS rowNum, realname from t_user_info;
+
 -- 11月份的注册量
 -- SELECT count(1) FROM t_account_info t WHERE month(t.create_time)=11;
 SELECT count(1) FROM t_account_info t WHERE date_format(t.apply_time, '%Y%m')=201611
