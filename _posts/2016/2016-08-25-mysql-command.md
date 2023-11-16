@@ -199,6 +199,7 @@ WHERE date_format(t.create_time, '%Y%m%d')='20160503' GROUP BY t.tag;
 -- 上周：yearweek(date_sub(now(), INTERVAL 7 DAY), 1)=yearweek(date_format(t.create_time, '%Y-%m-%d'), 1)
 -- 本月：date_format(now(), '%Y%m')=date_format(t.create_time, '%Y%m')
 -- 上月：period_diff(date_format(now(), '%Y%m'), date_format(t.create_time, '%Y%m'))=1
+-- 近半年（自然月）：period_diff(date_format(now(), '%Y%m'), date_format(t.create_time, '%Y%m'))<6
 ```
 
 ## 表中存在重复数据时的统计
