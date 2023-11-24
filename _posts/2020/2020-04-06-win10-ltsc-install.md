@@ -24,8 +24,8 @@ published: true
 
 1. 一个 8G U 盘（提前格式化）
 2. 一个官方镜像文件（MSDN下载 [Windows 10 Enterprise LTSC 2019](https://msdn.itellyou.cn)）
-4. 傲腾内存官方驱动（要用到 [SetupRST 和 SetupOptaneMemory](https://downloadcenter.intel.com/zh-cn/download/29339/) 两个文件）
-3. 无线网卡官方驱动（我的是 [Intel WiFi6 AX201](https://downloadcenter.intel.com/zh-cn/download/29455?product=130293) 产品，或者到 [联想官网下载](https://think.lenovo.com.cn/support/driver/mainpage.aspx#ThinkPad)）
+3. 傲腾内存官方驱动（要用到 [SetupRST 和 SetupOptaneMemory](https://downloadcenter.intel.com/zh-cn/download/29339/) 两个文件）
+4. 无线网卡官方驱动（我的是 [Intel WiFi6 AX201](https://downloadcenter.intel.com/zh-cn/download/29455?product=130293) 产品，或者到 [联想官网下载](https://think.lenovo.com.cn/support/driver/mainpage.aspx#ThinkPad)）
 
 关于系统版本，这里可以看到官方的版本历史：<https://docs.microsoft.com/zh-cn/windows/release-information>
 
