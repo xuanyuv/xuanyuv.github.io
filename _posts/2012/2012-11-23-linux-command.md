@@ -290,3 +290,28 @@ unzip aa.zip -x bb.txt
 # 不解压查看zip内容，也可以用-l、-Z（大写）参数，都是不解压查看
 unzip -v aa.zip
 ```
+
+## 打印PID信息
+
+```ruby
+#! /bin/bash
+# Function: 根据用户输入的PID，过滤出该PID所有的信息
+read -p "请输入要查询的进程PID: " P
+n=`ps -aux| awk '$2~/^'$P'$/{print $11}'|wc -l`
+if [ $n -eq 0 ];then
+ echo "该进程PID不存在"
+ exit
+fi
+echo "--------------------------------------------"
+echo "PID: $P"
+echo "CPU占用率：`ps -aux| awk '$2~/^'$P'$/{print $3}'`%"
+echo "内存占用率：`ps -aux| awk '$2~/^'$P'$/{print $4}'`%"
+echo "进程共享内存：`ps -aux| awk '$2~/^'$P'$/{print $6/1024}'`(MB)"
+echo "进程虚拟内存：`ps -aux| awk '$2~/^'$P'$/{print $5}'`(KB)"
+echo "进程所属用户: `ps -aux| awk '$2~/^'$P'$/{print $1}'`"
+echo "进程命令：`ps -aux| awk '$2~/^'$P'$/{print $11}'`"
+echo "进程状态：`ps -aux| awk '$2~/^'$P'$/{print $8}'`"
+echo "进程运行的时间：`ps -aux| awk '$2~/^'$P'$/{print $10}'`"
+echo "进程开始运行的时刻：`ps -aux| awk '$2~/^'$P'$/{print $9}'`"
+echo "--------------------------------------------"
+```
