@@ -29,6 +29,7 @@ type: page
 
 ## 站点
 
+* [warm-flow国产开源工作流](https://blog.csdn.net/weixin_43284369/article/details/136369547)
 * [CodeSheep](http://www.codesheep.cn)
 * [KLBLOG](http://www.kailing.pub)
 * [并发编程网](http://ifeve.com)
