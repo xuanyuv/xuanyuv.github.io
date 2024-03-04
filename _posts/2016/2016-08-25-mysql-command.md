@@ -217,12 +217,18 @@ WHERE id in(SELECT max(id) FROM coop_push_user GROUP BY mobile);
 
 -- 对于一对多的表统计，根据[一]把[多]里面的某个字段都查出来在一起
 SELECT t.email, t.name, IF(t.type=1, '个人', IF(t.type=2,'企业','未知')) AS accountType,
-GROUP_CONCAT(ac.channel_no) AS channelList,
-aco.cooper_no
+GROUP_CONCAT(ac.channel_no) AS channelList, aco.cooper_no
 FROM t_account t
 LEFT JOIN t_account_channel ac ON t.id=ac.account_id
 LEFT JOIN t_account_cooper aco ON t.id=aco.account_id
-GROUP by t.id;
+GROUP BY t.id;
+-- 上面这个查询，在 5.7 及以上版本会报错：...this is incompatible with sql_mode=only_full_group_by...
+-- 就是说 SELECT 后面的字段没有出现在 GROUP BY 当中，此时要么改SQL，要么临时关闭 ONLY_FULL_GROUP_BY 规则
+-- 临时关闭的话，先通过SHOW VARIABLES LIKE 'sql_mode'（或者SELECT @@GLOBAL.sql_mode）查看当前的sql_mode
+-- 得到结果ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+-- 然后把ONLY_FULL_GROUP_BY去掉，重新设置sql_mode即可
+-- SET sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+-- 注：这样修改，也只是这一次的会话有效（若想永久有效，就得修改配置文件）
 ```
 
 ## 同一张表分别统计后汇总结果
