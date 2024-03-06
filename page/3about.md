@@ -30,11 +30,9 @@ type: page
 ## 站点
 
 * [warm-flow国产开源工作流引擎](https://blog.csdn.net/weixin_43284369/article/details/136369547)
-* [CodeSheep](http://www.codesheep.cn)
 * [KLBLOG](http://www.kailing.pub)
-* [并发编程网](http://ifeve.com)
 * [程序猿DD](http://blog.didispace.com)
-* [松花皮蛋](http://www.liangsonghua.me)
+* [并发编程网](http://ifeve.com)
 * [银保监](http://www.cbirc.gov.cn)
 * [证监会](http://www.csrc.gov.cn)
 
