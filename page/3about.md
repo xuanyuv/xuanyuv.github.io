@@ -19,13 +19,12 @@ type: page
 
 ## 收藏
 
-* [万能命令](https://wanneng.run/cn/)、[GithubRelease下载加速](https://doget.nocsdn.com/)、[Fetch GitHub Hosts](https://hosts.gitcdn.top/)
-* [歌词芊芊](http://opqnext.com/)、[lrc歌词编辑器](http://lrc.opqnext.com/)
+* [万能命令](https://wannengrun.net/)、[GithubRelease下载加速](https://doget.nocsdn.com/)、[Fetch GitHub Hosts](https://hosts.gitcdn.top/)
 * [烈火新站](https://apphot.cc/)、[吾爱破解](https://www.52pojie.cn)、[我爱卡](https://bbs.51credit.com)、[DJ音乐](https://www.dj.net/)、[DJ舞曲网](https://www.djyyy.com/)
 * [英雄志讲武堂](http://www.jiang-wu-tang.com/JWTphpBBS/index.php)、[知轩藏书](http://www.zxcs.me)、[知轩藏书2](https://zxcs.zip/)、[知轩藏书3](https://zxcs.info/)、[书荒部落](http://noveless.com)
-* [HTML5炫画](http://www.html5tricks.com)、[懒人之家](http://www.lanrenzhijia.com)
-* [荔枝图床](http://i.nizdm.com)、[外链图床](https://www.ssdax.com/tool/pic/)、[新浪微博图床](http://weibo.com/minipublish)、[新浪微博图床Chrome扩展](https://github.com/Suxiaogang/WeiboPicBed)、[SMMS图床](https://sm.ms)
-* [CMCT](https://cmct.tv/?fromuid=72191)、[伊甸园](http://bbs.sfile2012.com)、[FIX字幕侠](http://www.zimuxia.cn)、[HQC资源组](https://www.gscq.me)、[BD影视](https://www.bd-film.cc)、[UP云搜](https://upyunso3.com/)、[橘子盘搜](https://www.nmme.cc/)
+* [HTML5炫画](http://www.html5tricks.com)、[懒人之家](http://www.lanrenzhijia.com)、[故宫壁纸](https://www.dpm.org.cn/lights/royal.html)
+* [新浪微博图床](http://weibo.com/minipublish)、[新浪微博图床Chrome扩展](https://github.com/Suxiaogang/WeiboPicBed)、[SMMS图床](https://sm.ms)
+* [CMCT](https://cmct.tv/?fromuid=72191)、[伊甸园](http://bbs.sfile2012.com)、[FIX字幕侠](http://www.zimuxia.cn)、[MP4电影](https://domp4.icu/)、[UP云搜](https://upyunso3.com/)
 
 ## 站点
 
