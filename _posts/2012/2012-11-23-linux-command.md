@@ -263,10 +263,13 @@ drwxrwxrwx. 4 root root 4.0K May 27  2016 ROOT
 drwxr-xr-x  4 root root 4.0K Oct 13 11:19 WEB-INF
 [root@wxtest webapps]#
 
-# 配置 ll 命令直接显示文件列表及大小
-[root@wxtest webapps]# cd ~
+# 全局配置用户登录后的默认目录，以及 ll 命令直接显示文件列表及大小
+[root@wxtest webapps]# vim /etc/bashrc
+                     # 文件内容尾部，增加以下两行
+                       alias ll='ls -lh --color=auto'
+                       cd /app/backend/logs/open/
 [root@wxtest webapps]# vim .bashrc
-输入这个命令，保存即可：alias ll='ls -lh --color=auto'（含单引号）
+[root@wxtest webapps]# source /etc/bashrc # 令配置生效
 ```
 
 ## 文件解压缩
