@@ -268,7 +268,6 @@ drwxr-xr-x  4 root root 4.0K Oct 13 11:19 WEB-INF
                      # 文件内容尾部，增加以下两行
                        alias ll='ls -lh --color=auto'
                        cd /app/backend/logs/open/
-[root@wxtest webapps]# vim .bashrc
 [root@wxtest webapps]# source /etc/bashrc # 令配置生效
 ```
 
