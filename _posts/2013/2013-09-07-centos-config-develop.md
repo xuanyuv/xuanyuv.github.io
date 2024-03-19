@@ -157,57 +157,63 @@ Preparing...                ########################################### [100%]
 
 ## 安装wkhtmltopdf
 
-下载地址为：https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+下载地址为：https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 
 ```sh
 [Jadyer@localhost ~]$ cd /app/software/
-[Jadyer@localhost software]$ tar -xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz（该压缩包没有用gzip格式压缩，不用加-z）
-[Jadyer@localhost software]$ mv wkhtmltox ..
-[Jadyer@localhost app]$ cd ..
-[Jadyer@localhost app]$ vim /etc/profile
-                        # Set wkhtmltopdf Environment Variable
-                        WKHTMLTOPDF_HOME=/app/wkhtmltox
-                        PATH=$WKHTMLTOPDF_HOME/bin:$PATH
-                        export WKHTMLTOPDF_HOME PATH
-[Jadyer@localhost app]$ source /etc/profile
-[Jadyer@localhost app]$ echo $PATH
-[Jadyer@localhost app]$ wkhtmltopdf -V
-wkhtmltopdf 0.12.4 (with patched qt)
-[Jadyer@localhost app]$ yum install -y fontconfig mkfontscale  # 安装字体
-[Jadyer@localhost app]$ fc-list                                # 查看系统中已安装的字体
-[Jadyer@localhost app]$ fc-list :lang=zh                       # 查看系统中已安装的中文字体
-[Jadyer@localhost app]$ cd /usr/share/fonts/
-[Jadyer@localhost fonts]$ rz simsun.ttc                        # 上传字体文件至/usr/share/fonts/
-[Jadyer@localhost fonts]$ mkfontscale
-[Jadyer@localhost fonts]$ mkfontdir
-[Jadyer@localhost fonts]$ fc-cache                             # 通过这三个命令建立字体索引信息、更新字体缓存
-[Jadyer@localhost fonts]$ fc-list :lang=zh                     # 查看系统中已安装的中文字体
-```
-
-```sh
-查看wkhtmltopdf版本时，可能会遇到下面几个错误
-wkhtmltopdf: error while loading shared libraries: libXrender.so.1: cannot open shared object file: No such file or directory
-wkhtmltopdf: error while loading shared libraries: libfontconfig.so.1: cannot open shared object file: No such file or directory
-wkhtmltopdf: error while loading shared libraries: libXext.so.6: cannot open shared object file: No such file or directory
-用这三个命令分别安装一下，就可以了
-yum install -y libXrender*
-yum install -y libfontconfig*
-yum install -y libXext*
+[Jadyer@localhost software]$ rpm -ivh --badreloc --relocate /usr/local=/app/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+error: Failed dependencies:
+	fontconfig is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
+	libX11 is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
+	libXext is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
+	libXrender is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
+	libjpeg is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
+	xorg-x11-fonts-75dpi is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
+	xorg-x11-fonts-Type1 is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
+[Jadyer@localhost software]$
+[Jadyer@localhost software]$ su root
+[root@localhost app]$ yum install -y libXrender*
+[root@localhost app]$ yum install -y libXext*
+[root@localhost app]$ yum install -y xorg-x11-fonts-Type1
+[root@localhost app]$ yum install -y xorg-x11-fonts-75dpi
+[root@localhost app]$ yum install -y libjpeg              # 注意：接下来还是要用root安装，普通用户安装rpm会失败
+[root@localhost app]$ rpm -ivh --badreloc --relocate /usr/local=/app/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:wkhtmltox-1:0.12.6-1.centos7     ################################# [100%]
+[root@localhost app]$ vim /etc/profile
+                      # Set wkhtmltox Environment Variable
+                      WKHTMLTOPDF_HOME=/app/wkhtmltox-0.12.6-1
+                      PATH=$WKHTMLTOPDF_HOME/bin:$PATH
+                      export WKHTMLTOPDF_HOME PATH
+[root@localhost app]$ source /etc/profile
+[root@localhost app]$ echo $PATH
+[root@localhost app]$ wkhtmltopdf -V
+wkhtmltopdf 0.12.6 (with patched qt)
+[root@localhost app]$ yum install -y fontconfig mkfontscale  # 安装字体
+[root@localhost app]$ fc-list                                # 查看系统中已安装的字体
+[root@localhost app]$ fc-list :lang=zh                       # 查看系统中已安装的中文字体
+[root@localhost app]$ cd /usr/share/fonts/
+[root@localhost fonts]$ rz simsun.ttc                        # 上传字体文件至/usr/share/fonts/
+[root@localhost fonts]$ mkfontscale
+[root@localhost fonts]$ mkfontdir
+[root@localhost fonts]$ fc-cache                             # 通过这三个命令建立字体索引信息、更新字体缓存
+[root@localhost fonts]$ fc-list :lang=zh                     # 查看系统中已安装的中文字体
 ```
 
 ## 修改RPM安装路径
 
-RPM包通常都有默认的安装路径，但也有办法更新它的默认安装路径（只不过不是所有的rpm都允许安装到其它路径）
+RPM 包通常都有默认的安装路径，但也可以修改这个路径（并非所有 rpm 都允许安装到其它路径）
 
-下面通过CollabNetSubversion-client-1.8.13-1.x86_64.rpm和jdk-6u45-linux-amd64.rpm举例说明
+下面通过 CollabNetSubversion-client-1.8.13-1.x86_64.rpm 和 jdk-6u45-linux-amd64.rpm 举例说明
 
-通过二者的`Relocations`参数，我们可以看到Subversion是不允许重定位的，而jdk则允许
+通过二者的`Relocations`参数，我们可以看到 Subversion 是不允许重定位的，而 jdk 则允许
 
-所以Subversion只能安装在默认路径下，而jdk则可以修改其默认安装路径`/usr/java`为其它路径
+所以 Subversion 只能安装在默认路径下，而 jdk 则可以修改其默认的安装路径（/usr/java）
 
 方法为执行命令：`rpm -ivh --badreloc --relocate /usr/java=/app/jdk1.6.0_45 jdk-6u45-linux-amd64.rpm`
 
-其中badreloc是将文件强制安装到指定位置，relocate是将文件从oldpath安装到newpath
+其中：`--badreloc`是将文件强制安装到指定位置，`--relocate`是将文件从 oldpath 安装到 newpath
 
 ```sh
 [Jadyer@localhost app]$ rpm -qpi CollabNetSubversion-client-1.8.13-1.x86_64.rpm
