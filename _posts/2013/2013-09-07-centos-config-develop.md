@@ -176,7 +176,7 @@ error: Failed dependencies:
 [root@localhost app]$ yum install -y libXext*
 [root@localhost app]$ yum install -y xorg-x11-fonts-Type1
 [root@localhost app]$ yum install -y xorg-x11-fonts-75dpi
-[root@localhost app]$ yum install -y libjpeg              # 注意：接下来还是要用root安装，普通用户安装rpm会失败
+[root@localhost app]$ yum install -y libjpeg              # 注意：接下来还是要用root安装，普通用户会失败
 [root@localhost app]$ rpm -ivh --badreloc --relocate /usr/local=/app/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 Preparing...                          ################################# [100%]
 Updating / installing...
