@@ -128,8 +128,8 @@ interactive-timeout
 
 ```sql
 mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'xuanyu123456';
-mysql> update user set host='%' where user='root';
-mysql> flush privileges;
+mysql> UPDATE user SET Host='%' WHERE User='root';
+mysql> FLUSH PRIVILEGES;
 ```
 
 再创建一个新用户**dev**，以后用新用户访问数据库**open**
@@ -145,6 +145,6 @@ mysql> GRANT CREATE, SELECT, INSERT, UPDATE, DELETE, DROP ON open.* TO 'dev'@'%'
 
 ```sql
 mysql> mysql -uroot -pxxxxx
-mysql> grant all privileges on *.* to 'root'@'%' with grant option;
-mysql> flush privileges;
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+mysql> FLUSH PRIVILEGES;
 ```
