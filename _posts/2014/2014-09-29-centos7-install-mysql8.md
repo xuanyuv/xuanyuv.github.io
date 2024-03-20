@@ -55,25 +55,26 @@ mariadb-libs-5.5.68-1.el7.x86_64
 ```
 
 这时就会初始化 mysql_data 目录，同时创建了 root 用户，且密码为空
+
 （`--initialize` 参数才会生成随机密码，`--initialize-insecure` 生成的是空密码）
 
 接下来继续配置，并加入自启动
 
 ```sh
+[root@CentOS79 ~]# vim /etc/profile
+                       # Set MySQL Environment Variable
+                       MySQL_HOME=/app/mysql-8.0.36/mysql
+                       PATH=$MySQL_HOME/bin:$PATH
+                       export MySQL_HOME PATH
+[root@CentOS79 ~]# echo $PATH
+[root@CentOS79 ~]# source /etc/profile
+[root@CentOS79 ~]# echo $PATH
 [root@CentOS79 ~]# cd /app/mysql-8.0.36/mysql/support-files/
 [root@CentOS79 support-files]# cp mysql.server /etc/init.d/mysqld # 拷贝启动脚本
 [root@CentOS79 support-files]# chmod +x /etc/init.d/mysqld        # 赋予可执行权限
 [root@CentOS79 support-files]# chkconfig --add mysqld             # 加入系统服务
 [root@CentOS79 support-files]# chkconfig mysqld on                # 开机启动
-[root@CentOS79 support-files]# vim /etc/profile
-                                   # Set MySQL Environment Variable
-                                   MySQL_HOME=/app/mysql-8.0.36/mysql
-                                   PATH=$MySQL_HOME/bin:$PATH
-                                   export MySQL_HOME PATH
-[root@CentOS79 support-files]# echo $PATH
-[root@CentOS79 support-files]# source /etc/profile
-[root@CentOS79 support-files]# echo $PATH
-[root@CentOS79 support-files]# vim /etc/my.cnf
+[root@CentOS79 support-files]# vim /etc/my.cnf                    # 编写MySQL启动配置
 [root@CentOS79 support-files]# cd /app/mysql-8.0.36/mysql_data/
 [root@CentOS79 mysql_data]# mkdir binlog
 [root@CentOS79 mysql_data]# chown -R mysql:MySQL binlog/
