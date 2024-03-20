@@ -39,7 +39,7 @@ mariadb-libs-5.5.68-1.el7.x86_64
 [Jadyer@CentOS79 software]$ mkdir -pv /app/mysql-8.0.36/mysql_data
 [Jadyer@CentOS79 software]$ mv mysql-8.0.36-linux-glibc2.17-x86_64 /app/mysql-8.0.36/mysql
 [root@CentOS79 ~]# groupadd MySQL                             # 添加MySQL组
-[root@CentOS79 ~]# useradd -s /sbin/nologin -M -g MySQL mysql # 创建mysql用户并将其分配到MySQL组，且不能shell登录系统
+[root@CentOS79 ~]# useradd -s /sbin/nologin -M -g MySQL mysql # 创建mysql用户并分配组，且不能shell登录系统
 [root@CentOS79 ~]# chown -R mysql:MySQL /app/mysql-8.0.36/
 ```
 
@@ -48,13 +48,14 @@ mariadb-libs-5.5.68-1.el7.x86_64
 ```sh
 [root@CentOS79 ~]# cd /app/mysql-8.0.36/mysql/bin/
 [root@CentOS79 bin]# ./mysqld --initialize-insecure --user=mysql --basedir=/app/mysql-8.0.36/mysql --datadir=/app/mysql-8.0.36/mysql_data
-2024-03-20T09:10:40.606921Z 0 [System] [MY-013169] [Server] /app/mysql-8.0.36/mysql/bin/mysqld (mysqld 8.0.36) initializing of server in progress as process 17071
-2024-03-20T09:10:40.612179Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
-2024-03-20T09:10:41.032975Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
-2024-03-20T09:10:42.496428Z 6 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+[Server] /app/mysql-8.0.36/mysql/bin/mysqld (mysqld 8.0.36) initializing of server in progress as process 17071
+[InnoDB] InnoDB initialization has started.
+[InnoDB] InnoDB initialization has ended.
+[Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
 ```
 
-这时就会初始化 mysql_data 目录，同时创建了 root 用户，且密码为空（`--initialize` 参数才会生成随机密码）
+这时就会初始化 mysql_data 目录，同时创建了 root 用户，且密码为空
+（`--initialize` 参数才会生成随机密码，`--initialize-insecure` 生成的是空密码）
 
 接下来继续配置，并加入自启动
 
@@ -94,13 +95,13 @@ socket                = /app/mysql-8.0.36/mysql_data/mysql.sock
 #skip-grant-tables
 server-id  = 53306                                                 # Mysql唯一标识（一个集群中唯一）
 port       = 3306                                                  # 服务端口（默认3306）
-user       = mysql                                                 # 启动用户（官方不建议root用户启动数据库）
+user       = mysql                                                 # 启动用户（官方不建议root启动数据库）
 basedir    = /app/mysql-8.0.36/mysql                               # mysql的安装目录
 datadir    = /app/mysql-8.0.36/mysql_data                          # mysql的数据存放目录
 socket     = /app/mysql-8.0.36/mysql_data/mysql.sock               # 指定套接字文件
 pid-file   = /app/mysql-8.0.36/mysql_data/mysqld.pid               # 指定pid文件
 max_connections     = 200                                          # 允许最大连接数
-max_connect_errors  = 10                                           # 允许连接失败的次数（防止从该主机攻击数据库）
+max_connect_errors  = 10                                           # 允许连接失败的次数
 slow_query_log      = 1                                            # 开启慢查询日志
 slow_query_log_file = /app/mysql-8.0.36/mysql_data/slow_query.log  # 指定慢查询日志文件
 long_query_time     = 3                                            # 指定3秒返回查询的结果为慢查询
@@ -123,16 +124,15 @@ interactive-timeout
 
 ## 启动MySQL
 
-```sh
-[root@CentOS79 ~]# service mysqld start
-[root@CentOS79 ~]# service mysqld status
-[root@CentOS79 ~]# mysql -uroot
+使用命令 `service mysqld start` 手动启动，再初次登录：`mysql -uroot`，然后设置 root 用户的密码权限
+
+```sql
 mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'xuanyu123456';
 mysql> update user set host='%' where user='root';
 mysql> flush privileges;
 ```
 
-创建一个新用户，以后用新用户访问数据库
+再创建一个新用户**dev**，以后用新用户访问数据库**open**
 
 ```sql
 mysql> CREATE DATABASE IF NOT EXISTS open DEFAULT CHARSET UTF8MB4 COLLATE UTF8MB4_UNICODE_CI;
@@ -141,7 +141,7 @@ mysql> GRANT CREATE ON open.* TO 'dev'@'%';
 mysql> GRANT CREATE, SELECT, INSERT, UPDATE, DELETE, DROP ON open.* TO 'dev'@'%';
 ```
 
-执行最后一句时，若报错：`[1044] Access denied for user 'root'@'%' to database`，那么执行以下操作即可
+若报错：`[1044] Access denied for user 'root'@'%' to database`，执行以下命令即可
 
 ```sql
 mysql> mysql -uroot -pxxxxx
