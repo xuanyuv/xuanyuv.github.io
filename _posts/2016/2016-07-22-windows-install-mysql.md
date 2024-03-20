@@ -31,15 +31,15 @@ Windows 上安装完 MySQL，以前都会有一个配置向导工具，一路点
 
 **现在，到了脑洞大开的时候了**
 
-官网提供的 5.5.X 下载地址为：<http://cdn.mysql.com/Downloads/MySQL-5.5/mysql-5.5.50-winx64.msi>
+官网提供的 5.5.62 下载地址为：<http://cdn.mysql.com/Downloads/MySQL-5.5/mysql-5.5.62-winx64.msi>
 
 依此类推
 
-mysql-5.6.32-winx64.msi（37.0MB）：<http://cdn.mysql.com/Downloads/MySQL-5.6/mysql-5.6.32-winx64.msi>
+mysql-5.6.32-winx64.msi（37.0MB）：<http://cdn.mysql.com/Downloads/MySQL-5.6/mysql-5.6.51-winx64.msi>
 
-mysql-5.7.31-winx64.msi（117MB）：<http://cdn.mysql.com/Downloads/MySQL-5.7/mysql-5.7.31-winx64.msi>
+mysql-5.7.31-winx64.msi（117MB）：<http://cdn.mysql.com/Downloads/MySQL-5.7/mysql-5.7.44-winx64.msi>
 
-mysql-8.0.21-winx64.msi（140MB）：<http://cdn.mysql.com/Downloads/MySQL-8.0/mysql-8.0.21-winx64.msi>
+mysql-8.0.21-winx64.msi（140MB）：<http://cdn.mysql.com/Downloads/MySQL-8.0/mysql-8.0.36-winx64.msi>
 
 # 安装
 

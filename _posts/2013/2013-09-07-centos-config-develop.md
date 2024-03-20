@@ -115,7 +115,7 @@ configure arguments: --prefix=/app/nginx-1.24.0 --user=nginx --group=Nginx --wit
 [root@CentOS79 nginx-1.24.0]# vim conf/nginx.conf
 user nginx Nginx;
 [root@CentOS79 nginx-1.24.0]# ./sbin/nginx                #启动
-[root@CentOS79 nginx-1.24.0]# ps -ef|grep nginx           #查看是否启动
+[root@CentOS79 nginx-1.24.0]# ps -ef | grep nginx         #查看是否启动
 root      3090     1  0 11:42 ?        00:00:00 nginx: master process ./sbin/nginx
 nginx     3091  3090  0 11:42 ?        00:00:00 nginx: worker process
 root      3118 31670  0 11:42 pts/1    00:00:00 grep --color=auto nginx

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CentOS安装MySQL"
+title: "CentOS6安装MySQL5"
 categories: 数据库
 tags: 数据库 mysql centos
 author: 玄玉
@@ -57,10 +57,10 @@ CMake（cross platform make）的特性是独立于源码编译，编译工作�
 
 ```sh
 [root@CentOS64 ~]# groupadd -r mysql
-[root@CentOS64 ~]# useradd -r -s /sbin/nologin -g mysql mysql
+[root@CentOS64 ~]# useradd -r -s /sbin/nologin -M -g mysql mysql
 [root@CentOS64 ~]# mkdir -pv /app/mysql
 [root@CentOS64 ~]# mkdir -pv /app/mysql_data
-[root@CentOS64 ~]# chown -R mysql.mysql /app/mysql_data
+[root@CentOS64 ~]# chown -R mysql:mysql /app/mysql_data
 [root@CentOS64 ~]# tar zxvf /app/software/mysql-5.5.38.tar.gz
 [root@CentOS64 ~]# cd mysql-5.5.38/
 [root@CentOS64 mysql-5.5.38]# cmake . -DCMAKE_INSTALL_PREFIX=/app/mysql -DMYSQL_DATADIR=/app/mysql_data -DSYSCONFDIR=/etc -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_READLINE=1 -DWITH_ZLIB=system -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci
@@ -74,7 +74,7 @@ CMake（cross platform make）的特性是独立于源码编译，编译工作�
 [root@CentOS64 ~]# cd /app/mysql/support-files/
 [root@CentOS64 support-files]# cp my-large.cnf /etc/my.conf       # 拷贝配置文件
 [root@CentOS64 support-files]# cp mysql.server /etc/init.d/mysqld # 拷贝启动脚本
-[root@CentOS64 support-files]# chmod -x /etc/init.d/mysqld        # 赋予可执行权限
+[root@CentOS64 support-files]# chmod +x /etc/init.d/mysqld        # 赋予可执行权限
 [root@CentOS64 support-files]# chkconfig --add mysqld             # 加入系统服务
 [root@CentOS64 support-files]# chkconfig mysqld on                # 开机启动
 [root@CentOS64 support-files]# vi /etc/profile.d/mysql.sh         # 手动创建，添加内容为：export PATH=$PATH:/app/mysql/bin
@@ -129,7 +129,7 @@ skip-name-resolve
 5. 初始化MySQL时要跟上`--basedir`和`--datadir`参数<br>
    否则会由于相对路径的关系报告FATAL ERROR: Could not find ./bin/my_print_defaults
 6. 启动MySQL时若提示：`env: /etc/init.d/mysqld: 权限不够`<br>
-   此时执行`chmod -x /etc/init.d/mysqld`是不行的，需要执行`chmod a+wrx /etc/init.d/mysqld`<br>
+   说明执行`chmod +x /etc/init.d/mysqld`还不够，需要执行`chmod a+wrx /etc/init.d/mysqld`<br>
    然后执行`service mysqld start`即可启动，启动成功时会看到：**Starting MySQL.... SUCCESS!**<br>
    注意此操作全程为root用户
 7. 安装并启动完MySQL后，默认不支持用户通过非本机的客户端连接到MySQL，解决办法如下<br>
