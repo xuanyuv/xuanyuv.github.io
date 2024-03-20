@@ -81,7 +81,7 @@ mariadb-libs-5.5.68-1.el7.x86_64
 
 `my.cnf` 配置的内容如下
 
-```
+```sh
 [mysql]
 default-character-set = utf8mb4
 socket                = /app/mysql-8.0.36/mysql_data/mysql.sock
@@ -124,7 +124,9 @@ interactive-timeout
 
 ## 启动MySQL
 
-使用命令 `service mysqld start` 手动启动，再初次登录：`mysql -uroot`，然后设置 root 用户的密码权限
+通过命令 `service mysqld start` 手动启动数据库
+
+初次登录：`mysql -uroot`，然后设置 root 用户的密码和权限
 
 ```sql
 mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'xuanyu123456';
