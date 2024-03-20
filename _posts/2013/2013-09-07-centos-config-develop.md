@@ -87,6 +87,46 @@ alias ipv6 off
 
 再执行`/app/tomcat/bin/startup.sh`可以启动Tomcat了
 
+## 安装Nginx
+
+这里采用的是源码编译安装，下载地址为：https://nginx.org/download/nginx-1.24.0.tar.gz
+
+```sh
+# 先安装依赖项：编译时依赖gcc环境、pcre可以解析正则以支持rewrite、 zlib对http包内容进行gzip压缩、openssl支持https
+[root@CentOS79 ~]# yum -y install gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel
+[root@CentOS79 ~]# groupadd Nginx                             #添加Nginx组
+[root@CentOS79 ~]# useradd -s /sbin/nologin -M -g Nginx nginx #创建nginx用户并将其分配到Nginx组，且不能shell登录系统
+[root@CentOS79 ~]# cd /app/software/                          #普通用户不能启动1024以内的端口监听，所以这里用root安装
+[root@CentOS79 software]# tar zxvf nginx-1.24.0.tar.gz
+[root@CentOS79 software]# cd nginx-1.24.0/
+[root@CentOS79 nginx-1.24.0]# pwd
+/app/software/nginx-1.24.0
+[root@CentOS79 nginx-1.24.0]# ./configure --prefix=/app/nginx-1.24.0 --user=nginx --group=Nginx --with-compat --with-debug --with-threads --with-file-aio --with-http_sub_module --with-http_v2_module --with-http_addition_module --with-http_auth_request_module --with-http_degradation_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_stub_status_module --with-http_ssl_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module
+[root@CentOS79 nginx-1.24.0]# make && make install
+[root@CentOS79 nginx-1.24.0]# cd ..
+[root@CentOS79 software]# rm -rf nginx-1.24.0
+[root@CentOS79 software]# cd /app/nginx-1.24.0/
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -V
+nginx version: nginx/1.24.0
+built by gcc 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC) 
+built with OpenSSL 1.0.2k-fips  26 Jan 2017
+TLS SNI support enabled
+configure arguments: --prefix=/app/nginx-1.24.0 --user=nginx --group=Nginx --with-compat --with-debug --with-threads --with-file-aio --with-http_sub_module --with-http_v2_module --with-http_addition_module --with-http_auth_request_module --with-http_degradation_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_stub_status_module --with-http_ssl_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module
+[root@CentOS79 nginx-1.24.0]# vim conf/nginx.conf
+user nginx Nginx
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx
+[root@CentOS79 nginx-1.24.0]# ps -ef|grep nginx
+root      3090     1  0 11:42 ?        00:00:00 nginx: master process ./sbin/nginx
+nginx     3091  3090  0 11:42 ?        00:00:00 nginx: worker process
+root      3118 31670  0 11:42 pts/1    00:00:00 grep --color=auto nginx
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s reload
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s stop
+[root@CentOS79 nginx-1.24.0]# vim /etc/rc.d/rc.local      #添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
+/app/nginx-1.24.0/sbin/nginx                              #最下面添加这一行即可（要是求绝对路径）
+[root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local #赋权
+[root@CentOS79 nginx-1.24.0]# reboot
+```
+
 ## 安装Maven
 
 ```sh
@@ -172,33 +212,33 @@ error: Failed dependencies:
 	xorg-x11-fonts-Type1 is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
 [Jadyer@localhost software]$
 [Jadyer@localhost software]$ su root
-[root@localhost app]$ yum install -y libXrender*
-[root@localhost app]$ yum install -y libXext*
-[root@localhost app]$ yum install -y xorg-x11-fonts-Type1
-[root@localhost app]$ yum install -y xorg-x11-fonts-75dpi
-[root@localhost app]$ yum install -y libjpeg              # 注意：接下来还是要用root安装，普通用户会失败
-[root@localhost app]$ rpm -ivh --badreloc --relocate /usr/local=/app/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+[root@localhost app]# yum install -y libXrender*
+[root@localhost app]# yum install -y libXext*
+[root@localhost app]# yum install -y xorg-x11-fonts-Type1
+[root@localhost app]# yum install -y xorg-x11-fonts-75dpi
+[root@localhost app]# yum install -y libjpeg              # 注意：接下来还是要用root安装，普通用户会失败
+[root@localhost app]# rpm -ivh --badreloc --relocate /usr/local=/app/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 Preparing...                          ################################# [100%]
 Updating / installing...
    1:wkhtmltox-1:0.12.6-1.centos7     ################################# [100%]
-[root@localhost app]$ vim /etc/profile
+[root@localhost app]# vim /etc/profile
                       # Set wkhtmltox Environment Variable
                       WKHTMLTOPDF_HOME=/app/wkhtmltox-0.12.6-1
                       PATH=$WKHTMLTOPDF_HOME/bin:$PATH
                       export WKHTMLTOPDF_HOME PATH
-[root@localhost app]$ source /etc/profile
-[root@localhost app]$ echo $PATH
-[root@localhost app]$ wkhtmltopdf -V
+[root@localhost app]# source /etc/profile
+[root@localhost app]# echo $PATH
+[root@localhost app]# wkhtmltopdf -V
 wkhtmltopdf 0.12.6 (with patched qt)
-[root@localhost app]$ yum install -y fontconfig mkfontscale  # 安装字体
-[root@localhost app]$ fc-list                                # 查看系统中已安装的字体
-[root@localhost app]$ fc-list :lang=zh                       # 查看系统中已安装的中文字体
-[root@localhost app]$ cd /usr/share/fonts/
-[root@localhost fonts]$ rz simsun.ttc                        # 上传字体文件至/usr/share/fonts/
-[root@localhost fonts]$ mkfontscale
-[root@localhost fonts]$ mkfontdir
-[root@localhost fonts]$ fc-cache                             # 通过这三个命令建立字体索引信息、更新字体缓存
-[root@localhost fonts]$ fc-list :lang=zh                     # 查看系统中已安装的中文字体
+[root@localhost app]# yum install -y fontconfig mkfontscale  # 安装字体
+[root@localhost app]# fc-list                                # 查看系统中已安装的字体
+[root@localhost app]# fc-list :lang=zh                       # 查看系统中已安装的中文字体
+[root@localhost app]# cd /usr/share/fonts/
+[root@localhost fonts]# rz simsun.ttc                        # 上传字体文件至/usr/share/fonts/
+[root@localhost fonts]# mkfontscale
+[root@localhost fonts]# mkfontdir
+[root@localhost fonts]# fc-cache                             # 通过这三个命令建立字体索引信息、更新字体缓存
+[root@localhost fonts]# fc-list :lang=zh                     # 查看系统中已安装的中文字体
 ```
 
 ## 修改RPM安装路径
