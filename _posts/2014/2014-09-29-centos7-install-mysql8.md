@@ -39,7 +39,7 @@ mariadb-libs-5.5.68-1.el7.x86_64
 [Jadyer@CentOS79 software]$ mkdir -pv /app/mysql-8.0.36/mysql_data
 [Jadyer@CentOS79 software]$ mv mysql-8.0.36-linux-glibc2.17-x86_64 /app/mysql-8.0.36/mysql
 [root@CentOS79 ~]# groupadd MySQL                             # 添加MySQL组
-[root@CentOS79 ~]# useradd -s /sbin/nologin -M -g MySQL mysql # 创建mysql用户并分配组，且不能shell登录系统
+[root@CentOS79 ~]# useradd -s /sbin/nologin -M -g MySQL mysql # 创建mysql用户并分配组，且不能shell登录
 [root@CentOS79 ~]# chown -R mysql:MySQL /app/mysql-8.0.36/
 ```
 
@@ -56,7 +56,7 @@ mariadb-libs-5.5.68-1.el7.x86_64
 
 这时就会初始化 mysql_data 目录，同时创建了 root 用户，且密码为空
 
-（`--initialize` 参数才会生成随机密码，`--initialize-insecure` 生成的是空密码）
+> `--initialize` 参数才会生成随机密码，`--initialize-insecure` 生成的是空密码
 
 接下来继续配置，并加入自启动
 
