@@ -92,7 +92,7 @@ alias ipv6 off
 这里采用的是源码编译安装，下载地址为：https://nginx.org/download/nginx-1.24.0.tar.gz
 
 ```sh
-# 先安装依赖项：编译时依赖gcc环境、pcre可以解析正则以支持rewrite、 zlib对http包内容进行gzip压缩、openssl支持https
+# 先安装依赖项：编译时依赖gcc环境、pcre可以解析正则以支持rewrite等、 zlib对http包内容进行gzip压缩、openssl支持https
 [root@CentOS79 ~]# yum -y install gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel
 [root@CentOS79 ~]# groupadd Nginx                             #添加Nginx组
 [root@CentOS79 ~]# useradd -s /sbin/nologin -M -g Nginx nginx #创建nginx用户并将其分配到Nginx组，且不能shell登录系统
@@ -113,18 +113,18 @@ built with OpenSSL 1.0.2k-fips  26 Jan 2017
 TLS SNI support enabled
 configure arguments: --prefix=/app/nginx-1.24.0 --user=nginx --group=Nginx --with-compat --with-debug --with-threads --with-file-aio --with-http_sub_module --with-http_v2_module --with-http_addition_module --with-http_auth_request_module --with-http_degradation_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_stub_status_module --with-http_ssl_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module
 [root@CentOS79 nginx-1.24.0]# vim conf/nginx.conf
-user nginx Nginx
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx
-[root@CentOS79 nginx-1.24.0]# ps -ef|grep nginx
+user nginx Nginx;
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx                #启动
+[root@CentOS79 nginx-1.24.0]# ps -ef|grep nginx           #查看是否启动
 root      3090     1  0 11:42 ?        00:00:00 nginx: master process ./sbin/nginx
 nginx     3091  3090  0 11:42 ?        00:00:00 nginx: worker process
 root      3118 31670  0 11:42 pts/1    00:00:00 grep --color=auto nginx
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s reload
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s stop
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s reload      #重载配置
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s stop        #停止
 [root@CentOS79 nginx-1.24.0]# vim /etc/rc.d/rc.local      #添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
 /app/nginx-1.24.0/sbin/nginx                              #最下面添加这一行即可（要是求绝对路径）
-[root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local #赋权
-[root@CentOS79 nginx-1.24.0]# reboot
+[root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local #赋权，使其变成可执行文件
+[root@CentOS79 nginx-1.24.0]# reboot                      #最后，重启系统
 ```
 
 ## 安装Maven
