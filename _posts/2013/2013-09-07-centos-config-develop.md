@@ -63,22 +63,22 @@ alias ipv6 off
 ```sh
 [root@CentOS64 ~]# cd /
 [root@CentOS64 /]# mkdir app
-[root@CentOS64 ~]# groupadd Develop                            #添加Develop组
-[root@CentOS64 ~]# useradd -g Develop Jadyer                   #创建Jadyer用户并将其分配到Develop组
-[root@CentOS64 ~]# passwd Jadyer                               #设置或修改Jadyer用户密码
-[root@CentOS64 /]# chown -R Jadyer:Develop /app                #将/app目录的拥有者修改为Jadyer用户和Develop组
-[Jadyer@CentOS64 software]$ tar zxvf jdk-8u40-linux-x64.tar.gz #解压jdk
-[Jadyer@CentOS64 software]$ mv jdk1.8.0_40/ /app/jdk1.8.0_40   #统一存放应用在/app目录中
-[root@CentOS64 ~]# vi /etc/profile                             #配置环境变量，最后[:x]保存即可
+[root@CentOS64 ~]# groupadd Develop                            # 添加Develop组
+[root@CentOS64 ~]# useradd -g Develop Jadyer                   # 创建Jadyer用户并将其分配到Develop组
+[root@CentOS64 ~]# passwd Jadyer                               # 设置或修改Jadyer用户密码
+[root@CentOS64 /]# chown -R Jadyer:Develop /app                # 将/app目录的拥有者修改为Jadyer用户和Develop组
+[Jadyer@CentOS64 software]$ tar zxvf jdk-8u40-linux-x64.tar.gz # 解压jdk
+[Jadyer@CentOS64 software]$ mv jdk1.8.0_40/ /app/jdk1.8.0_40   # 统一存放应用在/app目录中
+[root@CentOS64 ~]# vi /etc/profile                             # 配置环境变量，最后[:x]保存即可
                       # Set Java Environment Variable
                       JAVA_HOME=/app/jdk1.8.0_40
                       PATH=$JAVA_HOME/bin:$PATH
                       export JAVA_HOME PATH
-[root@CentOS64 ~]# echo $PATH                                  #查看当前PATH
-[root@CentOS64 ~]# source /etc/profile                         #令环境变量生效
-[root@CentOS64 ~]# echo $PATH                                  #再看下PATH
-[root@CentOS64 ~]# java -version                               #验证是否成功
-[Jadyer@CentOS64 ~]$ java -version                             #重复验证（普通用户重连服务器后才会生效）
+[root@CentOS64 ~]# echo $PATH                                  # 查看当前PATH
+[root@CentOS64 ~]# source /etc/profile                         # 令环境变量生效
+[root@CentOS64 ~]# echo $PATH                                  # 再看下PATH
+[root@CentOS64 ~]# java -version                               # 验证是否成功
+[Jadyer@CentOS64 ~]$ java -version                             # 再次验证（普通用户重连服务器后才会生效）
 ```
 
 ## 安装Tomcat
@@ -94,9 +94,9 @@ alias ipv6 off
 ```sh
 # 先安装依赖项：编译时依赖gcc环境、pcre可以解析正则以支持rewrite等、 zlib对http包内容进行gzip压缩、openssl支持https
 [root@CentOS79 ~]# yum -y install gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel
-[root@CentOS79 ~]# groupadd Nginx                             #添加Nginx组
-[root@CentOS79 ~]# useradd -s /sbin/nologin -M -g Nginx nginx #创建nginx用户并将其分配到Nginx组，且不能shell登录系统
-[root@CentOS79 ~]# cd /app/software/                          #普通用户不能启动1024以内的端口监听，所以这里用root安装
+[root@CentOS79 ~]# groupadd Nginx                             # 添加Nginx组
+[root@CentOS79 ~]# useradd -s /sbin/nologin -M -g Nginx nginx # 创建nginx用户并分配组，且不能shell登录系统
+[root@CentOS79 ~]# cd /app/software/                          # 普通用户不能监听1024以内的端口，故用root安装
 [root@CentOS79 software]# tar zxvf nginx-1.24.0.tar.gz
 [root@CentOS79 software]# cd nginx-1.24.0/
 [root@CentOS79 nginx-1.24.0]# pwd
@@ -114,17 +114,13 @@ TLS SNI support enabled
 configure arguments: --prefix=/app/nginx-1.24.0 --user=nginx --group=Nginx --with-compat --with-debug --with-threads --with-file-aio --with-http_sub_module --with-http_v2_module --with-http_addition_module --with-http_auth_request_module --with-http_degradation_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_stub_status_module --with-http_ssl_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module
 [root@CentOS79 nginx-1.24.0]# vim conf/nginx.conf
 user nginx Nginx;
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx                #启动
-[root@CentOS79 nginx-1.24.0]# ps -ef | grep nginx         #查看是否启动
-root      3090     1  0 11:42 ?        00:00:00 nginx: master process ./sbin/nginx
-nginx     3091  3090  0 11:42 ?        00:00:00 nginx: worker process
-root      3118 31670  0 11:42 pts/1    00:00:00 grep --color=auto nginx
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s reload      #重载配置
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s stop        #停止
-[root@CentOS79 nginx-1.24.0]# vim /etc/rc.d/rc.local      #添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
-/app/nginx-1.24.0/sbin/nginx                              #最下面添加这一行即可（绝对路径）
-[root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local #赋权，使其变成可执行文件
-[root@CentOS79 nginx-1.24.0]# reboot                      #最后，重启系统
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx                # 启动
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s reload      # 重载配置
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s stop        # 停止
+[root@CentOS79 nginx-1.24.0]# vim /etc/rc.d/rc.local      # 添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
+/app/nginx-1.24.0/sbin/nginx                              # 最下面添加这一行即可（绝对路径）
+[root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local # 赋权，使其变成可执行文件
+[root@CentOS79 nginx-1.24.0]# reboot                      # 最后，重启系统，验证
 ```
 
 ## 安装Redis
@@ -186,10 +182,52 @@ PONG
 [root@CentOS79 bin]# vim /etc/rc.d/rc.local                           # 添加自启动
 /app/redis-5.0.14/bin/redis-server /app/redis-5.0.14/conf/redis.conf  # 最下面添加这一行即可（绝对路径）
 [root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local             # 赋权，使其变成可执行文件
-[root@CentOS79 nginx-1.24.0]# reboot                                  # 最后，重启系统
+[root@CentOS79 nginx-1.24.0]# reboot                                  # 最后，重启系统，验证
 ```
 
 注：bin 和 conf 目录是为了便于管理，对于启动（或集群）都比较方便（bin 存放命令，conf 存放配置）
+
+## 安装Nacos
+
+下载地址：https://github.com/alibaba/nacos/releases/download/2.3.1/nacos-server-2.3.1.tar.gz
+
+```sh
+[Jadyer@CentOS79 ~]$ cd /app/software/
+[Jadyer@CentOS79 software]$ tar zxvf nacos-server-2.3.1.tar.gz
+[Jadyer@CentOS79 software]$ mv nacos /app/nacos-2.3.1
+[Jadyer@CentOS79 software]$ cd /app/nacos-2.3.1/
+[Jadyer@CentOS79 nacos-2.3.1]$ vim conf/application.properties
+spring.sql.init.platform=mysql
+# 首次启动前，应先初始化数据库，初始化文件位于：/app/nacos-2.3.1/conf/mysql-schema.sql
+db.num=1
+# mysql8.0连接时可能报错：java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+# 此时，在连接参数上增加：allowPublicKeyRetrieval=true
+db.url.0=jdbc:mysql://127.0.0.1:3306/nacos?allowPublicKeyRetrieval=true&characterEncoding=utf8&connectTimeout...
+db.user.0=nacos
+db.password.0=nacos123
+# 开启鉴权
+nacos.core.auth.enabled=true
+nacos.core.auth.caching.enabled=true
+nacos.core.auth.enable.userAgentAuthWhite=false
+# identity.key和identity.value是配置请求头白名单的（即白名单的Header：JadyerAuthKey=Jadyer123）
+nacos.core.auth.server.identity.key=JadyerAuthKey
+nacos.core.auth.server.identity.value=Jadyer123
+# 这是一个base64字符串（其原始密钥可以随意指定，但长度不得低于32字符）
+nacos.core.auth.plugin.nacos.token.secret.key=aHR0cHM6Ly9qYWR5ZXIuY24vMjAxMy8wOS8wNy9jZW50b3MtY29uZmlnLWRldmVsb3Av
+[Jadyer@CentOS79 nacos-2.3.1]$ cd bin/
+[Jadyer@CentOS79 bin]$ vim startup-standalone.sh
+nohup sh /app/nacos-2.3.1/bin/startup.sh -m standalone > /app/nacos-2.3.1/bin/nohup.log 2>&1 &
+[Jadyer@CentOS79 bin]$ chmod +x startup-standalone.sh
+[Jadyer@CentOS79 bin]$ ./startup-standalone.sh   # 启动nacos（默认用户名密码为nacos/nacos，首次登录后记得修改密码）
+[Jadyer@CentOS79 bin]$ su root
+[root@CentOS79 bin]# vim /etc/rc.d/rc.local      # 添加自启动
+JAVA_HOME=/app/jdk-21.0.2                        # （由于rc.local要早于/etc/profiles运行）
+PATH=$JAVA_HOME/bin:$PATH                        # （因此rc.local执行时看不到任何环境变量）
+export JAVA_HOME PATH                            # （所以这里手动指定JAVA_HOME，以为nacos启动提供java环境）
+/app/nacos-2.3.1/bin/startup-standalone.sh       # 最下面添加这一行即可（绝对路径）
+[root@CentOS79 bin]# chmod +x /etc/rc.d/rc.local # 赋权，使其变成可执行文件
+[root@CentOS79 bin]# reboot                      # 最后，重启系统，验证
+```
 
 ## 安装Maven
 
