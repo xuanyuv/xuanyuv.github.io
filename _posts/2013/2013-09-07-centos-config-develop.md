@@ -146,22 +146,12 @@ Redis 的所有版本下载地址：https://download.redis.io/releases/
 [root@CentOS79 software]# mkdir -v /app/redis-5.0.14/log
 [root@CentOS79 software]# mkdir -v /app/redis-5.0.14/rdb
 [root@CentOS79 software]# mv redis-5.0.14 /app/redis-5.0.14/redis/
-[root@CentOS79 software]# cd /app/redis-5.0.14/
-[root@CentOS79 redis-5.0.14]# ll
-total 12K
-drwxr-xr-x 2 root root 4.0K Mar 21 09:21 bin
-drwxr-xr-x 2 root root 4.0K Mar 21 09:21 conf
-drwxrwxr-x 6 root root 4.0K Oct  4  2021 redis
-[root@CentOS79 redis-5.0.14]# cd redis/
-[root@CentOS79 redis]# pwd
-/app/redis-5.0.14/redis
+[root@CentOS79 software]# cd /app/redis-5.0.14/redis/
 [root@CentOS79 redis]# make # 过程稍慢，直至输出下面两行，表示编译完成（但不要执行 make test，执行的更慢，也没必要）
 Hint: It's a good idea to run 'make test' ;)
 
-make[1]: Leaving directory `/app/redis-5.0.14/redis/src'
+make[1]: Leaving directory '/app/redis-5.0.14/redis/src'
 [root@CentOS79 redis]# cd src/
-[root@CentOS79 src]# pwd
-/app/redis-5.0.14/redis/src
 [root@CentOS79 src]# make install # 过程很快（注意：是在 src 目录下执行的，同样也不用去执行 make test）
     CC Makefile.dep
 
