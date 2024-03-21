@@ -11,7 +11,7 @@ excerpt: 主要介绍CentOS-6.4-minimal版系统配置，以及Java开发环境�
 {:toc}
 
 
-本文使用的是`CentOS-6.4-minimal`版的操作系统（安装包为：CentOS-6.4-x86_64-minimal.iso）
+本文使用的是 `CentOS-6.4-minimal` 版的操作系统（安装包为：CentOS-6.4-x86_64-minimal.iso）
 
 ## 网卡
 
@@ -126,6 +126,80 @@ root      3118 31670  0 11:42 pts/1    00:00:00 grep --color=auto nginx
 [root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local #赋权，使其变成可执行文件
 [root@CentOS79 nginx-1.24.0]# reboot                      #最后，重启系统
 ```
+
+## 安装Redis
+
+Redis 的所有版本下载地址：https://download.redis.io/releases/
+
+这里下载 5.0.14：https://download.redis.io/releases/redis-5.0.14.tar.gz
+
+> Redis 是由 C 语言编写的，其运行需要 C 环境，所以编译前需安装 gcc（上一步安装 nginx 时，已安装过 gcc）
+
+```sh
+[Jadyer@CentOS79 ~]$ cd /app/software/
+[Jadyer@CentOS79 software]$ wget https://download.redis.io/releases/redis-5.0.14.tar.gz
+[Jadyer@CentOS79 software]$ su root
+[root@CentOS79 software]# tar zxvf redis-5.0.14.tar.gz
+[root@CentOS79 software]# mkdir -v /app/redis-5.0.14
+[root@CentOS79 software]# mkdir -v /app/redis-5.0.14/conf
+[root@CentOS79 software]# mkdir -v /app/redis-5.0.14/bin
+[root@CentOS79 software]# mkdir -v /app/redis-5.0.14/log
+[root@CentOS79 software]# mkdir -v /app/redis-5.0.14/rdb
+[root@CentOS79 software]# mv redis-5.0.14 /app/redis-5.0.14/redis/
+[root@CentOS79 software]# cd /app/redis-5.0.14/
+[root@CentOS79 redis-5.0.14]# ll
+total 12K
+drwxr-xr-x 2 root root 4.0K Mar 21 09:21 bin
+drwxr-xr-x 2 root root 4.0K Mar 21 09:21 conf
+drwxrwxr-x 6 root root 4.0K Oct  4  2021 redis
+[root@CentOS79 redis-5.0.14]# cd redis/
+[root@CentOS79 redis]# pwd
+/app/redis-5.0.14/redis
+[root@CentOS79 redis]# make # 过程稍慢，直至输出下面两行，表示编译完成（但不要执行 make test，执行的更慢，也没必要）
+Hint: It's a good idea to run 'make test' ;)
+
+make[1]: Leaving directory `/app/redis-5.0.14/redis/src'
+[root@CentOS79 redis]# cd src/
+[root@CentOS79 src]# pwd
+/app/redis-5.0.14/redis/src
+[root@CentOS79 src]# make install # 过程很快（注意：是在 src 目录下执行的，同样也不用去执行 make test）
+    CC Makefile.dep
+
+Hint: It's a good idea to run 'make test' ;)
+
+    INSTALL install
+    INSTALL install
+    INSTALL install
+    INSTALL install
+    INSTALL install
+[root@CentOS79 src]# mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-sentinel redis-server redis-trib.rb /app/redis-5.0.14/bin/
+[root@CentOS79 src]# cd ..
+[root@CentOS79 redis]# mv redis.conf /app/redis-5.0.14/conf/
+[root@CentOS79 redis]# cd /app/redis-5.0.14/conf/
+[root@CentOS79 conf]# vim redis.conf
+# bind 127.0.0.1          # 注释掉（对于多网卡机器，注释掉后，就可以接受来自任意一个网卡的redis请求）
+protected-mode no         # 保护模式将默认的 yes 改为 no（即关闭保护模式，不然会阻止远程访问）
+daemonize yes             # 后台启动将默认的 no 改为 yes
+requirepass 123           # 设置连接密码
+dir /app/redis-5.0.14/rdb # 数据库目录
+logfile "/app/redis-5.0.14/log/redis.log"
+[root@CentOS79 conf]# cd /app/redis-5.0.14/bin/
+[root@CentOS79 bin]# ./redis-server /app/redis-5.0.14/conf/redis.conf # 启动redis
+[root@CentOS79 bin]# ./redis-cli                                      # 客户端命令行连接
+127.0.0.1:6379> ping                                                  # 尝试执行一个命令
+(error) NOAUTH Authentication required.                               # 报错，说明配置文件指定的密码生效了
+127.0.0.1:6379> auth 123                                              # 提供密码
+OK
+127.0.0.1:6379> ping
+PONG
+127.0.0.1:6379> quit
+[root@CentOS79 bin]# vim /etc/rc.d/rc.local                           # 添加自启动
+/app/redis-5.0.14/bin/redis-server /app/redis-5.0.14/conf/redis.conf  # 最下面添加这一行即可（要是求绝对路径）
+[root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local             # 赋权，使其变成可执行文件
+[root@CentOS79 nginx-1.24.0]# reboot                                  # 最后，重启系统
+```
+
+注：bin 和 conf 目录是为了便于管理，这对于启动（或集群）都比较方便（bin 存放主要命令，conf 存放核心配置文件）
 
 ## 安装Maven
 
