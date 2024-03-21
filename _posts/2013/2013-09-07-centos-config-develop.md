@@ -122,7 +122,7 @@ root      3118 31670  0 11:42 pts/1    00:00:00 grep --color=auto nginx
 [root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s reload      #重载配置
 [root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s stop        #停止
 [root@CentOS79 nginx-1.24.0]# vim /etc/rc.d/rc.local      #添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
-/app/nginx-1.24.0/sbin/nginx                              #最下面添加这一行即可（要是求绝对路径）
+/app/nginx-1.24.0/sbin/nginx                              #最下面添加这一行即可（绝对路径）
 [root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local #赋权，使其变成可执行文件
 [root@CentOS79 nginx-1.24.0]# reboot                      #最后，重启系统
 ```
@@ -133,7 +133,7 @@ Redis 的所有版本下载地址：https://download.redis.io/releases/
 
 这里下载 5.0.14：https://download.redis.io/releases/redis-5.0.14.tar.gz
 
-> Redis 是由 C 语言编写的，其运行需要 C 环境，所以编译前需安装 gcc（上一步安装 nginx 时，已安装过 gcc）
+> Redis 是由 C 语言编写的，其运行需要 C 环境，所以编译前需安装 gcc
 
 ```sh
 [Jadyer@CentOS79 ~]$ cd /app/software/
@@ -147,7 +147,7 @@ Redis 的所有版本下载地址：https://download.redis.io/releases/
 [root@CentOS79 software]# mkdir -v /app/redis-5.0.14/rdb
 [root@CentOS79 software]# mv redis-5.0.14 /app/redis-5.0.14/redis/
 [root@CentOS79 software]# cd /app/redis-5.0.14/redis/
-[root@CentOS79 redis]# make # 过程稍慢，直至输出下面两行，表示编译完成（但不要执行 make test，执行的更慢，也没必要）
+[root@CentOS79 redis]# make # 过程稍慢，输出下面两行则编译完成（不用执行 make test，它执行的更慢，也没必要）
 Hint: It's a good idea to run 'make test' ;)
 
 make[1]: Leaving directory '/app/redis-5.0.14/redis/src'
@@ -177,19 +177,19 @@ logfile "/app/redis-5.0.14/log/redis.log"
 [root@CentOS79 bin]# ./redis-server /app/redis-5.0.14/conf/redis.conf # 启动redis
 [root@CentOS79 bin]# ./redis-cli                                      # 客户端命令行连接
 127.0.0.1:6379> ping                                                  # 尝试执行一个命令
-(error) NOAUTH Authentication required.                               # 报错，说明配置文件指定的密码生效了
+(error) NOAUTH Authentication required.                               # 报错，说明配置文件设定密码生效了
 127.0.0.1:6379> auth 123                                              # 提供密码
 OK
 127.0.0.1:6379> ping
 PONG
 127.0.0.1:6379> quit
 [root@CentOS79 bin]# vim /etc/rc.d/rc.local                           # 添加自启动
-/app/redis-5.0.14/bin/redis-server /app/redis-5.0.14/conf/redis.conf  # 最下面添加这一行即可（要是求绝对路径）
+/app/redis-5.0.14/bin/redis-server /app/redis-5.0.14/conf/redis.conf  # 最下面添加这一行即可（绝对路径）
 [root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local             # 赋权，使其变成可执行文件
 [root@CentOS79 nginx-1.24.0]# reboot                                  # 最后，重启系统
 ```
 
-注：bin 和 conf 目录是为了便于管理，这对于启动（或集群）都比较方便（bin 存放主要命令，conf 存放核心配置文件）
+注：bin 和 conf 目录是为了便于管理，对于启动（或集群）都比较方便（bin 存放命令，conf 存放配置）
 
 ## 安装Maven
 
