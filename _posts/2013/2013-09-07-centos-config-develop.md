@@ -204,10 +204,11 @@ db.num=1
 # 此时，在连接参数上增加：allowPublicKeyRetrieval=true
 db.url.0=jdbc:mysql://127.0.0.1:3306/nacos?allowPublicKeyRetrieval=true&characterEncoding=utf8&connectTimeout...
 db.user.0=nacos
-db.password.0=nacos123
-# 开启鉴权
+db.password.0=nacos456
+# 开启鉴权（此时程序的bootstrap.yml需要配置spring.cloud.nacos.username/password两个值，才能允许连接nacos）
 nacos.core.auth.enabled=true
 nacos.core.auth.caching.enabled=true
+# 关闭使用user-agent判断服务端请求并放行鉴权的功能
 nacos.core.auth.enable.userAgentAuthWhite=false
 # identity.key和identity.value是配置请求头白名单的（即白名单的Header：JadyerAuthKey=Jadyer123）
 nacos.core.auth.server.identity.key=JadyerAuthKey
