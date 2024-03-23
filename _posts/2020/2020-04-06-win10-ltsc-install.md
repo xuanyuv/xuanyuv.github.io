@@ -166,20 +166,20 @@ published: true
 1. 运行gpedit.msc---计算机配置---管理模板---Windows组件---Windows更新---指定 Intranet Microsoft 更新服务位置---启用<br/>
 然后在下面的三个输入框（Intranet更新、统计、备用下载服务地址）均填入 127.0.0.1，如上图所示
 2. 运行gpedit.msc---计算机配置---管理模板---Windows组件---Windows更新---配置自动更新---禁用
-3. 运行compmgmt.msc---系统工具---任务计划程序---任务计划程序库---Microsoft---Windows---WindowsUpdate---禁用所有任务
-　　<br/>再找到UpdateOrchestrator，同样禁用它的所有任务（不过失败了，提示：你所使用的用户账户没有禁用此任务的权限，于是作罢）
+3. 运行compmgmt.msc---系统工具---任务计划程序---任务计划程序库---Microsoft---Windows---WindowsUpdate---禁用所有任务<br/>
+再找到UpdateOrchestrator，同样禁用它的所有任务（不过失败了，提示：你所使用的用户账户没有禁用此任务的权限，于是作罢）
 4. 运行services.msc---Windows Update---停止并禁用---右键属性恢复选项卡---三次失败下拉框均改为无操作
-5. 运行services.msc---Windows Update Medic Service---这里禁用时会提示拒绝访问，那改它的注册表就行了
-　　<br/>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc
-　　<br/>双击右侧Start值，修改其值为4（十六进制不变）（原值为3，表示手动）
-　　<br/>双击右侧FailureActions值，修改它的二进制数据：将0010、0018行的左起第5个数值由原来的01改为00
-　　<br/>补充：该服务是Win10升级到1809版后新增的，作为Windows Update服务的保镖，开机会自动运行Windows Update服务
+5. 运行services.msc---Windows Update Medic Service---这里禁用时会提示拒绝访问，那改它的注册表就行了<br/>
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc<br/>
+双击右侧 Start 值，修改其值为 4（十六进制不变）（原值为 3，表示手动）<br/>
+双击右侧 FailureActions 值，修改它的二进制数据：将 0010、0018 行的左起第 5 个数值由原来的 01 改为 00<br/>
+补充：该服务是Win10升级到1809版后新增的，作为Windows Update服务的保镖，开机会自动运行Windows Update服务
 
 下面补充一下网上的其它方法（有的很暴力，但还是不如巨硬暴力），**由于未亲自验证最终效果，故仅供参考**
 
-1. 运行services.msc---Update Orchestrator Service---停止并禁用---右键属性恢复选项卡---三次失败下拉框均改为无操作
-　　<br/>专业版发现：停止服务后，左下角开始菜单，设置，Windows更新面板，还能更新，再回到服务面板发现它又自动启动了
-　　<br/>LTSC版发现：停止服务后，Windows更新面板，显示的是一片空白且有卡顿现象，然后再启动这个服务，又没有空白了
+1. 运行services.msc---Update Orchestrator Service---停止并禁用---右键属性恢复选项卡---三次失败下拉框均改为无操作<br/>
+专业版发现：停止服务后，左下角开始菜单，设置，Windows更新面板，还能更新，再回到服务面板发现它又自动启动了<br/>
+LTSC版发现：停止服务后，Windows更新面板，显示的是一片空白且有卡顿现象，然后再启动这个服务，又没有空白了
 2. 卸载应用程序列表（不是已安装更新里面）里的KB4023057补丁，它负责的是系统更新，会偷偷打开WindowsUpdate服务
 3. 底层入手，斩草除根，直接干掉负责系统更新服务的系统文件C:\Windows\System32\wuaueng.dll
 
@@ -279,10 +279,10 @@ Windows Registry Editor Version 5.00
 
 启动注册表：运行---regedit
 
-1. HKEY_CURRENT_USER\Control Panel\Colors
-　　<br/>双击右侧Windows值，修改其值为202 234 206
-2. HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\DefaultColors\Standard
-　　<br/>双击右侧Windows值，修改其值为caeace（十六进制不变）
+1. HKEY_CURRENT_USER\Control Panel\Colors<br/>
+双击右侧Windows值，修改其值为202 234 206
+2. HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\DefaultColors\Standard<br/>
+双击右侧Windows值，修改其值为caeace（十六进制不变）
 
 然后注销或重启电脑，就能看到 txt 或 word 文件背景色变成了淡绿色
 
@@ -304,7 +304,9 @@ Win10 有个特点：自动扫描硬件，并安装相应的驱动
 2. 运行gpedit.msc---计算机配置---管理模板---Windows组件---Windows更新---Windows 更新不包括驱动程序---已启用
 3. 运行gpedit.msc---计算机配置---管理模板---系统---设备安装---设备安装限制---禁止安装未由其他策略设置描述的设备---已启用
 
-另外，也可针对某硬件设置不自动驱动，同样在设备安装限制下面，选择阻止使用与下列设备安装程序类相匹配的驱动程序安装设备
+另外，也可针对某硬件设置不自动驱动：
+
+同样在设备安装限制下面，选择阻止使用与下列设备安装程序类相匹配的驱动程序安装设备
 
 更改为已启用，然后点击下面的【显示】按钮，输入设备的GUID值，确定后再勾选也适用于匹配已安装的设备
 
