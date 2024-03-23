@@ -79,7 +79,7 @@ published: true
 
 图中剩下的 376.9G 未分配空间是故意留着的，等系统装完，后面创建 D 盘的时候要用到
 
-再选中 99.1G（若正好分配99G，那装完系统进入我的电脑看到C盘大小是98.9G）的主分区，点击下一步开始安装（约 10 分钟）
+再选中 99.1G（若正好分配99G，那装完后进入系统看到的C盘大小是98.9G）的主分区，点击下一步开始安装（约 10 分钟）
 
 安装成功后，会提示 `Windows 需要重启才能继续，将在 10 秒后重启`，出现这个界面时，不要等他读完秒，直接拔 U 盘！！！
 
@@ -163,8 +163,8 @@ published: true
 
 ![](https://ae01.alicdn.com/kf/Hd332ea5bb18c419b82ca59804e5e88ebU.png)
 
-1. 运行gpedit.msc---计算机配置---管理模板---Windows组件---Windows更新---指定 Intranet Microsoft 更新服务位置---启用
-　　<br/>然后在下面的三个输入框（Intranet更新、统计、备用下载服务地址）均填入 127.0.0.1，如上图所示
+1. 运行gpedit.msc---计算机配置---管理模板---Windows组件---Windows更新---指定 Intranet Microsoft 更新服务位置---启用<br/>
+然后在下面的三个输入框（Intranet更新、统计、备用下载服务地址）均填入 127.0.0.1，如上图所示
 2. 运行gpedit.msc---计算机配置---管理模板---Windows组件---Windows更新---配置自动更新---禁用
 3. 运行compmgmt.msc---系统工具---任务计划程序---任务计划程序库---Microsoft---Windows---WindowsUpdate---禁用所有任务
 　　<br/>再找到UpdateOrchestrator，同样禁用它的所有任务（不过失败了，提示：你所使用的用户账户没有禁用此任务的权限，于是作罢）
