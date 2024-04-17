@@ -21,7 +21,7 @@ excerpt: 主要介绍CentOS-7.9版系统中，搭建Java开发环境的细节，
 
 ```sh
 [root@CentOS79 ~]# cd /
-[root@CentOS79 /]# mkdir -p app/software
+[root@CentOS79 /]# mkdir -p app/software/backup
 [root@CentOS79 /]# groupadd Develop                                 # 添加Develop组
 [root@CentOS79 /]# useradd -g Develop Jadyer                        # 创建Jadyer用户并分配到Develop组
 [root@CentOS79 /]# passwd Jadyer                                    # 设置或修改Jadyer用户密码
