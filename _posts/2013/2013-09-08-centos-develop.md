@@ -132,10 +132,10 @@ OK
 127.0.0.1:6379> ping
 PONG
 127.0.0.1:6379> quit
-[root@CentOS79 bin]# vim /etc/rc.d/rc.local                                             # 添加自启动
-/app/software/redis-5.0.14/bin/redis-server /app/software/redis-5.0.14/conf/redis.conf  # 最下面添加这一行（绝对路径）
-[root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local                               # 赋权，使其变成可执行文件
-[root@CentOS79 nginx-1.24.0]# reboot                                                    # 最后，重启系统，验证
+[root@CentOS79 bin]# vim /etc/rc.d/rc.local                                            # 添加自启动
+/app/software/redis-5.0.14/bin/redis-server /app/software/redis-5.0.14/conf/redis.conf # 最下面添加这一行即可（绝对路径）
+[root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local                              # 赋权，使其变成可执行文件
+[root@CentOS79 nginx-1.24.0]# reboot                                                   # 最后，重启系统，验证
 ```
 
 注：bin 和 conf 目录是为了便于管理，对于启动（或集群）都比较方便（bin 存放命令，conf 存放配置）
@@ -145,10 +145,10 @@ PONG
 下载地址：https://github.com/alibaba/nacos/releases/download/2.3.1/nacos-server-2.3.1.tar.gz
 
 ```sh
-[Jadyer@CentOS79 ~]$ cd /app/software/
-[Jadyer@CentOS79 software]$ tar zxvf nacos-server-2.3.1.tar.gz
-[Jadyer@CentOS79 software]$ mv nacos /app/nacos-2.3.1
-[Jadyer@CentOS79 software]$ cd /app/nacos-2.3.1/
+[Jadyer@CentOS79 ~]$ cd /app/software/backup/
+[Jadyer@CentOS79 backup]$ tar zxvf nacos-server-2.3.1.tar.gz
+[Jadyer@CentOS79 backup]$ mv nacos /app/software/nacos-2.3.1
+[Jadyer@CentOS79 backup]$ cd /app/software/nacos-2.3.1/
 [Jadyer@CentOS79 nacos-2.3.1]$ vim conf/application.properties
 spring.sql.init.platform=mysql
 # 首次启动前，应先初始化数据库，初始化文件位于：/app/nacos-2.3.1/conf/mysql-schema.sql
@@ -170,17 +170,17 @@ nacos.core.auth.server.identity.value=Jadyer123
 nacos.core.auth.plugin.nacos.token.secret.key=aHR0cHM6Ly9qYWR5ZXIuY24vMjAxMy8wOS8wNy9jZW50b3MtY29uZmlnLWRldmVsb3Av
 [Jadyer@CentOS79 nacos-2.3.1]$ cd bin/
 [Jadyer@CentOS79 bin]$ vim startup-standalone.sh
-nohup sh /app/nacos-2.3.1/bin/startup.sh -m standalone > /app/nacos-2.3.1/bin/nohup.log 2>&1 &
+nohup sh /app/software/nacos-2.3.1/bin/startup.sh -m standalone > /app/software/nacos-2.3.1/bin/nohup.log 2>&1 &
 [Jadyer@CentOS79 bin]$ chmod +x startup-standalone.sh
-[Jadyer@CentOS79 bin]$ ./startup-standalone.sh   # 启动nacos（默认用户名密码均为nacos，首次登录后记得修改密码）
+[Jadyer@CentOS79 bin]$ ./startup-standalone.sh      # 启动nacos（默认用户名密码均为nacos，首次登录后记得修改密码）
 [Jadyer@CentOS79 bin]$ su root
-[root@CentOS79 bin]# vim /etc/rc.d/rc.local      # 添加自启动
-JAVA_HOME=/app/jdk-21.0.2                        # （由于rc.local要早于/etc/profiles运行）
-PATH=$JAVA_HOME/bin:$PATH                        # （因此rc.local执行时看不到任何环境变量）
-export JAVA_HOME PATH                            # （故手动指定JAVA_HOME，为nacos的启动提供java环境）
-/app/nacos-2.3.1/bin/startup-standalone.sh       # 最下面添加这一行即可（绝对路径）
-[root@CentOS79 bin]# chmod +x /etc/rc.d/rc.local # 赋权，使其变成可执行文件
-[root@CentOS79 bin]# reboot                      # 最后，重启系统，验证
+[root@CentOS79 bin]# vim /etc/rc.d/rc.local         # 添加自启动
+JAVA_HOME=/app/software/jdk-21.0.2                  # （由于rc.local要早于/etc/profiles运行）
+PATH=$JAVA_HOME/bin:$PATH                           # （因此rc.local执行时看不到任何环境变量）
+export JAVA_HOME PATH                               # （故手动指定JAVA_HOME，为nacos的启动提供java环境）
+/app/software/nacos-2.3.1/bin/startup-standalone.sh # 最下面添加这一行即可（绝对路径）
+[root@CentOS79 bin]# chmod +x /etc/rc.d/rc.local    # 赋权，使其变成可执行文件
+[root@CentOS79 bin]# reboot                         # 最后，重启系统，验证
 ```
 
 ## 安装wkhtmltopdf
@@ -188,8 +188,8 @@ export JAVA_HOME PATH                            # （故手动指定JAVA_HOME�
 下载地址为：https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 
 ```sh
-[Jadyer@localhost ~]$ cd /app/software/
-[Jadyer@localhost software]$ rpm -ivh --badreloc --relocate /usr/local=/app/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+[Jadyer@localhost ~]$ cd /app/software/backup/
+[Jadyer@localhost backup]$ rpm -ivh --badreloc --relocate /usr/local=/app/software/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 error: Failed dependencies:
 	fontconfig is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
 	libX11 is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
@@ -198,33 +198,33 @@ error: Failed dependencies:
 	libjpeg is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
 	xorg-x11-fonts-75dpi is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
 	xorg-x11-fonts-Type1 is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
-[Jadyer@localhost software]$
-[Jadyer@localhost software]$ su root
-[root@localhost app]# yum install -y libXrender*
-[root@localhost app]# yum install -y libXext*
-[root@localhost app]# yum install -y xorg-x11-fonts-Type1
-[root@localhost app]# yum install -y xorg-x11-fonts-75dpi
-[root@localhost app]# yum install -y libjpeg              # 注意：接下来还是要用root安装，普通用户会失败
-[root@localhost app]# rpm -ivh --badreloc --relocate /usr/local=/app/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+[Jadyer@localhost backup]$
+[Jadyer@localhost backup]$ su root
+[root@localhost backup]# yum install -y libXrender*
+[root@localhost backup]# yum install -y libXext*
+[root@localhost backup]# yum install -y xorg-x11-fonts-Type1
+[root@localhost backup]# yum install -y xorg-x11-fonts-75dpi
+[root@localhost backup]# yum install -y libjpeg              # 注意：接下来还是要用root安装，普通用户会失败
+[root@localhost backup]# rpm -ivh --badreloc --relocate /usr/local=/app/software/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 Preparing...                          ################################# [100%]
 Updating / installing...
    1:wkhtmltox-1:0.12.6-1.centos7     ################################# [100%]
-[root@localhost app]# vim /etc/profile
-                      # Set wkhtmltox Environment Variable
-                      WKHTMLTOPDF_HOME=/app/wkhtmltox-0.12.6-1
-                      PATH=$WKHTMLTOPDF_HOME/bin:$PATH
-                      export WKHTMLTOPDF_HOME PATH
-[root@localhost app]# source /etc/profile
-[root@localhost app]# echo $PATH
-[root@localhost app]# wkhtmltopdf -V
+[root@localhost backup]# vim /etc/profile
+                             # Set wkhtmltox Environment Variable
+                             WKHTMLTOPDF_HOME=/app/software/wkhtmltox-0.12.6-1
+                             PATH=$WKHTMLTOPDF_HOME/bin:$PATH
+                             export WKHTMLTOPDF_HOME PATH
+[root@localhost backup]# source /etc/profile
+[root@localhost backup]# echo $PATH
+[root@localhost backup]# wkhtmltopdf -V
 wkhtmltopdf 0.12.6 (with patched qt)
-[root@localhost app]# yum install -y fontconfig mkfontscale  # 安装字体
-[root@localhost app]# fc-list                                # 查看系统中已安装的字体
-[root@localhost app]# fc-list :lang=zh                       # 查看系统中已安装的中文字体
-[root@localhost app]# cd /usr/share/fonts/
-[root@localhost fonts]# rz simsun.ttc                        # 上传字体文件至/usr/share/fonts/
+[root@localhost backup]# yum install -y fontconfig mkfontscale  # 安装字体
+[root@localhost backup]# fc-list                                # 查看系统中已安装的字体
+[root@localhost backup]# fc-list :lang=zh                       # 查看系统中已安装的中文字体
+[root@localhost backup]# cd /usr/share/fonts/
+[root@localhost fonts]# rz simsun.ttc                           # 上传字体文件至/usr/share/fonts/
 [root@localhost fonts]# mkfontscale
 [root@localhost fonts]# mkfontdir
-[root@localhost fonts]# fc-cache                             # 通过这三个命令建立字体索引信息、更新字体缓存
-[root@localhost fonts]# fc-list :lang=zh                     # 查看系统中已安装的中文字体
+[root@localhost fonts]# fc-cache                                # 通过这三个命令建立字体索引信息、更新字体缓存
+[root@localhost fonts]# fc-list :lang=zh                        # 查看系统中已安装的中文字体
 ```
