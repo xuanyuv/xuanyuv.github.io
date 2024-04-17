@@ -1,5 +1,3 @@
-# https://github.com/Gaohaoyang/gaohaoyang.github.io/commit/a98d9b931da5891d7be72bb3cfacfb441f199ecb
-
 # 指定启动Jekyll服务时的端口号，访问的地址为http://127.0.0.1:port/，不配置则默认为4000
 port: 4000
 
@@ -20,9 +18,6 @@ brief-intro: "玄玉的博客"
 # footer下方显示的联系方式
 github_username: jadyer
 email: jadyer@yeah.net
-
-# Baidu统计ID
-baidu_tongji_id: 8b05a003b4412489316a618e63918b26
 
 # 指定页面右侧分类和标签框的链接地址
 category_dir: category/

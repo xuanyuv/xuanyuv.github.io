@@ -15,7 +15,9 @@ excerpt: 主要介绍CentOS-7.9版系统中，搭建Java开发环境的细节，
 
 ## 安装JDK
 
-下面使用的是`.tar.gz`文件，如果用的是`.bin`文件，可以先执行`./jdk-6u45-linux-x64.bin`命令，再配置环境变量，即可。
+下面使用的是`.tar.gz`文件
+
+如果是`.bin`文件，可以先执行`./jdk-6u45-linux-x64.bin`命令，再配置环境变量，即可。
 
 ```sh
 [root@CentOS64 ~]# cd /
