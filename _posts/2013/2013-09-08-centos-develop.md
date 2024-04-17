@@ -185,9 +185,11 @@ export JAVA_HOME PATH                               # （故手动指定JAVA_HOM
 
 ## 安装Nexus
 
-下载地址：https://help.sonatype.com/en/download.html 或者 https://www.sonatype.com/products/sonatype-nexus-oss-download
+下载地址有 2 个，都可以下载
 
-这里我下载的是[nexus-3.67.1-01-java11-unix.tar.gz](https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/3/nexus-3.67.1-01-java11-unix.tar.gz)
+<https://help.sonatype.com/en/download.html> 或者 <https://www.sonatype.com/products/sonatype-nexus-oss-download>
+
+这里我下载的是 [nexus-3.67.1-01-java11-unix.tar.gz](https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/3/nexus-3.67.1-01-java11-unix.tar.gz)
 
 ```sh
 [Jadyer@CentOS79 ~]$ cd /app/software/backup/
