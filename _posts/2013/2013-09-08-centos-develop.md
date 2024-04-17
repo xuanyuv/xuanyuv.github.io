@@ -41,42 +41,6 @@ excerpt: 主要介绍CentOS-7.9版系统中，搭建Java开发环境的细节，
 [Jadyer@CentOS79 ~]$ java -version                                  # 普通用户重连服务器，再次验证
 ```
 
-## 安装Nginx
-
-这里采用的是源码编译安装，下载地址为：https://nginx.org/download/nginx-1.24.0.tar.gz
-
-```sh
-# 先安装依赖项：编译时依赖gcc环境、pcre可以解析正则以支持rewrite等、 zlib对http包内容进行gzip压缩、openssl支持https
-[root@CentOS79 ~]# yum -y install gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel
-[root@CentOS79 ~]# groupadd Nginx                             # 添加Nginx组
-[root@CentOS79 ~]# useradd -s /sbin/nologin -M -g Nginx nginx # 创建nginx用户并分配组，且不能shell登录系统
-[root@CentOS79 ~]# cd /app/software/backup/                   # 普通用户不能监听1024以内的端口，故用root安装
-[root@CentOS79 backup]# tar zxvf nginx-1.24.0.tar.gz
-[root@CentOS79 backup]# cd nginx-1.24.0/
-[root@CentOS79 nginx-1.24.0]# pwd
-/app/software/backup/nginx-1.24.0
-[root@CentOS79 nginx-1.24.0]# ./configure --prefix=/app/software/nginx-1.24.0 --user=nginx --group=Nginx --with-compat --with-debug --with-threads --with-file-aio --with-http_sub_module --with-http_v2_module --with-http_addition_module --with-http_auth_request_module --with-http_degradation_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_stub_status_module --with-http_ssl_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module
-[root@CentOS79 nginx-1.24.0]# make && make install
-[root@CentOS79 nginx-1.24.0]# cd ..
-[root@CentOS79 backup]# rm -rf nginx-1.24.0
-[root@CentOS79 backup]# cd /app/software/nginx-1.24.0/
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -V
-nginx version: nginx/1.24.0
-built by gcc 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC) 
-built with OpenSSL 1.0.2k-fips  26 Jan 2017
-TLS SNI support enabled
-configure arguments: --prefix=/app/software/nginx-1.24.0 --user=nginx --group=Nginx --with-compat --with-debug --with-threads --with-file-aio --with-http_sub_module --with-http_v2_module --with-http_addition_module --with-http_auth_request_module --with-http_degradation_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_stub_status_module --with-http_ssl_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module
-[root@CentOS79 nginx-1.24.0]# vim conf/nginx.conf
-user nginx Nginx;
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx                # 启动
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s reload      # 重载配置
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s stop        # 停止
-[root@CentOS79 nginx-1.24.0]# vim /etc/rc.d/rc.local      # 添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
-/app/software/nginx-1.24.0/sbin/nginx                     # 最下面添加这一行即可（绝对路径）
-[root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local # 赋权，使其变成可执行文件
-[root@CentOS79 nginx-1.24.0]# reboot                      # 最后，重启系统，验证
-```
-
 ## 安装Redis
 
 Redis 的所有版本下载地址：https://download.redis.io/releases/
@@ -140,6 +104,42 @@ PONG
 
 注：bin 和 conf 目录是为了便于管理，对于启动（或集群）都比较方便（bin 存放命令，conf 存放配置）
 
+## 安装Nginx
+
+这里采用的是源码编译安装，下载地址为：https://nginx.org/download/nginx-1.24.0.tar.gz
+
+```sh
+# 先安装依赖项：编译时依赖gcc环境、pcre可以解析正则以支持rewrite等、 zlib对http包内容进行gzip压缩、openssl支持https
+[root@CentOS79 ~]# yum -y install gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel
+[root@CentOS79 ~]# groupadd Nginx                             # 添加Nginx组
+[root@CentOS79 ~]# useradd -s /sbin/nologin -M -g Nginx nginx # 创建nginx用户并分配组，且不能shell登录系统
+[root@CentOS79 ~]# cd /app/software/backup/                   # 普通用户不能监听1024以内的端口，故用root安装
+[root@CentOS79 backup]# tar zxvf nginx-1.24.0.tar.gz
+[root@CentOS79 backup]# cd nginx-1.24.0/
+[root@CentOS79 nginx-1.24.0]# pwd
+/app/software/backup/nginx-1.24.0
+[root@CentOS79 nginx-1.24.0]# ./configure --prefix=/app/software/nginx-1.24.0 --user=nginx --group=Nginx --with-compat --with-debug --with-threads --with-file-aio --with-http_sub_module --with-http_v2_module --with-http_addition_module --with-http_auth_request_module --with-http_degradation_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_stub_status_module --with-http_ssl_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module
+[root@CentOS79 nginx-1.24.0]# make && make install
+[root@CentOS79 nginx-1.24.0]# cd ..
+[root@CentOS79 backup]# rm -rf nginx-1.24.0
+[root@CentOS79 backup]# cd /app/software/nginx-1.24.0/
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -V
+nginx version: nginx/1.24.0
+built by gcc 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC) 
+built with OpenSSL 1.0.2k-fips  26 Jan 2017
+TLS SNI support enabled
+configure arguments: --prefix=/app/software/nginx-1.24.0 --user=nginx --group=Nginx --with-compat --with-debug --with-threads --with-file-aio --with-http_sub_module --with-http_v2_module --with-http_addition_module --with-http_auth_request_module --with-http_degradation_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_stub_status_module --with-http_ssl_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module
+[root@CentOS79 nginx-1.24.0]# vim conf/nginx.conf
+user nginx Nginx;
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx                # 启动
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s reload      # 重载配置
+[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s stop        # 停止
+[root@CentOS79 nginx-1.24.0]# vim /etc/rc.d/rc.local      # 添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
+/app/software/nginx-1.24.0/sbin/nginx                     # 最下面添加这一行即可（绝对路径）
+[root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local # 赋权，使其变成可执行文件
+[root@CentOS79 nginx-1.24.0]# reboot                      # 最后，重启系统，验证
+```
+
 ## 安装Nacos
 
 下载地址：https://github.com/alibaba/nacos/releases/download/2.3.1/nacos-server-2.3.1.tar.gz
@@ -181,6 +181,17 @@ export JAVA_HOME PATH                               # （故手动指定JAVA_HOM
 /app/software/nacos-2.3.1/bin/startup-standalone.sh # 最下面添加这一行即可（绝对路径）
 [root@CentOS79 bin]# chmod +x /etc/rc.d/rc.local    # 赋权，使其变成可执行文件
 [root@CentOS79 bin]# reboot                         # 最后，重启系统，验证
+```
+
+## 安装Nexus
+
+下载地址：https://help.sonatype.com/en/download.html 或者 https://www.sonatype.com/products/sonatype-nexus-oss-download
+
+这里我下载的是[nexus-3.67.1-01-java11-unix.tar.gz](https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/3/nexus-3.67.1-01-java11-unix.tar.gz)
+
+```sh
+[Jadyer@CentOS79 ~]$ cd /app/software/backup/
+未完待续...
 ```
 
 ## 安装wkhtmltopdf
