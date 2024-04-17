@@ -20,24 +20,25 @@ excerpt: 主要介绍CentOS-7.9版系统中，搭建Java开发环境的细节，
 如果是`.bin`文件，可以先执行`./jdk-6u45-linux-x64.bin`命令，再配置环境变量，即可。
 
 ```sh
-[root@CentOS64 ~]# cd /
-[root@CentOS64 /]# mkdir app
-[root@CentOS64 ~]# groupadd Develop                            # 添加Develop组
-[root@CentOS64 ~]# useradd -g Develop Jadyer                   # 创建Jadyer用户并将其分配到Develop组
-[root@CentOS64 ~]# passwd Jadyer                               # 设置或修改Jadyer用户密码
-[root@CentOS64 /]# chown -R Jadyer:Develop /app                # 将/app目录的拥有者修改为Jadyer用户和Develop组
-[Jadyer@CentOS64 software]$ tar zxvf jdk-8u40-linux-x64.tar.gz # 解压jdk
-[Jadyer@CentOS64 software]$ mv jdk1.8.0_40/ /app/jdk1.8.0_40   # 统一存放应用在/app目录中
-[root@CentOS64 ~]# vi /etc/profile                             # 配置环境变量，最后[:x]保存即可
+[root@CentOS79 ~]# cd /
+[root@CentOS79 /]# mkdir -p app/software
+[root@CentOS79 /]# groupadd Develop                                 # 添加Develop组
+[root@CentOS79 /]# useradd -g Develop Jadyer                        # 创建Jadyer用户并分配到Develop组
+[root@CentOS79 /]# passwd Jadyer                                    # 设置或修改Jadyer用户密码
+[root@CentOS79 /]# chown -R Jadyer:Develop /app                     # 修改目录的拥有者为指定的用户和组
+[Jadyer@CentOS79 ~]$ cd /app/software/backup/                       # 切换新用户，访问软件安装包备份目录
+[Jadyer@CentOS79 backup]$ tar zxvf jdk-8u40-linux-x64.tar.gz        # 解压jdk
+[Jadyer@CentOS79 backup]$ mv jdk1.8.0_40/ /app/software/jdk1.8.0_40 # 统一安装在/app/software/目录中
+[root@CentOS79 ~]# vi /etc/profile                                  # 用root配置环境变量，再[:x]保存即可
                       # Set Java Environment Variable
-                      JAVA_HOME=/app/jdk1.8.0_40
+                      JAVA_HOME=/app/software/jdk1.8.0_40
                       PATH=$JAVA_HOME/bin:$PATH
                       export JAVA_HOME PATH
-[root@CentOS64 ~]# echo $PATH                                  # 查看当前PATH
-[root@CentOS64 ~]# source /etc/profile                         # 令环境变量生效
-[root@CentOS64 ~]# echo $PATH                                  # 再看下PATH
-[root@CentOS64 ~]# java -version                               # 验证是否成功
-[Jadyer@CentOS64 ~]$ java -version                             # 再次验证（普通用户重连服务器后才会生效）
+[root@CentOS79 ~]# echo $PATH                                       # 查看当前PATH
+[root@CentOS79 ~]# source /etc/profile                              # 令环境变量生效
+[root@CentOS79 ~]# echo $PATH                                       # 再看下PATH
+[root@CentOS79 ~]# java -version                                    # 验证是否成功
+[Jadyer@CentOS79 ~]$ java -version                                  # 再次验证（普通用户重连服务器后才会生效）
 ```
 
 ## 安装Nginx
