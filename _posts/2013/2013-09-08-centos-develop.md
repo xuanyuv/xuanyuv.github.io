@@ -183,68 +183,6 @@ export JAVA_HOME PATH                               # （故手动指定JAVA_HOM
 [root@CentOS79 bin]# reboot                         # 最后，重启系统，验证
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## 安装Nexus
 
 下载地址：https://help.sonatype.com/en/download.html，这里使用的是 [nexus-3.67.1-01-java11-unix.tar.gz](https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/3/nexus-3.67.1-01-java11-unix.tar.gz)
@@ -277,90 +215,60 @@ application-port=8081                                                           
    * stop：停止服务
    * restart：重启服务
    * status：查看服务状态
-3. 之所以单独指定 jdk-11.0.23，是因为实测：当指定 jdk-21.0.2 时会启动失败，并有下面的提示
-   ```sh
+3. 之所以单独指定 `jdk-11.0.23`，是因为实测：当指定 `jdk-21.0.2` 时会启动失败，并有下面的提示
+   ```text
    No suitable Java Virtual Machine could be found on your system.
    The version of the JVM must be at least 1.8 and at most 11.
    Please define INSTALL4J_JAVA_HOME to point to a suitable JVM.
    ```
 4. 默认用户为admin，默认密码位于：/app/software/nexus-3.67.1-01/sonatype-work/nexus3/admin.password<br/>
    首次登录后，会提示修改密码，修改完密码后，admin.password 文件也就会消失
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+5. 首次登陆时，会提示是否打开允许匿名访问（后面也可以在Nexus管理台：Security：Anonymous Access菜单进行修改）
+6. 启动后，会发现控制台（sonatype-work/nexus3/log/nexus.log）经常会输出下面的异常日志
+   ```text
+   2024-04-18 12:31:43,187+0800 WARN  [pool-6-thread-9]  admin com.sonatype.nexus.plugins.outreach.internal.outreach.SonatypeOutreach - Could not download page bundle
+   org.apache.http.conn.ConnectTimeoutException: Connect to sonatype-download.global.ssl.fastly.net:443 [sonatype-download.global.ssl.fastly.net/31.13.86.21] failed: connect timed out
+   ```
+   关闭也很简单：Nexus管理台：System：Capabilities菜单：编辑右侧的Outreach.Management：点击Disable，再重启Nexus即可
+
+**通常在安装完 Nexus 后，都会增加新的代理源**，具体步骤如下：
+
+1. Nexus管理台：Repository：Repositories菜单：点击右侧Create repository：选择 `maven2 (proxy)`
+2. `Name` 填入 **aliyun**，`Remote storage` 填入 https://maven.aliyun.com/repository/public，`Negative Cache` TTL 填入 **288000** 保存即可
+3. 以此类推，再把 **apache** 的也创建进来（其地址为：https://repository.apache.org/content/repositories/releases/）
+4. 修改maven-public：将新建的 aliyun 和 apache 加入到 Member repositories，并将其排在前 2 个位置，maven-central排在最后
+
+通过上面的操作，就成功增加了 2 个新的代理源，并加入到了 maven-public 这个 Group 里面
+
+关于仓库的不同类型，其实是这样的：
+
+* hosted：宿主仓库，也就是内部项目的发布仓库，用于存储企业内部生成的jar，也可以放第三方的jar（比如Oracle驱动）
+* proxy：代理仓库，用于代替企业成员去远程下载jar，然后企业成员就可以统一从该仓库下载jar，节省了远程下载的消耗
+* group：分组仓库，用于把仓库组合在一起，统一提供服务，企业成员在settings.xml或者pom.xml里只配置这一个地址就行了
+
+补充：有的企业会再新建一个库，叫做 `3rd party`，类型是 `hosted`，专门存放第三方的 jar
+
+为了不暴露 admin 用户，我们创建一个普通用户并赋予角色
+
+1. Nexus管理台：Security：Roles菜单：点击右侧Create Role：选择 Role Type 为 `Nexus role`
+2. `Role ID` 填入 **xxx-dev-role**，`Role Name` 填入 **xxx研发角色**
+3. `Applied Privileges` 处可以搜索并最终添加以下权限，最后创建用户时，选择该角色即可
+   ```text
+   nx-repository-view-maven2-aliyun-browse
+   nx-repository-view-maven2-aliyun-read
+   nx-repository-view-maven2-apache-browse
+   nx-repository-view-maven2-apache-read
+   nx-repository-view-maven2-maven-central-browse
+   nx-repository-view-maven2-maven-central-read
+   nx-repository-view-maven2-maven-public-browse
+   nx-repository-view-maven2-maven-public-read
+   nx-repository-view-maven2-maven-releases-browse
+   nx-repository-view-maven2-maven-releases-read
+   nx-repository-view-maven2-maven-snapshots-browse
+   nx-repository-view-maven2-maven-snapshots-delete
+   nx-repository-view-maven2-maven-snapshots-read
+   nx-search-read
+   ```
 
 ## 安装wkhtmltopdf
 
