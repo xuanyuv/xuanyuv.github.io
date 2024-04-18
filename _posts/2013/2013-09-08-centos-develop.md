@@ -270,20 +270,20 @@ application-port=8081                                                           
 
 1. 解压完 nexus-3.67.1-01-java11-unix.tar.gz 文件后，会出现 2 个目录
    * nexus-3.67.1-01：该目录包含了 Nexus 运行所需的启动脚本、依赖 jar 等等
-   * sonatype-work：该目录用于存储数据，比如 Nexus 所生成的配置文件、日志文件、仓库文件等等
+   * sonatype-work：该目录用于存储数据，比如 Nexus 生成的配置文件、日志文件、仓库文件等
 2. bin 目录下的 nexus 命令，有以下几个参数：
    * start：以后台进程启动服务，日志以文件形式保存
-   * run：　以当前进程启动服务，日志直接打印在控制台
+   * run：以当前进程启动服务，日志直接打印在控制台
    * stop：停止服务
    * restart：重启服务
    * status：查看服务状态
-3. 之所以单独指定 jdk-11.0.23，是因为实测：若指定 jdk-21.0.2，则启动会失败，并有下面的提示
+3. 之所以单独指定 jdk-11.0.23，是因为实测：当指定 jdk-21.0.2 时会启动失败，并有下面的提示
    ```sh
    No suitable Java Virtual Machine could be found on your system.
    The version of the JVM must be at least 1.8 and at most 11.
    Please define INSTALL4J_JAVA_HOME to point to a suitable JVM.
    ```
-4. 初始化的admin用户默认密码位于：/app/software/nexus-3.67.1-01/sonatype-work/nexus3/admin.password<br/>
+4. 默认用户为admin，默认密码位于：/app/software/nexus-3.67.1-01/sonatype-work/nexus3/admin.password<br/>
    首次登录后，会提示修改密码，修改完密码后，admin.password 文件也就会消失
 
 
