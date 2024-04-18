@@ -247,20 +247,17 @@ export JAVA_HOME PATH                               # （故手动指定JAVA_HOM
 
 ## 安装Nexus
 
-下载地址有 2 个，都可以下载
-
-<https://help.sonatype.com/en/download.html> 或者 <https://www.sonatype.com/products/sonatype-nexus-oss-download>
-
-这里我下载的是 [nexus-3.67.1-01-java11-unix.tar.gz](https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/3/nexus-3.67.1-01-java11-unix.tar.gz)
+下载地址：https://help.sonatype.com/en/download.html，这里使用的是 [nexus-3.67.1-01-java11-unix.tar.gz](https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/3/nexus-3.67.1-01-java11-unix.tar.gz)
 
 ```sh
 [Jadyer@CentOS79 ~]$ cd /app/software/backup/
 [Jadyer@CentOS79 backup]$ mkdir -p /app/software/nexus-3.67.1-01
+[Jadyer@CentOS79 backup]$ tar zxvf jdk-11.0.23_linux-x64_bin.tar.gz -C /app/software/nexus-3.67.1-01
 [Jadyer@CentOS79 backup]$ tar zxvf nexus-3.67.1-01-java11-unix.tar.gz -C /app/software/nexus-3.67.1-01
 [Jadyer@CentOS79 backup]$ cd /app/software/nexus-3.67.1-01
-[Jadyer@CentOS79 nexus-3.67.1-01]$ vim nexus-3.67.1-01/bin/nexus.rc # 修改运行Nexus所使用的用户（默认为root）
-[Jadyer@CentOS79 nexus-3.67.1-01]$ vim nexus-3.67.1-01/bin/nexus    # 修改运行Nexus所使用的JDK
-INSTALL4J_JAVA_HOME_OVERRIDE="/app/jdk-21.0.2/"                     # 修改第14行的值（含双引号）
+[Jadyer@CentOS79 nexus-3.67.1-01]$ vim nexus-3.67.1-01/bin/nexus.rc      # 修改运行Nexus所使用的用户（默认为root）
+[Jadyer@CentOS79 nexus-3.67.1-01]$ vim nexus-3.67.1-01/bin/nexus         # 修改运行Nexus所使用的JDK
+INSTALL4J_JAVA_HOME_OVERRIDE="/app/software/nexus-3.67.1-01/jdk-11.0.23" # 修改第14行的值（含双引号）
 [Jadyer@CentOS79 nexus-3.67.1-01]$ vim nexus-3.67.1-01/etc/nexus-default.properties # 修改Nexus的默认访问端口
 application-port=8081                                                               # 默认端口即为8081
 [root@CentOS79 /]# vim /etc/rc.d/rc.local                     # 添加自启动
@@ -269,22 +266,25 @@ application-port=8081                                                           
 [root@CentOS79 /]# reboot                                     # 最后，重启系统，验证
 ```
 
-注解：在解压完 nexus-3.67.1-01-java11-unix.tar.gz 文件后，会发现解压出来了 2 个目录
+其中，以下几点可以注意一下：
 
-其中：nexus-3.67.1-01 目录包含了 Nexus 运行所需的启动脚本、依赖 jar 等等
-
-其中：sonatype-work 目录则用于存储数据，比如 Nexus 所生成的配置文件、日志文件、仓库文件等等
-
-关于 bin 目录下的 nexus 命令，有以下几个参数：
-
-* start：后台启动服务，日志以文件形式保存
-* run：以当前进程启动服务，日志直接打印在控制台
-* stop：停止服务
-* restart：重启服务
-* status：查看服务状态
-
-
-
+1. 解压完 nexus-3.67.1-01-java11-unix.tar.gz 文件后，会出现 2 个目录
+   * nexus-3.67.1-01：该目录包含了 Nexus 运行所需的启动脚本、依赖 jar 等等
+   * sonatype-work：该目录用于存储数据，比如 Nexus 所生成的配置文件、日志文件、仓库文件等等
+2. bin 目录下的 nexus 命令，有以下几个参数：
+   * start：以后台进程启动服务，日志以文件形式保存
+   * run：　以当前进程启动服务，日志直接打印在控制台
+   * stop：停止服务
+   * restart：重启服务
+   * status：查看服务状态
+3. 之所以单独指定 jdk-11.0.23，是因为实测：若指定 jdk-21.0.2，则启动会失败，并有下面的提示
+   ```sh
+   No suitable Java Virtual Machine could be found on your system.
+   The version of the JVM must be at least 1.8 and at most 11.
+   Please define INSTALL4J_JAVA_HOME to point to a suitable JVM.
+   ```
+4. 初始化的admin用户默认密码位于：/app/software/nexus-3.67.1-01/sonatype-work/nexus3/admin.password<br/>
+   首次登录后，会提示修改密码，修改完密码后，admin.password 文件也就会消失
 
 
 
