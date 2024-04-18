@@ -224,7 +224,7 @@ application-port=8081                                                           
 4. 默认用户为admin，默认密码位于：/app/software/nexus-3.67.1-01/sonatype-work/nexus3/admin.password<br/>
    首次登录后，会提示修改密码，修改完密码后，admin.password 文件也就会消失
 5. 首次登陆时，会提示是否打开允许匿名访问（后面也可以在Nexus管理台：Security：Anonymous Access菜单进行修改）
-6. 启动后，会发现控制台（sonatype-work/nexus3/log/nexus.log）经常会输出下面的异常日志
+6. 启动后，会发现控制台（../sonatype-work/nexus3/log/nexus.log）经常会输出下面的异常日志
    ```text
    2024-04-18 12:31:43,187+0800 WARN  [pool-6-thread-9]  admin com.sonatype.nexus.plugins.outreach.internal.outreach.SonatypeOutreach - Could not download page bundle
    org.apache.http.conn.ConnectTimeoutException: Connect to sonatype-download.global.ssl.fastly.net:443 [sonatype-download.global.ssl.fastly.net/31.13.86.21] failed: connect timed out
@@ -234,7 +234,7 @@ application-port=8081                                                           
 **通常在安装完 Nexus 后，都会增加新的代理源**，具体步骤如下：
 
 1. Nexus管理台：Repository：Repositories菜单：点击右侧Create repository：选择 `maven2 (proxy)`
-2. **Name、Remote storage、Negative Cache TTL** 分别填入 **aliyun、https://maven.aliyun.com/repository/public、288000**
+2. **Name、Remote storage、Negative Cache TTL** 填入 aliyun、https://maven.aliyun.com/repository/public、288000
 3. 以此类推，再把 **apache** 的也创建进来（其地址为：https://repository.apache.org/content/repositories/releases/）
 4. 修改 maven-public：将这 2 个代理源加入 Member repositories，并将其排在最前面，再把 maven-central 排在最后
 
