@@ -183,7 +183,7 @@ export JAVA_HOME PATH                               # （故手动指定JAVA_HOM
 [root@CentOS79 bin]# reboot                         # 最后，重启系统，验证
 ```
 
-另外，再补充一下：将 Nacos 安装为 win10 系统服务的方案，步骤如下
+另外，再补充一下：将 Nacos 安装成为 win10 系统服务的方法，步骤如下
 
 1. 下载文件：https://github.com/winsw/winsw/releases/download/v2.12.0/WinSW.NET4.exe
 2. WinSW.NET4.exe 放到 D:\Develop\nacos\bin\ 目录下，并重命名为 nacos-service.exe
