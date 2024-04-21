@@ -185,7 +185,7 @@ tmpfs           1.9G     0  1.9G   0% /dev/shm
 [root@wxtest webapps]# ls -lhS
 ```
 
-# 默认登录目录
+## 默认登录目录
 
 ```shell
 # 全局配置用户登录后的默认目录，以及 ll 命令直接显示文件列表及大小
