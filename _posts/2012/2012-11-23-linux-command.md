@@ -21,6 +21,15 @@ excerpt: 介绍常用的Linux命令。
 
 **unzip** mpp.201305090010.zip（unzip mpp.201305090010.zip -d ../code/）
 
+```shell
+# 全局配置用户登录后的默认目录，以及 ll 命令直接显示文件列表及大小
+[root@wxtest webapps]# vim /etc/bashrc
+                     # 文件内容尾部，增加以下两行
+                       alias ll='ls -lh --color=auto'
+                       cd /app/backend/logs/open/
+[root@wxtest webapps]# source /etc/bashrc # 令配置生效
+```
+
 ## grep
 
 ```shell
@@ -114,78 +123,6 @@ java    17608 root  163u  IPv6 29073040      0t0  TCP bjgg-kfvm-31:http (LISTEN)
 # 另：可以通过[lsof nohup.log]查看占用nohup.log的进程信息，然后再用[pwdx PID]就能看到该进程的工作路径
 ```
 
-## 查看空间
-
-```shell
-# 查看整体目录占用空间
-[root@wxtest webapps]# df -h
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/sda2        20G  7.2G   12G  39% /
-tmpfs           1.9G     0  1.9G   0% /dev/shm
-/dev/sda1       504M   38M  442M   8% /boot
-/dev/sda5        16G  1.4G   14G  10% /home
-[root@wxtest webapps]#
-
-# 查看指定目录占用空间
-[root@wxtest webapps]# du -sh /opt/tomcat8.0.21/
-429M    /opt/tomcat8.0.21/
-[root@wxtest webapps]#
-
-# 列出当前目录里最大的10个文件
-[root@wxtest webapps]# du -s * | sort -n | tail
-4344    fwcdemo
-28380    oppp.war
-28380    opp.war
-32772    oppp
-32948    opp
-48128    ROOT
-48920    open.war
-60044    open
-61852    WEB-INF
-65608    mpp
-[root@wxtest webapps]#
-
-# 列出当前目录各个文件及其大小，并以大小倒序排序（参数大S用于指定排序，也可以加-a，表示all即显示包括隐藏文件在内的所有文件）
-[root@wxtest webapps]# ls -lhS
-total 107M
--rw-r--r--  1 root root  48M Dec 16 10:01 open.war
--rw-r--r--. 1 root root  28M Aug 15 14:15 opp.war
--rw-r--r--. 1 root root  28M Aug  5 18:27 oppp.war
--rw-r--r--. 1 root root 3.8M Aug  1 20:53 fwcdemo.war
-drwxr-xr-x. 5 root root 4.0K Aug  1 20:53 fwcdemo
-drwxr-xr-x  3 root root 4.0K Oct 13 11:19 META-INF
-drwxr-xr-x  7 root root 4.0K Dec 21 15:15 mpp
-drwxr-xr-x  4 root root 4.0K Dec 16 10:04 open
-drwxr-xr-x. 5 root root 4.0K Aug 15 14:17 opp
-drwxr-xr-x. 5 root root 4.0K Aug  5 18:29 oppp
-drwxrwxrwx. 4 root root 4.0K May 27  2016 ROOT
-drwxr-xr-x  4 root root 4.0K Oct 13 11:19 WEB-INF
--rw-r--r--  1 root root   16 Dec 21 15:18 MP_verify_LVXtUAXFgaVTGmFu.txt
-[root@wxtest webapps]# ls -lh
-total 107M
-drwxr-xr-x. 5 root root 4.0K Aug  1 20:53 fwcdemo
--rw-r--r--. 1 root root 3.8M Aug  1 20:53 fwcdemo.war
-drwxr-xr-x  3 root root 4.0K Oct 13 11:19 META-INF
-drwxr-xr-x  7 root root 4.0K Dec 21 15:15 mpp
--rw-r--r--  1 root root   16 Dec 21 15:18 MP_verify_LVXtUAXFgaVTGmFu.txt
-drwxr-xr-x  4 root root 4.0K Dec 16 10:04 open
--rw-r--r--  1 root root  48M Dec 16 10:01 open.war
-drwxr-xr-x. 5 root root 4.0K Aug 15 14:17 opp
-drwxr-xr-x. 5 root root 4.0K Aug  5 18:29 oppp
--rw-r--r--. 1 root root  28M Aug  5 18:27 oppp.war
--rw-r--r--. 1 root root  28M Aug 15 14:15 opp.war
-drwxrwxrwx. 4 root root 4.0K May 27  2016 ROOT
-drwxr-xr-x  4 root root 4.0K Oct 13 11:19 WEB-INF
-[root@wxtest webapps]#
-
-# 全局配置用户登录后的默认目录，以及 ll 命令直接显示文件列表及大小
-[root@wxtest webapps]# vim /etc/bashrc
-                     # 文件内容尾部，增加以下两行
-                       alias ll='ls -lh --color=auto'
-                       cd /app/backend/logs/open/
-[root@wxtest webapps]# source /etc/bashrc # 令配置生效
-```
-
 ## PID情况
 
 ```shell
@@ -209,4 +146,50 @@ echo "进程状态：`ps -aux| awk '$2~/^'$P'$/{print $8}'`"
 echo "进程运行的时间：`ps -aux| awk '$2~/^'$P'$/{print $10}'`"
 echo "进程开始运行的时刻：`ps -aux| awk '$2~/^'$P'$/{print $9}'`"
 echo "--------------------------------------------"
+```
+
+## 查看空间
+
+* du（disk usage）：通过搜索文件，来计算，每个文件的大小，然后累加得到的值
+* df（disk  free）：通过文件系统，来获取，空间大小的信息
+
+如果用户删除了一个正在运行的应用程序所打开的某个目录下的文件，那么：
+
+1. du：显示的是减去了该文件后的总大小
+2. df：不显示减去该文件后的大小（文件句柄还在被使用），直到该应用程序关闭了此文件（才会真正释放空间）
+
+**场景举例**
+
+常见的场景就是：删除了一个很大的正在写入的 tomcat 的 access 日志
+
+**du** 显示的结果会把日志大小减去，**df** 则仍会包含该日志的大小（实际上 tomcat 仍引用着该文件的句柄）
+
+所以：若要删除某个 access 日志，不要粗暴的 **rm**，而要温柔的：`echo "" > access.log`
+
+因为：**df** 的结果若是磁盘已被占满，那么会导致新日志打不出来，或者其他应用在该磁盘上打不出日志
+
+**那么如何发现被应用程序引用着“已删除”文件呢？**
+
+答案：使用 **lsof（list open files）** 命令查看打开的文件，比如 `lsof | grep deleted`
+
+下面列出一些常用的命令
+
+```shell
+# 查看整体目录占用空间
+[root@wxtest webapps]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2        20G  7.2G   12G  39% /
+tmpfs           1.9G     0  1.9G   0% /dev/shm
+/dev/sda1       504M   38M  442M   8% /boot
+/dev/sda5        16G  1.4G   14G  10% /home
+[root@wxtest webapps]#
+
+# 查看指定目录占用空间
+[root@wxtest webapps]# du -sh /app/tomcat8.0.21/
+
+# 列出当前目录里最大的10个文件
+[root@wxtest webapps]# du -s * | sort -n | tail
+
+# 列出当前目录各个文件及其大小，并以大小倒序排序（参数大S用于指定排序，也可以加-a，表示all即显示包括隐藏文件在内的所有文件）
+[root@wxtest webapps]# ls -lhS
 ```
