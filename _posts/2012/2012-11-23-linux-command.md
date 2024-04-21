@@ -21,15 +21,6 @@ excerpt: 介绍常用的Linux命令。
 
 **unzip** mpp.201305090010.zip（unzip mpp.201305090010.zip -d ../code/）
 
-```shell
-# 全局配置用户登录后的默认目录，以及 ll 命令直接显示文件列表及大小
-[root@wxtest webapps]# vim /etc/bashrc
-                     # 文件内容尾部，增加以下两行
-                       alias ll='ls -lh --color=auto'
-                       cd /app/backend/logs/open/
-[root@wxtest webapps]# source /etc/bashrc # 令配置生效
-```
-
 ## grep
 
 ```shell
@@ -91,8 +82,8 @@ grep -l -r "20170815193506520" *
 # 查询指定端口的监听及运行情况
 # 其它的诸如[ps -ef|grep java]、[kill -9 PID]、[nohup ./startup.sh &]、[free]、[top]等等就不举例了
 [Jadyer@Jadyer-RHEL63 CucPayTradePortalLog]$ netstat -tlanop | grep :80
-tcp        0      0 :::8080                     :::*                        LISTEN      5053/java           off (0.00/0/0)
-tcp        0      0 ::ffff:192.168.8.31:80      :::*                        LISTEN      17608/java          off (0.00/0/0)
+tcp        0      0 :::8080                     :::*         LISTEN      5053/java      off (0.00/0/0)
+tcp        0      0 ::ffff:192.168.8.31:80      :::*         LISTEN      17608/java     off (0.00/0/0)
 [Jadyer@Jadyer-RHEL63 CucPayTradePortalLog]$ lsof -i:80
 COMMAND   PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
 java    17608 root  163u  IPv6 29073040      0t0  TCP bjgg-kfvm-31:http (LISTEN)
@@ -151,7 +142,7 @@ echo "--------------------------------------------"
 ## 查看空间
 
 * du（disk usage）：通过搜索文件，来计算，每个文件的大小，然后累加得到的值
-* df（disk  free）：通过文件系统，来获取，空间大小的信息
+* df（disk free）：通过文件系统，来获取，空间大小的信息
 
 如果用户删除了一个正在运行的应用程序所打开的某个目录下的文件，那么：
 
@@ -192,4 +183,15 @@ tmpfs           1.9G     0  1.9G   0% /dev/shm
 
 # 列出当前目录各个文件及其大小，并以大小倒序排序（参数大S用于指定排序，也可以加-a，表示all即显示包括隐藏文件在内的所有文件）
 [root@wxtest webapps]# ls -lhS
+```
+
+# 默认登录目录
+
+```shell
+# 全局配置用户登录后的默认目录，以及 ll 命令直接显示文件列表及大小
+[root@wxtest webapps]# vim /etc/bashrc
+                     # 文件内容尾部，增加以下两行
+                       alias ll='ls -lh --color=auto'
+                       cd /app/backend/logs/open/
+[root@wxtest webapps]# source /etc/bashrc # 令配置生效
 ```
