@@ -11,11 +11,15 @@ excerpt: 介绍常用的Linux命令。
 {:toc}
 
 
-* wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.2.10.tgz
-* scp mongodb-linux-x86_64-3.2.10.tgz root@10.16.30.72:/app/software/backup
-* curl -X POST -H "Content-Type: application/json" -d '{"tenantId":"0"}' "http://127.0.0.1:2000/mpp/syncFans"
-* zip -9r mpp.201305090010.zip mpp-2.0-SNAPSHOT.jar（zip -9r mpp.$(date "+%Y%m%d%H%M%S").zip mpp-2.0-SNAPSHOT.jar）
-* unzip mpp.201305090010.zip（unzip mpp.201305090010.zip -d ../code/）
+**wget** https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.2.10.tgz
+
+**scp** mongodb-linux-x86_64-3.2.10.tgz root@10.16.30.72:/app/software/backup
+
+**curl** -X POST -H "Content-Type: application/json" -d '{"tenantId":"0"}' "http://127.0.0.1:2000/mpp/syncFans"
+
+**zip** -9r mpp.201305090010.zip mpp-2.0.jar（zip -9r mpp.$(date "+%Y%m%d%H%M%S").zip mpp-2.0.jar）
+
+**unzip** mpp.201305090010.zip（unzip mpp.201305090010.zip -d ../code/）
 
 ## grep
 
