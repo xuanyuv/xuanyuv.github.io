@@ -183,6 +183,36 @@ export JAVA_HOME PATH                               # （故手动指定JAVA_HOM
 [root@CentOS79 bin]# reboot                         # 最后，重启系统，验证
 ```
 
+另外，再补充一下：将 Nacos 安装为 win10 系统服务的方案，步骤如下
+
+1. 下载文件：https://github.com/winsw/winsw/releases/download/v2.12.0/WinSW.NET4.exe
+2. WinSW.NET4.exe 放到 D:\Develop\nacos\bin\ 目录下，并重命名为 nacos-service.exe
+3. 在该目录 D:\Develop\nacos\bin\ 下创建 nacos-service.xml 文件
+4. 在该目录 D:\Develop\nacos\bin\ 的上方文件夹路径位置，输入 cmd 打开命令提示行窗口
+5. 执行该命令即可：nacos-service.exe install （若要卸载，则将 install 参数换为 uninstall）
+
+其中，nacos-service.xml 内容如下：
+
+```xml
+<service>
+   <!-- 唯一服务ID-->
+   <id>nacos</id>
+   <!-- 显示服务的名称 -->
+   <name>nacos</name>
+   <!-- 服务描述 -->
+   <description>本地的Nacos服务</description>
+   <!-- 日志路径 -->
+   <logpath>D:\Develop\nacos\bin\logs\</logpath>
+   <!-- 日志模式 -->
+   <logmode>roll</logmode>
+   <!-- 可执行文件的命令 -->
+   <executable>D:\Develop\nacos\bin\startup.cmd</executable>
+   <arguments>-m standalone</arguments>
+   <!-- 停止可执行文件的命令 -->
+   <stopexecutable>D:\Develop\nacos\bin\shutdown.cmd</stopexecutable>
+</service>
+```
+
 ## 安装Nexus
 
 下载地址：https://help.sonatype.com/en/download.html，这里使用的是 [nexus-3.67.1-01-java11-unix.tar.gz](https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/3/nexus-3.67.1-01-java11-unix.tar.gz)
