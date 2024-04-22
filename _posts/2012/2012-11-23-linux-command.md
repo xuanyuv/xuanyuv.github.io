@@ -185,6 +185,14 @@ tmpfs           1.9G     0  1.9G   0% /dev/shm
 [root@wxtest webapps]# ls -lhS
 ```
 
+## 监控服务器
+
+用得比较多的就是 `htop` 命令了，CentOS 上安装命令为：`yum install -y htop`
+
+使用时，直接敲入 htop 再回车即可，下面是监控截图
+
+![](https://s2.loli.net/2024/04/22/tyfd8KLcvTIHazi.jpg)
+
 ## 默认登录目录
 
 ```shell
