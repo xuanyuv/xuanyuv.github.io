@@ -21,6 +21,7 @@
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml " | prepend: site.baseurl | prepend: site.url }}">
 
-    <!-- 51访问统计：https://v6.51.la/ -->
-    <script src="/js/51la.sdk.js"></script>
+    <!-- https://v6.51.la/：若此处控制台出现跨域或连接失败，那有可能是浏览器的Adblock插件所致 -->
+    <script charset="UTF-8" id="LA_COLLECT" src="https://sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id:"3ID3lU9RrOsNU3qL",ck:"3ID3lU9RrOsNU3qL",autoTrack:true})</script>
 </head>
