@@ -296,7 +296,7 @@ application-port=8081                                                           
    nx-repository-view-*-*-read
    nx-repository-view-*-*-browse
    ```
-5. 最后创建用户时，选择新建的**xxx-dev-role**角色即可
+5. 最后创建用户时，赋予新建的 **xxx-dev-role** 角色即可
 
 最后有几点需要注意：
 
@@ -304,7 +304,7 @@ application-port=8081                                                           
   也无法上传 jar 包，会提示：authorization failed for http://127.0.0.1:8081..., status: 403 Forbidden<br/>
   而仅添加一个 nx-repository-view-maven2-maven-snapshots-edit 权限，就能够成功上传 jar 包
 * maven-snapshots 仓库的 Deployment policy 可以修改为 Disable redeploy，即不允许重新部署<br/>
-  所以只能打新包，防止恶意篡改，就跟 maven-releases 仓库的默认配置一样（它不会影响的 jar 包上传）
+  所以只能打新包，防止恶意篡改，就跟 maven-releases 仓库的默认配置一样（它不会影响 jar 包的上传）
 
 ### 修改Maven配置
 
@@ -327,7 +327,7 @@ application-port=8081                                                           
 
 对于 Maven 的配置，仅此三项就够了（不用配置<profile>）
 
-对于 pom.xml 而言，也不用再配置 <repositories> 和 <pluginRepositories>，只配置 <distributionManagement> 即可
+对于 pom.xml 而言，也不用再配置 repositories 和 pluginRepositories，只配置 distributionManagement 即可
 
 ```xml
 <!-- 这里的两个 id 可以相同，并保持和 <maven-settings-server-id> 一致即可 -->
@@ -341,6 +341,9 @@ application-port=8081                                                           
         <url>http://127.0.0.1:8081/repository/maven-snapshots/</url>
     </snapshotRepository>
 </distributionManagement>
+
+<!--下面再补充一个手动发布 jar 到私服的命令-->
+<!-- mvn deploy:deploy-file -DgroupId=com.jadyer.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.4 -Dpackaging=jar -Dfile=ojdbc6-11.2.0.4.jar -Dsources=ojdbc6-11.2.0.4-sources.jar -DrepositoryId=xuanyu-public -Durl=http://127.0.0.1:8081/repository/maven-releases/ -->
 ```
 
 ## 安装wkhtmltopdf
