@@ -327,9 +327,9 @@ application-port=8081                                                           
 
 对于 Maven 的配置，仅此三项就够了（不用配置<profile>）
 
-对于 pom.xml 而言，也不用再配置 repositories 和 pluginRepositories 了
+对于 pom.xml 而言，也不用再配置 &lt;repositories&gt; 和 &lt;pluginRepositories&gt; 了
 
-只需要配置 distributionManagement 即可，如下所示
+只需要配置 &lt;distributionManagement&gt; 即可，如下所示
 
 ```xml
 <!-- 这里的两个 id 可以相同，并保持和 <maven-settings-server-id> 一致即可 -->
@@ -343,9 +343,19 @@ application-port=8081                                                           
         <url>http://127.0.0.1:8081/repository/maven-snapshots/</url>
     </snapshotRepository>
 </distributionManagement>
+```
 
-<!--最后再补充一个手动发布 jar 到私服的命令-->
-<!-- mvn deploy:deploy-file -DgroupId=com.jadyer.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.4 -Dpackaging=jar -Dfile=ojdbc6-11.2.0.4.jar -Dsources=ojdbc6-11.2.0.4-sources.jar -DrepositoryId=xuanyu-public -Durl=http://127.0.0.1:8081/repository/maven-releases/ -->
+### 手动上传三方jar
+
+由于上面创建的 **xxx-dev-role** 角色，只是针对 maven-snapshots 仓库配置了 edit 权限
+
+因此它是没有权限往 maven-releases 仓库中上传 jar 包的
+
+此时要么给它增加 maven-releases-edit 权限，要么换成用 admin 用户来上传，命令举例如下：
+
+```shell
+# 注意：参数 **-DrepositoryId** 的值，其实就是 <maven-settings-server-id> 的值
+mvn deploy:deploy-file -DgroupId=com.jadyer.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.4 -Dpackaging=jar -Dfile=ojdbc6-11.2.0.4.jar -Dsources=ojdbc6-11.2.0.4-sources.jar -DrepositoryId=xuanyu-admin -Durl=http://127.0.0.1:8081/repository/maven-releases/
 ```
 
 ## 安装wkhtmltopdf
