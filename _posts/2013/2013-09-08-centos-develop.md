@@ -262,7 +262,9 @@ application-port=8081                                                           
    ```
    关闭也简单：Nexus管理台：System：Capabilities菜单：编辑Outreach.Management：点击Disable，再重启Nexus即可
 
-**通常在安装完 Nexus 后，都会增加新的代理源**，具体步骤如下：
+### 增加代理源
+
+通常在安装完 Nexus 后，都会增加新的代理源，具体步骤如下：
 
 1. Nexus管理台：Repository：Repositories菜单：点击右侧Create repository：选择 `maven2 (proxy)`
 2. **Name、Remote storage、Negative Cache TTL** 填入 aliyun、https://maven.aliyun.com/repository/public、288000
@@ -279,27 +281,67 @@ application-port=8081                                                           
 
 > 补充：有的企业会再新建一个库，叫做 `3rd party`，类型是 `hosted`，专门存放第三方的 jar
 
-**为了不暴露 admin 用户，我们创建一个普通用户并赋予角色**
+### 创建普通用户
+
+为了不暴露 admin 用户，我们创建一个普通用户并赋予角色
 
 1. Nexus管理台：Security：Roles菜单：点击右侧Create Role：选择 Role Type 为 `Nexus role`
 2. `Role ID` 填入 **xxx-dev-role**，`Role Name` 填入 **xxx研发角色**
-3. `Applied Privileges` 处可以搜索并最终添加以下权限，最后创建用户时，选择该角色即可
+3. `Applied Privileges` 处搜索并添加一条这样的权限：**nx-repository-view-maven2-maven-snapshots-edit**
+4. `Applied Roles` 处搜索并添加一个这样的角色：**nx-anonymous**<br/>
+   即此举等于是复用一份匿名角色的权限，到当前新建的角色中，下面是**nx-anonymous**角色默认拥有的权限：
    ```text
-   nx-repository-view-maven2-aliyun-browse
-   nx-repository-view-maven2-aliyun-read
-   nx-repository-view-maven2-apache-browse
-   nx-repository-view-maven2-apache-read
-   nx-repository-view-maven2-maven-central-browse
-   nx-repository-view-maven2-maven-central-read
-   nx-repository-view-maven2-maven-public-browse
-   nx-repository-view-maven2-maven-public-read
-   nx-repository-view-maven2-maven-releases-browse
-   nx-repository-view-maven2-maven-releases-read
-   nx-repository-view-maven2-maven-snapshots-browse
-   nx-repository-view-maven2-maven-snapshots-delete
-   nx-repository-view-maven2-maven-snapshots-read
+   nx-healthcheck-read
    nx-search-read
+   nx-repository-view-*-*-read
+   nx-repository-view-*-*-browse
    ```
+5. 最后创建用户时，选择新建的**xxx-dev-role**角色即可
+
+最后有几点需要注意：
+
+* 实测同时添加 nx-component-upload 和 nx-repository-view-maven2-maven-snapshots-add 权限<br/>
+  也无法上传 jar 包，会提示：authorization failed for http://127.0.0.1:8081..., status: 403 Forbidden<br/>
+  而仅添加一个 nx-repository-view-maven2-maven-snapshots-edit 权限，就能够成功上传 jar 包
+* maven-snapshots 仓库的 Deployment policy 可以修改为 Disable redeploy，即不允许重新部署<br/>
+  所以只能打新包，防止恶意篡改，就跟 maven-releases 仓库的默认配置一样（它不会影响的 jar 包上传）
+
+### 修改Maven配置
+
+```xml
+<localRepository>D:/Develop/Code/repo_mvn</localRepository>
+
+<server>
+    <id>xuanyu-public</id>
+    <username>xuanyu</username>
+    <password>xuanyu</password>
+</server>
+
+<!-- mirror-id 要和 server-id 保持一致 -->
+<mirror>
+    <id>xuanyu-public</id>
+    <url>http://127.0.0.1:8081/repository/maven-public/</url>
+    <mirrorOf>*</mirrorOf>
+</mirror>
+```
+
+对于 Maven 的配置，仅此三项就够了（不用配置<profile>）
+
+对于 pom.xml 而言，也不用再配置 <repositories> 和 <pluginRepositories>，只配置 <distributionManagement> 即可
+
+```xml
+<!-- 这里的两个 id 可以相同，并保持和 <maven-settings-server-id> 一致即可 -->
+<distributionManagement>
+    <repository>
+        <id>xuanyu-public</id>
+        <url>http://127.0.0.1:8081/repository/maven-releases/</url>
+    </repository>
+    <snapshotRepository>
+        <id>xuanyu-public</id>
+        <url>http://127.0.0.1:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+</distributionManagement>
+```
 
 ## 安装wkhtmltopdf
 
