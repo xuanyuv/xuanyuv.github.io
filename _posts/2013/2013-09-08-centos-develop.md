@@ -316,6 +316,11 @@ application-port=8081                                                           
     <username>xuanyu</username>
     <password>xuanyu</password>
 </server>
+<server>
+   <id>xuanyu-admin</id>
+   <username>admin</username>
+   <password>admin</password>
+</server>
 
 <!-- mirror-id 要和 server-id 保持一致 -->
 <mirror>
