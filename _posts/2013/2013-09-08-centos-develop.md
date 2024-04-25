@@ -298,7 +298,7 @@ application-port=8081                                                           
    ```
 5. 最后创建用户时，赋予新建的 **xxx-dev-role** 角色即可
 
-最后有几点需要注意：
+另外有几点需要注意：
 
 * 实测同时添加 nx-component-upload 和 nx-repository-view-maven2-maven-snapshots-add 权限<br/>
   也无法上传 jar 包，会提示：authorization failed for http://127.0.0.1:8081..., status: 403 Forbidden<br/>
