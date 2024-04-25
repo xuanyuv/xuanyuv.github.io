@@ -64,6 +64,8 @@ Maven中的依赖都是通过坐标进行存储的`GAV：groupId,artifactId,vers
 
 ## Nexus
 
+> 下面是Windows上安装Nexus，更常见的是在Linux上安装，详见：<https://jadyer.cn/2013/09/08/centos-develop/#安装nexus>
+
 ##### Nexus的安装
 
 1、下载`nexus-2.0.3-bundle.zip`并解压缩
