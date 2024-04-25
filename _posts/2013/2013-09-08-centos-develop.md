@@ -251,7 +251,8 @@ application-port=8081                                                           
    The version of the JVM must be at least 1.8 and at most 11.
    Please define INSTALL4J_JAVA_HOME to point to a suitable JVM.
    ```
-4. 默认用户为admin，默认密码位于：/app/software/nexus-3.67.1-01/sonatype-work/nexus3/admin.password<br/>
+4. 启动后，浏览器默认访问地址为：[http://127.1.1.1:8081/](http://127.1.1.1:8081/)<br/>
+   默认用户为admin，默认密码位于：/app/software/nexus-3.67.1-01/sonatype-work/nexus3/admin.password<br/>
    首次登录后，会提示修改密码，修改完密码后，admin.password 文件也就会消失
 5. 首次登陆时，会提示是否打开允许匿名访问（后面也可以在Nexus管理台：Security：Anonymous Access菜单进行修改）
 6. 启动后，会发现控制台（../sonatype-work/nexus3/log/nexus.log）经常会输出下面的异常日志
