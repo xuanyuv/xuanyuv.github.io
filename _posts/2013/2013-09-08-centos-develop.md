@@ -327,7 +327,9 @@ application-port=8081                                                           
 
 对于 Maven 的配置，仅此三项就够了（不用配置<profile>）
 
-对于 pom.xml 而言，也不用再配置 repositories 和 pluginRepositories，只配置 distributionManagement 即可
+对于 pom.xml 而言，也不用再配置 repositories 和 pluginRepositories 了
+
+只需要配置 distributionManagement 即可，如下所示
 
 ```xml
 <!-- 这里的两个 id 可以相同，并保持和 <maven-settings-server-id> 一致即可 -->
@@ -342,7 +344,7 @@ application-port=8081                                                           
     </snapshotRepository>
 </distributionManagement>
 
-<!--下面再补充一个手动发布 jar 到私服的命令-->
+<!--最后再补充一个手动发布 jar 到私服的命令-->
 <!-- mvn deploy:deploy-file -DgroupId=com.jadyer.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.4 -Dpackaging=jar -Dfile=ojdbc6-11.2.0.4.jar -Dsources=ojdbc6-11.2.0.4-sources.jar -DrepositoryId=xuanyu-public -Durl=http://127.0.0.1:8081/repository/maven-releases/ -->
 ```
 
