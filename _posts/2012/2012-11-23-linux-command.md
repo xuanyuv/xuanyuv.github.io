@@ -193,6 +193,47 @@ tmpfs           1.9G     0  1.9G   0% /dev/shm
 
 ![](https://s2.loli.net/2024/04/22/tyfd8KLcvTIHazi.jpg)
 
+### 获取本机IP
+
+```shell
+[xuanyu@wxtest ~]$ ifconfig -a
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.1.1  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet6 fe80::216:3eff:fe37:b9a7  prefixlen 64  scopeid 0x20<link>
+        ether 00:16:3e:37:b9:a7  txqueuelen 1000  (Ethernet)
+        RX packets 144586  bytes 186092131 (177.4 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 38674  bytes 6727428 (6.4 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+# 用下面的命令即可
+ifconfig -a | grep inet | grep -v 127.0.0.1 | grep -v inet6 | awk '{print $2}'
+
+# 下面是命令释义
+# ifconfig -a       //返回本机的所有IP信息
+# grep inet         //截取包含IP的行
+# grep -v 127.0.0.1 //去掉本地指向的那行
+# grep -v inet6     //去掉包含inet6的那行
+# awk { print $2}   //$2表示默认以空格分割的第二组，同理$1表示第一组
+# 所以下面这个命令也能获取
+ifconfig eth0| grep inet | grep -v inet6 | awk '{ print $2}'
+
+# 或者写成一个shell脚本
+#!/bin/sh
+NETWORK_CARD_NAME=eth0
+HOST_IP=$(ifconfig $NETWORK_CARD_NAME | grep inet | grep -v inet6 | awk '{ print $2}')
+echo $HOST_IP
+```
+
 ## 默认登录目录
 
 ```shell
