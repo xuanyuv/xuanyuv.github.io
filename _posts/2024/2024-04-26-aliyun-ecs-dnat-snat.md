@@ -9,26 +9,28 @@ published: true
 ---
 
 * content
-  {:toc}
+{:toc}
 
 
 背景：阿里云上有 2 台 CentOS7.9，一台分配了公网IP（192.168.1.1），另一台无公网IP（192.168.0.1）
 
 ## 简易跳板机
 
-先在阿里云 192.168.0.1 机器上配置安全组：22 端口允许 192.168.1.1 访问
+先在阿里云 192.168.0.1 机器上配置安全组：**22 端口允许 192.168.1.1 访问**
 
 然后在本地 xshell 作如下 2 步配置即可：
 
 1. 创建一个跳板机的 Session（可以随便给一个名字，这里就命名为跳板机），具体配置如图所示<br/>
    ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-01.png)<br/><br/>
    ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-02.png)<br/>
-   最重要的就是：隧道的配置，这里是通过 192.168.1.1 机器侦听 2200 端口，来与 192.168.0.1 机器的 22 端口建立隧道
+   **注意隧道的配置：这里是通过 192.168.1.1 机器侦听 2200 端口，来与 192.168.0.1 机器的 22 端口建立隧道**
 2. 创建一个内网机器的 Session<br/>
    ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-03.png)<br/>
    然后在 Authentication 处填入连接内网机器的用户名密码或 PublicKey 即可
 
 实际使用时，通过 xshell 先连跳板机，再连内网机器，就行了（所以上面建了 2 个 xshell session）
+
+**注意：连接内网机器的过程中，若跳板机连接断开了，那么打开的所有内网机器连接都会自动断开**
 
 关于这方面的更详细介绍，可参考这篇博客：[xshell tunnel的使用](https://www.cnblogs.com/oxspirt/p/10260053.html)
 
@@ -36,7 +38,7 @@ published: true
 
 192.168.0.1 默认是无法访问外网的
 
-这里可以借助有公网的 192.168.1.1 来访问外网（二者处于同一个 VPC，但可以不在一个安全组内）
+这里可以借助有公网 IP 的 192.168.1.1 来访问外网（二者处于同一个 VPC，但可以不在一个安全组内）
 
 共有 3 步配置 **（全是在 192.168.1.1 上面配置，192.168.0.1 全程不需要任何配置）**：
 
@@ -53,8 +55,8 @@ published: true
    *-A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source 192.168.1.1*<br/>
    最后重启 iptables 使规则生效：`systemctl restart iptables.service`
 3. 在阿里云后台自定义路由条目：<https://vpc.console.aliyun.com/vpc/cn-beijing/route-tables><br/>
-   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-03.png)<br/>
-   名称可以随便写，除了图中圈红的两处，两台服务器还要位于同一个资源组下面，否则 ECS 实例处选择不到
+   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-04.png)<br/>
+   名称可以随便写，除了图中圈红的两处，两台服务器还要位于同一个资源组下面，否则 ECS 实例选择不到
 
 现在，192.168.0.1 就可以访问外网了，同 192.168.1.1 相比，速度几乎无影响
 
@@ -76,7 +78,9 @@ PING www.a.shifen.com (220.181.38.149) 56(84) bytes of data.
 
 ### 可能遇到的问题
 
-内网机器在 ping 外网时，可能会返回 icmp_seq=1 Destination Host Prohibited，而非 icmp_seq=1 ttl=53 time=6.75 ms
+内网机器在 ping 外网时
+
+可能会返回 icmp_seq=1 Destination Host Prohibited，而非预期的 icmp_seq=1 ttl=53 time=6.75 ms
 
 此时，需要修改 192.168.1.1：`vim /etc/sysconfig/iptables`（不用修改内网机器 192.168.0.1）
 
