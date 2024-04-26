@@ -13,13 +13,11 @@ excerpt: 介绍常用的Linux命令。
 
 **wget** https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.2.10.tgz
 
-**scp** mongodb-linux-x86_64-3.2.10.tgz root@10.16.30.72:/app/software/backup
-
 **curl** -X POST -H "Content-Type: application/json" -d '{"tenantId":"0"}' "http://127.0.0.1:2000/mpp/syncFans"
 
-**zip** -9r mpp.201305090010.zip mpp-2.0.jar（zip -9r mpp.$(date "+%Y%m%d%H%M%S").zip mpp-2.0.jar）
+**zip** -9r mpp.201305090010.zip mpp-2.0.jar【*zip -9r mpp.$(date "+%Y%m%d%H%M%S").zip mpp-2.0.jar*】
 
-**unzip** mpp.201305090010.zip（unzip mpp.201305090010.zip -d ../code/）
+**unzip** mpp.201305090010.zip【*unzip mpp.201305090010.zip -d ../code/*】
 
 ## grep
 
@@ -114,6 +112,45 @@ java    17608 root  163u  IPv6 29073040      0t0  TCP bjgg-kfvm-31:http (LISTEN)
 # 另：可以通过[lsof nohup.log]查看占用nohup.log的进程信息，然后再用[pwdx PID]就能看到该进程的工作路径
 ```
 
+## 获取IP
+
+```shell
+[xuanyu@wxtest ~]$ ifconfig -a
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.1.1  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet6 fe80::216:3eff:fe37:b9a7  prefixlen 64  scopeid 0x20<link>
+        ether 00:16:3e:37:b9:a7  txqueuelen 1000  (Ethernet)
+        RX packets 144586  bytes 186092131 (177.4 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 38674  bytes 6727428 (6.4 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+# 用下面的命令即可
+ifconfig -a | grep inet | grep -v 127.0.0.1 | grep -v inet6 | awk '{print $2}'
+# ifconfig -a       //返回本机的所有IP信息
+# grep inet         //截取包含IP的行
+# grep -v 127.0.0.1 //去掉本地指向的那行
+# grep -v inet6     //去掉包含inet6的那行
+# awk { print $2}   //$2表示默认以空格分割的第二组，同理$1表示第一组
+# 所以下面这个命令也能获取
+ifconfig eth0| grep inet | grep -v inet6 | awk '{ print $2}'
+
+# 若写成shell脚本，就是这样的
+#!/bin/sh
+NETWORK_CARD_NAME=eth0
+HOST_IP=$(ifconfig $NETWORK_CARD_NAME | grep inet | grep -v inet6 | awk '{ print $2}')
+echo $HOST_IP
+```
+
 ## PID情况
 
 ```shell
@@ -193,47 +230,6 @@ tmpfs           1.9G     0  1.9G   0% /dev/shm
 
 ![](https://s2.loli.net/2024/04/22/tyfd8KLcvTIHazi.jpg)
 
-### 获取本机IP
-
-```shell
-[xuanyu@wxtest ~]$ ifconfig -a
-eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.1.1  netmask 255.255.255.0  broadcast 192.168.1.255
-        inet6 fe80::216:3eff:fe37:b9a7  prefixlen 64  scopeid 0x20<link>
-        ether 00:16:3e:37:b9:a7  txqueuelen 1000  (Ethernet)
-        RX packets 144586  bytes 186092131 (177.4 MiB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 38674  bytes 6727428 (6.4 MiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-
-lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
-        inet 127.0.0.1  netmask 255.0.0.0
-        inet6 ::1  prefixlen 128  scopeid 0x10<host>
-        loop  txqueuelen 1000  (Local Loopback)
-        RX packets 0  bytes 0 (0.0 B)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 0  bytes 0 (0.0 B)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-
-# 用下面的命令即可
-ifconfig -a | grep inet | grep -v 127.0.0.1 | grep -v inet6 | awk '{print $2}'
-
-# 下面是命令释义
-# ifconfig -a       //返回本机的所有IP信息
-# grep inet         //截取包含IP的行
-# grep -v 127.0.0.1 //去掉本地指向的那行
-# grep -v inet6     //去掉包含inet6的那行
-# awk { print $2}   //$2表示默认以空格分割的第二组，同理$1表示第一组
-# 所以下面这个命令也能获取
-ifconfig eth0| grep inet | grep -v inet6 | awk '{ print $2}'
-
-# 或者写成一个shell脚本
-#!/bin/sh
-NETWORK_CARD_NAME=eth0
-HOST_IP=$(ifconfig $NETWORK_CARD_NAME | grep inet | grep -v inet6 | awk '{ print $2}')
-echo $HOST_IP
-```
-
 ## 默认登录目录
 
 ```shell
@@ -244,3 +240,18 @@ echo $HOST_IP
                        cd /app/backend/logs/open/
 [root@wxtest webapps]# source /etc/bashrc # 令配置生效
 ```
+
+## 带密码的远程拷贝
+
+通常是使用这个命令：scp nginx-1.24.0.tar.gz xuanyu@192.168.0.1:/app/software/backup
+
+但它需要手动输入目标服务器的密码，若想带密码自动拷贝，可以借助 sshpass 命令
+
+```shell
+[root@wxtest /] yum install -y sshpass
+[xuanyu@wxtest ~] sshpass -p "123" scp nginx-1.24.0.tar.gz xuanyu@192.168.0.1:/app/software/backup
+```
+
+第一次执行 sshpass 命令时，可能会报错：Host key verification failed.
+
+这是由于从未连接过该远程机器，那么先手动 scp 再输入密码传输一次，后面再 sshpass 就不会报错了
