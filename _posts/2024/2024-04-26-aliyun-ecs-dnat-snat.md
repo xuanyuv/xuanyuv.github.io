@@ -88,7 +88,7 @@ PING www.a.shifen.com (220.181.38.149) 56(84) bytes of data.
 
 再重启：`systemctl restart iptables.service` 即可
 
-还有可能的是：192.168.0.1 能够 ping 通外网，但是 curl wget 可能不通：解决办法是把这两台机器放到一个安全组
+**还有可能的是：192.168.0.1 可以 ping 通外网，但是 curl wget 确不通：解决办法是把两台机器放到一个安全组**
 
 ### 关于新版防火墙
 
