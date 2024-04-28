@@ -256,6 +256,34 @@ tmpfs           1.9G     0  1.9G   0% /dev/shm
 
 这是由于从未连接过该远程机器，那么先手动 scp 再输入密码传输一次，后面再 sshpass 就不会报错了
 
-## 带密码执行远程脚本
+### 执行远程脚本
 
-如果远程命令...
+ssh 命令也能执行远程脚本，并接收远程输出，再结合 sshpass 就可以带密码执行，示例如下：
+
+这是远程机器上的脚本
+
+```shell
+nohup /app/software/jdk-21.0.2/bin/java -Dspring.profiles.active=dev -jar mpp.jar > nohup.log 2>&1 &
+tail -100f nohup.log
+```
+
+这是当前机器上的脚本
+
+```shell
+#!/bin/sh
+NETWORK_CARD_NAME=eth0
+HOST_IP=$(ifconfig $NETWORK_CARD_NAME | grep inet | grep -v inet6 | awk '{ print $2}')
+echo "HOST_IP = $HOST_IP"
+
+cd /app/backend
+>deploy-mpp.log
+sshpass -p "123" ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh > deploy-mpp.log
+
+PID=$(ps aux | grep "ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh" | awk '{print $2}' | sort -n | head -n 1)
+echo "SSH Remote Command is Running, PID = ${PID}"
+
+# 延迟 120s 后执行 kill 命令，最后关闭 ssh 进程（延迟时间可以根据远程命令执行时长适当调整）
+sleep 120 && kill ${PID} && echo "SSH Remote Command is Complete...."
+
+exit 0
+```
