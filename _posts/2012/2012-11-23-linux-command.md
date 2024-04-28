@@ -289,3 +289,9 @@ sleep 120 && kill ${PID} && echo "SSH Remote Command is Complete...."
 
 exit 0
 ```
+
+Alibaba Cloud Toolkit：Deploy to Host：
+
+sshpass -p "123" ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh
+
+kill $(ps aux | grep /app/backend/mpp/deploy.sh | awk '{print $2}' | sort -n | head -n 1) && exit 0

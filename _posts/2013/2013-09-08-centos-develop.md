@@ -180,7 +180,7 @@ PATH=$JAVA_HOME/bin:$PATH                           # （因此rc.local执行时
 export JAVA_HOME PATH                               # （故手动指定JAVA_HOME，为nacos的启动提供java环境）
 /app/software/nacos-2.3.1/bin/startup-standalone.sh # 最下面添加这一行即可（绝对路径）
 [root@CentOS79 bin]# chmod +x /etc/rc.d/rc.local    # 赋权，使其变成可执行文件
-[root@CentOS79 bin]# reboot                         # 最后，重启系统，验证
+[root@CentOS79 bin]# reboot                         # 重启验证（注意：应用程序连接，需要它开放8848和9848端口）
 ```
 
 另外，再补充一下：将 Nacos 安装成为 win10 系统服务的方法，步骤如下
