@@ -255,3 +255,7 @@ tmpfs           1.9G     0  1.9G   0% /dev/shm
 第一次执行 sshpass 命令时，可能会报错：Host key verification failed.
 
 这是由于从未连接过该远程机器，那么先手动 scp 再输入密码传输一次，后面再 sshpass 就不会报错了
+
+## 带密码运行远程脚本
+
+如果远程命令...
