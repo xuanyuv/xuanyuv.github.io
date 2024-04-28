@@ -263,6 +263,7 @@ ssh 命令也能执行远程脚本，并接收远程输出，再结合 sshpass �
 这是远程机器上的脚本
 
 ```shell
+#!/bin/sh
 nohup /app/software/jdk-21.0.2/bin/java -Dspring.profiles.active=dev -jar mpp.jar > nohup.log 2>&1 &
 tail -100f nohup.log
 ```
