@@ -279,7 +279,8 @@ cd /app/backend
 >deploy-mpp.log
 sshpass -p "123" ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh > deploy-mpp.log
 
-PID=$(ps aux | grep "ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh" | awk '{print $2}' | sort -n | head -n 1)
+# 第二个管道，想更精确的话：grep "ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh"
+PID=$(ps aux | grep "/app/backend/mpp/deploy.sh" | awk '{print $2}' | sort -n | head -n 1)
 echo "SSH Remote Command is Running, PID = ${PID}"
 
 # 延迟 120s 后执行 kill 命令，最后关闭 ssh 进程（延迟时间可以根据远程命令执行时长适当调整）
