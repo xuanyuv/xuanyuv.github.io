@@ -279,7 +279,7 @@ cd /app/backend
 >deploy-mpp.log
 sshpass -p "123" ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh > deploy-mpp.log
 
-# 第二个管道，想更精确的话：grep "ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh"
+# 想更精确的话：grep "ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh"
 PID=$(ps aux | grep "/app/backend/mpp/deploy.sh" | awk '{print $2}' | sort -n | head -n 1)
 echo "SSH Remote Command is Running, PID = ${PID}"
 
