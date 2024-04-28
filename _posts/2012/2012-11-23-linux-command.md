@@ -290,10 +290,37 @@ sleep 120 && kill ${PID} && echo "SSH Remote Command is Complete...."
 exit 0
 ```
 
-另附 Alibaba Cloud Toolkit：Deploy to Host 的配置
+另外，如果是用 Alibaba Cloud Toolkit 插件来部署应用的话
+
+经测试，可以像下面这样配置
 
 ```shell
-sshpass -p "123" ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh
+# 远程机器：backup.sh
+cd /app/backend/mpp
+cp mpp.jar mpp.jar.$(date "+%Y%m%d%H%M%S")
+rm -rf mpp.jar
 
+# 远程机器：deploy.sh
+nohup /app/software/jdk-21.0.2/bin/java -Dspring.profiles.active=dev -jar mpp.jar > nohup.log 2>&1 &
+tail -100f nohup.log
+
+# 当前机器：deploy-mpp.sh
+APP_PATH=/app/backend/mpp
+APP_NAME=mpp.jar
+DEST_PWD=123
+DEST__IP=192.168.0.1
+cd /app/backend
+sshpass -p "$DEST_PWD" ssh xuanyu@$DEST__IP $APP_PATH/backup.sh
+#sleep 3
+sshpass -p "$DEST_PWD" scp $APP_NAME xuanyu@$DEST__IP:$APP_PATH
+#sleep 5
+sshpass -p "$DEST_PWD" ssh -f -n xuanyu@$DEST__IP $APP_PATH/deploy.sh
+
+# Deploy to Host：第一步：Deployment After deploy
+sh deploy-mpp.sh
+# Deploy to Host：第二步：Advanced Automatic open after deploy
 kill $(ps aux | grep /app/backend/mpp/deploy.sh | awk '{print $2}' | sort -n | head -n 1) && exit 0
+
+# 补充：第一步填入的脚本，就是多了一步备份的动作，若是不需要备份的话，直接输入下面的命令就可以了
+sshpass -p "123" ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh
 ```
