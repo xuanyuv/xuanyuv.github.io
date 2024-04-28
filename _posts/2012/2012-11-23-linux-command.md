@@ -273,7 +273,7 @@ tail -100f nohup.log
 #!/bin/sh
 NETWORK_CARD_NAME=eth0
 HOST_IP=$(ifconfig $NETWORK_CARD_NAME | grep inet | grep -v inet6 | awk '{ print $2}')
-echo "HOST_IP = $HOST_IP"
+echo "Intranet IP of the current machine = $HOST_IP"
 
 cd /app/backend
 >deploy-mpp.log
