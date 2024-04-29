@@ -296,9 +296,11 @@ exit 0
 
 ```shell
 # 远程机器：backup.sh
-cd /app/backend/mpp
-cp mpp.jar mpp.jar.$(date "+%Y%m%d%H%M%S")
-rm -rf mpp.jar
+APP_PATH=/app/backend/mpp
+APP_NAME=mpp.jar
+cd $APP_PATH
+cp $APP_NAME $APP_NAME.$(date "+%Y%m%d%H%M%S")
+rm -rf $APP_NAME
 
 # 远程机器：deploy.sh
 nohup /app/software/jdk-21.0.2/bin/java -Dspring.profiles.active=dev -jar mpp.jar > nohup.log 2>&1 &
