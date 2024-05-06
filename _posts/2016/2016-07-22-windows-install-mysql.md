@@ -39,7 +39,9 @@ mysql-5.6.32-winx64.msi（37.0MB）：<http://cdn.mysql.com/Downloads/MySQL-5.6/
 
 mysql-5.7.31-winx64.msi（117MB）：<http://cdn.mysql.com/Downloads/MySQL-5.7/mysql-5.7.44-winx64.msi>
 
-mysql-8.0.21-winx64.msi（140MB）：<http://cdn.mysql.com/Downloads/MySQL-8.0/mysql-8.0.36-winx64.msi>
+mysql-8.0.37-winx64.msi（123MB）：<https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-8.0.37-winx64.msi>
+
+mysql-8.4.0-winx64.msi（128MB）：<https://cdn.mysql.com/Downloads/MySQL-8.4/mysql-8.4.0-winx64.msi>
 
 # 安装
 
