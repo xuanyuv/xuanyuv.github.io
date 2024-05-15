@@ -140,9 +140,7 @@ settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---8
 
 ### 编辑器之代码字体
 
-用的是网上推荐的 Yahei Consolas Hybrid 字体，下载地址如下（三个地址都是同一个文件）
-
-<http://download.csdn.net/detail/jadyer/9719438>
+用的是网上推荐的 Yahei Consolas Hybrid 字体，下载地址如下
 
 <https://gitee.com/a42/YaHei-Consolas-Hybrid-1.12>
 
