@@ -33,6 +33,24 @@ published: true
 
 要是没有权限浏览论坛，也可以看他博客上的：[Win10 LTSC2019 X64 17763.914 五合一 [纯净精简版] 2020.01.01](https://www.pc521.net/streamlined-system/bwcx-ltsc2019-lit.html)
 
+### LTSC2021
+
+后面微软又推出了LTSC2021，下载地址如下：
+
+```text
+Windows 10 Enterprise LTSC 2021 (x64) - DVD (Chinese-Simplified)
+文件：SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO
+大小：4.7GB
+MD5：2579B3865C0591EAD3A2B45AF3CABEEE
+SHA1：C19D7DAFBAFEB26C36E31D97C465E87C7A6E8A4C
+SHA256：C117C5DDBC51F315C739F9321D4907FA50090BA7B48E7E9A2D173D49EF2F73A3
+下载地址：
+  - ED2K: ed2k://|file|SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO|5044211712|1555B7DCA052B5958EE68DB58A42408D|/
+  - BT: magnet:?xt=urn:btih:366ADAA52FB3639B17D73718DD5F9E3EE9477B40&dn=SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO&xl=5044211712
+```
+
+同样的，不忘初心博客上也制作了：[【不忘初心美化版】[太阳谷] Windows10 LTSC2021（19044.4291）X64 无更新[精简版][2.29G](2024.4.19) 价值60元新壁纸（夕阳下雄伟壮观的万里长城）](https://www.pc528.net/ltsc2021_meihua.html)
+
 ### 制作U盘引导盘
 
 虽然UltraISO软碟通也可以，但还是推荐更小巧更好用的 [Rufus](http://rufus.ie/)，我们用 Portable 版就够了
