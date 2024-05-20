@@ -27,7 +27,7 @@ published: true
 3. 傲腾内存官方驱动（要用到 [SetupRST 和 SetupOptaneMemory](https://downloadcenter.intel.com/zh-cn/download/29339/) 两个文件）
 4. 无线网卡官方驱动（我的是 [Intel WiFi6 AX201](https://downloadcenter.intel.com/zh-cn/download/29455?product=130293) 产品，或者到 [联想官网下载](https://think.lenovo.com.cn/support/driver/mainpage.aspx#ThinkPad)）
 
-关于系统版本，这里可以看到官方的版本历史：<https://docs.microsoft.com/zh-cn/windows/release-information>
+关于系统版本，这里可以看到官方的版本历史：<https://learn.microsoft.com/zh-cn/windows/release-health/release-information>
 
 另外，如果追求 LTSC 上还要精简的系统，不妨试试 [远景论坛不忘初心](http://bbs.pcbeta.com/viewthread-1803552-1-1.html) 的作品，口碑很好，不比其它版主的作品差
 
