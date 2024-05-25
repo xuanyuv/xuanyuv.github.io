@@ -151,7 +151,7 @@ user nginx Nginx;
 [Jadyer@CentOS79 backup]$ cd /app/software/nacos-2.3.1/
 [Jadyer@CentOS79 nacos-2.3.1]$ vim conf/application.properties
 spring.sql.init.platform=mysql
-# 首次启动前，应先初始化数据库，初始化文件位于：/app/nacos-2.3.1/conf/mysql-schema.sql
+# 首次启动前，应先初始化数据库，初始化文件位于：/app/software/nacos-2.3.1/conf/mysql-schema.sql
 db.num=1
 # 连接mysql8.0时可能报错：java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
 # 此时，在连接参数上增加：allowPublicKeyRetrieval=true
