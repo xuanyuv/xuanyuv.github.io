@@ -32,7 +32,6 @@ published: true
 
 1. 创建一个跳板机的 Session（可以随便给一个名字，这里就命名为跳板机）<br/>
    再配置其隧道转发方式，使得192.168.1.1 机器侦听 2200 端口，来与 192.168.0.1 机器的 22 端口建立隧道<br/>
-   具体配置如图所示<br/>
    ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-01.png)<br/><br/>
    ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-02.png)<br/>
 2. 然后创建一个连接内网机器的 Session<br/>
@@ -68,13 +67,13 @@ published: true
 
 也可以在 xshell 的隧道面板看到详细情况（xshell ---> View ---> Tunneling Pane）
 
-## 配置访问外网
+## 访问互联网
 
-192.168.0.1 默认是无法访问外网的
+内网机器（192.168.0.1）默认是无法访问互联网的
 
-这里可以借助有公网 IP 的 192.168.1.1 来访问外网（二者处于同一个 VPC，但可以不在一个安全组内）
+此时，可以借助公网机器（192.168.1.1）来达到访问互联网的目的（二者处于同一个 VPC）
 
-共有 3 步配置 **（全是在 192.168.1.1 上面配置，192.168.0.1 全程不需要任何配置）**：
+共有 3 步配置 **（注意：全部是在 192.168.1.1 上面配置的，192.168.0.1 全程不需要任何配置）**：
 
 1. 开启 ECS 的 IP 转发功能<br/>
    ```shell
@@ -83,46 +82,36 @@ published: true
    [root@dev02 ~]# sysctl -p           # 令修改生效
    ```
 2. 设置 SNAT 规则：分别执行以下命令<br/>
-   执行命令：`iptables -t nat -I POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source 192.168.1.1`<br/>
-   再把它保存在 iptables 配置文件中：`service iptables save`（否则 iptables 规则重启会清空）<br/>
-   这个时候，查看 **/etc/sysconfig/iptables** 会发现它多了一条 SNAT 转发规则<br/>
-   *-A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source 192.168.1.1*<br/>
-   最后重启 iptables 使规则生效：`systemctl restart iptables.service`
+   ```shell
+   # 先执行该命令
+   iptables -t nat -I POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source 192.168.1.1
+   # 再执行该命令：即把它保存在 iptables 配置文件中（否则 iptables 规则重启会清空）
+   service iptables save
+   # 此时，查看 /etc/sysconfig/iptables 会发现它多了一条 SNAT 转发规则，如下所示
+   # -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source 192.168.1.1
+   # 最后重启 iptables 使规则生效
+   systemctl restart iptables.service
+   ```
 3. 在阿里云网页后台，添加自定义路由条目：<https://vpc.console.aliyun.com/vpc/cn-beijing/route-tables><br/>
    ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-07.png)<br/>
-   名称可以随便写，除了图中圈红的两处，两台服务器还要位于同一个资源组下面，否则 ECS 实例选择不到
 
 现在，192.168.0.1 就可以访问外网了，同 192.168.1.1 相比，速度几乎无影响
 
 ```shell
-# 这是在跳板机上 ping 的结果
+# 这是在跳板机（192.168.1.1）上的
 [xuanyu@dev02 ~]$ ping www.baidu.com
 PING www.a.shifen.com (220.181.38.149) 56(84) bytes of data.
 64 bytes from 220.181.38.149 (220.181.38.149): icmp_seq=1 ttl=54 time=5.09 ms
 64 bytes from 220.181.38.149 (220.181.38.149): icmp_seq=2 ttl=54 time=5.08 ms
 64 bytes from 220.181.38.149 (220.181.38.149): icmp_seq=3 ttl=54 time=5.11 ms
 
-# 这是在无外网IP的机器上 ping 的结果
+# 这是在内网机器（192.168.0.1）上的
 [xuanyu@prod01 ~]$ ping www.baidu.com
 PING www.a.shifen.com (220.181.38.149) 56(84) bytes of data.
 64 bytes from 220.181.38.149 (220.181.38.149): icmp_seq=1 ttl=53 time=6.75 ms
 64 bytes from 220.181.38.149 (220.181.38.149): icmp_seq=2 ttl=53 time=6.73 ms
 64 bytes from 220.181.38.149 (220.181.38.149): icmp_seq=3 ttl=53 time=6.71 ms
 ```
-
-### 可能遇到的问题
-
-内网机器在 ping 外网时
-
-可能会返回 icmp_seq=1 Destination Host Prohibited，而非预期的 icmp_seq=1 ttl=53 time=6.75 ms
-
-此时，需要修改 192.168.1.1：`vim /etc/sysconfig/iptables`（不用修改内网机器 192.168.0.1）
-
-注释掉：**-A FORWARD -j REJECT --reject-with icmp-host-prohibited**
-
-再重启：`systemctl restart iptables.service` 即可
-
-**还有可能：192.168.0.1 可以 ping 通外网，但是 curl wget 不通：解决办法是把两台机器放到一个安全组**
 
 ### 关于新版防火墙
 
@@ -148,3 +137,22 @@ systemctl enable iptables.service
 # 重启防火墙使配置生效
 systemctl restart iptables.service
 ```
+
+### 可能遇到的问题
+
+内网机器在 ping 外网时
+
+可能会返回 icmp_seq=1 Destination Host Prohibited，而非预期的 icmp_seq=1 ttl=53 time=6.75 ms
+
+此时，需要修改 192.168.1.1：`vim /etc/sysconfig/iptables`（不用修改内网机器 192.168.0.1）
+
+注释掉：**-A FORWARD -j REJECT --reject-with icmp-host-prohibited**
+
+再重启：`systemctl restart iptables.service` 即可
+
+> 还可能出现一种情况：192.168.0.1 可以 ping 通外网，但是 curl wget 不通<br/>
+解决办法是把两台机器放到一个安全组（可以是一个没有任何规则的空安全组）
+
+## 接受外部访问
+
+sydswh
