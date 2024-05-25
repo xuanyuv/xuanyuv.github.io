@@ -155,11 +155,11 @@ systemctl restart iptables.service
 
 ## 访问内网应用
 
-还有一种场景：公网的电脑，希望使用浏览器，直接访问内网部署的应用
+这种场景：公网的电脑，希望使用浏览器，直接访问内网部署的应用
 
-解决办法也是：借助跳板机
+解决办法：借助跳板机
 
-步骤如下（假设内网部署的应用的访问地址为：http://192.168.0.1:1400/）
+步骤如下：同样 2 步（假设内网部署的应用的访问地址为：http://192.168.0.1:1400/）
 
 1. iptables 中放行端口<br/>
    ```shell
@@ -167,12 +167,11 @@ systemctl restart iptables.service
    -A INPUT -p tcp -m state --state NEW -m tcp --dport 1400 -j ACCEPT
    service iptables restart
    ```
-2. 浏览器添加 [SwitchyOmega](https://switchyomega.org/) 插件<br/>
-   代理信息也就是跳板机的信息（SOCKS5://127.0.0.1:1080/）
+2. 浏览器添加 [SwitchyOmega](https://switchyomega.org/) 插件，其代理信息也即跳板机的信息（SOCKS5://127.0.0.1:1080/）
 
 这样就可以了
 
-### 踩过的坑
+### 开放端口的处理
 
 如果不在内网机器（192.168.0.1）的防火墙里放行端口
 
