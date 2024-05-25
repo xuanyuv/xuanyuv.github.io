@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "简易跳板机连接无外网IP的ECS及其访问外网"
+title: "简易跳板机连接内网服务器"
 categories: Linux
 tags: Linux ECS VPS 跳板机 SSH Tunnel
 author: 玄玉
-excerpt: 针对无外网IP的ECS，介绍本地SSH连接的方法，以及它访问外网的方法等。
+excerpt: 针对无外网IP的服务器，介绍本地SSH连接的方法，以及它访问外网的方法等。
 published: true
 ---
 
@@ -12,27 +12,61 @@ published: true
 {:toc}
 
 
-背景：阿里云上有 2 台 CentOS7.9，一台分配了公网IP（192.168.1.1），另一台无公网IP（192.168.0.1）
+背景：阿里云上有 2 台 CentOS7.9，一台配备了公网IP（192.168.1.1），另一台无公网IP（192.168.0.1）
+
+工具：xshell 4.0.00115 (Build 0223)
+
+思路：借助 xshell 的隧道转发，将公网机器（192.168.1.1）做成跳板机，使得本地可以访问内网机器（192.168.0.1）
 
 ## 简易跳板机
 
-先在阿里云 192.168.0.1 机器上配置安全组：**22 端口允许 192.168.1.1 访问**
+这里介绍两种方式：Local (Outgoing) 和 Dynamic (SOCKS4/5)
 
-然后在本地 xshell 作如下 2 步配置即可：
+**实际更推荐第二种：Dynamic (SOCKS4/5)**
 
-1. 创建一个跳板机的 Session（可以随便给一个名字，这里就命名为跳板机），具体配置如图所示<br/>
+> 注意：无论哪种方式，都要在阿里云网页后台配置安全组：192.168.0.1 机器的 22 端口允许 192.168.1.1 访问
+
+### Local(Outgoing)
+
+在本地机器的 xshell 作如下 2 步配置，即可：
+
+1. 创建一个跳板机的 Session（可以随便给一个名字，这里就命名为跳板机）<br/>
+   再配置其隧道转发方式，使得192.168.1.1 机器侦听 2200 端口，来与 192.168.0.1 机器的 22 端口建立隧道<br/>
+   具体配置如图所示<br/>
    ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-01.png)<br/><br/>
    ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-02.png)<br/>
-   **注意隧道的配置：这里是通过 192.168.1.1 机器侦听 2200 端口，来与 192.168.0.1 机器的 22 端口建立隧道**
-2. 创建一个内网机器的 Session<br/>
+2. 然后创建一个连接内网机器的 Session<br/>
+   连接配置中的 Authentication 处填入内网机器的用户名密码或 PublicKey，就行了（不用配置隧道）<br/>
    ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-03.png)<br/>
-   然后在 Authentication 处填入连接内网机器的用户名密码或 PublicKey 即可
 
-实际使用时，通过 xshell 先连跳板机，再连内网机器，就行了（所以上面建了 2 个 xshell session）
+实际使用时，通过 xshell 先连跳板机，再连内网机器（所以上面创建了 2 个 xshell session）
+
+并且，在连接到内网机器后，也支持使用 xftp 从本地电脑直接传输文件到内网机器上去
 
 **注意：连接内网机器的过程中，若跳板机连接断开了，那么打开的所有内网机器连接都会自动断开**
 
 关于这方面的更详细介绍，可参考这篇博客：[xshell tunnel的使用](https://www.cnblogs.com/oxspirt/p/10260053.html)
+
+### Dynamic(SOCKS4/5)
+
+如果有多台内网服务器：
+
+* Local (Outgoing) 的方式：需要为每一台内网服务器，各配置一个单独的隧道
+* Dynamic(SOCKS4/5)的方式：就省事很多，只配置一次隧道和代理，**因此更推荐**
+
+具体的配置过程，同样经过 2 步：
+
+1. 创建一个跳板机的 Session，隧道转发方式也只配置一个 Dynamic (SOCKS4/5) 类型<br/>
+   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-01.png)<br/><br/>
+   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-04.png)<br/>
+2. 然后创建一个连接内网机器的 Session<br/>
+   连接地址、端口、用户名密码都配置内网机器的就行，再配置一下代理即可（不用配置隧道）<br/>
+   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-05.png)<br/><br/>
+   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-06.png)<br/>
+
+使用时，同样通过 xshell 先连跳板机，再连内网机器（也支持 xftp 传输文件到内网机器上）
+
+也可以在 xshell 的隧道面板看到详细情况（xshell ---> View ---> Tunneling Pane）
 
 ## 配置访问外网
 
@@ -54,8 +88,8 @@ published: true
    这个时候，查看 **/etc/sysconfig/iptables** 会发现它多了一条 SNAT 转发规则<br/>
    *-A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source 192.168.1.1*<br/>
    最后重启 iptables 使规则生效：`systemctl restart iptables.service`
-3. 在阿里云后台自定义路由条目：<https://vpc.console.aliyun.com/vpc/cn-beijing/route-tables><br/>
-   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-04.png)<br/>
+3. 在阿里云网页后台，添加自定义路由条目：<https://vpc.console.aliyun.com/vpc/cn-beijing/route-tables><br/>
+   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-07.png)<br/>
    名称可以随便写，除了图中圈红的两处，两台服务器还要位于同一个资源组下面，否则 ECS 实例选择不到
 
 现在，192.168.0.1 就可以访问外网了，同 192.168.1.1 相比，速度几乎无影响
