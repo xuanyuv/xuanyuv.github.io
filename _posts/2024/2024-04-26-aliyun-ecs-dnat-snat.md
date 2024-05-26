@@ -146,9 +146,9 @@ systemctl restart iptables.service
 
 此时，需要修改 192.168.1.1：`vim /etc/sysconfig/iptables`（不用修改内网机器 192.168.0.1）
 
-注释掉：**-A FORWARD -j REJECT --reject-with icmp-host-prohibited**
+注释掉：`-A FORWARD -j REJECT --reject-with icmp-host-prohibited`
 
-再重启：`systemctl restart iptables.service` 即可
+再重启：`systemctl restart iptables.service`
 
 > 还可能出现一种情况：192.168.0.1 可以 ping 通外网，但是 curl wget 不通<br/>
 解决办法是把两台机器放到一个安全组（可以是一个没有任何规则的空安全组）
@@ -174,12 +174,10 @@ systemctl restart iptables.service
    ```
 3. 浏览器添加 [SwitchyOmega](https://switchyomega.org/) 插件，其代理信息也即跳板机的信息（SOCKS5://127.0.0.1:1080/）
 
-这样就可以了
-
-补充：第一步的安全组配置，也可以将内网机器和跳板机放到同一个空的安全组里，这样两台机器的内部网络也是通的
+这样就可以了（第一步的安全组配置，也可以把两台机器放到同一个空的安全组里，这样二者的内部网络也是通的）
 
 ### 安全组与iptables
 
 二者区别：安全组是针对 ECS 实例的、iptables 是 CentOS 系统的
 
-也就是说：阿里云服务器开放端口，首先要配置安全组，而若开启了服务器内部防火墙，才是需要修改 iptables
+也就是说：阿里云服务器开放端口，首先要配置安全组，而若开启了服务器内部防火墙，才需要修改 iptables
