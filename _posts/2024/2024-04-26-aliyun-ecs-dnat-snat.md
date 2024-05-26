@@ -165,12 +165,12 @@ systemctl restart iptables.service
    然后在跳板机上，执行命令验证一下：**curl http://192.168.0.1:1400/** <br/>
    如果发现是通的，那么可以跳过第 2 步，直接第 3 步<br/>
    如果不通并提示：`curl: (7) Failed connect to 192.168.0.1:1400; No route to host`，那么继续第 2 步
-2. 内网机器的 iptables 中放行端口
+2. 在内网机器的 iptables 中开放端口
    ```shell
    vi /etc/sysconfig/iptables
    -A INPUT -p tcp -m state --state NEW -m tcp --dport 1400 -j ACCEPT
    service iptables restart
-   # 此时在跳板机上再执行：curl http://192.168.0.1:1400/，就会发现它是通的了
+   # 重启内网机器的防火墙后，再到跳板机上执行：curl http://192.168.0.1:1400/，就会发现它是通的了
    ```
 3. 浏览器添加 [SwitchyOmega](https://switchyomega.org/) 插件，其代理信息也即跳板机的信息（**SOCKS5://127.0.0.1:1080/**）
 
