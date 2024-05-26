@@ -172,7 +172,7 @@ systemctl restart iptables.service
    service iptables restart
    # 此时在跳板机上再执行：curl http://192.168.0.1:1400/，就会发现它是通的了
    ```
-3. 浏览器添加 [SwitchyOmega](https://switchyomega.org/) 插件，其代理信息也即跳板机的信息（SOCKS5://127.0.0.1:1080/）
+3. 浏览器添加 [SwitchyOmega](https://switchyomega.org/) 插件，其代理信息也即跳板机的信息（**SOCKS5://127.0.0.1:1080/**）
 
 这样就可以了（第一步的安全组配置，也可以把两台机器放到同一个空的安全组里，这样二者的内部网络也是通的）
 
