@@ -75,13 +75,13 @@ published: true
 
 共有 3 步配置 **（注意：全部都是在 192.168.1.1 上面配置的，192.168.0.1 全程不需要任何配置）**：
 
-1. 开启 ECS 的 IP 转发功能<br/>
+1. 开启 ECS 的 IP 转发功能
    ```shell
    [root@dev02 ~]# vim /etc/sysctl.conf
    net.ipv4.ip_forward = 1             # 添加这条配置（如果已有，则直接修改）
    [root@dev02 ~]# sysctl -p           # 令修改生效
    ```
-2. 设置 SNAT 规则：分别执行以下命令<br/>
+2. 设置 SNAT 规则：分别执行以下命令
    ```shell
    # 先执行该命令
    iptables -t nat -I POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source 192.168.1.1
@@ -163,9 +163,9 @@ systemctl restart iptables.service
 
 1. 阿里云网页后台，内网机器的安全组，入方向，添加授权策略：1400 端口允许 跳板机（192.168.1.1）访问<br/>
    然后在跳板机上，执行命令验证一下：**curl http://192.168.0.1:1400/** <br/>
-   如果发现是通的，那么可以跳过第 2 步，直接第 3 步
+   如果发现是通的，那么可以跳过第 2 步，直接第 3 步<br/>
    如果不通并提示：`curl: (7) Failed connect to 192.168.0.1:1400; No route to host`，那么继续第 2 步
-2. 内网机器的 iptables 中放行端口<br/>
+2. 内网机器的 iptables 中放行端口
    ```shell
    vi /etc/sysconfig/iptables
    -A INPUT -p tcp -m state --state NEW -m tcp --dport 1400 -j ACCEPT
