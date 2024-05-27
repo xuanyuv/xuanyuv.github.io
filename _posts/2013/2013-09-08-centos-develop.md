@@ -220,7 +220,6 @@ export JAVA_HOME PATH                               # （故手动指定JAVA_HOM
 ```sh
 [Jadyer@CentOS79 ~]$ cd /app/software/backup/
 [Jadyer@CentOS79 backup]$ mkdir -p /app/software/nexus-3.67.1-01
-[Jadyer@CentOS79 backup]$ tar zxvf jdk-11.0.23_linux-x64_bin.tar.gz -C /app/software/nexus-3.67.1-01
 [Jadyer@CentOS79 backup]$ tar zxvf nexus-3.67.1-01-java11-unix.tar.gz -C /app/software/nexus-3.67.1-01
 [Jadyer@CentOS79 backup]$ cd /app/software/nexus-3.67.1-01
 [Jadyer@CentOS79 nexus-3.67.1-01]$ vim nexus-3.67.1-01/bin/nexus.rc      # 修改运行Nexus所使用的用户（默认为root）

@@ -139,9 +139,9 @@ mysql> FLUSH PRIVILEGES;
 
 ```sql
 mysql> CREATE DATABASE IF NOT EXISTS open DEFAULT CHARSET UTF8MB4 COLLATE UTF8MB4_UNICODE_CI;
-mysql> CREATE USER 'dev'@'%' IDENTIFIED BY 'dev';
+mysql> CREATE USER 'dev'@'%' IDENTIFIED BY 'dev123';
 mysql> GRANT CREATE ON open.* TO 'dev'@'%';
-mysql> GRANT CREATE, SELECT, INSERT, UPDATE, DELETE, DROP ON open.* TO 'dev'@'%';
+mysql> GRANT CREATE, DROP, ALTER, INDEX, SELECT, INSERT, UPDATE, DELETE ON open.* TO 'dev'@'%';
 ```
 
 若报错：`[1044] Access denied for user 'root'@'%' to database`，执行以下命令即可
