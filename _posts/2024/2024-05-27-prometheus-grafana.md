@@ -5,7 +5,7 @@ categories: Linux
 tags: Linux
 author: 玄玉
 excerpt: 通过开源软件Prometheus、Grafana搭建可以监控服务器、mysql、redis等等的监控系统。
-published: false
+published: true
 ---
 
 * content
@@ -62,10 +62,16 @@ prometheus, version 2.45.5 (branch: HEAD, revision: 2b052add78646ff39d193dac84ea
   tags:             netgo,builtinassets,stringlabels
 [xuanyu@dev prometheus-2.45.5]$ vim start.sh
 #!/bin/sh
+cd /app/software/prometheus-2.45.5/
 nohup ./prometheus --config.file=prometheus.yml > nohup.log 2>&1 &
-tail -100f nohup.log
 [xuanyu@dev prometheus-2.45.5]$ chmod 755 start.sh
+[root@dev ~]# vim /etc/rc.d/rc.local              # 添加自启动
+su xy -c /app/software/prometheus-2.45.5/start.sh # 添加这一行即可（绝对路径，并临时以用户xy的身份去执行该行）
+[root@dev ~]# chmod +x /etc/rc.d/rc.local         # 赋权，使其变成可执行文件
+[root@dev ~]# reboot                              # 最后，重启系统，验证
 ```
+
+启动成功后，访问地址为：http://xxx.xxx.xxx.xxx:9090/
 
 ## Grafana
 
@@ -94,22 +100,17 @@ nohup ./grafana server > nohup.log 2>&1 &           # 最新版已不推荐使�
 nohup sh /app/software/grafana-v11.0.0/bin/grafana-server.sh >/dev/null 2>&1 &
 [xuanyu@dev bin]$ chmod 755 grafana-server.sh start.sh
 [root@dev ~]# vim /etc/rc.d/rc.local                # 添加自启动
-su xy -c /app/software/grafana-v11.0.0/bin/start.sh # 最下面添加这一行即可（绝对路径，并临时以用户xy的身份去执行）
+su xy -c /app/software/grafana-v11.0.0/bin/start.sh # 添加这一行即可（绝对路径，并临时以用户xy的身份去执行该行）
 [root@dev ~]# chmod +x /etc/rc.d/rc.local           # 赋权，使其变成可执行文件
 [root@dev ~]# reboot                                # 最后，重启系统，验证
 ```
 
+启动成功后，访问地址为：http://xxx.xxx.xxx.xxx:3003/，默认用户名和密码均为admin
 
+## 未完待续
 
+tar -zxvf node_exporter-1.5.0.linux-amd64.tar.gz
 
+cd node_exporter-1.5.0.linux-amd64/
 
-
-
-
-
-
-
-[root@dh-dev-177 home]# wget https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_exporter-1.5.0.linux-amd64.tar.gz
-[root@dh-dev-177 opt]# tar -zxvf node_exporter-1.5.0.linux-amd64.tar.gz
-[root@dh-dev-177 opt]# cd node_exporter-1.5.0.linux-amd64/
-[root@dh-dev-177 node_exporter-1.5.0.linux-amd64]# nohup ./node_exporter > nohup.log 2>&1 &
+nohup ./node_exporter > nohup.log 2>&1 &
