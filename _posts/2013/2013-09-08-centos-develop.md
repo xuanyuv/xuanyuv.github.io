@@ -97,7 +97,7 @@ OK
 PONG
 127.0.0.1:6379> quit
 [root@CentOS79 bin]# vim /etc/rc.d/rc.local                                            # 添加自启动
-/app/software/redis-5.0.14/bin/redis-server /app/software/redis-5.0.14/conf/redis.conf # 最下面添加这一行即可（绝对路径）
+/app/software/redis-5.0.14/bin/redis-server /app/software/redis-5.0.14/conf/redis.conf # 添加这一行即可（绝对路径）
 [root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local                              # 赋权，使其变成可执行文件
 [root@CentOS79 nginx-1.24.0]# reboot                                                   # 最后，重启系统，验证
 ```
@@ -135,7 +135,7 @@ user nginx Nginx;
 [root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s reload      # 重载配置
 [root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s stop        # 停止
 [root@CentOS79 nginx-1.24.0]# vim /etc/rc.d/rc.local      # 添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
-/app/software/nginx-1.24.0/sbin/nginx                     # 最下面添加这一行即可（绝对路径）
+/app/software/nginx-1.24.0/sbin/nginx                     # 添加这一行即可（绝对路径）
 [root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local # 赋权，使其变成可执行文件
 [root@CentOS79 nginx-1.24.0]# reboot                      # 最后，重启系统，验证
 ```
@@ -178,7 +178,7 @@ nohup sh /app/software/nacos-2.3.1/bin/startup.sh -m standalone > /app/software/
 JAVA_HOME=/app/software/jdk-21.0.2                  # （由于rc.local要早于/etc/profiles运行）
 PATH=$JAVA_HOME/bin:$PATH                           # （因此rc.local执行时看不到任何环境变量）
 export JAVA_HOME PATH                               # （故手动指定JAVA_HOME，为nacos的启动提供java环境）
-/app/software/nacos-2.3.1/bin/startup-standalone.sh # 最下面添加这一行即可（绝对路径）
+/app/software/nacos-2.3.1/bin/startup-standalone.sh # 添加这一行即可（绝对路径）
 [root@CentOS79 bin]# chmod +x /etc/rc.d/rc.local    # 赋权，使其变成可执行文件
 [root@CentOS79 bin]# reboot                         # 重启验证（注意：应用程序连接时，需要开放8848、9848端口）
 ```
@@ -228,7 +228,7 @@ INSTALL4J_JAVA_HOME_OVERRIDE="/app/software/nexus-3.67.1-01/jdk-11.0.23" # 修�
 [Jadyer@CentOS79 nexus-3.67.1-01]$ vim nexus-3.67.1-01/etc/nexus-default.properties # 修改Nexus的默认访问端口
 application-port=8081                                                               # 默认端口即为8081
 [root@CentOS79 /]# vim /etc/rc.d/rc.local                     # 添加自启动
-/app/software/nexus-3.67.1-01/nexus-3.67.1-01/bin/nexus start # 最下面添加这一行即可（绝对路径）
+/app/software/nexus-3.67.1-01/nexus-3.67.1-01/bin/nexus start # 添加这一行即可（绝对路径）
 [root@CentOS79 /]# chmod +x /etc/rc.d/rc.local                # 赋权，使其变成可执行文件
 [root@CentOS79 /]# reboot                                     # 最后，重启系统，验证
 ```

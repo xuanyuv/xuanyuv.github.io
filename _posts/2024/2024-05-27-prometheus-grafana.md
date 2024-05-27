@@ -25,15 +25,15 @@ published: true
 对应的下载地址及 sha256sums 如下：
 
 * [prometheus-2.45.5.linux-amd64.tar.gz（https://prometheus.io/download/）](https://github.com/prometheus/prometheus/releases/download/v2.45.5/prometheus-2.45.5.linux-amd64.tar.gz)<br/>
-  SHA256: 65a61cec978eb44a2a220803a4653e6f1f2dbe69510131a867492981ef39f253
-* [node_exporter-1.8.1.linux-amd64.tar.gz](https://github.com/prometheus/node_exporter/releases/download/v1.8.1/node_exporter-1.8.1.linux-amd64.tar.gz)<br/>
-  SHA256: fbadb376afa7c883f87f70795700a8a200f7fd45412532cc1938a24d41078011
-* [mysqld_exporter-0.15.1.linux-amd64.tar.gz](https://github.com/prometheus/mysqld_exporter/releases/download/v0.15.1/mysqld_exporter-0.15.1.linux-amd64.tar.gz)<br/>
-  SHA256: 85ea5bc68e1b9f466c1df10ff016652dd210371d42245e012b876265e89ae29d
-* [redis_exporter-v1.59.0.linux-amd64.tar.gz](https://github.com/oliver006/redis_exporter/releases/download/v1.59.0/redis_exporter-v1.59.0.linux-amd64.tar.gz)<br/>
-  SHA256: 7ad805a21d9423a721e6a0c48190d14b9f18a11507ee3eafbf84df11c71c3b4d
+  SHA256：65a61cec978eb44a2a220803a4653e6f1f2dbe69510131a867492981ef39f253
+* [node_exporter-1.8.1.linux-amd64.tar.gz（https://prometheus.io/download/）](https://github.com/prometheus/node_exporter/releases/download/v1.8.1/node_exporter-1.8.1.linux-amd64.tar.gz)<br/>
+  SHA256：fbadb376afa7c883f87f70795700a8a200f7fd45412532cc1938a24d41078011
+* [mysqld_exporter-0.15.1.linux-amd64.tar.gz（https://prometheus.io/download/）](https://github.com/prometheus/mysqld_exporter/releases/download/v0.15.1/mysqld_exporter-0.15.1.linux-amd64.tar.gz)<br/>
+  SHA256：85ea5bc68e1b9f466c1df10ff016652dd210371d42245e012b876265e89ae29d
+* [redis_exporter-v1.59.0.linux-amd64.tar.gz（https://github.com/oliver006/redis_exporter/）](https://github.com/oliver006/redis_exporter/releases/download/v1.59.0/redis_exporter-v1.59.0.linux-amd64.tar.gz)<br/>
+  SHA256：7ad805a21d9423a721e6a0c48190d14b9f18a11507ee3eafbf84df11c71c3b4d
 * [grafana-11.0.0.linux-amd64.tar.gz（https://grafana.com/grafana/download）](https://dl.grafana.com/oss/release/grafana-11.0.0.linux-amd64.tar.gz)<br/>
-  SHA256: 97c70aa4fd11aa75bbb575d7d48764cb3a6c3356b53f34c7750c0dd7e006204d
+  SHA256：97c70aa4fd11aa75bbb575d7d48764cb3a6c3356b53f34c7750c0dd7e006204d
   
 另外，下载软件时，注意对应的 CPU 架构版本
 
