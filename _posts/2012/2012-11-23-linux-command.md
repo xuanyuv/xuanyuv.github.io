@@ -77,6 +77,17 @@ grep -l -r "20170815193506520" *
 ## 查端口
 
 ```shell
+# 查看主机监听的端口（ss 要比 netstat 更高效）
+[Jadyer@Jadyer-RHEL63 CucPayTradePortalLog]$ ss -lnt
+State       Recv-Q Send-Q                    Local Address:Port                     Peer Address:Port              
+LISTEN      0      128                                   *:111                                 *:*                  
+LISTEN      0      128                                   *:22                                  *:*                  
+LISTEN      0      100                           127.0.0.1:25                                  *:*                  
+LISTEN      0      128                                [::]:111                              [::]:*                  
+LISTEN      0      100                               [::1]:25                               [::]:*                  
+LISTEN      0      128                                [::]:3003                             [::]:*                  
+LISTEN      0      128                                [::]:9090                             [::]:*
+
 # 查询指定端口的监听及运行情况
 # 其它的诸如[ps -ef|grep java]、[kill -9 PID]、[nohup ./startup.sh &]、[free]、[top]等等就不举例了
 [Jadyer@Jadyer-RHEL63 CucPayTradePortalLog]$ netstat -tlanop | grep :80
