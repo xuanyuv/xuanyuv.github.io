@@ -49,7 +49,7 @@ grep -l -r "20170815193506520" *
 ```shell
 # 输出最为常用的十条命令，由此可以看出你是一个什么类型的程序员
 # 另外，可以直接使用[history]查看以往执行过的命令，然后通过[!number]执行指定编号的历史命令
-[Jadyer@Jadyer-RHEL63 ~]$ history|awk '{CMD[$2]++;count++;} END {for(a in CMD)print CMD[a]" "CMD[a]/count*100 "% " a}'|grep -v "./"|column -c3 -s " " -t|sort -nr|nl|head -n10
+[xuanyu@dev ~]$ history|awk '{CMD[$2]++;count++;} END {for(a in CMD)print CMD[a]" "CMD[a]/count*100 "% " a}'|grep -v "./"|column -c3 -s " " -t|sort -nr|nl|head -n10
      1  47  20.0855%   cd
      2  38  16.2393%   ll
      3  18  7.69231%   pwd
@@ -60,7 +60,7 @@ grep -l -r "20170815193506520" *
      8  8   3.4188%    cat
      9  7   2.99145%   su
     10  7   2.99145%   rm
-[Jadyer@Jadyer-RHEL63 ~]$ history|awk '{print $2}'|awk 'BEGIN {FS="|"} {print $1}'|sort|uniq -c|sort -rn|head -10
+[xuanyu@dev ~]$ history|awk '{print $2}'|awk 'BEGIN {FS="|"} {print $1}'|sort|uniq -c|sort -rn|head -10
      47 cd
      38 ll
      18 pwd
@@ -71,51 +71,51 @@ grep -l -r "20170815193506520" *
       8 cat
       7 su
       7 rm
-[Jadyer@Jadyer-RHEL63 ~]$
+[xuanyu@dev ~]$
 ```
 
 ## 查端口
 
 ```shell
 # 查看主机监听的端口（ss 要比 netstat 更高效）
-[Jadyer@Jadyer-RHEL63 CucPayTradePortalLog]$ ss -lnt
-State       Recv-Q Send-Q                    Local Address:Port                     Peer Address:Port              
-LISTEN      0      128                                   *:111                                 *:*                  
-LISTEN      0      128                                   *:22                                  *:*                  
-LISTEN      0      100                           127.0.0.1:25                                  *:*                  
-LISTEN      0      128                                [::]:111                              [::]:*                  
-LISTEN      0      100                               [::1]:25                               [::]:*                  
-LISTEN      0      128                                [::]:3003                             [::]:*                  
-LISTEN      0      128                                [::]:9090                             [::]:*
+[xuanyu@dev ~]$ ss -lnt
+State       Recv-Q Send-Q            Local Address:Port               Peer Address:Port              
+LISTEN      0      128                           *:111                           *:*                  
+LISTEN      0      128                           *:22                            *:*                  
+LISTEN      0      100                   127.0.0.1:25                            *:*                  
+LISTEN      0      128                        [::]:111                        [::]:*                  
+LISTEN      0      100                       [::1]:25                         [::]:*                  
+LISTEN      0      128                        [::]:3003                       [::]:*                  
+LISTEN      0      128                        [::]:9090                       [::]:*
 
 # 查询指定端口的监听及运行情况
 # 其它的诸如[ps -ef|grep java]、[kill -9 PID]、[nohup ./startup.sh &]、[free]、[top]等等就不举例了
-[Jadyer@Jadyer-RHEL63 CucPayTradePortalLog]$ netstat -tlanop | grep :80
-tcp        0      0 :::8080                     :::*         LISTEN      5053/java      off (0.00/0/0)
-tcp        0      0 ::ffff:192.168.8.31:80      :::*         LISTEN      17608/java     off (0.00/0/0)
-[Jadyer@Jadyer-RHEL63 CucPayTradePortalLog]$ lsof -i:80
+[xuanyu@dev ~]$ netstat -tlanop | grep :80
+tcp     0     0 :::8080                     :::*         LISTEN      5053/java      off (0.00/0/0)
+tcp     0     0 ::ffff:192.168.8.31:80      :::*         LISTEN      17608/java     off (0.00/0/0)
+[xuanyu@dev ~]$ lsof -i:80
 COMMAND   PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
 java    17608 root  163u  IPv6 29073040      0t0  TCP bjgg-kfvm-31:http (LISTEN)
-[Jadyer@Jadyer-RHEL63 CucPayTradePortalLog]$
+[xuanyu@dev ~]$
 ```
 
 ## 查日志
 
 ```shell
 # 根据指定的关键字查询日志（关键字需用双引号括起来，并注意不要出现'>''-'等特殊字符）
-[Jadyer@Jadyer-RHEL63 CucPayTradePortalLog]$ less -p "无磁无密" default.log
+[xuanyu@dev ~]$ less -p "无磁无密" default.log
 [20121121040952][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->检查商户请求参数有效性,检查结果:[参数有效]
 [20121121040952][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->对商户请求参数进行验签,验签结果:[验签通过]
 [20121121040952][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->请求支付处理报文[000283`tea`BOC`YEEPAY`]
 [20121121040952][pool-3-thread-9][NoCardNoPasswordPaymentAction]无磁无密-->支付处理响应报文[000156信用卡^@^@^@2012]
 
 # 1、也可以直接使用[less logfile]，然后再键入"/keyword"来按照关键字查询日志
-#    当通过keyword找到日志后，就可以使用向上或向下箭头来查看前后的日志，退出日志查看时直接按下Q键（大小写均可）即可
+#    当通过keyword找到日志后，便可使用向上或向下箭头来查看前后的日志，退出日志查看时直接按下Q键（大小写均可）即可
 #    其相比[vi]命令的优点是：日志载入查询快，它是读一行解析一行的，而不是一次都载入内存
 # 2、另附less到日志里面后的几个用法
 #    [gg]为定位到日志第一行，[G]为定位到日志最后一行，[/keyword]为向下搜索，[?keyword]为向上搜索
-#    [n]为向前搜索，[N]为向后搜索（注意这里的措辞：就是说当使用[?]时，[n]就是向上搜索，使用[/]时，[n]就是向下搜索）
-# 3、还有一个[tail]也是比较常用的，用法为[tail -1000f logfile]，作用是实时地显示日志的后1000行，达到实时监视的效果
+#    [n]为向前搜索，[N]为向后搜索（注意措辞：就是说当使用[?]时，[n]就是向上搜索，使用[/]时，[n]就是向下搜索）
+# 3、还有一个[tail]也比较常用，用法为[tail -1000f logfile]，作用是实时显示日志的后1000行，达到实时监视的效果
 #    参数[-f]会不停地读取最新的内容，使用[Ctrl+c]可以终止日志显示
 
 # 清空日志
