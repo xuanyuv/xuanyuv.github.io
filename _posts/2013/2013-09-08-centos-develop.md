@@ -142,16 +142,16 @@ user nginx Nginx;
 
 ## 安装Nacos
 
-下载地址：https://github.com/alibaba/nacos/releases/download/2.3.1/nacos-server-2.3.1.tar.gz
+下载地址：https://github.com/alibaba/nacos/releases/download/2.3.2/nacos-server-2.3.2.tar.gz
 
 ```sh
 [Jadyer@CentOS79 ~]$ cd /app/software/backup/
-[Jadyer@CentOS79 backup]$ tar zxvf nacos-server-2.3.1.tar.gz
-[Jadyer@CentOS79 backup]$ mv nacos /app/software/nacos-2.3.1
-[Jadyer@CentOS79 backup]$ cd /app/software/nacos-2.3.1/
-[Jadyer@CentOS79 nacos-2.3.1]$ vim conf/application.properties
+[Jadyer@CentOS79 backup]$ tar zxvf nacos-server-2.3.2.tar.gz
+[Jadyer@CentOS79 backup]$ mv nacos /app/software/nacos-2.3.2
+[Jadyer@CentOS79 backup]$ cd /app/software/nacos-2.3.2/
+[Jadyer@CentOS79 nacos-2.3.2]$ vim conf/application.properties
 spring.sql.init.platform=mysql
-# 首次启动前，应先初始化数据库，初始化文件位于：/app/software/nacos-2.3.1/conf/mysql-schema.sql
+# 首次启动前，应先初始化数据库，初始化文件位于：/app/software/nacos-2.3.2/conf/mysql-schema.sql
 db.num=1
 # 连接mysql8.0时可能报错：java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
 # 此时，在连接参数上增加：allowPublicKeyRetrieval=true
@@ -168,17 +168,17 @@ nacos.core.auth.server.identity.key=JadyerAuthKey
 nacos.core.auth.server.identity.value=Jadyer123
 # 这是一个base64字符串（其原始密钥可以随意指定，但长度不得低于32字符）
 nacos.core.auth.plugin.nacos.token.secret.key=aHR0cHM6Ly9qYWR5ZXIuY24vMjAxMy8wOS8wNy9jZW50b3MtY29uZmlnLWRldmVsb3Av
-[Jadyer@CentOS79 nacos-2.3.1]$ cd bin/
+[Jadyer@CentOS79 nacos-2.3.2]$ cd bin/
 [Jadyer@CentOS79 bin]$ vim startup-standalone.sh
-nohup sh /app/software/nacos-2.3.1/bin/startup.sh -m standalone > /app/software/nacos-2.3.1/bin/nohup.log 2>&1 &
+nohup sh /app/software/nacos-2.3.2/bin/startup.sh -m standalone > /app/software/nacos-2.3.2/bin/nohup.log 2>&1 &
 [Jadyer@CentOS79 bin]$ chmod +x startup-standalone.sh
 [Jadyer@CentOS79 bin]$ ./startup-standalone.sh      # 启动nacos（默认用户名密码均为nacos，首次登录后记得修改密码）
 [Jadyer@CentOS79 bin]$ su root
 [root@CentOS79 bin]# vim /etc/rc.d/rc.local         # 添加自启动
-JAVA_HOME=/app/software/jdk-21.0.2                  # （由于rc.local要早于/etc/profiles运行）
+JAVA_HOME=/app/software/jdk-21.0.3                  # （由于rc.local要早于/etc/profiles运行）
 PATH=$JAVA_HOME/bin:$PATH                           # （因此rc.local执行时看不到任何环境变量）
 export JAVA_HOME PATH                               # （故手动指定JAVA_HOME，为nacos的启动提供java环境）
-/app/software/nacos-2.3.1/bin/startup-standalone.sh # 添加这一行即可（绝对路径）
+/app/software/nacos-2.3.2/bin/startup-standalone.sh # 添加这一行即可（绝对路径）
 [root@CentOS79 bin]# chmod +x /etc/rc.d/rc.local    # 赋权，使其变成可执行文件
 [root@CentOS79 bin]# reboot                         # 重启验证（注意：应用程序连接时，需要开放8848、9848端口）
 ```
@@ -244,7 +244,7 @@ application-port=8081                                                           
    * stop：停止服务
    * restart：重启服务
    * status：查看服务状态
-3. 之所以单独指定 `jdk-11.0.23`，是因为实测：当指定 `jdk-21.0.2` 时会启动失败，并有下面的提示
+3. 之所以单独指定 `jdk-11.0.23`，是因为实测：当指定 `jdk-21.0.3` 时会启动失败，并有下面的提示
    ```text
    No suitable Java Virtual Machine could be found on your system.
    The version of the JVM must be at least 1.8 and at most 11.
