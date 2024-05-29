@@ -215,28 +215,28 @@ export JAVA_HOME PATH                               # （故手动指定JAVA_HOM
 
 ## 安装Nexus
 
-下载地址：https://help.sonatype.com/en/download.html，这里使用的是 [nexus-3.67.1-01-java11-unix.tar.gz](https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/3/nexus-3.67.1-01-java11-unix.tar.gz)
+下载地址：https://help.sonatype.com/en/download.html，这里使用的是 [nexus-3.68.1-02-java11-unix.tar.gz](https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/3/nexus-3.68.1-02-java11-unix.tar.gz)
 
 ```sh
 [Jadyer@CentOS79 ~]$ cd /app/software/backup/
-[Jadyer@CentOS79 backup]$ mkdir -p /app/software/nexus-3.67.1-01
-[Jadyer@CentOS79 backup]$ tar zxvf nexus-3.67.1-01-java11-unix.tar.gz -C /app/software/nexus-3.67.1-01
-[Jadyer@CentOS79 backup]$ cd /app/software/nexus-3.67.1-01
-[Jadyer@CentOS79 nexus-3.67.1-01]$ vim nexus-3.67.1-01/bin/nexus.rc      # 修改运行Nexus所使用的用户（默认为root）
-[Jadyer@CentOS79 nexus-3.67.1-01]$ vim nexus-3.67.1-01/bin/nexus         # 修改运行Nexus所使用的JDK
-INSTALL4J_JAVA_HOME_OVERRIDE="/app/software/nexus-3.67.1-01/jdk-11.0.23" # 修改第14行的值（含双引号）
-[Jadyer@CentOS79 nexus-3.67.1-01]$ vim nexus-3.67.1-01/etc/nexus-default.properties # 修改Nexus的默认访问端口
+[Jadyer@CentOS79 backup]$ mkdir -p /app/software/nexus-3.68.1-02
+[Jadyer@CentOS79 backup]$ tar zxvf nexus-3.68.1-02-java11-unix.tar.gz -C /app/software/nexus-3.68.1-02
+[Jadyer@CentOS79 backup]$ cd /app/software/nexus-3.68.1-02
+[Jadyer@CentOS79 nexus-3.68.1-02]$ vim nexus-3.68.1-02/bin/nexus.rc      # 修改运行Nexus所使用的用户（默认为root）
+[Jadyer@CentOS79 nexus-3.68.1-02]$ vim nexus-3.68.1-02/bin/nexus         # 修改运行Nexus所使用的JDK
+INSTALL4J_JAVA_HOME_OVERRIDE="/app/software/nexus-3.68.1-02/jdk-11.0.23" # 修改第14行的值（含双引号）
+[Jadyer@CentOS79 nexus-3.68.1-02]$ vim nexus-3.68.1-02/etc/nexus-default.properties # 修改Nexus的默认访问端口
 application-port=8081                                                               # 默认端口即为8081
 [root@CentOS79 /]# vim /etc/rc.d/rc.local                     # 添加自启动
-/app/software/nexus-3.67.1-01/nexus-3.67.1-01/bin/nexus start # 添加这一行即可（绝对路径）
+/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start # 添加这一行即可（绝对路径）
 [root@CentOS79 /]# chmod +x /etc/rc.d/rc.local                # 赋权，使其变成可执行文件
 [root@CentOS79 /]# reboot                                     # 最后，重启系统，验证
 ```
 
 其中，以下几点可以注意一下：
 
-1. 解压完 nexus-3.67.1-01-java11-unix.tar.gz 文件后，会出现 2 个目录
-   * nexus-3.67.1-01：该目录包含了 Nexus 运行所需的启动脚本、依赖 jar 等等
+1. 解压完 nexus-3.68.1-02-java11-unix.tar.gz 文件后，会出现 2 个目录
+   * nexus-3.68.1-02：该目录包含了 Nexus 运行所需的启动脚本、依赖 jar 等等
    * sonatype-work：该目录用于存储数据，比如 Nexus 生成的配置文件、日志文件、仓库文件等
 2. bin 目录下的 nexus 命令，有以下几个参数：
    * start：以后台进程启动服务，日志以文件形式保存
@@ -251,7 +251,7 @@ application-port=8081                                                           
    Please define INSTALL4J_JAVA_HOME to point to a suitable JVM.
    ```
 4. 启动后，浏览器默认访问地址为：[http://127.1.1.1:8081/](http://127.1.1.1:8081/)<br/>
-   默认用户为admin，默认密码位于：/app/software/nexus-3.67.1-01/sonatype-work/nexus3/admin.password<br/>
+   默认用户为admin，默认密码位于：/app/software/nexus-3.68.1-02/sonatype-work/nexus3/admin.password<br/>
    首次登录后，会提示修改密码，修改完密码后，admin.password 文件也就会消失
 5. 首次登陆时，会提示是否打开允许匿名访问（后面也可以在Nexus管理台：Security：Anonymous Access菜单进行修改）
 6. 启动后，会发现控制台（../sonatype-work/nexus3/log/nexus.log）经常会输出下面的异常日志

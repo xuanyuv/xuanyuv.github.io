@@ -46,9 +46,10 @@ mariadb-libs-5.5.68-1.el7.x86_64
 ## 配置MySQL
 
 ```sh
+[root@dev ~]# yum install -y libaio
 [root@dev ~]# cd /app/software/mysql-8.0.37/mysql/bin/
 [root@dev bin]# ./mysqld --initialize-insecure --user=mysql --basedir=/app/software/mysql-8.0.37/mysql --datadir=/app/software/mysql-8.0.37/mysql_data
-[Server] /app/software/mysql-8.0.37/mysql/bin/mysqld (mysqld 8.0.37) initializing of server in progress as process 17071
+[Server] /app/software/mysql-8.0.37/mysql/bin/mysqld (mysqld 8.0.37) initializing of server in progress as process 5319
 [InnoDB] InnoDB initialization has started.
 [InnoDB] InnoDB initialization has ended.
 [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
@@ -56,16 +57,16 @@ mariadb-libs-5.5.68-1.el7.x86_64
 
 这时就会初始化 mysql_data 目录，同时创建了 root 用户，且密码为空
 
-> `--initialize` 参数才会生成随机密码，`--initialize-insecure` 生成的是空密码
+> 注意：`--initialize` 参数才会生成随机密码，`--initialize-insecure` 生成的是空密码
 
 接下来继续配置，并加入自启动
 
 ```sh
 [root@dev ~]# vim /etc/profile
-                       # Set MySQL Environment Variable
-                       MySQL_HOME=/app/software/mysql-8.0.37/mysql
-                       PATH=$MySQL_HOME/bin:$PATH
-                       export MySQL_HOME PATH
+              # Set MySQL Environment Variable
+              MySQL_HOME=/app/software/mysql-8.0.37/mysql
+              PATH=$MySQL_HOME/bin:$PATH
+              export MySQL_HOME PATH
 [root@dev ~]# echo $PATH
 [root@dev ~]# source /etc/profile
 [root@dev ~]# echo $PATH
