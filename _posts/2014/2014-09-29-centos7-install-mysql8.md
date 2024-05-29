@@ -48,7 +48,7 @@ mariadb-libs-5.5.68-1.el7.x86_64
 ```sh
 [root@dev ~]# cd /app/software/mysql-8.0.37/mysql/bin/
 [root@dev bin]# ./mysqld --initialize-insecure --user=mysql --basedir=/app/software/mysql-8.0.37/mysql --datadir=/app/software/mysql-8.0.37/mysql_data
-[Server] /app/software/mysql-8.0.37/mysql/bin/mysqld (mysqld 8.0.36) initializing of server in progress as process 17071
+[Server] /app/software/mysql-8.0.37/mysql/bin/mysqld (mysqld 8.0.37) initializing of server in progress as process 17071
 [InnoDB] InnoDB initialization has started.
 [InnoDB] InnoDB initialization has ended.
 [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
