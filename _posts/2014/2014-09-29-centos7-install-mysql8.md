@@ -4,51 +4,51 @@ title: "CentOS7安装MySQL8"
 categories: 数据库
 tags: 数据库 mysql centos
 author: 玄玉
-excerpt: 详细介绍了CentOS-7.9-x64版中源码安装MySQL-8.0.36的步骤。
+excerpt: 详细介绍了CentOS-7.9-x64版中源码安装mysql-8.0.37的步骤。
 ---
 
 * content
 {:toc}
 
 
-本文涉及的相关环境和版本为：`CentOS-7.9-x64`、`MySQL-8.0.36`
+本文涉及的相关环境和版本为：`CentOS-7.9-x64`、`mysql-8.0.37`
 
 ## 卸载MariaDB
 
 要先卸载掉 centos 自带的 mariadb 数据库，不然可能会影响 mysql 的安装，同时确保目前没有安装 mysql
 
 ```sh
-[root@CentOS79 ~]# rpm -qa | grep mariadb
+[root@dev ~]# rpm -qa | grep mariadb
 mariadb-libs-5.5.68-1.el7.x86_64
-[root@CentOS79 ~]# rpm -e mariadb-libs --nodeps
-[root@CentOS79 ~]# rpm -qa | grep mariadb
-[root@CentOS79 ~]#
-[root@CentOS79 ~]# rpm -qa | grep mysql
-[root@CentOS79 ~]#
+[root@dev ~]# rpm -e mariadb-libs --nodeps
+[root@dev ~]# rpm -qa | grep mariadb
+[root@dev ~]#
+[root@dev ~]# rpm -qa | grep mysql
+[root@dev ~]#
 ```
 
 ## 安装MySQL
 
-下载地址：https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.36-linux-glibc2.17-x86_64.tar.xz
+下载地址：https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.37-linux-glibc2.17-x86_64.tar.xz
 
 注意下载时选择的 glibc 版本，可以通过命令 `ldd --version` 查看（查看 gcc 版本使用 `gcc -v`）
 
 ```sh
-[Jadyer@CentOS79 ~]$ cd /app/software/
-[Jadyer@CentOS79 software]$ tar xvf mysql-8.0.36-linux-glibc2.17-x86_64.tar.xz
-[Jadyer@CentOS79 software]$ mkdir -pv /app/mysql-8.0.36/mysql_data
-[Jadyer@CentOS79 software]$ mv mysql-8.0.36-linux-glibc2.17-x86_64 /app/mysql-8.0.36/mysql
-[root@CentOS79 ~]# groupadd MySQL                             # 添加MySQL组
-[root@CentOS79 ~]# useradd -s /sbin/nologin -M -g MySQL mysql # 创建mysql用户并分配组，且不能shell登录
-[root@CentOS79 ~]# chown -R mysql:MySQL /app/mysql-8.0.36/
+[xuanyu@dev ~]$ cd /app/software/backup/
+[xuanyu@dev backup]$ tar xvf mysql-8.0.37-linux-glibc2.17-x86_64.tar.xz
+[xuanyu@dev backup]$ mkdir -pv /app/software/mysql-8.0.37/mysql_data
+[xuanyu@dev backup]$ mv mysql-8.0.37-linux-glibc2.17-x86_64 /app/software/mysql-8.0.37/mysql
+[root@dev ~]# groupadd MySQL                                  # 添加MySQL组
+[root@dev ~]# useradd -s /sbin/nologin -M -g MySQL mysql      # 创建mysql用户并分配组，且不能shell登录
+[root@dev ~]# chown -R mysql:MySQL /app/software/mysql-8.0.37/
 ```
 
 ## 配置MySQL
 
 ```sh
-[root@CentOS79 ~]# cd /app/mysql-8.0.36/mysql/bin/
-[root@CentOS79 bin]# ./mysqld --initialize-insecure --user=mysql --basedir=/app/mysql-8.0.36/mysql --datadir=/app/mysql-8.0.36/mysql_data
-[Server] /app/mysql-8.0.36/mysql/bin/mysqld (mysqld 8.0.36) initializing of server in progress as process 17071
+[root@dev ~]# cd /app/software/mysql-8.0.37/mysql/bin/
+[root@dev bin]# ./mysqld --initialize-insecure --user=mysql --basedir=/app/software/mysql-8.0.37/mysql --datadir=/app/software/mysql-8.0.37/mysql_data
+[Server] /app/software/mysql-8.0.37/mysql/bin/mysqld (mysqld 8.0.36) initializing of server in progress as process 17071
 [InnoDB] InnoDB initialization has started.
 [InnoDB] InnoDB initialization has ended.
 [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
@@ -61,23 +61,23 @@ mariadb-libs-5.5.68-1.el7.x86_64
 接下来继续配置，并加入自启动
 
 ```sh
-[root@CentOS79 ~]# vim /etc/profile
+[root@dev ~]# vim /etc/profile
                        # Set MySQL Environment Variable
-                       MySQL_HOME=/app/mysql-8.0.36/mysql
+                       MySQL_HOME=/app/software/mysql-8.0.37/mysql
                        PATH=$MySQL_HOME/bin:$PATH
                        export MySQL_HOME PATH
-[root@CentOS79 ~]# echo $PATH
-[root@CentOS79 ~]# source /etc/profile
-[root@CentOS79 ~]# echo $PATH
-[root@CentOS79 ~]# cd /app/mysql-8.0.36/mysql/support-files/
-[root@CentOS79 support-files]# cp mysql.server /etc/init.d/mysqld # 拷贝启动脚本
-[root@CentOS79 support-files]# chmod +x /etc/init.d/mysqld        # 赋予可执行权限
-[root@CentOS79 support-files]# chkconfig --add mysqld             # 加入系统服务
-[root@CentOS79 support-files]# chkconfig mysqld on                # 开机启动
-[root@CentOS79 support-files]# vim /etc/my.cnf                    # 编写MySQL启动配置
-[root@CentOS79 support-files]# cd /app/mysql-8.0.36/mysql_data/
-[root@CentOS79 mysql_data]# mkdir binlog
-[root@CentOS79 mysql_data]# chown -R mysql:MySQL binlog/
+[root@dev ~]# echo $PATH
+[root@dev ~]# source /etc/profile
+[root@dev ~]# echo $PATH
+[root@dev ~]# cd /app/software/mysql-8.0.37/mysql/support-files/
+[root@dev support-files]# cp mysql.server /etc/init.d/mysqld       # 拷贝启动脚本
+[root@dev support-files]# chmod +x /etc/init.d/mysqld              # 赋予可执行权限
+[root@dev support-files]# chkconfig --add mysqld                   # 加入系统服务
+[root@dev support-files]# chkconfig mysqld on                      # 开机启动
+[root@dev support-files]# vim /etc/my.cnf                          # 编写MySQL启动配置
+[root@dev support-files]# cd /app/software/mysql-8.0.37/mysql_data/
+[root@dev mysql_data]# mkdir binlog
+[root@dev mysql_data]# chown -R mysql:MySQL binlog/
 ```
 
 `my.cnf` 配置的内容如下
@@ -85,11 +85,11 @@ mariadb-libs-5.5.68-1.el7.x86_64
 ```sh
 [mysql]
 default-character-set = utf8mb4
-socket                = /app/mysql-8.0.36/mysql_data/mysql.sock
+socket                = /app/software/mysql-8.0.37/mysql_data/mysql.sock
 
 [client]
 default-character-set = utf8mb4
-socket                = /app/mysql-8.0.36/mysql_data/mysql.sock
+socket                = /app/software/mysql-8.0.37/mysql_data/mysql.sock
 
 [mysqld]
 #lower_case_table_names = 1（实测发现：只要配置了该参数，就会导致无法启动mysql）
@@ -97,17 +97,17 @@ socket                = /app/mysql-8.0.36/mysql_data/mysql.sock
 server-id  = 53306                                                 # Mysql唯一标识（一个集群中唯一）
 port       = 3306                                                  # 服务端口（默认3306）
 user       = mysql                                                 # 启动用户（官方不建议root启动数据库）
-basedir    = /app/mysql-8.0.36/mysql                               # mysql的安装目录
-datadir    = /app/mysql-8.0.36/mysql_data                          # mysql的数据存放目录
-socket     = /app/mysql-8.0.36/mysql_data/mysql.sock               # 指定套接字文件
-pid-file   = /app/mysql-8.0.36/mysql_data/mysqld.pid               # 指定pid文件
+basedir    = /app/software/mysql-8.0.37/mysql                      # mysql的安装目录
+datadir    = /app/software/mysql-8.0.37/mysql_data                 # mysql的数据存放目录
+socket     = /app/software/mysql-8.0.37/mysql_data/mysql.sock      # 指定套接字文件
+pid-file   = /app/software/mysql-8.0.37/mysql_data/mysqld.pid      # 指定pid文件
 max_connections     = 200                                          # 允许最大连接数
 max_connect_errors  = 10                                           # 允许连接失败的次数
 slow_query_log      = 1                                            # 开启慢查询日志
-slow_query_log_file = /app/mysql-8.0.36/mysql_data/slow_query.log  # 指定慢查询日志文件
+slow_query_log_file = /app/software/mysql-8.0.37/mysql_data/slow_query.log  # 指定慢查询日志文件
 long_query_time     = 3                                            # 指定3秒返回查询的结果为慢查询
-log-error           = /app/mysql-8.0.36/mysql_data/mysql-error.log
-log-bin             = /app/mysql-8.0.36/mysql_data/binlog/mysql-bin
+log-error           = /app/software/mysql-8.0.37/mysql_data/mysql-error.log
+log-bin             = /app/software/mysql-8.0.37/mysql_data/binlog/mysql-bin
 skip-name-resolve             = 1
 default-storage-engine        = INNODB
 character-set-server          = utf8mb4
