@@ -172,15 +172,15 @@ nacos.core.auth.plugin.nacos.token.secret.key=aHR0cHM6Ly9qYWR5ZXIuY24vMjAxMy8wOS
 [xuanyu@dev bin]$ vim startup-standalone.sh
 nohup sh /app/software/nacos-2.3.2/bin/startup.sh -m standalone > /app/software/nacos-2.3.2/bin/nohup.log 2>&1 &
 [xuanyu@dev bin]$ chmod +x startup-standalone.sh
-[xuanyu@dev bin]$ ./startup-standalone.sh      # 启动nacos（默认用户名密码均为nacos，首次登录后记得修改密码）
+[xuanyu@dev bin]$ ./startup-standalone.sh           # 启动nacos（默认用户名密码均为nacos，首次登录后记得修改密码）
 [xuanyu@dev bin]$ su root
-[root@dev bin]# vim /etc/rc.d/rc.local         # 添加自启动
+[root@dev bin]# vim /etc/rc.d/rc.local              # 添加自启动
 JAVA_HOME=/app/software/jdk-21.0.3                  # （由于rc.local要早于/etc/profiles运行）
 PATH=$JAVA_HOME/bin:$PATH                           # （因此rc.local执行时看不到任何环境变量）
 export JAVA_HOME PATH                               # （故手动指定JAVA_HOME，为nacos的启动提供java环境）
 /app/software/nacos-2.3.2/bin/startup-standalone.sh # 添加这一行即可（绝对路径）
-[root@dev bin]# chmod +x /etc/rc.d/rc.local    # 赋权，使其变成可执行文件
-[root@dev bin]# reboot                         # 重启验证（注意：应用程序连接时，需要开放8848、9848端口）
+[root@dev bin]# chmod +x /etc/rc.d/rc.local         # 赋权，使其变成可执行文件
+[root@dev bin]# reboot                              # 重启验证（注意：应用程序连接时，需要开放8848、9848端口）
 ```
 
 另外，再补充一下：将 Nacos 安装成为 win10 系统服务的方法，步骤如下
@@ -226,7 +226,7 @@ export JAVA_HOME PATH                               # （故手动指定JAVA_HOM
 [xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/bin/nexus         # 修改运行Nexus所使用的JDK
 INSTALL4J_JAVA_HOME_OVERRIDE="/app/software/nexus-3.68.1-02/jdk-11.0.23" # 修改第14行的值（含双引号）
 [xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/etc/nexus-default.properties # 修改Nexus的默认访问端口
-application-port=8081                                                               # 默认端口即为8081
+application-port=8081                                                          # 默认端口即为8081
 [root@dev /]# vim /etc/rc.d/rc.local                     # 添加自启动
 /app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start # 添加这一行即可（绝对路径）
 [root@dev /]# chmod +x /etc/rc.d/rc.local                # 赋权，使其变成可执行文件
@@ -383,7 +383,7 @@ error: Failed dependencies:
 [root@localhost backup]# yum install -y libXext*
 [root@localhost backup]# yum install -y xorg-x11-fonts-Type1
 [root@localhost backup]# yum install -y xorg-x11-fonts-75dpi
-[root@localhost backup]# yum install -y libjpeg              # 注意：接下来还是要用root安装，普通用户会失败
+[root@localhost backup]# yum install -y libjpeg                 # 注意：接下来还是要用root安装，普通用户会失败
 [root@localhost backup]# rpm -ivh --badreloc --relocate /usr/local=/app/software/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 Preparing...                          ################################# [100%]
 Updating / installing...
