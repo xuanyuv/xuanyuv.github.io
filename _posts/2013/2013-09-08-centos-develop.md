@@ -74,7 +74,6 @@ Hint: It's a good idea to run 'make test' ;)
     INSTALL install
     INSTALL install
 [root@dev src]# exit
-exit
 [xuanyu@dev src]# mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-sentinel redis-server redis-trib.rb /app/software/redis-5.0.14/bin/
 [xuanyu@dev src]# cd ..
 [xuanyu@dev redis]# mv redis.conf /app/software/redis-5.0.14/conf/
