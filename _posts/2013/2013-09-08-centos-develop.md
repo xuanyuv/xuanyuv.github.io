@@ -80,11 +80,11 @@ exit
 [xuanyu@dev redis]# mv redis.conf /app/software/redis-5.0.14/conf/
 [xuanyu@dev redis]# cd /app/software/redis-5.0.14/conf/
 [xuanyu@dev conf]# vim redis.conf
-# bind 127.0.0.1                   # 注释掉（对于多网卡机器，注释掉后，就可以接受来自任意一个网卡的redis请求）
-daemonize yes                      # 后台启动将默认的 no 改为 yes
+# bind 127.0.0.1                    # 注释掉（对于多网卡机器，注释掉后，就可以接受来自任意一个网卡的redis请求）
+daemonize yes                       # 后台启动将默认的 no 改为 yes
 logfile "/app/software/redis-5.0.14/log/redis.log"
-dir /app/software/redis-5.0.14/rdb # 数据库目录
-requirepass 123                    # 设置连接密码
+dir /app/software/redis-5.0.14/rdb/ # 数据库目录
+requirepass 123                     # 设置连接密码
 [xuanyu@dev conf]# cd /app/software/redis-5.0.14/bin/
 [xuanyu@dev bin]# ./redis-server /app/software/redis-5.0.14/conf/redis.conf # 启动redis
 [xuanyu@dev bin]# ./redis-cli -a 123 shutdown                               # 停止redis
