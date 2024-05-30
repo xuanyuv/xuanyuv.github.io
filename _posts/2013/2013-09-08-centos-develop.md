@@ -20,25 +20,25 @@ excerpt: 主要介绍CentOS-7.9版系统中，搭建Java开发环境的细节，
 如果是`.bin`文件，可以先执行`./jdk-6u45-linux-x64.bin`命令，再配置环境变量，即可。
 
 ```sh
-[root@CentOS79 ~]# cd /
-[root@CentOS79 /]# mkdir -p app/software/backup
-[root@CentOS79 /]# groupadd Develop                          # 添加Develop组
-[root@CentOS79 /]# useradd -g Develop Jadyer                 # 创建Jadyer用户并分配到Develop组
-[root@CentOS79 /]# passwd Jadyer                             # 设置或修改Jadyer用户密码
-[root@CentOS79 /]# chown -R Jadyer:Develop /app              # 修改目录的拥有者为新建的用户和组
-[Jadyer@CentOS79 ~]$ cd /app/software/backup/                # 使用普通用户来安装
-[Jadyer@CentOS79 backup]$ tar zxvf jdk-8u40-linux-x64.tar.gz # 解压jdk
-[Jadyer@CentOS79 backup]$ mv jdk1.8.0_40/ /app/software/     # 统一安装在/app/software/目录下
-[root@CentOS79 ~]# vi /etc/profile                           # 用root配置环境变量，再用[:x]保存
+[root@dev ~]# cd /
+[root@dev /]# mkdir -p app/software/backup
+[root@dev /]# groupadd Develop                          # 添加Develop组
+[root@dev /]# useradd -g Develop Jadyer                 # 创建Jadyer用户并分配到Develop组
+[root@dev /]# passwd Jadyer                             # 设置或修改Jadyer用户密码
+[root@dev /]# chown -R Jadyer:Develop /app              # 修改目录的拥有者为新建的用户和组
+[xuanyu@dev ~]$ cd /app/software/backup/                # 使用普通用户来安装
+[xuanyu@dev backup]$ tar zxvf jdk-8u40-linux-x64.tar.gz # 解压jdk
+[xuanyu@dev backup]$ mv jdk1.8.0_40/ /app/software/     # 统一安装在/app/software/目录下
+[root@dev ~]# vi /etc/profile                           # 用root配置环境变量，再用[:x]保存
                       # Set Java Environment Variable
                       JAVA_HOME=/app/software/jdk1.8.0_40
                       PATH=$JAVA_HOME/bin:$PATH
                       export JAVA_HOME PATH
-[root@CentOS79 ~]# echo $PATH                                # 查看当前PATH
-[root@CentOS79 ~]# source /etc/profile                       # 令环境变量生效
-[root@CentOS79 ~]# echo $PATH                                # 再看下PATH
-[root@CentOS79 ~]# java -version                             # 验证是否成功
-[Jadyer@CentOS79 ~]$ java -version                           # 普通用户重连服务器，再次验证
+[root@dev ~]# echo $PATH                                # 查看当前PATH
+[root@dev ~]# source /etc/profile                       # 令环境变量生效
+[root@dev ~]# echo $PATH                                # 再看下PATH
+[root@dev ~]# java -version                             # 验证是否成功
+[xuanyu@dev ~]$ java -version                           # 普通用户重连服务器，再次验证
 ```
 
 ## 安装Redis
@@ -50,24 +50,22 @@ Redis 的所有版本下载地址：https://download.redis.io/releases/
 > Redis 是由 C 语言编写的，其运行需要 C 环境，所以编译前需安装 gcc
 
 ```sh
-[Jadyer@CentOS79 ~]$ cd /app/software/backup/
-[Jadyer@CentOS79 backup]$ wget https://download.redis.io/releases/redis-5.0.14.tar.gz
-[Jadyer@CentOS79 backup]$ su root
-[root@CentOS79 backup]# tar zxvf redis-5.0.14.tar.gz
-[root@CentOS79 backup]# mkdir -pv /app/software/redis-5.0.14/conf
-[root@CentOS79 backup]# mkdir -v /app/software/redis-5.0.14/bin
-[root@CentOS79 backup]# mkdir -v /app/software/redis-5.0.14/log
-[root@CentOS79 backup]# mkdir -v /app/software/redis-5.0.14/rdb
-[root@CentOS79 backup]# mv redis-5.0.14 /app/software/redis-5.0.14/redis/
-[root@CentOS79 backup]# cd /app/software/redis-5.0.14/redis/
-[root@CentOS79 redis]# make # 过程稍慢，输出下面两行则编译完成（不用执行 make test，它执行的更慢，也没必要）
+[xuanyu@dev ~]$ cd /app/software/backup/
+[xuanyu@dev backup]$ wget https://download.redis.io/releases/redis-5.0.14.tar.gz
+[xuanyu@dev backup]# tar zxvf redis-5.0.14.tar.gz
+[xuanyu@dev backup]# mkdir -pv /app/software/redis-5.0.14/conf
+[xuanyu@dev backup]# mkdir -v /app/software/redis-5.0.14/bin
+[xuanyu@dev backup]# mkdir -v /app/software/redis-5.0.14/log
+[xuanyu@dev backup]# mkdir -v /app/software/redis-5.0.14/rdb
+[xuanyu@dev backup]# mv redis-5.0.14 /app/software/redis-5.0.14/redis/
+[xuanyu@dev backup]# cd /app/software/redis-5.0.14/redis/
+[xuanyu@dev redis]# make # 过程稍慢，输出下面两行则编译完成（不用执行 make test，它执行的更慢，也没必要）
 Hint: It's a good idea to run 'make test' ;)
 
 make[1]: Leaving directory '/app/software/redis-5.0.14/redis/src'
-[root@CentOS79 redis]# cd src/
-[root@CentOS79 src]# make install # 过程很快（注意：是在 src 目录下执行的，同样也不用去执行 make test）
-    CC Makefile.dep
-
+[xuanyu@dev redis]# cd src/
+[xuanyu@dev redis]$ su root
+[root@dev src]# make install # 过程很快（注意：是在 src 目录下执行的，同样也不用去执行 make test）
 Hint: It's a good idea to run 'make test' ;)
 
     INSTALL install
@@ -75,31 +73,33 @@ Hint: It's a good idea to run 'make test' ;)
     INSTALL install
     INSTALL install
     INSTALL install
-[root@CentOS79 src]# mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-sentinel redis-server redis-trib.rb /app/software/redis-5.0.14/bin/
-[root@CentOS79 src]# cd ..
-[root@CentOS79 redis]# mv redis.conf /app/software/redis-5.0.14/conf/
-[root@CentOS79 redis]# cd /app/software/redis-5.0.14/conf/
-[root@CentOS79 conf]# vim redis.conf
+[root@dev src]# exit
+exit
+[xuanyu@dev src]# mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-sentinel redis-server redis-trib.rb /app/software/redis-5.0.14/bin/
+[xuanyu@dev src]# cd ..
+[xuanyu@dev redis]# mv redis.conf /app/software/redis-5.0.14/conf/
+[xuanyu@dev redis]# cd /app/software/redis-5.0.14/conf/
+[xuanyu@dev conf]# vim redis.conf
 # bind 127.0.0.1                   # 注释掉（对于多网卡机器，注释掉后，就可以接受来自任意一个网卡的redis请求）
-protected-mode no                  # 保护模式将默认的 yes 改为 no（即关闭保护模式，不然会阻止远程访问）
 daemonize yes                      # 后台启动将默认的 no 改为 yes
-requirepass 123                    # 设置连接密码
-dir /app/software/redis-5.0.14/rdb # 数据库目录
 logfile "/app/software/redis-5.0.14/log/redis.log"
-[root@CentOS79 conf]# cd /app/software/redis-5.0.14/bin/
-[root@CentOS79 bin]# ./redis-server /app/software/redis-5.0.14/conf/redis.conf # 启动redis
-[root@CentOS79 bin]# ./redis-cli                                               # 客户端命令行连接
-127.0.0.1:6379> ping                                                           # 尝试执行一个命令
-(error) NOAUTH Authentication required.                                        # 报错，说明配置文件设定密码生效了
-127.0.0.1:6379> auth 123                                                       # 提供密码
+dir /app/software/redis-5.0.14/rdb # 数据库目录
+requirepass 123                    # 设置连接密码
+[xuanyu@dev conf]# cd /app/software/redis-5.0.14/bin/
+[xuanyu@dev bin]# ./redis-server /app/software/redis-5.0.14/conf/redis.conf # 启动redis
+[xuanyu@dev bin]# ./redis-cli -a 123 shutdown                               # 停止redis
+[xuanyu@dev bin]# ./redis-cli                                               # 客户端命令行连接
+127.0.0.1:6379> ping                                                        # 尝试执行一个命令
+(error) NOAUTH Authentication required.                                     # 报错，说明配置文件设定密码生效了
+127.0.0.1:6379> auth 123                                                    # 提供密码
 OK
 127.0.0.1:6379> ping
 PONG
 127.0.0.1:6379> quit
-[root@CentOS79 bin]# vim /etc/rc.d/rc.local                                            # 添加自启动
+[root@dev bin]# vim /etc/rc.d/rc.local                                      # 添加自启动
 /app/software/redis-5.0.14/bin/redis-server /app/software/redis-5.0.14/conf/redis.conf # 添加这一行即可（绝对路径）
-[root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local                              # 赋权，使其变成可执行文件
-[root@CentOS79 nginx-1.24.0]# reboot                                                   # 最后，重启系统，验证
+[root@dev bin]# chmod +x /etc/rc.d/rc.local                                 # 赋权，使其变成可执行文件
+[root@dev bin]# reboot                                                      # 最后，重启系统，验证
 ```
 
 注：bin 和 conf 目录是为了便于管理，对于启动（或集群）都比较方便（bin 存放命令，conf 存放配置）
@@ -110,34 +110,34 @@ PONG
 
 ```sh
 # 先安装依赖项：编译时依赖gcc环境、pcre可以解析正则以支持rewrite等、 zlib对http包内容进行gzip压缩、openssl支持https
-[root@CentOS79 ~]# yum -y install gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel
-[root@CentOS79 ~]# groupadd Nginx                             # 添加Nginx组
-[root@CentOS79 ~]# useradd -s /sbin/nologin -M -g Nginx nginx # 创建nginx用户并分配组，且不能shell登录系统
-[root@CentOS79 ~]# cd /app/software/backup/                   # 普通用户不能监听1024以内的端口，故用root安装
-[root@CentOS79 backup]# tar zxvf nginx-1.24.0.tar.gz
-[root@CentOS79 backup]# cd nginx-1.24.0/
-[root@CentOS79 nginx-1.24.0]# pwd
+[root@dev ~]# yum -y install gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel
+[root@dev ~]# groupadd Nginx                             # 添加Nginx组
+[root@dev ~]# useradd -s /sbin/nologin -M -g Nginx nginx # 创建nginx用户并分配组，且不能shell登录系统
+[root@dev ~]# cd /app/software/backup/                   # 普通用户不能监听1024以内的端口，故用root安装
+[root@dev backup]# tar zxvf nginx-1.24.0.tar.gz
+[root@dev backup]# cd nginx-1.24.0/
+[root@dev nginx-1.24.0]# pwd
 /app/software/backup/nginx-1.24.0
-[root@CentOS79 nginx-1.24.0]# ./configure --prefix=/app/software/nginx-1.24.0 --user=nginx --group=Nginx --with-compat --with-debug --with-threads --with-file-aio --with-http_sub_module --with-http_v2_module --with-http_addition_module --with-http_auth_request_module --with-http_degradation_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_stub_status_module --with-http_ssl_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module
-[root@CentOS79 nginx-1.24.0]# make && make install
-[root@CentOS79 nginx-1.24.0]# cd ..
-[root@CentOS79 backup]# rm -rf nginx-1.24.0
-[root@CentOS79 backup]# cd /app/software/nginx-1.24.0/
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -V
+[root@dev nginx-1.24.0]# ./configure --prefix=/app/software/nginx-1.24.0 --user=nginx --group=Nginx --with-compat --with-debug --with-threads --with-file-aio --with-http_sub_module --with-http_v2_module --with-http_addition_module --with-http_auth_request_module --with-http_degradation_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_stub_status_module --with-http_ssl_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module
+[root@dev nginx-1.24.0]# make && make install
+[root@dev nginx-1.24.0]# cd ..
+[root@dev backup]# rm -rf nginx-1.24.0
+[root@dev backup]# cd /app/software/nginx-1.24.0/
+[root@dev nginx-1.24.0]# ./sbin/nginx -V
 nginx version: nginx/1.24.0
 built by gcc 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC) 
 built with OpenSSL 1.0.2k-fips  26 Jan 2017
 TLS SNI support enabled
 configure arguments: --prefix=/app/software/nginx-1.24.0 --user=nginx --group=Nginx --with-compat --with-debug --with-threads --with-file-aio --with-http_sub_module --with-http_v2_module --with-http_addition_module --with-http_auth_request_module --with-http_degradation_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_stub_status_module --with-http_ssl_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module
-[root@CentOS79 nginx-1.24.0]# vim conf/nginx.conf
+[root@dev nginx-1.24.0]# vim conf/nginx.conf
 user nginx Nginx;
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx                # 启动
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s reload      # 重载配置
-[root@CentOS79 nginx-1.24.0]# ./sbin/nginx -s stop        # 停止
-[root@CentOS79 nginx-1.24.0]# vim /etc/rc.d/rc.local      # 添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
+[root@dev nginx-1.24.0]# ./sbin/nginx                # 启动
+[root@dev nginx-1.24.0]# ./sbin/nginx -s reload      # 重载配置
+[root@dev nginx-1.24.0]# ./sbin/nginx -s stop        # 停止
+[root@dev nginx-1.24.0]# vim /etc/rc.d/rc.local      # 添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
 /app/software/nginx-1.24.0/sbin/nginx                     # 添加这一行即可（绝对路径）
-[root@CentOS79 nginx-1.24.0]# chmod +x /etc/rc.d/rc.local # 赋权，使其变成可执行文件
-[root@CentOS79 nginx-1.24.0]# reboot                      # 最后，重启系统，验证
+[root@dev nginx-1.24.0]# chmod +x /etc/rc.d/rc.local # 赋权，使其变成可执行文件
+[root@dev nginx-1.24.0]# reboot                      # 最后，重启系统，验证
 ```
 
 ## 安装Nacos
@@ -145,11 +145,11 @@ user nginx Nginx;
 下载地址：https://github.com/alibaba/nacos/releases/download/2.3.2/nacos-server-2.3.2.tar.gz
 
 ```sh
-[Jadyer@CentOS79 ~]$ cd /app/software/backup/
-[Jadyer@CentOS79 backup]$ tar zxvf nacos-server-2.3.2.tar.gz
-[Jadyer@CentOS79 backup]$ mv nacos /app/software/nacos-2.3.2
-[Jadyer@CentOS79 backup]$ cd /app/software/nacos-2.3.2/
-[Jadyer@CentOS79 nacos-2.3.2]$ vim conf/application.properties
+[xuanyu@dev ~]$ cd /app/software/backup/
+[xuanyu@dev backup]$ tar zxvf nacos-server-2.3.2.tar.gz
+[xuanyu@dev backup]$ mv nacos /app/software/nacos-2.3.2
+[xuanyu@dev backup]$ cd /app/software/nacos-2.3.2/
+[xuanyu@dev nacos-2.3.2]$ vim conf/application.properties
 spring.sql.init.platform=mysql
 # 首次启动前，应先初始化数据库，初始化文件位于：/app/software/nacos-2.3.2/conf/mysql-schema.sql
 db.num=1
@@ -168,19 +168,19 @@ nacos.core.auth.server.identity.key=JadyerAuthKey
 nacos.core.auth.server.identity.value=Jadyer123
 # 这是一个base64字符串（其原始密钥可以随意指定，但长度不得低于32字符）
 nacos.core.auth.plugin.nacos.token.secret.key=aHR0cHM6Ly9qYWR5ZXIuY24vMjAxMy8wOS8wNy9jZW50b3MtY29uZmlnLWRldmVsb3Av
-[Jadyer@CentOS79 nacos-2.3.2]$ cd bin/
-[Jadyer@CentOS79 bin]$ vim startup-standalone.sh
+[xuanyu@dev nacos-2.3.2]$ cd bin/
+[xuanyu@dev bin]$ vim startup-standalone.sh
 nohup sh /app/software/nacos-2.3.2/bin/startup.sh -m standalone > /app/software/nacos-2.3.2/bin/nohup.log 2>&1 &
-[Jadyer@CentOS79 bin]$ chmod +x startup-standalone.sh
-[Jadyer@CentOS79 bin]$ ./startup-standalone.sh      # 启动nacos（默认用户名密码均为nacos，首次登录后记得修改密码）
-[Jadyer@CentOS79 bin]$ su root
-[root@CentOS79 bin]# vim /etc/rc.d/rc.local         # 添加自启动
+[xuanyu@dev bin]$ chmod +x startup-standalone.sh
+[xuanyu@dev bin]$ ./startup-standalone.sh      # 启动nacos（默认用户名密码均为nacos，首次登录后记得修改密码）
+[xuanyu@dev bin]$ su root
+[root@dev bin]# vim /etc/rc.d/rc.local         # 添加自启动
 JAVA_HOME=/app/software/jdk-21.0.3                  # （由于rc.local要早于/etc/profiles运行）
 PATH=$JAVA_HOME/bin:$PATH                           # （因此rc.local执行时看不到任何环境变量）
 export JAVA_HOME PATH                               # （故手动指定JAVA_HOME，为nacos的启动提供java环境）
 /app/software/nacos-2.3.2/bin/startup-standalone.sh # 添加这一行即可（绝对路径）
-[root@CentOS79 bin]# chmod +x /etc/rc.d/rc.local    # 赋权，使其变成可执行文件
-[root@CentOS79 bin]# reboot                         # 重启验证（注意：应用程序连接时，需要开放8848、9848端口）
+[root@dev bin]# chmod +x /etc/rc.d/rc.local    # 赋权，使其变成可执行文件
+[root@dev bin]# reboot                         # 重启验证（注意：应用程序连接时，需要开放8848、9848端口）
 ```
 
 另外，再补充一下：将 Nacos 安装成为 win10 系统服务的方法，步骤如下
@@ -218,19 +218,19 @@ export JAVA_HOME PATH                               # （故手动指定JAVA_HOM
 下载地址：https://help.sonatype.com/en/download.html，这里使用的是 [nexus-3.68.1-02-java11-unix.tar.gz](https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/3/nexus-3.68.1-02-java11-unix.tar.gz)
 
 ```sh
-[Jadyer@CentOS79 ~]$ cd /app/software/backup/
-[Jadyer@CentOS79 backup]$ mkdir -p /app/software/nexus-3.68.1-02
-[Jadyer@CentOS79 backup]$ tar zxvf nexus-3.68.1-02-java11-unix.tar.gz -C /app/software/nexus-3.68.1-02
-[Jadyer@CentOS79 backup]$ cd /app/software/nexus-3.68.1-02
-[Jadyer@CentOS79 nexus-3.68.1-02]$ vim nexus-3.68.1-02/bin/nexus.rc      # 修改运行Nexus所使用的用户（默认为root）
-[Jadyer@CentOS79 nexus-3.68.1-02]$ vim nexus-3.68.1-02/bin/nexus         # 修改运行Nexus所使用的JDK
+[xuanyu@dev ~]$ cd /app/software/backup/
+[xuanyu@dev backup]$ mkdir -p /app/software/nexus-3.68.1-02
+[xuanyu@dev backup]$ tar zxvf nexus-3.68.1-02-java11-unix.tar.gz -C /app/software/nexus-3.68.1-02
+[xuanyu@dev backup]$ cd /app/software/nexus-3.68.1-02
+[xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/bin/nexus.rc      # 修改运行Nexus所使用的用户（默认为root）
+[xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/bin/nexus         # 修改运行Nexus所使用的JDK
 INSTALL4J_JAVA_HOME_OVERRIDE="/app/software/nexus-3.68.1-02/jdk-11.0.23" # 修改第14行的值（含双引号）
-[Jadyer@CentOS79 nexus-3.68.1-02]$ vim nexus-3.68.1-02/etc/nexus-default.properties # 修改Nexus的默认访问端口
+[xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/etc/nexus-default.properties # 修改Nexus的默认访问端口
 application-port=8081                                                               # 默认端口即为8081
-[root@CentOS79 /]# vim /etc/rc.d/rc.local                     # 添加自启动
+[root@dev /]# vim /etc/rc.d/rc.local                     # 添加自启动
 /app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start # 添加这一行即可（绝对路径）
-[root@CentOS79 /]# chmod +x /etc/rc.d/rc.local                # 赋权，使其变成可执行文件
-[root@CentOS79 /]# reboot                                     # 最后，重启系统，验证
+[root@dev /]# chmod +x /etc/rc.d/rc.local                # 赋权，使其变成可执行文件
+[root@dev /]# reboot                                     # 最后，重启系统，验证
 ```
 
 其中，以下几点可以注意一下：
