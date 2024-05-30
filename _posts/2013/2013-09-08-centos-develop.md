@@ -135,7 +135,7 @@ user nginx Nginx;
 [root@dev nginx-1.24.0]# ./sbin/nginx -s reload      # 重载配置
 [root@dev nginx-1.24.0]# ./sbin/nginx -s stop        # 停止
 [root@dev nginx-1.24.0]# vim /etc/rc.d/rc.local      # 添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
-/app/software/nginx-1.24.0/sbin/nginx                     # 添加这一行即可（绝对路径）
+/app/software/nginx-1.24.0/sbin/nginx                # 添加这一行即可（绝对路径）
 [root@dev nginx-1.24.0]# chmod +x /etc/rc.d/rc.local # 赋权，使其变成可执行文件
 [root@dev nginx-1.24.0]# reboot                      # 最后，重启系统，验证
 ```
