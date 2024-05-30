@@ -323,7 +323,8 @@ mysql -h127.0.0.1 -uroot -pxuanyu < /app/software/xuanyu.sql
   例如：--max_allowed_packet=10240或者--max_allowed_packet=512M
 * **--single-transaction**：该选项在导出数据之前提交一个BEGIN SQL语句<br/>
   BEGIN 不会阻塞任何应用程序且能保证导出时数据库的一致性状态。它只适用于多版本存储引擎，仅InnoDB<br/>
-  本选项和--lock-tables 选项是互斥的，因为LOCK  TABLES会使任何挂起的事务隐含提交。要想导出大表的话，应结合使用--quick 选项
+  本选项和 --lock-tables 选项是互斥的，因为LOCK  TABLES会使任何挂起的事务隐含提交<br/>
+  要想导出大表的话，应结合使用 --quick 选项
 * **--flush-logs**：导出前刷新服务器的日志文件
 
 
