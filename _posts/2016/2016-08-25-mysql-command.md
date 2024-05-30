@@ -162,6 +162,45 @@ if(EXTRA='auto_increment', true, false) as isAutoIncrement
 FROM information_schema.COLUMNS WHERE TABLE_NAME='表名' ORDER BY ORDINAL_POSITION;
 ```
 
+## 查询字符集
+
+```sql
+mysql> SHOW VARIABLES LIKE 'character_set_%';
+mysql> SHOW VARIABLES LIKE 'collation_%';
+mysql> SHOW VARIABLES WHERE Variable_name LIKE 'character_set_%' OR Variable_name LIKE 'collation_%';
++--------------------------+--------------------------------------------------+
+| Variable_name            | Value                                            |
++--------------------------+--------------------------------------------------+
+| character_set_client     | utf8mb4                                          |
+| character_set_connection | utf8mb4                                          |
+| character_set_database   | utf8mb4                                          |
+| character_set_filesystem | binary                                           |
+| character_set_results    | utf8mb4                                          |
+| character_set_server     | utf8mb4                                          |
+| character_set_system     | utf8mb3                                          |
+| character_sets_dir       | /app/software/mysql-8.0.32/mysql/share/charsets/ |
+| collation_connection     | utf8mb4_0900_ai_ci                               |
+| collation_database       | utf8mb4_unicode_ci                               |
+| collation_server         | utf8mb4_0900_ai_ci                               |
++--------------------------+--------------------------------------------------+
+11 rows in set, 1 warning (0.00 sec)
+
+mysql>
+```
+
+| 变量                       | 描述                                              |
+|:-------------------------|:------------------------------------------------|
+| character_set_client     | 客户端使用的字符集（客户端请求数据的字符集）                          |
+| character_set_connection | 连接数据库时的字符集（接收客户端数据并传输的字符集）                      |
+| character_set_database   | 创建数据库时的默认字符集（创建数据库时未设置则取character_set_server）   |
+| character_set_filesystem | 文件系统的编码格式，把操作系统上的文件名转化成此字符集，默认binary是不做任何转换的    |
+| character_set_results    | 数据库给客户端返回结果集时的编码格式（未设置则取character_set_server）   |
+| character_set_server     | 数据库服务器的默认字符集                                    |
+| character_set_system     | 存储系统元数据的字符集（不需要设置）                              |
+| character_sets_dir       | 字符集安装的目录                                        |
+
+其中，后三个系统变量基本不需要关心，只有前五个才会影响到数据乱码等问题
+
 ## 分组查询并组内排序
 
 ```sql

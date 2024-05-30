@@ -423,21 +423,12 @@ settings---Editor---Code Style---SQL---General---Case选项卡---Word Case---Key
 标题栏---View---Appearance---Details in Tree View
 ```
 
-### 字符集混用或无效
+### 字符集连接问题
 
-当数据库服务端设置为 UTF8MB4 后，datagrip 在操作数据库时，可能会提示下面信息
+当数据库服务端设置为 UTF8MB4 后
 
-`llegal mix of collations (utf8mb4_general_ci,IMPLICIT) and (utf8mb4_0900_ai_ci,IMPLICIT) for operation '='`
+datagrip 在操作数据库时，可能会提示下面信息：
 
-这时，可以在查询控制台确认一下
+llegal mix of collations (utf8mb4_general_ci,IMPLICIT) and (utf8mb4_0900_ai_ci,IMPLICIT) for operation '='
 
-```
-SHOW VARIABLES LIKE 'COLLATION_%';
-
-Variable_name           Value
-collation_connection	utf8mb4_general_ci
-collation_database	utf8mb4_unicode_ci
-collation_server	utf8mb4_unicode_ci
-```
-
-解决办法就是在数据库连接URL上增加：connectionCollation=utf8mb4_general_ci
+解决办法就是在数据库连接 URL 上增加：`connectionCollation=utf8mb4_general_ci`
