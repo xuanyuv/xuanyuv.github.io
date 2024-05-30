@@ -49,7 +49,7 @@ Redis 的所有版本下载地址：https://download.redis.io/releases/
 
 > Redis 是由 C 语言编写的，其运行需要 C 环境，所以编译前需安装 gcc
 
-```sh
+```shell
 [xuanyu@dev ~]$ cd /app/software/backup/
 [xuanyu@dev backup]$ wget https://download.redis.io/releases/redis-5.0.14.tar.gz
 [xuanyu@dev backup]# tar zxvf redis-5.0.14.tar.gz
@@ -87,13 +87,13 @@ dir /app/software/redis-5.0.14/rdb/ # 数据库目录
 requirepass 123                     # 设置连接密码
 [xuanyu@dev conf]# cd /app/software/redis-5.0.14/bin/
 [xuanyu@dev bin]# ./redis-server /app/software/redis-5.0.14/conf/redis.conf # 启动redis
-[xuanyu@dev bin]# ./redis-cli -a 123 shutdown                               # 停止redis
+[xuanyu@dev bin]# ./redis-cli -h 127.0.0.1 -p 6379 -a 123 shutdown          # 停止redis
 [xuanyu@dev bin]# ./redis-cli                                               # 客户端命令行连接
-127.0.0.1:6379> ping                                                        # 尝试执行一个命令
+127.0.0.1:6379> PING                                                        # 尝试执行一个命令
 (error) NOAUTH Authentication required.                                     # 报错，说明配置文件设定密码生效了
 127.0.0.1:6379> auth 123                                                    # 提供密码
 OK
-127.0.0.1:6379> ping
+127.0.0.1:6379> PING
 PONG
 127.0.0.1:6379> quit
 [root@dev bin]# vim /etc/rc.d/rc.local                                      # 添加自启动
@@ -103,6 +103,19 @@ PONG
 ```
 
 注：bin 和 conf 目录是为了便于管理，对于启动（或集群）都比较方便（bin 存放命令，conf 存放配置）
+
+另：补充一下通过 RDB 方式进行数据备份与还原
+
+```shell
+# 备份原数据（执行完 save 或者 bgsave 命令后，数据就会持久化到硬盘上的 RDB 文件中）
+127.0.0.1:7000> save
+# 查询到 RDB 文件的保存位置
+127.0.0.1:7000> config get dir
+1) "dir"
+2) "/usr/local/redis5.0.5"
+127.0.0.1:7000>
+# 最后将 RDB 文件拷贝到目标 Redis 的 rdb 目录下替换，再重启 Redis 即可
+```
 
 ## 安装Nginx
 
