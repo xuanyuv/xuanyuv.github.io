@@ -134,22 +134,25 @@ PONG
 [root@dev nginx-1.24.0]# make && make install
 [root@dev nginx-1.24.0]# cd ..
 [root@dev backup]# rm -rf nginx-1.24.0
-[root@dev backup]# cd /app/software/nginx-1.24.0/
-[root@dev nginx-1.24.0]# ./sbin/nginx -V
+[root@dev backup]# chown -R nginx:Nginx /app/software/nginx-1.24.0/
+[root@dev backup]# cd /app/software/nginx-1.24.0/conf
+[root@dev conf]# ../sbin/nginx -V
 nginx version: nginx/1.24.0
 built by gcc 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC) 
 built with OpenSSL 1.0.2k-fips  26 Jan 2017
 TLS SNI support enabled
 configure arguments: --prefix=/app/software/nginx-1.24.0 --user=nginx --group=Nginx --with-compat --with-debug --with-threads --with-file-aio --with-http_sub_module --with-http_v2_module --with-http_addition_module --with-http_auth_request_module --with-http_degradation_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_stub_status_module --with-http_ssl_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module
-[root@dev nginx-1.24.0]# vim conf/nginx.conf
-user nginx Nginx;
-[root@dev nginx-1.24.0]# ./sbin/nginx                # 启动
-[root@dev nginx-1.24.0]# ./sbin/nginx -s reload      # 重载配置
-[root@dev nginx-1.24.0]# ./sbin/nginx -s stop        # 停止
-[root@dev nginx-1.24.0]# vim /etc/rc.d/rc.local      # 添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
-/app/software/nginx-1.24.0/sbin/nginx                # 添加这一行即可（绝对路径）
-[root@dev nginx-1.24.0]# chmod +x /etc/rc.d/rc.local # 赋权，使其变成可执行文件
-[root@dev nginx-1.24.0]# reboot                      # 最后，重启系统，验证
+[root@dev conf]# vim nginx.conf
+[root@dev conf]# ../sbin/nginx -t -c /app/software/nginx-1.24.0/conf/nginx.conf
+nginx: the configuration file /app/software/nginx-1.24.0/conf/nginx.conf syntax is ok
+nginx: configuration file /app/software/nginx-1.24.0/conf/nginx.conf test is successful
+[root@dev conf]# ../sbin/nginx                # 启动
+[root@dev conf]# ../sbin/nginx -s reload      # 重载配置
+[root@dev conf]# ../sbin/nginx -s stop        # 停止
+[root@dev conf]# vim /etc/rc.d/rc.local       # 添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
+/app/software/nginx-1.24.0/sbin/nginx         # 添加这一行即可（绝对路径）
+[root@dev conf]# chmod +x /etc/rc.d/rc.local  # 赋权，使其变成可执行文件
+[root@dev conf]# reboot                       # 最后，重启系统，验证
 ```
 
 ## 安装Nacos
