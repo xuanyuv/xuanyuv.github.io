@@ -79,7 +79,7 @@ Hint: It's a good idea to run 'make test' ;)
 [xuanyu@dev redis]# mv redis.conf /app/software/redis-5.0.14/conf/
 [xuanyu@dev redis]# cd /app/software/redis-5.0.14/conf/
 [xuanyu@dev conf]# vim redis.conf
-# bind 127.0.0.1                    # 注释掉（对于多网卡机器，注释掉后，就可以接受来自任意一个网卡的redis请求）
+# bind 127.0.0.1                    # 对于多网卡机器，注释掉后，就可以接受来自任意一个网卡的redis请求
 daemonize yes                       # 后台启动将默认的 no 改为 yes
 logfile "/app/software/redis-5.0.14/log/redis.log"
 dir /app/software/redis-5.0.14/rdb/ # 数据库目录
@@ -89,14 +89,14 @@ requirepass 123                     # 设置连接密码
 [xuanyu@dev bin]# ./redis-cli -h 127.0.0.1 -p 6379 -a 123 shutdown          # 停止redis
 [xuanyu@dev bin]# ./redis-cli                                               # 客户端命令行连接
 127.0.0.1:6379> PING                                                        # 尝试执行一个命令
-(error) NOAUTH Authentication required.                                     # 报错，说明配置文件设定密码生效了
+(error) NOAUTH Authentication required.                                     # 说明配置文件设定密码生效了
 127.0.0.1:6379> auth 123                                                    # 提供密码
 OK
 127.0.0.1:6379> PING
 PONG
 127.0.0.1:6379> quit
 [root@dev bin]# vim /etc/rc.d/rc.local                                      # 添加自启动
-/app/software/redis-5.0.14/bin/redis-server /app/software/redis-5.0.14/conf/redis.conf # 添加这一行即可（绝对路径）
+/app/software/redis-5.0.14/bin/redis-server /app/software/redis-5.0.14/conf/redis.conf
 [root@dev bin]# chmod +x /etc/rc.d/rc.local                                 # 赋权，使其变成可执行文件
 [root@dev bin]# reboot                                                      # 最后，重启系统，验证
 ```
@@ -149,7 +149,7 @@ nginx: configuration file /app/software/nginx-1.24.0/conf/nginx.conf test is suc
 [root@dev conf]# ../sbin/nginx               # 启动
 [root@dev conf]# ../sbin/nginx -s reload     # 重载配置
 [root@dev conf]# ../sbin/nginx -s stop       # 停止
-[root@dev conf]# vim /etc/rc.d/rc.local      # 添加自启动（/etc/rc.local是/etc/rc.d/rc.local的软连接）
+[root@dev conf]# vim /etc/rc.d/rc.local      # 添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
 /app/software/nginx-1.24.0/sbin/nginx        # 添加这一行即可（绝对路径）
 [root@dev conf]# chmod +x /etc/rc.d/rc.local # 赋权，使其变成可执行文件
 [root@dev conf]# reboot                      # 最后，重启系统，验证
@@ -168,7 +168,7 @@ nginx: configuration file /app/software/nginx-1.24.0/conf/nginx.conf test is suc
 spring.sql.init.platform=mysql
 # 首次启动前，应先初始化数据库，初始化文件位于：/app/software/nacos-2.3.2/conf/mysql-schema.sql
 db.num=1
-# 连接mysql8.0时可能报错：java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+# 连接mysql8.0可能报错：java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
 # 此时，在连接参数上增加：allowPublicKeyRetrieval=true
 db.url.0=jdbc:mysql://127.0.0.1:3306/nacos?allowPublicKeyRetrieval=true&characterEncoding=utf8&connectTimeout...
 db.user.0=nacos
@@ -187,15 +187,14 @@ nacos.core.auth.plugin.nacos.token.secret.key=aHR0cHM6Ly9qYWR5ZXIuY24vMjAxMy8wOS
 [xuanyu@dev bin]$ vim startup-standalone.sh
 nohup sh /app/software/nacos-2.3.2/bin/startup.sh -m standalone > /app/software/nacos-2.3.2/bin/nohup.log 2>&1 &
 [xuanyu@dev bin]$ chmod +x startup-standalone.sh
-[xuanyu@dev bin]$ ./startup-standalone.sh           # 启动nacos（默认用户名密码均为nacos，首次登录后记得修改密码）
-[xuanyu@dev bin]$ su root
+[xuanyu@dev bin]$ ./startup-standalone.sh           # 启动nacos（默认用户密码均为nacos，登录后记得改密码）
 [root@dev bin]# vim /etc/rc.d/rc.local              # 添加自启动
-JAVA_HOME=/app/software/jdk-21.0.3                  # （由于rc.local要早于/etc/profiles运行）
-PATH=$JAVA_HOME/bin:$PATH                           # （因此rc.local执行时看不到任何环境变量）
-export JAVA_HOME PATH                               # （故手动指定JAVA_HOME，为nacos的启动提供java环境）
+JAVA_HOME=/app/software/jdk-21.0.3                  # （由于 rc.local 要早于 /etc/profiles 运行）
+PATH=$JAVA_HOME/bin:$PATH                           # （因此 rc.local 执行时看不到任何环境变量）
+export JAVA_HOME PATH                               # （故手动指定JAVA_HOME，为Nacos的启动提供Java环境）
 /app/software/nacos-2.3.2/bin/startup-standalone.sh # 添加这一行即可（绝对路径）
 [root@dev bin]# chmod +x /etc/rc.d/rc.local         # 赋权，使其变成可执行文件
-[root@dev bin]# reboot                              # 重启验证（注意：应用程序连接时，需要开放8848、9848端口）
+[root@dev bin]# reboot                              # 重启验证（应用程序连接时，需要开放8848、9848端口）
 ```
 
 另外，再补充一下：将 Nacos 安装成为 win10 系统服务的方法，步骤如下
@@ -237,8 +236,8 @@ export JAVA_HOME PATH                               # （故手动指定JAVA_HOM
 [xuanyu@dev backup]$ mkdir -p /app/software/nexus-3.68.1-02
 [xuanyu@dev backup]$ tar zxvf nexus-3.68.1-02-java11-unix.tar.gz -C /app/software/nexus-3.68.1-02
 [xuanyu@dev backup]$ cd /app/software/nexus-3.68.1-02
-[xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/bin/nexus.rc      # 修改运行Nexus所使用的用户（默认为root）
-[xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/bin/nexus         # 修改运行Nexus所使用的JDK
+[xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/bin/nexus.rc # 修改运行Nexus所使用的用户（默认为root）
+[xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/bin/nexus    # 修改运行Nexus所使用的JDK
 INSTALL4J_JAVA_HOME_OVERRIDE="/app/software/nexus-3.68.1-02/jdk-11.0.23" # 修改第14行的值（含双引号）
 [xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/etc/nexus-default.properties # 修改Nexus的默认访问端口
 application-port=8081                                                          # 默认端口即为8081
