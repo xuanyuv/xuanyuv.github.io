@@ -132,6 +132,7 @@ PONG
 /app/software/backup/nginx-1.24.0
 [root@dev nginx-1.24.0]# ./configure --prefix=/app/software/nginx-1.24.0 --user=nginx --group=Nginx --with-compat --with-debug --with-threads --with-file-aio --with-http_sub_module --with-http_v2_module --with-http_addition_module --with-http_auth_request_module --with-http_degradation_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_stub_status_module --with-http_ssl_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module
 [root@dev nginx-1.24.0]# make && make install
+[root@dev nginx-1.24.0]# cp -R contrib/vim/* /usr/share/vim/vimfiles/ # vim nginx.conf 时，增加语法高亮
 [root@dev nginx-1.24.0]# cd ..
 [root@dev backup]# rm -rf nginx-1.24.0
 [root@dev backup]# chown -R nginx:Nginx /app/software/nginx-1.24.0/
