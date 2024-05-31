@@ -107,12 +107,12 @@ PONG
 
 ```shell
 # 备份原数据（执行完 save 或者 bgsave 命令后，数据就会持久化到硬盘上的 RDB 文件中）
-127.0.0.1:7000> save
+127.0.0.1:6379> save
 # 查询 RDB 文件的保存位置
-127.0.0.1:7000> config get dir
+127.0.0.1:6379> config get dir
 1) "dir"
-2) "/usr/local/redis5.0.5"
-127.0.0.1:7000>
+2) "/app/software/redis-5.0.14/rdb"
+127.0.0.1:6379>
 # 最后将 RDB 文件拷贝到目标 Redis 的 rdb 目录下替换，再重启 Redis 即可
 ```
 
