@@ -65,48 +65,48 @@ alias ipv6 off
 ## 安装Maven
 
 ```sh
-[Jadyer@localhost ~]$ cd /app/
-[Jadyer@localhost app]$ tar -zxvf apache-maven-3.2.5-bin.tar.gz
-[Jadyer@localhost app]$ rm -rf apache-maven-3.2.5-bin.tar.gz
-[root@localhost Jadyer]# vi /etc/profile
-                         # Set Maven Environment Variable
-                         MAVEN_HOME=/app/apache-maven-3.2.5
-                         PATH=$MAVEN_HOME/bin:$PATH
-                         export MAVEN_HOME PATH
-[root@localhost Jadyer]# source /etc/profile
-[root@localhost Jadyer]# echo $PATH
-[root@localhost Jadyer]# mvn -version
-[Jadyer@localhost ~]$ mvn -version
-[Jadyer@localhost ~]$ cd /app/code/
-[Jadyer@localhost code]$ mkdir MavenRepository
-[Jadyer@localhost code]$ vi /app/apache-maven-3.2.5/conf/settings.xml
-                         <localRepository>/app/code/MavenRepository</localRepository>
-[Jadyer@localhost code]$ cp /app/apache-maven-3.2.5/conf/settings.xml MavenRepository/
+[xuanyu@dev ~]$ cd /app/
+[xuanyu@dev app]$ tar -zxvf apache-maven-3.2.5-bin.tar.gz
+[xuanyu@dev app]$ rm -rf apache-maven-3.2.5-bin.tar.gz
+[root@dev Jadyer]# vim /etc/profile
+                   # Set Maven Environment Variable
+                   MAVEN_HOME=/app/apache-maven-3.2.5
+                   PATH=$MAVEN_HOME/bin:$PATH
+                   export MAVEN_HOME PATH
+[root@dev Jadyer]# source /etc/profile
+[root@dev Jadyer]# echo $PATH
+[root@dev Jadyer]# mvn -version
+[xuanyu@dev ~]$ mvn -version
+[xuanyu@dev ~]$ cd /app/code/
+[xuanyu@dev code]$ mkdir MavenRepository
+[xuanyu@dev code]$ vim /app/apache-maven-3.2.5/conf/settings.xml
+                   <localRepository>/app/code/MavenRepository</localRepository>
+[xuanyu@dev code]$ cp /app/apache-maven-3.2.5/conf/settings.xml MavenRepository/
 ```
 
 ## 安装Git
 
 ```sh
 # Git 的工作需要调用 curl，zlib，openssl，expat，libiconv 等库的代码，所以需要先安装这些依赖工具
-[Jadyer@localhost app]# yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
-[Jadyer@localhost app]# cd software/
-[Jadyer@localhost software]# wget https://github.com/git/git/archive/v2.14.1.tar.gz
-[Jadyer@localhost software]# tar -zxvf v2.14.1.tar.gz
-[Jadyer@localhost software]# cd git-2.14.1/
-[Jadyer@localhost software]# cd ..
-[Jadyer@localhost app]# mkdir git
-[Jadyer@localhost app]# cd software/git-2.14.1/
-[Jadyer@localhost git-2.14.1]# make prefix=/app/git all
-[root@localhost git-2.14.1]# make prefix=/app/git install
-[root@localhost git-2.14.1]# vi /etc/profile
-                             # Set Git Environment Variable
-                             GIT_HOME=/app/git
-                             PATH=$GIT_HOME/bin:$PATH
-                             export GIT_HOME PATH
-[root@localhost git-2.14.1]# source /etc/profile
-[root@localhost git-2.14.1]# echo $PATH
-[root@localhost git-2.14.1]# git --version
-[Jadyer@localhost ~]$ git -version
+[xuanyu@dev app]# yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
+[xuanyu@dev app]# cd software/
+[xuanyu@dev software]# wget https://github.com/git/git/archive/v2.14.1.tar.gz
+[xuanyu@dev software]# tar -zxvf v2.14.1.tar.gz
+[xuanyu@dev software]# cd git-2.14.1/
+[xuanyu@dev software]# cd ..
+[xuanyu@dev app]# mkdir git
+[xuanyu@dev app]# cd software/git-2.14.1/
+[xuanyu@dev git-2.14.1]# make prefix=/app/git all
+[root@dev git-2.14.1]# make prefix=/app/git install
+[root@dev git-2.14.1]# vim /etc/profile
+                       # Set Git Environment Variable
+                       GIT_HOME=/app/git
+                       PATH=$GIT_HOME/bin:$PATH
+                       export GIT_HOME PATH
+[root@dev git-2.14.1]# source /etc/profile
+[root@dev git-2.14.1]# echo $PATH
+[root@dev git-2.14.1]# git --version
+[xuanyu@dev ~]$ git -version
 ```
 
 ## 安装Subversion
@@ -114,20 +114,20 @@ alias ipv6 off
 下载地址为：https://www.open.collab.net/files/documents/60/11125/CollabNetSubversion-client-1.8.13-1.x86_64.rpm
 
 ```sh
-[Jadyer@localhost ~]$ rpm -q Subversion
-[Jadyer@localhost ~]$ rpm -ivh /app/CollabNetSubversion-client-1.8.13-1.x86_64.rpm
-warning: /app/CollabNetSubversion-client-1.8.13-1.x86_64.rpm: Header V3 DSA/SHA1 Signature, key ID 35bcca43: NOKEY
+[xuanyu@dev ~]$ rpm -q Subversion
+[xuanyu@dev ~]$ rpm -ivh /app/CollabNetSubversion-client-1.8.13-1.x86_64.rpm
+warning: /app/CollabNetSubversion-client-1.8.13-1.x86_64.rpm: Header V3 DSA/SHA1 Signature...
 Preparing...                ########################################### [100%]
    1:CollabNetSubversion-cli########################################### [100%]
-[root@localhost Jadyer]# svn --version
-[root@localhost Jadyer]# vi /etc/profile
-                         # Set Subversion Environment Variable
-                         SVN_HOME=/opt/CollabNet_Subversion
-                         PATH=$SVN_HOME/bin:$PATH
-                         export SVN_HOME PATH
-[root@localhost Jadyer]# source /etc/profile
-[root@localhost Jadyer]# svn --version
-[Jadyer@localhost ~]$ svn --version
+[root@dev Jadyer]# svn --version
+[root@dev Jadyer]# vim /etc/profile
+                   # Set Subversion Environment Variable
+                   SVN_HOME=/opt/CollabNet_Subversion
+                   PATH=$SVN_HOME/bin:$PATH
+                   export SVN_HOME PATH
+[root@dev Jadyer]# source /etc/profile
+[root@dev Jadyer]# svn --version
+[xuanyu@dev ~]$ svn --version
 ```
 
 ## 修改RPM安装路径
@@ -145,8 +145,8 @@ RPM 包通常都有默认的安装路径，但也可以修改这个路径（并�
 其中：`--badreloc`是将文件强制安装到指定位置，`--relocate`是将文件从 oldpath 安装到 newpath
 
 ```sh
-[Jadyer@localhost app]$ rpm -qpi CollabNetSubversion-client-1.8.13-1.x86_64.rpm
-warning: CollabNetSubversion-client-1.8.13-1.x86_64.rpm: Header V3 DSA/SHA1 Signature, key ID 35bcca43: NOKEY
+[xuanyu@dev app]$ rpm -qpi CollabNetSubversion-client-1.8.13-1.x86_64.rpm
+warning: CollabNetSubversion-client-1.8.13-1.x86_64.rpm: Header V3 DSA/SHA1 Signature...
 Name        : CollabNetSubversion-client   Relocations: (not relocatable)
 Version     : 1.8.13                            Vendor: CollabNet
 Release     : 1                             Build Date: Mon 23 Mar 2015 02:49:36 AM EDT
@@ -164,13 +164,13 @@ Subversion, visit the CollabNet community at http://open.collab.net.
 ```
 
 ```sh
-[Jadyer@localhost app]$ rpm -qpi jdk-6u45-linux-amd64.rpm
+[xuanyu@dev app]$ rpm -qpi jdk-6u45-linux-amd64.rpm
 Name        : jdk                          Relocations: /usr/java
 Version     : 1.6.0_45                          Vendor: Oracle and/or its affiliates.
 Release     : fcs                           Build Date: Tue 26 Mar 2013 07:54:12 PM EDT
 Install Date: (not installed)               Build Host: jb6-lin-amd64.sfbay.sun.com
 Group       : Development/Tools             Source RPM: jdk-1.6.0_45-fcs.src.rpm
-Size        : 127250396                        License: Copyright (c) 2011, Oracle and/or its affiliates. All rights reserved. Also under other license(s) as shown at the Description field.
+Size        : 127250396                        License: Copyright (c) 2011, Oracle...
 Signature   : (none)
 Packager    : Java Software <jre-comments@java.sun.com>
 URL         : http://www.oracle.com/technetwork/java/javase/overview/index.html

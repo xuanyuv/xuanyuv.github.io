@@ -29,11 +29,11 @@ excerpt: 主要介绍CentOS-7.9版系统中，搭建Java开发环境的细节，
 [xuanyu@dev ~]$ cd /app/software/backup/                # 使用普通用户来安装
 [xuanyu@dev backup]$ tar zxvf jdk-8u40-linux-x64.tar.gz # 解压jdk
 [xuanyu@dev backup]$ mv jdk1.8.0_40/ /app/software/     # 统一安装在/app/software/目录下
-[root@dev ~]# vi /etc/profile                           # 用root配置环境变量，再用[:x]保存
-                      # Set Java Environment Variable
-                      JAVA_HOME=/app/software/jdk1.8.0_40
-                      PATH=$JAVA_HOME/bin:$PATH
-                      export JAVA_HOME PATH
+[root@dev ~]# vim /etc/profile                          # 用root配置环境变量，再用[:x]保存
+              # Set Java Environment Variable
+              JAVA_HOME=/app/software/jdk1.8.0_40
+              PATH=$JAVA_HOME/bin:$PATH
+              export JAVA_HOME PATH
 [root@dev ~]# echo $PATH                                # 查看当前PATH
 [root@dev ~]# source /etc/profile                       # 令环境变量生效
 [root@dev ~]# echo $PATH                                # 再看下PATH
@@ -382,8 +382,8 @@ mvn deploy:deploy-file -DgroupId=com.jadyer.oracle -DartifactId=ojdbc6 -Dversion
 下载地址为：https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 
 ```sh
-[Jadyer@localhost ~]$ cd /app/software/backup/
-[Jadyer@localhost backup]$ rpm -ivh --badreloc --relocate /usr/local=/app/software/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+[xuanyu@dev ~]$ cd /app/software/backup/
+[xuanyu@dev backup]$ rpm -ivh --badreloc --relocate /usr/local=/app/software/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 error: Failed dependencies:
 	fontconfig is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
 	libX11 is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
@@ -392,33 +392,33 @@ error: Failed dependencies:
 	libjpeg is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
 	xorg-x11-fonts-75dpi is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
 	xorg-x11-fonts-Type1 is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
-[Jadyer@localhost backup]$
-[Jadyer@localhost backup]$ su root
-[root@localhost backup]# yum install -y libXrender*
-[root@localhost backup]# yum install -y libXext*
-[root@localhost backup]# yum install -y xorg-x11-fonts-Type1
-[root@localhost backup]# yum install -y xorg-x11-fonts-75dpi
-[root@localhost backup]# yum install -y libjpeg                 # 注意：接下来还是要用root安装，普通用户会失败
-[root@localhost backup]# rpm -ivh --badreloc --relocate /usr/local=/app/software/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+[xuanyu@dev backup]$
+[xuanyu@dev backup]$ su root
+[root@dev backup]# yum install -y libXrender*
+[root@dev backup]# yum install -y libXext*
+[root@dev backup]# yum install -y xorg-x11-fonts-Type1
+[root@dev backup]# yum install -y xorg-x11-fonts-75dpi
+[root@dev backup]# yum install -y libjpeg                # 注意：接下来还是用root，普通用户会失败
+[root@dev backup]# rpm -ivh --badreloc --relocate /usr/local=/app/software/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 Preparing...                          ################################# [100%]
 Updating / installing...
    1:wkhtmltox-1:0.12.6-1.centos7     ################################# [100%]
-[root@localhost backup]# vim /etc/profile
-                             # Set wkhtmltox Environment Variable
-                             WKHTMLTOPDF_HOME=/app/software/wkhtmltox-0.12.6-1
-                             PATH=$WKHTMLTOPDF_HOME/bin:$PATH
-                             export WKHTMLTOPDF_HOME PATH
-[root@localhost backup]# source /etc/profile
-[root@localhost backup]# echo $PATH
-[root@localhost backup]# wkhtmltopdf -V
+[root@dev backup]# vim /etc/profile
+                   # Set wkhtmltox Environment Variable
+                   WKHTMLTOPDF_HOME=/app/software/wkhtmltox-0.12.6-1
+                   PATH=$WKHTMLTOPDF_HOME/bin:$PATH
+                   export WKHTMLTOPDF_HOME PATH
+[root@dev backup]# source /etc/profile
+[root@dev backup]# echo $PATH
+[root@dev backup]# wkhtmltopdf -V
 wkhtmltopdf 0.12.6 (with patched qt)
-[root@localhost backup]# yum install -y fontconfig mkfontscale  # 安装字体
-[root@localhost backup]# fc-list                                # 查看系统中已安装的字体
-[root@localhost backup]# fc-list :lang=zh                       # 查看系统中已安装的中文字体
-[root@localhost backup]# cd /usr/share/fonts/
-[root@localhost fonts]# rz simsun.ttc                           # 上传字体文件至/usr/share/fonts/
-[root@localhost fonts]# mkfontscale
-[root@localhost fonts]# mkfontdir
-[root@localhost fonts]# fc-cache                                # 通过这三个命令建立字体索引信息、更新字体缓存
-[root@localhost fonts]# fc-list :lang=zh                        # 查看系统中已安装的中文字体
+[root@dev backup]# yum install -y fontconfig mkfontscale # 安装字体
+[root@dev backup]# fc-list                               # 查看系统中已安装的字体
+[root@dev backup]# fc-list :lang=zh                      # 查看系统中已安装的中文字体
+[root@dev backup]# cd /usr/share/fonts/
+[root@dev fonts]# rz simsun.ttc                          # 上传字体文件至/usr/share/fonts/
+[root@dev fonts]# mkfontscale
+[root@dev fonts]# mkfontdir
+[root@dev fonts]# fc-cache                               # 通过这三个命令建立字体索引信息、更新字体缓存
+[root@dev fonts]# fc-list :lang=zh                       # 查看系统中已安装的中文字体
 ```
