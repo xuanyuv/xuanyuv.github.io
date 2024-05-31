@@ -146,13 +146,13 @@ configure arguments: --prefix=/app/software/nginx-1.24.0 --user=nginx --group=Ng
 [root@dev conf]# ../sbin/nginx -t -c /app/software/nginx-1.24.0/conf/nginx.conf
 nginx: the configuration file /app/software/nginx-1.24.0/conf/nginx.conf syntax is ok
 nginx: configuration file /app/software/nginx-1.24.0/conf/nginx.conf test is successful
-[root@dev conf]# ../sbin/nginx                # 启动
-[root@dev conf]# ../sbin/nginx -s reload      # 重载配置
-[root@dev conf]# ../sbin/nginx -s stop        # 停止
-[root@dev conf]# vim /etc/rc.d/rc.local       # 添加自启动（/etc/rc.local 是 /etc/rc.d/rc.local 的软连接）
-/app/software/nginx-1.24.0/sbin/nginx         # 添加这一行即可（绝对路径）
-[root@dev conf]# chmod +x /etc/rc.d/rc.local  # 赋权，使其变成可执行文件
-[root@dev conf]# reboot                       # 最后，重启系统，验证
+[root@dev conf]# ../sbin/nginx               # 启动
+[root@dev conf]# ../sbin/nginx -s reload     # 重载配置
+[root@dev conf]# ../sbin/nginx -s stop       # 停止
+[root@dev conf]# vim /etc/rc.d/rc.local      # 添加自启动（/etc/rc.local是/etc/rc.d/rc.local的软连接）
+/app/software/nginx-1.24.0/sbin/nginx        # 添加这一行即可（绝对路径）
+[root@dev conf]# chmod +x /etc/rc.d/rc.local # 赋权，使其变成可执行文件
+[root@dev conf]# reboot                      # 最后，重启系统，验证
 ```
 
 ## 安装Nacos
