@@ -121,7 +121,7 @@ PONG
 这里采用的是源码编译安装，下载地址为：https://nginx.org/download/nginx-1.24.0.tar.gz
 
 ```sh
-# 先安装依赖项：编译时依赖gcc环境、pcre可以解析正则以支持rewrite等、 zlib对http包内容进行gzip压缩、openssl支持https
+# 先安装依赖项：编译时依赖gcc环境、pcre可以解析正则以支持rewrite、 zlib对http包进行gzip压缩、openssl支持https
 [root@dev ~]# yum -y install gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel
 [root@dev ~]# groupadd Nginx                             # 添加Nginx组
 [root@dev ~]# useradd -s /sbin/nologin -M -g Nginx nginx # 创建nginx用户并分配组，且不能shell登录系统
