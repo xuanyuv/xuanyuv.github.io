@@ -192,7 +192,7 @@ nohup sh /app/software/nacos-2.3.2/bin/startup.sh -m standalone > /app/software/
 JAVA_HOME=/app/software/jdk-21.0.3                  # （由于 rc.local 要早于 /etc/profiles 运行）
 PATH=$JAVA_HOME/bin:$PATH                           # （因此 rc.local 执行时看不到任何环境变量）
 export JAVA_HOME PATH                               # （故手动指定JAVA_HOME，为Nacos的启动提供Java环境）
-/app/software/nacos-2.3.2/bin/startup-standalone.sh # 添加这一行即可（绝对路径）
+su xuanyu -c /app/software/nacos-2.3.2/bin/startup-standalone.sh # （临时以用户xuanyu的身份去执行该行）
 [root@dev bin]# chmod +x /etc/rc.d/rc.local         # 赋权，使其变成可执行文件
 [root@dev bin]# reboot                              # 重启验证（应用程序连接时，需要开放8848、9848端口）
 ```
