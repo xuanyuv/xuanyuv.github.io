@@ -238,13 +238,13 @@ su xuanyu -c /app/software/nacos-2.3.2/bin/startup-standalone.sh # （临时以�
 [xuanyu@dev backup]$ cd /app/software/nexus-3.68.1-02
 [xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/bin/nexus.rc # 修改运行Nexus所使用的用户（默认为root）
 [xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/bin/nexus    # 修改运行Nexus所使用的JDK
-INSTALL4J_JAVA_HOME_OVERRIDE="/app/software/nexus-3.68.1-02/jdk-11.0.23" # 修改第14行的值（含双引号）
+INSTALL4J_JAVA_HOME_OVERRIDE="/app/software/jdk-11.0.23"       # 修改第14行的值（含双引号）
 [xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/etc/nexus-default.properties # 修改Nexus的默认访问端口
 application-port=8081                                                          # 默认端口即为8081
-[root@dev /]# vim /etc/rc.d/rc.local                     # 添加自启动
-/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start # 添加这一行即可（绝对路径）
-[root@dev /]# chmod +x /etc/rc.d/rc.local                # 赋权，使其变成可执行文件
-[root@dev /]# reboot                                     # 最后，重启系统，验证
+[root@dev /]# vim /etc/rc.d/rc.local                                      # 添加自启动
+su dhe -c "/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start" # （临时以xuanyu身份执行该行）
+[root@dev /]# chmod +x /etc/rc.d/rc.local                                 # 赋权，使其变成可执行文件
+[root@dev /]# reboot                                                      # 最后，重启系统，验证
 ```
 
 其中，以下几点可以注意一下：
