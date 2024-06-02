@@ -20,12 +20,11 @@ excerpt: 主要介绍CentOS-7.9版系统中，搭建Java开发环境的细节，
 如果是`.bin`文件，可以先执行`./jdk-6u45-linux-x64.bin`命令，再配置环境变量，即可。
 
 ```sh
-[root@dev ~]# cd /
-[root@dev /]# mkdir -p app/software/backup
-[root@dev /]# groupadd Develop                          # 添加Develop组
-[root@dev /]# useradd -g Develop Jadyer                 # 创建Jadyer用户并分配到Develop组
-[root@dev /]# passwd Jadyer                             # 设置或修改Jadyer用户密码
-[root@dev /]# chown -R Jadyer:Develop /app              # 修改目录的拥有者为新建的用户和组
+[root@dev ~]# mkdir -p /app/software/backup
+[root@dev ~]# groupadd Develop                          # 添加Develop组
+[root@dev ~]# useradd -g Develop Jadyer                 # 创建Jadyer用户并分配到Develop组
+[root@dev ~]# passwd Jadyer                             # 设置或修改Jadyer用户密码
+[root@dev ~]# chown -R Jadyer:Develop /app              # 修改目录的拥有者为新建的用户和组
 [xuanyu@dev ~]$ cd /app/software/backup/                # 使用普通用户来安装
 [xuanyu@dev backup]$ tar zxvf jdk-8u40-linux-x64.tar.gz # 解压jdk
 [xuanyu@dev backup]$ mv jdk1.8.0_40/ /app/software/     # 统一安装在/app/software/目录下
