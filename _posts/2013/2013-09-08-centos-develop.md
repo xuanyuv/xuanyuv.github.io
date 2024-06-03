@@ -50,7 +50,14 @@ Redis 的所有版本下载地址：https://download.redis.io/releases/
 
 另外，在 ARM 架构的 Linux 系统上，make 编译时可能报错：**/usr/bin/ld: cannot find -latomic**
 
-此时，先执行：`yum -y install *atomic*`，再执行：`ln -s /usr/lib64/libatomic.so.1.2.0 /usr/lib/libatomic.so`即可
+说明系统缺少 libatomic.so，即编译时需要用到 libatomic.so 库，而系统又找不到这个库
+
+解决办法如下：
+
+1. 先执行：`yum -y install *atomic*`
+2. 再执行：`ln -s /usr/lib64/libatomic.so.1.2.0 /usr/lib/libatomic.so`
+
+然后重新编译即可
 
 ```shell
 [xuanyu@dev ~]$ cd /app/software/backup/
