@@ -49,16 +49,17 @@ Redis 的所有版本下载地址：https://download.redis.io/releases/
 > Redis 是由 C 语言编写的，其运行需要 C 环境，所以编译前需安装 gcc
 
 ```shell
+[root@dev ~]$ yum -y install gcc gcc-c++ atomic
 [xuanyu@dev ~]$ cd /app/software/backup/
 [xuanyu@dev backup]$ wget https://download.redis.io/releases/redis-5.0.14.tar.gz
-[xuanyu@dev backup]# tar zxvf redis-5.0.14.tar.gz
-[xuanyu@dev backup]# mkdir -pv /app/software/redis-5.0.14/conf
-[xuanyu@dev backup]# mkdir -v /app/software/redis-5.0.14/bin
-[xuanyu@dev backup]# mkdir -v /app/software/redis-5.0.14/log
-[xuanyu@dev backup]# mkdir -v /app/software/redis-5.0.14/rdb
-[xuanyu@dev backup]# mv redis-5.0.14 /app/software/redis-5.0.14/redis/
-[xuanyu@dev backup]# cd /app/software/redis-5.0.14/redis/
-[xuanyu@dev redis]# make # 过程稍慢，输出下面两行则编译完成（不用执行 make test，它执行的更慢，也没必要）
+[xuanyu@dev backup]$ tar zxvf redis-5.0.14.tar.gz
+[xuanyu@dev backup]$ mkdir -pv /app/software/redis-5.0.14/conf
+[xuanyu@dev backup]$ mkdir -v /app/software/redis-5.0.14/bin
+[xuanyu@dev backup]$ mkdir -v /app/software/redis-5.0.14/log
+[xuanyu@dev backup]$ mkdir -v /app/software/redis-5.0.14/rdb
+[xuanyu@dev backup]$ mv redis-5.0.14 /app/software/redis-5.0.14/redis/
+[xuanyu@dev backup]$ cd /app/software/redis-5.0.14/redis/
+[xuanyu@dev redis]$ make # 过程稍慢，输出下面两行则编译完成（不用执行 make test，它执行的更慢，也没必要）
 Hint: It's a good idea to run 'make test' ;)
 
 make[1]: Leaving directory '/app/software/redis-5.0.14/redis/src'
@@ -72,21 +73,21 @@ Hint: It's a good idea to run 'make test' ;)
     INSTALL install
     INSTALL install
     INSTALL install
-[root@dev src]# exit
-[xuanyu@dev src]# mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-sentinel redis-server redis-trib.rb /app/software/redis-5.0.14/bin/
-[xuanyu@dev src]# cd ..
-[xuanyu@dev redis]# mv redis.conf /app/software/redis-5.0.14/conf/
-[xuanyu@dev redis]# cd /app/software/redis-5.0.14/conf/
-[xuanyu@dev conf]# vim redis.conf
+[root@dev src]$ exit
+[xuanyu@dev src]$ mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-sentinel redis-server redis-trib.rb /app/software/redis-5.0.14/bin/
+[xuanyu@dev src]$ cd ..
+[xuanyu@dev redis]$ mv redis.conf /app/software/redis-5.0.14/conf/
+[xuanyu@dev redis]$ cd /app/software/redis-5.0.14/conf/
+[xuanyu@dev conf]$ vim redis.conf
 # bind 127.0.0.1                    # 对于多网卡机器，注释掉后，就可以接受来自任意一个网卡的redis请求
 daemonize yes                       # 后台启动将默认的 no 改为 yes
 logfile "/app/software/redis-5.0.14/log/redis.log"
 dir /app/software/redis-5.0.14/rdb/ # 数据库目录
 requirepass 123                     # 设置连接密码
-[xuanyu@dev conf]# cd /app/software/redis-5.0.14/bin/
-[xuanyu@dev bin]# ./redis-server /app/software/redis-5.0.14/conf/redis.conf # 启动redis
-[xuanyu@dev bin]# ./redis-cli -h 127.0.0.1 -p 6379 -a 123 shutdown          # 停止redis
-[xuanyu@dev bin]# ./redis-cli                                               # 客户端命令行连接
+[xuanyu@dev conf]$ cd /app/software/redis-5.0.14/bin/
+[xuanyu@dev bin]$ ./redis-server /app/software/redis-5.0.14/conf/redis.conf # 启动redis
+[xuanyu@dev bin]$ ./redis-cli -h 127.0.0.1 -p 6379 -a 123 shutdown          # 停止redis
+[xuanyu@dev bin]$ ./redis-cli                                               # 客户端命令行连接
 127.0.0.1:6379> PING                                                        # 尝试执行一个命令
 (error) NOAUTH Authentication required.                                     # 说明配置文件设定密码生效了
 127.0.0.1:6379> auth 123                                                    # 提供密码
@@ -94,10 +95,10 @@ OK
 127.0.0.1:6379> PING
 PONG
 127.0.0.1:6379> quit
-[root@dev bin]# vim /etc/rc.d/rc.local                                      # 添加自启动
-/app/software/redis-5.0.14/bin/redis-server /app/software/redis-5.0.14/conf/redis.conf
-[root@dev bin]# chmod +x /etc/rc.d/rc.local                                 # 赋权，使其变成可执行文件
-[root@dev bin]# reboot                                                      # 最后，重启系统，验证
+[root@dev bin]$ vim /etc/rc.d/rc.local                                      # 添加自启动
+su xuanyu -c "/app/software/redis-5.0.14/bin/redis-server /app/software/redis-5.0.14/conf/redis.conf"
+[root@dev bin]$ chmod +x /etc/rc.d/rc.local                                 # 赋权，使其变成可执行文件
+[root@dev bin]$ reboot                                                      # 最后，重启系统，验证
 ```
 
 注：bin 和 conf 目录是为了便于管理，对于启动（或集群）都比较方便（bin 存放命令，conf 存放配置）

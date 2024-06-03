@@ -133,7 +133,9 @@ interactive-timeout
 ```sql
 mysql> use mysql;
 mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'xuanyu';
+mysql> use mysql;
 mysql> UPDATE user SET Host='%' WHERE User='root';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 mysql> FLUSH PRIVILEGES;
 ```
 
@@ -142,14 +144,5 @@ mysql> FLUSH PRIVILEGES;
 ```sql
 mysql> CREATE DATABASE IF NOT EXISTS open DEFAULT CHARSET UTF8MB4 COLLATE UTF8MB4_UNICODE_CI;
 mysql> CREATE USER 'dev'@'%' IDENTIFIED BY 'dev123';
-mysql> GRANT CREATE ON open.* TO 'dev'@'%';
 mysql> GRANT CREATE, DROP, ALTER, INDEX, SELECT, INSERT, UPDATE, DELETE ON open.* TO 'dev'@'%';
-```
-
-若报错：`[1044] Access denied for user 'root'@'%' to database`，执行以下命令即可
-
-```sql
-mysql> mysql -uroot -pxxxxx
-mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
-mysql> FLUSH PRIVILEGES;
 ```
