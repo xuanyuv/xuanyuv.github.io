@@ -393,7 +393,7 @@ mvn deploy:deploy-file -DgroupId=com.jadyer.oracle -DartifactId=ojdbc6 -Dversion
 
 下载地址为：https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 
-注意：需要用 root 来安装，普通用户会失败
+注意：要用 root 来安装，普通用户会失败
 
 ```sh
 [root@dev backup]$ yum install -y libjpeg libXext* libXrender* xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi
