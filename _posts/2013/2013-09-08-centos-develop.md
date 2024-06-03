@@ -163,12 +163,12 @@ nginx: configuration file /app/software/nginx-1.24.0/conf/nginx.conf test is suc
 
 ```sh
 [xuanyu@dev ~]$ cd /app/software/backup/
-[xuanyu@dev backup]$ tar zxvf nacos-server-2.3.2.tar.gz
-[xuanyu@dev backup]$ mv nacos /app/software/nacos-2.3.2
-[xuanyu@dev backup]$ cd /app/software/nacos-2.3.2/
-[xuanyu@dev nacos-2.3.2]$ vim conf/application.properties
+[xuanyu@dev backup]$ tar zxvf nacos-server-2.2.3.tar.gz
+[xuanyu@dev backup]$ mv nacos /app/software/nacos-2.2.3
+[xuanyu@dev backup]$ cd /app/software/nacos-2.2.3/
+[xuanyu@dev nacos-2.2.3]$ vim conf/application.properties
 spring.sql.init.platform=mysql
-# 首次启动前，应先初始化数据库，初始化文件位于：/app/software/nacos-2.3.2/conf/mysql-schema.sql
+# 首次启动前，应先初始化数据库，初始化文件位于：/app/software/nacos-2.2.3/conf/mysql-schema.sql
 db.num=1
 # 连接mysql8.0可能报错：java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
 # 此时，在连接参数上增加：allowPublicKeyRetrieval=true
@@ -185,16 +185,16 @@ nacos.core.auth.server.identity.key=JadyerAuthKey
 nacos.core.auth.server.identity.value=Jadyer123
 # 这是一个base64字符串（其原始密钥可以随意指定，但长度不得低于32字符）
 nacos.core.auth.plugin.nacos.token.secret.key=aHR0cHM6Ly9qYWR5ZXIuY24vMjAxMy8wOS8wNy9jZW50b3MtY29uZmlnLWRldmVsb3Av
-[xuanyu@dev nacos-2.3.2]$ cd bin/
+[xuanyu@dev nacos-2.2.3]$ cd bin/
 [xuanyu@dev bin]$ vim startup-standalone.sh
-nohup sh /app/software/nacos-2.3.2/bin/startup.sh -m standalone > /app/software/nacos-2.3.2/bin/nohup.log 2>&1 &
+nohup sh /app/software/nacos-2.2.3/bin/startup.sh -m standalone > /app/software/nacos-2.2.3/bin/nohup.log 2>&1 &
 [xuanyu@dev bin]$ chmod +x startup-standalone.sh
 [xuanyu@dev bin]$ ./startup-standalone.sh           # 启动nacos（默认用户密码均为nacos，登录后记得改密码）
 [root@dev bin]# vim /etc/rc.d/rc.local              # 添加自启动
 JAVA_HOME=/app/software/jdk-21.0.3                  # （由于 rc.local 要早于 /etc/profiles 运行）
 PATH=$JAVA_HOME/bin:$PATH                           # （因此 rc.local 执行时看不到任何环境变量）
 export JAVA_HOME PATH                               # （故手动指定JAVA_HOME，为Nacos的启动提供Java环境）
-su xuanyu -c /app/software/nacos-2.3.2/bin/startup-standalone.sh # （临时以用户xuanyu的身份去执行该行）
+su xuanyu -c /app/software/nacos-2.2.3/bin/startup-standalone.sh # （临时以用户xuanyu的身份去执行该行）
 [root@dev bin]# chmod +x /etc/rc.d/rc.local         # 赋权，使其变成可执行文件
 [root@dev bin]# reboot                              # 重启验证（应用程序连接时，需要开放8848、9848端口）
 ```
