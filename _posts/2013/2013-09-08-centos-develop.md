@@ -157,7 +157,9 @@ nginx: configuration file /app/software/nginx-1.24.0/conf/nginx.conf test is suc
 
 ## 安装Nacos
 
-下载地址：https://github.com/alibaba/nacos/releases/download/2.3.2/nacos-server-2.3.2.tar.gz
+下载地址：https://github.com/alibaba/nacos/releases/download/2.2.3/nacos-server-2.2.3.tar.gz
+
+**注意：最新的v2.3.2版有BUG，读不到修改后的配置，新建用户关联已删除的同名namespace也有问题，巨坑！！**
 
 ```sh
 [xuanyu@dev ~]$ cd /app/software/backup/
