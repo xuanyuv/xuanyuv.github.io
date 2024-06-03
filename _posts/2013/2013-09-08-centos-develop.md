@@ -46,10 +46,13 @@ Redis 的所有版本下载地址：https://download.redis.io/releases/
 
 这里下载 5.0.14：https://download.redis.io/releases/redis-5.0.14.tar.gz
 
-> Redis 是由 C 语言编写的，其运行需要 C 环境，所以编译前需安装 gcc
+> Redis 是由 C 语言写的，其运行需要 C 环境，故编译前需安装 gcc：yum -y install gcc gcc-c++
+
+另外，在 ARM 架构的 Linux 系统上，make 编译时可能报错：**/usr/bin/ld: cannot find -latomic**
+
+此时，先执行：`yum -y install *atomic*`，再执行：`ln -s /usr/lib64/libatomic.so.1.2.0 /usr/lib/libatomic.so`即可
 
 ```shell
-[root@dev ~]$ yum -y install gcc gcc-c++ atomic
 [xuanyu@dev ~]$ cd /app/software/backup/
 [xuanyu@dev backup]$ wget https://download.redis.io/releases/redis-5.0.14.tar.gz
 [xuanyu@dev backup]$ tar zxvf redis-5.0.14.tar.gz
