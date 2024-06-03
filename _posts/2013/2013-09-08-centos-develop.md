@@ -393,44 +393,30 @@ mvn deploy:deploy-file -DgroupId=com.jadyer.oracle -DartifactId=ojdbc6 -Dversion
 
 下载地址为：https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 
+注意：需要用 root 来安装，普通用户会失败
+
 ```sh
-[xuanyu@dev ~]$ cd /app/software/backup/
-[xuanyu@dev backup]$ rpm -ivh --badreloc --relocate /usr/local=/app/software/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
-error: Failed dependencies:
-	fontconfig is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
-	libX11 is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
-	libXext is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
-	libXrender is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
-	libjpeg is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
-	xorg-x11-fonts-75dpi is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
-	xorg-x11-fonts-Type1 is needed by wkhtmltox-1:0.12.6-1.centos7.x86_64
-[xuanyu@dev backup]$
-[xuanyu@dev backup]$ su root
-[root@dev backup]# yum install -y libXrender*
-[root@dev backup]# yum install -y libXext*
-[root@dev backup]# yum install -y xorg-x11-fonts-Type1
-[root@dev backup]# yum install -y xorg-x11-fonts-75dpi
-[root@dev backup]# yum install -y libjpeg                # 注意：接下来还是用root，普通用户会失败
-[root@dev backup]# rpm -ivh --badreloc --relocate /usr/local=/app/software/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+[root@dev backup]$ yum install -y libjpeg libXext* libXrender* xorg-x11-fonts-Type1 xorg-x11-fonts-75dpi
+[root@dev backup]$ rpm -ivh --badreloc --relocate /usr/local=/app/software/wkhtmltox-0.12.6-1 wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 Preparing...                          ################################# [100%]
 Updating / installing...
    1:wkhtmltox-1:0.12.6-1.centos7     ################################# [100%]
-[root@dev backup]# vim /etc/profile
+[root@dev backup]$ vim /etc/profile
                    # Set wkhtmltox Environment Variable
                    WKHTMLTOPDF_HOME=/app/software/wkhtmltox-0.12.6-1
                    PATH=$WKHTMLTOPDF_HOME/bin:$PATH
                    export WKHTMLTOPDF_HOME PATH
-[root@dev backup]# source /etc/profile
-[root@dev backup]# echo $PATH
-[root@dev backup]# wkhtmltopdf -V
+[root@dev backup]$ source /etc/profile
+[root@dev backup]$ echo $PATH
+[root@dev backup]$ wkhtmltopdf -V
 wkhtmltopdf 0.12.6 (with patched qt)
-[root@dev backup]# yum install -y fontconfig mkfontscale # 安装字体
-[root@dev backup]# fc-list                               # 查看系统中已安装的字体
-[root@dev backup]# fc-list :lang=zh                      # 查看系统中已安装的中文字体
-[root@dev backup]# cd /usr/share/fonts/
-[root@dev fonts]# rz simsun.ttc                          # 上传字体文件至/usr/share/fonts/
-[root@dev fonts]# mkfontscale
-[root@dev fonts]# mkfontdir
-[root@dev fonts]# fc-cache                               # 通过这三个命令建立字体索引信息、更新字体缓存
-[root@dev fonts]# fc-list :lang=zh                       # 查看系统中已安装的中文字体
+[root@dev backup]$ yum install -y fontconfig mkfontscale # 安装字体
+[root@dev backup]$ fc-list                               # 查看系统中已安装的字体
+[root@dev backup]$ fc-list :lang=zh                      # 查看系统中已安装的中文字体
+[root@dev backup]$ cd /usr/share/fonts/
+[root@dev fonts]$ rz simsun.ttc                          # 上传字体文件至/usr/share/fonts/
+[root@dev fonts]$ mkfontscale
+[root@dev fonts]$ mkfontdir
+[root@dev fonts]$ fc-cache                               # 通过这三个命令建立字体索引信息、更新字体缓存
+[root@dev fonts]$ fc-list :lang=zh                       # 查看系统中已安装的中文字体
 ```
