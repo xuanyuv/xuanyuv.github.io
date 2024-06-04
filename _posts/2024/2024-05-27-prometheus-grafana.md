@@ -65,10 +65,10 @@ prometheus, version 2.45.5 (branch: HEAD, revision: 2b052add78646ff39d193dac84ea
 cd /app/software/prometheus-2.45.5/
 nohup ./prometheus --config.file=prometheus.yml > nohup.log 2>&1 &
 [xuanyu@dev prometheus-2.45.5]$ chmod 755 start.sh
-[root@dev ~]# vim /etc/rc.d/rc.local              # 添加自启动
-su xy -c /app/software/prometheus-2.45.5/start.sh # 添加这一行即可（绝对路径，并临时以用户xy的身份去执行该行）
-[root@dev ~]# chmod +x /etc/rc.d/rc.local         # 赋权，使其变成可执行文件
-[root@dev ~]# reboot                              # 最后，重启系统，验证
+[root@dev ~]# vim /etc/rc.d/rc.local                  # 添加自启动
+su xuanyu -c /app/software/prometheus-2.45.5/start.sh # 绝对路径，并临时以用户xuanyu的身份去执行该行
+[root@dev ~]# chmod +x /etc/rc.d/rc.local             # 赋权，使其变成可执行文件
+[root@dev ~]# reboot                                  # 最后，重启系统，验证
 ```
 
 启动成功后，访问地址为：http://xxx.xxx.xxx.xxx:9090/
@@ -99,10 +99,10 @@ nohup ./grafana server > nohup.log 2>&1 &           # 最新版已不推荐使�
 #!/bin/sh
 nohup sh /app/software/grafana-v11.0.0/bin/grafana-server.sh >/dev/null 2>&1 &
 [xuanyu@dev bin]$ chmod 755 grafana-server.sh start.sh
-[root@dev ~]# vim /etc/rc.d/rc.local                # 添加自启动
-su xy -c /app/software/grafana-v11.0.0/bin/start.sh # 添加这一行即可（绝对路径，并临时以用户xy的身份去执行该行）
-[root@dev ~]# chmod +x /etc/rc.d/rc.local           # 赋权，使其变成可执行文件
-[root@dev ~]# reboot                                # 最后，重启系统，验证
+[root@dev ~]# vim /etc/rc.d/rc.local                    # 添加自启动
+su xuanyu -c /app/software/grafana-v11.0.0/bin/start.sh # 绝对路径，并临时以用户xuanyu的身份去执行该行
+[root@dev ~]# chmod +x /etc/rc.d/rc.local               # 赋权，使其变成可执行文件
+[root@dev ~]# reboot                                    # 最后，重启系统，验证
 ```
 
 启动成功后，访问地址为：http://xxx.xxx.xxx.xxx:3003/，默认用户名和密码均为admin

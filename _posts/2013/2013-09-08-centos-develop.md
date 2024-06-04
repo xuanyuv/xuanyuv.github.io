@@ -365,7 +365,7 @@ nohup sh /app/software/nacos-2.2.3/bin/startup.sh -m standalone > /app/software/
 JAVA_HOME=/app/software/jdk-21.0.3                  # （由于 rc.local 要早于 /etc/profiles 运行）
 PATH=$JAVA_HOME/bin:$PATH                           # （因此 rc.local 执行时看不到任何环境变量）
 export JAVA_HOME PATH                               # （故手动指定JAVA_HOME，为Nacos的启动提供Java环境）
-su xuanyu -c /app/software/nacos-2.2.3/bin/startup-standalone.sh # （临时以用户xuanyu的身份去执行该行）
+su xuanyu -c /app/software/nacos-2.2.3/bin/startup-standalone.sh # 临时以用户xuanyu的身份去执行该行
 [root@dev bin]# chmod +x /etc/rc.d/rc.local         # 赋权，使其变成可执行文件
 [root@dev bin]# reboot                              # 重启验证（应用程序连接时，需要开放8848、9848端口）
 ```
@@ -415,7 +415,7 @@ INSTALL4J_JAVA_HOME_OVERRIDE="/app/software/jdk-11.0.23"       # 修改第14行�
 [xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/etc/nexus-default.properties # 修改Nexus的默认访问端口
 application-port=8081                                                          # 默认端口即为8081
 [root@dev /]# vim /etc/rc.d/rc.local                                           # 添加自启动
-su xuanyu -c "/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start"   # （临时以xuanyu身份执行）
+su xuanyu -c "/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start"   # 临时以xuanyu的身份去执行
 [root@dev /]# chmod +x /etc/rc.d/rc.local                                      # 赋权，使其变成可执行文件
 [root@dev /]# reboot                                                           # 最后，重启系统，验证
 ```
