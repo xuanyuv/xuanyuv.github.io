@@ -415,7 +415,7 @@ INSTALL4J_JAVA_HOME_OVERRIDE="/app/software/jdk-11.0.23"       # 修改第14行�
 [xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/etc/nexus-default.properties # 修改Nexus的默认访问端口
 application-port=8081                                                          # 默认端口即为8081
 [root@dev /]# vim /etc/rc.d/rc.local                                           # 添加自启动
-su xuanyu -c "/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start"   # 临时以xuanyu的身份去执行
+su xuanyu -c "/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start"   # 临时以xuanyu的身份执行
 [root@dev /]# chmod +x /etc/rc.d/rc.local                                      # 赋权，使其变成可执行文件
 [root@dev /]# reboot                                                           # 最后，重启系统，验证
 ```
