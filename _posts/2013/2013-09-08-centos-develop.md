@@ -185,7 +185,7 @@ error_log /app/software/nginx-1.24.0/logs/error.log info;
 pid /app/software/nginx-1.24.0/logs/nginx.pid;
 
 # Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
-include /usr/share/nginx/modules/*.conf;
+# include /usr/share/nginx/modules/*.conf;
 
 # 一个 nginx 进程打开的最多文件描述符数目
 # 理论值应该是最多打开文件数（系统的值 [ulimit -n]）与 nginx 进程数相除
