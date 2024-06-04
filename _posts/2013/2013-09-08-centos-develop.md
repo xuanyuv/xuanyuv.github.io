@@ -166,6 +166,166 @@ nginx: configuration file /app/software/nginx-1.24.0/conf/nginx.conf test is suc
 [root@dev conf]# reboot                      # 最后，重启系统，验证
 ```
 
+### 配置文件示例
+
+下面是 /app/software/nginx-1.24.0/conf/nginx.conf 的示例
+
+```text
+# 网站安全性检测：https://myssl.com
+
+# 定义 nginx 运行的用户和用户组
+user nginx Nginx;
+
+# nginx 进程个数（建议设置为等于 CPU 总核心数）
+worker_processes auto;
+
+# 全局错误日志定义类型：[ debug | info | notice | warn | error | crit ]
+error_log /app/software/nginx-1.24.0/logs/error.log info;
+# 进程文件
+pid /app/software/nginx-1.24.0/logs/nginx.pid;
+
+# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
+
+# 一个 nginx 进程打开的最多文件描述符数目
+# 理论值应该是最多打开文件数（系统的值 [ulimit -n]）与 nginx 进程数相除
+# 但是 nginx 分配请求并不均匀，所以建议与 [ulimit -n] 的值保持一致
+worker_rlimit_nofile 65535;
+
+# 工作模式与连接数上限
+events {
+    # 参考事件模型，use [ kqueue | rtsig | epoll | /dev/poll | select | poll ];
+    # epoll 模型是 Linux2.6 以上版本内核中的高性能网络 I/O 模型，如果跑在 FreeBSD 上面就用 kqueue 模型
+    # 这个选项通常不需要显式指定，因为 nginx 会默认使用当前系统中最有效的模式
+    # use epoll;
+    # 单个进程最大连接数（最大连接数 = 连接数 * 进程数）
+    worker_connections 65535;
+}
+
+# 设定 HTTP 服务器
+http {
+    # 日志格式
+    log_format access '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+    # 访问日志
+    access_log /app/software/nginx-1.24.0/logs/access.log access;
+
+    # 开启目录列表访问，适合下载服务器，默认关闭
+    #autoindex on;            # 显示目录
+    #autoindex_exact_size on; # 显示文件大小，默认为on，单位是bytes（改为off后，显示出文件的大概大小，单位是kB或者MB或者GB）
+    #autoindex_localtime on;  # 显示文件时间，默认为off，显示的文件时间为GMT时间（改为on后，显示的文件时间为文件的服务器时间）
+
+    sendfile            on;                       # 开启高效文件传输模式，该指令指定nginx是否调用sendfile函数来输出文件。对于普通应用设为on，若用来进行下载等应用磁盘IO重负载应用，可设为off，以平衡磁盘与网络I/O处理速度，降低系统的负载（注意：如果图片显示不正常把这个改成off）
+    tcp_nopush          on;                       # 防止网络阻塞
+    tcp_nodelay         on;                       # 防止网络阻塞
+    keepalive_timeout   120;                      # 单位：s，设置客户端连接保持活动的超时时间，在超过这个时间后服务器会关闭该链接
+    types_hash_max_size 4096;                     # 影响散列表的冲突率（默认为1024，其值越大，越会消耗更多的内存，但散列key的冲突率会降低，检索速度就更快）
+    server_names_hash_bucket_size 512;            # 服务器名字的hash表大小
+    include             mime.types;               # 文件扩展名与文件类型映射表
+    default_type        application/octet-stream; # 默认文件类型
+
+    ssl_protocols       TLSv1.2;
+    ssl_certificate     xuanyu.cn.pem;
+    ssl_certificate_key xuanyu.cn.key;
+    ssl_session_cache   shared:SSL:10m;
+    ssl_session_timeout 10m;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4:!DH:!DHE;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload";
+
+    # WebSocket变量定义
+    map $http_upgrade $connection_upgrade {
+        default upgrade;
+        '' close;
+    }
+
+    server {
+        listen 80;                                           # 监听端口
+        server_name xuanyu.cn www.xuanyu.cn;       # 域名可以有多个，用空格隔开
+        # rewrite ^(.*) https://$server_name$1 permanent;    # HTTP 自动跳转 HTTPS
+        rewrite ^(.*) https://www.xuanyu.cn/ permanent; # HTTP 自动跳转 HTTPS
+    }
+
+    server {
+        listen 443 ssl;
+        server_name xuanyu.cn www.xuanyu.cn;
+        # location 是有顺序的，当一个请求有可能匹配多个 location 时，该请求会被第一个 location 处理
+        location / {
+            root /app/software/nginx-1.24.0/html;
+        }
+        # JS和CSS缓存时间设置
+        location ~ .*\.(js|css)?$ {
+            expires 12h;
+        }
+        # 图片缓存时间设置
+        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ {
+            root /app/software/nginx-1.24.0/html;
+            expires 7d;
+        }
+    }
+
+    # Load modular configuration files from the ../nginx/conf/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include for more information.
+    include /app/software/nginx-1.24.0/conf/conf.d/*.conf;
+}
+```
+
+下面是 /app/software/nginx-1.24.0/conf/conf.d/nginx-prod.conf 的示例
+
+```text
+server {
+    listen 443 ssl;
+    server_name gw.xuanyu.cn;
+    location / {
+        proxy_pass       http://192.168.0.1:1099;
+        proxy_set_header Host              $http_host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        client_max_body_size        50M;
+        client_body_buffer_size     50M;
+        proxy_connect_timeout       300s;
+        proxy_send_timeout          30m;
+        proxy_read_timeout          30m;
+        proxy_set_header Upgrade    $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name sso.xuanyu.cn;
+    location / {
+        proxy_pass       http://192.168.0.1:1100;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name m.xuanyu.cn;
+    location / {
+        proxy_pass       http://192.168.0.1:7789;
+        client_max_body_size    50M;
+        client_body_buffer_size 50M;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name home.xuanyu.cn;
+    # check client is pc or mobile
+    if ($http_user_agent ~* (mobile|nokia|iphone|ipad|android|samsung|htc|blackberry)) {
+         rewrite  ^(.*)    https://m.xuanyu.cn/ permanent;
+    }
+    location / {
+        proxy_pass       http://192.168.0.1:7788;
+        client_max_body_size    50M;
+        client_body_buffer_size 50M;
+    }
+}
+```
+
 ## 安装Nacos
 
 下载地址：https://github.com/alibaba/nacos/releases/download/2.2.3/nacos-server-2.2.3.tar.gz
@@ -254,10 +414,10 @@ su xuanyu -c /app/software/nacos-2.2.3/bin/startup-standalone.sh # （临时以�
 INSTALL4J_JAVA_HOME_OVERRIDE="/app/software/jdk-11.0.23"       # 修改第14行的值（含双引号）
 [xuanyu@dev nexus-3.68.1-02]$ vim nexus-3.68.1-02/etc/nexus-default.properties # 修改Nexus的默认访问端口
 application-port=8081                                                          # 默认端口即为8081
-[root@dev /]# vim /etc/rc.d/rc.local                                      # 添加自启动
-su dhe -c "/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start" # （临时以xuanyu身份执行该行）
-[root@dev /]# chmod +x /etc/rc.d/rc.local                                 # 赋权，使其变成可执行文件
-[root@dev /]# reboot                                                      # 最后，重启系统，验证
+[root@dev /]# vim /etc/rc.d/rc.local                                           # 添加自启动
+su xuanyu -c "/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start"   # （临时以xuanyu身份执行）
+[root@dev /]# chmod +x /etc/rc.d/rc.local                                      # 赋权，使其变成可执行文件
+[root@dev /]# reboot                                                           # 最后，重启系统，验证
 ```
 
 其中，以下几点可以注意一下：
