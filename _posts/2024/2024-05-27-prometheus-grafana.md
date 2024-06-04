@@ -94,7 +94,7 @@ Version 11.0.0 (commit: 277ef258d4b9a5acdf2932347c6a4ca72d739b28, branch: HEAD)
 [xuanyu@dev bin]$ vim grafana-server.sh
 #!/bin/sh
 cd /app/software/grafana-v11.0.0/bin/
-nohup ./grafana server > nohup.log 2>&1 &           # 最新版已不推荐使用：./grafana-server，故编此脚本
+nohup ./grafana server > nohup.log 2>&1 &           # 最新版已不推荐使用./grafana-server，故写此脚本
 [xuanyu@dev bin]$ vim start.sh                      # 最后，再编写真正的启动脚本，这样才能实现后台运行
 #!/bin/sh
 nohup sh /app/software/grafana-v11.0.0/bin/grafana-server.sh >/dev/null 2>&1 &
