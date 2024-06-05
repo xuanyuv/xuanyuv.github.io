@@ -278,7 +278,7 @@ server {
     listen 443 ssl;
     server_name gw.xuanyu.cn;
     location / {
-        proxy_pass       http://192.168.0.1:1099;
+        proxy_pass       http://192.168.0.1:1099/;
         proxy_set_header Host              $http_host;
         proxy_set_header X-Real-IP         $remote_addr;
         proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
@@ -297,7 +297,7 @@ server {
     listen 443 ssl;
     server_name sso.xuanyu.cn;
     location / {
-        proxy_pass       http://192.168.0.1:1100;
+        proxy_pass       http://192.168.0.1:1100/;
     }
 }
 
@@ -305,7 +305,7 @@ server {
     listen 443 ssl;
     server_name m.xuanyu.cn;
     location / {
-        proxy_pass       http://192.168.0.1:7789;
+        proxy_pass       http://192.168.0.1:7789/;
         client_max_body_size    50M;
         client_body_buffer_size 50M;
     }
@@ -319,7 +319,7 @@ server {
          rewrite  ^(.*)    https://m.xuanyu.cn/ permanent;
     }
     location / {
-        proxy_pass       http://192.168.0.1:7788;
+        proxy_pass       http://192.168.0.1:7788/;
         client_max_body_size    50M;
         client_body_buffer_size 50M;
     }
