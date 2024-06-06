@@ -183,3 +183,136 @@ systemctl restart iptables.service
 二者区别：安全组是针对 ECS 实例的、iptables 是 CentOS 系统的
 
 也就是说：阿里云服务器开放端口，首先要配置安全组，而若开启了服务器内部防火墙，才需要修改 iptables
+
+# 发布内网应用
+
+拷贝文件到远程时，通常这样：scp nginx-1.24.0.tar.gz xuanyu@192.168.0.1:/app/software/backup
+
+但它需要手动输入目标服务器的密码，若想带密码自动拷贝，可以借助 sshpass 命令
+
+```shell
+[root@dev /] yum install -y sshpass
+
+# 第一次执行 sshpass 命令时，可能会报错：Host key verification failed.
+# 这是由于从未连接过该远程机器，那么先手动 scp 输入密码传输一次，后面再 sshpass 就不会报错了
+[xuanyu@dev ~] sshpass -p "123456" scp nginx-1.24.0.tar.gz xuanyu@192.168.0.1:/app/software/backup
+```
+
+ssh 命令也能执行远程脚本，并接收远程输出，再结合 sshpass 也可以带密码执行，示例如下：
+
+```shell
+# -f（小写）：后台运行SSH连接
+# -v（小写）：显示命令的详细执行过程
+# 最后的空格后面跟的数字 1，是说这个 1 是传给远程的 deploy.sh 的参数
+[xuanyu@dev ~] sshpass -p "123456" ssh -f -v xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh 1
+```
+
+下面通过 [Alibaba Cloud Toolkit](https://plugins.jetbrains.com/plugin/11386-alibaba-cloud-toolkit/versions) 插件演示：本地一键部署应用至内网（全程无需跳板机隧道）
+
+这是内网机器上的部署脚本：deploy.sh
+
+```shell
+#!/bin/sh
+APP_NAME=qss-web-3.0-SNAPSHOT.jar
+
+# -----------------------------------------------------------------------------------
+# !!! Do not modify the following !!!
+# -----------------------------------------------------------------------------------
+
+APP_CODE=${APP_NAME%%-*}
+APP_PATH=/app/backend/${APP_CODE}
+JAVA_OPTS="-server -Xms2048m -Xmx2048m -Xlog:gc:/app/backend/logs/${APP_CODE}/gc.log"
+
+appPID=0
+getAppPID(){
+    pidInfo=`ps aux|grep $APP_NAME|grep -v grep`
+    if [ -n "$pidInfo" ]; then
+        appPID=`echo $pidInfo | awk '{print $2}'`
+    else
+        appPID=0
+    fi
+}
+
+shutdown(){
+    getAppPID
+    echo ""
+    echo "[xuanyu] =========================================================================================="
+    if [ $appPID -ne 0 ]; then
+        echo -n "[xuanyu] Stopping $APP_NAME(PID=$appPID)..."
+        kill -9 $appPID
+        if [ $? -eq 0 ]; then
+            echo "[Success]"
+            echo "[xuanyu] =========================================================================================="
+        else
+            echo "[Failed]"
+            echo "[xuanyu] =========================================================================================="
+        fi
+        getAppPID
+        if [ $appPID -ne 0 ]; then
+            shutdown
+        fi
+    else
+        echo "[xuanyu] $APP_NAME is not running"
+        echo "[xuanyu] =========================================================================================="
+    fi
+    echo ""
+}
+
+startupByNohup(){
+    nohup /app/software/jdk-21.0.3/bin/java $JAVA_OPTS -jar -Dspring.profiles.active=prod $APP_NAME > nohup.log 2>&1 &
+    tail -100f nohup.log
+}
+
+cd $APP_PATH
+if [[ ! -n $1 || $1 -ne 1 ]]; then
+    shutdown
+    startupByNohup
+fi
+if [ $1 -eq 1 ]; then
+    cp $APP_NAME $APP_NAME.$(date "+%Y%m%d%H%M%S")
+fi
+```
+
+这是在跳板机上的部署脚本：deploy.sh
+
+```shell
+#!/bin/sh
+APP_NAME=$1-web-3.0-SNAPSHOT.jar
+APP_PATH=/app/backend/${APP_NAME%%-*}
+DEST__IP=192.168.0.$2
+DEST_PWD=xuanyu
+
+if [[ ! -n $1 || ! -n $2 ]]; then
+    echo ""
+    echo "Illegal Params! Nothing to do, and Exit..."
+    echo ""
+    exit 0
+fi
+if [ $1 = "gw" ]; then
+    APP_NAME=gw-3.0-SNAPSHOT.jar
+fi
+if [ $1 = "sso" ]; then
+    APP_NAME=sso-3.0-SNAPSHOT.jar
+fi
+if [ $2 -eq 1 ]; then
+    DEST_PWD=ThisIs01Password
+fi
+if [ $2 -eq 2 ]; then
+    DEST_PWD=ThisIs02Password
+fi
+
+cd /app/backend
+sshpass -p "$DEST_PWD" ssh xuanyu@$DEST__IP $APP_PATH/deploy.sh 1
+sshpass -p "$DEST_PWD" scp $APP_NAME xuanyu@$DEST__IP:$APP_PATH
+sshpass -p "$DEST_PWD" ssh -f xuanyu@$DEST__IP $APP_PATH/deploy.sh
+
+# 延迟 60s 后执行 kill 命令，最后关闭 ssh 进程（延迟时间可以根据远程命令执行时长适当调整）
+sleep 60
+# 想更精确的话：grep "ssh -f -n xuanyu@192.168.0.1 /app/backend/qss/deploy.sh"
+kill $(ps aux | grep $APP_PATH/deploy.sh | awk '{print $2}' | sort -n | head -n 1)
+exit 0
+```
+
+接下来就是配置 Alibaba Cloud Toolkit，详见下图：
+
+![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-08.png)

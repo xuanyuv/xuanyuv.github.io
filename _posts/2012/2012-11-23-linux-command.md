@@ -126,7 +126,7 @@ java    17608 root  163u  IPv6 29073040      0t0  TCP bjgg-kfvm-31:http (LISTEN)
 ## 获取IP
 
 ```shell
-[xuanyu@wxtest ~]$ ifconfig -a
+[xuanyu@dev ~]$ ifconfig -a
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 192.168.1.1  netmask 255.255.255.0  broadcast 192.168.1.255
         inet6 fe80::216:3eff:fe37:b9a7  prefixlen 64  scopeid 0x20<link>
@@ -215,22 +215,23 @@ echo "--------------------------------------------"
 
 ```shell
 # 查看整体目录占用空间
-[root@wxtest webapps]# df -h
+[root@dev ~]$ df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda2        20G  7.2G   12G  39% /
 tmpfs           1.9G     0  1.9G   0% /dev/shm
 /dev/sda1       504M   38M  442M   8% /boot
 /dev/sda5        16G  1.4G   14G  10% /home
-[root@wxtest webapps]#
+[root@dev ~]$
 
 # 查看指定目录占用空间
-[root@wxtest webapps]# du -sh /app/tomcat8.0.21/
+[root@dev ~]$ du -sh /app/tomcat8.0.21/
 
 # 列出当前目录里最大的10个文件
-[root@wxtest webapps]# du -s * | sort -n | tail
+[root@dev ~]$ du -s * | sort -n | tail
 
-# 列出当前目录各个文件及其大小，并以大小倒序排序（参数大S用于指定排序，也可以加-a，表示all即显示包括隐藏文件在内的所有文件）
-[root@wxtest webapps]# ls -lhS
+# 列出当前目录各个文件及其大小，并以大小倒序排序
+# （参数大S用于指定排序，也可以加-a，表示all即显示包括隐藏文件在内的所有文件）
+[root@dev ~]$ ls -lhS
 ```
 
 ## 监控服务器
@@ -245,95 +246,9 @@ tmpfs           1.9G     0  1.9G   0% /dev/shm
 
 ```shell
 # 全局配置用户登录后的默认目录，以及 ll 命令直接显示文件列表及大小
-[root@wxtest webapps]# vim /etc/bashrc
-                     # 文件内容尾部，增加以下两行
-                       alias ll='ls -lh --color=auto'
-                       cd /app/backend/logs/open/
-[root@wxtest webapps]# source /etc/bashrc # 令配置生效
-```
-
-## 带密码的远程拷贝
-
-通常是使用这个命令：scp nginx-1.24.0.tar.gz xuanyu@192.168.0.1:/app/software/backup
-
-但它需要手动输入目标服务器的密码，若想带密码自动拷贝，可以借助 sshpass 命令
-
-```shell
-[root@wxtest /] yum install -y sshpass
-[xuanyu@wxtest ~] sshpass -p "123" scp nginx-1.24.0.tar.gz xuanyu@192.168.0.1:/app/software/backup
-```
-
-第一次执行 sshpass 命令时，可能会报错：Host key verification failed.
-
-这是由于从未连接过该远程机器，那么先手动 scp 再输入密码传输一次，后面再 sshpass 就不会报错了
-
-## 后台执行远程脚本
-
-ssh 命令也能执行远程脚本，并接收远程输出，再结合 sshpass 就可以带密码执行，示例如下：
-
-这是远程机器上的脚本
-
-```shell
-#!/bin/sh
-nohup /app/software/jdk-21.0.2/bin/java -Dspring.profiles.active=dev -jar mpp.jar > nohup.log 2>&1 &
-tail -100f nohup.log
-```
-
-这是当前机器上的脚本
-
-```shell
-#!/bin/sh
-NETWORK_CARD_NAME=eth0
-HOST_IP=$(ifconfig $NETWORK_CARD_NAME | grep inet | grep -v inet6 | awk '{ print $2}')
-echo "Intranet IP of the current machine = $HOST_IP"
-
-cd /app/backend
->deploy-mpp.log
-sshpass -p "123" ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh > deploy-mpp.log
-
-# 想更精确的话：grep "ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh"
-PID=$(ps aux | grep "/app/backend/mpp/deploy.sh" | awk '{print $2}' | sort -n | head -n 1)
-echo "SSH Remote Command is Running, PID = ${PID}"
-
-# 延迟 120s 后执行 kill 命令，最后关闭 ssh 进程（延迟时间可以根据远程命令执行时长适当调整）
-sleep 120 && kill ${PID} && echo "SSH Remote Command is Complete...."
-
-exit 0
-```
-
-另外，如果是用 Alibaba Cloud Toolkit 插件来部署应用的话
-
-经测试，可以像下面这样配置
-
-```shell
-# 远程机器：backup.sh
-APP_PATH=/app/backend/mpp
-APP_NAME=mpp.jar
-cd $APP_PATH
-cp $APP_NAME $APP_NAME.$(date "+%Y%m%d%H%M%S")
-rm -rf $APP_NAME
-
-# 远程机器：deploy.sh
-nohup /app/software/jdk-21.0.2/bin/java -Dspring.profiles.active=dev -jar mpp.jar > nohup.log 2>&1 &
-tail -100f nohup.log
-
-# 当前机器：deploy-mpp.sh
-APP_PATH=/app/backend/mpp
-APP_NAME=mpp.jar
-DEST_PWD=123
-DEST__IP=192.168.0.1
-cd /app/backend
-sshpass -p "$DEST_PWD" ssh xuanyu@$DEST__IP $APP_PATH/backup.sh
-#sleep 3
-sshpass -p "$DEST_PWD" scp $APP_NAME xuanyu@$DEST__IP:$APP_PATH
-#sleep 5
-sshpass -p "$DEST_PWD" ssh -f -n xuanyu@$DEST__IP $APP_PATH/deploy.sh
-
-# Deploy to Host：第一步：Deployment After deploy
-sh deploy-mpp.sh
-# Deploy to Host：第二步：Advanced Automatic open after deploy
-kill $(ps aux | grep /app/backend/mpp/deploy.sh | awk '{print $2}' | sort -n | head -n 1) && exit 0
-
-# 补充：第一步填入的脚本，就是多了一步备份的动作，若是不需要备份的话，直接输入下面的命令就可以了
-sshpass -p "123" ssh -f -n xuanyu@192.168.0.1 /app/backend/mpp/deploy.sh
+[root@dev ~]$ vim /etc/bashrc
+              # 文件内容尾部，增加以下两行
+              alias ll='ls -lh --color=auto'
+              cd /app/backend/logs/open/
+[root@dev ~]$ source /etc/bashrc # 令配置生效
 ```
