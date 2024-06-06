@@ -280,7 +280,7 @@ fi
 ```shell
 #!/bin/sh
 APP_NAME=$1-web-3.0-SNAPSHOT.jar
-APP_PATH=/app/backend/${APP_NAME%%-*}
+APP_PATH=/app/backend/$1
 DEST__IP=192.168.0.$2
 DEST_PWD=123456
 
@@ -315,6 +315,6 @@ kill $(ps aux | grep $APP_PATH/deploy.sh | awk '{print $2}' | sort -n | head -n 
 exit 0
 ```
 
-接下来就是配置 Alibaba Cloud Toolkit，详见下图：
+最后配置一下 Alibaba Cloud Toolkit 即可：
 
 ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-08.png)
