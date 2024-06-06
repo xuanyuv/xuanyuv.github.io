@@ -503,9 +503,9 @@ su xuanyu -c "/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start"   #
     <password>xuanyu</password>
 </server>
 <server>
-   <id>xuanyu-admin</id>
-   <username>admin</username>
-   <password>admin</password>
+    <id>xuanyu-admin</id>
+    <username>admin</username>
+    <password>admin</password>
 </server>
 
 <!-- mirror-id 要和 server-id 保持一致 -->
@@ -516,13 +516,34 @@ su xuanyu -c "/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start"   #
 </mirror>
 ```
 
-对于 Maven 的配置，仅此三项就够了（不用配置<profile>）
+对于 settings.xml 而已，仅此三项即可（不用配置<profile>）
 
-对于 pom.xml 而言，也不用再配置 &lt;repositories&gt; 和 &lt;pluginRepositories&gt; 了
-
-只需要配置 &lt;distributionManagement&gt; 即可，如下所示
+对于 pom.xml 而言，需要配置项如下：
 
 ```xml
+<repositories>
+    <repository>
+        <id>xuanyu-public</id>
+        <url>http://127.0.0.1:8081/repository/maven-public/</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+        </snapshots>
+    </repository>
+</repositories>
+<pluginRepositories>
+    <pluginRepository>
+        <id>xuanyu-public</id>
+        <url>http://127.0.0.1:8081/repository/maven-public/</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+    </pluginRepository>
+</pluginRepositories>
+
 <!-- 这里的两个 id 可以相同，并保持和 <maven-settings-server-id> 一致即可 -->
 <distributionManagement>
     <repository>
