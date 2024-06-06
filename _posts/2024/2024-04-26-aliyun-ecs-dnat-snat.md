@@ -209,7 +209,7 @@ ssh 命令也能执行远程脚本，并接收远程输出，再结合 sshpass �
 
 下面通过 [Alibaba Cloud Toolkit](https://plugins.jetbrains.com/plugin/11386-alibaba-cloud-toolkit/versions) 插件演示：本地一键部署应用至内网（全程无需跳板机隧道）
 
-这是内网机器上的部署脚本：deploy.sh
+这是内网机器上的部署脚本：/app/backend/qss/deploy.sh
 
 ```shell
 #!/bin/sh
@@ -273,7 +273,7 @@ if [ $1 -eq 1 ]; then
 fi
 ```
 
-这是跳板机上的部署脚本：deploy.sh
+这是跳板机上的部署脚本：/app/backend/deploy.sh
 
 ```shell
 #!/bin/sh
