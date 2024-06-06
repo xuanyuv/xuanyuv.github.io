@@ -236,16 +236,16 @@ getAppPID(){
 shutdown(){
     getAppPID
     echo ""
-    echo "[玄玉] =========================================================================================="
+    echo "[玄玉] =============================================================="
     if [ $appPID -ne 0 ]; then
         echo -n "[玄玉] Stopping $APP_NAME(PID=$appPID)..."
         kill -9 $appPID
         if [ $? -eq 0 ]; then
             echo "[Success]"
-            echo "[玄玉] =========================================================================================="
+            echo "[玄玉] =============================================================="
         else
             echo "[Failed]"
-            echo "[玄玉] =========================================================================================="
+            echo "[玄玉] =============================================================="
         fi
         getAppPID
         if [ $appPID -ne 0 ]; then
@@ -253,12 +253,14 @@ shutdown(){
         fi
     else
         echo "[玄玉] $APP_NAME is not running"
-        echo "[玄玉] =========================================================================================="
+        echo "[玄玉] =============================================================="
     fi
     echo ""
 }
 
 startupByNohup(){
+    # 这里要写 java 全路径，因为远程 ssh 过来的请求，识别不到内网机器的环境变量，会报告下面的错误
+    # nohup: failed to run command ‘java’: No such file or directory
     nohup /app/software/jdk-21.0.3/bin/java $JAVA_OPTS -jar -Dspring.profiles.active=prod $APP_NAME > nohup.log 2>&1 &
     tail -100f nohup.log
 }
