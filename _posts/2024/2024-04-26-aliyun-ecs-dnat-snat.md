@@ -280,7 +280,7 @@ fi
 APP_NAME=$1-web-3.0-SNAPSHOT.jar
 APP_PATH=/app/backend/${APP_NAME%%-*}
 DEST__IP=192.168.0.$2
-DEST_PWD=xuanyu
+DEST_PWD=123456
 
 if [[ ! -n $1 || ! -n $2 ]]; then
     echo ""
