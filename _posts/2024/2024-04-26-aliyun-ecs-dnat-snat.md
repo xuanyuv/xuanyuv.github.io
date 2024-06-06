@@ -198,7 +198,7 @@ systemctl restart iptables.service
 [xuanyu@dev ~] sshpass -p "123456" scp nginx-1.24.0.tar.gz xuanyu@192.168.0.1:/app/software/backup
 ```
 
-ssh 命令也能执行远程脚本，并接收远程输出，再结合 sshpass 也可以带密码执行，示例如下：
+ssh 命令也能执行远程脚本，并接收远程输出，再结合 sshpass 就可以实现带密码执行，示例如下：
 
 ```shell
 # -f（小写）：后台运行SSH连接
@@ -273,7 +273,7 @@ if [ $1 -eq 1 ]; then
 fi
 ```
 
-这是在跳板机上的部署脚本：deploy.sh
+这是跳板机上的部署脚本：deploy.sh
 
 ```shell
 #!/bin/sh
@@ -308,7 +308,7 @@ sshpass -p "$DEST_PWD" ssh -f xuanyu@$DEST__IP $APP_PATH/deploy.sh
 
 # 延迟 60s 后执行 kill 命令，最后关闭 ssh 进程（延迟时间可以根据远程命令执行时长适当调整）
 sleep 60
-# 想更精确的话：grep "ssh -f -n xuanyu@192.168.0.1 /app/backend/qss/deploy.sh"
+# 想更精确的话：grep "ssh -f xuanyu@$DEST__IP $APP_PATH/deploy.sh"
 kill $(ps aux | grep $APP_PATH/deploy.sh | awk '{print $2}' | sort -n | head -n 1)
 exit 0
 ```
