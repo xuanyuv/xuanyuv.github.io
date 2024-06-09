@@ -2,7 +2,7 @@
 layout: post
 title: "idea配置小结"
 categories: 工具
-tags: idea intellij eclipse netbeans
+tags: idea
 author: 玄玉
 excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、主题、快捷键等等。
 ---
@@ -11,33 +11,34 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 {:toc}
 
 
-> 本文所列配置项，已适配：ideaIC-2021.3<br/>
+> 本文所列配置项，已适配：ideaIC-2023.3.6<br/>
   idea历史版本下载：<http://www.jetbrains.com/idea/download/other.html>
 
 ## 快捷键
 
-| 快捷键 | 用途 | 备注 |
-|:-------------------------|:---------------|:---------------|
-| Alt + 回车               | 自动补全       | 若安装GenerateAllSetter插件，则可在类名上使用该快捷键|
-| Ctrl + Alt + 方向键左    | 返回上一个方法 ||
-| Ctrl + Alt + H           | 查询某方法被其它地方调用   | 另外：Alt + F7 也挺好用     |
-| 键入 main 再按 Ctrl+J 键 | 快速输入main函数           | 或者：键入 psvm 再按 Tab 键 |
-| 键入 sout 再按 Tab 键    | 快速输入System.out.println | 对应Eclipse中的syso         |
+| 快捷键                  | 用途                      | 备注                  |
+|:---------------------|:------------------------|:--------------------|
+| Alt + 回车             | 自动补全                    |                     |
+| Ctrl + Alt + 方向键左    | 返回上一个方法                 |                     |
+| Ctrl + Alt + H       | 查询某方法被其它地方调用            | 另外：Alt + F7 也挺好用    |
+| 键入 main 再按 Ctrl+J 键  | 快速输入main函数              | 或者：键入 psvm 再按 Tab 键 |
+| 键入 sout 再按 Tab 键     | 快速输入System.out.println  | 对应Eclipse中的syso     |
 
 ## 橘黄色图标插件
 
-idea.2016.3 开始，文件夹图标全部换成了暴丑的蓝色，可以用这个插件：[Idea 2016.2 Icon Pack](https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack)，回到原来的橘黄色图标
+idea.2016.3 开始，文件夹图标全部换成了暴丑的蓝色
 
-安装时选择 Install plugin from disk... 再重启 idea 即可
+可以用这个插件：[Idea 2016.2 Icon Pack](https://plugins.jetbrains.com/idea/plugin/7285-idea-2016-2-icon-pack)，回到原来的橘黄色图标
 
-另外，ideaIC-2019.3.2 中该插件无效，ideaIC-2018.3.6 没问题，这时可以用这个插件：[Legacy Icon Pack for 2018.2+](https://plugins.jetbrains.com/plugin/10777-legacy-icon-pack-for-2018-2-)
+另外：2019.3.2 中该插件无效（2018.3.6 没问题），此时可以用这个插件：[Legacy Icon Pack for 2018.2+](https://plugins.jetbrains.com/plugin/10777-legacy-icon-pack-for-2018-2-)
 
 ## 首次运行前的配置
 
 ### idea.properties
+
 ```properties
-idea.config.path=D:/Develop/JetBrains/ideaIC/JadyerData/config
-idea.system.path=D:/Develop/JetBrains/ideaIC/JadyerData/system
+idea.config.path=D:/Develop/JetBrains/xuanyuData/ideaic/config
+idea.system.path=D:/Develop/JetBrains/xuanyuData/ideaic/system
 idea.plugins.path=${idea.config.path}/plugins
 idea.log.path=${idea.system.path}/log
 # 编辑大文件时idea容易卡顿：可适当提高该属性值
@@ -48,18 +49,21 @@ idea.cycle.buffer.size=disabled
 ```
 
 ### 64.exe.vmoptions
-```
--Xms2048m
--Xmx2048m
+```text
+-Xms3072m
+-Xmx3072m
 -XX:ReservedCodeCacheSize=512m
--XX:+IgnoreUnrecognizedVMOptions
 -XX:+UseG1GC
 -XX:SoftRefLRUPolicyMSPerMB=100
 -XX:CICompilerCount=2
 -XX:+HeapDumpOnOutOfMemoryError
 -XX:-OmitStackTraceInFastThrow
+-XX:+IgnoreUnrecognizedVMOptions
+-XX:CompileCommand=exclude,com/intellij/openapi/vfs/impl/FilePartNodeRoot,trieDescend
 -ea
 -Dsun.io.useCanonCaches=false
+-Dsun.java2d.metal=true
+-Djbr.catch.SIGABRT=true
 -Djdk.http.auth.tunneling.disabledSchemes=""
 -Djdk.attach.allowAttachSelf=true
 -Djdk.module.illegalAccess.silent=true
@@ -74,29 +78,28 @@ idea.cycle.buffer.size=disabled
 ### 项目参数及JDK
 
 ```
-# 注：新版idea要在配置全局参数，并打开一个工程后，才能配置以上项
+# 注：新版idea要在配置完全局参数，并打开一个工程后，才能配置以下项
 
 # 设置JDK
 Structure for New Projects---Project Settings---Project---设置JDK
-Structure for New Projects---Platform Settings---SDKs---删除自带的jdk11
 
-# 应用控制台颜色输出
+# 控制台彩色输出：适合 SpringBoot 那种 main() 方法启动的（Maven启动与之类似，也是右上角配置JVM参数）
 Run Configuration Templates for New Projects---Application---VM options: -Dspring.output.ansi.enabled=ALWAYS
-对于 SpringBoot 那种 main() 方法直接启动的（Maven或Gradle与之类似，也是右上角配置JVM参数），控制台会彩色输出日志信息
 
 # 应用启动参数短命令行
-Run Configuration Templates for New Projects---Application---jre---1.8
-Run Configuration Templates for New Projects---Application---Shorten command line---classpath file
+Run Configuration Templates for New Projects---Application---Shorten command line---JAR manifest
+
+# 打开内存使用状态
+新版：主界面双击Shift，在弹出的搜索栏输入Show memory indicator，再启用即可
+旧版：settings---Appearance & Behavior---Appearance---Show memory indicator
 ```
 
 ### 外观及行为配置
 ```
-# 打开内存使用状态
-旧版：settings---Appearance & Behavior---Appearance---Show memory indicator
-新版：主界面双击Shift，在弹出的搜索栏输入Show memory indicator，再启用即可
-
 # 黑色主题及避免中文乱码（此处若选 Yahei Consolas Hybrid，会使得配置窗口很难看，非常难看）
-settings---Appearance & Behavior---Appearance---Theme---默认即可：Darcula，Use custom font，Microsoft YaHei UI，Size=12
+settings---Appearance & Behavior---Appearance---Theme---默认即可
+# 新版：2023.3.6版就用默认的 Dark，Use custom font，Inter，Size=13 就挺好的
+# 旧版：Darcula，Use custom font，Microsoft YaHei UI，Size=12
 
 # 隐藏工具栏快捷键下划线
 settings---Appearance & Behavior---Appearance---UI Options---不勾选Enable mnemonics in menu
@@ -105,7 +108,7 @@ settings---Appearance & Behavior---Appearance---UI Options---不勾选Enable mne
 settings---Appearance & Behavior---System Settings---Autosave---勾选Save files if the IDE is idle for 15 seconds
 
 # 不发送统计文件给JetBrains & 取消自动更新 
-settings---Appearance & Behavior---System Settings---Data Sharing & Updates
+settings---Appearance & Behavior---System Settings---Data Sharing 和 Updates
 ```
 
 ### 编辑器之通用配置
@@ -152,7 +155,7 @@ settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---8
 
 解决办法就是：右键 ttf 文件，选择为所有用户安装即可
 
-再回到 idea 配置：`settings---Editor---Font---Yahei Consolas Hybrid，Size=14`
+再回到 idea 配置：`settings---Editor---Font---Yahei Consolas Hybrid，Size=14，Line height=1.2`
 
 ### 编辑器之代码风格
 ```
@@ -172,6 +175,8 @@ settings---Editor---Colors Style---Java---Code Generation---不勾选Line commen
 ### 编辑器之关闭检查
 
 先拷贝一份 Profile 的 Default 配置，新命名为 Default_Jadyer
+
+注意：不同的 idea 版本下的 Inspections 配置均有不同，以下只是概述其意
 
 ```
 # DefaultFileTemplate
@@ -299,11 +304,11 @@ settings---Editor---File Encodings---Transparent native-to-ascii conversion
 settings---Editor---File Types---Ignore files and folders---target;.gradle;*.iml;*.idea;
 
 # 版本控制下文件变化的显示（调整文件夹显示颜色，配置在Version Control---File Status Color）
-旧版：settings---Version Control---勾选Show directories with changed descendants
 新版：settings---Version Control---Confirmation---勾选Highlight directories that contain modified files in the Project tree
+旧版：settings---Version Control---勾选Show directories with changed descendants
 
 # Markdown文件默认以编辑模式打开
-settings---Languages & Frameworks---Markdown---Default layout---Editor only
+settings---Languages & Frameworks---Markdown---Default layout---Editor
 ```
 
 ### 快捷键
@@ -341,8 +346,20 @@ settings---Build,Execution,Deployment---Compiler---Shared build process heap siz
 
 > 此处已适配：DataGrip-2021.2.2（2021.2.3版本起，就要求登录JetBrains帐号，所以无限试用插件也跟着失效了）
 
-### 64.exe.vmoptions
+### idea.properties
+
+```properties
+idea.config.path=D:/Develop/JetBrains/xuanyuData/datagrip/config
+idea.system.path=D:/Develop/JetBrains/xuanyuData/datagrip/system
+idea.plugins.path=${idea.config.path}/plugins
+idea.log.path=${idea.system.path}/log
+idea.max.intellisense.filesize=2500
+idea.cycle.buffer.size=disabled
 ```
+
+### 64.exe.vmoptions
+
+```text
 -XX:ReservedCodeCacheSize=512m
 -Xmx1024m
 -Xms1024m
@@ -360,25 +377,17 @@ settings---Build,Execution,Deployment---Compiler---Shared build process heap siz
 
 ```
 
-### idea.properties
-```properties
-idea.config.path=D:/Develop/JetBrains/DataGrip/JadyerData/config
-idea.system.path=D:/Develop/JetBrains/DataGrip/JadyerData/system
-idea.plugins.path=${idea.config.path}/plugins
-idea.log.path=${idea.system.path}/log
-```
-
 ### 快捷键等常见用法
 
-| 快捷键 | 用途 | 备注 |
-|:-----------------|:--------|:--------|
-| Ctrl + F5        | 刷新数据                         |                                            |
-| Ctrl + /         | 注释SQL                          | 或者：Ctrl + Shift + /                     |
-| Ctrl + Enter     | 执行SQL                          | 未选中SQL的情况下，会弹框询问你执行哪条SQL |
-| Ctrl + B         | 快速查看表结构                   | 左侧表列表中，选中表，按下此组合键         |
-| Ctrl + Q         | 以纵向列的方式查看数据信息       | 选中此行，就会显示此行所有的字段值         |
-| Ctrl + N         | 快速导航到指定的表、视图、函数等 | 跟 idea 一样                               |
-| Shift + Shift    | 可以搜索任何想搜索的内容         | 跟 idea 一样                               |
+| 快捷键           | 用途               | 备注                       |
+|:--------------|:-----------------|:-------------------------|
+| Ctrl + F5     | 刷新数据             |                          |
+| Ctrl + /      | 注释SQL            | 或者：Ctrl + Shift + /      |
+| Ctrl + Enter  | 执行SQL            | 未选中SQL的情况下，会弹框询问你执行哪条SQL |
+| Ctrl + B      | 快速查看表结构          | 左侧表列表中，选中表，按下此组合键        |
+| Ctrl + Q      | 以纵向列的方式查看数据信息    | 选中此行，就会显示此行所有的字段值        |
+| Ctrl + N      | 快速导航到指定的表、视图、函数等 | 跟 idea 一样                |
+| Shift + Shift | 可以搜索任何想搜索的内容     | 跟 idea 一样                |
 
 ```
 # 结果集中设置字段值为NULL
