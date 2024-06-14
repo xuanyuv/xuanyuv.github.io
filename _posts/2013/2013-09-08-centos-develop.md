@@ -44,7 +44,7 @@ JDK 21 will receive updates under the NFTC, until September 2026, a year after t
 
 而后便移交给了 Eclipse 基金会，并改名为 Adoptium Eclipse Temurin（主页：<https://adoptium.net/>）
 
-注意：Adoptium 不再提供 OpenJ9 的实现，若确实需要 OpenJ9，[可以到清华大学开源软件镜像站下载](https://mirror.tuna.tsinghua.edu.cn/news/rename-adoptopenjdk-to-adoptium/)
+*注意：Adoptium 不再提供 OpenJ9 的实现，若确实需要 OpenJ9，可以到[清华大学开源软件镜像站](https://mirror.tuna.tsinghua.edu.cn/news/rename-adoptopenjdk-to-adoptium/)下载*
 
 ```sh
 [root@dev ~]# mkdir -p /app/software/backup
