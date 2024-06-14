@@ -27,24 +27,24 @@ JDK 21 will receive updates under the NFTC, until September 2026, a year after t
 
 也就是说：截止到 2026 年 09 月，JDK21 都是采用 NFTC 协议（即完全免费，并且可以用于生产环境）
 
-而从 2026 年 09 月开始，JDK21 就开始采用 OTN 协议（即收费）
+而从 2026 年 09 月起，JDK21 就开始采用 OTN 协议（即收费）
 
 但是具体怎么收费，[网上有 2 种争论：](https://zhuanlan.zhihu.com/p/414822476)
 
 * 2026 年 09 月开始，只要使用了 JDK21，无论是哪个小版本，都要收费
 * 仅针对 2026 年 09 月之后发布的 JDK21 才收费，在这之前发布的 JDK21 依旧免费
 
-*注：2026 年 09 月开始，若使用 JDK21 之后发布的 LTS 版本，仍然是免费的（每个 LTS 版本都有对应的 NFTC）*
+*注：2026 年 09 月开始，若使用 JDK21 之后的 LTS 版本，仍是免费的（每个 LTS 版都有对应的 NFTC）*
 
-所以，有很多人在使用 OpenJDK，下载地址为：<https://jdk.java.net/archive/>
+**所以，有很多人在使用 OpenJDK，下载地址为：<https://jdk.java.net/archive/>**
 
-但是，有更多人在使用 Adoptium Eclipse Temurin，其实它的前身，就是大名鼎鼎的 AdoptOpenJDK
+**但是，有更多人在使用 Adoptium Eclipse Temurin，其实它的前身，就是大名鼎鼎的 AdoptOpenJDK**
 
 实际上，AdoptOpenJDK 更新到 jdk16 就停止更新了（详见：<https://adoptopenjdk.net/releases.html>）
 
 而后便移交给了 Eclipse 基金会，并改名为 Adoptium Eclipse Temurin（主页：<https://adoptium.net/>）
 
-值得注意的是：Adoptium 不再提供 OpenJ9 的实现，若确实需要 OpenJ9，[可以到清华大学开源软件镜像站下载](https://mirror.tuna.tsinghua.edu.cn/news/rename-adoptopenjdk-to-adoptium/)
+注意：Adoptium 不再提供 OpenJ9 的实现，若确实需要 OpenJ9，[可以到清华大学开源软件镜像站下载](https://mirror.tuna.tsinghua.edu.cn/news/rename-adoptopenjdk-to-adoptium/)
 
 ```sh
 [root@dev ~]# mkdir -p /app/software/backup
