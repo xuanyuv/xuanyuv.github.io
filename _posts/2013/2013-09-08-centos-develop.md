@@ -243,6 +243,15 @@ http {
     #autoindex_exact_size on; # 显示文件大小，默认为on，单位是bytes（改为off后，显示出文件的大概大小，单位是kB或者MB或者GB）
     #autoindex_localtime on;  # 显示文件时间，默认为off，显示的文件时间为GMT时间（改为on后，显示的文件时间为文件的服务器时间）
 
+    gzip_static         on;   # 响应报文头包含 Content-Encoding: gzip 表示开启了gzip，反之则未开启gzip
+    gzip                on;   # 开启gzip后，响应的 Etag 值若以 W/" 打头，则代表服务器在线压缩
+    gzip_vary           on;   # 开启gzip后，响应的 Etag 值若以 " 打头，则表示拿了.gz，即gzip_static生效了
+    gzip_types          text/plain text/css application/css text/javascript application/x-javascript application/javascript;
+    gzip_proxied        any;  # 如果，在当前的 nginx 前面，还有一层 nginx 代理
+    gzip_comp_level     6;    # 那么，最前面的 nginx 也要配置一个 gzip on;（只配置这一行就可以）
+    gzip_min_length     10k;
+    gzip_http_version   1.0;
+
     sendfile            on;                       # 开启高效文件传输模式，该指令指定nginx是否调用sendfile函数来输出文件。对于普通应用设为on，若用来进行下载等应用磁盘IO重负载应用，可设为off，以平衡磁盘与网络I/O处理速度，降低系统的负载（注意：如果图片显示不正常把这个改成off）
     tcp_nopush          on;                       # 防止网络阻塞
     tcp_nodelay         on;                       # 防止网络阻塞
@@ -268,10 +277,10 @@ http {
     }
 
     server {
-        listen 80;                                           # 监听端口
-        server_name xuanyu.cn www.xuanyu.cn;       # 域名可以有多个，用空格隔开
-        # rewrite ^(.*) https://$server_name$1 permanent;    # HTTP 自动跳转 HTTPS
-        rewrite ^(.*) https://www.xuanyu.cn/ permanent; # HTTP 自动跳转 HTTPS
+        listen 80;                                        # 监听端口
+        server_name xuanyu.cn www.xuanyu.cn;              # 域名可以有多个，用空格隔开
+        # rewrite ^(.*) https://$server_name$1 permanent; # HTTP 自动跳转 HTTPS
+        rewrite ^(.*) https://www.xuanyu.cn/ permanent;   # HTTP 自动跳转 HTTPS
     }
 
     server {
