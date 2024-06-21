@@ -16,19 +16,28 @@ excerpt: 一些常用的MySQL命令，诸如元数据查询、统计、建表、
 ```sql
 DROP TABLE IF EXISTS t_account_info;
 CREATE TABLE t_account_info(
-id          INT AUTO_INCREMENT PRIMARY KEY COMMENT '主键',
-status      TINYINT(1)    NOT NULL COMMENT '账户状态：0--未认证，1--已认证，2--认证未通过',
-password    CHAR(102)     NOT NULL COMMENT '登录密码',
-email       VARCHAR(64)   NOT NULL COMMENT '登录邮箱',
-resp_data   MEDIUMTEXT    NOT NULL COMMENT '接口应答报文',
-money_max   DECIMAL(16,4) COMMENT '最高贷款额度，单位：元',
-biz_time    DATETIME      NOT NULL COMMENT '业务时间',
-send_time   DATETIME      DEFAULT NULL COMMENT '发送时间',
-create_time TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-update_time TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
-INDEX idx_password(password),
-UNIQUE INDEX uniq_email_status(email, status)
-)ENGINE=InnoDB DEFAULT CHARSET=UTF8 AUTO_INCREMENT=10001001 COMMENT='渠道账户信息表';
+    id                     BIGINT         PRIMARY KEY AUTO_INCREMENT         COMMENT '主键',
+    user_id                BIGINT         NOT NULL                           COMMENT '用户ID',
+    status                 TINYINT        NOT NULL DEFAULT 0                 COMMENT '账户状态：0--未认证，1--已认证，2--认证未通过',
+    password               CHAR(102)      NOT NULL                           COMMENT '登录密码',
+    email                  VARCHAR(64)    NOT NULL                           COMMENT '登录邮箱',
+    money_max              DECIMAL(16,6)                                     COMMENT '最高额度（元）',
+    biz_date               DATE           NOT NULL                           COMMENT '业务日期',
+    send_time              DATETIME                                          COMMENT '发送时间',
+    resp_data              MEDIUMTEXT     NOT NULL                           COMMENT '应答报文',
+    deleted                BIGINT         NOT NULL DEFAULT 0                 COMMENT '逻辑删除：0-未删除、1-已删除',
+    version                BIGINT         NOT NULL DEFAULT 0                 COMMENT '乐观锁',
+    tenant_id              BIGINT         NOT NULL                           COMMENT '租户ID',
+    create_by              BIGINT         NOT NULL                           COMMENT '创建人',
+    create_by_name         VARCHAR(99)    NOT NULL                           COMMENT '创建人名称',
+    update_by              BIGINT         NOT NULL                           COMMENT '修改人',
+    update_by_name         VARCHAR(99)    NOT NULL                           COMMENT '修改人名称',
+    create_time            DATETIME       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    update_time            DATETIME       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    user_realname          VARCHAR(50)    NOT NULL                           COMMENT '用户真实姓名',
+    INDEX idx_tenantId_email(tenant_id, email),
+    UNIQUE INDEX unique_tenantId_userId(tenant_id, user_id)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_UNICODE_CI COMMENT='渠道信息表';
 ```
 
 ## 存储过程
@@ -87,7 +96,7 @@ CALL task_updatetime_fix();
 ```sql
 ALTER TABLE t_account COMMENT '账户信息表';
 ALTER TABLE t_account CHANGE COLUMN money_total money_max VARCHAR(50) COMMENT '总额度';
-ALTER TABLE t_account MODIFY COLUMN money_max DECIMAL(16,4) NOT NULL COMMENT '最高额度，单位：元';
+ALTER TABLE t_account MODIFY COLUMN money_max DECIMAL(16,6) NOT NULL COMMENT '最高额度，单位：元';
 ALTER TABLE t_account ADD    COLUMN money_type TINYINT(1) COMMENT '金额类型：1--RMB，2--USD' AFTER id;
 ALTER TABLE t_account DROP   COLUMN money_type;
 
