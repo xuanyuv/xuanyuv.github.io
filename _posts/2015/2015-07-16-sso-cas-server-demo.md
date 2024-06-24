@@ -43,7 +43,7 @@ excerpt: 主要描述单点登录CAS-4.0.3服务端搭建方法，以及源码�
 
 1、[https://github.com/Jasig/cas/releases](https://github.com/Jasig/cas/releases)中下载最新版4.0.3得到cas-4.0.3.zip，并解压到桌面
 
-2、执行命令：C:\Users\Jadyer\Desktop\cas-4.0.3>mvn install -DskipTests
+2、执行命令：C:\Users\xuanyu\Desktop\cas-4.0.3>mvn install -DskipTests
 
 在构建最后，会报告下面的错误
 

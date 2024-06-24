@@ -23,26 +23,26 @@ excerpt: 一些常用的Git用法，诸如还原、冲突、仓库迁移、拉�
 
 ```bash
 # 全局配置，Github默认使用此配置，执行完后可在 ~/.gitconfig 文件中看到设置的用户信息
-$ git config --global user.name 'jadyer' && git config --global user.email 'jadyer@yeah.net'
+$ git config --global user.name 'xuanyuv' && git config --global user.email 'xuanyuv@163.com'
 # 局部配置，每个项目都需在项目源码的 .git 目录下执行，执行完后可在 .git/config 文件中看到设置的用户信息
 $ git config --local user.name 'xuanyu' && git config --local user.email 'xuanyu@company.com'
 
 # 生成供 gitee 使用的 ssh key
-$ ssh-keygen -t rsa -f ~/.ssh/id_rsa.gitee -C "jadyer@yeah.net"
+$ ssh-keygen -t rsa -f ~/.ssh/id_rsa.gitee -C "xuanyuv@163.com"
 # 生成供 gitlab 使用的 ssh key
 $ ssh-keygen -t rsa -f ~/.ssh/id_rsa.gitlab -C "xuanyu@company.com"
 # 生成供 github 使用的默认的 ssh key
-$ ssh-keygen -t rsa -C "jadyer@yeah.net"
+$ ssh-keygen -t rsa -C "xuanyuv@163.com"
 ```
 
-再看 **~/.ssh/** 目录下（Windows一般为 `C:\Users\Jadyer\.ssh\`）有没有config文件
+再看 **~/.ssh/** 目录下（Windows一般为 `C:\Users\xuanyu\.ssh\`）有没有config文件
 
 若没有，就新建 `touch ~/.ssh/config`，并添加如下内容
 
 ```bash
 Host gitee.com
      IdentityFile ~/.ssh/id_rsa.gitee
-     User jadyer
+     User xuanyuv
 
 Host gitlab.company.com
      IdentityFile ~/.ssh/id_rsa.gitlab
@@ -55,10 +55,10 @@ Host gitlab.company.com
 
 ```bash
 $ ssh -T git@github.com
-Hi jadyer! You've successfully authenticated, but GitHub does not provide shell access.
+Hi xuanyuv! You've successfully authenticated, but GitHub does not provide shell access.
 
 $ ssh -T git@gitee.com
-Hi 玄玉! You've successfully authenticated, but GITEE.COM does not provide shell access.
+Hi 玄玉(@xuanyuv)! You've successfully authenticated, but GITEE.COM does not provide shell access.
 
 $ ssh -T git@gitlab.company.com
 Welcome to GitLab, 玄玉!

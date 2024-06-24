@@ -19,7 +19,7 @@ auth文件夹的存放位置如下
 
 ```ruby
 #Win7
-C:\Users\Jadyer\AppData\Roaming\Subversion\auth
+C:\Users\xuanyu\AppData\Roaming\Subversion\auth
 #WinXP
 C:\Documents and Settings\Jadyer\Application Data\Subversion\auth
 ```

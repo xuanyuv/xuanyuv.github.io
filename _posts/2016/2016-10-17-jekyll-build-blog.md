@@ -36,7 +36,7 @@ ruby 3.0.3p157 (2021-11-24 revision 3fb7d2cadc) [x64-mingw32]
 接着解压压缩包到桌面，并在命令提示符中执行安装命令
 
 ```
-C:\Users\Jadyer\Desktop\rubygems-3.3.3>ruby setup.rb
+C:\Users\xuanyu\Desktop\rubygems-3.3.3>ruby setup.rb
   Successfully built RubyGem
   Name: bundler
   Version: 2.3.3
@@ -177,7 +177,7 @@ D:\Develop\Code\Jekyll\myblog>jekyll serve --watch
 本地启动时，可能会报告下面的错误
 
 ```
-C:\Users\Jadyer\Desktop\jadyer.github.io>jekyll s
+C:\Users\xuanyu\Desktop\jadyer.github.io>jekyll s
 Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
   Dependency Error: Yikes! It looks like you don't have jekyll-paginate or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. If you've run Jekyll with `bundle exec`, ensure that you have included the jekyll-paginate gem in your Gemfile as well. The full error message from Ruby is: 'cannot load such file -- jekyll-paginate' If you run into trouble, you can find helpful resources at https://jekyllrb.com/help/!
                     ------------------------------------------------
@@ -188,7 +188,7 @@ Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
 ...
 ...
 
-C:\Users\Jadyer\Desktop\jadyer.github.io>
+C:\Users\xuanyu\Desktop\jadyer.github.io>
 ```
 
 这是因为 Jekyll 中默认安装已没有此分页组件，[官方将其插件化了](https://jekyllrb.com/docs/pagination/)，故需独立安装
