@@ -90,7 +90,7 @@ alias ipv6 off
 # Git 工作时要调用 curl/zlib/openssl/expat/libiconv 等库的代码，所以要先安装这些依赖
 [root@dev backup]# yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
 [root@dev backup]# wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.45.2.tar.gz
-[root@dev backup]# tar zxvf git-2.45.2.tar.gz
+[root@dev backup]# tar zxvf git-2.45.2.tar.gz # sha256：98b26090ed667099a3691b93698d1e213e1ded73d36a2fde7e9125fce28ba234
 [root@dev backup]# cd git-2.45.2/
 [root@dev git-2.45.2]# make prefix=/app/software/git-2.45.2 all
 [root@dev git-2.45.2]# make prefix=/app/software/git-2.45.2 install
