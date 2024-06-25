@@ -41,13 +41,13 @@ AJP协议是为Tomcat与HTTP服务器之间通信而定制的协议，能够提�
 2. 安装过程中若提示autoconf或libtool not found，那么`yum -y install autoconf或libtool`即可
 
 ```sh
-[root@CentOS64 software]# tar zxvf tomcat-connectors-1.2.40-src.tar.gz 
-[root@CentOS64 software]# cd tomcat-connectors-1.2.40-src/native/ 
-[root@CentOS64 native]# ./buildconf.sh 
-[root@CentOS64 native]# ./configure --with-apxs=/app/apache/bin/apxs 
-[root@CentOS64 native]# make 
-[root@CentOS64 native]# make install 
-[root@CentOS64 native]# ll /app/apache/modules/
+[root@dev software]# tar zxvf tomcat-connectors-1.2.40-src.tar.gz 
+[root@dev software]# cd tomcat-connectors-1.2.40-src/native/ 
+[root@dev native]# ./buildconf.sh 
+[root@dev native]# ./configure --with-apxs=/app/apache/bin/apxs 
+[root@dev native]# make 
+[root@dev native]# make install 
+[root@dev native]# ll /app/apache/modules/
 ```
 
 ## 配置Tomcat

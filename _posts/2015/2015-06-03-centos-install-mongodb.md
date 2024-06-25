@@ -40,13 +40,13 @@ excerpt: 详细介绍了在CentOS-6.4-minimal版本中，安装MongoDB-x86_64-3.
 [Jadyer@CentOS64 ~]$ cd /app/software/
 [Jadyer@CentOS64 software]$ tar zxvf mongodb-linux-x86_64-3.0.2.tgz
 [Jadyer@CentOS64 software]$ mv mongodb-linux-x86_64-3.0.2 /app/mongodb-3.0.2
-[root@CentOS64 ~]# vim /etc/profile
+[root@dev ~]# vim /etc/profile
                       #Set MongoDB Environment Variable
                       MONGODB_HOME=/app/mongodb-3.0.2
                       PATH=$PATH:$MONGODB_HOME/bin
                       export MONGODB_HOME PATH
-[root@CentOS64 ~]# source /etc/profile
-[root@CentOS64 ~]# mongod -version
+[root@dev ~]# source /etc/profile
+[root@dev ~]# mongod -version
 [Jadyer@CentOS64 ~]$ mongod -version
 ```
 
@@ -80,8 +80,8 @@ mongo 127.0.0.1:27017/admin
 * 3、先要用`root`用户执行下面两个命令，否则启动后，客户端连接时会有警告提示
 
 ```
-[root@CentOS64 Jadyer]# echo "never" > /sys/kernel/mm/transparent_hugepage/enabled
-[root@CentOS64 Jadyer]# echo "never" > /sys/kernel/mm/transparent_hugepage/defrag
+[root@dev Jadyer]# echo "never" > /sys/kernel/mm/transparent_hugepage/enabled
+[root@dev Jadyer]# echo "never" > /sys/kernel/mm/transparent_hugepage/defrag
 ```
 
 * 4、使用`wiredTiger`引擎时，需加`directoryperdb`参数让数据库分文件夹，不然小文件太多，比如下面

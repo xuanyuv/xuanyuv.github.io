@@ -22,13 +22,13 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现负
 1. 修改端口（由于我是在一台机器上复制多个tomcat，所以需要修改端口，如果是不同的机器就可以跳过这一步）
 
     > ```sh
-[root@CentOS64 app]# vi tomcat/conf/server.xml  # 修改8005为-1，原因详见https://jadyer.cn/2014/09/27/tomcat-telnet-shutdown/
-[root@CentOS64 app]# cp -a tomcat tomcat1
-[root@CentOS64 app]# cp -a tomcat tomcat2
-[root@CentOS64 app]# cp -a tomcat tomcat3
-[root@CentOS64 app]# vi tomcat1/conf/server.xml # 修改ssl端口和ajp端口为8543和8109，即分别+100
-[root@CentOS64 app]# vi tomcat2/conf/server.xml # 修改ssl端口和ajp端口为8643和8209，即分别+200
-[root@CentOS64 app]# vi tomcat3/conf/server.xml # 修改ssl端口和ajp端口为8743和8309，即分别+300
+[root@dev app]# vi tomcat/conf/server.xml  # 修改8005为-1，原因详见https://jadyer.cn/2014/09/27/tomcat-telnet-shutdown/
+[root@dev app]# cp -a tomcat tomcat1
+[root@dev app]# cp -a tomcat tomcat2
+[root@dev app]# cp -a tomcat tomcat3
+[root@dev app]# vi tomcat1/conf/server.xml # 修改ssl端口和ajp端口为8543和8109，即分别+100
+[root@dev app]# vi tomcat2/conf/server.xml # 修改ssl端口和ajp端口为8643和8209，即分别+200
+[root@dev app]# vi tomcat3/conf/server.xml # 修改ssl端口和ajp端口为8743和8309，即分别+300
 ```
 
 2. 修改/app/apache/conf/workers.properties，修改后的内容如下

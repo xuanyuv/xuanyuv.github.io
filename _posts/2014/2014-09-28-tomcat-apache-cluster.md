@@ -47,9 +47,9 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现集
 ```sh
 # You should set jvmRoute to support load-balancing via AJP ie :
 # <Engine name="Catalina" defaultHost="localhost" jvmRoute="jvm1">
-[root@CentOS64 app]# vi /app/tomcat1/conf/server.xml # 为<Engine/>节点增加jvmRoute属性，属性值为tomcat1
-[root@CentOS64 app]# vi /app/tomcat2/conf/server.xml # 为<Engine/>节点增加jvmRoute属性，属性值为tomcat2
-[root@CentOS64 app]# vi /app/tomcat3/conf/server.xml # 为<Engine/>节点增加jvmRoute属性，属性值为tomcat3
+[root@dev app]# vi /app/tomcat1/conf/server.xml # 为<Engine/>节点增加jvmRoute属性，属性值为tomcat1
+[root@dev app]# vi /app/tomcat2/conf/server.xml # 为<Engine/>节点增加jvmRoute属性，属性值为tomcat2
+[root@dev app]# vi /app/tomcat3/conf/server.xml # 为<Engine/>节点增加jvmRoute属性，属性值为tomcat3
 ```
 
 ## 配置集群参数

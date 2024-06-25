@@ -36,9 +36,9 @@ ls: 无法访问/usr/sbin/smartctl: 没有那个文件或目录  /usr/sbin/smart
 听一个DBA说：如果报smartctl找不到，就需要先安装smartmontools（Linux系统光盘自带的），之后再安装cvuqdisk
 
 ```sh
-[root@CentOS64 sbin]# yum install -y smartmontools
-[root@CentOS64 sbin]# cd /app
-[root@CentOS64 app]# rpm -ivh cvuqdisk-1.0.9-1.rpm
+[root@dev sbin]# yum install -y smartmontools
+[root@dev sbin]# cd /app
+[root@dev app]# rpm -ivh cvuqdisk-1.0.9-1.rpm
 ```
 
 最后辗转找到`runcluvfy.sh`和`cvuqdisk-1.0.9-1.rpm`俩文件，安装后再执行`./runInstaller`
@@ -108,13 +108,13 @@ Oracle-11.2.0.4.0-Linux-x86_64安装包共有7个文件，其中`1of7`和`2of7`�
 ### 创建组和用户
 
 ```sh
-[root@CentOS64 ~]# groupadd oinstall                 (创建一个名为oinstall的组，也可以用别的名字，只是习惯性用oinstall而已)
-[root@CentOS64 ~]# groupadd dba                      (创建一个名为dba的组)
-[root@CentOS64 ~]# useradd -g oinstall -G dba oracle (创建一个名为oracle的用户，其主组为oinstall，其副组为dba)
-[root@CentOS64 ~]# passwd oracle                     (设置用户oracle的登录密码，这里设为22)
-[root@CentOS64 ~]# chown -R oracle:oinstall /app     (修改/app目录的拥有着，这里/app目录是我提前创建的)
-[root@CentOS64 ~]# yum install -y unzip              (CentOS-6.4-minimal系统中默认是没有unzip包的)
-[root@CentOS64 ~]# su - oracle                       (切换到oracle用户)
+[root@dev ~]# groupadd oinstall                 (创建一个名为oinstall的组，也可以用别的名字，只是习惯性用oinstall而已)
+[root@dev ~]# groupadd dba                      (创建一个名为dba的组)
+[root@dev ~]# useradd -g oinstall -G dba oracle (创建一个名为oracle的用户，其主组为oinstall，其副组为dba)
+[root@dev ~]# passwd oracle                     (设置用户oracle的登录密码，这里设为22)
+[root@dev ~]# chown -R oracle:oinstall /app     (修改/app目录的拥有着，这里/app目录是我提前创建的)
+[root@dev ~]# yum install -y unzip              (CentOS-6.4-minimal系统中默认是没有unzip包的)
+[root@dev ~]# su - oracle                       (切换到oracle用户)
 [oracle@CentOS64 ~]$ cd /app/                        (切换到/app目录，然后解压Oracle安装包)
 [oracle@CentOS64 app]# unzip /app/software/p13390677_112040_Linux-x86-64_1of7.zip
 [oracle@CentOS64 app]# unzip /app/software/p13390677_112040_Linux-x86-64_2of7.zip
@@ -137,10 +137,10 @@ DISPLAY指向的IP就是我的win7的IP（确切来说是网关的地址），�
 当然前提是在执行`./runInstaller`命令前，先在Windows下启动Xmanager-Passive
 
 ```sh
-[root@CentOS64 ~]# hostname                          (查看主机名，得到：CentOS64)
-[root@CentOS64 ~]# vi /etc/hosts                     (在hosts中加上"192.168.0.103 CentOS64"映射，该IP是ifconfig得到的)
-[root@CentOS64 ~]# vi /etc/selinux/config            (设置SELINUX=disabled，即关掉安全增强工具，然后最好reboot重启一下)
-[root@CentOS64 ~]# su - oracle                       (切换到oracle用户)
+[root@dev ~]# hostname                          (查看主机名，得到：CentOS64)
+[root@dev ~]# vi /etc/hosts                     (在hosts中加上"192.168.0.103 CentOS64"映射，该IP是ifconfig得到的)
+[root@dev ~]# vi /etc/selinux/config            (设置SELINUX=disabled，即关掉安全增强工具，然后最好reboot重启一下)
+[root@dev ~]# su - oracle                       (切换到oracle用户)
 [oracle@CentOS64 ~]$ pwd                             (列出当前目录，即：/home/oracle)
 [oracle@CentOS64 ~]$ ls -la                          (-a表示显示隐藏文件，这里我们会发现一个名为".bash_profile"的隐藏文件)
 [oracle@CentOS64 ~]$ vi .bash_profile                (编辑.bash_profile，这样oracle用户登录时就会按照此文件设置的去执行)
@@ -196,7 +196,7 @@ Oracle文档上都有描述，地址为[http://docs.oracle.com/cd/E11882_01/inst
 在上个页面的`2.13.1`章节**Displaying and Changing Kernel Parameter Values**描述了需要修改的内核参数
 
 ```sh
-[root@CentOS64 ~]# vi /etc/sysctl.conf     (将以下配置拷到sysctl.conf文件末尾)
+[root@dev ~]# vi /etc/sysctl.conf     (将以下配置拷到sysctl.conf文件末尾)
 fs.aio-max-nr = 1048576
 fs.file-max = 6815744
 kernel.shmall = 2097152
@@ -208,8 +208,8 @@ net.core.rmem_default = 262144
 net.core.rmem_max = 4194304
 net.core.wmem_default = 262144
 net.core.wmem_max = 1048576
-[root@CentOS64 ~]# sysctl -p
-[root@CentOS64 ~]#
+[root@dev ~]# sysctl -p
+[root@dev ~]#
 ```
 
 这样，上面修改的内核参数就生效了，我们可以使用`sysctl -a | grep net.core.wmem_max`命令查看
@@ -221,7 +221,7 @@ net.core.wmem_max = 1048576
 在上个页面的`2.12`章节**Checking Resource Limits for the Oracle Software Installation Users**描述了需要修改的资源限制参数
 
 ```sh
-[root@CentOS64 oracle]# vi /etc/security/limits.conf  (将以下配置拷到sysctl.conf文件末尾，然后保存即可)
+[root@dev oracle]# vi /etc/security/limits.conf  (将以下配置拷到sysctl.conf文件末尾，然后保存即可)
 oracle           hard    nofile          65536
 oracle           hard    nproc           16384
 oracle           soft    nproc           2047
@@ -340,18 +340,18 @@ Linux中安装完Oracle后，默认的`sqlplus`上下键是不能用的，安装
 下面演示的是源码安装的过程
 
 ```sh
-[root@CentOS64 software]# tar zxvf rlwrap-0.37.tar.gz
-[root@CentOS64 software]# cd rlwrap-0.37
-[root@CentOS64 rlwrap-0.37]# ./configure && make && make install (本为三步操作，这里用&&符号连接成一步操作)
-[root@CentOS64 rlwrap-0.37]# rlwrap -v                           (输出rlwrap 0.37表明安装成功)
+[root@dev software]# tar zxvf rlwrap-0.37.tar.gz
+[root@dev software]# cd rlwrap-0.37
+[root@dev rlwrap-0.37]# ./configure && make && make install (本为三步操作，这里用&&符号连接成一步操作)
+[root@dev rlwrap-0.37]# rlwrap -v                           (输出rlwrap 0.37表明安装成功)
 ```
 
 配置方式如下
 
 ```sh
-[root@CentOS64 rlwrap-0.37]# which rlwrap
+[root@dev rlwrap-0.37]# which rlwrap
 /usr/local/bin/rlwrap
-[root@CentOS64 rlwrap-0.37]# su - oracle
+[root@dev rlwrap-0.37]# su - oracle
 [oracle@CentOS64 ~]$ vi .bash_profile
 在.bash_profile最后一行加上alias sqlplus='rlwrap sqlplus'即可
 表明以后执行sqlplus命令时自动执行rlwrap sqlplus命令，这样RLwrap就生效了

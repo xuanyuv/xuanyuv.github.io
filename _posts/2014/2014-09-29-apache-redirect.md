@@ -53,12 +53,12 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 ```sh
 # /app/apache/是Apache的安装目录
 # /app/software/httpd-2.2.29/是Apache的源码目录
-[root@CentOS64 ~]# cd /app/software/httpd-2.2.29/modules/proxy/
+[root@dev ~]# cd /app/software/httpd-2.2.29/modules/proxy/
 # -c 执行编译操作
 # -i 执行安装操作（它可以将生成的so文件自动放到/app/apache/modules/目录中）
 # -a 在/app/apache/conf/httpd.conf文件中自动增加一个LoadModule以激活此模块，若已存在此LoadModule则取消其注释直接启动该模块
-[root@CentOS64 proxy]# /app/apache/bin/apxs -c -i -a mod_proxy.c proxy_util.c 
-[root@CentOS64 proxy]# /app/apache/bin/apxs -c -i -a mod_proxy_http.c proxy_util.c
+[root@dev proxy]# /app/apache/bin/apxs -c -i -a mod_proxy.c proxy_util.c 
+[root@dev proxy]# /app/apache/bin/apxs -c -i -a mod_proxy_http.c proxy_util.c
 ```
 
 然后修改 /app/apache/conf/httpd.conf 文件，取消注释`Include conf/extra/httpd-vhosts.conf`

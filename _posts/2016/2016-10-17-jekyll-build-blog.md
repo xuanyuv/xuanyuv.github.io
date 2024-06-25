@@ -258,3 +258,201 @@ call jekyll s --watch
 gcore.jsdelivr.net<br/>
 fastly.jsdelivr.net<br/>
 testingcf.jsdelivr.net
+
+## Linux安装Ruby和Jekyll
+
+### Ruby
+
+这里是通过源码来编译安装
+
+首先下载 21MB 大小的 [ruby-3.3.3.tar.gz](https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.3.tar.gz)，官方地址下载的有点慢，[可以在这下载](https://cache.ruby-china.com/pub/ruby/3.3/ruby-3.3.3.tar.xz)
+
+然后校验下文件的 sha256：83c05b2177ee9c335b631b29b8c077b4770166d02fa527f3a9f6a40d13f3cce2
+
+```shell
+[root@dev ~]# yum install -y openssl openssl-devel libyaml-devel
+[root@dev ~]# cd /app/software/backup/
+[root@dev backup]# tar zxvf ruby-3.3.3.tar.gz
+[root@dev backup]# cd ruby-3.3.3/
+[root@dev ruby-3.3.3]# ./configure --prefix=/app/software/ruby-3.3.3 --with-openssl-dir=/usr/bin/openssl
+[root@dev ruby-3.3.3]# ./configure --prefix=/app/software/ruby-3.3.3 --with-openssl-dir=/etc/pki/tls
+[root@dev ruby-3.3.3]# make && make install
+Installing to 
+installing binary commands:         /app/software/ruby-3.3.3/bin
+installing base libraries:          /app/software/ruby-3.3.3/lib
+installing default gems from lib:   /app/software/ruby-3.3.3/lib/ruby/gems/3.3.0
+installing default gems from ext:   /app/software/ruby-3.3.3/lib/ruby/gems/3.3.0
+installing bundled gems:            /app/software/ruby-3.3.3/lib/ruby/gems/3.3.0
+installing bundled gem cache:       /app/software/ruby-3.3.3/lib/ruby/gems/3.3.0/cache
+[root@dev ruby-3.3.3]# cd ..
+[root@dev backup]# rm -rf ruby-3.3.3
+[root@dev backup]# vim /etc/profile
+                   # Set Ruby Environment Variable
+                   RUBY_HOME=/app/software/ruby-3.3.3
+                   PATH=$RUBY_HOME/bin:$RUBY_HOME/lib:$PATH
+                   export RUBY_HOME PATH
+[root@dev backup]# source /etc/profile
+[root@dev backup]# ruby -v
+ruby 3.3.3 (2024-06-12 revision f1c7b6f435) [x86_64-linux]
+[root@dev backup]# gem -v
+3.5.11
+[root@dev backup]#
+```
+
+
+
+
+
+
+openssl version -a
+
+
+It seems your ruby installation is missing psych (for YAML output).
+To eliminate this warning, please install libyaml and reinstall your ruby.
+https://pyyaml.org/download/libyaml/
+https://pyyaml.org/download/libyaml/yaml-0.2.5.tar.gz
+
+[root@dev03 backup]# tar zxvf yaml-0.2.5.tar.gz
+[root@dev03 backup]# cd yaml-0.2.5/
+[root@dev03 yaml-0.2.5]# ./configure & make & make install
+
+
+
+yum install libyaml-devel
+
+
+
+
+```shell
+[root@dev03 ~]# yum install -y ruby
+[root@dev03 ~]# ruby -v
+ruby 2.0.0p648 (2015-12-16) [x86_64-linux]
+[root@dev03 ~]# gem -v
+2.0.14.1
+[root@dev03 ~]# gem sources -l                              # 查看当前源
+*** CURRENT SOURCES ***
+https://rubygems.org/
+[root@dev03 ~]# gem sources -a https://gems.ruby-china.com/ # 增加源
+[root@dev03 ~]# gem sources --remove https://rubygems.org/  # 删除原有源
+[root@dev03 ~]# gem sources -l                              # 查看当前源
+*** CURRENT SOURCES ***
+https://gems.ruby-china.com/
+[root@dev03 ~]# gem install jekyll
+Fetching: public_suffix-5.0.5.gem (100%)
+ERROR:  Error installing jekyll:
+public_suffix requires Ruby version >= 2.6.
+[root@dev03 ~]#
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```shell
+[root@dev ~]# yum install -y libyaml-devel perl-IPC-Cmd
+[root@dev ~]# cd /app/software/backup/
+[root@dev03 backup]# tar zxvf openssl-3.0.14.tar.gz
+[root@dev03 backup]# cd openssl-3.0.14/
+[root@dev03 openssl-3.0.14]# ./config --prefix=/app/software/openssl-3.0.14
+[root@dev03 openssl-3.0.14]# make & make install
+[root@dev03 openssl-3.0.14]# /app/software/openssl-3.0.14/bin/openssl version
+
+
+
+[root@dev backup]# tar zxvf ruby-3.3.3.tar.gz
+[root@dev backup]# cd ruby-3.3.3/
+[root@dev ruby-3.3.3]# ./configure --prefix=/app/software/ruby-3.3.3 --with-openssl-dir=/app/software/openssl-3.0.14
+[root@dev ruby-3.3.3]# ./configure --prefix=/app/software/ruby-3.3.3 --with-openssl-dir=/etc/pki/tls
+[root@dev ruby-3.3.3]# make && make install
+Installing to 
+installing binary commands:         /app/software/ruby-3.3.3/bin
+installing base libraries:          /app/software/ruby-3.3.3/lib
+installing default gems from lib:   /app/software/ruby-3.3.3/lib/ruby/gems/3.3.0
+installing default gems from ext:   /app/software/ruby-3.3.3/lib/ruby/gems/3.3.0
+installing bundled gems:            /app/software/ruby-3.3.3/lib/ruby/gems/3.3.0
+installing bundled gem cache:       /app/software/ruby-3.3.3/lib/ruby/gems/3.3.0/cache
+[root@dev ruby-3.3.3]# cd ..
+[root@dev backup]# rm -rf ruby-3.3.3
+[root@dev backup]# vim /etc/profile
+                   # Set Ruby Environment Variable
+                   RUBY_HOME=/app/software/ruby-3.3.3
+                   PATH=$RUBY_HOME/bin:$RUBY_HOME/lib:$PATH
+                   export RUBY_HOME PATH
+[root@dev backup]# source /etc/profile
+[root@dev backup]# ruby -v
+ruby 3.3.3 (2024-06-12 revision f1c7b6f435) [x86_64-linux]
+[root@dev backup]# gem -v
+3.5.11
+[root@dev backup]#
+```
+
+
+
+
+
+
+
+
+
+
+

@@ -38,50 +38,50 @@ CMake（cross platform make）的特性是独立于源码编译，编译工作�
 这里，我们下载到 cmake-3.0.2.tar.gz，安装步骤如下
 
 ```sh
-[root@CentOS64 software]# cmake -version                  # 我们会发现没有输出，说明本机并未安装cmake
-[root@CentOS64 software]# yum list cmake --showduplicates # 查看yum可安装的软件包版本，会看到只能安装cmake-2.6.4-5.el6版本，故舍弃
-[root@CentOS64 software]# yum -y install gcc gcc-c++      # 安装必要的编译环境
-[root@CentOS64 software]# yum -y install autoconf libtool # 安装必要的编译环境
-[root@CentOS64 software]# yum -y install ncurses-devel    # 安装必要的编译环境（这是配置MySQL环境变量时要用的库，这里一起安装了）
-[root@CentOS64 software]# tar zxvf cmake-3.0.2.tar.gz     # 解压cmake-3.0.2源码
-[root@CentOS64 software]# cd cmake-3.0.2                  # 进入cmake-3.0.2源码目录
-[root@CentOS64 cmake-3.0.2]# ./bootstrap                  # 成功时，会提示CMake has bootstrapped.  Now run gmake.
-[root@CentOS64 cmake-3.0.2]# gmake                        # 执行编译
-[root@CentOS64 cmake-3.0.2]# gmake install                # 执行安装
-[root@CentOS64 cmake-3.0.2]# cd ~                         # 退出cmake-3.0.2源码目录
-[root@CentOS64 ~]# rm -rf /app/software/cmake-3.2.0*      # 删除cmake-3.0.2源码
-[root@CentOS64 ~]# cmake -version                         # 验证cmake-3.0.2安装结果
+[root@dev software]# cmake -version                  # 我们会发现没有输出，说明本机并未安装cmake
+[root@dev software]# yum list cmake --showduplicates # 查看yum可安装的软件包版本，会看到只能安装cmake-2.6.4-5.el6版本，故舍弃
+[root@dev software]# yum -y install gcc gcc-c++      # 安装必要的编译环境
+[root@dev software]# yum -y install autoconf libtool # 安装必要的编译环境
+[root@dev software]# yum -y install ncurses-devel    # 安装必要的编译环境（这是配置MySQL环境变量时要用的库，这里一起安装了）
+[root@dev software]# tar zxvf cmake-3.0.2.tar.gz     # 解压cmake-3.0.2源码
+[root@dev software]# cd cmake-3.0.2                  # 进入cmake-3.0.2源码目录
+[root@dev cmake-3.0.2]# ./bootstrap                  # 成功时，会提示CMake has bootstrapped.  Now run gmake.
+[root@dev cmake-3.0.2]# gmake                        # 执行编译
+[root@dev cmake-3.0.2]# gmake install                # 执行安装
+[root@dev cmake-3.0.2]# cd ~                         # 退出cmake-3.0.2源码目录
+[root@dev ~]# rm -rf /app/software/cmake-3.2.0*      # 删除cmake-3.0.2源码
+[root@dev ~]# cmake -version                         # 验证cmake-3.0.2安装结果
 ```
 
 ## 安装MySQL
 
 ```sh
-[root@CentOS64 ~]# groupadd -r mysql
-[root@CentOS64 ~]# useradd -r -s /sbin/nologin -M -g mysql mysql
-[root@CentOS64 ~]# mkdir -pv /app/mysql
-[root@CentOS64 ~]# mkdir -pv /app/mysql_data
-[root@CentOS64 ~]# chown -R mysql:mysql /app/mysql_data
-[root@CentOS64 ~]# tar zxvf /app/software/mysql-5.5.38.tar.gz
-[root@CentOS64 ~]# cd mysql-5.5.38/
-[root@CentOS64 mysql-5.5.38]# cmake . -DCMAKE_INSTALL_PREFIX=/app/mysql -DMYSQL_DATADIR=/app/mysql_data -DSYSCONFDIR=/etc -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_READLINE=1 -DWITH_ZLIB=system -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci
-[root@CentOS64 mysql-5.5.38]# make
-[root@CentOS64 mysql-5.5.38]# make install
+[root@dev ~]# groupadd -r mysql
+[root@dev ~]# useradd -r -s /sbin/nologin -M -g mysql mysql
+[root@dev ~]# mkdir -pv /app/mysql
+[root@dev ~]# mkdir -pv /app/mysql_data
+[root@dev ~]# chown -R mysql:mysql /app/mysql_data
+[root@dev ~]# tar zxvf /app/software/mysql-5.5.38.tar.gz
+[root@dev ~]# cd mysql-5.5.38/
+[root@dev mysql-5.5.38]# cmake . -DCMAKE_INSTALL_PREFIX=/app/mysql -DMYSQL_DATADIR=/app/mysql_data -DSYSCONFDIR=/etc -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_READLINE=1 -DWITH_ZLIB=system -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci
+[root@dev mysql-5.5.38]# make
+[root@dev mysql-5.5.38]# make install
 ```
 
 ## 配置MySQL
 
 ```sh
-[root@CentOS64 ~]# cd /app/mysql/support-files/
-[root@CentOS64 support-files]# cp my-large.cnf /etc/my.conf       # 拷贝配置文件
-[root@CentOS64 support-files]# cp mysql.server /etc/init.d/mysqld # 拷贝启动脚本
-[root@CentOS64 support-files]# chmod +x /etc/init.d/mysqld        # 赋予可执行权限
-[root@CentOS64 support-files]# chkconfig --add mysqld             # 加入系统服务
-[root@CentOS64 support-files]# chkconfig mysqld on                # 开机启动
-[root@CentOS64 support-files]# vi /etc/profile.d/mysql.sh         # 手动创建，添加内容为：export PATH=$PATH:/app/mysql/bin
-[root@CentOS64 support-files]# source /etc/profile.d/mysql.sh     # 执行一遍
-[root@CentOS64 support-files]# echo $PATH                         # 查看结果
-[root@CentOS64 support-files]# cd /app/mysql                      # 进入MySQL主目录
-[root@CentOS64 mysql]# bin/mysql_secure_installation              # 会提示设置root密码，是否移除匿名用户，是否禁止root远程登录等等
+[root@dev ~]# cd /app/mysql/support-files/
+[root@dev support-files]# cp my-large.cnf /etc/my.conf       # 拷贝配置文件
+[root@dev support-files]# cp mysql.server /etc/init.d/mysqld # 拷贝启动脚本
+[root@dev support-files]# chmod +x /etc/init.d/mysqld        # 赋予可执行权限
+[root@dev support-files]# chkconfig --add mysqld             # 加入系统服务
+[root@dev support-files]# chkconfig mysqld on                # 开机启动
+[root@dev support-files]# vi /etc/profile.d/mysql.sh         # 手动创建，添加内容为：export PATH=$PATH:/app/mysql/bin
+[root@dev support-files]# source /etc/profile.d/mysql.sh     # 执行一遍
+[root@dev support-files]# echo $PATH                         # 查看结果
+[root@dev support-files]# cd /app/mysql                      # 进入MySQL主目录
+[root@dev mysql]# bin/mysql_secure_installation              # 会提示设置root密码，是否移除匿名用户，是否禁止root远程登录等等
 ```
 
 然后修改配置文件`/etc/my.cnf`
@@ -108,9 +108,9 @@ skip-name-resolve
 然后再执行以下命令
 
 ```sh
-[root@CentOS64 ~]# service mysqld start 
-[root@CentOS64 ~]# netstat -tlanop | grep :3306 
-[root@CentOS64 ~]# mysql -uroot -pxuanyu
+[root@dev ~]# service mysqld start 
+[root@dev ~]# netstat -tlanop | grep :3306 
+[root@dev ~]# mysql -uroot -pxuanyu
 ```
 
 ## 注意事项
@@ -122,9 +122,9 @@ skip-name-resolve
 4. 如果在cmake配置环境的过程中出错，比如提示**ncurses-devel not found**<br>
    那么yum install之后，想重新配置环境时，要先清除旧的对象文件和缓存信息，执行命令如下<br>
    ```sh
-   [root@CentOS64 mysql-5.5.38]# make clean
-   [root@CentOS64 mysql-5.5.38]# rm -f CMakeCache.txt
-   [root@CentOS64 mysql-5.5.38]# rm -rf /etc/my.cnf
+   [root@dev mysql-5.5.38]# make clean
+   [root@dev mysql-5.5.38]# rm -f CMakeCache.txt
+   [root@dev mysql-5.5.38]# rm -rf /etc/my.cnf
    ```
 5. 初始化MySQL时要跟上`--basedir`和`--datadir`参数<br>
    否则会由于相对路径的关系报告FATAL ERROR: Could not find ./bin/my_print_defaults
@@ -134,7 +134,7 @@ skip-name-resolve
    注意此操作全程为root用户
 7. 安装并启动完MySQL后，默认不支持用户通过非本机的客户端连接到MySQL，解决办法如下<br>
    ```sql
-   [root@CentOS64 ~]# mysql -uroot -pxuanyu
+   [root@dev ~]# mysql -uroot -pxuanyu
    mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'xuanyu22' WITH GRANT OPTION;
    mysql> FLUSH PRIVILEGES;
    mysql> exit

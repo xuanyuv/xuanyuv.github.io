@@ -35,36 +35,44 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 ## 安装Perl5
 
 ```sh
-[root@CentOS64 software]# yum -y install wget
-[root@CentOS64 software]# wget http://www.cpan.org/src/5.0/perl-5.20.1.tar.gz
-[root@CentOS64 software]# tar zxvf perl-5.20.1.tar.gz
-[root@CentOS64 software]# cd perl-5.20.1
-[root@CentOS64 perl-5.20.1]# ./Configure -des -Dprefix=/app/perl
-[root@CentOS64 perl-5.20.1]# make
-[root@CentOS64 perl-5.20.1]# make install
-[root@CentOS64 perl-5.20.1]# perl -v
+[root@dev software]# yum -y install wget
+[root@dev software]# wget http://www.cpan.org/src/5.0/perl-5.20.1.tar.gz
+[root@dev software]# tar zxvf perl-5.20.1.tar.gz
+[root@dev software]# cd perl-5.20.1
+[root@dev perl-5.20.1]# ./Configure -des -Dprefix=/app/perl
+[root@dev perl-5.20.1]# make
+[root@dev perl-5.20.1]# make install
+[root@dev perl-5.20.1]# perl -v
 ```
 
 ## 安装OpenSSL
 
 ```sh
-[root@CentOS64 software]# tar zxvf openssl-1.0.1i.tar.gz
-[root@CentOS64 software]# cd openssl-1.0.1i
-[root@CentOS64 openssl-1.0.1i]# ./config --prefix=/app/openssl
-[root@CentOS64 openssl-1.0.1i]# make
-[root@CentOS64 openssl-1.0.1i]# make install
-[root@CentOS64 openssl-1.0.1i]# /app/openssl/bin/openssl version
+[root@dev ~]# yum install -y perl-IPC-Cmd
+[root@dev ~]# cd /app/software/backup/
+[root@dev backup]# tar zxvf openssl-3.0.14.tar.gz
+[root@dev backup]# cd openssl-3.0.14/
+[root@dev openssl-3.0.14]# ./config --prefix=/app/software/openssl-3.0.14
+[root@dev openssl-3.0.14]# make
+[root@dev openssl-3.0.14]# make install
+[root@dev openssl-3.0.14]# cd ..
+[root@dev backup]# rm -rf openssl-3.0.14
+[root@dev backup]# ln -s /app/software/openssl-3.0.14/lib64/libssl.so.3 /usr/lib64/libssl.so.3
+[root@dev backup]# ln -s /app/software/openssl-3.0.14/lib64/libcrypto.so.3 /usr/lib64/libcrypto.so.3
+[root@dev backup]# /app/software/openssl-3.0.14/bin/openssl version
+OpenSSL 3.0.14 4 Jun 2024 (Library: OpenSSL 3.0.14 4 Jun 2024)
+[root@dev backup]#
 ```
 
 ## 安装Apache
 
 ```sh
-[root@CentOS64 software]# tar zxvf httpd-2.2.29.tar.gz
-[root@CentOS64 software]# cd httpd-2.2.29
-[root@CentOS64 httpd-2.2.29]# rpm -qa | grep http
-[root@CentOS64 httpd-2.2.29]# ./configure --prefix=/app/apache --enable-ssl --with-ssl=/app/openssl
-[root@CentOS64 httpd-2.2.29]# make
-[root@CentOS64 httpd-2.2.29]# make install
+[root@dev software]# tar zxvf httpd-2.2.29.tar.gz
+[root@dev software]# cd httpd-2.2.29
+[root@dev httpd-2.2.29]# rpm -qa | grep http
+[root@dev httpd-2.2.29]# ./configure --prefix=/app/apache --enable-ssl --with-ssl=/app/openssl
+[root@dev httpd-2.2.29]# make
+[root@dev httpd-2.2.29]# make install
 ```
 
 ## 访问Apache
@@ -99,9 +107,9 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 当然前提是在 httpd.conf 中配置`Include conf/extra/httpd-ssl.conf`
 
 ```sh
-[root@CentOS64 bin]# /app/apache/bin/apachectl start
-[root@CentOS64 bin]# /app/apache/bin/apachectl restart
-[root@CentOS64 bin]# /app/apache/bin/apachectl stop
+[root@dev bin]# /app/apache/bin/apachectl start
+[root@dev bin]# /app/apache/bin/apachectl restart
+[root@dev bin]# /app/apache/bin/apachectl stop
 ```
 
 另外：Apache安装并初次启动后，常见的可能要修改以下几个地方
