@@ -20,7 +20,7 @@ MySQL 从磁盘装载数据到内存时，是以页为单位的，一次装载�
 
 下图就是 MySQL 内存里面一页数据的结构（一个页的大小固定为16KB）
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-21-mysql-page-index-01.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-21-mysql-page-index-01.png)
 
 * 页头：记录页面的控制信息，共 56 字节，包括相邻页面指针（页与页会组成一个双向链表）、页面空间使用情况等
 * 虚记录：其本身不存储数据，它记录了这一页存储的数据的范围，这样就能知道某数据有没有落在这一页<br/>
@@ -41,7 +41,7 @@ MySQL 从磁盘装载数据到内存时，是以页为单位的，一次装载�
 
 ### 顺序保证
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-21-mysql-page-index-02.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-21-mysql-page-index-02.png)
 
 如上图所示，依次插入主键为 10、9、8 的数据
 
@@ -55,11 +55,11 @@ MySQL 从磁盘装载数据到内存时，是以页为单位的，一次装载�
 
 如下图所示：
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-21-mysql-page-index-03.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-21-mysql-page-index-03.png)
 
 ### 页内查询
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-21-mysql-page-index-04.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-21-mysql-page-index-04.png)
 
 上面提到，页内的数据是一个很长的单向链表，那么实际查询的时候，若直接遍历，通常效率比较低
 
@@ -77,7 +77,7 @@ MySQL 从磁盘装载数据到内存时，是以页为单位的，一次装载�
 
 ### 聚簇索引
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-21-mysql-page-index-05.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-21-mysql-page-index-05.png)
 
 这是InnoDB聚簇索引的真实结构
 
@@ -87,7 +87,7 @@ MySQL 从磁盘装载数据到内存时，是以页为单位的，一次装载�
 
 下面换一张更形象一点的图：
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-21-mysql-page-index-06.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-21-mysql-page-index-06.png)
 
 可以看到，聚簇索引的结构：通过树的方式，往下发散节点，最后到真正内存页：主键当key，Data存在它下面
 
@@ -109,7 +109,7 @@ MySQL 从磁盘装载数据到内存时，是以页为单位的，一次装载�
 
 下面是二级索引的结构示意图：
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-21-mysql-page-index-07.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-21-mysql-page-index-07.png)
 
 它跟聚簇不一样的地方是在 Data 域上：它的 Data 存的是主键的值
 
@@ -125,7 +125,7 @@ MySQL 从磁盘装载数据到内存时，是以页为单位的，一次装载�
 
 下面是它的结构示意图：
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-21-mysql-page-index-08.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-21-mysql-page-index-08.png)
 
 其实联合索引就是从一个 key 变成多个 key，然后再定义一个比较的规则，这样就构成了联合索引
 

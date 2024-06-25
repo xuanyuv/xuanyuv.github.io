@@ -208,8 +208,7 @@ C:\Users\xuanyu>
 * page 目录是个人自定义的，一般存放站内固定的页面
 * sitemap.txt 是给搜索引擎看的，告诉它怎么爬这个站
 * index.html 是整站的入口
-
-1. Jekyll语法简单笔记：[http://github.tiankonguse.com/blog/2014/11/10/jekyll-study.html](http://github.tiankonguse.com/blog/2014/11/10/jekyll-study.html)
+* 附：Jekyll语法简单笔记：<http://github.tiankonguse.com/blog/2014/11/10/jekyll-study.html>
 
 ### 启动脚本
 
@@ -246,11 +245,9 @@ testingcf.jsdelivr.net
 
 ## Linux环境
 
-上面介绍的的 Windows 环境下的安装配置，其实 Linux 下的也不复杂，步骤也都一样
+上面介绍的的 Windows 环境下的安装配置，其实 Linux 下的也不复杂，步骤都一样
 
-### 安装Ruby和RubyGems
-
-这里是通过源码来编译安装
+这里是通过源码来编译安装的（服务器是阿里云 ECS，操作系统是 CentOS-7.9.2009）
 
 首先下载 21MB 大小的 [ruby-3.3.3.tar.gz](https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.3.tar.gz)，官方地址下载的有点慢，[可以在这下载](https://cache.ruby-china.com/pub/ruby/3.3/ruby-3.3.3.tar.xz)
 
@@ -259,8 +256,8 @@ testingcf.jsdelivr.net
 ```shell
 [root@dev backup]# yum install -y libyaml-devel # 编译 Ruby 时的依赖
 [root@dev backup]# tar zxvf ruby-3.3.3.tar.gz   # 解压 Ruby 源码包
-[root@dev backup]# cd ruby-3.3.3/               # 注意需要配置 OpenSSL
-[root@dev ruby-3.3.3]# ./configure --prefix=/app/software/ruby-3.3.3 --with-openssl-dir=/app/software/openssl-3.0.14 --with-openssl-include=/app/software/openssl-3.0.14/include/ --with-openssl-lib=/app/software/openssl-3.0.14/lib64/
+[root@dev backup]# cd ruby-3.3.3/               # 注意需要指定 OpenSSL
+[root@dev ruby-3.3.3]# ./configure --prefix=/app/software/ruby-3.3.3 --with-openssl-include=/app/software/openssl-3.0.14/include/ --with-openssl-lib=/app/software/openssl-3.0.14/lib64/
 [root@dev ruby-3.3.3]# make && make install
 # Installing to 
 # installing binary commands:         /app/software/ruby-3.3.3/bin
@@ -281,23 +278,24 @@ testingcf.jsdelivr.net
 ruby 3.3.3 (2024-06-12 revision f1c7b6f435) [x86_64-linux]
 [root@dev backup]# gem -v                                      # Ruby 自带了 RubyGems，所以不用单独安装
 3.5.11
+[root@dev backup]# vim /root/.gemrc                            # 使得 RubyGems 可以忽略 SSL 验证错误
+:ssl_verify_mode: 0
 [root@dev backup]# gem sources -a https://gems.ruby-china.com/ # 增加源
 [root@dev backup]# gem sources --remove https://rubygems.org/  # 删除原有源
 [root@dev backup]# gem sources -l                              # 查看当前源
-[root@dev backup]# vim /root/.gemrc                            # 使得 RubyGems 可以忽略 SSL 证书错误
-:ssl_verify_mode: 0
 [root@dev backup]# yum install -y "gcc-c++.x86_64"             # 下一步 install jekyll 时的 make 所需
-[root@dev backup]# gem install jekyll                          # （然后就是漫长的等待）
-# Fetching unicode-display_width-2.5.0.gem
+[root@dev backup]# gem install jekyll                          # （此过程中会提示 SLL 验证错误，不用管）
 # Fetching webrick-1.8.1.gem
+# Fetching unicode-display_width-2.5.0.gem
+# Fetching terminal-table-3.0.2.gem
 # Fetching safe_yaml-1.0.5.gem
 # ...
 # ...
+# Successfully installed webrick-1.8.1
 # Successfully installed jekyll-4.3.3
 # Parsing documentation for jekyll-4.3.3
-# Installing ri documentation for jekyll-4.3.3
-# Done installing documentation for eventmachine, em-websocket, colorator, public_suffix, addressable, jekyll after 4 seconds
-# 6 gems installed
+# Done installing documentation for webrick, unicode-display_width, terminal-table, safe_yaml, rouge, forwardable-extended, pathutil, mercenary, liquid, kramdown, kramdown-parser-gfm, ffi, rb-inotify, rb-fsevent, listen, jekyll-watch, google-protobuf, sass-embedded, jekyll-sass-converter, concurrent-ruby, i18n, http_parser.rb, eventmachine, em-websocket, colorator, public_suffix, addressable, jekyll after 17 seconds
+# 28 gems installed
 [root@dev backup]# jekyll -v                   # 打印下版本
 jekyll 4.3.3
 [root@dev backup]# gem install jekyll-paginate # 安装分页组件
@@ -309,28 +307,21 @@ jekyll 4.3.3
 # 1 gem installed
 [root@dev backup]# exit                        # 下面通过普通用户操作
 [xuanyu@dev ~]$ cd /app/www/
-[xuanyu@dev www]$ jekyll new myblog
-Running bundle install in /app/www/myblog...
+[xuanyu@dev www]$ jekyll new blog
+Running bundle install in /app/www/blog...
   Bundler: Fetching gem metadata from https://rubygems.org/............
   Bundler: Resolving dependencies...
   Bundler: Bundle complete! 7 Gemfile dependencies, 36 gems now installed.
   Bundler: Use `bundle info [gemname]` to see where a bundled gem is installed.
-New jekyll site installed in /app/www/myblog.
-[xuanyu@dev www]$ cd myblog/
-[xuanyu@dev myblog]$ jekyll serve -w --host=0.0.0.0
-
-
-
-#!/bin/bash
-cd /app/blogtest/xuanyuv/
-nohup jekyll serve -w --host=0.0.0.0 > ../xuanyuv.nohup.log 2>&1 &
+New jekyll site installed in /app/www/blog.
+[xuanyu@dev www]$ cd blog/
+[xuanyu@dev blog]$ jekyll serve -w --host=0.0.0.0
 ```
 
+最后，编写一个可以后台运行的启动脚本（没有加 --host 参数是因为有 Nginx 在前面代理）
 
-
-
-
-
-
-
-
+```shell
+#!/bin/bash
+cd /app/www/blog/
+nohup jekyll serve -w > /app/www/blog.nohup.log 2>&1 &
+```

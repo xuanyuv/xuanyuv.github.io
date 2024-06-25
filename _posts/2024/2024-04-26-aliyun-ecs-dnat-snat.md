@@ -32,11 +32,11 @@ published: true
 
 1. 创建一个跳板机的 Session（可以随便给一个名字，这里就命名为跳板机）<br/>
    再配置其隧道转发方式，使得192.168.1.1 机器侦听 2200 端口，来与 192.168.0.1 机器的 22 端口建立隧道<br/>
-   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-01.png)<br/><br/>
-   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-02.png)<br/>
+   ![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-01.png)<br/><br/>
+   ![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-02.png)<br/>
 2. 然后创建一个连接内网机器的 Session<br/>
    连接配置中的 Authentication 处填入内网机器的用户名密码或 PublicKey，就行了（不用配置隧道）<br/>
-   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-03.png)<br/>
+   ![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-03.png)<br/>
 
 实际使用时，通过 xshell 先连跳板机，再连内网机器（所以上面创建了 2 个 xshell session）
 
@@ -56,12 +56,12 @@ published: true
 具体的配置过程，同样经过 2 步：
 
 1. 创建一个跳板机的 Session，隧道转发方式也只配置一个 Dynamic (SOCKS4/5) 类型<br/>
-   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-01.png)<br/><br/>
-   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-04.png)<br/>
+   ![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-01.png)<br/><br/>
+   ![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-04.png)<br/>
 2. 然后创建一个连接内网机器的 Session<br/>
    连接地址、端口、用户名密码都配置内网机器的就行，再配置一下代理即可（不用配置隧道）<br/>
-   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-05.png)<br/><br/>
-   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-06.png)<br/>
+   ![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-05.png)<br/><br/>
+   ![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-06.png)<br/>
 
 使用时，同样通过 xshell 先连跳板机，再连内网机器（也支持 xftp 传输文件到内网机器上）
 
@@ -93,7 +93,7 @@ published: true
    systemctl restart iptables.service
    ```
 3. 在阿里云网页后台，添加自定义路由条目：<https://vpc.console.aliyun.com/vpc/cn-beijing/route-tables><br/>
-   ![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-07.png)<br/>
+   ![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-07.png)<br/>
 
 现在，192.168.0.1 就可以访问外网了，同 192.168.1.1 相比，速度几乎无影响
 
@@ -318,4 +318,4 @@ exit 0
 
 最后配置一下 Alibaba Cloud Toolkit 即可：
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-08.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2024/2024-04-26-aliyun-ecs-dnat-snat-08.png)

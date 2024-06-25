@@ -79,7 +79,7 @@ MySQL 同样支持 MVCC 理论，它是在每条记录上都添加隐藏列的�
 
 如下图所示：
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-01.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-01.png)
 
 select for update 是一个典型的当前读，它始终读取最新版本的数据
 
@@ -124,7 +124,7 @@ InnoDB 会为每个事务都构造一个数组，用来保存该事务启动的�
 
 如下图所示：
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-02.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-02.png)
 
 实际上，在访问某条记录时，会按照下面的规则，从该记录的最新版本开始遍历，逐个判断某个版本是否可见
 
@@ -162,7 +162,7 @@ undo log 用于记录回滚日志（实现了数据的多版本），保证事�
 
 另外，undo log 也会产生 redo log，因为 undo log 也要实现持久性保护（redo log 是物理日志，会写入到文件中）
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-03.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-03.png)
 
 它主要分两类：
 * insert undo log：insert 时产生的，由于 insert 的记录只对当前事务可见，因此该 log 会在事务提交后直接删除
@@ -180,7 +180,7 @@ undo log 用于记录回滚日志（实现了数据的多版本），保证事�
 
 具体写入流程如下：
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-04.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-04.png)
 
 这是 MySQL 执行一次数据更新的流程
 
@@ -217,7 +217,7 @@ undo log 用于记录回滚日志（实现了数据的多版本），保证事�
 
 如下图所示：（而对于非唯一索引，锁的东西会更多，详见下方间隙锁）
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-05.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-05.png)
 
 ### 间隙锁
 
@@ -242,7 +242,7 @@ InnoDB 的间隙锁（GAP Lock）正是这么做的：它保证了两次当前�
 
 >严格来讲，是临键锁（Next-key Lock：是由 行锁 加 间隙锁 构成的）解决了幻读
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-06.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-06.png)
 
 如上图所示，一共有 1、2、3 三个间隙
 
@@ -261,7 +261,7 @@ InnoDB 的间隙锁（GAP Lock）正是这么做的：它保证了两次当前�
 
 而在实际的业务开发中，也会有一种情况把整个表都锁住，如下图所示
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-07.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-07.png)
 
 phone 字段没有建索引，然后删除它，这时就会发生全表扫描，所有记录都被锁住了
 
@@ -273,7 +273,7 @@ phone 字段没有建索引，然后删除它，这时就会发生全表扫描�
 
 先来看一下通常的加锁过程，如下图所示：
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-08.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-08.png)
 
 Server层收到 update 指令，就会当前读到引擎层，这时可能会命中很多条记录
 
@@ -283,7 +283,7 @@ Server层收到 update 指令，就会当前读到引擎层，这时可能会命
 
 现在举个实际例子，来描述下死锁的产生，如下图所示：
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-09.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2022/2022-01-22-mysql-tx-lock-09.png)
 
 T1 根据 name 更新数据，T2 根据 age 做当前读（也可以是 update，主要强调的是当前读）
 

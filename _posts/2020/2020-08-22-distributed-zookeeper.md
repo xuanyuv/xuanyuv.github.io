@@ -117,7 +117,7 @@ zk 提供了以上四种事件类型
 
 三者之间的关系，如下图所示：
 
-![](https://gcore.jsdelivr.net/gh/jadyer/mydata/img/blog/2020/2020-08-22-distributed-zookeeper-01.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2020/2020-08-22-distributed-zookeeper-01.png)
 
 **注意：注册的监听在事件响应（回调客户端）之后就失效了，所以要想连续监听，就要在回调 process() 方法中主动再去监听**
 
