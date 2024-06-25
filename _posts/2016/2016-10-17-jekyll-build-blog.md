@@ -195,54 +195,6 @@ C:\Users\xuanyu>
 
 ![](https://ae01.alicdn.com/kf/H3cb4d2c076d44ffea88043d11b3ee97cV.png)
 
-### Jekyll补充
-
-* Jekyll 中文介绍见：<http://jekyllcn.com/docs/structure/>
-* _posts 目录用于存放博文，格式是：YEAR-MONTH-DAY-title.md
-* _drafts 目录用于存放草稿文件，格式是：title.md（没有日期）
-* _site 目录用于存放 Jekyll 生成的网站文件
-* _layouts 目录用于存放模板文件
-* _includes 目录用于存放可以被模板文件包含的公共文件
-* _data 目录用于存放数据，Jekyll 会自动加载这里的所有 .jml 或者 .yaml 结尾的文件
-* static 目录是个人自定义的，一般存放公共资源，比如 js/css/img
-* page 目录是个人自定义的，一般存放站内固定的页面
-* sitemap.txt 是给搜索引擎看的，告诉它怎么爬这个站
-* index.html 是整站的入口
-* 附：Jekyll语法简单笔记：<http://github.tiankonguse.com/blog/2014/11/10/jekyll-study.html>
-
-### 启动脚本
-
-另附我的启动脚本 `startup.bat` （idea 中可以把 bat 配置到 External Tools 里）
-
-注意：应使用 ANSI 编码保存批处理文件，否则Windows系统不认识
-
-```sh
-@echo off
-title 自动打包工具【玄玉制作】
-color 02
-
-call jekyll s --watch
-```
-
-### 图床
-
-写博客就一定会用到图片，压缩图片的话可以用 **[tinypng](https://tinypng.com/)** 或者 **[色彩笔](https://www.secaibi.com/tools/)** 在线工具批量压缩
-
-目前我大部分用的都是阿里云图床，现在上传入口好多都失效了（也可以试试 [外链图片工厂](https://www.wailian.work/)）
-
-所以找到了 jsDelivr + GitHub 这个办法来做图床，即稳定又免费还支持全球CDN
-
-做法就是在 Github 建一个 Public 的仓库，用来放图片
-
-然后用这个地址就行了：**https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名/文件路径**
-
-若想手动刷新 jsDelivr 缓存，只需把链接中的 https://**cdn**.jsdelivr.net/ 替换成 https://**purge**.jsdelivr.net/ 即可
-
-> 2021年12月20号起，jsdelivr在国内暂时失效了，此时可以尝试将URL中的cdn.jsdelivr.net换成以下地址<br/>
-gcore.jsdelivr.net<br/>
-fastly.jsdelivr.net<br/>
-testingcf.jsdelivr.net
-
 ## Linux环境
 
 上面介绍的的 Windows 环境下的安装配置，其实 Linux 下的也不复杂，步骤都一样
@@ -325,3 +277,37 @@ New jekyll site installed in /app/www/blog.
 cd /app/www/blog/
 nohup jekyll serve -w > /app/www/blog.nohup.log 2>&1 &
 ```
+
+### Jekyll补充
+
+* Jekyll 中文介绍见：<http://jekyllcn.com/docs/structure/>
+* _posts 目录用于存放博文，格式是：YEAR-MONTH-DAY-title.md
+* _drafts 目录用于存放草稿文件，格式是：title.md（没有日期）
+* _site 目录用于存放 Jekyll 生成的网站文件
+* _layouts 目录用于存放模板文件
+* _includes 目录用于存放可以被模板文件包含的公共文件
+* _data 目录用于存放数据，Jekyll 会自动加载这里的所有 .jml 或者 .yaml 结尾的文件
+* static 目录是个人自定义的，一般存放公共资源，比如 js/css/img
+* page 目录是个人自定义的，一般存放站内固定的页面
+* sitemap.txt 是给搜索引擎看的，告诉它怎么爬这个站
+* index.html 是整站的入口
+* 附：Jekyll语法简单笔记：<http://github.tiankonguse.com/blog/2014/11/10/jekyll-study.html>
+
+### 图床
+
+写博客就一定会用到图片，压缩图片的话可以用 **[tinypng](https://tinypng.com/)** 或者 **[色彩笔](https://www.secaibi.com/tools/)** 在线工具批量压缩
+
+目前我大部分用的都是阿里云图床，现在上传入口好多都失效了（也可以试试 [外链图片工厂](https://www.wailian.work/)）
+
+所以找到了 jsDelivr + GitHub 这个办法来做图床，即稳定又免费还支持全球CDN
+
+做法就是在 Github 建一个 Public 的仓库，用来放图片
+
+然后用这个地址就行了：**https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名/文件路径**
+
+若想手动刷新 jsDelivr 缓存，只需把链接中的 https://**cdn**.jsdelivr.net/ 替换成 https://**purge**.jsdelivr.net/ 即可
+
+> 2021年12月20号起，jsdelivr在国内暂时失效了，此时可以尝试将URL中的cdn.jsdelivr.net换成以下地址<br/>
+gcore.jsdelivr.net<br/>
+fastly.jsdelivr.net<br/>
+testingcf.jsdelivr.net

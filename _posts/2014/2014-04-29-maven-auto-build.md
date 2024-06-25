@@ -17,6 +17,8 @@ excerpt: 通过在批处理脚本中调用Maven命令实现的自动打包工程
 
 它能够自动调用Maven命令打包，并把生成的war复制到桌面上
 
+注意：应使用 ANSI 编码保存批处理文件，否则 Windows 系统不认识
+
 ```bash
 @echo off
 title 自动打包工具【玄玉制作】
