@@ -278,7 +278,7 @@ cd /app/www/blog/
 nohup jekyll serve -w > /app/www/blog.nohup.log 2>&1 &
 ```
 
-### Jekyll补充
+## Jekyll补充
 
 * Jekyll 中文介绍见：<http://jekyllcn.com/docs/structure/>
 * _posts 目录用于存放博文，格式是：YEAR-MONTH-DAY-title.md
@@ -293,7 +293,7 @@ nohup jekyll serve -w > /app/www/blog.nohup.log 2>&1 &
 * index.html 是整站的入口
 * 附：Jekyll语法简单笔记：<http://github.tiankonguse.com/blog/2014/11/10/jekyll-study.html>
 
-### 图床
+## 图床
 
 写博客就一定会用到图片，压缩图片的话可以用 **[tinypng](https://tinypng.com/)** 或者 **[色彩笔](https://www.secaibi.com/tools/)** 在线工具批量压缩
 
