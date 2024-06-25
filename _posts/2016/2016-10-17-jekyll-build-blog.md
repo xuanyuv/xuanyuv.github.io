@@ -318,7 +318,7 @@ New jekyll site installed in /app/www/blog.
 [xuanyu@dev blog]$ jekyll serve -w --host=0.0.0.0
 ```
 
-最后，编写一个可以后台运行的启动脚本（没有加 --host 参数是因为有 Nginx 在前面代理）
+最后，编写一个启动脚本：`/app/www/blog.startup.sh`（没有加 --host 参数是因为有 Nginx 在前面代理）
 
 ```shell
 #!/bin/bash
