@@ -270,13 +270,23 @@ New jekyll site installed in /app/www/blog.
 [xuanyu@dev blog]$ jekyll serve -w --host=0.0.0.0
 ```
 
-最后，编写一个启动脚本：`/app/www/blog.startup.sh`（没有加 --host 参数是因为有 Nginx 在前面代理）
+实际过程中，使用的思路就是：
+
+1. _config.yml 指定生成文章时忽略的文件或文件夹
+2. Linux 上[安装 Git](https://jadyer.cn/2014/09/26/centos-install-apache/)
+3. Linux 上编写一个启动脚本（/app/www/xuanyuv.startup.sh）并运行
+4. Linux 上再弄一个 Nginx 来代理 Jekyll 服务
+5. 每次文章有更新时，通过 IntelliJ IDEA 触发 Linux 通过 git 拉取最新文章
+
+下面就是启动脚本，以及，IntelliJ IDEA 上的 Alibaba Cloud Toolkit 插件的配置
 
 ```shell
 #!/bin/bash
-cd /app/www/blog/
-nohup jekyll serve -w > /app/www/blog.nohup.log 2>&1 &
+cd /app/www/xuanyuv.github.io/
+nohup jekyll serve -w > /app/www/xuanyuv.nohup.log 2>&1 &
 ```
+
+![](https://cdn.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2016/2016-10-17-jekyll-build-blog-04.png)
 
 ## Jekyll补充
 
@@ -297,7 +307,7 @@ nohup jekyll serve -w > /app/www/blog.nohup.log 2>&1 &
 
 写博客就一定会用到图片，压缩图片的话可以用 **[tinypng](https://tinypng.com/)** 或者 **[色彩笔](https://www.secaibi.com/tools/)** 在线工具批量压缩
 
-目前我大部分用的都是阿里云图床，现在上传入口好多都失效了（也可以试试 [外链图片工厂](https://www.wailian.work/)）
+目前我大部分用的都是阿里云图床，现在上传入口好多都失效了
 
 所以找到了 jsDelivr + GitHub 这个办法来做图床，即稳定又免费还支持全球CDN
 
@@ -307,7 +317,7 @@ nohup jekyll serve -w > /app/www/blog.nohup.log 2>&1 &
 
 若想手动刷新 jsDelivr 缓存，只需把链接中的 https://**cdn**.jsdelivr.net/ 替换成 https://**purge**.jsdelivr.net/ 即可
 
-> 2021年12月20号起，jsdelivr在国内暂时失效了，此时可以尝试将URL中的cdn.jsdelivr.net换成以下地址<br/>
+> 如果jsdelivr暂时失效的话，可以尝试将URL中的cdn.jsdelivr.net换成以下地址<br/>
 gcore.jsdelivr.net<br/>
 fastly.jsdelivr.net<br/>
 testingcf.jsdelivr.net
