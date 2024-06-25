@@ -140,29 +140,29 @@ path=%MYSQL_HOME%\bin;......
 管理员身份运行CMD
 
 ```sh
-C:\Users\Jadyer>mysqld --initialize --console（注意：两个横杠）
+C:\Users\xuanyu>mysqld --initialize --console（注意：两个横杠）
 2018-10-24T03:06:20.534951Z 0 [System] [MY-013169] [Server] D:\Develop\MySQL\MySQLServer80\bin\mysqld.exe (mysqld 8.0.13) initializing of server in progress as process 9812
 2018-10-24T03:06:20.538000Z 0 [Warning] [MY-013242] [Server] --character-set-server: 'utf8' is currently an alias for the character set UTF8MB3, but will be an alias for UTF8MB4 in a future release. Please consider using UTF8MB4 in order to be unambiguous.
 2018-10-24T03:06:23.423916Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: lMiZMiu*e43:
 2018-10-24T03:06:24.774539Z 0 [System] [MY-013170] [Server] D:\Develop\MySQL\MySQLServer80\bin\mysqld.exe (mysqld 8.0.13) initializing of server has completed
 
-C:\Users\Jadyer>
+C:\Users\xuanyu>
 ```
 
 执行完成后，会打印 root 用户的初始默认密码，也就是上面的 `lMiZMiu*e43:`（后面修改Root密码时会用到它）
 
 ### 安装MySQL服务
 
-管理员身份运行CMD：`C:\Users\Jadyer>mysqld install`，安装成功会提示 Service successfully installed.
+管理员身份运行CMD：`C:\Users\xuanyu>mysqld install`，安装成功会提示 Service successfully installed.
 
-启动的话，可以运行 services.msc 手工启动，也可以：`C:\Users\Jadyer>net start mysql`
+启动的话，可以运行 services.msc 手工启动，也可以：`C:\Users\xuanyu>net start mysql`
 
 ### 修改root密码（8.0.13）
 
 管理员身份运行CMD
 
 ```sh
-C:\Users\Jadyer>mysql -uroot -p
+C:\Users\xuanyu>mysql -uroot -p
 Enter password: ************
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 8

@@ -53,8 +53,8 @@ excerpt: 介绍了CentOS-6.4-minimal版中源码安装Apache-2.2.29的细节。
 [root@dev backup]# tar zxvf openssl-3.0.14.tar.gz
 [root@dev backup]# cd openssl-3.0.14/
 [root@dev openssl-3.0.14]# ./config --prefix=/app/software/openssl-3.0.14
-[root@dev openssl-3.0.14]# make
-[root@dev openssl-3.0.14]# make install
+[root@dev openssl-3.0.14]# make         # 注意：不要一起执行（make & make install）
+[root@dev openssl-3.0.14]# make install # 注意：要分两步执行
 [root@dev openssl-3.0.14]# cd ..
 [root@dev backup]# rm -rf openssl-3.0.14
 [root@dev backup]# ln -s /app/software/openssl-3.0.14/lib64/libssl.so.3 /usr/lib64/libssl.so.3
