@@ -87,26 +87,25 @@ alias ipv6 off
 ## 安装Git
 
 ```sh
-# Git 的工作需要调用 curl，zlib，openssl，expat，libiconv 等库的代码，所以需要先安装这些依赖工具
-[xuanyu@dev app]# yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
-[xuanyu@dev app]# cd software/
-[xuanyu@dev software]# wget https://github.com/git/git/archive/v2.14.1.tar.gz
-[xuanyu@dev software]# tar -zxvf v2.14.1.tar.gz
-[xuanyu@dev software]# cd git-2.14.1/
-[xuanyu@dev software]# cd ..
-[xuanyu@dev app]# mkdir git
-[xuanyu@dev app]# cd software/git-2.14.1/
-[xuanyu@dev git-2.14.1]# make prefix=/app/git all
-[root@dev git-2.14.1]# make prefix=/app/git install
-[root@dev git-2.14.1]# vim /etc/profile
-                       # Set Git Environment Variable
-                       GIT_HOME=/app/git
-                       PATH=$GIT_HOME/bin:$PATH
-                       export GIT_HOME PATH
-[root@dev git-2.14.1]# source /etc/profile
-[root@dev git-2.14.1]# echo $PATH
-[root@dev git-2.14.1]# git --version
-[xuanyu@dev ~]$ git -version
+# Git 工作时要调用 curl/zlib/openssl/expat/libiconv 等库的代码，所以要先安装这些依赖
+[root@dev backup]# yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
+[root@dev backup]# wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.45.2.tar.gz
+[root@dev backup]# tar zxvf git-2.45.2.tar.gz
+[root@dev backup]# cd git-2.45.2/
+[root@dev git-2.45.2]# make prefix=/app/software/git-2.45.2 all
+[root@dev git-2.45.2]# make prefix=/app/software/git-2.45.2 install
+[root@dev git-2.45.2]# cd ..
+[root@dev backup]# rm -rf git-2.45.2
+[root@dev backup]# vim /etc/profile
+                   # Set Git Environment Variable
+                   GIT_HOME=/app/software/git-2.45.2
+                   PATH=$GIT_HOME/bin:$PATH
+                   export GIT_HOME PATH
+[root@dev backup]# source /etc/profile
+[root@dev backup]# echo $PATH
+[root@dev backup]# git --version
+git version 2.45.2
+[root@dev backup]#
 ```
 
 ## 安装Subversion
