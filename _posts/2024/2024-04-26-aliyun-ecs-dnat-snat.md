@@ -215,13 +215,14 @@ ssh 命令也能执行远程脚本，并接收远程输出，再结合 sshpass �
 #!/bin/sh
 APP_NAME=qss-web-3.0-SNAPSHOT.jar
 
-# -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
 # !!! Do not modify the following !!!
-# -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
 
 APP_CODE=${APP_NAME%%-*}
 APP_PATH=/app/backend/${APP_CODE}
-JAVA_OPTS="-server -Xms2048m -Xmx2048m -Xlog:gc:/app/backend/logs/${APP_CODE}/gc.log"
+JAVA_OPTS="-server -Xms2048m -Xmx2048m -XX:+UseZGC -XX:+ZGenerational -Xlog:gc*:file=/app/backend/logs/${APP_CODE}/gc/gc_%t.log:time,level,tags:filecount=10:filesize=10m"
+# 注意：要提前创建好 gc 目录（比如 mkdir -p /app/backend/logs/qss/gc/）
 
 appPID=0
 getAppPID(){
