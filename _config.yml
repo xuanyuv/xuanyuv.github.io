@@ -10,11 +10,11 @@ kramdown:
 
 # the base hostname & protocol for your site
 # 配合页面头部<link rel="canonical" href="https://jadyer.cn/2016/10/17/first-blog/">
-url: "https://jadyer.cn"
+url: "https://www.xuanyuv.com"
 # the subpath of your site, e.g. /blog
 baseurl: ""
 title: 半步多
-brief-intro: "玄玉的博客"
+brief-intro: "玄玉V笔记"
 
 # footer下方显示的联系方式
 github_username: xuanyuv
