@@ -15,7 +15,7 @@ type: page
 * 现居：重庆
 * 来自：哈尔滨
 * 邮箱：[{{ site.email }}](mailto:{{ site.email }})
-* 订阅：<{{ site.fullurl }}/blog/feed.xml>
+* 订阅：<{{ site.fullurl }}/feed.xml>
 
 ## 收藏
 
