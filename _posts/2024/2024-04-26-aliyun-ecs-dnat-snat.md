@@ -221,7 +221,8 @@ APP_NAME=qss-web-3.0-SNAPSHOT.jar
 
 APP_CODE=${APP_NAME%%-*}
 APP_PATH=/app/backend/${APP_CODE}
-JAVA_OPTS="-server -Xms2048m -Xmx2048m -XX:+UseZGC -XX:+ZGenerational -Xlog:gc*:file=/app/backend/logs/${APP_CODE}/gc/gc_%t.log:time,level,tags:filecount=10:filesize=10m"
+JAVA_OPTS="-server -Xms2048m -Xmx2048m"
+# JAVA_OPTS="-server -Xms2048m -Xmx2048m -XX:+UseZGC -XX:+ZGenerational -Xlog:gc*:file=/app/backend/logs/${APP_CODE}/gc/gc_%t.log:time,level,tags:filecount=10:filesize=10m"
 # 注意：要提前创建好 gc 目录（比如 mkdir -p /app/backend/logs/qss/gc/）
 
 appPID=0
