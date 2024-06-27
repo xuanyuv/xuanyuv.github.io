@@ -15,7 +15,7 @@ excerpt: 介绍自动下载SVN源码、Maven编译打包、部署Tomcat、重启
 
 主要包括功能：自动从git/svn仓库拉取最新代码至临时目录、maven编译打包、重发布到tomcat、删除临时文件、最后重启tomcat
 
-关于脚本中一些命令的含义，可参考我之前的博文：[https://jadyer.cn/2012/09/09/linux-shell-java/](https://jadyer.cn/2012/09/09/linux-shell-java/)
+关于脚本中一些命令的含义，可参考我之前的博文：[https://www.xuanyuv.com/2012/09/09/linux-shell-java/](https://www.xuanyuv.com/2012/09/09/linux-shell-java/)
 
 ## deploy-engine
 
@@ -31,11 +31,11 @@ APP_NAME=ROOT
 APP_PATH=/app/tomcat-6.0.43
 # tomcat里面存储临时代码的文件夹名称（发布完会自动删除）
 APP_CODE=sourcecode
-# SVN_URL=https://svn.sinaapp.com/jadyer/2/repository/seed
-# SVN_USER=jadyer@yeah.net
+# SVN_URL=https://svn.sinaapp.com/hongyu/2/repository/seed
+# SVN_USER=xuanyuv@163.com
 # SVN_PSWD=xuanyu
 # git仓库地址、应用名称、打成的war所在的模块名称
-GIT_URL=https://jadyer%40yeah.net:xuanyu@github.com/jadyer/seed.git
+GIT_URL=https://hongyu%40yeah.net:xuanyu@github.com/xuanyuv/seed.git
 GIT_CODE=seed
 GIT_MODULE=seed-mpp
 

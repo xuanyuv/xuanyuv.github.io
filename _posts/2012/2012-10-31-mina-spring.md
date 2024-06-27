@@ -22,13 +22,13 @@ ok，let`s drink code ...
 首先是服务端的消息处理器`ServerHandler.java`
 
 ```java
-package com.jadyer.demo.mina;
+package com.xuanyuv.demo.mina;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
 /**
  * 服务端的消息处理器
- * Created by 玄玉<https://jadyer.cn/> on 2012/10/31 16:46.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/10/31 16:46.
  */
 public class ServerHandler extends IoHandlerAdapter {
     @Override
@@ -46,7 +46,7 @@ public class ServerHandler extends IoHandlerAdapter {
 下面是自定义的编码器`MyEncoder.java`
 
 ```java
-package com.jadyer.demo.mina.codec;
+package com.xuanyuv.demo.mina.codec;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolEncoderAdapter;
@@ -56,7 +56,7 @@ import java.nio.charset.CharsetEncoder;
 
 /**
  * 自定义的编码器
- * Created by 玄玉<https://jadyer.cn/> on 2012/10/31 16:38.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/10/31 16:38.
  */
 public class MyEncoder extends ProtocolEncoderAdapter {
     private final CharsetEncoder charsetEncoder;
@@ -76,7 +76,7 @@ public class MyEncoder extends ProtocolEncoderAdapter {
 下面是自定义的解码器`MyDecoder.java`
 
 ```java
-package com.jadyer.demo.mina.codec;
+package com.xuanyuv.demo.mina.codec;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.CumulativeProtocolDecoder;
@@ -86,7 +86,7 @@ import java.nio.charset.CharsetDecoder;
 
 /**
  * 自定义的解码器
- * Created by 玄玉<https://jadyer.cn/> on 2012/10/31 16:38.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/10/31 16:38.
  */
 public class MyDecoder extends CumulativeProtocolDecoder{
     private final CharsetDecoder charsetDecoder;
@@ -120,7 +120,7 @@ public class MyDecoder extends CumulativeProtocolDecoder{
 下面是自定义的Mina2.x服务启动器`MinaStartup.java`
 
 ```java
-package com.jadyer.demo.mina;
+package com.xuanyuv.demo.mina;
 import org.apache.mina.core.filterchain.IoFilterChainBuilder;
 import org.apache.mina.core.service.IoHandler;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
@@ -130,7 +130,7 @@ import java.util.List;
 
 /**
  * 用于启动Mina2.x服务
- * Created by 玄玉<https://jadyer.cn/> on 2012/10/31 16:38.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/10/31 16:38.
  */
 public class MinaStartup {
     private IoHandler handler;                       //处理器
@@ -200,12 +200,12 @@ public class MinaStartup {
             <entry key="codec">
                 <bean class="org.apache.mina.filter.codec.ProtocolCodecFilter">
                     <constructor-arg index="0">
-                        <bean class="com.jadyer.demo.mina.codec.MyEncoder">
+                        <bean class="com.xuanyuv.demo.mina.codec.MyEncoder">
                             <constructor-arg value="UTF-8"/>
                         </bean>
                     </constructor-arg>
                     <constructor-arg index="1">
-                        <bean class="com.jadyer.demo.mina.codec.MyDecoder">
+                        <bean class="com.xuanyuv.demo.mina.codec.MyDecoder">
                             <constructor-arg value="UTF-8"/>
                         </bean>
                     </constructor-arg>
@@ -220,13 +220,13 @@ public class MinaStartup {
 </bean>
 
 <!-- 构造Server端 -->
-<bean id="myServer" class="com.jadyer.demo.mina.MinaStartup" init-method="bind">
+<bean id="myServer" class="com.xuanyuv.demo.mina.MinaStartup" init-method="bind">
     <property name="reuseAddress" value="true"/>
     <property name="writeTimeout" value="10000"/>
     <property name="bothIdleTime" value="20"/>
     <property name="filterChainBuilder" ref="ioFilterChainBuilder"/>
     <property name="handler">
-        <bean class="com.jadyer.demo.mina.ServerHandler"/>
+        <bean class="com.xuanyuv.demo.mina.ServerHandler"/>
     </property>
     <property name="socketAddresses">
         <list>
@@ -266,7 +266,7 @@ public class MinaStartup {
     <property name="reuseAddress" value="true"/>
     <property name="filterChainBuilder" ref="ioFilterChainBuilder"/>
     <property name="handler">
-        <bean class="com.jadyer.handler.ServerHandler"/>
+        <bean class="com.xuanyuv.handler.ServerHandler"/>
     </property>
     <property name="defaultLocalAddress" value="192.168.1.2:8000"/>
 </bean>
@@ -290,7 +290,7 @@ public class MinaStartup {
 一种是运行一个`main(String[] args)`方法来启动
 
 ```java
-package com.jadyer.demo.mina;
+package com.xuanyuv.demo.mina;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 public class MainApp {
     public static void main(String[] args) {
@@ -320,9 +320,9 @@ public class MainApp {
 为了测试，这里写一个最简洁的客户端`MyClient.java`
 
 ```java
-package com.jadyer.demo.mina;
-import com.jadyer.demo.mina.codec.MyDecoder;
-import com.jadyer.demo.mina.codec.MyEncoder;
+package com.xuanyuv.demo.mina;
+import com.xuanyuv.demo.mina.codec.MyDecoder;
+import com.xuanyuv.demo.mina.codec.MyEncoder;
 import org.apache.mina.core.service.IoConnector;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;

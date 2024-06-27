@@ -43,13 +43,13 @@ system如果正常登录，它其实就是一个普通的dba用户
 
 1、备份**/ORACLE_HOME/product/11.2.0/dbhome_1/database/PWD+sid.ora**
 
-　　比如我的：D:/Develop/Oracle/product/11.2.0/dbhome_1/database/PWDjadyer.ora
+　　比如我的：D:/Develop/Oracle/product/11.2.0/dbhome_1/database/PWDxuanyu.ora
 
 2、删掉`PWD+sid.ora`文件之后，再在命令行执行以下命令，生成新密码文件
 
 　　`orapwd file=原密码文件的全路径/密码文件名.ora password=新密码 entries=6`
 
-　　比如我的：orapwd file=D:/Develop/Oracle/product/11.2.0/dbhome_1/database/PWDjadyer.ora password=新密码 entries=10
+　　比如我的：orapwd file=D:/Develop/Oracle/product/11.2.0/dbhome_1/database/PWDxuanyu.ora password=新密码 entries=10
 
 　　这里entries是指允许几个特权用户同时登录，并且密码文件名一定要和原来的密码文件名一致
 

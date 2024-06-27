@@ -59,7 +59,7 @@ Lucene文档：[http://wiki.apache.org/lucene-java/](http://wiki.apache.org/luce
 　　　然后先执行`createIndex()`方法，再执行`searchFile()`方法，最后观看控制台输出即可
 
 ```java
-package com.jadyer.lucene;
+package com.xuanyuv.lucene;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -81,7 +81,7 @@ import org.apache.lucene.util.Version;
 /**
  * Lucene系列第01节之基础用法
  * 这里只需用到一个lucene-core-3.6.2.jar
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/18 15:26.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/18 15:26.
  */
 public class LuceneHelloWord {
     private static final String PATH_OF_FILE = "myExample/01_file/";   //待索引文件的目录

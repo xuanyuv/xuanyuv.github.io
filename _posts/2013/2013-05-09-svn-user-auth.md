@@ -21,7 +21,7 @@ auth文件夹的存放位置如下
 #Win7
 C:\Users\xuanyu\AppData\Roaming\Subversion\auth
 #WinXP
-C:\Documents and Settings\Jadyer\Application Data\Subversion\auth
+C:\Documents and Settings\xuanyu\Application Data\Subversion\auth
 ```
 
 不过，如果你安装了`TortoiseSVN`就更好办了，执行以下操作即可

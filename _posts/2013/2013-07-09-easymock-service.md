@@ -84,7 +84,7 @@ EasyMock框架在使用时只需要一个`easymock-3.1.jar`
 首先是用到的实体类`User.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 public class User {
     private int id;
     private String username;
@@ -102,8 +102,8 @@ public class User {
 然后是用到的两个DAO接口类`UserDao.java`以及`BlogDao.java`
 
 ```java
-package com.jadyer.dao;
-import com.jadyer.model.User;
+package com.xuanyuv.dao;
+import com.xuanyuv.model.User;
 public interface UserDao {
     public User load(String username);
     public void delete(String username);
@@ -112,7 +112,7 @@ public interface UserDao {
 ```
 
 ```java
-package com.jadyer.dao;
+package com.xuanyuv.dao;
 public interface BlogDao {
     public void update(String username);
 }
@@ -121,8 +121,8 @@ public interface BlogDao {
 下面是Service接口类`UserService.java`
 
 ```java
-package com.jadyer.service;
-import com.jadyer.model.User;
+package com.xuanyuv.service;
+import com.xuanyuv.model.User;
 public interface UserService {
     public User get(String username);
     public User list(String username);
@@ -135,11 +135,11 @@ public interface UserService {
 下面是Service接口实现类`UserServiceImpl.java`
 
 ```java
-package com.jadyer.service.impl;
-import com.jadyer.dao.BlogDao;
-import com.jadyer.dao.UserDao;
-import com.jadyer.model.User;
-import com.jadyer.service.UserService;
+package com.xuanyuv.service.impl;
+import com.xuanyuv.dao.BlogDao;
+import com.xuanyuv.dao.UserDao;
+import com.xuanyuv.model.User;
+import com.xuanyuv.service.UserService;
 
 public class UserServiceImpl implements UserService {
     private UserDao userDao;
@@ -163,7 +163,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User list(String username) {
-        userDao.load("https://jadyer.cn/");
+        userDao.load("https://www.xuanyuv.com/");
         userDao.delete(username);
         return userDao.load(username);
     }
@@ -199,20 +199,20 @@ public class UserServiceImpl implements UserService {
 最后是包含了`EasyMock`简单用法的测试用例`UserServiceTest.java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import org.easymock.EasyMock;
 import org.easymock.IMocksControl;
 import org.junit.Assert;
 import org.junit.Test;
-import com.jadyer.dao.BlogDao;
-import com.jadyer.dao.UserDao;
-import com.jadyer.model.User;
-import com.jadyer.service.UserService;
-import com.jadyer.service.impl.UserServiceImpl;
+import com.xuanyuv.dao.BlogDao;
+import com.xuanyuv.dao.UserDao;
+import com.xuanyuv.model.User;
+import com.xuanyuv.service.UserService;
+import com.xuanyuv.service.impl.UserServiceImpl;
 
 /**
  * EasyMock测试普通Service
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/09 14:15.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/09 14:15.
  */
 public class UserServiceTest {
     /**
@@ -223,15 +223,15 @@ public class UserServiceTest {
         //创建DAO的Mock对象
         UserDao dao = EasyMock.createMock(UserDao.class);
         //进入record阶段
-        //下面这行代码意思是：当调用dao.load()方法且传入参数为jadyer时，其返回值为user对象
-        User user = new User(2, "jadyer", "xuanyu");
+        //下面这行代码意思是：当调用dao.load()方法且传入参数为hongyu时，其返回值为user对象
+        User user = new User(2, "hongyu", "xuanyu");
         //如果UserService.get()里面调用了两次dao.load()，那么这里就要指定其次数
-        //EasyMock.expect(dao.load("jadyer")).andReturn(user).times(2);
-        EasyMock.expect(dao.load("jadyer")).andReturn(user);
+        //EasyMock.expect(dao.load("hongyu")).andReturn(user).times(2);
+        EasyMock.expect(dao.load("hongyu")).andReturn(user);
         //进入replay阶段
         EasyMock.replay(dao);
         UserService service = new UserServiceImpl(dao);
-        User user22 = service.get("jadyer");
+        User user22 = service.get("hongyu");
         Assert.assertNotNull(user22);
         Assert.assertEquals(user22.getId(), user.getId());
         Assert.assertEquals(user22.getUsername(), user.getUsername());
@@ -246,21 +246,21 @@ public class UserServiceTest {
     @Test
     public void testStrictMock(){
         UserDao dao = EasyMock.createStrictMock(UserDao.class);
-        User user = new User(2, "jadyer", "xuanyu");
+        User user = new User(2, "hongyu", "xuanyu");
         //关键在这里：必须把交互的所有过程都记录下来
         //也就是说dao方法被调用了几次，分别是调用的哪个方法，包括传的参数及返回值
-        //若UserServiceImpl.getTwice()中调用两次load()传入参数都是jadyer
+        //若UserServiceImpl.getTwice()中调用两次load()传入参数都是hongyu
         //那么下面这两次的expect()操作便可写成一行
-        //EasyMock.expect(dao.load("jadyer")).andReturn(user).times(2);
-        EasyMock.expect(dao.load("https://jadyer.cn/")).andReturn(user);
+        //EasyMock.expect(dao.load("hongyu")).andReturn(user).times(2);
+        EasyMock.expect(dao.load("https://www.xuanyuv.com/")).andReturn(user);
         //expectLastCall()是用来操作没有返回值的方法
         //此时要先执行dao中没有返回值的方法，然后再调用expectLastCall()方法
-        dao.delete("jadyer");
+        dao.delete("hongyu");
         EasyMock.expectLastCall();
-        EasyMock.expect(dao.load("jadyer")).andReturn(user);
+        EasyMock.expect(dao.load("hongyu")).andReturn(user);
         EasyMock.replay(dao);
         UserService service = new UserServiceImpl(dao);
-        User user22 = service.list("jadyer");
+        User user22 = service.list("hongyu");
         Assert.assertNotNull(user22);
         Assert.assertEquals(user22.getId(), user.getId());
         Assert.assertEquals(user22.getUsername(), user.getUsername());
@@ -279,13 +279,13 @@ public class UserServiceTest {
         //这时创建的Mock对象就类似于EasyMock.createStrictMock(UserDao.class);
         UserDao userDao = control.createMock(UserDao.class);
         BlogDao blogDao = control.createMock(BlogDao.class);
-        blogDao.update("jadyer");
+        blogDao.update("xuanyu");
         EasyMock.expectLastCall();
-        userDao.delete("jadyer");
+        userDao.delete("xuanyu");
         EasyMock.expectLastCall();
         //让MocksControl进行操作
         control.replay();
-        new UserServiceImpl(userDao, blogDao).update("jadyer");
+        new UserServiceImpl(userDao, blogDao).update("xuanyu");
         //验证MocksControl中的所有mock调用
         control.verify();
     }
@@ -297,7 +297,7 @@ public class UserServiceTest {
     public void testInsertNotExistUser(){
         //先做好准备工作
         UserDao dao = EasyMock.createStrictMock(UserDao.class);
-        User user = new User(2, "jadyer", "xuanyu");
+        User user = new User(2, "hongyu", "xuanyu");
         UserService service = new UserServiceImpl(dao);
         //然后开始EasyMock的测试
         //先要保证用户不存在，所以要先andReturn(null)
@@ -320,7 +320,7 @@ public class UserServiceTest {
     public void testInsertExistUser(){
         //先做好准备工作
         UserDao dao = EasyMock.createStrictMock(UserDao.class);
-        User user = new User(2, "jadyer", "xuanyu");
+        User user = new User(2, "hongyu", "xuanyu");
         UserService service = new UserServiceImpl(dao);
         //然后开始EasyMock的测试
         //先要保证用户存在，所以要先andReturn(user)
@@ -342,12 +342,12 @@ public class UserServiceTest {
     public void testLoginSuccess(){
         //同样先做好准备工作
         UserDao dao = EasyMock.createStrictMock(UserDao.class);
-        User user = new User(2, "jadyer", "xuanyu");
+        User user = new User(2, "hongyu", "xuanyu");
         UserService service = new UserServiceImpl(dao);
         //开始测试
         //指定测试时所要登录的用户名和密码
         //由于这里是要测试登录成功的情况，所以这里用户名密码就要与准备数据中的相同
-        String username = "jadyer";
+        String username = "hongyu";
         String password = "xuanyu";
         //先要保证用户存在，所以要先andReturn(user)
         EasyMock.expect(dao.load(username)).andReturn(user);
@@ -371,7 +371,7 @@ public class UserServiceTest {
         UserService service = new UserServiceImpl(dao);
         //开始测试
         //指定测试时所要登录的是一个不存在的用户
-        String username = "jaders";
+        String username = "hongyu";
         String password = "xuanyu";
         //为了保证用户存在，这里就要andReturn(null)，因为dao.load一个不存在用户时取到的是null
         EasyMock.expect(dao.load(username)).andReturn(null);
@@ -388,11 +388,11 @@ public class UserServiceTest {
     public void testLoginFailPasswordError(){
         //同样先做好准备工作
         UserDao dao = EasyMock.createStrictMock(UserDao.class);
-        User user = new User(2, "jadyer", "xuanyu");
+        User user = new User(2, "hongyu", "xuanyu");
         UserService service = new UserServiceImpl(dao);
         //开始测试
         //指定测试时所要登录的是一个密码错误的用户
-        String username = "jadyer";
+        String username = "hongyu";
         String password = "banbuduo";
         //密码错误时用户是存在的，所以要andReturn(user)
         EasyMock.expect(dao.load(username)).andReturn(user);

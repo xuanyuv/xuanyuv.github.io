@@ -15,14 +15,14 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现负
 
 本文建立在Apache-2.2.29与Tomcat-6.0.41整合的基础上
 
-整合细节详见：[https://jadyer.cn/2014/09/27/tomcat-apache-jk/](https://jadyer.cn/2014/09/27/tomcat-apache-jk/)
+整合细节详见：[https://www.xuanyuv.com/2014/09/27/tomcat-apache-jk/](https://www.xuanyuv.com/2014/09/27/tomcat-apache-jk/)
 
 ## 配置负载均衡
 
 1. 修改端口（由于我是在一台机器上复制多个tomcat，所以需要修改端口，如果是不同的机器就可以跳过这一步）
 
     > ```sh
-[root@dev app]# vi tomcat/conf/server.xml  # 修改8005为-1，原因详见https://jadyer.cn/2014/09/27/tomcat-telnet-shutdown/
+[root@dev app]# vi tomcat/conf/server.xml  # 修改8005为-1，原因详见https://www.xuanyuv.com/2014/09/27/tomcat-telnet-shutdown/
 [root@dev app]# cp -a tomcat tomcat1
 [root@dev app]# cp -a tomcat tomcat2
 [root@dev app]# cp -a tomcat tomcat3
@@ -59,7 +59,7 @@ worker.tomcatlb.balanced_workers=tomcat1,tomcat2,tomcat3  # 参与负载均衡�
 
 启动apache和三个tomcat，便可通过jkstatus看到参与负载均衡的三个tomcat和一些参数（也可通过jkstatus修改负载均衡参数）
 
-*关于jkstatus的配置和使用*，详见：[https://jadyer.cn/2014/09/27/tomcat-apache-jk/#jk-1](https://jadyer.cn/2014/09/27/tomcat-apache-jk/#jk-1)
+*关于jkstatus的配置和使用*，详见：[https://www.xuanyuv.com/2014/09/27/tomcat-apache-jk/#jk-1](https://www.xuanyuv.com/2014/09/27/tomcat-apache-jk/#jk-1)
 
 接下来就可以测试负载均衡效果了，测试代码如下
 

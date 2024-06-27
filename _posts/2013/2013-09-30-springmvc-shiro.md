@@ -13,11 +13,7 @@ excerpt: 介绍了SpringMVC-3.2.4整合Shiro-1.2.2的完整例子。
 
 本文涉及的相关环境和版本为：`SpringMVC-3.2.4`、`Shiro-1.2.2`
 
-本文源码下载：（下面两个地址的文件的内容，都是一样的）
-
-Github：[https://github.com/v5java/demo-springmvc-shiro](https://github.com/v5java/demo-springmvc-shiro)
-
-CSDN下载：[http://download.csdn.net/detail/jadyer/9727097](http://download.csdn.net/detail/jadyer/9727097)
+本文源码下载：<https://github.com/v5java/demo-springmvc-shiro>
 
 ## 示例代码
 
@@ -80,7 +76,7 @@ CSDN下载：[http://download.csdn.net/detail/jadyer/9727097](http://download.cs
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
-<context:component-scan base-package="com.jadyer"/>
+<context:component-scan base-package="com.xuanyuv"/>
 <mvc:annotation-driven/>
 <mvc:view-controller path="/" view-name="forward:/login.jsp"/>
 <mvc:view-controller path="/tomain" view-name="forward:/main.jsp"/>
@@ -92,7 +88,7 @@ CSDN下载：[http://download.csdn.net/detail/jadyer/9727097](http://download.cs
 <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
     <!-- 指定Shiro验证用户登录的类为自定义的Realm（若有多个Realm，可用[realms]属性代替） -->
     <property name="realm">
-        <bean class="com.jadyer.demo.realm.MyRealm"/>
+        <bean class="com.xuanyuv.demo.realm.MyRealm"/>
     </property>
     <!--
     Shiro默认会使用Servlet容器的Session，此时修改超时时间的话，可以修改web.xml或者这里自定义的MyRealm
@@ -155,10 +151,10 @@ CSDN下载：[http://download.csdn.net/detail/jadyer/9727097](http://download.cs
 
 下面是自定义的用于指定Shiro验证用户登录的类 `MyRealm.java`
 
-这里定义了两个用户：**jadyer**（拥有admin角色和admin:manage权限）、**xuanyu**（无任何角色和权限）
+这里定义了两个用户：**hongyu**（拥有admin角色和admin:manage权限）、**xuanyu**（无任何角色和权限）
 
 ```java
-package com.jadyer.demo.realm;
+package com.xuanyuv.demo.realm;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.shiro.SecurityUtils;
@@ -176,8 +172,8 @@ import org.apache.shiro.subject.Subject;
 
 /**
  * 自定义的指定Shiro验证用户登录的类
- * 这里定义了两个用户：jadyer（拥有admin角色和admin:manage权限）、xuanyu（无任何角色和权限）
- * Created by 玄玉<https://jadyer.cn/> on 2013/09/29 15:15.
+ * 这里定义了两个用户：hongyu（拥有admin角色和admin:manage权限）、xuanyu（无任何角色和权限）
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/09/29 15:15.
  */
 public class MyRealm extends AuthorizingRealm {
     /**
@@ -223,12 +219,12 @@ public class MyRealm extends AuthorizingRealm {
         //simpleAuthorInfo.addStringPermissions(permissionList);
         //实际中可能会像上面注释的那样，从数据库或缓存中取得用户的角色和权限信息
         SimpleAuthorizationInfo simpleAuthorInfo = new SimpleAuthorizationInfo();
-        if(null!=currentUsername && "jadyer".equals(currentUsername)){
+        if(null!=currentUsername && "hongyu".equals(currentUsername)){
             //添加一个角色，不是配置意义上的添加，而是证明该用户拥有admin角色
             simpleAuthorInfo.addRole("admin");
             //添加权限
             simpleAuthorInfo.addStringPermission("admin:manage");
-            System.out.println("已为用户[jadyer]赋予了[admin]角色和[admin:manage]权限");
+            System.out.println("已为用户[hongyu]赋予了[admin]角色和[admin:manage]权限");
             return simpleAuthorInfo;
         }
         if(null!=currentUsername && "xuanyu".equals(currentUsername)){
@@ -267,9 +263,9 @@ public class MyRealm extends AuthorizingRealm {
         //此处无需比对，比对的逻辑Shiro会做，我们只需返回一个和令牌相关的正确的验证信息
         //说白了就是第一个参数填登录用户名，第二个参数填合法的登录密码（可以是从数据库中取到的，本例中为了演示就硬编码了）
         //这样一来，在随后的登录页面上就只有这里指定的用户和密码才能通过验证
-        if("jadyer".equals(token.getUsername())){
-            AuthenticationInfo authcInfo = new SimpleAuthenticationInfo("jadyer", "jadyer", this.getName());
-            this.setAuthenticationSession("jadyer");
+        if("hongyu".equals(token.getUsername())){
+            AuthenticationInfo authcInfo = new SimpleAuthenticationInfo("hongyu", "hongyu", this.getName());
+            this.setAuthenticationSession("hongyu");
             return authcInfo;
         }
         if("xuanyu".equals(token.getUsername())){
@@ -301,7 +297,7 @@ public class MyRealm extends AuthorizingRealm {
 下面是用到的控制器 `UserController.java`
 
 ```java
-package com.jadyer.demo.controller;
+package com.xuanyuv.demo.controller;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -323,7 +319,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * SpringMVC-3.2.4整合Shiro-1.2.2
- * Created by 玄玉<https://jadyer.cn/> on 2013/09/30 23:37.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/09/30 23:37.
  */
 @Controller
 @RequestMapping("mydemo")
@@ -404,7 +400,7 @@ public class UserController {
          <img style="cursor:pointer;" src="/captcha.jsp" onClick="this.src='/captcha.jsp?time'+Math.random();"/><br/>
          <input type="submit"/>
 </form>
-<!-- captcha.jsp源码见https://github.com/jadyer/seed/blob/master/seed-scs/src/main/webapp/captcha.jsp -->
+<!-- captcha.jsp源码见https://github.com/xuanyuv/seed/blob/master/seed-scs/src/main/webapp/captcha.jsp -->
 ```
 
 下面这个是登录后的首页 `/WebRoot/main.jsp`
@@ -452,7 +448,7 @@ public class UserController {
 
 ## 控制台输出
 
-这是不同用户登录的控制台输出（先用 xuanyu 登录，后用 jadyer 登录）
+这是不同用户登录的控制台输出（先用 xuanyu 登录，后用 hongyu 登录）
 
 ```
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
@@ -504,25 +500,25 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 用户[xuanyu]准备登出
 用户[xuanyu]已登出
 -------------------------------------------------------
-用户[jadyer]登录时输入的验证码为[2596]，HttpSession中的验证码为[2596]
+用户[hongyu]登录时输入的验证码为[2596]，HttpSession中的验证码为[2596]
 为验证登录用户而封装的Token：org.apache.shiro.authc.UsernamePasswordToken@6deaf3ce[
-  username=jadyer
+  username=hongyu
   password={j,a,d,y,e,r}
   rememberMe=true
   host=<null>
 ]
-对用户[jadyer]进行登录验证...验证开始
+对用户[hongyu]进行登录验证...验证开始
 验证当前Subject时获取到token：org.apache.shiro.authc.UsernamePasswordToken@6deaf3ce[
-  username=jadyer
+  username=hongyu
   password={j,a,d,y,e,r}
   rememberMe=true
   host=<null>
 ]
 当前Session超时时间为[2700000]毫秒
 修改Session超时时间为[7200000]毫秒
-对用户[jadyer]进行登录验证...验证通过
-用户[jadyer]登录认证通过（这里可进行一些认证通过后的系统参数初始化操作）
-已为用户[jadyer]赋予了[admin]角色和[admin:manage]权限
+对用户[hongyu]进行登录验证...验证通过
+用户[hongyu]登录认证通过（这里可进行一些认证通过后的系统参数初始化操作）
+已为用户[hongyu]赋予了[admin]角色和[admin:manage]权限
 ```
 
 下面是对应控制台输出的一些辅助截图

@@ -22,7 +22,7 @@ ok，let`s drink code ...
 这是客户端和服务端通信时，传输短信内容的实体类`SmsInfo.java`
 
 ```java
-package com.jadyer.demo.mina.model;
+package com.xuanyuv.demo.mina.model;
 
 /**
  * 模拟短信协议内容的对象（不要求必须实现Serializable接口）
@@ -34,7 +34,7 @@ package com.jadyer.demo.mina.model;
  * 你好！！Hello World!!              //短信的内容
  * 上面每行的末尾使用ASCII的10（\n）作为换行符
  * ----------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2012/10/19 11:21.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/10/19 11:21.
  */
 public class SmsInfo {
     private String sender;
@@ -58,10 +58,10 @@ public class SmsInfo {
 下面是服务端的示例`MyServer.java`
 
 ```java
-package com.jadyer.demo.mina.server;
-import com.jadyer.demo.mina.codec.CmccSipcDecoder;
-import com.jadyer.demo.mina.codec.CmccSipcEncoder;
-import com.jadyer.demo.mina.model.SmsInfo;
+package com.xuanyuv.demo.mina.server;
+import com.xuanyuv.demo.mina.codec.CmccSipcDecoder;
+import com.xuanyuv.demo.mina.codec.CmccSipcEncoder;
+import com.xuanyuv.demo.mina.model.SmsInfo;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
@@ -76,7 +76,7 @@ import java.nio.charset.Charset;
 
 /**
  * 服务端示例
- * Created by 玄玉<https://jadyer.cn/> on 2012/10/19 11:21.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/10/19 11:21.
  */
 public class MyServer {
     public static void main(String[] args) throws IOException {
@@ -112,10 +112,10 @@ public class MyServer {
 下面是客户端示例`MyClient.java`
 
 ```java
-package com.jadyer.demo.mina.client;
-import com.jadyer.demo.mina.codec.CmccSipcDecoder;
-import com.jadyer.demo.mina.codec.CmccSipcEncoder;
-import com.jadyer.demo.mina.model.SmsInfo;
+package com.xuanyuv.demo.mina.client;
+import com.xuanyuv.demo.mina.codec.CmccSipcDecoder;
+import com.xuanyuv.demo.mina.codec.CmccSipcEncoder;
+import com.xuanyuv.demo.mina.model.SmsInfo;
 import org.apache.mina.core.service.IoConnector;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
@@ -126,7 +126,7 @@ import java.nio.charset.Charset;
 
 /**
  * 客户端示例
- * Created by 玄玉<https://jadyer.cn/> on 2012/10/19 11:21.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/10/19 11:21.
  */
 public class MyClient {
     public static void main(String[] args) {
@@ -139,7 +139,7 @@ public class MyClient {
                 SmsInfo smsInfo = new SmsInfo();
                 smsInfo.setSender("13800008888");
                 smsInfo.setReceiver("13600006666");
-                smsInfo.setMessage("Hi Jadyer, 这是我用Mina2.x发给你的消息...");
+                smsInfo.setMessage("hi xuanyu, 这是我用Mina2.x发给你的消息...");
                 session.write(smsInfo);
             }
             @Override
@@ -165,8 +165,8 @@ dispose()用于在销毁编码器时释放关联的资源，这个我们一般�
 我们只需要把Java对象转为指定格式的字节流，然后write()出去就行了
 
 ```java
-package com.jadyer.demo.mina.codec;
-import com.jadyer.demo.mina.model.SmsInfo;
+package com.xuanyuv.demo.mina.codec;
+import com.xuanyuv.demo.mina.model.SmsInfo;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolEncoderAdapter;
@@ -176,7 +176,7 @@ import java.nio.charset.CharsetEncoder;
 
 /**
  * 自定义的编码器
- * Created by 玄玉<https://jadyer.cn/> on 2012/10/19 11:21.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/10/19 11:21.
  */
 public class CmccSipcEncoder extends ProtocolEncoderAdapter {
     private final CharsetEncoder charsetEncoder;
@@ -270,8 +270,8 @@ CumulativeProtocolDecoder会停止对doDecode()的调用
 下面的解码器`CmccSipcDecoder.java`，适用于客户端发送的数据是一次全部发送完整的情况
 
 ```java
-package com.jadyer.demo.mina.codec;
-import com.jadyer.demo.mina.model.SmsInfo;
+package com.xuanyuv.demo.mina.codec;
+import com.xuanyuv.demo.mina.model.SmsInfo;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.CumulativeProtocolDecoder;
@@ -281,7 +281,7 @@ import java.nio.charset.CharsetDecoder;
 
 /**
  * 自定义的解码器（适用于客户端发送的数据是一次全部发送完整的情况）
- * Created by 玄玉<https://jadyer.cn/> on 2012/10/19 11:21.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/10/19 11:21.
  */
 public class CmccSipcDecoder extends CumulativeProtocolDecoder {
     private final CharsetDecoder charsetDecoder;
@@ -404,8 +404,8 @@ public class CmccSipcDecoder extends CumulativeProtocolDecoder {
 下面是具体的解码器`CmccSipcDecoder.java`，适用于客户端发送的数据被拆分为多次后发送的情况
 
 ```java
-package com.jadyer.demo.mina.codec;
-import com.jadyer.demo.mina.model.SmsInfo;
+package com.xuanyuv.demo.mina.codec;
+import com.xuanyuv.demo.mina.model.SmsInfo;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.AttributeKey;
 import org.apache.mina.core.session.IoSession;
@@ -416,7 +416,7 @@ import java.nio.charset.CharsetDecoder;
 
 /**
  * 自定义的解码器（适用于客户端发送的数据被拆分为多次后发送的情况）
- * Created by 玄玉<https://jadyer.cn/> on 2012/10/19 11:21.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/10/19 11:21.
  */
 public class CmccSipcDecoder extends CumulativeProtocolDecoder {
     private final CharsetDecoder charsetDecoder;
@@ -567,8 +567,8 @@ InComing Client：/127.0.0.1:52222
 Queue : [MESSAGE_RECEIVED, ]
 
 19:12:19.550 [pool-3-thread-1] DEBUG org.apache.mina.core.filterchain.IoFilterEvent - Firing a MESSAGE_RECEIVED event for session 2
-The message received from Client is [Hi Jadyer, 这是我用Mina2.x发给你的消息...]
-19:12:19.558 [NioProcessor-3] INFO org.apache.mina.filter.logging.LoggingFilter - SENT: com.jadyer.demo.mina.model.SmsInfo@722af94
+The message received from Client is [Hi Xuanyu, 这是我用Mina2.x发给你的消息...]
+19:12:19.558 [NioProcessor-3] INFO org.apache.mina.filter.logging.LoggingFilter - SENT: com.xuanyuv.demo.mina.model.SmsInfo@722af94
 19:12:19.558 [NioProcessor-3] DEBUG org.apache.mina.filter.executor.OrderedThreadPoolExecutor - Adding event MESSAGE_SENT to session 2
 Queue : [MESSAGE_SENT, ]
 

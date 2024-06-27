@@ -17,9 +17,9 @@ excerpt: 介绍iBatis的基本用法。
 
 ```sh
 driver   = oracle.jdbc.OracleDriver
-url      = jdbc:oracle:thin:@127.0.0.1:1521:jadyer
+url      = jdbc:oracle:thin:@127.0.0.1:1521:xuanyu
 username = scott
-password = jadyer
+password = xuanyu
 ```
 
 其次是ibatis2的全局配置文件`//src//SqlMapConfig.xml`
@@ -138,14 +138,14 @@ password = jadyer
     -->
 
     <!-- 指定了映射文件的位置，配置中允许出现多个sqlMap节点，以指定工程中的所有映射文件 -->
-    <sqlMap resource="com/jadyer/model/User.xml" />
+    <sqlMap resource="com/xuanyuv/model/User.xml" />
 </sqlMapConfig>
 ```
 
 下面是用到的实体类`User.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import java.util.Date;
 
 public class User {
@@ -181,8 +181,8 @@ public class User {
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="User">
-    <!-- 这样在本配置文件的其他部分，需要引用"com.jadyer.model.User"类时，只需以其别名替代即可 -->
-    <typeAlias alias="user" type="com.jadyer.model.User"/>
+    <!-- 这样在本配置文件的其他部分，需要引用"com.xuanyuv.model.User"类时，只需以其别名替代即可 -->
+    <typeAlias alias="user" type="com.xuanyuv.model.User"/>
 
     <!--
     Statement配置
@@ -210,7 +210,7 @@ public class User {
     <!--
     以下是<select>标签的几个常用属性
     parameterClass：用于指定执行该节点中的操作时，需要传入的参数的类型
-                    比如parameterClass="user"，其中"user"就是"com.jadyer.model.Person"类的别名
+                    比如parameterClass="user"，其中"user"就是"com.xuanyuvv.model.Person"类的别名
                     别名是通过<typeAlias>指定的，如本文的<typeAlias alias="user" type=".....User"/>
     resultClass：指定返回的结果类型。建议输入别名，避免每次重复书写冗长的类名
     cacheModel：表明通过id为"findById"的Select statement获取的数据，使用"userCache"进行缓存
@@ -256,7 +256,7 @@ log4j.logger.java.sql.PreparedStatement=debug,stdout
 下面是JUnit4.x的单元测试类`UserDaoIbatisTest.java`
 
 ```java
-package com.jadyer.test;
+package com.xuanyuv.test;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.Date;
@@ -267,11 +267,11 @@ import org.junit.Test;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-import com.jadyer.model.User;
+import com.xuanyuv.model.User;
 
 /**
  * 本程序用到了ibatis-2.3.4.726.jar和log4j-1.2.16.jar
- * Created by 玄玉<https://jadyer.cn/> on 2011/04/05 23:26.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/04/05 23:26.
  */
 public class UserDaoIbatisTest {
     //SqlMapClient是ibatis的核心组件，提供数据操作的基础平台

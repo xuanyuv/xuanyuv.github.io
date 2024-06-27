@@ -110,11 +110,7 @@ CASClient中有多种验证ticket的Filter，都继承自AbstractTicketValidatio
 
 ## 代码
 
-本文源码下载：（下面两个地址的文件的内容，都是一样的）
-
-Github：[https://github.com/v5java/demo-cas-client](https://github.com/v5java/demo-cas-client)
-
-CSDN下载：[http://download.csdn.net/detail/jadyer/8934207](http://download.csdn.net/detail/jadyer/8934207)
+本文源码下载：<https://github.com/v5java/demo-cas-client>
 
 下面是`web.xml`的配置
 
@@ -179,14 +175,14 @@ CSDN下载：[http://download.csdn.net/detail/jadyer/8934207](http://download.cs
     <!--
     <context-param>
         <param-name>serverName</param-name>
-        <param-value>http://boss.jadyer.com:8080</param-value>
+        <param-value>http://boss.xuanyuv.com:8080</param-value>
     </context-param>
     <filter>
         <filter-name>casAuthenticationFilter</filter-name>
         <filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>
         <init-param>
             <param-name>casServerLoginUrl</param-name>
-            <param-value>http://sso.jadyer.com:8080/cas-server-web/login</param-value>
+            <param-value>http://sso.xuanyuv.com:8080/cas-server-web/login</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -198,7 +194,7 @@ CSDN下载：[http://download.csdn.net/detail/jadyer/8934207](http://download.cs
         <filter-class>org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter</filter-class>
         <init-param>
             <param-name>casServerUrlPrefix</param-name>
-            <param-value>http://sso.jadyer.com:8080/cas-server-web</param-value>
+            <param-value>http://sso.xuanyuv.com:8080/cas-server-web</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -262,12 +258,12 @@ CSDN下载：[http://download.csdn.net/detail/jadyer/8934207](http://download.cs
 ```ruby
 #<<Central Authentication Service>>
 #where to login
-casServerLoginUrl=http://sso.jadyer.com:8080/cas-server-web/login
+casServerLoginUrl=http://sso.xuanyuv.com:8080/cas-server-web/login
 #login server root
-casServerUrlPrefix=http://sso.jadyer.com:8080/cas-server-web
+casServerUrlPrefix=http://sso.xuanyuv.com:8080/cas-server-web
 #who am i
-#casClientServerName=http://boss.jadyer.com:8180
-casClientServerName=http://risk.jadyer.com:8280
+#casClientServerName=http://boss.xuanyuv.com:8180
+casClientServerName=http://risk.xuanyuv.com:8280
 ```
 
 最后是`/WebRoot/index.jsp`
@@ -317,9 +313,9 @@ casClientServerName=http://risk.jadyer.com:8280
 首先在`C:\Windows\System32\drivers\etc\hosts`中添加以下三个配置
 
 ```
-127.0.0.1 sso.jadyer.com
-127.0.0.1 boss.jadyer.com
-127.0.0.1 risk.jadyer.com
+127.0.0.1 sso.xuanyuv.com
+127.0.0.1 boss.xuanyuv.com
+127.0.0.1 risk.xuanyuv.com
 ```
 
 然后拷贝三个Tomcat，分别用作sso服务器和两个sso客户端
@@ -338,13 +334,13 @@ casClientServerName=http://risk.jadyer.com:8280
 最后修改两个sso客户端`\Tomcat\webapps\cas-client\WEB-INF\classes\config.properties`里面的`casClientServerName`的值
 
 ```ruby
-casClientServerName=http://boss.jadyer.com:8180
-casClientServerName=http://risk.jadyer.com:8280
+casClientServerName=http://boss.xuanyuv.com:8180
+casClientServerName=http://risk.xuanyuv.com:8280
 ```
 
 下面开始测试
 
-先访问[http://boss.jadyer.com:8180/cas-client](http://boss.jadyer.com:8180/cas-client)，发现没登录会自动跳转到单点登录页
+先访问[http://boss.xuanyuv.com:8180/cas-client](http://boss.xuanyuv.com:8180/cas-client)，发现没登录会自动跳转到单点登录页
 
 ![](https://ae01.alicdn.com/kf/Uec15935ea5954de09c5588d78a30d2cdq.png)
 
@@ -352,6 +348,6 @@ casClientServerName=http://risk.jadyer.com:8280
 
 ![](https://ae01.alicdn.com/kf/U73901511bf9048fb94ed8fbec192ba14a.png)
 
-再访问[http://risk.jadyer.com:8280/cas-client](http://risk.jadyer.com:8280/cas-client)，会发现自动登录成功，不用再登录了
+再访问[http://risk.xuanyuv.com:8280/cas-client](http://risk.xuanyuv.com:8280/cas-client)，会发现自动登录成功，不用再登录了
 
 ![](https://ae01.alicdn.com/kf/U4b70416fa71b4e36b5905619c7c765c2F.png)

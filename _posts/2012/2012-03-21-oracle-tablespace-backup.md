@@ -115,24 +115,24 @@ alter tablespace 表空间名 online;                                           
 ```sql
 -- 导出表
 -- 导出自己的表
-exp userid=scott/xuanyu@jadyer tables=(emp,dept) file=d:\table_emp_dept.dmp
+exp userid=scott/xuanyu@xuanyuv tables=(emp,dept) file=d:\table_emp_dept.dmp
 -- 导出其它方案的表（此时该用户需要dba权限或者exp_full_database权限，比如system用户就可导出scott的表）
-exp userid=system/manager@jadyer tables=(scott.emp) file=d:\table_emp.dmp
+exp userid=system/manager@xuanyuv tables=(scott.emp) file=d:\table_emp.dmp
 -- 导出表的结构
-exp userid=scott/xuanyu@jadyer tables=(emp) file=d:\structure_emp.dmp rows=n
+exp userid=scott/xuanyu@xuanyuv tables=(emp) file=d:\structure_emp.dmp rows=n
 -- 直接导出
 -- 这种方式比默认的常规方式速度要快（数据量大时可以考虑使用这种方法）
 -- 这时需要数据库的字符集要与客户端字符集完全一致，否则会报错。。。
-exp userid=scott/xuanyu@jadyer tables=(emp) file=d:\data_emp.dmp direct=y
+exp userid=scott/xuanyu@xuanyuv tables=(emp) file=d:\data_emp.dmp direct=y
 
 -- 导出方案（会导出方案中所有对象的数据，如表、索引、约束等等）
 -- 导出自己的方案
-exp userid=scott/xuanyu@jadyer owner=scott file=d:\schema_scott.dmp
+exp userid=scott/xuanyu@xuanyuv owner=scott file=d:\schema_scott.dmp
 -- 导出其它的方案（此时该用户需要dba权限或者exp_full_database权限，比如system用户就可以导出任何方案）
-exp userid=system/manager@jadyer owner=(system,scott) file=d:\schema_system_scott.dmp
+exp userid=system/manager@xuanyuv owner=(system,scott) file=d:\schema_system_scott.dmp
 
 -- 导出数据库（会导出数据库中的对象及数据，要求该用户具有dba权限或者exp_full_database权限）
-exp userid=system/manager@jadyer full=y inctype=complete file=d:\database_bak.dmp
+exp userid=system/manager@xuanyuv full=y inctype=complete file=d:\database_bak.dmp
 ```
 
 ### 导入
@@ -154,13 +154,13 @@ exp userid=system/manager@jadyer full=y inctype=complete file=d:\database_bak.dm
 ```sql
 -- 导入表
 -- 导入自己的表
-imp userid=scott/xuanyu@jadyer tables=(emp) file=d:\table_emp.dmp
+imp userid=scott/xuanyu@xuanyuv tables=(emp) file=d:\table_emp.dmp
 -- 导入表到其它用户（此时要求该用户具有dba或者imp_full_database权限）
-imp userid=system/manager@jadyer tables=(emp) file=d:\table_emp touser=scott
+imp userid=system/manager@xuanyuv tables=(emp) file=d:\table_emp touser=scott
 -- 导入表的结构（只导入表的结构，而不导入数据）
-imp userid=scott/xuanyu@jadyer tables=(emp) file=d:\table_emp rows=n
+imp userid=scott/xuanyu@xuanyuv tables=(emp) file=d:\table_emp rows=n
 -- 导入数据（如果对象(比如表)已经存在，可以只导入表的数据）
-imp userid=scott/xuanyu@jadyer tables=(emp) file=d:\table_emp ignore=y
+imp userid=scott/xuanyu@xuanyuv tables=(emp) file=d:\table_emp ignore=y
 
 -- 导入方案（会导入文件中的对象和数据）
 -- 导入自身的方案

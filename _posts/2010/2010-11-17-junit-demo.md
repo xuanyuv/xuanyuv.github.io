@@ -40,7 +40,7 @@ JUnit应用了大量的设计模式，其本身代码非常少，但可扩展性
 ## 公共的待测试类
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
@@ -67,7 +67,8 @@ public class Calculator {
 ## JUnit4.x
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
+import com.xuanyuv.service.Calculator;
 import java.lang.reflect.Method;
 import org.junit.Assert;
 import org.junit.After;
@@ -76,7 +77,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
-import com.jadyer.service.Calculator;
 
 /**
  * JUnit4中不需要继承JUnit框架提供的相关类，它的测试方法应该满足如下原则
@@ -85,7 +85,7 @@ import com.jadyer.service.Calculator;
  * 3..无参
  * 4..方法名随意
  * 5..使用@Test指明该方法为测试方法
- * Created by 玄玉<https://jadyer.cn/> on 2010/11/17 00:39.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2010/11/17 00:39.
  */
 public class CalculatorTest {
     private Calculator cal;
@@ -226,8 +226,8 @@ public class CalculatorTest {
 ## JUnit3.8
 
 ```java
-package com.jadyer.demo;
-import com.jadyer.service.Calculator;
+package com.xuanyuv.demo;
+import com.xuanyuv.service.Calculator;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
@@ -237,7 +237,7 @@ import junit.framework.TestCase;
  * 2..void
  * 3..无参
  * 4..方法名以test开头，即testXxx()
- * Created by 玄玉<https://jadyer.cn/> on 2010/11/17 00:39.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2010/11/17 00:39.
  */
 public class CalculatorTest extends TestCase {
     private Calculator cal;
@@ -295,13 +295,13 @@ public class CalculatorTest extends TestCase {
 再补充一个`JUnit3.8`自身提供的，执行单元测试类的`TestRunner.class`的使用方式
 
 ```java
-package com.jadyer.junit3;
+package com.xuanyuv.junit3;
 
 /**
  * 在junit.awtui和junit.swingui和junit.textui三个包中都提供了TestRunner.class类
  * 这是JUnit本身提供的三种运行方式，不依赖于任何IDE，它可以通过命令行或者图形界面来独立运行
  * 当JUnit和Ant结合时，它还是使用命令行的方式运行的，然后把结果输出给Ant，最后产生测试报告
- * Created by 玄玉<https://jadyer.cn/> on 2010/11/17 00:39.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2010/11/17 00:39.
  */
 public class TestRunnerDemo {
     public static void main(String[] args) {

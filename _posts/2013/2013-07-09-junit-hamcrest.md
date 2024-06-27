@@ -12,7 +12,7 @@ excerpt: 演示了Hamcrest的用法，以达到增强JUnit测试的目的。
 
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import java.util.HashMap;
 import java.util.Map;
 import org.hamcrest.Matchers;
@@ -28,7 +28,7 @@ import org.junit.Test;
  * 但是注意：测试时可能报告这个异常java.lang.NoSuchMethodError: org.hamcrest.core.AllOf.allOf
  *          这时把hamcrest.jar移到junit.jar前面即可，否则组合条件如allOf、anyOff等都会抛此异常
  * -----------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/09 12:41.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/09 12:41.
  */
 public class TestByHamcrest {
     /**
@@ -53,19 +53,19 @@ public class TestByHamcrest {
         Assert.assertThat("abc.txt", Matchers.startsWith("ab"));
         Assert.assertThat("abc.txt", Matchers.containsString("c.t"));
         Assert.assertThat(22+"aa", Matchers.hasToString("22aa"));
-        Assert.assertThat("https://jadyer.cn/", Matchers.instanceOf(String.class));
-        Assert.assertThat("https://jadyer.cn/", Matchers.notNullValue());
+        Assert.assertThat("https://www.xuanyuv.com/", Matchers.instanceOf(String.class));
+        Assert.assertThat("https://www.xuanyuv.com/", Matchers.notNullValue());
         Assert.assertThat(null, Matchers.nullValue());
 
         //针对集合的测试
-        String[] users = {"玄玉", "Jadyer"};
+        String[] users = {"玄玉", "Xuanyu"};
         Assert.assertThat(users, Matchers.hasItemInArray("玄玉"));
-        Map<String, String> userMap = new HashMap<String, String>();
+        Map<String, String> userMap = new HashMap<>();
         userMap.put("11", "玄玉");
-        userMap.put("22", "Jadyer");
-        userMap.put("33", "https://jadyer.cn/");
+        userMap.put("22", "Xuanyu");
+        userMap.put("33", "https://www.xuanyuv.com/");
         Assert.assertThat(userMap, Matchers.hasKey("22"));
-        Assert.assertThat(userMap, Matchers.hasValue("https://jadyer.cn/"));
+        Assert.assertThat(userMap, Matchers.hasValue("https://www.xuanyuv.com/"));
     }
 }
 ```

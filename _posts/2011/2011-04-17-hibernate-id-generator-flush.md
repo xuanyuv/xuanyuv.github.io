@@ -31,9 +31,9 @@ excerpt: 介绍Hibernate中的不同主键生成策略，结合flush()方法，�
 <hibernate-configuration>
     <session-factory>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/jadyer?characterEncoding=UTF-8</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/xuanyu?characterEncoding=UTF-8</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">jadyer</property>
+        <property name="connection.password">xuanyu</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
         <property name="hibernate.show_sql">true</property>
@@ -50,11 +50,11 @@ excerpt: 介绍Hibernate中的不同主键生成策略，结合flush()方法，�
         <!-- 有些数据库就不支持这些参数。其中Oracle和SQLServer都支持，而MySQL貌似就不支持 -->
 
          <!-- 也可以通过以下方式编写映射文件 -->
-        <mapping resource="com/jadyer/hibernate/all.hbm.xml"/>
+        <mapping resource="com/xuanyuv/hibernate/all.hbm.xml"/>
         <!--
-        <mapping resource="com/jadyer/hibernate/User11.hbm.xml"/>
-        <mapping resource="com/jadyer/hibernate/User22.hbm.xml"/>
-        <mapping resource="com/jadyer/hibernate/User33.hbm.xml"/>
+        <mapping resource="com/xuanyuv/hibernate/User11.hbm.xml"/>
+        <mapping resource="com/xuanyuv/hibernate/User22.hbm.xml"/>
+        <mapping resource="com/xuanyuv/hibernate/User33.hbm.xml"/>
          -->
     </session-factory>
 </hibernate-configuration>
@@ -63,7 +63,7 @@ excerpt: 介绍Hibernate中的不同主键生成策略，结合flush()方法，�
 接下来是用到的三个实体类
 
 ```java
-package com.jadyer.hibernate;
+package com.xuanyuv.hibernate;
 import java.util.Date;
 public class User11 {
     private String id;
@@ -74,7 +74,7 @@ public class User11 {
 }
 
 
-package com.jadyer.hibernate;
+package com.xuanyuv.hibernate;
 import java.util.Date;
 public class User22 {
     private int id;
@@ -85,7 +85,7 @@ public class User22 {
 }
 
 
-package com.jadyer.hibernate;
+package com.xuanyuv.hibernate;
 import java.util.Date;
 public class User33 {
     private String id;
@@ -103,7 +103,7 @@ public class User33 {
 <!DOCTYPE hibernate-mapping PUBLIC
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="com.jadyer.hibernate">
+<hibernate-mapping package="com.xuanyuv.hibernate">
     <class name="User11" table="t_user11">
         <id name="id" column="user_id" length="32">
             <generator class="uuid"/>
@@ -136,13 +136,13 @@ public class User33 {
 然后是利用Hibernate映射文件生成数据库表的ExportDB.java
 
 ```java
-package com.jadyer.hibernate;
+package com.xuanyuv.hibernate;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 /**
  * 利用Hibernate映射文件生成数据库表
- * Created by 玄玉<https://jadyer.cn/> on 2011/04/17 01:21.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/04/17 01:21.
  */
 public class ExportDB {
     public static void main(String[] args) {
@@ -159,13 +159,13 @@ public class ExportDB {
 接下来是自定义的用于生成Session的工具类HibernateSessionUtils.java
 
 ```java
-package com.jadyer.hibernate;
+package com.xuanyuv.hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 /**
- * Created by 玄玉<https://jadyer.cn/> on 2011/04/17 01:21.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/04/17 01:21.
  */
 public class HibernateSessionUtils {
     private static SessionFactory factory;
@@ -194,18 +194,18 @@ public class HibernateSessionUtils {
 最后是借助了JUnit3.8实现的单元测试类SessionFlushTest.java
 
 ```java
-package com.jadyer.hibernate;
+package com.xuanyuv.hibernate;
 import java.util.Date;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import com.jadyer.hibernate.HibernateSessionUtils;
-import com.jadyer.hibernate.User11;
-import com.jadyer.hibernate.User22;
-import com.jadyer.hibernate.User33;
+import com.xuanyuv.hibernate.HibernateSessionUtils;
+import com.xuanyuv.hibernate.User11;
+import com.xuanyuv.hibernate.User22;
+import com.xuanyuv.hibernate.User33;
 import junit.framework.TestCase;
 
 /**
- * Created by 玄玉<https://jadyer.cn/> on 2011/04/17 01:21.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/04/17 01:21.
  */
 public class SessionFlushTest extends TestCase {
     /**

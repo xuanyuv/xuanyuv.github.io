@@ -96,7 +96,7 @@ http://127.0.0.1:4100/master/demo.cloud.config-dev.properties
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.jadyer.demo</groupId>
+    <groupId>com.xuanyuv.demo</groupId>
     <artifactId>demo-cloud-08-config</artifactId>
     <version>1.1</version>
     <packaging>pom</packaging>
@@ -150,7 +150,7 @@ http://127.0.0.1:4100/master/demo.cloud.config-dev.properties
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-08-config</artifactId>
         <version>1.1</version>
     </parent>
@@ -196,7 +196,7 @@ eureka:
 这是注册中心的 SpringBoot 启动类 `ServiceDiscoveryBootStrap.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
@@ -221,7 +221,7 @@ public class ServiceDiscoveryBootStrap {
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-08-config</artifactId>
         <version>1.1</version>
     </parent>
@@ -250,7 +250,7 @@ server:
 
 spring:
   application:
-    name: jadyer-config-server
+    name: xuanyu-config-server
   cloud:
     config:
       server:
@@ -276,7 +276,7 @@ eureka:
 这是配置中心的 SpringBoot 启动类 `ServiceConfigBootStarp.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.config.server.EnableConfigServer;
@@ -303,7 +303,7 @@ public class ServiceConfigBootStarp {
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-08-config</artifactId>
         <version>1.1</version>
     </parent>
@@ -366,7 +366,7 @@ spring:
       label: master                 # 指定配置中心配置文件的{label}
       discovery:
         enabled: true                    # 使用注册中心里面已注册的配置中心
-        serviceId: jadyer-config-server  # 指定配置中心注册到注册中心的serviceId
+        serviceId: xuanyu-config-server  # 指定配置中心注册到注册中心的serviceId
 
 eureka:
   client:
@@ -377,7 +377,7 @@ eureka:
 这是第一个服务提供方的 SpringBoot 启动类 `ServiceServerBootStarp.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -390,7 +390,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * http://cloud.spring.io/spring-cloud-static/Camden.SR3/#_registering_with_eureka
  * https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka
  * --------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2017/1/9 16:00.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2017/1/9 16:00.
  */
 @EnableEurekaClient
 @SpringBootApplication
@@ -404,7 +404,7 @@ public class ServiceServerBootStarp {
 这是第一个服务提供方读取配置中心参数（且支持热加载）的例子 `DemoController.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -447,4 +447,4 @@ public class DemoController {
 
 属性热加载前，都要手工调用各个应用的刷新接口，即便使用 Git 仓库的 Webhooks，维护起来也够费劲的
 
-解决办法也有，详见下一篇文章《[SpringCloud系列第09节之消息总线Bus](https://jadyer.cn/2017/04/19/springcloud-bus/)》中通过消息总线的方式，实现集群的自动更新
+解决办法也有，详见下一篇文章《[SpringCloud系列第09节之消息总线Bus](https://www.xuanyuv.com/2017/04/19/springcloud-bus/)》中通过消息总线的方式，实现集群的自动更新

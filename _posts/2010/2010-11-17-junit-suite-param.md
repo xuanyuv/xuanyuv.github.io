@@ -28,7 +28,7 @@ JUnit为单元测试提供了默认的测试运行器，它的测试方法都是
 下面是`JUnit4.x`中创建测试套件类的示例代码
 
 ```java
-package com.jadyer.junit4;
+package com.xuanyuv.junit4;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -39,7 +39,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * 2、使用org.junit.runner.RunWith和org.junit.runners.Suite.SuiteClasses注解标注该空类
  * 3、将org.junit.runners.Suite作为参数传入RunWith注解，即表明使用套件运行器执行此类
  * 4、将需要放入此测试套件的测试类组成数组，作为SuiteClasses注解的参数
- * Created by 玄玉<https://jadyer.cn/> on 2010/11/17 00:43.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2010/11/17 00:43.
  */
 @RunWith(Suite.class)
 @SuiteClasses({MyStackTest.class, CalculatorTest.class})
@@ -49,14 +49,14 @@ public class TestAll {}
 下面是`JUnit3.8`中创建测试套件类的示例代码
 
 ```java
-package com.jadyer.junit3;
+package com.xuanyuv.junit3;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
  * JUnit3.8中批量运行所有的测试类（直接在该类上Run As JUnit Test）
- * Created by 玄玉<https://jadyer.cn/> on 2010/11/17 00:43.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2010/11/17 00:43.
  */
 public class TestAll extends TestCase {
     //方法名固定的：必须为public static Test suite()
@@ -95,7 +95,7 @@ public class TestAll extends TestCase {
 首先是一个待测试的类
 
 ```java
-package com.jadyer.junit4;
+package com.xuanyuv.junit4;
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
@@ -106,14 +106,14 @@ public class Calculator {
 下面就是`JUnit4.x`参数化测试的写法
 
 ```java
-package com.jadyer.junit4;
+package com.xuanyuv.junit4;
 import java.util.Arrays;
 import java.util.Collection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import com.jadyer.junit4.Calculator;
+import com.xuanyuv.junit4.Calculator;
 
 /**
  * JUnit4.x的参数化测试的几个要点
@@ -125,7 +125,7 @@ import com.jadyer.junit4.Calculator;
  * 3、为测试类声明几个变量，分别用于存放期望值和测试所用的数据
  * 4、为测试类声明一个带有参数的公共构造函数，并在其中为上一步声明的变量赋值
  * 5、编写测试方法，使用定义的变量作为参数进行测试
- * Created by 玄玉<https://jadyer.cn/> on 2010/11/17 00:43.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2010/11/17 00:43.
  */
 @RunWith(Parameterized.class)
 public class ParameterTest {

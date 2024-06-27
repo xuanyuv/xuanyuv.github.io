@@ -14,7 +14,7 @@ excerpt: 介绍Lucene-3.6.2中高级搜索里面自定义评分的用法。
 下面演示的是`Lucene-3.6.2`中搜索的时候，`自定义评分`的用法（详见代码注释）
 
 ```java
-package com.jadyer.lucene;
+package com.xuanyuv.lucene;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
@@ -35,11 +35,11 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
-import com.jadyer.custom.MyNameScoreQuery;
+import com.xuanyuv.custom.MyNameScoreQuery;
 
 /**
  * Lucene系列第08节之高级搜索之评分
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/19 12:13.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/19 12:13.
  */
 public class AdvancedSearchByScore {
     private Directory directory;
@@ -49,11 +49,11 @@ public class AdvancedSearchByScore {
         /** 文件大小 */
         int[] sizes = {90, 10, 20, 10, 60, 50};
         /** 文件名 */
-        String[] names = {"Michael.java", "Scofield.ini", "Tbag.txt", "Jack", "Jade", "Jadyer"};
+        String[] names = {"Michael.java", "Scofield.ini", "Tbag.txt", "Jack", "Jade", "Xuanyu"};
         /** 文件内容 */
-        String[] contents = {"my blog is https://jadyer.cn/",
-                             "my github is https://github.com/jadyer",
-                             "my name is jadyer",
+        String[] contents = {"my blog is https://www.xuanyuv.com/",
+                             "my github is https://github.com/xuanyuv",
+                             "my name is Xuanyu",
                              "I am a Java Developer",
                              "I am from Haerbin",
                              "I like java of Lucene"};
@@ -152,7 +152,7 @@ public class AdvancedSearchByScore {
 下面是我们自定义的评分类`MyCustomScoreQuery.java`
 
 ```java
-package com.jadyer.custom;
+package com.xuanyuv.custom;
 import java.io.IOException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.Query;
@@ -168,7 +168,7 @@ import org.apache.lucene.search.function.ValueSourceQuery;
  * 3)创建一个类继承于CustomScoreProvider
  * 4)覆盖CustomScoreProvider.customScore()方法：我们的自定义评分主要就是在此方法中完成的
  * ---------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/06 10:30.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/06 10:30.
  */
 public class MyCustomScoreQuery extends CustomScoreQuery {
     private static final long serialVersionUID = -2373017691291184609L;
@@ -203,7 +203,7 @@ public class MyCustomScoreQuery extends CustomScoreQuery {
 下面是自定义的采用特殊文件名作为评分标准的评分类`MyNameScoreQuery.java`
 
 ```java
-package com.jadyer.custom;
+package com.xuanyuv.custom;
 import java.io.IOException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.FieldCache;
@@ -213,7 +213,7 @@ import org.apache.lucene.search.function.CustomScoreQuery;
 
 /**
  * 采用特殊文件名作为评分标准的评分类
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/06 14:17.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/06 14:17.
  */
 public class MyNameScoreQuery extends CustomScoreQuery {
     private static final long serialVersionUID = -2813985445544972520L;

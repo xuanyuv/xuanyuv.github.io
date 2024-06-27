@@ -21,10 +21,10 @@ excerpt: 介绍JPA中的一对多、一对一、多对多映射的不同写法�
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
     <!--
-    <persistence-unit name="jadyerJPAOneToOne" transaction-type="RESOURCE_LOCAL">
-    <persistence-unit name="jadyerJPAManyToMany" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="xuanyuJPAOneToOne" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="xuanyuJPAManyToMany" transaction-type="RESOURCE_LOCAL">
     -->
-    <persistence-unit name="jadyerJPAOneToMany" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="xuanyuJPAOneToMany" transaction-type="RESOURCE_LOCAL">
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
             <property name="hibernate.show_sql" value="true"/>
@@ -32,8 +32,8 @@ excerpt: 介绍JPA中的一对多、一对一、多对多映射的不同写法�
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
             <property name="hibernate.connection.username" value="scott"/>
-            <property name="hibernate.connection.password" value="jadyer"/>
-            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@127.0.0.1:1521:jadyer"/>
+            <property name="hibernate.connection.password" value="xuanyu"/>
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@127.0.0.1:1521:xuanyu"/>
         </properties>
     </persistence-unit>
 </persistence>
@@ -44,7 +44,7 @@ excerpt: 介绍JPA中的一对多、一对一、多对多映射的不同写法�
 首先是订单的实体`Order.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,7 +56,7 @@ import java.util.Set;
 
 /**
  * 订单的实体Bean
- * Created by 玄玉<https://jadyer.cn/> on 2011/02/11 09:16.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/02/11 09:16.
  */
 @Entity
 @Table(name="orders")
@@ -110,7 +110,7 @@ public class Order {
 下面是订单项的实体`OrderItem.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -121,7 +121,7 @@ import javax.persistence.ManyToOne;
 
 /**
  * 订单项的实体Bean
- * Created by 玄玉<https://jadyer.cn/> on 2011/02/11 09:16.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/02/11 09:16.
  */
 @Entity
 public class OrderItem {
@@ -150,9 +150,9 @@ public class OrderItem {
 最后是JUnit4单元测试类`OneToManyTest.java`
 
 ```java
-package com.jadyer.junit;
-import com.jadyer.model.Order;
-import com.jadyer.model.OrderItem;
+package com.xuanyuv.junit;
+import com.xuanyuv.model.Order;
+import com.xuanyuv.model.OrderItem;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -161,7 +161,7 @@ import org.junit.Test;
 public class OneToManyTest {
     @Test
     public void save(){
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jadyerJPAOneToMany");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("xuanyuJPAOneToMany");
         EntityManager em = factory.createEntityManager();
         //开启事务
         em.getTransaction().begin();
@@ -190,7 +190,7 @@ public class OneToManyTest {
 首先是身份证的实体`IDCard.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -200,7 +200,7 @@ import javax.persistence.OneToOne;
 
 /**
  * 身份证的实体Bean
- * Created by 玄玉<https://jadyer.cn/> on 2011/02/11 09:16.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/02/11 09:16.
  */
 @Entity
 public class IDCard {
@@ -229,7 +229,7 @@ public class IDCard {
 然后是人的实体`Person.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -240,7 +240,7 @@ import javax.persistence.OneToOne;
 
 /**
  * 人的实体Bean
- * Created by 玄玉<https://jadyer.cn/> on 2011/02/11 09:16.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/02/11 09:16.
  */
 @Entity
 public class Person {
@@ -270,9 +270,9 @@ public class Person {
 最后是JUnit4单元测试类`OneToOneTest.java`
 
 ```java
-package com.jadyer.junit;
-import com.jadyer.model.IDCard;
-import com.jadyer.model.Person;
+package com.xuanyuv.junit;
+import com.xuanyuv.model.IDCard;
+import com.xuanyuv.model.Person;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -281,7 +281,7 @@ import org.junit.Test;
 public class OneToOneTest {
     @Test
     public void save(){
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jadyerJPAOneToOne");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("xuanyuJPAOneToOne");
         EntityManager em = factory.createEntityManager();
         //开启事务
         em.getTransaction().begin();
@@ -301,7 +301,7 @@ public class OneToOneTest {
 首先是学生的实体`Student.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -315,7 +315,7 @@ import java.util.Set;
 
 /**
  * 学生的实体Bean
- * Created by 玄玉<https://jadyer.cn/> on 2011/02/11 10:39.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/02/11 10:39.
  */
 @Entity
 public class Student {
@@ -361,7 +361,7 @@ public class Student {
 然后是教师的实体`Teacher.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -373,7 +373,7 @@ import java.util.Set;
 
 /**
  * 教师的实体Bean
- * Created by 玄玉<https://jadyer.cn/> on 2011/02/11 10:39.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/02/11 10:39.
  */
 @Entity
 public class Teacher {
@@ -429,9 +429,9 @@ public class Teacher {
 最后是JUnit4单元测试类`ManyToManyTest.java`
 
 ```java
-package com.jadyer.junit;
-import com.jadyer.model.Student;
-import com.jadyer.model.Teacher;
+package com.xuanyuv.junit;
+import com.xuanyuv.model.Student;
+import com.xuanyuv.model.Teacher;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -443,7 +443,7 @@ public class ManyToManyTest {
      */
     @Test
     public void save(){
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jadyerJPAManyToMany");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("xuanyuJPAManyToMany");
         EntityManager em = factory.createEntityManager();
         em.getTransaction().begin();
         em.persist(new Student("令狐冲"));
@@ -458,7 +458,7 @@ public class ManyToManyTest {
      */
     @Test
     public void buildTS(){
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jadyerJPAManyToMany");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("xuanyuJPAManyToMany");
         EntityManager em = factory.createEntityManager();
         em.getTransaction().begin();
         Student student = em.find(Student.class, 3);
@@ -473,7 +473,7 @@ public class ManyToManyTest {
      */
     @Test
     public void removeTS(){
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jadyerJPAManyToMany");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("xuanyuJPAManyToMany");
         EntityManager em = factory.createEntityManager();
         em.getTransaction().begin();
         Student student = em.find(Student.class, 3);
@@ -488,7 +488,7 @@ public class ManyToManyTest {
      */
     @Test
     public void deleteTeacher(){
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jadyerJPAManyToMany");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("xuanyuJPAManyToMany");
         EntityManager em = factory.createEntityManager();
         em.getTransaction().begin();
         Student student = em.find(Student.class, 1);
@@ -506,7 +506,7 @@ public class ManyToManyTest {
      */
     @Test
     public void deleteStudent(){
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jadyerJPAManyToMany");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("xuanyuJPAManyToMany");
         EntityManager em = factory.createEntityManager();
         em.getTransaction().begin();
         Student student = em.getReference(Student.class, 1);

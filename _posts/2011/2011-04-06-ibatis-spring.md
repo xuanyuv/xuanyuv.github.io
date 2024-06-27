@@ -38,7 +38,7 @@ iBatis集成Spring的方式，共有三种
 首先是实体类`User.Java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 public class User {
     private int id;
     private String name;
@@ -48,13 +48,13 @@ public class User {
 }
 ```
 
-下面是实体类映射文件`//src//com//jadyer//model//User.xml`
+下面是实体类映射文件`//src//com//xuanyuv//model//User.xml`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="User">
-    <typeAlias alias="user" type="com.jadyer.model.User"/>
+    <typeAlias alias="user" type="com.xuanyuv.model.User"/>
 
     <resultMap class="user" id="userResultMap">
         <result property="id" column="id"/>
@@ -129,7 +129,7 @@ PRIMARY KEY (id)
 <sqlMapConfig>
     <!-- 集成Spring之后，数据源的配置就挪到了Spring，所以iBatis本身的配置可以取消 -->
     <settings useStatementNamespaces="true"/>
-    <sqlMap resource="com/jadyer/model/User.xml"/>
+    <sqlMap resource="com/xuanyuv/model/User.xml"/>
 </sqlMapConfig>
 ```
 
@@ -140,12 +140,12 @@ PRIMARY KEY (id)
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
     <bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
         <property name="driver" value="com.mysql.jdbc.Driver"/>
-        <property name="driverUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:jadyer"/>
+        <property name="driverUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:xuanyu"/>
         <property name="user" value="scott"/>
         <property name="password" value="hongyu"/>
     </bean>
 
-    <context:component-scan base-package="com.jadyer"/>
+    <context:component-scan base-package="com.xuanyuv"/>
 
     <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
@@ -166,14 +166,14 @@ PRIMARY KEY (id)
 接下来是操作数据库的`UserDaoImpl.java`
 
 ```java
-package com.jadyer.dao;
+package com.xuanyuv.dao;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Resource;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Repository;
-import com.jadyer.model.User;
+import com.xuanyuv.model.User;
 
 //其实不是非得去实现什么接口的
 @Repository
@@ -247,15 +247,15 @@ public class UserDaoImpl {
 最后是用JUnit4.x编写的单元测试`IbatisSpringTest.java`
 
 ```java
-package com.jadyer.test;
+package com.xuanyuv.test;
 import java.sql.SQLException;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.jadyer.dao.UserDaoImpl;
-import com.jadyer.model.User;
+import com.xuanyuv.dao.UserDaoImpl;
+import com.xuanyuv.model.User;
 
 /**
  * 本例的依赖包如下
@@ -274,7 +274,7 @@ import com.jadyer.model.User;
  * spring-jdbc-3.1.4.RELEASE
  * spring-orm-3.1.4.RELEASE
  * spring-tx-3.1.4.RELEASE
- * Created by 玄玉<https://jadyer.cn/> on 2011/04/06 19:56.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/04/06 19:56.
  */
 public class IbatisSpringTest {
     private static UserDaoImpl userDao;

@@ -40,7 +40,7 @@ Spring Cloud 已经把 Eureka 集成在其子项目 Spring Cloud Netflix 里面
 
 ## 示例代码
 
-本文的例子只能用来尝尝鲜，更丰富的配置详见 Eureka 进阶篇：[https://jadyer.cn/2017/01/17/springcloud-eureka-advance/](https://jadyer.cn/2017/01/17/springcloud-eureka-advance/)
+本文的例子只能用来尝尝鲜，更丰富的配置详见 Eureka 进阶篇：[https://www.xuanyuv.com/2017/01/17/springcloud-eureka-advance/](https://www.xuanyuv.com/2017/01/17/springcloud-eureka-advance/)
 
 这是演示的是一个由三个模块组成的  Maven 工程，其中包含一个注册中心和两个服务提供者
 
@@ -55,7 +55,7 @@ Spring Cloud 已经把 Eureka 集成在其子项目 Spring Cloud Netflix 里面
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.jadyer.demo</groupId>
+    <groupId>com.xuanyuv.demo</groupId>
     <artifactId>demo-cloud-02</artifactId>
     <version>1.1</version>
     <packaging>pom</packaging>
@@ -127,7 +127,7 @@ ok，let`s drink code ...
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-02</artifactId>
         <version>1.1</version>
     </parent>
@@ -147,7 +147,7 @@ ok，let`s drink code ...
 这是注册中心的 SpringBoot 启动类 `ServiceDiscoveryBootStrap.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
@@ -202,7 +202,7 @@ ok，let`s drink code ...
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-02</artifactId>
         <version>1.1</version>
     </parent>
@@ -222,7 +222,7 @@ ok，let`s drink code ...
 这是服务提供方的 SpringBoot 启动类 `ServiceServer01BootStarp.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -235,7 +235,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * http://cloud.spring.io/spring-cloud-static/Camden.SR3/#_registering_with_eureka
  * https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka
  * ------------------------------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2017/1/9 16:00.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2017/1/9 16:00.
  */
 @EnableEurekaClient
 @SpringBootApplication
@@ -265,7 +265,7 @@ eureka:
 这是服务提供方暴露的数学运算服务 `CalculatorController.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.ServiceInstance;
@@ -276,7 +276,7 @@ import javax.annotation.Resource;
 
 /**
  * 服务提供方暴露的数学运算服务
- * Created by 玄玉<https://jadyer.cn/> on 2017/1/9 16:00.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2017/1/9 16:00.
  */
 @RestController
 public class CalculatorController {
@@ -325,4 +325,4 @@ public class CalculatorController {
 * ...
 * ...
 
-等等吧，这些问题，请参见 Eureka 进阶篇：[https://jadyer.cn/2017/01/17/springcloud-eureka-advance/](https://jadyer.cn/2017/01/17/springcloud-eureka-advance/)
+等等吧，这些问题，请参见 Eureka 进阶篇：[https://www.xuanyuv.com/2017/01/17/springcloud-eureka-advance/](https://www.xuanyuv.com/2017/01/17/springcloud-eureka-advance/)

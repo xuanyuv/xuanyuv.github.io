@@ -14,7 +14,7 @@ excerpt: 介绍Swing编程中如何编写两种不同风格的进度条。
 ## 代码
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
 
 /**
  * Swing进度条样例
- * Created by 玄玉<https://jadyer.cn/> on 2013/04/24 13:52.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/04/24 13:52.
  */
 public class JProgressBarDemo {
     private Timer timer;

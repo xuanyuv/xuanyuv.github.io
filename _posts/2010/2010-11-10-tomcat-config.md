@@ -27,7 +27,7 @@ excerpt: 列举了几个常用的Tomcat配置。
 <tomcat-users>
     <role rolename="admin"/>
     <role rolename="manager"/>
-    <user username="jadyer" password="22" roles="admin,manager"/>
+    <user username="xuanyu" password="22" roles="admin,manager"/>
 </tomcat-users>
 ```
 
@@ -105,7 +105,7 @@ url--------------创建数据库连接所需要的URL的参数值
     driverClassName="oracle.jdbc.OracleDriver"
     username="scott"
     password="oracle"
-    url="jdbc:oracle:thin:@127.0.0.1:1521:jadyer"/>
+    url="jdbc:oracle:thin:@127.0.0.1:1521:xuanyu"/>
 <Resource name="jdbc/mysqlds"
     auth="Container"
     type="javax.sql.DataSource"
@@ -115,7 +115,7 @@ url--------------创建数据库连接所需要的URL的参数值
     driverClassName="com.mysql.jdbc.Driver"
     username="root"
     password="root"
-    url="jdbc:mysql://127.0.0.1:3306/jadyer?characterEncoding=UTF-8"/>
+    url="jdbc:mysql://127.0.0.1:3306/xuanyu?characterEncoding=UTF-8"/>
 <Resource name="jdbc/sqlserver2000ds"
     auth="Container"
     type="javax.sql.DataSource"
@@ -125,7 +125,7 @@ url--------------创建数据库连接所需要的URL的参数值
     driverClassName="com.microsoft.jdbc.sqlserver.SQLServerDriver"
     sername="sa"
     password="sa"
-    url="jdbc:microsoft:sqlserver://127.0.0.1:1433;DatabaseName=jadyer"/>
+    url="jdbc:microsoft:sqlserver://127.0.0.1:1433;DatabaseName=xuanyu"/>
 ```
 
 修改完 context.xml 之后，还需把 Oracle 和 MySQL 的驱动类库复制到 /apache-tomcat-6.0.20/lib/ 目录中
@@ -203,7 +203,7 @@ JAVA_OPTS="$JAVA_OPTS -Dappenv.active=dev"
 这是工具类的写法
 
 ```java
-package com.jadyer.demo.util;
+package com.xuanyuv.demo.util;
 import java.io.IOException;
 import java.util.Properties;
 

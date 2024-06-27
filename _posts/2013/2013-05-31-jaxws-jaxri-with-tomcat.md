@@ -32,12 +32,12 @@ JAX-RI的官网为[https://jax-ws.java.net](https://jax-ws.java.net)
 首先是`SEI`，即服务端接口类`HelloService.Java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 
-@WebService(targetNamespace="http://blog.csdn.net/jadyer")
+@WebService(targetNamespace="https://www.xuanyuv.com/")
 public interface HelloService {
     @WebResult(name="sayHelloResult")
     public String sayHello(@WebParam(name="name")String name);
@@ -47,10 +47,10 @@ public interface HelloService {
 下面是`SIB`，即服务端接口实现类`HelloServiceImpl.java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import javax.jws.WebService;
 
-@WebService(endpointInterface="com.jadyer.service.HelloService", targetNamespace="http://blog.csdn.net/jadyer")
+@WebService(endpointInterface="com.xuanyuv.service.HelloService", targetNamespace="https://www.xuanyuv.com/")
 public class HelloServiceImpl implements HelloService {
     @Override
     public String sayHello(String name) {
@@ -73,7 +73,7 @@ public class HelloServiceImpl implements HelloService {
     <!-- implementation：对外开放WebServices接口的实现类 -->
     <!--    url-pattern：浏览器访问后缀 -->
     <endpoint name="myJaxWsTomcatDemo"
-              implementation="com.jadyer.service.HelloServiceImpl"
+              implementation="com.xuanyuv.service.HelloServiceImpl"
               url-pattern="/myHello"/>
 </endpoints>
 
@@ -117,20 +117,20 @@ public class HelloServiceImpl implements HelloService {
 
 客户端只有一个用于演示调用服务端的`ClientApp.Java`
 
-它是通过wsimport生成的，关于其用法，可参考[https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/](https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/)
+它是通过wsimport生成的，关于其用法，可参考[https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/](https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/)
 
 ```java
-package com.jadyer.client;
+package com.xuanyuv.client;
 import java.io.IOException;
 import java.net.URL;
 import javax.xml.namespace.QName;
 import javax.xml.soap.SOAPException;
-import net.csdn.blog.jadyer.HelloService;
-import net.csdn.blog.jadyer.HelloServiceImplService;
+import net.csdn.blog.xuanyuv.HelloService;
+import net.csdn.blog.xuanyuv.HelloServiceImplService;
 
 /**
  * wsimport -d D:/Download/ -keep -verbose http://127.0.0.1:8088/jaxws_tomcat/myHello?wsdl
- * Created by 玄玉<https://jadyer.cn/> on 2013/05/31 19:49.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/05/31 19:49.
  */
 public class ClientApp {
     public static void main(String[] args) throws SOAPException, IOException {
@@ -139,7 +139,7 @@ public class ClientApp {
         String wsdlLocation = "http://127.0.0.1:8088/jaxws_tomcat/myHello?wsdl";
 
         //取自wsdl文件中定义的<wsdl:definitions targetNamespace=""/>的值
-        String nameSpace = "http://blog.csdn.net/jadyer";
+        String nameSpace = "https://www.xuanyuv.com/";
 
         //取自wsdl文件中定义的<wsdl:service name="">的值
         String serviceName = "HelloServiceImplService";

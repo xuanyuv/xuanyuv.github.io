@@ -18,7 +18,7 @@ excerpt: 介绍Lucene-3.6.2中自定义停用词和同义词分词器。
 首先是用于显示分词信息的`HelloCustomAnalyzer.java`
 
 ```java
-package com.jadyer.lucene;
+package com.xuanyuv.lucene;
 import java.io.IOException;
 import java.io.StringReader;
 import org.apache.lucene.analysis.Analyzer;
@@ -30,7 +30,7 @@ import org.apache.lucene.analysis.tokenattributes.TypeAttribute;
 
 /**
  * Lucene系列第05节之自定义停用词和同义词分词器
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/18 18:10.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/18 18:10.
  */
 public class HelloCustomAnalyzer {
     /**
@@ -82,7 +82,7 @@ public class HelloCustomAnalyzer {
 下面是自定义的停用词分词器`MyStopAnalyzer.java`
 
 ```java
-package com.jadyer.analysis;
+package com.xuanyuv.analysis;
 import java.io.Reader;
 import java.util.Set;
 import org.apache.lucene.analysis.Analyzer;
@@ -95,7 +95,7 @@ import org.apache.lucene.util.Version;
 
 /**
  * 自定义的停用词分词器（这里主要用来过滤忽略大小写的指定的字符串）
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/05 13:55.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/05 13:55.
  */
 public class MyStopAnalyzer extends Analyzer {
     //存放停用的分词信息
@@ -126,7 +126,7 @@ public class MyStopAnalyzer extends Analyzer {
 下面是自定义的同义词分词器`MySynonymAnalyzer.java`
 
 ```java
-package com.jadyer.analysis;
+package com.xuanyuv.analysis;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.HashMap;
@@ -144,7 +144,7 @@ import com.chenlb.mmseg4j.analysis.MMSegTokenizer;
 
 /**
  * 自定义的同义词分词器
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/05 17:11.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/05 17:11.
  */
 public class MySynonymAnalyzer extends Analyzer {
     @Override
@@ -159,7 +159,7 @@ public class MySynonymAnalyzer extends Analyzer {
 
 /**
  * 自定义的TokenFilter
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/05 17:11.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/05 17:11.
  */
 class MySynonymTokenFilter extends TokenFilter {
     private CharTermAttribute cta;            //用于获取TokenStream中的语汇单元
@@ -218,7 +218,7 @@ class MySynonymTokenFilter extends TokenFilter {
 最后是`JUnit4.x`写的测试
 
 ```java
-package com.jadyer.test;
+package com.xuanyuv.test;
 import org.apache.lucene.analysis.StopAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -235,14 +235,14 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
 import org.apache.lucene.util.Version;
 import org.junit.Test;
-import com.jadyer.analysis.MyStopAnalyzer;
-import com.jadyer.analysis.MySynonymAnalyzer;
-import com.jadyer.lucene.HelloCustomAnalyzer;
+import com.xuanyuv.analysis.MyStopAnalyzer;
+import com.xuanyuv.analysis.MySynonymAnalyzer;
+import com.xuanyuv.lucene.HelloCustomAnalyzer;
 
 public class HelloCustomAnalyzerTest {
     @Test
     public void stopAnalyzer(){
-        String txt = "This is my house, I`m come from Haerbin, My email is jadyer@yeah.net";
+        String txt = "This is my house, I`m come from Haerbin, My email is xuanyuv@163.com";
         HelloCustomAnalyzer.displayTokenInfo(txt, new StandardAnalyzer(Version.LUCENE_36), false);
         HelloCustomAnalyzer.displayTokenInfo(txt, new StopAnalyzer(Version.LUCENE_36), false);
         HelloCustomAnalyzer.displayTokenInfo(txt, new MyStopAnalyzer(new String[]{"I", "EMAIL", "you"}), false);

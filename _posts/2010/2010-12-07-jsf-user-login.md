@@ -120,7 +120,7 @@ SUN之所以推出JSF，其实很大程度上是模仿了微软的ASP.NET，编�
         <font color="red">提示：</font>
         程序设定的用户名和密码分别为
         <font color="blue"><strong>admin</strong></font>和
-        <font color="blue"><strong>jadyer</strong></font>
+        <font color="blue"><strong>xuanyu</strong></font>
     </h3>
     <br/>
     <br/>
@@ -180,7 +180,7 @@ public class UserBean {
 
     //如果该方法最后return null的话，那么该请求就会返回到原页面，即login.jsp页面
     public String validateUser() {
-        if("admin".equals(username) && "jadyer".equals(password)){
+        if("admin".equals(username) && "xuanyu".equals(password)){
             //并不是一定要写成success，也可以使用其它有意义的字符串
             return "success";
         }

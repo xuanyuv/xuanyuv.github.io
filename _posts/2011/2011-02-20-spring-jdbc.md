@@ -19,9 +19,9 @@ excerpt: 描述Spring集成JDBC的配置方法。
 
 ```ruby
 driverClassName=oracle.jdbc.OracleDriver
-url=jdbc:oracle:thin:@127.0.0.1:1521:jadyer
+url=jdbc:oracle:thin:@127.0.0.1:1521:xuanyu
 username=scott
-password=jadyer
+password=xuanyu
 initialSize=1
 maxActive=500
 maxIdle=2
@@ -34,7 +34,7 @@ minIdle=1
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
     <!-- 也可通过下面的方式引入配置文件中的属性 -->
-    <!-- 关于appenv.active配置可参考https://jadyer.cn/2010/11/10/tomcat-config/ -->
+    <!-- 关于appenv.active配置可参考https://www.xuanyuv.com/2010/11/10/tomcat-config/ -->
     <!--
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
@@ -80,7 +80,7 @@ minIdle=1
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="personServiceImpl" class="com.jadyer.service.impl.PersonServiceImpl">
+    <bean id="personServiceImpl" class="com.xuanyuv.service.impl.PersonServiceImpl">
         <property name="sequence12" ref="sequence12"/>
         <property name="dataSource" ref="dataSource"/>
     </bean>
@@ -103,7 +103,7 @@ minIdle=1
 因为Spring默认JDK动态代理，它就是对接口做的实现，所以我们事务开启的是接口上的方法
 另外，层与层之间，最后通过接口来关联，因为它是抽象的，不经常变动的
 <aop:config>
-    <aop:pointcut id="transactionPointcut" expression="execution(* com.jadyer.service..*.*(..))" />
+    <aop:pointcut id="transactionPointcut" expression="execution(* com.xuanyuv.service..*.*(..))" />
     <aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut" />
 </aop:config>
 
@@ -123,7 +123,7 @@ minIdle=1
 下面是用到的实体类 `Person.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 
 public class Person {
     private Integer id;
@@ -145,9 +145,9 @@ public class Person {
 下面是服务层接口 `PersonService.java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import java.util.List;
-import com.jadyer.model.Person;
+import com.xuanyuv.model.Person;
 
 public interface PersonService {
     public long save(Person person);
@@ -161,14 +161,14 @@ public interface PersonService {
 下面是服务层接口的实现类 `PersonServiceImpl.java`
 
 ```java
-package com.jadyer.service.impl;
+package com.xuanyuv.service.impl;
 import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import com.jadyer.model.Person;
-import com.jadyer.service.PersonService;
+import com.xuanyuv.model.Person;
+import com.xuanyuv.service.PersonService;
 
 /**
  * ----------------------------------------------------------------------------------------------------
@@ -184,7 +184,7 @@ import com.jadyer.service.PersonService;
  * 2、columnName-------用于指定主键列的名字
  * 3、cacheSize--------用于指定缓存的主键个数
  * ----------------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2011/02/20 18:48.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/02/20 18:48.
  */
 @Transactional
 public class PersonServiceImpl implements PersonService {
@@ -253,11 +253,11 @@ public class PersonServiceImpl implements PersonService {
 
 ```java
 
-package com.jadyer.service.impl;
+package com.xuanyuv.service.impl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
-import com.jadyer.model.Person;
+import com.xuanyuv.model.Person;
 
 public class PersonRowMapper implements RowMapper {
     public Object mapRow(ResultSet rs, int index) throws SQLException {
@@ -275,13 +275,13 @@ public class PersonRowMapper implements RowMapper {
 然后是使用 JUnit4 写的单元测试类 `PersonServiceTest.java`
 
 ```java
-package com.jadyer.junit;
+package com.xuanyuv.junit;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.jadyer.model.Person;
-import com.jadyer.service.PersonService;
+import com.xuanyuv.model.Person;
+import com.xuanyuv.service.PersonService;
 
 public class PersonServiceTest {
     private static PersonService personService;

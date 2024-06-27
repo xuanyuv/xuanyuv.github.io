@@ -159,10 +159,10 @@ settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---8
 
 ### 编辑器之代码风格
 ```
-# 控制台字号（先拷贝一份 Scheme 的 Darcula 配置，新命名为 Darcula_Jadyer）
+# 控制台字号（先拷贝一份 Scheme 的 Darcula 配置，新命名为 Darcula_Xuanyu）
 settings---Editor---Color Scheme---Console Font---Use console font instead of the default---Size=12
 
-# 文件换行符使用Unix格式（先拷贝一份 Scheme 的 Default 配置，新命名为 Default_Jadyer）
+# 文件换行符使用Unix格式（先拷贝一份 Scheme 的 Default 配置，新命名为 Default_Xuanyu）
 settings---Editor---Colors Style---Line separator---Unix and macOS (\n)
 
 # import每个类而非整个包（当import某个包下的类超过这里设置的个数时，就会换成星号来代替，比如import java.util.*）
@@ -174,7 +174,7 @@ settings---Editor---Colors Style---Java---Code Generation---不勾选Line commen
 
 ### 编辑器之关闭检查
 
-先拷贝一份 Profile 的 Default 配置，新命名为 Default_Jadyer
+先拷贝一份 Profile 的 Default 配置，新命名为 Default_Xuanyu
 
 注意：不同的 idea 版本下的 Inspections 配置均有不同，以下只是概述其意
 
@@ -228,7 +228,7 @@ settings---Editor---File and Code Templates---Includes---File Header---编辑为
 
 ```
 /**
- * Created by 玄玉<https://jadyer.cn/> on ${DATE} ${TIME}.
+ * Created by 玄玉<https://www.xuanyuv.com/> on ${DATE} ${TIME}.
  */
 ```
 
@@ -272,9 +272,9 @@ public enum ${NAME} {
 
 **接下来是自定义方法上的注释**
 
-settings---Editor---Live Templates---右上角 `+` 选择 Template Group---输入模板组名：JadyerGroup
+settings---Editor---Live Templates---右上角 `+` 选择 Template Group---输入模板组名：XuanyuGroup
 
-再点击 JadyerGroup---右上角 `+` 加号选择 Live Template---设置自定义的触发注释输出的字母
+再点击 XuanyuGroup---右上角 `+` 加号选择 Live Template---设置自定义的触发注释输出的字母
 
 然后在最下方的 No applicable contexts. Define 处选择模板适用范围（截图中我勾选的是 **Java** 范围）
 
@@ -285,7 +285,7 @@ settings---Editor---Live Templates---右上角 `+` 选择 Template Group---输�
 ```
 /**
  *
- * Comment by 玄玉<https://jadyer.cn/> on $date$ $time$.
+ * Comment by 玄玉<https://www.xuanyuv.com/> on $date$ $time$.
  */
 ```
 
@@ -313,7 +313,7 @@ settings---Languages & Frameworks---Markdown---Default layout---Editor
 
 ### 快捷键
 
-先拷贝一份 keymap 的 Windows 配置，新命名为 Windows_Jadyer
+先拷贝一份 keymap 的 Windows 配置，新命名为 Windows_Xuanyu
 
 ```
 # 修改代码提示快捷键

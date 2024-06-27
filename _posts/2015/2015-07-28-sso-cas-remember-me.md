@@ -17,9 +17,9 @@ excerpt: 主要描述单点登录服务端为CAS-4.0.3实现RememberMe的功能�
 
 1、cas.securityContext.status.allowedSubnet=127.0.0.1
 
-　　可以访问的服务端统计页面：[http://sso.jadyer.com:8080/cas-server-web/status](http://sso.jadyer.com:8080/cas-server-web/status)
+　　可以访问的服务端统计页面：[http://sso.xuanyuv.com:8080/cas-server-web/status](http://sso.xuanyuv.com:8080/cas-server-web/status)
 
-　　可以访问的服务端统计页面：[http://sso.jadyer.com:8080/cas-server-web/statistics](http://sso.jadyer.com:8080/cas-server-web/statistics)
+　　可以访问的服务端统计页面：[http://sso.xuanyuv.com:8080/cas-server-web/statistics](http://sso.xuanyuv.com:8080/cas-server-web/statistics)
 
 2、host.name=S3
 
@@ -77,11 +77,7 @@ RememberMe也就是记住密码，可以让用户登录成功后，关闭浏览�
 
 ## 代码
 
-本文源码下载：（下面两个地址的文件的内容，都是一样的，并包含了本系列的所有代码）
-
-Github：[https://github.com/v5java/demo-cas-server-web](https://github.com/v5java/demo-cas-server-web)
-
-CSDN下载：[http://download.csdn.net/detail/jadyer/8940967](http://download.csdn.net/detail/jadyer/8940967)
+本文源码下载：<https://github.com/v5java/demo-cas-server-web>
 
 下面是`ticketExpirationPolicies.xml`的修改
 
@@ -229,12 +225,12 @@ rememberMeDuration=1209600
 下面是`UsernamePasswordCaptchaCredential.java`
 
 ```java
-package com.jadyer.sso.model;
+package com.xuanyuv.sso.model;
 import org.jasig.cas.authentication.RememberMeUsernamePasswordCredential;
 
 /**
  * 自定义的接收登录验证码的实体类
- * Created by 玄玉<https://jadyer.cn/> on 2015/07/14 16:28.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2015/07/14 16:28.
  */
 //public class UsernamePasswordCaptchaCredential extends UsernamePasswordCredential {
 public class UsernamePasswordCaptchaCredential extends RememberMeUsernamePasswordCredential {
@@ -244,7 +240,7 @@ public class UsernamePasswordCaptchaCredential extends RememberMeUsernamePasswor
 }
 ```
 
-最后是`/WEB-INF/view/jsp/jadyer/ui/casLoginView.jsp`
+最后是`/WEB-INF/view/jsp/xuanyu/ui/casLoginView.jsp`
 
 ```html
 <%@ page pageEncoding="UTF-8"%>

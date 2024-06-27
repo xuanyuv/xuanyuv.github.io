@@ -59,7 +59,7 @@ AJP协议是为Tomcat与HTTP服务器之间通信而定制的协议，能够提�
 
 ## 配置Apache
 
-Apache的安装过程详见：[https://jadyer.cn/2014/09/26/centos-install-apache/](https://jadyer.cn/2014/09/26/centos-install-apache/)
+Apache的安装过程详见：[https://www.xuanyuv.com/2014/09/26/centos-install-apache/](https://www.xuanyuv.com/2014/09/26/centos-install-apache/)
 
 1. 修改/app/apache/conf/httpd.conf
 
@@ -90,10 +90,10 @@ worker.tomcat.port=8009
 
    > ```sh
 \<VirtualHost *:80>
-    ServerName "www.jadyer.com"
+    ServerName "www.xuanyuv.com"
     DocumentRoot "/app/tomcat/webapps/docs"
-    ErrorLog "logs/www.jadyer.com-error.log"
-    CustomLog "logs/www.jadyer.com-access.log" common
+    ErrorLog "logs/www.xuanyuv.com-error.log"
+    CustomLog "logs/www.xuanyuv.com-access.log" common
     \<Directory "/app/tomcat/webapps/docs">
         Options FollowSymLinks
         AllowOverride None

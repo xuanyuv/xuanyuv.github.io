@@ -28,7 +28,7 @@ excerpt: 主要介绍Lucene-3.6.2中创建索引时通过Tika来解析各种文�
 下面是`Tike-1.4`的一个使用示例`HelloTika.java`
 
 ```java
-package com.jadyer.lucene;
+package com.xuanyuv.lucene;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -43,7 +43,7 @@ import org.xml.sax.ContentHandler;
 
 /**
  * Tika-1.4使用示例
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/07 08:57.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/07 08:57.
  */
 public class HelloTika {
     public static String parseToStringByTikaParser(File file){
@@ -120,7 +120,7 @@ public class HelloTika {
 下面演示的就是在`Lucene-3.6.2`中借助`Tika-1.4`创建索引的示例代码
 
 ```java
-package com.jadyer.lucene;
+package com.xuanyuv.lucene;
 import java.io.File;
 import java.io.IOException;
 import org.apache.lucene.document.Document;
@@ -142,7 +142,7 @@ import com.chenlb.mmseg4j.analysis.ComplexAnalyzer;
 
 /**
  * Lucene系列第10节之Tika
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/19 23:02.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/19 23:02.
  */
 public class HelloTikaIndex {
     private Directory directory;
@@ -165,7 +165,7 @@ public class HelloTikaIndex {
         File myFile = new File("myExample/myFile/");
         try{
             //这里的分词器使用的是MMSeg4j（记得引入mmseg4j-all-1.8.5-with-dic.jar）
-            //详见https://jadyer.cn/2013/08/18/lucene-chinese-analyzer/中对MMSeg4j的介绍
+            //详见https://www.xuanyuv.com/2013/08/18/lucene-chinese-analyzer/中对MMSeg4j的介绍
             writer = new IndexWriter(directory, new IndexWriterConfig(Version.LUCENE_36, new ComplexAnalyzer()));
             writer.deleteAll();
             for(File file : myFile.listFiles()){

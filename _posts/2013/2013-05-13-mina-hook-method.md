@@ -18,7 +18,7 @@ excerpt: 介绍Mina中的钩子用法，也就是Java模板方法模式中的Hoo
 这是核心的抽象类 `IoSession.java`
 
 ```java
-package com.jadyer.hook;
+package com.xuanyuv.hook;
 
 public abstract class IoSession {
     public void write(Object message){
@@ -33,7 +33,7 @@ public abstract class IoSession {
 这是关键的实现类 `MyHandler.java`
 
 ```java
-package com.jadyer.hook;
+package com.xuanyuv.hook;
 
 public class MyHandler extends IoSession{
     @Override

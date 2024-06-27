@@ -32,7 +32,7 @@ excerpt: 演示了Cobertura的用法，以生成JUnit测试覆盖率报告。
 这是待测试的服务`Calculator.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
@@ -49,15 +49,15 @@ public class Calculator {
 这是测试用例`CalculatorTest.java`
 
 ```java
-package com.jadyer.demo.test;
-import com.jadyer.demo.Calculator;
+package com.xuanyuv.demo.test;
+import com.xuanyuv.demo.Calculator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
  * JUnit借助Cobertura生成测试覆盖率报告
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/09 13:13.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/09 13:13.
  */
 public class CalculatorTest {
     private Calculator calService;
@@ -92,7 +92,7 @@ public class CalculatorTest {
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.jadyer.demo</groupId>
+    <groupId>com.xuanyuv.demo</groupId>
     <artifactId>demo-cobertura</artifactId>
     <version>1.0</version>
     <dependencies>
@@ -232,7 +232,7 @@ src下存放应用代码，test下存放测试代码，bin下存放应用代码�
 
 这一步主要目的是为需要生成报告的class文件加入`Cobertura标记`，用来告诉Cobertura哪些文件需要生成测试覆盖率报告
 
-命令为：`D:\report\bin>cobertura-instrument --destination instrumented com/jadyer/demo`
+命令为：`D:\report\bin>cobertura-instrument --destination instrumented com/xuanyuv/demo`
 
 **第四步**
 
@@ -240,7 +240,7 @@ src下存放应用代码，test下存放测试代码，bin下存放应用代码�
 
 目的是跑一遍JUnit测试，并将测试结果加入到第三步标记的相对应的class文件内，以便于下一步生成覆盖率报告
 
-命令为`D:\report\bin>java -cp ../lib/junit-4.10.jar;../lib/cobertura.jar;instrumented;.;-Dnet.sourceforge.cobertura.datafile=cobertura.ser org.junit.runner.JUnitCore com.jadyer.demo.test.CalculatorTest`
+命令为`D:\report\bin>java -cp ../lib/junit-4.10.jar;../lib/cobertura.jar;instrumented;.;-Dnet.sourceforge.cobertura.datafile=cobertura.ser org.junit.runner.JUnitCore com.xuanyuv.demo.test.CalculatorTest`
 
 **第五步**
 

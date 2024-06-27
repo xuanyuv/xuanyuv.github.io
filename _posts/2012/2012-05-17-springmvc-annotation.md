@@ -27,11 +27,11 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
     -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/jadyer-servlet.xml, classpath:applicationContext-*.xml</param-value>
+        <param-value>/WEB-INF/xuanyu-servlet.xml, classpath:applicationContext-*.xml</param-value>
     </context-param>
 
     <!-- 防止发生java.beans.Introspector内存泄露，应将它配置在ContextLoaderListener的前面 -->
-    <!-- 详细介绍见https://jadyer.cn/2013/09/24/spring-introspector-cleanup-listener/ -->
+    <!-- 详细介绍见https://www.xuanyuv.com/20130924/spring-introspector-cleanup-listener/ -->
     <listener>
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
     </listener>
@@ -51,7 +51,7 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
     不过也可以让它去找别的配置文件，修改方法为：配置局部的<init-param>参数
     -->
     <servlet>
-        <servlet-name>jadyer</servlet-name>
+        <servlet-name>xuanyu</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <!--
         <init-param>
@@ -62,7 +62,7 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>jadyer</servlet-name>
+        <servlet-name>xuanyu</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
@@ -110,7 +110,7 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
     <!--
     默认欢迎页
     Servlet2.5中可直接在此处执行Servlet应用，比如<welcome-file>servlet/InitSystemParamServlet</welcome-file>
-    本文的演示代码使用了SpringMVC提供的<mvc:view-controller>，实现了首页隐藏的目的，详见下面的jadyer-servlet.xml
+    本文的演示代码使用了SpringMVC提供的<mvc:view-controller>，实现了首页隐藏的目的，详见下面的xuanyu-servlet.xml
     -->
     <!--
     <welcome-file-list>
@@ -120,7 +120,7 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
 </web-app>
 ```
 
-## jadyer-servlet.xml
+## xuanyu-servlet.xml
 
 这是 SpringMVC 的配置文件
 
@@ -132,7 +132,7 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
     它背后注册了很多用于解析注解的处理器，其中就包括<context:annotation-config/>配置的注解所使用的处理器
     所以配置了<context:component-scan base-package="">之后，便无需再配置<context:annotation-config>
     -->
-    <context:component-scan base-package="com.jadyer"/>
+    <context:component-scan base-package="com.xuanyuv"/>
 
     <!-- 启动SpringMVC的注解功能，它会自动注册HandlerMapping、HandlerAdapter、ExceptionResolver的相关实例 -->
     <mvc:annotation-driven/>
@@ -183,7 +183,7 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
 ## Controller
 
 ```java
-package com.jadyer.demo.controller;
+package com.xuanyuv.demo.controller;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -197,7 +197,7 @@ import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
- * Created by 玄玉<https://jadyer.cn/> on 2012/05/17 01:23.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/05/17 01:23.
  */
 //指明这是一个SpringMVCController
 @Controller

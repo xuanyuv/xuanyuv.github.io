@@ -45,7 +45,7 @@ excerpt: idea在运行含有多个maven module的jsp工程时的解决方案。
          <artifactId>spring-boot-maven-plugin</artifactId>
          <version>1.3.7.RELEASE</version>
          <configuration>
-            <mainClass>com.jadyer.union.youqian.boss.common.BootStrap</mainClass>
+            <mainClass>com.xuanyuv.union.youqian.boss.common.BootStrap</mainClass>
          </configuration>
       </plugin>
    </plugins>
@@ -55,7 +55,7 @@ excerpt: idea在运行含有多个maven module的jsp工程时的解决方案。
 `BootStrap.java`代码如下
 
 ```java
-package com.jadyer.union.youqian.boss.common;
+package com.xuanyuv.union.youqian.boss.common;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -65,7 +65,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 
 import javax.servlet.Filter;
 
-@SpringBootApplication(scanBasePackages="com.jadyer.union")
+@SpringBootApplication(scanBasePackages="com.xuanyuv.union")
 public class BootStrap extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
@@ -115,7 +115,7 @@ public class BootStrap extends SpringBootServletInitializer {
          <artifactId>spring-boot-maven-plugin</artifactId>
          <version>1.3.7.RELEASE</version>
          <configuration>
-            <mainClass>com.jadyer.union.youqian.boss.common.BootStrap</mainClass>
+            <mainClass>com.xuanyuv.union.youqian.boss.common.BootStrap</mainClass>
             <jvmArguments>-Dfile.encoding=UTF-8 -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005</jvmArguments>
          </configuration>
       </plugin>

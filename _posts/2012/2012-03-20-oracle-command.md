@@ -36,7 +36,7 @@ show error;
 set timing on;
 
 -- 可以替代变量，而该变量在执行时，需要用户输入
-select * from emp where ename='&Jadyer'
+select * from emp where ename='&Xuanyu'
 
 -- 将sql*plus屏幕内容输出到指定的文件中
 spool d:\bb.sql
@@ -69,7 +69,7 @@ select * from user_indexes where table_name='表名';       -- 显示当前用�
 select * from user_ind_columns where index_name='索引名'; -- 显示索引对应的列信息
 
 -- 初始化参数用于设置实例或数据库特征，Oracle9i提供了200多个初始化参数，并且它们都有默认值
--- 可在该文件中修改：ORACLE_HOME\\admin\\jadyer\\pfile\\init.ora
+-- 可在该文件中修改：ORACLE_HOME\\admin\\xuanyu\\pfile\\init.ora
 show parameter;
 
 SELECT sys_context('userenv', 'host') FROM DUAL;            --查询当前数据库所在主机的名称

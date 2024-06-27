@@ -25,17 +25,17 @@ excerpt: 介绍了通过keytool生成证书，并分别导入Tomcat、JVM、浏�
 
 ```sh
 # -genkey   表示生成密钥
-# -alias    指定别名，这里是JadyerKeyStore
+# -alias    指定别名，这里是XuanyuKeyStore
 # -keyalg   指定算法，这里是RSA
 # -validity 指定证书有效期，这里是1024天
-# -keystore 指定生成的KeyStore文件名和路径，这里是D:/keys/JadyerKey
-D:\>keytool -genkey -alias JadyerKeyStore -keyalg RSA -validity 1024 -keystore D:/keys/JadyerKey
+# -keystore 指定生成的KeyStore文件名和路径，这里是D:/keys/XuanyuKey
+D:\>keytool -genkey -alias XuanyuKeyStore -keyalg RSA -validity 1024 -keystore D:/keys/XuanyuKey
 输入密钥库口令:  222222（'以前叫做输入keystore密码'）
 再次输入新密码:  222222
 您的名字与姓氏是什么？
-  [Unknown]:  sso.jadyer.com（'根据实际情况填写服务器域名，否则会导致证书上的名称无效'）
+  [Unknown]:  sso.xuanyuv.com（'根据实际情况填写服务器域名，否则会导致证书上的名称无效'）
 您的组织单位名称是什么？
-  [Unknown]:  https://jadyer.cn/
+  [Unknown]:  https://www.xuanyuv.com/
 您的组织名称是什么？
   [Unknown]:  banbuduo
 您所在的城市或区域名称是什么?
@@ -44,19 +44,19 @@ D:\>keytool -genkey -alias JadyerKeyStore -keyalg RSA -validity 1024 -keystore D
   [Unknown]:  江北区
 该单位的双字母国家/地区代码是什么?
   [Unknown]:  ZH
-CN=sso.jadyer.com, OU=https://jadyer.cn/, O=banbuduo, L=重庆, ST=江北区,C=ZH是否正确?
+CN=sso.xuanyuv.com, OU=https://www.xuanyuv.com/, O=banbuduo, L=重庆, ST=江北区,C=ZH是否正确?
   [否]:  y
 
-输入 <JadyerKeyStore> 的密钥口令
+输入 <XuanyuKeyStore> 的密钥口令
         (如果和密钥库口令相同, 按回车):
 ```
 
-最后一步按回车键，即可直接生成`D:/keys/JadyerKey`文件
+最后一步按回车键，即可直接生成`D:/keys/XuanyuKey`文件
 
 不过要注意以下两点：
 
 > 1、如果`-keystore`参数的目录不存在，按回车键之后会看到下面的提示<br>
-　　`keytool 错误: java.io.FileNotFoundException: D:\keys\JadyerKey (系统找不到指定的路径。)`<br>
+　　`keytool 错误: java.io.FileNotFoundException: D:\keys\XuanyuKey (系统找不到指定的路径。)`<br>
 2、如果最后一步主密码与keystore密码不同，那么在证书导入Tomcat，在启动Tomcat时就会报告下面的提示<br>
 　　`java.io.IOException: Cannot recover key`
 
@@ -68,9 +68,9 @@ CN=sso.jadyer.com, OU=https://jadyer.cn/, O=banbuduo, L=重庆, ST=江北区,C=Z
 
 ```sh
 #密钥库口令应该输入生成KeyStore时设置的口令
-D:\>keytool -export -file D:/keys/Jadyer.crt -alias JadyerKeyStore -keystore D:/keys/JadyerKey
+D:\>keytool -export -file D:/keys/Xuanyu.crt -alias XuanyuKeyStore -keystore D:/keys/XuanyuKey
 输入密钥库口令:  222222
-存储在文件 <D:/keys/Jadyer.crt> 中的证书
+存储在文件 <D:/keys/Xuanyu.crt> 中的证书
 ```
 
 ## 导入证书到浏览器
@@ -79,9 +79,9 @@ D:\>keytool -export -file D:/keys/Jadyer.crt -alias JadyerKeyStore -keystore D:/
 
 如果把CRT证书导入到浏览器，用户就不会看到这个询问页面了，操作步骤如下
 
-`双击Jadyer.crt-->安装证书-->下一步-->将所有的证书放入下列存储-->浏览-->受信任的根证书颁发机构-->下一步-->完成`
+`双击Xuanyu.crt-->安装证书-->下一步-->将所有的证书放入下列存储-->浏览-->受信任的根证书颁发机构-->下一步-->完成`
 
-这时会弹出对话框：`您即将从一个声称代表如下的证书颁发机构安装证书:sso.jadyer.com......确认安装此证书吗?`
+这时会弹出对话框：`您即将从一个声称代表如下的证书颁发机构安装证书:sso.xuanyuv.com......确认安装此证书吗?`
 
 确认后即可导入成功
 
@@ -92,10 +92,10 @@ D:\>keytool -export -file D:/keys/Jadyer.crt -alias JadyerKeyStore -keystore D:/
 那就换个密码，输入`changeit`就行了，这是Java的默认保护密码
 
 ```sh
-D:\>keytool -import -keystore D:\Develop\Java\jdk1.7.0_80\jre\lib\security\cacerts -file D:/keys/Jadyer.crt -alias JadyerKeyStore
+D:\>keytool -import -keystore D:\Develop\Java\jdk1.7.0_80\jre\lib\security\cacerts -file D:/keys/Xuanyu.crt -alias XuanyuKeyStore
 输入密钥库口令:  222222
-所有者: CN=sso.jadyer.com, OU=https://jadyer.cn/, O=banbuduo, L=重庆, ST=江北区, C=ZH
-发布者: CN=sso.jadyer.com, OU=https://jadyer.cn/, O=banbuduo, L=重庆, ST=江北区, C=ZH
+所有者: CN=sso.xuanyuv.com, OU=https://www.xuanyuv.com/, O=banbuduo, L=重庆, ST=江北区, C=ZH
+发布者: CN=sso.xuanyuv.com, OU=https://www.xuanyuv.com/, O=banbuduo, L=重庆, ST=江北区, C=ZH
 序列号: 1e3e16df
 有效期开始日期: Tue Nov 29 18:34:18 CST 2016, 截止日期: Thu Sep 19 18:34:18 CST 2019
 证书指纹:
@@ -121,7 +121,7 @@ KeyIdentifier [
 
 ## 应用证书到Tomcat
 
-将文件`D:/keys/JadyerKey`拷贝到`\\%TOMCAT_HOME%\\conf\\`目录中（其它目录也可以）
+将文件`D:/keys/XuanyuKey`拷贝到`\\%TOMCAT_HOME%\\conf\\`目录中（其它目录也可以）
 
 然后修改`\\%TOMCAT_HOME%\\conf\\server.xml`
 
@@ -129,7 +129,7 @@ KeyIdentifier [
 <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true"
             maxThreads="150" scheme="https" secure="true"
             clientAuth="false" sslProtocol="TLS" URIEncoding="UTF-8"
-            keystoreFile="conf/JadyerKey" keystorePass="222222"/>
+            keystoreFile="conf/XuanyuKey" keystorePass="222222"/>
 ```
 
 接下来浏览器访问`https://127.0.0.1:8443/blog`会发现应用已经处于SSL安全通道中了

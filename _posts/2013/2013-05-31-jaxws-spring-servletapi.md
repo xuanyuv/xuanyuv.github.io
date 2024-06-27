@@ -16,12 +16,12 @@ excerpt: 介绍JAX-WS集成Spring的两种方式，以及获取ServletAPI的方�
 首先是`SEI`，即服务端接口类`HelloService.Java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 
-@WebService(targetNamespace="http://blog.csdn.net/jadyer")
+@WebService(targetNamespace="https://www.xuanyuv.com/")
 public interface HelloService {
     @WebResult(name="sayHelloResult")
     public String sayHello(@WebParam(name="name")String name);
@@ -31,7 +31,7 @@ public interface HelloService {
 下面是`SIB`，即服务端接口实现类`HelloServiceImpl.java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import javax.annotation.Resource;
 import javax.jws.WebService;
 import javax.servlet.http.HttpServletRequest;
@@ -39,18 +39,18 @@ import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
 import org.springframework.stereotype.Service;
-import com.jadyer.dao.HelloDaoJDBC;
+import com.xuanyuv.dao.HelloDaoJDBC;
 
 /**
  * JAX-WS与Spring集成时获取HttpServletAPI
  * 1、SIB中直接使用@Resource注入javax.xml.ws.WebServiceContext
  * 2、使用wsc.getMessageContext().get(SOAPMessageContext.SERVLET_REQUEST)获取HttpServletRequest
  *    但前提是SIB已被Spring所管理...本例中的明显特征是SIB上使用了@Service注解
- * Created by 玄玉<https://jadyer.cn/> on 2013/05/27 18:10.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/05/27 18:10.
  */
 @WebService(serviceName="myHelloService",
-            targetNamespace="http://blog.csdn.net/jadyer",
-            endpointInterface="com.jadyer.service.HelloService")
+            targetNamespace="https://www.xuanyuv.com/",
+            endpointInterface="com.xuanyuv.service.HelloService")
 @Service
 public class HelloServiceImpl implements HelloService {
     @Resource
@@ -77,7 +77,7 @@ public class HelloServiceImpl implements HelloService {
 下面是服务端模拟的一个DAO实现类`HelloDaoJDBC.java`
 
 ```java
-package com.jadyer.dao;
+package com.xuanyuv.dao;
 import org.springframework.stereotype.Repository;
 
 @Repository("helloDao")
@@ -96,7 +96,7 @@ public class HelloDaoJDBC {
 下面是服务端自定义的Handler类`LicenseHandler.java`
 
 ```java
-package com.jadyer.handler;
+package com.xuanyuv.handler;
 import java.util.Iterator;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
@@ -182,7 +182,7 @@ public class LicenseHandler implements SOAPHandler<SOAPMessageContext> {
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:core="http://jax-ws.dev.java.net/spring/core" xmlns:servlet="http://jax-ws.dev.java.net/spring/servlet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd http://jax-ws.dev.java.net/spring/core http://jax-ws.dev.java.net/spring/core.xsd http://jax-ws.dev.java.net/spring/servlet http://jax-ws.dev.java.net/spring/servlet.xsd">
-    <context:component-scan base-package="com.jadyer"/>
+    <context:component-scan base-package="com.xuanyuv"/>
 
     <!--
     JAX-WS与Spring集成
@@ -237,7 +237,7 @@ public class LicenseHandler implements SOAPHandler<SOAPMessageContext> {
                 <!-- 此时就不需要在SIB中指定@HandlerChain(file="myHandlerChain.xml") -->
                 <!-- 也不用编写myHandlerChain.xml了 -->
                 <core:handlers>
-                    <bean class="com.jadyer.handler.LicenseHandler"/>
+                    <bean class="com.xuanyuv.handler.LicenseHandler"/>
                 </core:handlers>
                 <!-- 主动声明wsdl文件import或include的外部文件,否则其发布的wsdl中是不会正确引入xsd的 -->
                 <!--
@@ -254,7 +254,7 @@ public class LicenseHandler implements SOAPHandler<SOAPMessageContext> {
 下面这个是便于日志打印的`log4j.properties`
 
 ```ruby
-# https://github.com/jadyer/seed/blob/master/seed-comm/src/main/java/com/jadyer/seed/comm/util/LogUtil.java
+# https://github.com/xuanyuv/seed/blob/master/seed-comm/src/main/java/com/xuanyuv/seed/comm/util/LogUtil.java
 log4j.rootLogger=DEBUG,CONSOLE
 
 #通常用于框架日志,如mina,spring等
@@ -297,7 +297,7 @@ log4j.appender.CONSOLE.layout.ConversionPattern=[%d{yyyyMMdd HH:mm:ss}][%t][%C{1
 首先是客户端自定义的`HeaderHandler.java`
 
 ```java
-package com.jadyer.handler;
+package com.xuanyuv.handler;
 import java.io.IOException;
 import java.util.Set;
 import javax.xml.namespace.QName;
@@ -338,8 +338,8 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
                     if(null == header){
                         header = envelope.addHeader();
                     }
-                    QName qname = new QName("http://blog.csdn.net/jadyer", "licenseInfo", "ns");
-                    header.addHeaderElement(qname).setValue("Jadyer");
+                    QName qname = new QName("https://www.xuanyuv.com/", "licenseInfo", "ns");
+                    header.addHeaderElement(qname).setValue("Xuanyu");
                     message.writeTo(System.out);
                 }
             } catch (SOAPException e) {
@@ -356,7 +356,7 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
 接下来是客户端与Spring集成用到的`HeaderHandlerResolver.java`
 
 ```java
-package com.jadyer.handler;
+package com.xuanyuv.handler;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.ws.handler.Handler;
@@ -379,9 +379,9 @@ public class HeaderHandlerResolver implements HandlerResolver {
 下面是客户端模拟的一个Service实现类`ClientService.java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import javax.annotation.Resource;
-import net.csdn.blog.jadyer.HelloService;
+import net.csdn.blog.xuanyuv.HelloService;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -406,22 +406,22 @@ public class ClientService {
                         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
                         http://www.springframework.org/schema/context
                         http://www.springframework.org/schema/context/spring-context-2.5.xsd">
-    <context:component-scan base-package="com.jadyer"/>
+    <context:component-scan base-package="com.xuanyuv"/>
 
     <!-- 这样就可以在客户端把一个WebService注入到其它的bean中了 -->
     <bean id="myServerWebService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
         <!--
         记得首先还是要使用wsimport生成客户端代码，然后将接口类全路径写在serviceInterface的值里
-        关于wsimport的使用，可参考https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/
+        关于wsimport的使用，可参考https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/
         wsimport -d D:/Download/ -keep -verbose http://127.0.0.1:8088/jaxws-spring/myService?wsdl
         -->
-        <property name="serviceInterface" value="net.csdn.blog.jadyer.HelloService"/>
+        <property name="serviceInterface" value="net.csdn.blog.xuanyuv.HelloService"/>
         <property name="wsdlDocumentUrl" value="http://127.0.0.1:8088/jaxws-spring/myService?wsdl"/>
-        <property name="namespaceUri" value="http://blog.csdn.net/jadyer"/>
+        <property name="namespaceUri" value="https://www.xuanyuv.com/"/>
         <property name="serviceName" value="myHelloService"/>
         <property name="portName" value="HelloServiceImplPort"/>
         <!-- 使用handlerResolver属性来启用Handler，其属性值应为javax.xml.ws.handler.HandlerResolver类型 -->
-        <!-- 所以自定义了一个实现HandlerResolver的类，详见com.jadyer.handler.HeaderHandlerResolver.java -->
+        <!-- 所以自定义了一个实现HandlerResolver的类，详见com.xuanyuv.handler.HeaderHandlerResolver.java -->
         <property name="handlerResolver" ref="headerHandlerResolver"/>
     </bean>
 </beans>
@@ -429,13 +429,13 @@ public class ClientService {
 
 最后是客户端调用服务端的模拟入口`ClientApp.java`
 
-它是通过wsimport生成的，关于其用法，可参考[https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/](https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/)
+它是通过wsimport生成的，关于其用法，可参考[https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/](https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/)
 
 ```java
-package com.jadyer.client;
+package com.xuanyuv.client;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.jadyer.service.ClientService;
+import com.xuanyuv.service.ClientService;
 
 public class ClientApp {
     public static void main(String[] args) {
@@ -451,7 +451,7 @@ public class ClientApp {
 ```
 //客户端
 Client.handleMessage() is invoked.....
-<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header><ns:licenseInfo xmlns:ns="http://blog.csdn.net/jadyer">Jadyer</ns:licenseInfo></S:Header><S:Body><ns2:sayHello xmlns:ns2="http://blog.csdn.net/jadyer"><name>玄玉</name></ns2:sayHello></S:Body></S:Envelope>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header><ns:licenseInfo xmlns:ns="https://www.xuanyuv.com/">Xuanyuv</ns:licenseInfo></S:Header><S:Body><ns2:sayHello xmlns:ns2="https://www.xuanyuv.com/"><name>玄玉</name></ns2:sayHello></S:Body></S:Envelope>
 Client.handleMessage() is invoked.....
 Hello,玄玉
 
@@ -459,7 +459,7 @@ Hello,玄玉
 Server.handleMessage() is invoked......
 RealPath=D:\Develop\apache-tomcat-6.0.36\webapps\jaxws-spring\
 协议有效......
-Jadyer
+Xuanyu
 ----------------------------------------------------------------------
 ServletContextName=null
 ContextPath=/jaxws-spring

@@ -48,7 +48,7 @@ ServiceId 映射的好处是：它支持软负载均衡，基于 URL 的方式�
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.jadyer.demo</groupId>
+    <groupId>com.xuanyuv.demo</groupId>
     <artifactId>demo-cloud-07-zuul</artifactId>
     <version>1.1</version>
     <packaging>pom</packaging>
@@ -105,7 +105,7 @@ ServiceId 映射的好处是：它支持软负载均衡，基于 URL 的方式�
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-07-zuul</artifactId>
         <version>1.1</version>
     </parent>
@@ -151,7 +151,7 @@ eureka:
 这是注册中心的 SpringBoot 启动类 `ServiceDiscoveryBootStrap.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
@@ -176,7 +176,7 @@ public class ServiceDiscoveryBootStrap {
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-07-zuul</artifactId>
         <version>1.1</version>
     </parent>
@@ -223,7 +223,7 @@ eureka:
 这是第一个服务提供方的 SpringBoot 启动类 `ServiceServer01BootStarp.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -236,7 +236,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * http://cloud.spring.io/spring-cloud-static/Camden.SR3/#_registering_with_eureka
  * https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka
  * --------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2017/1/9 16:00.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2017/1/9 16:00.
  */
 @EnableEurekaClient
 @SpringBootApplication
@@ -250,7 +250,7 @@ public class ServiceServer01BootStarp {
 这是第一个服务提供方暴露的数学运算服务 `CalculatorController.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.ServiceInstance;
@@ -261,7 +261,7 @@ import javax.annotation.Resource;
 
 /**
  * 服务提供方暴露的数学运算服务
- * Created by 玄玉<https://jadyer.cn/> on 2017/1/9 16:00.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2017/1/9 16:00.
  */
 @RestController
 public class CalculatorController {
@@ -296,7 +296,7 @@ public class CalculatorController {
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-07-zuul</artifactId>
         <version>1.1</version>
     </parent>
@@ -329,7 +329,7 @@ server:
 
 spring:
   application:
-    name: jadyer-api-gateway       # 指定发布的微服务名（以后调用时，只需该名称即可访问该服务）
+    name: xuanyu-api-gateway       # 指定发布的微服务名（以后调用时，只需该名称即可访问该服务）
 
 zuul:
   ignored-services: "*"            # 设置忽略的服务，即配置后将不会被路由（但对于明确配置在路由中的，将不会被忽略）
@@ -360,7 +360,7 @@ eureka:
 这是第一个服务网关的 SpringBoot 启动类 `ServiceGateway01BootStarp.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import com.netflix.zuul.ZuulFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
@@ -374,7 +374,7 @@ import org.springframework.context.annotation.Bean;
 public class ServiceGateway01BootStarp {
     /**
      * 这里的方法返回值，不能写成com.netflix.zuul.IZuulFilter
-     * 可以写成com.netflix.zuul.ZuulFilter，或者com.jadyer.demo.GatewayFilter
+     * 可以写成com.netflix.zuul.ZuulFilter，或者com.xuanyuv.demo.GatewayFilter
      * 虽然语法上允许返回IZuulFilter，但实际测试发现返回IZuulFilter时，网关功能却没有生效
      */
     @Bean
@@ -391,7 +391,7 @@ public class ServiceGateway01BootStarp {
 这是第一个服务网关中，用于控制接口访问权限的过滤器 `GatewayFilter.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.slf4j.Logger;
@@ -406,7 +406,7 @@ import javax.servlet.http.HttpServletRequest;
  * http://127.0.0.1:4100/mycall/add?a=11&b=22：返回"权限不足"
  * http://127.0.0.1:4100/mycall/add?a=11&b=22&accesstoken=token：返回正常
  * -------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2017/1/14 15:05.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2017/1/14 15:05.
  */
 public class GatewayFilter extends ZuulFilter {
     private Logger log = LoggerFactory.getLogger(getClass());
@@ -476,7 +476,7 @@ public class GatewayFilter extends ZuulFilter {
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-07-zuul</artifactId>
         <version>1.1</version>
     </parent>
@@ -528,7 +528,7 @@ eureka:
 这是服务消费方 SpringBoot 启动类 `ServiceClientBootStarp.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -548,15 +548,15 @@ public class ServiceClientBootStarp {
 这是服务消费方的，包含了断路器配置的，调用服务网关的实现 `CalculatorService.java`
 
 ```java
-package com.jadyer.demo.feign;
+package com.xuanyuv.demo.feign;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-//绑定該接口到服务网关的jadyer-api-gateway服务，并通知Feign组件对该接口进行代理（不需要编写接口实现）
-@FeignClient(value="jadyer-api-gateway", fallback=CalculatorService.HystrixCalculatorService.class)
+//绑定該接口到服务网关的xuanyu-api-gateway服务，并通知Feign组件对该接口进行代理（不需要编写接口实现）
+@FeignClient(value="xuanyu-api-gateway", fallback=CalculatorService.HystrixCalculatorService.class)
 public interface CalculatorService {
     ////@PathVariable這種也是支持的
     //@RequestMapping(value="/mycall/add/{a}", method=RequestMethod.GET)
@@ -584,14 +584,14 @@ public interface CalculatorService {
 这是服务消费方的调用示例 `ConsumerController.java`
 
 ```java
-package com.jadyer.demo.feign;
+package com.xuanyuv.demo.feign;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
  * 服务调用方
- * Created by 玄玉<https://jadyer.cn/> on 2017/1/10 18:23.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2017/1/10 18:23.
  */
 @RestController
 @RequestMapping("/demo/feign")

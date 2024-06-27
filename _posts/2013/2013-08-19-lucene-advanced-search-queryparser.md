@@ -16,7 +16,7 @@ excerpt: 介绍Lucene-3.6.2中高级搜索时通过自定义QueryParser的方式
 通过`自定义QueryParser`的方式实现`禁用模糊和通配符搜索`，以及`扩展基于数字和日期的搜索`等功能（详见代码注释）
 
 ```java
-package com.jadyer.lucene;
+package com.xuanyuv.lucene;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -37,11 +37,11 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
-import com.jadyer.custom.MyQueryParser;
+import com.xuanyuv.custom.MyQueryParser;
 
 /**
  * Lucene系列第09节之高级搜索之QueryParser
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/19 14:07.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/19 14:07.
  */
 public class AdvancedSearch {
     private Directory directory;
@@ -51,11 +51,11 @@ public class AdvancedSearch {
         /** 文件大小 */
         int[] sizes = {90, 10, 20, 10, 60, 50};
         /** 文件名 */
-        String[] names = {"Michael.java", "Scofield.ini", "Tbag.txt", "Jack", "Jade", "Jadyer"};
+        String[] names = {"Michael.java", "Scofield.ini", "Tbag.txt", "Jack", "Jade", "Xuanyu"};
         /** 文件内容 */
-        String[] contents = {"my blog is https://jadyer.cn/",
-                             "my github is https://github.com/jadyer",
-                             "my name is jadyer",
+        String[] contents = {"my blog is https://www.xuanyuv.com/",
+                             "my github is https://github.com/xuanyuv",
+                             "my name is Xuanyu",
                              "I am a Java Developer",
                              "I am from Haerbin",
                              "I like java of Lucene"};
@@ -179,7 +179,7 @@ public class AdvancedSearch {
 2、扩展基于数字和日期的搜索，使之支持数字和日期的搜索
 
 ```java
-package com.jadyer.custom;
+package com.xuanyuv.custom;
 import java.text.SimpleDateFormat;
 import java.util.regex.Pattern;
 import org.apache.lucene.analysis.Analyzer;
@@ -205,7 +205,7 @@ import org.apache.lucene.util.Version;
  * 思路就是继承QueryParser类后重载getRangeQuery()方法
  * 再针对数字和日期的'域'，做特殊处理（使用NumericRangeQuery.newIntRange()方法来搜索）
  * --------------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/06 16:13.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/06 16:13.
  */
 public class MyQueryParser extends QueryParser {
     public MyQueryParser(Version matchVersion, String f, Analyzer a) {

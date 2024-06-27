@@ -193,7 +193,7 @@ excerpt: 介绍My97DatePicker日期控件的一些常用功能。
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
         <servlet-name>DatePickerServlet</servlet-name>
-        <servlet-class>com.jadyer.datepicker.DatePickerServlet</servlet-class>
+        <servlet-class>com.xuanyuv.datepicker.DatePickerServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DatePickerServlet</servlet-name>
@@ -207,7 +207,7 @@ excerpt: 介绍My97DatePicker日期控件的一些常用功能。
 ```
 
 ```java
-package com.jadyer.datepicker;
+package com.xuanyuv.datepicker;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

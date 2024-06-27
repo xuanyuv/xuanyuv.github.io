@@ -24,7 +24,7 @@ excerpt: 主要介绍Lucene-3.6.2中近实时搜索功能的实现。
 下面演示的是`Lucene-3.6.2`中近实时搜索的实现方式
 
 ```java
-package com.jadyer.lucene;
+package com.xuanyuv.lucene;
 import java.io.File;
 import java.io.IOException;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -48,7 +48,7 @@ import org.apache.lucene.util.Version;
 
 /**
  * Lucene系列第12节之近实时搜索
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/20 16:19.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/20 16:19.
  */
 public class HelloNRTSearch {
     private IndexWriter writer;
@@ -87,7 +87,7 @@ public class HelloNRTSearch {
      */
     public static void createIndex(){
         String[] ids = {"1", "2", "3", "4", "5", "6"};
-        String[] names = {"Michael", "Scofield", "Tbag", "Jack", "Jade", "Jadyer"};
+        String[] names = {"Michael", "Scofield", "Tbag", "Jack", "Jade", "Xuanyu"};
         String[] contents = {"my blog", "my website", "my name", "my job is JavaDeveloper", "I am from Haerbin", "I like Lucene"};
         IndexWriter writer = null;
         Document doc = null;
@@ -210,11 +210,11 @@ public class HelloNRTSearch {
 下面是用`JUnit4.x`写的小测试
 
 ```java
-package com.jadyer.test;
+package com.xuanyuv.test;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import com.jadyer.lucene.HelloNRTSearch;
+import com.xuanyuv.lucene.HelloNRTSearch;
 
 public class HelloNRTSearchTest {
     @Before

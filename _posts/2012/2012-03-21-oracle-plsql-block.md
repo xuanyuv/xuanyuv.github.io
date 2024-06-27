@@ -65,7 +65,7 @@ PL/SQL块由三个部分构成：定义部分、执行部分、例外处理部�
 set serveroutput on -- 打开输出选项
 -- dbms_output是Oracle所提供的包，类似Java的开发包，该包中包含一些过程，put_line就是该包中的一个过程
 begin
-    dbms_output.put_line('my name is jadyer'); -- 在控制台输出字符串：my name is jadyer
+    dbms_output.put_line('my name is xuanyu'); -- 在控制台输出字符串：my name is xuanyu
 end;
 
 -- 2、包含定义部分、执行部分的PL/SQL块

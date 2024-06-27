@@ -50,7 +50,7 @@ Eureka Client 在启动时需要指定 Zone，它会优先请求自己 Zone 的 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.jadyer.demo</groupId>
+    <groupId>com.xuanyuv.demo</groupId>
     <artifactId>demo-cloud-04</artifactId>
     <version>1.1</version>
     <packaging>pom</packaging>
@@ -116,7 +116,7 @@ Eureka Client 在启动时需要指定 Zone，它会优先请求自己 Zone 的 
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-04</artifactId>
         <version>1.1</version>
     </parent>
@@ -136,7 +136,7 @@ Eureka Client 在启动时需要指定 Zone，它会优先请求自己 Zone 的 
 这是第一个注册中心的 SpringBoot 启动类 `ServiceDiscovery01BootStrap.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
@@ -194,7 +194,7 @@ eureka:
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-04</artifactId>
         <version>1.1</version>
     </parent>
@@ -218,7 +218,7 @@ eureka:
 这是第一个服务提供方的 SpringBoot 启动类 `ServiceServer01BootStarp.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -231,7 +231,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * http://cloud.spring.io/spring-cloud-static/Camden.SR3/#_registering_with_eureka
  * https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka
  * ------------------------------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2017/1/9 16:00.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2017/1/9 16:00.
  */
 @EnableEurekaClient
 @SpringBootApplication
@@ -268,7 +268,7 @@ eureka:
 这是第一个服务提供方暴露的数学运算服务 `CalculatorController.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.ServiceInstance;
@@ -279,7 +279,7 @@ import javax.annotation.Resource;
 
 /**
  * 服务提供方暴露的数学运算服务
- * Created by 玄玉<https://jadyer.cn/> on 2017/1/9 16:00.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2017/1/9 16:00.
  */
 @RestController
 public class CalculatorController {

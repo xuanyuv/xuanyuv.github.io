@@ -21,9 +21,9 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29配置请求转发的方�
 
 前者所有的资源都由tomcat处理，后者只有动态资源由tomcat处理（像js、css、html等静态资源由apache处理）
 
-本文是建立在源码安装Apache-2.2.29基础上的，安装过程详见：[https://jadyer.cn/2014/09/26/centos-install-apache/](https://jadyer.cn/2014/09/26/centos-install-apache/)
+本文是建立在源码安装Apache-2.2.29基础上的，安装过程详见：[https://www.xuanyuv.com/2014/09/26/centos-install-apache/](https://www.xuanyuv.com/2014/09/26/centos-install-apache/)
 
-*另外，关于Apache与Tomcat的整合*，详见：[https://jadyer.cn/2014/09/27/tomcat-apache-jk/](https://jadyer.cn/2014/09/27/tomcat-apache-jk/)
+*另外，关于Apache与Tomcat的整合*，详见：[https://www.xuanyuv.com/2014/09/27/tomcat-apache-jk/](https://www.xuanyuv.com/2014/09/27/tomcat-apache-jk/)
 
 ## 概述
 
@@ -71,9 +71,9 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 
 ```xml
 <VirtualHost *:80>
-    ServerName www.jadyer.com
-    ErrorLog logs/www.jadyer.com_error_log
-    CustomLog logs/www.jadyer.com_access_log common
+    ServerName www.xuanyuv.com
+    ErrorLog logs/www.xuanyuv.com_error_log
+    CustomLog logs/www.xuanyuv.com_access_log common
     ProxyPreserveHost On
     ProxyRequests Off
     ProxyPass / http://192.168.0.104:8080/

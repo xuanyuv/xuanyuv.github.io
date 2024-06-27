@@ -12,7 +12,7 @@ excerpt: 介绍Java调用系统默认程序打开本地文件的几种方式。
 
 
 ```java
-package com.jadyer.util;
+package com.xuanyuv.util;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * Java调用系统默认程序打开本地文件
- * Created by 玄玉<https://jadyer.cn/> on 2013/04/23 01:00.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/04/23 01:00.
  */
 public class OpenLocalFile {
     public static void main(String[] args) throws IOException {
@@ -34,10 +34,10 @@ public class OpenLocalFile {
      * 借助java.lang.ProcessBuilder打开
      */
     private static void useProcessBuilder() throws IOException{
-        //new ProcessBuilder("notepad.exe", "C:/Users/Jadyer/Desktop/test file/readme.txt").start();
-        List<String> commands = new ArrayList<String>();
+        //new ProcessBuilder("notepad.exe", "C:/Users/xuanyu/Desktop/test file/readme.txt").start();
+        List<String> commands = new ArrayList<>();
         commands.add("D:/Program Files/WPS/9.1.0.4047/office6/wps.exe");
-        commands.add("C:/Users/Jadyer/Desktop/test file/myResume.doc");
+        commands.add("C:/Users/xuanyu/Desktop/test file/myResume.doc");
         new ProcessBuilder(commands).start();
     }
 

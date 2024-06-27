@@ -16,13 +16,13 @@ excerpt: 介绍在JAX-WS里面如果处理SOAP异常，以及编写Handler的方
 首先是`SEI`，即服务端接口类`HelloService.Java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
-import com.jadyer.exception.UserException;
+import com.xuanyuv.exception.UserException;
 
-@WebService(targetNamespace="http://blog.csdn.net/jadyer")
+@WebService(targetNamespace="https://www.xuanyuv.com/")
 public interface HelloService {
     @WebResult(name="sayHelloResult")
     public String sayHello(@WebParam(name="name")String name);
@@ -36,12 +36,12 @@ public interface HelloService {
 下面是`SIB`，即服务端接口实现类`HelloServiceImpl.java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import javax.jws.HandlerChain;
 import javax.jws.WebService;
-import com.jadyer.exception.UserException;
+import com.xuanyuv.exception.UserException;
 
-@WebService(endpointInterface="com.jadyer.service.HelloService", targetNamespace="http://blog.csdn.net/jadyer")
+@WebService(endpointInterface="com.xuanyuv.service.HelloService", targetNamespace="https://www.xuanyuv.com/")
 @HandlerChain(file="myHandlerChain.xml")
 public class HelloServiceImpl implements HelloService {
     @Override
@@ -68,7 +68,7 @@ public class HelloServiceImpl implements HelloService {
 下面是自定义的服务端异常类`UserException.java`
 
 ```java
-package com.jadyer.exception;
+package com.xuanyuv.exception;
 
 //这里不要用RuntimeException
 //因为RuntimeException会导致服务端在抛异常给客户端时,服务端自身也会抛相同的异常
@@ -89,7 +89,7 @@ public class UserException extends Exception {
 下面是自定义的服务端Handler类`LicenseHandler.java`
 
 ```java
-package com.jadyer.handler;
+package com.xuanyuv.handler;
 import java.util.Iterator;
 import java.util.Set;
 import javax.xml.namespace.QName;
@@ -112,7 +112,7 @@ import javax.xml.ws.soap.SOAPFaultException;
  * 3)配置Handler,自定义一个名字随意的xml
  * 4)在服务上启动过滤链
  *   在服务端或者客户端的Service实现类上使用@HandlerChain(file="myHandlerChain.xml")即可
- * Created by 玄玉<https://jadyer.cn/> on 2013/05/17 12:07.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/05/17 12:07.
  */
 public class LicenseHandler implements SOAPHandler<SOAPMessageContext> {
     @Override
@@ -194,7 +194,7 @@ public class LicenseHandler implements SOAPHandler<SOAPMessageContext> {
 <javaee:handler-chains xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <javaee:handler-chain>
         <javaee:handler>
-            <javaee:handler-class>com.jadyer.handler.LicenseHandler</javaee:handler-class>
+            <javaee:handler-class>com.xuanyuv.handler.LicenseHandler</javaee:handler-class>
         </javaee:handler>
     </javaee:handler-chain>
 </javaee:handler-chains>
@@ -203,22 +203,22 @@ public class LicenseHandler implements SOAPHandler<SOAPMessageContext> {
 最后是发布WebService服务的`ServerApp.java`
 
 ```java
-package com.jadyer.server;
+package com.xuanyuv.server;
 import javax.xml.ws.Endpoint;
-import com.jadyer.service.HelloServiceImpl;
+import com.xuanyuv.service.HelloServiceImpl;
 
 /**
  * SOAP异常处理和Handler处理
  * ---------------------------------------------------------------------------------------------------
  * 手工指定命名空间时,建议在SEI和SIB都使用@WebService注解，如下所示
- * @WebService(targetNamespace="http://blog.csdn.net/jadyer")
+ * @WebService(targetNamespace="https://www.xuanyuv.com/")
  * ---------------------------------------------------------------------------------------------------
  * 通过Handler处理SOAP消息(Handler类似于过滤器，它分为SOAPHandler和LogicalHandler)
  * SOAPHandler-----可以获取SOAPMessage信息
  * LogicalHandler--只能获取SOAPBody信息
  * 客户端发出的消息始终都是LogicalHandler先处理，然后才是SOAPHandler处理，服务器端的消息处理顺序则与之相反
  * ---------------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/05/16 18:14.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/05/16 18:14.
  */
 public class ServerApp {
     public static void main(String[] args) {
@@ -234,7 +234,7 @@ public class ServerApp {
 首先是客户端自定义的Handler类`HeaderHandler.java`
 
 ```java
-package com.jadyer.handler;
+package com.xuanyuv.handler;
 import java.io.IOException;
 import java.util.Set;
 import javax.xml.namespace.QName;
@@ -283,8 +283,8 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
                     if(null == header){
                         header = envelope.addHeader();
                     }
-                    QName qname = new QName("http://blog.csdn.net/jadyer", "licenseInfo", "ns");
-                    header.addHeaderElement(qname).setValue("Jadyer");
+                    QName qname = new QName("https://www.xuanyuv.com/", "licenseInfo", "ns");
+                    header.addHeaderElement(qname).setValue("Xuanyu");
                     message.writeTo(System.out);
                 }
             } catch (SOAPException e) {
@@ -305,7 +305,7 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
 <javaee:handler-chains xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <javaee:handler-chain>
         <javaee:handler>
-            <javaee:handler-class>com.jadyer.handler.HeaderHandler</javaee:handler-class>
+            <javaee:handler-class>com.xuanyuv.handler.HeaderHandler</javaee:handler-class>
         </javaee:handler>
     </javaee:handler-chain>
 </javaee:handler-chains>
@@ -313,14 +313,14 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
 
 最后是客户端调用服务端代码
 
-这里是由wsimport生成的，关于其用法，可参考[https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/](https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/)
+这里是由wsimport生成的，关于其用法，可参考[https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/](https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/)
 
 ```java
-package com.jadyer.client;
+package com.xuanyuv.client;
 import javax.xml.ws.soap.SOAPFaultException;
-import net.csdn.blog.jadyer.HelloService;
-import net.csdn.blog.jadyer.HelloServiceImplService;
-import net.csdn.blog.jadyer.UserException_Exception;
+import net.csdn.blog.xuanyuv.HelloService;
+import net.csdn.blog.xuanyuv.HelloServiceImplService;
+import net.csdn.blog.xuanyuv.UserException_Exception;
 
 public class ClientApp {
     public static void main(String[] args) {
@@ -349,7 +349,7 @@ Receive the name=[玄玉]......
 Server.handleMessage() is invoked......
 Server.handleMessage() is invoked......
 协议有效......
-Jadyer
+Xuanyu
 Receive the username=[admin],password=[hongyu]......
 Server.handleMessage() is invoked......
 ```
@@ -363,7 +363,7 @@ Client.handleMessage() is invoked.....
 Hello,玄玉
 
 Client.handleMessage() is invoked.....
-<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header><ns:licenseInfo xmlns:ns="http://blog.csdn.net/jadyer">Jadyer</ns:licenseInfo></S:Header><S:Body><ns2:login xmlns:ns2="http://blog.csdn.net/jadyer"><username>admin</username><password>hongyu</password></ns2:login></S:Body></S:Envelope>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header><ns:licenseInfo xmlns:ns="https://www.xuanyuv.com/">Xuanyu</ns:licenseInfo></S:Header><S:Body><ns2:login xmlns:ns2="https://www.xuanyuv.com/"><username>admin</username><password>hongyu</password></ns2:login></S:Body></S:Envelope>
 Client.handleMessage() is invoked.....
 用户[admin]认证通过
 ```

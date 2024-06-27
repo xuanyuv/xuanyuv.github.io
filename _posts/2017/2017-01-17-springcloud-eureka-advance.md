@@ -62,7 +62,7 @@ eureka:
       enabled: true                           # 开启健康检查（依赖spring-boot-starter-actuator）
 ```
 
-关于续期、心跳、发呆时间的关系，详见上一篇文章中的有关分析：[https://jadyer.cn/2017/01/16/springcloud-eureka/](https://jadyer.cn/2017/01/16/springcloud-eureka/)
+关于续期、心跳、发呆时间的关系，详见上一篇文章中的有关分析：[https://www.xuanyuv.com/2017/01/16/springcloud-eureka/](https://www.xuanyuv.com/2017/01/16/springcloud-eureka/)
 
 > 注意：更改 Eureka Server 的更新频率将打破注册中心的的自我保护功能<br>
 　　　生产环境不建议自定义这些配置，详见[https://github.com/spring-cloud/spring-cloud-netflix/issues/373](https://github.com/spring-cloud/spring-cloud-netflix/issues/373)
@@ -113,7 +113,7 @@ eureka:
     prefer-ip-address: true     # 设置微服务调用地址为IP优先（缺省为false）
 ```
 
-Eureka 首页显示的微服务调用地址，默认是这样的：[http://jadyer-pc:2100/info](http://jadyer-pc:2100/info)
+Eureka 首页显示的微服务调用地址，默认是这样的：[http://xuanyu-pc:2100/info](http://xuanyu-pc:2100/info)
 
 而在设置 prefer-ip-address=true 之后，调用地址会变成：[http://10.16.18.95:2100/info](http://10.16.18.95:2100/info)
 

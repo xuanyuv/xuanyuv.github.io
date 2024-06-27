@@ -14,7 +14,7 @@ excerpt: 介绍Lucene-3.6.2中高级搜索里面普通Filter和自定义Filter�
 下面演示的是`Lucene-3.6.2`中搜索的时候，使用`普通Filter`和`自定义Filter`的用法（详见代码注释）
 
 ```java
-package com.jadyer.lucene;
+package com.xuanyuv.lucene;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -35,11 +35,11 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
-import com.jadyer.custom.MyFilter;
+import com.xuanyuv.custom.MyFilter;
 
 /**
  * Lucene系列第07节之高级搜索之Filter
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/19 11:13.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/19 11:13.
  */
 public class AdvancedSearchByFilter {
     private Directory directory;
@@ -49,11 +49,11 @@ public class AdvancedSearchByFilter {
         /** 文件大小 */
         int[] sizes = {90, 10, 20, 10, 60, 50};
         /** 文件名 */
-        String[] names = {"Michael.java", "Scofield.ini", "Tbag.txt", "Jack", "Jade", "Jadyer"};
+        String[] names = {"Michael.java", "Scofield.ini", "Tbag.txt", "Jack", "Jade", "Xuanyu"};
         /** 文件内容 */
-        String[] contents = {"my blog is https://jadyer.cn/",
-                             "my github is https://github.com/jadyer",
-                             "my name is jadyer",
+        String[] contents = {"my blog is https://www.xuanyuv.com/",
+                             "my github is https://github.com/xuanyuv",
+                             "my name is xuanyu",
                              "I am a Java Developer",
                              "I am from Haerbin",
                              "I like java of Lucene"};
@@ -175,7 +175,7 @@ public class AdvancedSearchByFilter {
 下面是自定义的`MyFilter.java`
 
 ```java
-package com.jadyer.custom;
+package com.xuanyuv.custom;
 import java.io.IOException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
@@ -202,7 +202,7 @@ import org.apache.lucene.util.OpenBitSet;
  * 而DocIdSet中每一条记录的索引号与文档编号是一一对应的
  * 所以当DocIdSet中的记录为1时，则对应文档编号的Document就会被添加到TopDocs中，为0就会被过滤掉
  * -----------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/06 19:28.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/06 19:28.
  */
 public class MyFilter extends Filter {
     private static final long serialVersionUID = -8955061358165068L;

@@ -26,7 +26,7 @@ excerpt: 详细介绍了MongoDB-2.6版本的，Java驱动的常见API用法。
 下面演示的就是以Java为例，常见的操作`MongoDB-2.6`的API
 
 ```java
-package com.jadyer.test;
+package com.xuanyuv.test;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +48,7 @@ import com.mongodb.util.JSON;
  * @see ----------------------------------------------------------------------------------------
  * @see 这里要用到mongoDB的Java驱动包，下载地址http://docs.mongodb.org/ecosystem/drivers/java/
  * @see ----------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2014/05/15 22:17.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2014/05/15 22:17.
  */
 public class MongoDBTest {
     private static MongoClient mongoClient;
@@ -163,7 +163,7 @@ public class MongoDBTest {
     @Test
     public void update(){
         DBObject doc = new BasicDBObject();
-        doc.put("$set", new BasicDBObject("email", "Jadyer@yeah.net"));
+        doc.put("$set", new BasicDBObject("email", "xuanyuv@163.com"));
         WriteResult result = db.getCollection("movie").update(new BasicDBObject(), doc, false, true);
         System.out.println("本次操作影响的记录条数为:" + result.getN());
     }

@@ -34,10 +34,10 @@ TokenStream有两个实现类：`Tokenizer`和`TokenFilter`
 Tokenizer用于将一组数据划分为独立的语汇单元，即一个一个的单词，下面是它的一些子类
 
 * KeywordTokenizer，不分词，传什么就索引什么
-* StandardTokenizer，标准分词，它有一些较智能的分词操作，诸如将'jadyer@yeah.net'中的'yeah.net'当作一个分词流
+* StandardTokenizer，标准分词，它有一些较智能的分词操作，诸如将'xuanyu@yeah.net'中的'yeah.net'当作一个分词流
 * CharTokenizer，针对字符进行控制的，它还有两个子类WhitespaceTokenizer和LetterTokenizer
-* WhitespaceTokenizer，使用空格进行分词，诸如将'Thank you,I am jadyer'会被分为4个词
-* LetterTokenizer，基于文本单词的分词，它会根据标点符号来分词，诸如将'Thank you,I am jadyer'会被分为5个词
+* WhitespaceTokenizer，使用空格进行分词，诸如将'Thank you,I am xuanyu'会被分为4个词
+* LetterTokenizer，基于文本单词的分词，它会根据标点符号来分词，诸如将'Thank you,I am xuanyu'会被分为5个词
 * LowerCaseTokenizer，它是LetterTokenizer的子类，它会将数据转为小写并分词
 
 TokenFilter用于过滤语汇单元，下面是它的一些子类
@@ -100,7 +100,7 @@ Lucene默认提供的众多分词器完全不适用中文，下面是一些常�
 下面是示例代码
 
 ```java
-package com.jadyer.lucene;
+package com.xuanyuv.lucene;
 import java.io.IOException;
 import java.io.StringReader;
 import org.apache.lucene.analysis.Analyzer;
@@ -119,7 +119,7 @@ import com.chenlb.mmseg4j.analysis.MMSegAnalyzer;
 
 /**
  * Lucene系列第04节之中文分词器
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/18 17:43.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/18 17:43.
  */
 public class HelloChineseAnalyzer {
     /**

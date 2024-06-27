@@ -13,7 +13,7 @@ excerpt: 介绍Apache-CXF中通过手工编写XML的方式定义WSDL的各种细
 
 它与`JAX-WS`的契约优先开发方式基本相同，不同在于：**CXF发布时要加两个参数**
 
-关于`JAX-WS`的契约优先开发方式，详见[https://jadyer.cn/2013/05/31/jaxws-build-wsdl-with-wrapped/](https://jadyer.cn/2013/05/31/jaxws-build-wsdl-with-wrapped/)
+关于`JAX-WS`的契约优先开发方式，详见[https://www.xuanyuv.com/2013/05/31/jaxws-build-wsdl-with-wrapped/](https://www.xuanyuv.com/2013/05/31/jaxws-build-wsdl-with-wrapped/)
 
 下面开始演示代码编写
 
@@ -24,8 +24,8 @@ excerpt: 介绍Apache-CXF中通过手工编写XML的方式定义WSDL的各种细
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://blog.csdn.net/jadyer"
-    xmlns:tns="http://blog.csdn.net/jadyer"
+    targetNamespace="https://www.xuanyuv.com/"
+    xmlns:tns="https://www.xuanyuv.com/"
     elementFormDefault="unqualified">
     <xsd:element name="add" type="tns:add"/>
     <xsd:element name="addResponse" type="tns:addResponse"/>
@@ -57,11 +57,11 @@ excerpt: 介绍Apache-CXF中通过手工编写XML的方式定义WSDL的各种细
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:tns="http://blog.csdn.net/jadyer"
-    targetNamespace="http://blog.csdn.net/jadyer"
+    xmlns:tns="https://www.xuanyuv.com/"
+    targetNamespace="https://www.xuanyuv.com/"
     name="CalculatorServiceImpl">
     <wsdl:types>
-        <xsd:schema targetNamespace="http://blog.csdn.net/jadyer">
+        <xsd:schema targetNamespace="https://www.xuanyuv.com/">
             <xsd:include schemaLocation="calculator.xsd"/>
         </xsd:schema>
     </wsdl:types>
@@ -107,14 +107,14 @@ excerpt: 介绍Apache-CXF中通过手工编写XML的方式定义WSDL的各种细
 下面是`SIB`，即服务端接口实现类`CalculatorServiceImpl.java`
 
 ```java
-package net.csdn.blog.jadyer;
+package net.csdn.blog.xuanyuv;
 import javax.jws.WebService;
-import com.jadyer.model.User;
+import com.xuanyuv.model.User;
 
 @WebService(serviceName="CalculatorServiceImpl",
             wsdlLocation="META-INF/myCalculator.wsdl",
-            endpointInterface="net.csdn.blog.jadyer.CalculatorService",
-            targetNamespace="http://blog.csdn.net/jadyer")
+            endpointInterface="net.csdn.blog.xuanyuv.CalculatorService",
+            targetNamespace="https://www.xuanyuv.com/")
 public class CalculatorServiceImpl implements CalculatorService {
     @Override
     public int add(int a, int b, User licenseUser) {
@@ -131,7 +131,7 @@ public class CalculatorServiceImpl implements CalculatorService {
 这是服务端用到的一个实体类`User.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 
 public class User {
     private String username;
@@ -150,10 +150,10 @@ public class User {
 最后是发布服务的`ServerApp.java`
 
 ```java
-package com.jadyer.server;
+package com.xuanyuv.server;
 import javax.xml.namespace.QName;
-import net.csdn.blog.jadyer.CalculatorService;
-import net.csdn.blog.jadyer.CalculatorServiceImpl;
+import net.csdn.blog.xuanyuv.CalculatorService;
+import net.csdn.blog.xuanyuv.CalculatorServiceImpl;
 import org.apache.cxf.interceptor.LoggingInInterceptor;
 import org.apache.cxf.interceptor.LoggingOutInterceptor;
 import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
@@ -172,7 +172,7 @@ import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
  *   发布时的address可任意指定,不要求一定要与myCalculator.wsdl中的<soap:address location=""/>相同
  *   但发布后在浏览器中查看wsdl时会发现,其<soap:address location=""/>值始终与发布时指定的address相同
  * -----------------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/05/28 21:41.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/05/28 21:41.
  */
 public class ServerApp {
     public static void main(String[] args) {
@@ -189,7 +189,7 @@ public class ServerApp {
         //区别为：发布后浏览器访问wsdl，若其与我们编写的wsdl相同，且元素类型引用自另一个xsd，即契约优先发布成功
         //否则，浏览器访问wsdl时，可直接看到元素类型定义，则表示是代码优先的方式发布的
         factory.setWsdlLocation("META-INF/myCalculator.wsdl");
-        factory.setServiceName(new QName("http://blog.csdn.net/jadyer", "CalculatorServiceImpl"));
+        factory.setServiceName(new QName("https://www.xuanyuv.com/", "CalculatorServiceImpl"));
         factory.create();
     }
 }
@@ -202,10 +202,10 @@ public class ServerApp {
 下面是自定义的用于发送`SOAPHeader`信息的`LicenseOutInterceptor.java`
 
 ```java
-package com.jadyer.interceptor;
+package com.xuanyuv.interceptor;
 import javax.xml.bind.JAXBException;
 import javax.xml.namespace.QName;
-import net.csdn.blog.jadyer.User;
+import net.csdn.blog.xuanyuv.User;
 import org.apache.cxf.binding.soap.SoapMessage;
 import org.apache.cxf.binding.soap.interceptor.AbstractSoapInterceptor;
 import org.apache.cxf.databinding.DataBinding;
@@ -221,7 +221,7 @@ public class LicenseOutInterceptor extends AbstractSoapInterceptor{
 
     @Override
     public void handleMessage(SoapMessage message) throws Fault {
-        QName qname = new QName("http://blog.csdn.net/jadyer", "licenseUser", "ns");
+        QName qname = new QName("https://www.xuanyuv.com/", "licenseUser", "ns");
         DataBinding dataBinding = null;
         try {
             dataBinding = new JAXBDataBinding(User.class);
@@ -229,7 +229,7 @@ public class LicenseOutInterceptor extends AbstractSoapInterceptor{
             e.printStackTrace();
         }
         User user = new User();
-        user.setUsername("Jadyer");
+        user.setUsername("Xuanyu");
         user.setPassword("hongyu");
         Header header = new Header(qname, user, dataBinding);
         message.getHeaders().add(header);
@@ -239,18 +239,18 @@ public class LicenseOutInterceptor extends AbstractSoapInterceptor{
 
 最后是通过`CXF提供的wsdl2java`生成的，用于演示调用服务端的`ClientApp.Java`
 
-关于`wsdl2java`的用法，可参考[https://jadyer.cn/2013/05/31/cxf-demo/](https://jadyer.cn/2013/05/31/cxf-demo/)
+关于`wsdl2java`的用法，可参考[https://www.xuanyuv.com/2013/05/31/cxf-demo/](https://www.xuanyuv.com/2013/05/31/cxf-demo/)
 
 ```java
-package com.jadyer.client;
-import net.csdn.blog.jadyer.CalculatorService;
+package com.xuanyuv.client;
+import net.csdn.blog.xuanyuv.CalculatorService;
 import org.apache.cxf.interceptor.LoggingInInterceptor;
 import org.apache.cxf.interceptor.LoggingOutInterceptor;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
-import com.jadyer.interceptor.LicenseOutInterceptor;
+import com.xuanyuv.interceptor.LicenseOutInterceptor;
 
 //wsdl2java -d D:/Download/ -frontend jaxws21 -keep -verbose http://127.0.0.1:8088/myHelloService?wsdl
-//wsdl2java命令与wsimport相似，wsimport简介详见https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/
+//wsdl2java命令与wsimport相似，wsimport简介详见https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/
 public class ClientApp {
     public static void main(String[] args) {
         JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
@@ -279,9 +279,9 @@ Encoding: UTF-8
 Http-Method: POST
 Content-Type: text/xml; charset=UTF-8
 Headers: {Accept=[*/*], Cache-Control=[no-cache], connection=[keep-alive], Content-Length=[342], content-type=[text/xml; charset=UTF-8], Host=[127.0.0.1:8088], Pragma=[no-cache], SOAPAction=[""], User-Agent=[Apache CXF 2.7.0]}
-Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Header><ns2:licenseUser xmlns:ns2="http://blog.csdn.net/jadyer"><username>Jadyer</username><password>hongyu</password></ns2:licenseUser></soap:Header><soap:Body><ns2:add xmlns:ns2="http://blog.csdn.net/jadyer"><a>12</a><b>33</b></ns2:add></soap:Body></soap:Envelope>
+Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Header><ns2:licenseUser xmlns:ns2="https://www.xuanyuv.com/"><username>Xuanyu</username><password>hongyu</password></ns2:licenseUser></soap:Header><soap:Body><ns2:add xmlns:ns2="https://www.xuanyuv.com/"><a>12</a><b>33</b></ns2:add></soap:Body></soap:Envelope>
 --------------------------------------
-Receive the username=[Jadyer]
+Receive the username=[Xuanyu]
 Receive the password=[hongyu]
 12+33=45
 2013-5-31 23:06:19 org.apache.cxf.services.CalculatorServiceImpl.CalculatorServiceImplPort.CalculatorService
@@ -291,7 +291,7 @@ ID: 1
 Encoding: UTF-8
 Content-Type: text/xml
 Headers: {}
-Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:addResponse xmlns:ns2="http://blog.csdn.net/jadyer"><addResult>45</addResult></ns2:addResponse></soap:Body></soap:Envelope>
+Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:addResponse xmlns:ns2="https://www.xuanyuv.com/"><addResult>45</addResult></ns2:addResponse></soap:Body></soap:Envelope>
 --------------------------------------
 ```
 
@@ -299,7 +299,7 @@ Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><
 
 ```
 2013-5-31 23:06:18 org.apache.cxf.service.factory.ReflectionServiceFactoryBean buildServiceFromClass
-信息: Creating Service {http://blog.csdn.net/jadyer}CalculatorServiceService from class net.csdn.blog.jadyer.CalculatorService
+信息: Creating Service {https://www.xuanyuv.com/}CalculatorServiceService from class net.csdn.blog.xuanyuv.CalculatorService
 2013-5-31 23:06:19 org.apache.cxf.services.CalculatorServiceService.CalculatorServicePort.CalculatorService
 信息: Outbound Message
 ---------------------------
@@ -309,7 +309,7 @@ Encoding: UTF-8
 Http-Method: POST
 Content-Type: text/xml
 Headers: {Accept=[*/*], SOAPAction=[""]}
-Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Header><ns2:licenseUser xmlns:ns2="http://blog.csdn.net/jadyer"><username>Jadyer</username><password>hongyu</password></ns2:licenseUser></soap:Header><soap:Body><ns2:add xmlns:ns2="http://blog.csdn.net/jadyer"><a>12</a><b>33</b></ns2:add></soap:Body></soap:Envelope>
+Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Header><ns2:licenseUser xmlns:ns2="https://www.xuanyuv.com/"><username>Xuanyu</username><password>hongyu</password></ns2:licenseUser></soap:Header><soap:Body><ns2:add xmlns:ns2="https://www.xuanyuv.com/"><a>12</a><b>33</b></ns2:add></soap:Body></soap:Envelope>
 --------------------------------------
 2013-5-31 23:06:19 org.apache.cxf.services.CalculatorServiceService.CalculatorServicePort.CalculatorService
 信息: Inbound Message
@@ -319,7 +319,7 @@ Response-Code: 200
 Encoding: UTF-8
 Content-Type: text/xml;charset=UTF-8
 Headers: {content-type=[text/xml;charset=UTF-8], Server=[Jetty(8.1.7.v20120910)], transfer-encoding=[chunked]}
-Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:addResponse xmlns:ns2="http://blog.csdn.net/jadyer"><addResult>45</addResult></ns2:addResponse></soap:Body></soap:Envelope>
+Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:addResponse xmlns:ns2="https://www.xuanyuv.com/"><addResult>45</addResult></ns2:addResponse></soap:Body></soap:Envelope>
 --------------------------------------
 45
 ```

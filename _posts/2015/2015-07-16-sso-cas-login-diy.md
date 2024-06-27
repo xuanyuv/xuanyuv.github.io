@@ -20,15 +20,15 @@ cas的页面显示控制是集中在`\WEB-INF\cas.properties`中的`cas.viewReso
 了解了处理逻辑，再想自定义服务端登录页的话，就方便多了，步骤如下
 
 ```
-1、修改cas.properties文件：cas.viewResolver.basename=jadyer，再将default_views.properties拷贝一份为jadyer.properties
-2、修改jadyer.properties文件：/WEB-INF/view/jsp/default改为/WEB-INF/view/jsp/jadyer
+1、修改cas.properties文件：cas.viewResolver.basename=xuanyu，再将default_views.properties拷贝一份为xuanyu.properties
+2、修改xuanyu.properties文件：/WEB-INF/view/jsp/default改为/WEB-INF/view/jsp/xuanyu
 　　其中`casLoginView.url`表示默认登录页，`casLoginGenericSuccessView.url`表示默认登录成功页
-3、复制/WEB-INF/view/jsp/default/及其子目录所有文件到/WEB-INF/view/jsp/jadyer/里面
+3、复制/WEB-INF/view/jsp/default/及其子目录所有文件到/WEB-INF/view/jsp/xuanyu/里面
 ```
 
 接下来就可以随意修改登录页面了
 
-> 注意：\WEB-INF\view\jsp\jadyer\ui\includes\bottom.jsp页面中引用了googleapis的一些jquery库<br>
+> 注意：\WEB-INF\view\jsp\xuanyu\ui\includes\bottom.jsp页面中引用了googleapis的一些jquery库<br>
 可以换成百度CDN（[http://cdn.code.baidu.com](http://cdn.code.baidu.com)），比如[http://apps.bdimg.com/libs/jqueryui/1.10.2/jquery-ui.min.js](http://apps.bdimg.com/libs/jqueryui/1.10.2/jquery-ui.min.js)<br>
 或者Bootstrap中文网开源的免费CDN服务（[http://www.bootcdn.cn](http://www.bootcdn.cn)），比如[//cdn.bootcss.com/jqueryui/1.10.2/jquery-ui.min.js](//cdn.bootcss.com/jqueryui/1.10.2/jquery-ui.min.js)<br>
 

@@ -35,7 +35,7 @@ excerpt: 演示了Apache-POI框架操作Excel报表模板文件填充数据后�
 ## 报表生成类
 
 ```java
-package com.jadyer.report;
+package com.xuanyuv.report;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -55,7 +55,7 @@ import java.util.Map;
  * ---------------------------------------------------------------------------
  * 这里要用到：poi-3.9-20121203.jar和poi-ooxml-3.9-20121203.jar
  * ---------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/7/5 21:54.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/7/5 21:54.
  */
 public enum ExcelReport {
     INSTANCE;
@@ -195,7 +195,7 @@ public enum ExcelReport {
         Map<String, String> constantData = new HashMap<>();
         constantData.put("#title", "优秀学生名单");
         constantData.put("#date", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-        constantData.put("#developer", "玄玉<https://jadyer.cn/>");
+        constantData.put("#developer", "玄玉<https://www.xuanyuv.com/>");
         for(Row row : sheet){
             for(Cell cell : row){
                 if(Cell.CELL_TYPE_STRING != cell.getCellType()){
@@ -242,8 +242,8 @@ public enum ExcelReport {
 ## 单元测试类
 
 ```java
-package com.jadyer.test;
-import com.jadyer.report.ExcelReport;
+package com.xuanyuv.test;
+import com.xuanyuv.report.ExcelReport;
 import org.junit.Assert;
 import org.junit.Test;
 import java.io.File;
@@ -259,7 +259,7 @@ public class ExcelReportTest {
         eru.buildCell("dd");
         eru.createNewRow();
         eru.buildCell("aa");
-        eru.buildCell("https://jadyer.cn/");
+        eru.buildCell("https://www.xuanyuv.com/");
         eru.buildCell("cc");
         eru.buildCell("dd");
         eru.createNewRow();
@@ -276,7 +276,7 @@ public class ExcelReportTest {
 ## 另附POIReadDemo
 
 ```java
-package com.jadyer.seed;
+package com.xuanyuv.seed;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
@@ -294,7 +294,7 @@ import java.text.SimpleDateFormat;
  * ---------------------------------------------------------------------------
  * 这里用到了：poi-4.1.0.jar、poi-ooxml-4.1.0.jar
  * ---------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/7/9 19:54.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/7/9 19:54.
  */
 public class POIReadDemo {
     public static void main(String[] args) throws IOException {
@@ -382,7 +382,7 @@ public class POIReadDemo {
 ## 另附POIWriteDemo
 
 ```java
-package com.jadyer.seed;
+package com.xuanyuv.seed;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -408,7 +408,7 @@ import java.util.List;
  * ---------------------------------------------------------------------------
  * 这里用到了：poi-4.1.0.jar、poi-ooxml-4.1.0.jar
  * ---------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/7/9 19:54.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/7/9 19:54.
  */
 public class POIWriteDemo {
     public static void main(String[] args) throws IOException {

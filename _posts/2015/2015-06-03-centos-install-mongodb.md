@@ -37,9 +37,9 @@ excerpt: 详细介绍了在CentOS-6.4-minimal版本中，安装MongoDB-x86_64-3.
 下面开始正文：`CentOS-6.4-minimal`上安装`MongoDB-x86_64-3.0.2`
 
 ```
-[Jadyer@CentOS64 ~]$ cd /app/software/
-[Jadyer@CentOS64 software]$ tar zxvf mongodb-linux-x86_64-3.0.2.tgz
-[Jadyer@CentOS64 software]$ mv mongodb-linux-x86_64-3.0.2 /app/mongodb-3.0.2
+[xuanyu@dev ~]$ cd /app/software/
+[xuanyu@dev software]$ tar zxvf mongodb-linux-x86_64-3.0.2.tgz
+[xuanyu@dev software]$ mv mongodb-linux-x86_64-3.0.2 /app/mongodb-3.0.2
 [root@dev ~]# vim /etc/profile
                       #Set MongoDB Environment Variable
                       MONGODB_HOME=/app/mongodb-3.0.2
@@ -47,26 +47,26 @@ excerpt: 详细介绍了在CentOS-6.4-minimal版本中，安装MongoDB-x86_64-3.
                       export MONGODB_HOME PATH
 [root@dev ~]# source /etc/profile
 [root@dev ~]# mongod -version
-[Jadyer@CentOS64 ~]$ mongod -version
+[xuanyu@dev ~]$ mongod -version
 ```
 
 ## 配置
 
 ```
-[Jadyer@CentOS64 ~]$ cd /app/mongodb-3.0.2/
-[Jadyer@CentOS64 mongodb-3.0.2]$ mkdir data             #创建MongoDB存放数据文件的目录
-[Jadyer@CentOS64 mongodb-3.0.2]$ mkdir logs             #创建MongoDB存放日志文件的目录
-[Jadyer@CentOS64 mongodb-3.0.2]$ touch logs/mongodb.log #创建一个空的日志文件
-[Jadyer@CentOS64 mongodb-3.0.2]$ cd bin
-[Jadyer@CentOS64 bin]$ vim startup.sh
+[xuanyu@dev ~]$ cd /app/mongodb-3.0.2/
+[xuanyu@dev mongodb-3.0.2]$ mkdir data             #创建MongoDB存放数据文件的目录
+[xuanyu@dev mongodb-3.0.2]$ mkdir logs             #创建MongoDB存放日志文件的目录
+[xuanyu@dev mongodb-3.0.2]$ touch logs/mongodb.log #创建一个空的日志文件
+[xuanyu@dev mongodb-3.0.2]$ cd bin
+[xuanyu@dev bin]$ vim startup.sh
 mongod --dbpath /app/mongodb-3.0.2/data --logpath /app/mongodb-3.0.2/logs/mongodb.log --logappend --fork --rest --httpinterface
-[Jadyer@CentOS64 bin]$ chmod 755 startup.sh
-[Jadyer@CentOS64 bin]$ vim shutdown.sh
+[xuanyu@dev bin]$ chmod 755 startup.sh
+[xuanyu@dev bin]$ vim shutdown.sh
 mongod --dbpath /app/mongodb-3.0.2/data --shutdown
-[Jadyer@CentOS64 bin]$ chmod 755 shutdown.sh
-[Jadyer@CentOS64 bin]$ vim client.sh
+[xuanyu@dev bin]$ chmod 755 shutdown.sh
+[xuanyu@dev bin]$ vim client.sh
 mongo 127.0.0.1:27017/admin
-[Jadyer@CentOS64 bin]$ chmod 755 client.sh
+[xuanyu@dev bin]$ chmod 755 client.sh
 ```
 
 ## 启动
@@ -80,8 +80,8 @@ mongo 127.0.0.1:27017/admin
 * 3、先要用`root`用户执行下面两个命令，否则启动后，客户端连接时会有警告提示
 
 ```
-[root@dev Jadyer]# echo "never" > /sys/kernel/mm/transparent_hugepage/enabled
-[root@dev Jadyer]# echo "never" > /sys/kernel/mm/transparent_hugepage/defrag
+[root@dev app]# echo "never" > /sys/kernel/mm/transparent_hugepage/enabled
+[root@dev app]# echo "never" > /sys/kernel/mm/transparent_hugepage/defrag
 ```
 
 * 4、使用`wiredTiger`引擎时，需加`directoryperdb`参数让数据库分文件夹，不然小文件太多，比如下面
@@ -93,9 +93,9 @@ numactl --interleave=all /usr/local/mongodb/bin/mongod --fork --httpinterface --
 ## 管理
 
 ```
-[Jadyer@CentOS64 ~]$ cd /app/mongodb-3.0.2/bin/
-[Jadyer@CentOS64 bin]$ ./startup.sh  #若启动失败，就检查下/etc/sysconfig/iptables防火墙里面有没有开放27017端口
-[Jadyer@CentOS64 bin]$ ./client.sh   #启动客户端，连接服务器
+[xuanyu@dev ~]$ cd /app/mongodb-3.0.2/bin/
+[xuanyu@dev bin]$ ./startup.sh  #若启动失败，就检查下/etc/sysconfig/iptables防火墙里面有没有开放27017端口
+[xuanyu@dev bin]$ ./client.sh   #启动客户端，连接服务器
 MongoDB shell version: 3.0.2
 connecting to: 127.0.0.1:27017/admin
 > show dbs
@@ -104,9 +104,9 @@ local  0.078GB                       #此时是看不见admin的,但mongodb3.0�
 > show users                         #查看刚才创建的用户
 > db.system.users.find()             #该命令也能查看创建的用户,而且信息更详细
 > db.shutdownServer()                #关闭数据库(也可用上面编写的shutdown.sh)
-[Jadyer@CentOS64 bin]$ vim startup.sh #加入[--auth]参数
-[Jadyer@CentOS64 bin]$ ./startup.sh
-[Jadyer@CentOS64 bin]$ ./client.sh
+[xuanyu@dev bin]$ vim startup.sh #加入[--auth]参数
+[xuanyu@dev bin]$ ./startup.sh
+[xuanyu@dev bin]$ ./client.sh
 MongoDB shell version: 3.0.2
 connecting to: 127.0.0.1:27017/admin
 > show dbs                           #会报告not authorized on admin to execute command {listDatabases: 1.0}

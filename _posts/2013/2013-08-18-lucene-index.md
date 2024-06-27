@@ -36,7 +36,7 @@ Luke菜单下的`Search`选项卡中可以根据我们输入的表达式来查�
 下面演示的是`Lucene-3.6.2`中针对索引文件增删改查的操作方式
 
 ```java
-package com.jadyer.lucene;
+package com.xuanyuv.lucene;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -60,7 +60,7 @@ import org.apache.lucene.util.Version;
 
 /**
  * Lucene系列第02节之操作索引
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/18 15:48.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/18 15:48.
  */
 public class HelloIndex {
     /*
@@ -70,9 +70,9 @@ public class HelloIndex {
     //邮件编号
     private String[] ids = {"1", "2", "3", "4", "5", "6"};
     //邮件主题
-    private String[] names = {"Michael", "Scofield", "Tbag", "Jack", "Jade", "Jadyer"};
+    private String[] names = {"Michael", "Scofield", "Tbag", "Jack", "Jade", "Xuanyu"};
     //邮件地址
-    private String[] emails = {"aa@jadyer.us", "bb@jadyer.cn", "cc@jadyer.cc", "dd@jadyer.tw", "ee@jadyer.hk", "ff@jadyer.me"};
+    private String[] emails = {"aa@xuanyuv.us", "bb@xuanyuv.cn", "cc@xuanyuv.cc", "dd@xuanyuv.tw", "ee@xuanyuv.hk", "ff@xuanyuv.me"};
     //邮件内容
     private String[] contents = {"my blog", "my website", "my name", "I am JavaDeveloper", "I am from Haerbin", "I like Lucene"};
     //邮件附件（为数字和日期加索引，与，字符串加索引的方式不同）
@@ -152,9 +152,9 @@ public class HelloIndex {
                 //为日期加索引
                 doc.add(new NumericField("date", Field.Store.YES, true).setLongValue(dates[i].getTime()));
                  //建立索引时加权（定义排名规则，即加权，这里是为指定邮件名结尾的emails加权）
-                if(emails[i].endsWith("jadyer.cn")){
+                if(emails[i].endsWith("xuanyuv.com")){
                     doc.setBoost(2.0f);
-                }else if(emails[i].endsWith("jadyer.me")){
+                }else if(emails[i].endsWith("xuanyuv.cn")){
                     //为文档加权（注意它的参数类型是Float，默认为1.0f，权值越高则排名越高，显示得就越靠前）
                     doc.setBoost(1.5f);
                 }else{
@@ -304,11 +304,11 @@ public class HelloIndex {
 最后补充一个`JUnit4.x`写的一个小测试
 
 ```java
-package com.jadyer.test;
+package com.xuanyuv.test;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import com.jadyer.lucene.HelloIndex;
+import com.xuanyuv.lucene.HelloIndex;
 
 public class HelloIndexTest {
     private HelloIndex hello;

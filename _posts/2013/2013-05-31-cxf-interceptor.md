@@ -16,13 +16,13 @@ excerpt: 介绍Apache-CXF中的Interceptor的配置方法。
 首先是`SEI`，即服务端接口类`HelloService.Java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 
-@WebService(targetNamespace="http://blog.csdn.net/jadyer")
+@WebService(targetNamespace="https://www.xuanyuv.com/")
 public interface HelloService {
     @WebMethod
     @WebResult(name="sayHelloResult")
@@ -33,10 +33,10 @@ public interface HelloService {
 下面是`SIB`，即服务端接口实现类`HelloServiceImpl.java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import javax.jws.WebService;
 
-@WebService(endpointInterface="com.jadyer.service.HelloService", targetNamespace="http://blog.csdn.net/jadyer")
+@WebService(endpointInterface="com.xuanyuv.service.HelloService", targetNamespace="https://www.xuanyuv.com/")
 public class HelloServiceImpl implements HelloService {
     @Override
     public String sayHello(String name) {
@@ -53,7 +53,7 @@ public class HelloServiceImpl implements HelloService {
 下面是服务端自定义的`Interceptor`实现类`LicenseInInterceptor.java`
 
 ```java
-package com.jadyer.interceptor;
+package com.xuanyuv.interceptor;
 import java.util.List;
 import org.apache.cxf.binding.soap.SoapMessage;
 import org.apache.cxf.binding.soap.interceptor.AbstractSoapInterceptor;
@@ -67,7 +67,7 @@ import org.w3c.dom.Node;
  * 自定义Interceptor
  * 1)自定义一个类，并继承AbstractSoapInterceptor
  * 2)显示声明该Interceptor的一个无参够构造方法，并在其中指明handleMessage()方法的调用阶段
- * Created by 玄玉<https://jadyer.cn/> on 2013/05/28 21:05.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/05/28 21:05.
  */
 public class LicenseInInterceptor extends AbstractSoapInterceptor {
     public LicenseInInterceptor(){
@@ -98,13 +98,13 @@ public class LicenseInInterceptor extends AbstractSoapInterceptor {
 最后是发布服务的`ServerApp.java`
 
 ```java
-package com.jadyer.server;
+package com.xuanyuv.server;
 import org.apache.cxf.interceptor.LoggingInInterceptor;
 import org.apache.cxf.interceptor.LoggingOutInterceptor;
 import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
-import com.jadyer.interceptor.LicenseInInterceptor;
-import com.jadyer.service.HelloService;
-import com.jadyer.service.HelloServiceImpl;
+import com.xuanyuv.interceptor.LicenseInInterceptor;
+import com.xuanyuv.service.HelloService;
+import com.xuanyuv.service.HelloServiceImpl;
 
 public class ServerApp {
     public static void main(String[] args) {
@@ -117,7 +117,7 @@ public class ServerApp {
         factory.getInInterceptors().add(new LoggingInInterceptor());
         factory.getOutInterceptors().add(new LoggingOutInterceptor());
 
-        //也可以使用注解@InInterceptors(interceptors={"com.jadyer.interceptor.LicenseInInterceptor"})
+        //也可以使用注解@InInterceptors(interceptors={"com.xuanyuv.interceptor.LicenseInInterceptor"})
         //经测试，作为服务端，可以将之注解到SEI或SIB上，均可
         //而客户端，则只有将之注解到SEI上时，才有效
         factory.getInInterceptors().add(new LicenseInInterceptor());
@@ -133,7 +133,7 @@ public class ServerApp {
 首先是客户端自定义的`Interceptor`实现类`LicenseOutInterceptor.java`
 
 ```java
-package com.jadyer.interceptor;
+package com.xuanyuv.interceptor;
 import javax.xml.bind.JAXBException;
 import javax.xml.namespace.QName;
 import org.apache.cxf.binding.soap.SoapMessage;
@@ -143,7 +143,7 @@ import org.apache.cxf.headers.Header;
 import org.apache.cxf.interceptor.Fault;
 import org.apache.cxf.jaxb.JAXBDataBinding;
 import org.apache.cxf.phase.Phase;
-import com.jadyer.model.User;
+import com.xuanyuv.model.User;
 
 public class LicenseOutInterceptor extends AbstractSoapInterceptor{
     public LicenseOutInterceptor(){
@@ -152,14 +152,14 @@ public class LicenseOutInterceptor extends AbstractSoapInterceptor{
 
     @Override
     public void handleMessage(SoapMessage message) throws Fault {
-        QName qname = new QName("http://blog.csdn.net/jadyer", "licenseInfo", "ns");
+        QName qname = new QName("https://www.xuanyuv.com/", "licenseInfo", "ns");
         DataBinding dataBinding = null;
         try {
             dataBinding = new JAXBDataBinding(User.class);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-        Header header = new Header(qname, new User("Jadyer", "hongyu"), dataBinding);
+        Header header = new Header(qname, new User("Xuanyu", "hongyu"), dataBinding);
         message.getHeaders().add(header);
     }
 }
@@ -168,7 +168,7 @@ public class LicenseOutInterceptor extends AbstractSoapInterceptor{
 下面是客户端用到的实体类`User.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 
 public class User {
     private String username;
@@ -186,18 +186,18 @@ public class User {
 
 客户端只有一个用于演示调用服务端的`ClientApp.Java`
 
-它是通过`CXF提供的wsdl2java`生成的，关于其用法，可参考[https://jadyer.cn/2013/05/31/cxf-demo/](https://jadyer.cn/2013/05/31/cxf-demo/)
+它是通过`CXF提供的wsdl2java`生成的，关于其用法，可参考[https://www.xuanyuv.com/2013/05/31/cxf-demo/](https://www.xuanyuv.com/2013/05/31/cxf-demo/)
 
 ```java
-package com.jadyer.client;
-import net.csdn.blog.jadyer.HelloService;
+package com.xuanyuv.client;
+import net.csdn.blog.xuanyuv.HelloService;
 import org.apache.cxf.interceptor.LoggingInInterceptor;
 import org.apache.cxf.interceptor.LoggingOutInterceptor;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
-import com.jadyer.interceptor.LicenseOutInterceptor;
+import com.xuanyuv.interceptor.LicenseOutInterceptor;
 
 //wsdl2java -d D:/Download/ -frontend jaxws21 -keep -verbose http://127.0.0.1:8088/myHelloService?wsdl
-//wsdl2java命令与wsimport相似，wsimport简介详见https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/
+//wsdl2java命令与wsimport相似，wsimport简介详见https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/
 public class ClientApp {
     public static void main(String[] args) {
         JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
@@ -226,10 +226,10 @@ Encoding: UTF-8
 Http-Method: POST
 Content-Type: text/xml; charset=UTF-8
 Headers: {Accept=[*/*], Cache-Control=[no-cache], connection=[keep-alive], Content-Length=[350], content-type=[text/xml; charset=UTF-8], Host=[127.0.0.1:8088], Pragma=[no-cache], SOAPAction=[""], User-Agent=[Apache CXF 2.7.0]}
-Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Header><ns:licenseInfo xmlns:ns="http://blog.csdn.net/jadyer"><password>hongyu</password><username>Jadyer</username></ns:licenseInfo></soap:Header><soap:Body><ns2:sayHello xmlns:ns2="http://blog.csdn.net/jadyer"><name>玄玉</name></ns2:sayHello></soap:Body></soap:Envelope>
+Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Header><ns:licenseInfo xmlns:ns="https://www.xuanyuv.com/"><password>hongyu</password><username>Xuanyu</username></ns:licenseInfo></soap:Header><soap:Body><ns2:sayHello xmlns:ns2="https://www.xuanyuv.com/"><name>玄玉</name></ns2:sayHello></soap:Body></soap:Envelope>
 --------------------------------------
 Receive the name=[玄玉]
-Receive the username=[Jadyer]
+Receive the username=[Xuanyu]
 Receive the password=[hongyu]
 2013-5-31 22:45:15 org.apache.cxf.services.HelloServiceService.HelloServicePort.HelloService
 信息: Outbound Message
@@ -238,7 +238,7 @@ ID: 1
 Encoding: UTF-8
 Content-Type: text/xml
 Headers: {}
-Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:sayHelloResponse xmlns:ns2="http://blog.csdn.net/jadyer"><sayHelloResult>Hello,玄玉</sayHelloResult></ns2:sayHelloResponse></soap:Body></soap:Envelope>
+Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:sayHelloResponse xmlns:ns2="https://www.xuanyuv.com/"><sayHelloResult>Hello,玄玉</sayHelloResult></ns2:sayHelloResponse></soap:Body></soap:Envelope>
 --------------------------------------
 ```
 
@@ -246,7 +246,7 @@ Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><
 
 ```
 2013-5-31 22:45:14 org.apache.cxf.service.factory.ReflectionServiceFactoryBean buildServiceFromClass
-信息: Creating Service {http://blog.csdn.net/jadyer}HelloServiceService from class net.csdn.blog.jadyer.HelloService
+信息: Creating Service {https://www.xuanyuv.com/}HelloServiceService from class net.csdn.blog.xuanyuv.HelloService
 2013-5-31 22:45:15 org.apache.cxf.services.HelloServiceService.HelloServicePort.HelloService
 信息: Outbound Message
 ---------------------------
@@ -256,7 +256,7 @@ Encoding: UTF-8
 Http-Method: POST
 Content-Type: text/xml
 Headers: {Accept=[*/*], SOAPAction=[""]}
-Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Header><ns:licenseInfo xmlns:ns="http://blog.csdn.net/jadyer"><password>hongyu</password><username>Jadyer</username></ns:licenseInfo></soap:Header><soap:Body><ns2:sayHello xmlns:ns2="http://blog.csdn.net/jadyer"><name>玄玉</name></ns2:sayHello></soap:Body></soap:Envelope>
+Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Header><ns:licenseInfo xmlns:ns="https://www.xuanyuv.com/"><password>hongyu</password><username>Xuanyu</username></ns:licenseInfo></soap:Header><soap:Body><ns2:sayHello xmlns:ns2="https://www.xuanyuv.com/"><name>玄玉</name></ns2:sayHello></soap:Body></soap:Envelope>
 --------------------------------------
 2013-5-31 22:45:15 org.apache.cxf.services.HelloServiceService.HelloServicePort.HelloService
 信息: Inbound Message
@@ -266,7 +266,7 @@ Response-Code: 200
 Encoding: UTF-8
 Content-Type: text/xml;charset=UTF-8
 Headers: {content-type=[text/xml;charset=UTF-8], Server=[Jetty(8.1.7.v20120910)], transfer-encoding=[chunked]}
-Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:sayHelloResponse xmlns:ns2="http://blog.csdn.net/jadyer"><sayHelloResult>Hello,玄玉</sayHelloResult></ns2:sayHelloResponse></soap:Body></soap:Envelope>
+Payload: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:sayHelloResponse xmlns:ns2="https://www.xuanyuv.com/"><sayHelloResult>Hello,玄玉</sayHelloResult></ns2:sayHelloResponse></soap:Body></soap:Envelope>
 --------------------------------------
 Hello,玄玉
 ```

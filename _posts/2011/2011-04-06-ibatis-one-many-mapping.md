@@ -25,13 +25,13 @@ excerpt: 介绍iBatis中的一对多和一对一映射的不同写法，以及�
     <transactionManager type="JDBC">
         <dataSource type="SIMPLE">
             <property name="JDBC.Driver" value="oracle.jdbc.OracleDriver"/>
-            <property name="JDBC.ConnectionURL" value="jdbc:oracle:thin:@127.0.0.1:1521:jadyer"/>
+            <property name="JDBC.ConnectionURL" value="jdbc:oracle:thin:@127.0.0.1:1521:xuanyu"/>
             <property name="JDBC.Username" value="scott"/>
-            <property name="JDBC.Password" value="jadyer"/>
+            <property name="JDBC.Password" value="xuanyu"/>
         </dataSource>
     </transactionManager>
-    <sqlMap resource="com/jadyer/model/User.xml"/>
-    <sqlMap resource="com/jadyer/model/People.xml"/>
+    <sqlMap resource="com/xuanyuv/model/User.xml"/>
+    <sqlMap resource="com/xuanyuv/model/People.xml"/>
 </sqlMapConfig>
 ```
 
@@ -40,7 +40,7 @@ excerpt: 介绍iBatis中的一对多和一对一映射的不同写法，以及�
 首先是两个实体类`User.java`以及`Address.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import java.util.List;
 public class User {
     private Integer id;
@@ -52,7 +52,7 @@ public class User {
 ```
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 public class Address {
     private Integer id;
     private Integer userId;
@@ -62,14 +62,14 @@ public class Address {
 }
 ```
 
-接下来是实体类映射文件`com/jadyer/model/User.xml`
+接下来是实体类映射文件`com/xuanyuv/model/User.xml`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="User">
-    <typeAlias alias="user" type="com.jadyer.model.User"/>
-    <typeAlias alias="address" type="com.jadyer.model.Address"/>
+    <typeAlias alias="user" type="com.xuanyuv.model.User"/>
+    <typeAlias alias="address" type="com.xuanyuv.model.Address"/>
 
     <!-- 通过在<resultMap/>中定义嵌套查询getAddressByUserId，实现了关联数据的读取 -->
     <resultMap id="get-user-result" class="user">
@@ -128,7 +128,7 @@ insert into t_address values(7, 3, '厚颜无耻杯具', 333333);
 最后是JUnit4.x的单元测试类`IBatisOneToManyTest.java`
 
 ```java
-package com.jadyer.test;
+package com.xuanyuv.test;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.SQLException;
@@ -138,8 +138,8 @@ import org.junit.Test;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-import com.jadyer.model.Address;
-import com.jadyer.model.User;
+import com.xuanyuv.model.Address;
+import com.xuanyuv.model.User;
 
 public class IBatisOneToManyTest {
     private static SqlMapClient sqlMapClient;
@@ -187,7 +187,7 @@ public class IBatisOneToManyTest {
 首先是实体类`People.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 
 public class People {
     private Integer id;
@@ -199,13 +199,13 @@ public class People {
 }
 ```
 
-接下来是实体类映射文件`com/jadyer/model/People.xml`
+接下来是实体类映射文件`com/xuanyuv/model/People.xml`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="People">
-    <typeAlias alias="people" type="com.jadyer.model.People"/>
+    <typeAlias alias="people" type="com.xuanyuv.model.People"/>
 
     <resultMap id="get-people-result" class="people">
         <result property="id" column="ID"/>
@@ -262,7 +262,7 @@ insert into t_identity values(3, 3, '男', 555555555555);
 最后是JUnit4.x的单元测试类`IBatisOneToOneTest.java`
 
 ```java
-package com.jadyer.test;
+package com.xuanyuv.test;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.SQLException;
@@ -272,7 +272,7 @@ import org.junit.Test;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-import com.jadyer.model.People;
+import com.xuanyuv.model.People;
 
 public class IbatisOneToOneTest {
     private static SqlMapClient sqlMapClient;

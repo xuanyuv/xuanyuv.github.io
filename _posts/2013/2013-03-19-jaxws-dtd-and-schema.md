@@ -364,7 +364,7 @@ choice，list，union，unique，sequence，restriction等等
 <!-- 即extension表示元素类型，并且它还有一个名为sizing的，类型为字符串的属性 -->
 <!-- 最后在定义myShoeSize元素时指定了其类型为myComType类型 -->
 <!-- 注意：若指明mixed属性，即<complexType mixed="true">则表示该复合类型里面既可以有文本内容，也可以包含子元素 -->
-<!-- 注意：如<message>This message comes from<from>Jadyer</from></message> -->
+<!-- 注意：如<message>This message comes from<from>Xuanyu</from></message> -->
 <xs:complexType name="myComType">
     <!-- simpleContent元素通常应用于complexType，用于对complexType的内容进行约束和扩展 -->
     <!-- 如果一个元素的类型是用simpleContent表示的，则该元素是没有子元素的，而只有内容 -->

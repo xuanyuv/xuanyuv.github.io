@@ -20,14 +20,14 @@ excerpt: 演示模拟Hibernate回调示例，说明Spring中的Callback机制带
 下面是回调演示的伪代码
 
 ```java
-package com.jadyer.demo.hibernate;
+package com.xuanyuv.demo.hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import java.sql.SQLException;
 
 /**
  * 回调演示的伪代码（这个类就相当于是我们自己写的应用程序）
- * Created by 玄玉<https://jadyer.cn/> on 2010/11/10 02:59.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2010/11/10 02:59.
  */
 public class CallbackDemo {
     public static void main(String[] args) {

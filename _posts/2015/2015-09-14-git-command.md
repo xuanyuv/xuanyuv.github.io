@@ -74,7 +74,7 @@ passphrase指的是生成RSA密钥时使用的密码，重置时必须输入原�
 
 ```bash
 $ ssh -T git@gitlab.company.com
-Enter passphrase for key '/c/Users/Jadyer/.ssh/id_rsa.gitlab':
+Enter passphrase for key '/c/Users/xuanyu/.ssh/id_rsa.gitlab':
 Welcome to GitLab, 玄玉!
 
 $ ssh-keygen -f ~/.ssh//id_rsa.gitlab -p
@@ -90,7 +90,7 @@ Welcome to GitLab, 玄玉!
 ## 仅克隆最后两个版本
 
 ```bash
-$ git clone https://github.com/jadyer/seed.git --depth=2
+$ git clone https://github.com/xuanyuv/seed.git --depth=2
 Cloning into 'seed'...
 remote: Counting objects: 249, done.
 remote: Compressing objects: 100% (195/195), done.
@@ -167,7 +167,7 @@ $ git branch -a
 $ cd existing_folder
 $ git init
 $ cd .git/
-$ git config --local user.name 'jadyer' && git config --local user.email 'jadyer@yeah.net'
+$ git config --local user.name 'xuanyuv' && git config --local user.email 'xuanyuv@163.com'
 # 解决提交文件时报告warning: LF will be replaced by CRLF的问题
 # $ git config --local core.autocrlf false
 $ cd ..
@@ -199,13 +199,13 @@ $ git push -u origin master
 ```bash
 # 拉取远程最新内容
 $ git fetch origin
-From gitlab.jadyer.com:open/mpp
+From gitlab.xuanyuv.com:open/mpp
  * [new branch]      my-test-bran -> origin/my-test-bran
  * [new tag]         11         -> 11
 
 # 拉取远程指定的标签
 $ git fetch origin tag 22
-From gitlab.jadyer.com:open/mpp
+From gitlab.xuanyuv.com:open/mpp
  * [new tag]         22         -> 22
 
 # 查看已拉取到本地的所有分支（-a参数可以将远程分支通过红色显示出来，如果你开了颜色支持）
@@ -233,22 +233,22 @@ $ git tag | grep 6.R
 # 查看本地某一个标签的详细信息
 $ git show 1.6.6.RELEASE
 tag 1.6.6.RELEASE
-Tagger: jadyer <jadyer@yeah.net>
+Tagger: xuanyuv <xuanyuv@163.com>
 Date:   Thu Nov 3 11:30:05 2016 +0800
 
 1、微信后台增加操作员管理功能
 2、微信参数二维码增加推送动态景点功能
 
 commit 696e291cfdac6ca05a711acaf90e79f97cb1128f
-Author: jadyer <jadyer@yeah.net>
+Author: xuanyuv <xuanyuv@163.com>
 Date:   Thu Nov 3 11:08:44 2016 +0800
 
     [^] 推广二维码扫描后的提示语改为分期不等待
 
-diff --git a/mpp-mgr/src/main/java/com/jadyer/mpp/mgr/mpp/WeixinController.java b/mpp-mgr/src/main/java/com/jadyer/mpp/mgr/mpp/WeixinController.java
+diff --git a/mpp-mgr/src/main/java/com/xuanyu/mpp/mgr/mpp/WeixinController.java b/mpp-mgr/src/main/java/com/xuanyu/mpp/mgr/mpp/WeixinController.java
 index 1d41739..2209e09 100644
---- a/mpp-mgr/src/main/java/com/jadyer/mpp/mgr/mpp/WeixinController.java
-+++ b/mpp-mgr/src/main/java/com/jadyer/mpp/mgr/mpp/WeixinController.java
+--- a/mpp-mgr/src/main/java/com/xuanyu/mpp/mgr/mpp/WeixinController.java
++++ b/mpp-mgr/src/main/java/com/xuanyu/mpp/mgr/mpp/WeixinController.java
 @@ -220,7 +220,7 @@ public class WeixinController extends WeixinMsgControllerCustomServiceAdapter {
                 StringBuilder sb = new StringBuilder();
                 sb.append("欢迎来到")
@@ -269,7 +269,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (2/2), 396 bytes | 0 bytes/s, done.
 Total 2 (delta 0), reused 0 (delta 0)
-To git@gitlab.jadyer.com:open/mpp.git
+To git@gitlab.xuanyuv.com:open/mpp.git
  * [new tag]         1.6.7.RELEASE -> 1.6.7.RELEASE
  * [new tag]         1.6.8.RELEASE -> 1.6.8.RELEASE
 
@@ -278,7 +278,7 @@ $ git push origin 1.6.9.RELEASE
 Counting objects: 1, done.
 Writing objects: 100% (1/1), 167 bytes | 0 bytes/s, done.
 Total 1 (delta 0), reused 0 (delta 0)
-To git@gitlab.jadyer.com:open/mpp.git
+To git@gitlab.xuanyuv.com:open/mpp.git
  * [new tag]         1.6.9.RELEASE -> 1.6.9.RELEASE
 
 # 删除本地标签
@@ -304,7 +304,7 @@ To git@gitlab.msxf.com:open/mpp.git
  - [deleted]         1.6.8.RELEASE
 
 $ git push origin :refs/tags/1.6.9.RELEASE
-To git@gitlab.jadyer.com:open/mpp.git
+To git@gitlab.xuanyuv.com:open/mpp.git
  - [deleted]         1.6.9.RELEASE
 ```
 

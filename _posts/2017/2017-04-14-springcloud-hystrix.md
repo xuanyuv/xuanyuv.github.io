@@ -126,7 +126,7 @@ Hystrix 的大部分配置都是 hystrix.command.[HystrixCommandKey] 开头
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.jadyer.demo</groupId>
+    <groupId>com.xuanyuv.demo</groupId>
     <artifactId>demo-cloud-06-hystrix</artifactId>
     <version>1.1</version>
     <packaging>pom</packaging>
@@ -181,7 +181,7 @@ Hystrix 的大部分配置都是 hystrix.command.[HystrixCommandKey] 开头
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-06-hystrix</artifactId>
         <version>1.1</version>
     </parent>
@@ -227,7 +227,7 @@ eureka:
 这是注册中心的 SpringBoot 启动类 `ServiceDiscoveryBootStrap.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
@@ -252,7 +252,7 @@ public class ServiceDiscoveryBootStrap {
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-06-hystrix</artifactId>
         <version>1.1</version>
     </parent>
@@ -299,7 +299,7 @@ eureka:
 这是服务提供方的 SpringBoot 启动类 `ServiceServerBootStarp.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -312,7 +312,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * http://cloud.spring.io/spring-cloud-static/Camden.SR3/#_registering_with_eureka
  * https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka
  * ------------------------------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2017/1/9 16:00.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2017/1/9 16:00.
  */
 @EnableEurekaClient
 @SpringBootApplication
@@ -326,7 +326,7 @@ public class ServiceServerBootStarp {
 这是服务提供方暴露的数学运算服务 `CalculatorController.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.ServiceInstance;
@@ -337,7 +337,7 @@ import javax.annotation.Resource;
 
 /**
  * 服务提供方暴露的数学运算服务
- * Created by 玄玉<https://jadyer.cn/> on 2017/1/9 16:00.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2017/1/9 16:00.
  */
 @RestController
 public class CalculatorController {
@@ -368,7 +368,7 @@ public class CalculatorController {
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-06-hystrix</artifactId>
         <version>1.1</version>
     </parent>
@@ -423,7 +423,7 @@ eureka:
 这是服务消费方Ribbon的 SpringBoot 启动类 `ServiceClient01BootStarp.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -454,7 +454,7 @@ public class ServiceClient01BootStarp {
 这是服务消费方Ribbon的，包含了断路器配置的，远程服务调用实现 `CalculatorService.java`
 
 ```java
-package com.jadyer.demo.ribbon;
+package com.xuanyuv.demo.ribbon;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -481,14 +481,14 @@ class CalculatorService {
 这是服务消费方Ribbon的调用示例 `ConsumerController.java`
 
 ```java
-package com.jadyer.demo.ribbon;
+package com.xuanyuv.demo.ribbon;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
  * 服务调用方
- * Created by 玄玉<https://jadyer.cn/> on 2017/1/10 18:23.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2017/1/10 18:23.
  */
 @RestController
 @RequestMapping("/demo/ribbon")
@@ -513,7 +513,7 @@ public class ConsumerController {
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jadyer.demo</groupId>
+        <groupId>com.xuanyuv.demo</groupId>
         <artifactId>demo-cloud-06-hystrix</artifactId>
         <version>1.1</version>
     </parent>
@@ -565,7 +565,7 @@ eureka:
 这是服务消费方Feign的 SpringBoot 启动类 `ServiceClient02BootStarp.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -585,7 +585,7 @@ public class ServiceClient02BootStarp {
 这是服务消费方Feign的，包含了断路器配置的，远程服务调用实现 `CalculatorService.java`
 
 ```java
-package com.jadyer.demo.feign;
+package com.xuanyuv.demo.feign;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -621,14 +621,14 @@ public interface CalculatorService {
 這是服务消费方Feign的调用示例 `ConsumerController.java`
 
 ```java
-package com.jadyer.demo.feign;
+package com.xuanyuv.demo.feign;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
  * 服务调用方
- * Created by 玄玉<https://jadyer.cn/> on 2017/1/10 18:23.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2017/1/10 18:23.
  */
 @RestController
 @RequestMapping("/demo/feign")

@@ -23,7 +23,7 @@ excerpt: 记录了科目三考试前后的难忘瞬间。
 
 考试结果：同车共 4 名学员，考试顺序我排在第三位，结果过了 2 个，挂了 2 个
 
-科目二记录：[https://jadyer.cn/2015/04/07/car-driver-exam-second/](https://jadyer.cn/2015/04/07/car-driver-exam-second/)
+科目二记录：[https://www.xuanyuv.com/2015/04/07/car-driver-exam-second/](https://www.xuanyuv.com/2015/04/07/car-driver-exam-second/)
 
 
 ## 马失前蹄

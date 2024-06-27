@@ -14,7 +14,7 @@ excerpt: 介绍了Java自带的线程池用法。
 这里演示了普通线程池以及带有返回值的线程池的使用方式
 
 ```java
-package com.jadyer.thread.pool;
+package com.xuanyuv.thread.pool;
 
 import java.util.Random;
 import java.util.concurrent.Callable;

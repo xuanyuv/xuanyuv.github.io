@@ -32,7 +32,7 @@ Java中的每个对象都有一个锁（lock）或者叫做监视器（monitor�
 　　　2、被 synchronized 保护的数据应该是 private 的，否则也就没必要通过方法来访问这个 public 的数据了
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 
 /**
  * synchronized同步普通方法
@@ -45,7 +45,7 @@ package com.jadyer.demo;
  * Thread-1：1
  * Thread-1：2
  * --------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2012/02/21 17:29.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/02/21 17:29.
  */
 public class SynchronizedTest {
     public static void main(String[] args) {
@@ -122,7 +122,7 @@ class ThreadDollar implements Runnable{
 总结：重点在于判断 Synchronized 锁的是谁，如果方法是静态的则锁 Class 对象，否则锁的就是当前对象
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 
 /**
  * synchronized同步静态方法
@@ -135,7 +135,7 @@ package com.jadyer.demo;
  * Thread-0：2
  * Thread-1：2
  * --------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2012/02/21 17:29.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/02/21 17:29.
  */
 public class SynchronizedStaticTest {
     public static void main(String[] args) {
@@ -203,7 +203,7 @@ class ThreadDollar implements Runnable{
 　　　2、synchronized(Bank.class) 表示对当前类的 Class 对象上锁
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 
 /**
  * synchronized同步块
@@ -216,7 +216,7 @@ package com.jadyer.demo;
  * Thread-0：2
  * Thread-1：2
  * --------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2012/02/21 17:29.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/02/21 17:29.
  */
 public class SynchronizedBlockTest {
     public static void main(String[] args) {
@@ -231,7 +231,7 @@ public class SynchronizedBlockTest {
 
 
 /**
- * Created by 玄玉<https://jadyer.cn/> on 2012/02/21 02:29.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/02/21 02:29.
  */
 class Bank{
     private Object obj11 = new Object();

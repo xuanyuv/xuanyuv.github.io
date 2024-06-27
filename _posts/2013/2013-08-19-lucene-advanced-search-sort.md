@@ -14,7 +14,7 @@ excerpt: 介绍Lucene-3.6.2中高级搜索里面的排序用法。
 下面演示的是`Lucene-3.6.2`中针对搜索结果进行排序的各种效果（详见代码注释）
 
 ```java
-package com.jadyer.lucene;
+package com.xuanyuv.lucene;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -38,7 +38,7 @@ import org.apache.lucene.util.Version;
 
 /**
  * Lucene系列第06节之高级搜索之排序
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/19 11:04.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/19 11:04.
  */
 public class AdvancedSearchBySort {
     private Directory directory;
@@ -48,11 +48,11 @@ public class AdvancedSearchBySort {
         /** 文件大小 */
         int[] sizes = {90, 10, 20, 10, 60, 50};
         /** 文件名 */
-        String[] names = {"Michael.java", "Scofield.ini", "Tbag.txt", "Jack", "Jade", "Jadyer"};
+        String[] names = {"Michael.java", "Scofield.ini", "Tbag.txt", "Jack", "Jade", "Xuanyu"};
         /** 文件内容 */
-        String[] contents = {"my blog is https://jadyer.cn/",
-                             "my github is https://github.com/jadyer",
-                             "my name is jadyer",
+        String[] contents = {"my blog is https://www.xuanyuv.com/",
+                             "my github is https://github.com/xuanyuv",
+                             "my name is xuanyu",
                              "I am a Java Developer",
                              "I am from Haerbin",
                              "I like java of Lucene"};

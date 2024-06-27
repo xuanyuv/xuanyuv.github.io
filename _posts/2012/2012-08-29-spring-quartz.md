@@ -81,7 +81,7 @@ import com.ecpay.cus.service.JFBBusinessManager;
 
 /**
  * 信息推送之作业调度类
- * Created by 玄玉<https://jadyer.cn/> on 2012/05/04 12:50.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/05/04 12:50.
  */
 @Transactional
 public class MessageSendQuartz {
@@ -110,7 +110,7 @@ import com.ecpay.cus.dao.PayBusinessCustomizeDAO;
 
 /**
  * 业务定制对账文件之作业调度类
- * Created by 玄玉<https://jadyer.cn/> on 2012/05/04 12:50.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/05/04 12:50.
  */
 @Transactional
 public class RecFileQuartz {

@@ -28,21 +28,21 @@ excerpt: 介绍在JAX-WS中通过手工编写XML的方式定义WSDL的各种细�
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:tns="http://blog.csdn.net/jadyer"
-    targetNamespace="http://blog.csdn.net/jadyer"
+    xmlns:tns="https://www.xuanyuv.com/"
+    targetNamespace="https://www.xuanyuv.com/"
     name="CalculatorServiceImpl">
     <!-- 定义WebService使用的数据类型 -->
     <wsdl:types>
         <!--
         也可以把下面的元素element及其类型定义放到一个schema文件中,即*.xsd
         然后在这里使用include或者import引入,二者区别是namespace
-        <xsd:schema targetNamespace="http://blog.csdn.net/jadyer">
-            <xsd:import schemaLocation="calculator.xsd" namespace="http://blog.csdn.net/jadyer"/>
+        <xsd:schema targetNamespace="https://www.xuanyuv.com/">
+            <xsd:import schemaLocation="calculator.xsd" namespace="https://www.xuanyuv.com/"/>
             <xsd:include schemaLocation="calculator.xsd"/>
         </xsd:schema>
          -->
         <!-- 这里targetNamespace属性值要和上面的<wsdl:definitions xmlns:tns="" targetNamespace=""/>值一样 -->
-        <xsd:schema targetNamespace="http://blog.csdn.net/jadyer">
+        <xsd:schema targetNamespace="https://www.xuanyuv.com/">
             <!-- 定义一组元素，这里定义了两个方法add()和minus() -->
             <!-- name="add"表示定义了一个名为add的元素，type="tns:add"表示add元素的类型是tns命名空间下的'add'类型 -->
             <!-- 但我们并不知道add类型是啥类型，因为并不像string是schema数据类型，所以我们就要定义一个名为add的元素类型 -->
@@ -179,7 +179,7 @@ excerpt: 介绍在JAX-WS中通过手工编写XML的方式定义WSDL的各种细�
 下面是`SIB`，即服务端接口实现类`CalculatorServiceImpl.java`
 
 ```java
-package net.csdn.blog.jadyer;
+package net.csdn.blog.xuanyuv;
 import javax.jws.WebService;
 
 /**
@@ -199,8 +199,8 @@ import javax.jws.WebService;
  *   否则在启动WebService服务时，会报告下面的异常
  *   Exception in thread "main" javax.xml.ws.WebServiceException:
  *   wsdl file:/F:/Tool/Code/JavaSE/ws_contractFirst/bin/META-INF/wsdl/myCalculator.wsdl
- *   has the following services [{http://blog.csdn.net/jadyer}CalculatorServiceImpl]
- *   but not {http://blog.csdn.net/jadyer}CalculatorServiceImplService
+ *   has the following services [{https://www.xuanyuv.com/}CalculatorServiceImpl]
+ *   but not {https://www.xuanyuv.com/}CalculatorServiceImplService
  *   Maybe you forgot to specify a service name in @WebService/@WebServiceProvider?
  * -------------------------------------------------------------------------------------------------------
  * 隐式声明头信息
@@ -212,12 +212,12 @@ import javax.jws.WebService;
  * 3)在SIB中对应的方法中增加licenseInfo参数，即可进行业务逻辑验证了(本例中只是将头信息licenseInfo打印输出)
  *   如果SEI中的header=true没有指明的话，那么SIB的方法中是无法获取头信息licenseInfo值的，即便客户端传了
  * -------------------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/05/20 12:46.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/05/20 12:46.
  */
 @WebService(serviceName="CalculatorServiceImpl",
             wsdlLocation="META-INF/wsdl/myCalculator.wsdl",
-            endpointInterface="net.csdn.blog.jadyer.CalculatorService",
-            targetNamespace="http://blog.csdn.net/jadyer")
+            endpointInterface="net.csdn.blog.xuanyuv.CalculatorService",
+            targetNamespace="https://www.xuanyuv.com/")
 public class CalculatorServiceImpl implements CalculatorService {
     @Override
     public int add(int a, int b) {
@@ -236,9 +236,9 @@ public class CalculatorServiceImpl implements CalculatorService {
 最后是用于发布WebService服务的`ServerApp.java`
 
 ```java
-package com.jadyer.server;
+package com.xuanyuv.server;
 import javax.xml.ws.Endpoint;
-import net.csdn.blog.jadyer.CalculatorServiceImpl;
+import net.csdn.blog.xuanyuv.CalculatorServiceImpl;
 
 /**
  * 契约优先开发及隐式声明头信息
@@ -256,7 +256,7 @@ import net.csdn.blog.jadyer.CalculatorServiceImpl;
  *   发布时的address可任意指定,不要求一定要与myCalculator.wsdl中的<soap:address location=""/>相同
  *   但发布后在浏览器中查看wsdl时会发现,其<soap:address location=""/>值始终与发布时指定的address相同
  * --------------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/05/17 11:33.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/05/17 11:33.
  */
 public class ServerApp {
     public static void main(String[] args) {
@@ -269,10 +269,10 @@ public class ServerApp {
 
 客户端只有一个用于演示调用服务端的`ClientApp.Java`
 
-它是通过wsimport生成的，关于其用法，可参考[https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/](https://jadyer.cn/2013/03/19/jaxws-and-wsimport-demo/)
+它是通过wsimport生成的，关于其用法，可参考[https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/](https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/)
 
 ```java
-package com.jadyer.client;
+package com.xuanyuv.client;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -286,15 +286,15 @@ import javax.xml.soap.SOAPHeader;
 import javax.xml.soap.SOAPMessage;
 import javax.xml.ws.Dispatch;
 import javax.xml.ws.Service;
-import net.csdn.blog.jadyer.CalculatorService;
-import net.csdn.blog.jadyer.CalculatorServiceImpl;
+import net.csdn.blog.xuanyuv.CalculatorService;
+import net.csdn.blog.xuanyuv.CalculatorServiceImpl;
 
 public class ClientApp {
     //服务端提供服务的端口是8088
     //若使用Eclipse提供的TCP/IPMonitor，则此处需将8088改为TCP/IPMonitor监听的本地端口
     private static final String wsdlLocation = "http://127.0.0.1:8088/calculatorQuery?wsdl";
     //取自wsdl文件中定义的<wsdl:definitions targetNamespace=""/>的值
-    private static final String nameSpace = "http://blog.csdn.net/jadyer";
+    private static final String nameSpace = "https://www.xuanyuv.com/";
     //取自wsdl文件中定义的<wsdl:service name="">的值
     private static final String serviceName = "CalculatorServiceImpl";
     //取自wsdl文件中定义的<wsdl:port name="">的值
@@ -356,7 +356,7 @@ public class ClientApp {
 5
 1
 invoke begin......
-<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header><ns:licenseInfo xmlns:ns="http://blog.csdn.net/jadyer">theClientLicenseInfo</ns:licenseInfo></SOAP-ENV:Header><SOAP-ENV:Body><ns:minus xmlns:ns="http://blog.csdn.net/jadyer"><num1>4</num1><num2>1</num2></ns:minus></SOAP-ENV:Body></SOAP-ENV:Envelope>
-<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header/><S:Body><ns2:minusResponse xmlns:ns2="http://blog.csdn.net/jadyer"><minusResult>3</minusResult></ns2:minusResponse></S:Body></S:Envelope>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header><ns:licenseInfo xmlns:ns="https://www.xuanyuv.com/">theClientLicenseInfo</ns:licenseInfo></SOAP-ENV:Header><SOAP-ENV:Body><ns:minus xmlns:ns="https://www.xuanyuv.com/"><num1>4</num1><num2>1</num2></ns:minus></SOAP-ENV:Body></SOAP-ENV:Envelope>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header/><S:Body><ns2:minusResponse xmlns:ns2="https://www.xuanyuv.com/"><minusResult>3</minusResult></ns2:minusResponse></S:Body></S:Envelope>
 invoke end......
 ```

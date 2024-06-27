@@ -64,7 +64,7 @@ Maven中的依赖都是通过坐标进行存储的`GAV：groupId,artifactId,vers
 
 ## Nexus
 
-> 更常见的是在Linux上安装，详见：<https://jadyer.cn/2013/09/08/centos-develop/#安装nexus>
+> 更常见的是在Linux上安装，详见：<https://www.xuanyuv.com/2013/09/08/centos-develop/#安装nexus>
 
 ##### Nexus的安装
 
@@ -134,9 +134,9 @@ Codehaus Snapshots仓库从Codehaus开源组织中寻找快照版本的仓库
 
 <!-- 这三个属性:groupId、artifactId、version即为项目的坐标，简称GAV -->
 <!-- 项目的名称 -->
-<groupId>com.jadyer.blog</groupId>
+<groupId>com.xuanyuv.blog</groupId>
 
-<!-- 项目的模块名称。建议用"项目名称-模块名称"。按照Maven约定，此时Java类的包名就应该是com.jadyer.blog.dao -->
+<!-- 项目的模块名称。建议用"项目名称-模块名称"。按照Maven约定，此时Java类的包名就应该是com.xuanyuv.blog.dao -->
 <!-- 即通常项目中Java类包都应该基于项目的groupId和artifactId。虽然这不是必须的，但这些显然更加清晰、符合逻辑 -->
 <artifactId>blog-dao</artifactId>
 
@@ -163,7 +163,7 @@ Codehaus Snapshots仓库从Codehaus开源组织中寻找快照版本的仓库
     <maven-cobertura-plugin.version>2.5.1</maven-cobertura-plugin.version>
     <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
     <mysql.driver>com.mysql.jdbc.Driver</mysql.driver>
-    <mysql.url>jdbc:mysql://127.0.0.1:3306/jadyer?characterEncoding=UTF-8</mysql.url>
+    <mysql.url>jdbc:mysql://127.0.0.1:3306/xuanyuv?characterEncoding=UTF-8</mysql.url>
     <mysql.username>root</mysql.username>
     <mysql.password>hongyu</mysql.password>
 </properties>
@@ -242,7 +242,7 @@ Codehaus Snapshots仓库从Codehaus开源组织中寻找快照版本的仓库
     <!-- 构建完成后target目录会发现blog-dao-0.0.1.Release.jar和original-blog-dao-0.0.1.Release.jar -->
     <!-- 前者是带有Main-Class信息的可运行的jar，后者是原始的jar。然后我们到cmd中切换到项目根目录中执行该jar -->
     <!-- D:\Develop\MyWorkspace\MavenStudy>java -jar target\blog-dao-0.0.1.Release.jar -->
-                                <mainClass>com.jadyer.util.ManiFestTest</mainClass>
+                                <mainClass>com.xuanyuv.util.ManiFestTest</mainClass>
                             </transformer>
                         </transformers>
                     </configuration>
@@ -324,7 +324,7 @@ Codehaus Snapshots仓库从Codehaus开源组织中寻找快照版本的仓库
                 <username>${mysql.username}</username>
                 <password>${mysql.password}</password>
                 <!-- 该插件连接数据库成功后，所要运行的命令 -->
-                <sqlCommand>create database IF NOT EXISTS jadyer_maven</sqlCommand>
+                <sqlCommand>create database IF NOT EXISTS xuanyu_maven</sqlCommand>
             </configuration>
             <executions>
                 <execution>

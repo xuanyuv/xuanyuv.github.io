@@ -28,7 +28,7 @@ excerpt: 介绍Lucene-3.6.2中的常见搜索用法，包括了精确搜索、�
 示例代码如下
 
 ```java
-package com.jadyer.lucene;
+package com.xuanyuv.lucene;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -62,15 +62,15 @@ import org.apache.lucene.util.Version;
 
 /**
  * Lucene系列第03节之常见搜索
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/18 16:20.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/18 16:20.
  */
 public class HelloSearch {
     private Directory directory;
     private IndexReader reader;
     private String[] ids = {"1", "2", "3", "4", "5", "6"};
-    private String[] names = {"Michael", "Scofield", "Tbag", "Jack", "Jade", "Jadyer"};
-    private String[] emails = {"aa@jadyer.us", "bb@jadyer.cn", "cc@jadyer.cc", "dd@jadyer.tw", "ee@jadyer.hk", "ff@jadyer.me"};
-    private String[] contents = {"my blog is https://jadyer.cn/", "my github is https://github.com/jadyer", "my name is jadyer", "I am JavaDeveloper", "I am from Haerbin", "I like Lucene"};
+    private String[] names = {"Michael", "Scofield", "Tbag", "Jack", "Jade", "Xuanyu"};
+    private String[] emails = {"aa@xuanyuv.us", "bb@xuanyuv.cn", "cc@xuanyuv.cc", "dd@xuanyuv.tw", "ee@xuanyuv.hk", "ff@xuanyuv.me"};
+    private String[] contents = {"my blog is https://www.xuanyuv.com/", "my github is https://github.com/xuanyuv", "my name is Xuanyu", "I am JavaDeveloper", "I am from Haerbin", "I like Lucene"};
     private int[] attachs = {9,3,5,4,1,2};
     private Date[] dates = new Date[ids.length];
 
@@ -95,7 +95,7 @@ public class HelloSearch {
                 doc.add(new Field("id", ids[i], Field.Store.YES, Field.Index.NOT_ANALYZED_NO_NORMS));
                 doc.add(new Field("name", names[i], Field.Store.YES, Field.Index.ANALYZED_NO_NORMS));
                 doc.add(new Field("email", emails[i], Field.Store.YES, Field.Index.NOT_ANALYZED));
-                doc.add(new Field("email", "test"+i+""+i+"@jadyer.com", Field.Store.YES, Field.Index.NOT_ANALYZED));
+                doc.add(new Field("email", "test"+i+""+i+"@xuanyuv.com", Field.Store.YES, Field.Index.NOT_ANALYZED));
                 doc.add(new Field("content", contents[i], Field.Store.NO, Field.Index.ANALYZED));
                 //为数字加索引（第三个参数指定是否索引）
                 doc.add(new NumericField("attach", Field.Store.YES, true).setIntValue(attachs[i]));
@@ -300,9 +300,9 @@ public class HelloSearch {
             //query = parser.parse("Lucene OR Haerbin"); //搜索content中包含[Lucene]或者[Haerbin]的记录
             //query = parser.parse("Lucene Haerbin");    //搜索content中包含[Lucene]或者[Haerbin]的记录
             //parser.setDefaultOperator(Operator.AND);   //将空格的默认操作OR修改为AND
-            ////1)如果name域在索引时，不进行分词，那么无论这里写成[name:Jadyer]还是[name:jadyer]，最后得到的都是0条记录
-            ////2)由于name原值为大写[J]，若索引时不对name分词，除非修改name原值为小写[j]，并且搜索[name:jadyer]才能得到记录
-            //query = parser.parse("name:Jadyer");       //修改搜索域为name=Jadyer的记录
+            ////1)如果name域在索引时，不进行分词，那么无论这里写成[name:Hongyu]还是[name:xuanyu]，最后得到的都是0条记录
+            ////2)由于name原值为大写[J]，若索引时不对name分词，除非修改name原值为小写[j]，并且搜索[name:xuanyu]才能得到记录
+            //query = parser.parse("name:Hongyu");       //修改搜索域为name=Hongyu
             //query = parser.parse("name:Ja*");          //支持通配符
             //query = parser.parse("\"I am\"");          //搜索content中包含[I am]的记录（注意不能使用parse("content:'I am'")）
             //parser.setAllowLeadingWildcard(true);      //设置允许[*]或[?]出现在查询字符的第一位，即[name:*de]，否则[name:*de]会报异常
@@ -390,11 +390,11 @@ public class HelloSearch {
 下面是`JUnit4.x`编写的测试
 
 ```java
-package com.jadyer.test;
+package com.xuanyuv.test;
 import java.io.File;
 import org.junit.Before;
 import org.junit.Test;
-import com.jadyer.lucene.HelloSearch;
+import com.xuanyuv.lucene.HelloSearch;
 
 public class HelloSearchTest {
     private HelloSearch hello;

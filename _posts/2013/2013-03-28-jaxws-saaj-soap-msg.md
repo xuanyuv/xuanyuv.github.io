@@ -16,12 +16,12 @@ excerpt: 介绍JAX-WS中借助saaj的方式创建，以及发送SOAP消息给Web
 首先是`SEI`，即服务端接口类`HelloService.Java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import java.util.List;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
-import com.jadyer.model.User;
+import com.xuanyuv.model.User;
 
 @WebService
 public interface HelloService {
@@ -42,13 +42,13 @@ public interface HelloService {
 然后是`SIB`，即服务端接口实现类`HelloServiceImpl.java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import java.util.ArrayList;
 import java.util.List;
 import javax.jws.WebService;
-import com.jadyer.model.User;
+import com.xuanyuv.model.User;
 
-@WebService(endpointInterface="com.jadyer.service.HelloService")
+@WebService(endpointInterface="com.xuanyuv.service.HelloService")
 public class HelloServiceImpl implements HelloService {
     //模拟一个位于内存中的小仓库
     private static List<User> users = new ArrayList<User>();
@@ -87,7 +87,7 @@ public class HelloServiceImpl implements HelloService {
 下面是服务端用到的映射XML的实体类`User.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -113,9 +113,9 @@ public class User {
 最后是用于发布服务的`MainApp.java`
 
 ```java
-package com.jadyer.server;
+package com.xuanyuv.server;
 import javax.xml.ws.Endpoint;
-import com.jadyer.service.HelloServiceImpl;
+import com.xuanyuv.service.HelloServiceImpl;
 
 public class MainApp {
     public static void main(String[] args) {
@@ -131,7 +131,7 @@ public class MainApp {
 下面是借助`SAAJ`编写客户端的演示
 
 ```java
-package com.jadyer.client;
+package com.xuanyuv.client;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.net.URL;
@@ -157,7 +157,7 @@ import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import com.jadyer.model.User;
+import com.xuanyuv.model.User;
 
 /**
  * 借助SAAJ创建SOAP消息并访问服务
@@ -170,13 +170,13 @@ import com.jadyer.model.User;
  * 通过它new一个soapUI Project后,我们可以清晰的看到需要发送的SOAP消息和响应的SOAP消息格式
  * 这对于理解本文,有莫大的帮助..类似的还有Apache的TCPMon(http://ws.apache.org/commons/tcpmon/)
  * ----------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/05/18 14:47.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/05/18 14:47.
  */
 public class TestSAAJ {
     //Web服务端公布的服务地址
     private static String wsdlURL = "http://127.0.0.1:8888/myHelloService?wsdl";
     //取自WSDL文件顶部的<definitions targetNamespace="">的值
-    private static String nameSpace = "http://service.jadyer.com/";
+    private static String nameSpace = "http://service.xuanyuv.com/";
 
     /**
      * 以MESSAGE方式与Web服务交互SOAP消息
@@ -186,7 +186,7 @@ public class TestSAAJ {
      * <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
      *     <SOAP-ENV:Header />
      *     <SOAP-ENV:Body>
-     *         <nn:login xmlns:nn="http://service.jadyer.com/">
+     *         <nn:login xmlns:nn="http://service.xuanyuv.com/">
      *             <username>admin</username>
      *             <password>222222</password>
      *         </nn:login>
@@ -197,7 +197,7 @@ public class TestSAAJ {
      * <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
      *     <S:Header />
      *     <S:Body>
-     *         <ns2:loginResponse xmlns:ns2="http://service.jadyer.com/">
+     *         <ns2:loginResponse xmlns:ns2="http://service.xuanyuv.com/">
      *             <loginResult>用户[admin]登录成功</loginResult>
      *         </ns2:loginResponse>
      *     </S:Body>
@@ -223,7 +223,7 @@ public class TestSAAJ {
          */
         //根据QName创建相应的节点
         //这里的QName就是一个带有命名空间的节点,需要的三个参数分别'命名空间'--'请求Web服务的方法名'--'自定义的前缀'
-        //那么,在这里它会创建出--><nn:login xmlns:nn="http://service.jadyer.com/">
+        //那么,在这里它会创建出--><nn:login xmlns:nn="http://service.xuanyuv.com/">
         QName qname = new QName(nameSpace, "login", "nn");
         //下面指定消息所传递的数据
         //如果直接这么写-->body.addBodyElement(qname).setValue("<a>11</a><b>22</b>");
@@ -339,35 +339,35 @@ public class TestSAAJ {
 
 ```
 2013-3-28 23:00:13 com.sun.xml.internal.ws.model.RuntimeModeler getRequestWrapperClass
-信息: Dynamically creating request wrapper Class com.jadyer.service.jaxws.List
+信息: Dynamically creating request wrapper Class com.xuanyuv.service.jaxws.List
 2013-3-28 23:00:13 com.sun.xml.internal.ws.model.RuntimeModeler getResponseWrapperClass
-信息: Dynamically creating response wrapper bean Class com.jadyer.service.jaxws.ListResponse
+信息: Dynamically creating response wrapper bean Class com.xuanyuv.service.jaxws.ListResponse
 2013-3-28 23:00:13 com.sun.xml.internal.ws.model.RuntimeModeler getRequestWrapperClass
-信息: Dynamically creating request wrapper Class com.jadyer.service.jaxws.Login
+信息: Dynamically creating request wrapper Class com.xuanyuv.service.jaxws.Login
 2013-3-28 23:00:13 com.sun.xml.internal.ws.model.RuntimeModeler getResponseWrapperClass
-信息: Dynamically creating response wrapper bean Class com.jadyer.service.jaxws.LoginResponse
+信息: Dynamically creating response wrapper bean Class com.xuanyuv.service.jaxws.LoginResponse
 2013-3-28 23:00:13 com.sun.xml.internal.ws.model.RuntimeModeler getRequestWrapperClass
-信息: Dynamically creating request wrapper Class com.jadyer.service.jaxws.AddUser
+信息: Dynamically creating request wrapper Class com.xuanyuv.service.jaxws.AddUser
 2013-3-28 23:00:13 com.sun.xml.internal.ws.model.RuntimeModeler getResponseWrapperClass
-信息: Dynamically creating response wrapper bean Class com.jadyer.service.jaxws.AddUserResponse
+信息: Dynamically creating response wrapper bean Class com.xuanyuv.service.jaxws.AddUserResponse
 login() is invoked......
 addUser() is invoked......
 list() is invoked......
 ```
 
 ```
-<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header/><SOAP-ENV:Body><nn:login xmlns:nn="http://service.jadyer.com/"><username>admin</username><password>222222</password></nn:login></SOAP-ENV:Body></SOAP-ENV:Envelope>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header/><SOAP-ENV:Body><nn:login xmlns:nn="http://service.xuanyuv.com/"><username>admin</username><password>222222</password></nn:login></SOAP-ENV:Body></SOAP-ENV:Envelope>
 发起请求:invoking......
-<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header/><S:Body><ns2:loginResponse xmlns:ns2="http://service.jadyer.com/"><loginResult>用户[admin]登录成功</loginResult></ns2:loginResponse></S:Body></S:Envelope>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header/><S:Body><ns2:loginResponse xmlns:ns2="http://service.xuanyuv.com/"><loginResult>用户[admin]登录成功</loginResult></ns2:loginResponse></S:Body></S:Envelope>
 收到响应:用户[admin]登录成功
 ---------------------------------------------------------------------------
-拼装完毕:<nn:addUser xmlns:nn="http://service.jadyer.com/"><user><id>3</id><nickname>玄玉</nickname><password>888888</password><username>hongyu</username></user></nn:addUser>
+拼装完毕:<nn:addUser xmlns:nn="http://service.xuanyuv.com/"><user><id>3</id><nickname>玄玉</nickname><password>888888</password><username>hongyu</username></user></nn:addUser>
 收到响应:hongyu
 收到响应:玄玉
 收到响应:888888
 ---------------------------------------------------------------------------
-<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header/><SOAP-ENV:Body><nn:list xmlns:nn="http://service.jadyer.com/"/></SOAP-ENV:Body></SOAP-ENV:Envelope>
-<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header/><S:Body><ns2:listResponse xmlns:ns2="http://service.jadyer.com/"><user><id>1</id><nickname>管理员</nickname><password>222222</password><username>admin</username></user><user><id>3</id><nickname>玄玉</nickname><password>888888</password><username>hongyu</username></user></ns2:listResponse></S:Body></S:Envelope>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header/><SOAP-ENV:Body><nn:list xmlns:nn="http://service.xuanyuv.com/"/></SOAP-ENV:Body></SOAP-ENV:Envelope>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header/><S:Body><ns2:listResponse xmlns:ns2="http://service.xuanyuv.com/"><user><id>1</id><nickname>管理员</nickname><password>222222</password><username>admin</username></user><user><id>3</id><nickname>玄玉</nickname><password>888888</password><username>hongyu</username></user></ns2:listResponse></S:Body></S:Envelope>
 收到响应:admin
 收到响应:管理员
 收到响应:222222

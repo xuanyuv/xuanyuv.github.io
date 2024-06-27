@@ -23,7 +23,7 @@ excerpt: 介绍Java自定义注解时用到的几种注解。
 4. 自定义注解时，不能继承或实现其它的注解或接口（即注解类型的后面不能跟任何东西）
 
 ```java
-package com.jadyer.annotation.custom;
+package com.xuanyuv.annotation.custom;
 
 enum EnumTest {
     Hello, World, Welcome;
@@ -31,15 +31,15 @@ enum EnumTest {
 
 /**
  * 自定义注解
- * Created by 玄玉<https://jadyer.cn/> on 2011/03/02 21:35.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/03/02 21:35.
  */
-public @interface JadyerAnnotation {
+public @interface XuanyuAnnotation {
     //定义属性时，需要在后面加上小括号（这和普通的类或接口是不同的）
     //且名为"value"的属性会自动解析为注解的默认属性
-    //比如@JadyerAnnotation("very")会被自动赋值给"value"，不过也可以写成@JadyerAnnotation(value="very")
+    //比如@XuanyuAnnotation("very")会被自动赋值给"value"，不过也可以写成@XuanyuAnnotation(value="very")
     String value();
 
-    //对于属性名不叫value的，使用时若需赋值，就要显式的赋值，比如@JadyerAnnotation(username="LoveYou")
+    //对于属性名不叫value的，使用时若需赋值，就要显式的赋值，比如@XuanyuAnnotation(username="LoveYou")
     String[] username();
 
     //也可以为一个属性设置默认值，使用时若没有显式赋值，则会取其默认值来解析
@@ -65,12 +65,12 @@ java.lang.annotation.Target 注解可以用来限定自定义注解的使用对�
  * ElementType.PACKAGE         ：适用package
 
 ```java
-package com.jadyer.annotation.custom;
+package com.xuanyuv.annotation.custom;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
-public @interface JadyerAnnotation {
+public @interface XuanyuAnnotation {
     String value();
 }
 ```
@@ -82,11 +82,11 @@ public @interface JadyerAnnotation {
 这时就需要使用 java.lang.annotation.Documented 注解标注
 
 ```java
-package com.jadyer.annotation.custom;
+package com.xuanyuv.annotation.custom;
 import java.lang.annotation.Documented;
 
 @Documented
-public @interface JadyerAnnotation {
+public @interface XuanyuAnnotation {
     String hello();
 }
 ```
@@ -100,12 +100,12 @@ java.lang.annotation.Retention 注解可以在自定义注解时，告知编译�
 * RetentionPolicy.RUNTIME ：编译程序将注解储存于class档案，且可由虚拟机读入，故可反射读取注解信息
 
 ```java
-package com.jadyer.annotation.custom;
+package com.xuanyuv.annotation.custom;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
-public @interface JadyerAnnotation {
+public @interface XuanyuAnnotation {
     String hello() default "haerbin";
     String world();
 }
@@ -118,14 +118,14 @@ public @interface JadyerAnnotation {
 若想让子类也继承父类中的注解，可以在自定义注解时配置java.lang.annotation.Inherited注解
 
 ```java
-package com.jadyer.annotation.custom;
+package com.xuanyuv.annotation.custom;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
-public @interface JadyerAnnotation {
+public @interface XuanyuAnnotation {
     String value();
 }
 ```

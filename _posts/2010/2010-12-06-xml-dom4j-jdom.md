@@ -14,7 +14,7 @@ excerpt: 介绍Dom4j和Jdom读写XML文件的方法。
 ## Dom4j
 
 ```java
-package com.jadyer.demo.xml;
+package com.xuanyuv.demo.xml;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
@@ -25,7 +25,7 @@ import java.io.IOException;
 
 /**
  * Dom4j读取XML
- * Created by 玄玉<https://jadyer.cn/> on 2010/12/06 18:41.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2010/12/06 18:41.
  */
 public class Dom4jDemo {
     public static void main(String[] args) throws IOException, DocumentException {
@@ -38,7 +38,7 @@ public class Dom4jDemo {
         ////读取XML文件获取Document对象
         //Document document = new SAXReader().read(new File("D:/testXML.xml"));
         ////读取XML文本内容获取Document对象
-        Document document = DocumentHelper.parseText("<?xml version=\"1.0\" encoding=\"UTF-8\"?><users><user><id>123</id><name> Jadyer</name></user></users>");
+        Document document = DocumentHelper.parseText("<?xml version=\"1.0\" encoding=\"UTF-8\"?><users><user><id>123</id><name>xuanyu</name></user></users>");
         System.out.println(((Element)document.selectObject("/users/user/id")).getText());
         System.out.println(((Element)document.selectObject("/users/user/name")).getTextTrim());
     }
@@ -63,7 +63,7 @@ public class Dom4jDemo {
         Element addressElement11 = userElement11.addElement("address");
         //为各个子标签赋值
         idElement11.setText("1");
-        nameElement11.setText("Jadyer");
+        nameElement11.setText("Xuanyu");
         ageElement11.setText("24");
         addressElement11.setText("BeiJing");
 
@@ -102,7 +102,7 @@ public class Dom4jDemo {
   <!--This is a comment!-->
   <user>
     <id>1</id>
-    <name>Jadyer</name>
+    <name>Xuanyu</name>
     <age>24</age>
     <address>BeiJing</address>
   </user>
@@ -118,7 +118,7 @@ public class Dom4jDemo {
 ## Jdom
 
 ```java
-package com.jadyer.demo.xml;
+package com.xuanyuv.demo.xml;
 import org.apache.commons.io.IOUtils;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -138,7 +138,7 @@ import java.util.List;
 
 /**
  * Jdom读写XML
- * Created by 玄玉<https://jadyer.cn/> on 2010/12/06 18:46.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2010/12/06 18:46.
  */
 public class JdomDemo {
     public static void main(String[] args) throws IOException, JDOMException {
@@ -153,7 +153,7 @@ public class JdomDemo {
         //Document document = new SAXBuilder().build(JdomDemo.class.getResourceAsStream("config.xml"));
         //Document document = new SAXBuilder().build(Thread.currentThread().getContextClassLoader().getResourceAsStream("config.xml"));
         //读取XML文本内容获取Document对象
-        Document document = new SAXBuilder().build(IOUtils.toInputStream("<?xml version=\"1.0\" encoding=\"UTF-8\"?><users><user><id>123</id><name> Jadyer</name></user></users>", StandardCharsets.UTF_8));
+        Document document = new SAXBuilder().build(IOUtils.toInputStream("<?xml version=\"1.0\" encoding=\"UTF-8\"?><users><user><id>123</id><name>xuanyu</name></user></users>", StandardCharsets.UTF_8));
         Element rootElement = document.getRootElement();
         System.out.println(((Element)XPath.selectSingleNode(rootElement, "//users/user/id")).getText());
         System.out.println(((Element)XPath.selectSingleNode(rootElement, "//users/user/name")).getTextTrim());

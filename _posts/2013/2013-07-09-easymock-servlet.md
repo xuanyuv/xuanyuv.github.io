@@ -11,7 +11,7 @@ excerpt: 演示了EasyMock测试Servlet的用法。
 {:toc}
 
 
-实际应该用`Cactus`框架来测试`Servlet`，详见我的另一篇博文：[https://jadyer.cn/2013/07/11/cactus-servlet/](https://jadyer.cn/2013/07/11/cactus-servlet/)
+实际应该用`Cactus`框架来测试`Servlet`，详见我的另一篇博文：[https://www.xuanyuv.com/2013/07/11/cactus-servlet/](https://www.xuanyuv.com/2013/07/11/cactus-servlet/)
 
 这里只是用`EasyMock`模拟`HttpServletRequest`等对象
 
@@ -20,7 +20,7 @@ excerpt: 演示了EasyMock测试Servlet的用法。
 首先是用到的实体类`User.Java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 public class User {
     private int id;
     private String username;
@@ -38,11 +38,11 @@ public class User {
 接下来是待测试的`LoginServlet.java`
 
 ```java
-package com.jadyer.servlet;
+package com.xuanyuv.servlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import com.jadyer.model.User;
+import com.xuanyuv.model.User;
 
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 6655227641354075528L;
@@ -63,19 +63,19 @@ public class LoginServlet extends HttpServlet {
 最后是使用`EasyMock`编写的测试用例`LoginServletTest.java`
 
 ```java
-package com.jadyer.servlet;
+package com.xuanyuv.servlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import com.jadyer.model.User;
+import com.xuanyuv.model.User;
 
 /**
  * EasyMock测试Servlet
  * 虽然示例代码是一个WebProject，但不需配置web.xml，因为EasyMock用不上它
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/09 14:30.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/09 14:30.
  */
 public class LoginServletTest {
     private LoginServlet servlet;

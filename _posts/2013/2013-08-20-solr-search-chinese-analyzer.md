@@ -17,7 +17,7 @@ Solr定义的大量域默认都不支持中文分词，若要增加中文分词�
 
 下面以`MMSeg4j-1.8.5`为例，描述Solr整合中文分词器的细节（其核心就是在schema.xml中配置fieldType）
 
-关于MMSeg4j的介绍，详见[https://jadyer.cn/2013/08/18/lucene-chinese-analyzer/](https://jadyer.cn/2013/08/18/lucene-chinese-analyzer/)
+关于MMSeg4j的介绍，详见[https://www.xuanyuv.com/2013/08/18/lucene-chinese-analyzer/](https://www.xuanyuv.com/2013/08/18/lucene-chinese-analyzer/)
 
 1、拷贝mmseg4j-all-1.8.5.jar到D:\Develop\apache-solr-3.6.2\server\solr\WEB-INF\lib\文件夹中
 
@@ -64,7 +64,7 @@ Solr控制台上[http://127.0.0.1:8088/solr/admin/](http://127.0.0.1:8088/solr/a
 * slf4j-api-1.6.1.jar
 
 ```java
-package com.jadyer.solrj;
+package com.xuanyuv.solrj;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.solr.client.solrj.SolrQuery;
@@ -75,11 +75,11 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
-import com.jadyer.model.MyMessage;
+import com.xuanyuv.model.MyMessage;
 
 /**
  * Solr系列第02节之搜索和中文分词
- * Created by 玄玉<https://jadyer.cn/> on 2013/08/20 14:12.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/08/20 14:12.
  */
 public enum HelloSolrJ {
     INSTANCE;
@@ -206,7 +206,7 @@ public enum HelloSolrJ {
 下面是用到的实体类`MyMessage.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import org.apache.solr.client.solrj.beans.Field;
 
 public class MyMessage {
@@ -232,9 +232,9 @@ public class MyMessage {
 最后是`JUnit4.x`写的一个小测试`HelloSolrJTest.java`
 
 ```java
-package com.jadyer.test;
+package com.xuanyuv.test;
 import org.junit.Test;
-import com.jadyer.solrj.HelloSolrJ;
+import com.xuanyuv.solrj.HelloSolrJ;
 
 public class HelloSolrJTest {
     @Test

@@ -66,7 +66,7 @@ excerpt: 主要介绍Servlet3.0的几个新特性，包括通过注解来编写S
 ## 注解编写Filter
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -79,7 +79,7 @@ import java.io.IOException;
 
 /**
  * Servlet3.0新特性之注解编写过滤器
- * Created by 玄玉<https://jadyer.cn/> on 2013/06/24 10:39.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/06/24 10:39.
  */
 @WebFilter(urlPatterns="/*", initParams=@WebInitParam(name="encoding", value="UTF-8"))
 public class EncodingFilter implements Filter {
@@ -114,7 +114,7 @@ public class EncodingFilter implements Filter {
 实际测试：单独使用 @WebInitParam 设定初始参数，设定失败
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -127,7 +127,7 @@ import java.io.PrintWriter;
 
 /**
  * Servlet3.0新特性之注解编写ervlet
- * Created by 玄玉<https://jadyer.cn/> on 2013/06/23 17:46.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/06/23 17:46.
  */
 @WebServlet(urlPatterns={"/hello", "/servlet/hello"}, initParams={@WebInitParam(name="savePath", value="D:/upload")})
 public class HelloServlet extends HttpServlet {
@@ -156,7 +156,7 @@ public class HelloServlet extends HttpServlet {
 所以先列出来一个并没有使用 @WebServlet 注解的类 `UserServlet.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -167,7 +167,7 @@ import java.io.IOException;
 /**
  * 这里并没有使用@WebServlet注解
  * 而是在监听器里面通过Servlet3.0提供的动态注册机制把它动态注册为一个Servlet
- * Created by 玄玉<https://jadyer.cn/> on 2013/06/24 10:39.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/06/24 10:39.
  */
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 7115756326691777726L;
@@ -180,7 +180,7 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("https://jadyer.cn/");
+        System.out.println("https://www.xuanyuv.com/");
     }
 }
 ```
@@ -188,7 +188,7 @@ public class UserServlet extends HttpServlet {
 接下来就是核心的监听器 `UserListener.java`
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -197,7 +197,7 @@ import javax.servlet.annotation.WebListener;
 
 /**
  * Servlet3.0新特性之注解编写监听器以及动态注册Servlet
- * Created by 玄玉<https://jadyer.cn/> on 2013/06/24 10:39.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/06/24 10:39.
  */
 @WebListener
 public class UserListener implements ServletContextListener {
@@ -245,7 +245,7 @@ public class UserListener implements ServletContextListener {
 其官方文档的地址为：[http://docs.oracle.com/javaee/6/tutorial/doc/gmhal.html](http://docs.oracle.com/javaee/6/tutorial/doc/gmhal.html)
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -259,7 +259,7 @@ import java.io.PrintWriter;
 
 /**
  * Servlet3.0新特性之文件上传
- * Created by 玄玉<https://jadyer.cn/> on 2013/06/24 15:19.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/06/24 15:19.
  */
 @WebServlet(urlPatterns="/upload")
 //标明此Servlet支持文件上传
@@ -329,7 +329,7 @@ Servlet3.0 中的异步支持也是单独启动线程执行耗时任务，但是
 它提供了一些机制会判断那个线程是否执行完毕，直到线程执行完毕后才会响应所有结果给请求方
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import javax.servlet.AsyncContext;
 import javax.servlet.AsyncEvent;
 import javax.servlet.AsyncListener;
@@ -345,7 +345,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Servlet3.0新特性之异步支持
- * Created by 玄玉<https://jadyer.cn/> on 2013/06/23 17:47.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/06/23 17:47.
  */
 //默认不支持异步，需手工开启：asyncSupported=true
 @WebServlet(urlPatterns={"/async"}, asyncSupported=true)

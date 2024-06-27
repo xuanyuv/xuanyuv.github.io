@@ -28,15 +28,15 @@ SAX不必将整个XML文档都加载到内存中，因此它占据内存要比DO
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <people>
-    <!-- This is Jadyer`s comment -->
+    <!-- This is Xuanyu`s comment -->
     <person personID="P01">
         <姓名 userID="U01">玄玉</姓名>
-        <邮箱>myjadyer@gmail.com</邮箱>
+        <邮箱>xuanyuv@163.com</邮箱>
         <地址>哈尔滨</地址>
     </person>
     <person personID="P02">
         <姓名 userID="U02">玄玉道</姓名>
-        <邮箱>jadyer@yeah.net</邮箱>
+        <邮箱>xuanyuv@xuanyuv.com</邮箱>
         <地址>重庆</地址>
     </person>
     <person personID="P03">
@@ -55,7 +55,7 @@ SAX不必将整个XML文档都加载到内存中，因此它占据内存要比DO
 ## SAX
 
 ```java
-package com.jadyer.demo.xml;
+package com.xuanyuv.demo.xml;
 import org.apache.commons.io.IOUtils;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -67,21 +67,21 @@ import java.util.Stack;
 
 /**
  * SAX(Simple APIs for XML)的方式解析XML文档
- * Created by 玄玉<https://jadyer.cn/> on 2012/02/21 11:33.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/02/21 11:33.
  */
 public class SaxXMLDemo {
     public static void main(String[] args) throws Exception {
         String xmlStr = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
                 "<people>\n" +
-                "    <!-- This is Jadyer`s comment -->\n" +
+                "    <!-- This is Xuanyu`s comment -->\n" +
                 "    <person personID=\"P01\">\n" +
                 "        <姓名 userID=\"U01\">玄玉</姓名>\n" +
-                "        <邮箱>myjadyer@gmail.com</邮箱>\n" +
+                "        <邮箱>xuanyuv@163.com</邮箱>\n" +
                 "        <地址>哈尔滨</地址>\n" +
                 "    </person>\n" +
                 "    <person personID=\"P02\">\n" +
                 "        <姓名 userID=\"U02\">玄玉道</姓名>\n" +
-                "        <邮箱>jadyer@yeah.net</邮箱>\n" +
+                "        <邮箱>xuanyuv@xuanyuv.com</邮箱>\n" +
                 "        <地址>重庆</地址>\n" +
                 "    </person>\n" +
                 "    <person personID=\"P03\">\n" +
@@ -169,7 +169,7 @@ userID=U01
 ===============================Element_End=========
 ===============================Element_End=========
 姓名: 玄玉
-邮箱: myjadyer@gmail.com
+邮箱: xuanyuv@163.com
 地址: 哈尔滨
 ---------------------------------------------------
 ===============================Element_Start=======
@@ -183,7 +183,7 @@ userID=U02
 ===============================Element_End=========
 ===============================Element_End=========
 姓名: 玄玉道
-邮箱: jadyer@yeah.net
+邮箱: xuanyuv@xuanyuv.com
 地址: 重庆
 ---------------------------------------------------
 ===============================Element_Start=======
@@ -223,7 +223,7 @@ userID=U04
 #### 打印文件内容
 
 ```java
-package com.jadyer.demo.xml;
+package com.xuanyuv.demo.xml;
 import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Comment;
@@ -241,21 +241,21 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * DOM(Document Object Model)的方式解析XML文档
- * Created by 玄玉<https://jadyer.cn/> on 2012/02/21 11:33.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/02/21 11:33.
  */
 public class DomXMLDemo {
     public static void main(String[] args) throws Exception {
         String xmlStr = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
                 "<people>\n" +
-                "    <!-- This is Jadyer`s comment -->\n" +
+                "    <!-- This is Xuanyu`s comment -->\n" +
                 "    <person personID=\"P01\">\n" +
                 "        <姓名 userID=\"U01\">玄玉</姓名>\n" +
-                "        <邮箱>myjadyer@gmail.com</邮箱>\n" +
+                "        <邮箱>xuanyuv@163.com</邮箱>\n" +
                 "        <地址>哈尔滨</地址>\n" +
                 "    </person>\n" +
                 "    <person personID=\"P02\">\n" +
                 "        <姓名 userID=\"U02\">玄玉道</姓名>\n" +
-                "        <邮箱>jadyer@yeah.net</邮箱>\n" +
+                "        <邮箱>xuanyuv@xuanyuv.com</邮箱>\n" +
                 "        <地址>重庆</地址>\n" +
                 "    </person>\n" +
                 "    <person personID=\"P03\">\n" +
@@ -322,7 +322,7 @@ public class DomXMLDemo {
 #### 读取文件内容
 
 ```java
-package com.jadyer.demo.xml;
+package com.xuanyuv.demo.xml;
 import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -337,21 +337,21 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * DOM(Document Object Model)的方式解析XML文档
- * Created by 玄玉<https://jadyer.cn/> on 2012/02/21 11:33.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/02/21 11:33.
  */
 public class DomXMLDemo {
     public static void main(String[] args) throws Exception {
         String xmlStr = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
                 "<people>\n" +
-                "    <!-- This is Jadyer`s comment -->\n" +
+                "    <!-- This is Xuanyu`s comment -->\n" +
                 "    <person personID=\"P01\">\n" +
                 "        <姓名 userID=\"U01\">玄玉</姓名>\n" +
-                "        <邮箱>myjadyer@gmail.com</邮箱>\n" +
+                "        <邮箱>xuanyuv@163.com</邮箱>\n" +
                 "        <地址>哈尔滨</地址>\n" +
                 "    </person>\n" +
                 "    <person personID=\"P02\">\n" +
                 "        <姓名 userID=\"U02\">玄玉道</姓名>\n" +
-                "        <邮箱>jadyer@yeah.net</邮箱>\n" +
+                "        <邮箱>xuanyuv@xuanyuv.com</邮箱>\n" +
                 "        <地址>重庆</地址>\n" +
                 "    </person>\n" +
                 "    <person personID=\"P03\">\n" +
@@ -439,13 +439,13 @@ DOM读取到的XML内容，控制台输出如下
 personID=P01
 userID=U01
 姓名: 玄玉
-邮箱: myjadyer@gmail.com
+邮箱: xuanyuv@163.com
 地址: 哈尔滨
 =====================================================================
 personID=P02
 userID=U02
 姓名: 玄玉道
-邮箱: jadyer@yeah.net
+邮箱: xuanyuv@xuanyuv.com
 地址: 重庆
 =====================================================================
 personID=P03

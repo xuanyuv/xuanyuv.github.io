@@ -18,13 +18,13 @@ excerpt: 演示了数据库测试框架DBUnit的用法。
 ```sql
 # MySQL-Front 5.0  (Build 1.133)
 
-# Host: 127.0.0.1    Database: jadyer
+# Host: 127.0.0.1    Database: xuanyu
 # ------------------------------------------------------
 # Server version 5.5.25a
 
-DROP DATABASE IF EXISTS `jadyer`;
-CREATE DATABASE `jadyer` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `jadyer`;
+DROP DATABASE IF EXISTS `xuanyu`;
+CREATE DATABASE `xuanyu` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `xuanyu`;
 
 #
 # Table structure for table t_user
@@ -52,7 +52,7 @@ UNLOCK TABLES;
 下面是实体类`User.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 public class User {
     private int id;
     private String username;
@@ -64,7 +64,7 @@ public class User {
 接下来是用于获取数据库连接的工具类`DBUtil.java`
 
 ```java
-package com.jadyer.util;
+package com.xuanyuv.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -76,7 +76,7 @@ import java.sql.SQLException;
  * @version v1.1
  * @history v1.1-->getConnection()支持手动传入数据库URL和用户密码
  * @history v1.0-->通过枚举实现的单例，创建工具类
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/09 13:56.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/09 13:56.
  */
 public enum DBUtil {
     INSTANCE;
@@ -152,13 +152,13 @@ public enum DBUtil {
 下面是数据库操作的`UserDaoJdbc.java`
 
 ```java
-package com.jadyer.dao.jdbc;
+package com.xuanyuv.dao.jdbc;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.jadyer.model.User;
-import com.jadyer.util.DBUtil;
+import com.xuanyuv.model.User;
+import com.xuanyuv.util.DBUtil;
 
 public class UserDaoJdbc {
     public User load(String username){
@@ -199,18 +199,18 @@ public class UserDaoJdbc {
     <!--
     <t_user>
         <id>2</id>
-        <username>jadyer</username>
+        <username>hongyu</username>
         <password>xuanyu</password>
     </t_user>
      -->
-    <t_user id="2" username="jadyer" password="xuanyu"/>
+    <t_user id="2" username="hongyu" password="xuanyu"/>
 </dataset>
 ```
 
 最后是包含了`DBUnit`简单用法的测试用例`UserDaoTest.java`
 
 ```java
-package com.jadyer.dao;
+package com.xuanyuv.dao;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.sql.Connection;
@@ -230,16 +230,16 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.xml.sax.InputSource;
-import com.jadyer.dao.jdbc.UserDaoJdbc;
-import com.jadyer.model.User;
-import com.jadyer.util.DBUtil;
+import com.xuanyuv.dao.jdbc.UserDaoJdbc;
+import com.xuanyuv.model.User;
+import com.xuanyuv.util.DBUtil;
 
 /**
  * DBUnit使用步骤（下载地址为http://sourceforge.net/projects/dbunit/files/）
  * 1、导入DBUnit所需两个jar文件：dbunit.jar和slf4j-api.jar
  * 2、创建DBUnit用到的xml格式的测试数据，xml文件名建议与表名相同
  * 3、创建DBUnit的Connection和DataSet，然后开始进行各项测试工作
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/09 13:56.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/09 13:56.
  */
 public class UserDaoTest {
     private static Connection conn;
@@ -321,9 +321,9 @@ public class UserDaoTest {
         DatabaseOperation.CLEAN_INSERT.execute(dbUnitConn, dataSet);
         //下面开始数据测试
         UserDaoJdbc dao = new UserDaoJdbc();
-        User user = dao.load("jadyer");
+        User user = dao.load("hongyu");
         Assert.assertEquals(user.getId(), 2);
-        Assert.assertEquals(user.getUsername(), "jadyer");
+        Assert.assertEquals(user.getUsername(), "hongyu");
         Assert.assertEquals(user.getPassword(), "xuanyu");
     }
 }

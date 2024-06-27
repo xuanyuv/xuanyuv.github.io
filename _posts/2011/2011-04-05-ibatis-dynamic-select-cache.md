@@ -45,7 +45,7 @@ ibatis提供了丰富的判定节点，它主要分为一元判定和二元判�
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap>
-    <typeAlias alias="user" type="com.jadyer.model.User"/>
+    <typeAlias alias="user" type="com.xuanyuv.model.User"/>
     <select id="findByNameOrSex" parameterClass="user" resultClass="user">
         select * from t_user
         <dynamic prepend="WHERE">
@@ -94,7 +94,7 @@ ibatis提供了丰富的判定节点，它主要分为一元判定和二元判�
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap>
-    <typeAlias alias="user" type="com.jadyer.model.User"/>
+    <typeAlias alias="user" type="com.xuanyuv.model.User"/>
 
     <!--
     cacheModel节点：定义了本映射文件中使用的Cache机制

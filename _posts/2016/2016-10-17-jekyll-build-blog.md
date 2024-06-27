@@ -166,7 +166,7 @@ D:\Develop\Code\Jekyll\myblog>jekyll serve --watch
 本地启动时，可能会报告下面的错误
 
 ```
-C:\Users\xuanyu\Desktop\jadyer.github.io>jekyll serve --watch
+C:\Users\xuanyu\Desktop\xuanyuv.github.io>jekyll serve --watch
 Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
   Dependency Error: Yikes! It looks like you don't have jekyll-paginate or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. If you've run Jekyll with `bundle exec`, ensure that you have included the jekyll-paginate gem in your Gemfile as well. The full error message from Ruby is: 'cannot load such file -- jekyll-paginate' If you run into trouble, you can find helpful resources at https://jekyllrb.com/help/!
                     ------------------------------------------------
@@ -174,7 +174,7 @@ Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
                      for any additional information or backtrace.
                     ------------------------------------------------
 
-C:\Users\xuanyu\Desktop\jadyer.github.io>
+C:\Users\xuanyu\Desktop\xuanyuv.github.io>
 ```
 
 这是因为 Jekyll 中默认安装已没有此分页组件，[官方将其插件化了](https://jekyllrb.com/docs/pagination/)，故需独立安装
@@ -273,7 +273,7 @@ New jekyll site installed in /app/www/blog.
 实际过程中，使用的思路就是：
 
 1. _config.yml 指定生成文章时忽略的文件或文件夹
-2. Linux 上[安装 Git](https://jadyer.cn/2014/09/26/centos-install-apache/)
+2. Linux 上[安装 Git](https://www.xuanyuv.com/2014/09/26/centos-install-apache/)
 3. Linux 上编写一个启动脚本（/app/www/xuanyuv.startup.sh）并运行
 4. Linux 上再弄一个 Nginx 来代理 Jekyll 服务
 5. 每次文章有更新时，通过 IntelliJ IDEA 触发 Linux 通过 git 拉取最新文章

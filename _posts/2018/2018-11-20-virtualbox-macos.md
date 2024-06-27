@@ -25,7 +25,7 @@ OS X 10.11 El Capitan GM by TechReviews.vmdk（我的百度网盘里面有，这
 ![](https://ae01.alicdn.com/kf/Hc1e6a752e6e648dcaff4cba31962f19am.png)
 
 * 我的电脑是 Win10-64bit 8G 内存，这里给了它 4G
-* 我的 vmdk 放在 D:\Develop\Oracle\VirtualBox\JadyerData\vmdk\ 目录下，**以后不要改位置，就一直放在这里**
+* 我的 vmdk 放在 D:\Develop\Oracle\VirtualBox\XuanyuData\vmdk\ 目录下，**以后不要改位置，就一直放在这里**
 * 虚拟机属性：启动顺序里面取消 软驱 勾选
 * 虚拟机属性：处理器数量我设置了 2（我的电脑是 4 核的）
 * 虚拟机属性：显存大小设置最大（我这里是 128MB）

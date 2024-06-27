@@ -15,7 +15,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现集
 
 本文建立在Apache-2.2.29与Tomcat-6.0.41配置负载均衡的基础上
 
-配置细节详见：[https://jadyer.cn/2014/09/27/tomcat-apache-loadbalancer/](https://jadyer.cn/2014/09/27/tomcat-apache-loadbalancer/)
+配置细节详见：[https://www.xuanyuv.com/2014/09/27/tomcat-apache-loadbalancer/](https://www.xuanyuv.com/2014/09/27/tomcat-apache-loadbalancer/)
 
 ## 前言
 
@@ -111,7 +111,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现集
 1. 访问测试页面，会看到页面打印SessionID后面多出了`.tomcat2`<br>
    这就是上文说到的 jsessionid 后面会加上`.jvmRoute`为后缀，表明 tomcat2 在处理此请求
 2. 刷新测试页面，会看到打印的SessionID没有变化<br>
-   这里与负载均衡后的效果有明显不同，详见：[https://jadyer.cn/2014/09/27/tomcat-apache-loadbalancer/](https://jadyer.cn/2014/09/27/tomcat-apache-loadbalancer/)
+   这里与负载均衡后的效果有明显不同，详见：[https://www.xuanyuv.com/2014/09/27/tomcat-apache-loadbalancer/](https://www.xuanyuv.com/2014/09/27/tomcat-apache-loadbalancer/)
 3. 添加新的属性，提交表单后会发现打印出了新添加的属性名和属性值，接着刷新页面会发现添加的属性依然存在
 4. 最关键的一步：关闭 tomcat2 服务器，再刷新页面，会发现请求交由 tomcat1 来处理了，并且之前添加的属性依然存在
 

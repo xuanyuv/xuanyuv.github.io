@@ -12,7 +12,7 @@ excerpt: 详细介绍了Java中的字符串和字符串常量池之间的复杂�
 
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 
 public class StringPoolTest {
     public static void main(String[] args) {

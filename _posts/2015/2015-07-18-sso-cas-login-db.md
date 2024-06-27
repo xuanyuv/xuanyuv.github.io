@@ -29,7 +29,7 @@ excerpt: 主要描述单点登录CAS-4.0.3服务端通过数据库实现用户�
 
 2、而AcceptUsersAuthenticationHandler.java是通过继承AbstractUsernamePasswordAuthenticationHandler.java才实现的认证
 
-　　所以创建com.jadyer.sso.authentication.UserAuthenticationHandler extends AbstractUsernamePasswordAuthenticationHandler
+　　所以创建com.xuanyuv.sso.authentication.UserAuthenticationHandler extends AbstractUsernamePasswordAuthenticationHandler
 
 　　再重写authenticateUsernamePasswordInternal()方法，在里面获取到前台页面输入的用户密码，再到数据库中校验就行了
 
@@ -39,7 +39,7 @@ excerpt: 主要描述单点登录CAS-4.0.3服务端通过数据库实现用户�
 
 　　然后在里面配置数据库连接池，连接池的用户名密码等可以配置在`\WEB-INF\cas.properties`
 
-　　同时增加`<context:component-scan base-package="com.jadyer.sso"/>`，使得可以在自定义类中应用Spring注解
+　　同时增加`<context:component-scan base-package="com.xuanyuv.sso"/>`，使得可以在自定义类中应用Spring注解
 
 4、新建一个UserDaoJdbc.java类，通过它利用SpringJDBCTemplate访问数据库
 
@@ -73,11 +73,7 @@ excerpt: 主要描述单点登录CAS-4.0.3服务端通过数据库实现用户�
 
 ## 代码
 
-本文源码下载：（下面两个地址的文件的内容，都是一样的）
-
-Github：[https://github.com/v5java/demo-cas-server-web](https://github.com/v5java/demo-cas-server-web)
-
-CSDN下载：[http://download.csdn.net/detail/jadyer/8911139](http://download.csdn.net/detail/jadyer/8911139)
+本文源码下载：<https://github.com/v5java/demo-cas-server-web>
 
 下面是新创建的`\WEB-INF\spring-configuration\applicationContext-datasource.xml`
 
@@ -114,7 +110,7 @@ CSDN下载：[http://download.csdn.net/detail/jadyer/8911139](http://download.cs
     </bean>
     <tx:annotation-driven transaction-manager="txManager"/>
 
-    <context:component-scan base-package="com.jadyer.sso"/>
+    <context:component-scan base-package="com.xuanyuv.sso"/>
 </beans>
 ```
 
@@ -130,7 +126,7 @@ jdbc.password=turtle
 下面是自定义的`UserDaoJdbc.java`
 
 ```java
-package com.jadyer.sso.authentication;
+package com.xuanyuv.sso.authentication;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -159,7 +155,7 @@ public class UserDaoJdbc {
 下面是自定义的用户登录认证类`UserAuthenticationHandler.java`
 
 ```java
-package com.jadyer.sso.authentication;
+package com.xuanyuv.sso.authentication;
 import java.security.GeneralSecurityException;
 import javax.annotation.Resource;
 import javax.security.auth.login.FailedLoginException;
@@ -172,7 +168,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 自定义的用户登录认证类
- * Created by 玄玉<https://jadyer.cn/> on 2015/07/17 15:48.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2015/07/17 15:48.
  */
 @Component(value="primaryAuthenticationHandler")
 public class UserAuthenticationHandler extends AbstractUsernamePasswordAuthenticationHandler {

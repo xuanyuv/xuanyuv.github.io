@@ -93,7 +93,7 @@ excerpt: 介绍了SpringMVC-3.2.4整合Ehcache-2.7.4的完整例子。
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
-    <context:component-scan base-package="com.jadyer"/>
+    <context:component-scan base-package="com.xuanyuv"/>
 
     <!-- SpringMVC配置 -->
     <mvc:annotation-driven/>
@@ -179,7 +179,7 @@ memoryStoreEvictionPolicy--------内存存储与释放策略，即达到maxEleme
 下面是需要被缓存处理的 `UserService.java`
 
 ```java
-package com.jadyer.service;
+package com.xuanyuv.service;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.cache.annotation.CacheEvict;
@@ -195,7 +195,7 @@ import org.springframework.stereotype.Service;
  * key--------缓存的Key，默认为空（表示使用方法的参数类型及参数值作为key），支持SpEL
  * condition--只有满足条件的情况才会加入缓存，默认为空（表示全部都加入缓存），支持SpEL
  * ----------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/10/03 18:17.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/10/03 18:17.
  */
 @Service
 public class UserService {
@@ -204,7 +204,7 @@ public class UserService {
     public UserService(){
         System.out.println("用户数据初始化...开始");
         usersData.put("2", "玄玉");
-        usersData.put("3", "我的博客：https://jadyer.cn/");
+        usersData.put("3", "我的博客：https://www.xuanyuv.com/");
         System.out.println("用户数据初始化...完毕");
     }
 
@@ -232,17 +232,17 @@ public class UserService {
 下面是 `UserController.java`
 
 ```java
-package com.jadyer.controller;
+package com.xuanyuv.controller;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.jadyer.service.UserService;
+import com.xuanyuv.service.UserService;
 
 /**
- * Created by 玄玉<https://jadyer.cn/> on 2013/10/03 18:22.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/10/03 18:22.
  */
 @Controller
 @RequestMapping("cacheTest")

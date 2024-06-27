@@ -68,14 +68,14 @@ alias ipv6 off
 [xuanyu@dev ~]$ cd /app/
 [xuanyu@dev app]$ tar -zxvf apache-maven-3.2.5-bin.tar.gz
 [xuanyu@dev app]$ rm -rf apache-maven-3.2.5-bin.tar.gz
-[root@dev Jadyer]# vim /etc/profile
+[root@dev app]# vim /etc/profile
                    # Set Maven Environment Variable
                    MAVEN_HOME=/app/apache-maven-3.2.5
                    PATH=$MAVEN_HOME/bin:$PATH
                    export MAVEN_HOME PATH
-[root@dev Jadyer]# source /etc/profile
-[root@dev Jadyer]# echo $PATH
-[root@dev Jadyer]# mvn -version
+[root@dev app]# source /etc/profile
+[root@dev app]# echo $PATH
+[root@dev app]# mvn -version
 [xuanyu@dev ~]$ mvn -version
 [xuanyu@dev ~]$ cd /app/code/
 [xuanyu@dev code]$ mkdir MavenRepository
@@ -118,14 +118,14 @@ git version 2.45.2
 warning: /app/CollabNetSubversion-client-1.8.13-1.x86_64.rpm: Header V3 DSA/SHA1 Signature...
 Preparing...                ########################################### [100%]
    1:CollabNetSubversion-cli########################################### [100%]
-[root@dev Jadyer]# svn --version
-[root@dev Jadyer]# vim /etc/profile
+[root@dev app]# svn --version
+[root@dev app]# vim /etc/profile
                    # Set Subversion Environment Variable
                    SVN_HOME=/opt/CollabNet_Subversion
                    PATH=$SVN_HOME/bin:$PATH
                    export SVN_HOME PATH
-[root@dev Jadyer]# source /etc/profile
-[root@dev Jadyer]# svn --version
+[root@dev app]# source /etc/profile
+[root@dev app]# svn --version
 [xuanyu@dev ~]$ svn --version
 ```
 

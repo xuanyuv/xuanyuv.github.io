@@ -24,7 +24,7 @@ excerpt: 演示ztree插件的一些用法。
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     <servlet>
         <servlet-name>ManageServlet</servlet-name>
-        <servlet-class>com.jadyer.servlet.ManageServlet</servlet-class>
+        <servlet-class>com.xuanyuv.servlet.ManageServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ManageServlet</servlet-name>
@@ -167,7 +167,7 @@ function getZTreeValue(){
 下面是用于封装`zTree`树菜单信息的`User.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 
 public class User {
     private int id;
@@ -187,7 +187,7 @@ public class User {
 最后是用来为`zTree`树提供菜单数据字符串的`ManageServlet.java`
 
 ```java
-package com.jadyer.servlet;
+package com.xuanyuv.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -197,7 +197,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.alibaba.fastjson.JSON;
-import com.jadyer.model.User;
+import com.xuanyuv.model.User;
 
 public class ManageServlet extends HttpServlet {
     private static final long serialVersionUID = 1916784793092718608L;

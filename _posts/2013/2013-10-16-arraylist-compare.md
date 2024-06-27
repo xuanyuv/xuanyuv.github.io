@@ -14,7 +14,7 @@ excerpt: 演示ArrayList自定义排序的方法。
 ## 代码实现
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  * 实现Comparator接口重写compare()方法的方式，实现自定义排序ArrayList
- * Created by 玄玉<https://jadyer.cn/> on 2013/10/16 17:43.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/10/16 17:43.
  */
 public class SortTest {
     public static void main(String[] args) {

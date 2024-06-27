@@ -125,7 +125,7 @@ Struts2只需在`<s:form/>`标签范围中添加`<s:token/>`标签，即可实�
     <package name="struts2.1" extends="struts-default">
         <!-- 当Struts2发现用户进行表单重复提交时，它会寻找invalid.token -->
         <!-- 并根据invalid.token找到与之对应的页面。所以记得要配置invalid.token结果 -->
-        <action name="testToken" class="com.jadyer.action.LoginAction" method="testToken">
+        <action name="testToken" class="com.xuanyuv.action.LoginAction" method="testToken">
             <result>/result.jsp</result>
             <result name="invalid.token">/testToken.jsp</result>
             <interceptor-ref name="token"/>
@@ -138,7 +138,7 @@ Struts2只需在`<s:form/>`标签范围中添加`<s:token/>`标签，即可实�
 最后是处理所输入的用户名和密码的LoginAction.java
 
 ```java
-package com.jadyer.action;
+package com.xuanyuv.action;
 import com.opensymphony.xwork2.ActionSupport;
 public class LoginAction extends ActionSupport {
     public String testToken() throws Exception {

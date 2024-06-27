@@ -48,7 +48,7 @@ ServerSide中包括setUp()和testXxx()和tearDown()等方法
 下面是待测试的`LoginServlet.Java`
 
 ```java
-package com.jadyer.servlet;
+package com.xuanyuv.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 
     public boolean login(HttpServletRequest request){
         String loginUser = (String)request.getSession().getAttribute("loginUser");
-        if(null==loginUser || !"https://jadyer.cn/".equals(loginUser)){
+        if(null==loginUser || !"https://www.xuanyuv.com/".equals(loginUser)){
             System.out.println("用户[" + loginUser + "]登录失败");
             return false;
         }
@@ -82,7 +82,7 @@ public class LoginServlet extends HttpServlet {
 下面是使用`Cactus`编写的位于`test SourceFolder`下的测试用例`LoginServletTest.java`
 
 ```java
-package com.jadyer.servlet;
+package com.xuanyuv.servlet;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import junit.framework.Assert;
@@ -113,7 +113,7 @@ import com.meterware.httpunit.WebResponse;
  * nekoHTML.jar和xercesMinimal.jar均可从下载到的nekohtml-1.9.18.zip找到
  * nekoHTML的下载地址为http://sourceforge.net/projects/nekohtml/files/
  * ----------------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/11 10:49.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/11 10:49.
  */
 public class LoginServletTest extends ServletTestCase {
     private LoginServlet loginServlet;
@@ -126,18 +126,18 @@ public class LoginServletTest extends ServletTestCase {
     //beginXxx()方法是在ClientSide执行的
     //若想在testLogin()中获取到这里request添加的username参数，则该方法就应命名为beginLogin()
     public void beginLogin(WebRequest request){
-        request.addParameter("username", "Jadyer");
+        request.addParameter("username", "xuanyu");
     }
 
     //它是在ServerSide执行的
     public void testLogin(){
         //获取GET参数
-        Assert.assertEquals(request.getParameter("username"), "jadyer");
+        Assert.assertEquals(request.getParameter("username"), "xuanyu");
         //登录失败
-        //session.setAttribute("loginUser", "玄玉<https://jadyer.cn/>");
+        //session.setAttribute("loginUser", "玄玉<https://www.xuanyuv.com/>");
         Assert.assertFalse(loginServlet.login(request));
         //登录成功
-        session.setAttribute("loginUser", "https://jadyer.cn/");
+        session.setAttribute("loginUser", "https://www.xuanyuv.com/");
         Assert.assertTrue(loginServlet.login(request));
     }
 
@@ -160,10 +160,10 @@ public class LoginServletTest extends ServletTestCase {
 
 除公共部分的两个文件外，只需要写一个`JUnit3.8`的测试套件，就可以了
 
-**Tips：**关于JUnit测试套件，可参考我的另一篇博文[https://jadyer.cn/2010/11/17/junit-suite-param/](https://jadyer.cn/2010/11/17/junit-suite-param/)
+**Tips：**关于JUnit测试套件，可参考我的另一篇博文[https://www.xuanyuv.com/2010/11/17/junit-suite-param/](https://www.xuanyuv.com/2010/11/17/junit-suite-param/)
 
 ```java
-package com.jadyer.servlet;
+package com.xuanyuv.servlet;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import org.apache.cactus.extension.jetty.Jetty5xTestSetup;
@@ -171,7 +171,7 @@ import org.apache.cactus.extension.jetty.Jetty5xTestSetup;
 /**
  * 我们要在beginXxx之前启动Jetty，而Cactus不支持JUnit4中的@BeforeClass
  * 所以为了实现类似功能，我们就借助JUnit3.8的测试套件，最后测试时直接运行此测试套件即可
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/11 10:49.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/11 10:49.
  */
 public class TestAllUseJetty {
     public static Test suite(){

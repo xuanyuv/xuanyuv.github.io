@@ -45,7 +45,7 @@ retrieving an element, and wait for space to become available in the queue when 
 ## 模拟实现
 
 ```java
-package com.jadyer.demo;
+package com.xuanyuv.demo;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -53,7 +53,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * LinkedBlockingQueue模拟的生产者消费者
- * Created by 玄玉<https://jadyer.cn/> on 2013/11/02 17:40.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/11/02 17:40.
  */
 public class ProducerConsumer {
     public static void main(String[] args) {

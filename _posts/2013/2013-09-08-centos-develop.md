@@ -387,9 +387,9 @@ nacos.core.auth.enabled=true
 nacos.core.auth.caching.enabled=true
 # 关闭使用user-agent判断服务端请求并放行鉴权的功能
 nacos.core.auth.enable.userAgentAuthWhite=false
-# identity.key和identity.value是配置请求头白名单的（即白名单的Header：JadyerAuthKey=Jadyer123）
-nacos.core.auth.server.identity.key=JadyerAuthKey
-nacos.core.auth.server.identity.value=Jadyer123
+# identity.key和identity.value是配置请求头白名单的（即白名单的Header：XuanyuAuthKey=Xuanyu123）
+nacos.core.auth.server.identity.key=XuanyuAuthKey
+nacos.core.auth.server.identity.value=Xuanyu123
 # 这是一个base64字符串（其原始密钥可以随意指定，但长度不得低于32字符）
 nacos.core.auth.plugin.nacos.token.secret.key=aHR0cHM6Ly9qYWR5ZXIuY24vMjAxMy8wOS8wNy9jZW50b3MtY29uZmlnLWRldmVsb3Av
 [xuanyu@dev nacos-2.2.3]$ cd bin/
@@ -603,7 +603,7 @@ su xuanyu -c "/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start"   #
 
 ```shell
 # 注意：参数 **-DrepositoryId** 的值，其实就是 <maven-settings-server-id> 的值
-mvn deploy:deploy-file -DgroupId=com.jadyer.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.4 -Dpackaging=jar -Dfile=ojdbc6-11.2.0.4.jar -Dsources=ojdbc6-11.2.0.4-sources.jar -DrepositoryId=xuanyu-admin -Durl=http://127.0.0.1:8081/repository/maven-releases/
+mvn deploy:deploy-file -DgroupId=com.xuanyuv.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.4 -Dpackaging=jar -Dfile=ojdbc6-11.2.0.4.jar -Dsources=ojdbc6-11.2.0.4-sources.jar -DrepositoryId=xuanyu-admin -Durl=http://127.0.0.1:8081/repository/maven-releases/
 ```
 
 ## 安装wkhtmltopdf

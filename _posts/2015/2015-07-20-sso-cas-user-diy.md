@@ -17,7 +17,7 @@ excerpt: 主要描述单点登录CAS-4.0.3服务端自定义返回的用户信�
 
 既然想自定义返回的用户信息，那么继承org.jasig.services.persondir.support.StubPersonAttributeDao就好了
 
-1、创建com.jadyer.sso.authentication extends StubPersonAttributeDao并复写getPerson()方法
+1、创建com.xuanyuv.sso.authentication extends StubPersonAttributeDao并复写getPerson()方法
 
 　　使用@Component(value="attributeRepository")定义它的BeanID
 
@@ -44,7 +44,7 @@ StubPersonAttributeDao就是IPersonAttributeDao的实现之一
 下面是自定义的控制返回的用户信息的`UserStubPersonAttributeDao.java`
 
 ```java
-package com.jadyer.sso.authentication;
+package com.xuanyuv.sso.authentication;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Collections;
@@ -56,11 +56,11 @@ import org.jasig.services.persondir.IPersonAttributes;
 import org.jasig.services.persondir.support.AttributeNamedPersonImpl;
 import org.jasig.services.persondir.support.StubPersonAttributeDao;
 import org.springframework.stereotype.Component;
-import com.jadyer.sso.model.User;
+import com.xuanyuv.sso.model.User;
 
 /**
  * 自定义的返回给客户端相关信息
- * Created by 玄玉<https://jadyer.cn/> on 2015/07/18 17:52.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2015/07/18 17:52.
  */
 @Component(value="attributeRepository")
 public class UserStubPersonAttributeDao extends StubPersonAttributeDao {
@@ -74,7 +74,7 @@ public class UserStubPersonAttributeDao extends StubPersonAttributeDao {
             attributes.put("userId", Collections.singletonList((Object)user.getUsercode()));
             attributes.put("username", Collections.singletonList((Object)user.getUsername()));
             attributes.put("usernamePlain", Collections.singletonList((Object)URLEncoder.encode(user.getUsernamePlain(), "UTF-8")));
-            attributes.put("blogURL", Collections.singletonList((Object)"https://jadyer.cn/"));
+            attributes.put("blogURL", Collections.singletonList((Object)"https://www.xuanyuv.com/"));
             attributes.put("blogger", Collections.singletonList((Object)URLEncoder.encode("玄玉", "UTF-8")));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -87,7 +87,7 @@ public class UserStubPersonAttributeDao extends StubPersonAttributeDao {
 下面是用到的查询数据库的`UserDaoJdbc.java`
 
 ```java
-package com.jadyer.sso.authentication;
+package com.xuanyuv.sso.authentication;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.annotation.Resource;
@@ -96,7 +96,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import com.jadyer.sso.model.User;
+import com.xuanyuv.sso.model.User;
 
 @Repository
 public class UserDaoJdbc {
@@ -140,7 +140,7 @@ class UserRowMapper implements RowMapper<User> {
 下面是用到的`User.java`
 
 ```java
-package com.jadyer.sso.model;
+package com.xuanyuv.sso.model;
 public class User {
     private String usercode;
     private String username;

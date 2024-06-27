@@ -14,7 +14,7 @@ excerpt: 介绍JPA中的联合主键映射的示例代码。
 首先是飞机航线的复合主键类`AirLinePK.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -30,7 +30,7 @@ import javax.persistence.Embeddable;
  *         3.必须重写hashCode()和equals()方法，其中以复合主键类的字段作为判断依据
  *     </li>
  * </ul>
- * Created by 玄玉<https://jadyer.cn/> on 2011/02/11 10:39.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/02/11 10:39.
  */
 //即嵌入注解，它用来告诉JPA：我们只是使用复合主键类里面的属性，作为实体的持久化字段
 @Embeddable
@@ -91,7 +91,7 @@ public class AirLinePK implements Serializable {
 然后是飞机航线的实体`AirLine.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -132,8 +132,8 @@ public class AirLine {
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
             <property name="hibernate.connection.username" value="scott"/>
-            <property name="hibernate.connection.password" value="jadyer"/>
-            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@127.0.0.1:1521:jadyer"/>
+            <property name="hibernate.connection.password" value="xuanyu"/>
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@127.0.0.1:1521:xuanyu"/>
         </properties>
     </persistence-unit>
 </persistence>
@@ -142,8 +142,8 @@ public class AirLine {
 最后是JUnit4单元测试类`CompositePKTest.java`
 
 ```java
-package com.jadyer.junit;
-import com.jadyer.model.AirLine;
+package com.xuanyuv.junit;
+import com.xuanyuv.model.AirLine;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

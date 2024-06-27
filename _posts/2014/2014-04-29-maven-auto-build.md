@@ -81,7 +81,7 @@ set curdir=%~dp0
 set curDate=%date:~0,4%%date:~5,2%%date:~8,2%
 set curtime=%Date:~0,4%%Date:~5,2%%Date:~8,2%%Time:~0,2%%Time:~3,2%
 set ftphost=ftp.github.com
-set ftpusername=jadyer
+set ftpusername=xuanyu
 set ftppassword=123456
 set ftpfilepath=/public/%curDate%
 
@@ -151,7 +151,7 @@ pause
 ```bash
 @echo off
 
-java -cp .;commons-io-2.6.jar com.jadyer.seed.simcoder.DiabloIISL
+java -cp .;commons-io-2.6.jar com.xuanyuv.seed.simcoder.DiabloIISL
 ```
 
 批处理文件所在的目录结构如下
@@ -173,7 +173,7 @@ $ tree
 |-- Save_del
 |   `-- 104671343253324.txt
 |-- com
-|   `-- jadyer
+|   `-- xuanyuv
 |       `-- seed
 |           `-- simcoder
 |               |-- DiabloIISL.class
@@ -186,7 +186,7 @@ $ tree
 DiabloIISL.java 的内容如下
 
 ```java
-package com.jadyer.seed.simcoder;
+package com.xuanyuv.seed.simcoder;
 
 import org.apache.commons.io.FileUtils;
 
@@ -195,9 +195,9 @@ import java.io.IOException;
 
 public class DiabloIISL {
     //SL前的Save文件夹路径
-    private static final String SAVE_PATH_BACKUP = "C:\\Users\\Jadyer\\Desktop\\Save";
+    private static final String SAVE_PATH_BACKUP = "C:\\Users\\xuanyu\\Desktop\\Save";
     //SL次数记录的文件夹路径
-    private static final String SAVE_PATH_DELETETO = "C:\\Users\\Jadyer\\Desktop\\Save_del";
+    private static final String SAVE_PATH_DELETETO = "C:\\Users\\xuanyu\\Desktop\\Save_del";
     //游戏目录Save文件夹路径
     private static final String SAVE_PATH_DIABLOII = "D:\\ProgramFiles\\DiabloII\\Save";
     public static void main(String[] args) throws IOException {

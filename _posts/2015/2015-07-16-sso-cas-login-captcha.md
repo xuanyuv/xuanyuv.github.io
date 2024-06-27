@@ -25,11 +25,11 @@ excerpt: 主要描述单点登录CAS-4.0.3服务端登录页添加验证码的�
 
 　　这是一个用来接收前台表单参数的JavaBean，我们这里要在表单上加一个参数captcha，所以继承它就行了
 
-3、创建com.jadyer.sso.model.UsernamePasswordCaptchaCredential extends UsernamePasswordCredential
+3、创建com.xuanyuv.sso.model.UsernamePasswordCaptchaCredential extends UsernamePasswordCredential
 
 　　再加上captcha属性，及其对应的setter和getter
 
-　　再修改login-webflow.xml第27行credential对应实体类为com.jadyer.sso.model.UsernamePasswordCaptchaCredential
+　　再修改login-webflow.xml第27行credential对应实体类为com.xuanyuv.sso.model.UsernamePasswordCaptchaCredential
 
 4、接下来添加校验验证码的流程
 
@@ -39,7 +39,7 @@ excerpt: 主要描述单点登录CAS-4.0.3服务端登录页添加验证码的�
 
 　　我们要在原有表单处理逻辑的基础上增加验证码，所以就扩展authenticationViaFormAction
 
-　　创建com.jadyer.sso.authentication.AuthenticationViaCaptchaFormAction extends AuthenticationViaFormAction
+　　创建com.xuanyuv.sso.authentication.AuthenticationViaCaptchaFormAction extends AuthenticationViaFormAction
 
 　　在AuthenticationViaCaptchaFormAction中增加一个validateCaptcha()方法用来校验验证码
 
@@ -65,18 +65,14 @@ excerpt: 主要描述单点登录CAS-4.0.3服务端登录页添加验证码的�
 
 ## 代码
 
-本文源码下载：（下面两个地址的文件的内容，都是一样的）
-
-Github：[https://github.com/v5java/demo-cas-server-web](https://github.com/v5java/demo-cas-server-web)
-
-CSDN下载：[http://download.csdn.net/detail/jadyer/8906831](http://download.csdn.net/detail/jadyer/8906831)
+本文源码下载：<https://github.com/v5java/demo-cas-server-web>
 
 下面是`login-webflow.xml`中的改动部分
 
 ```xml
 <!-- <var name="credential" class="org.jasig.cas.authentication.UsernamePasswordCredential"/> -->
 <!-- 新加的用于接收前台表单验证码字段captcha的JavaBean -->
-<var name="credential" class="com.jadyer.sso.model.UsernamePasswordCaptchaCredential"/>
+<var name="credential" class="com.xuanyuv.sso.model.UsernamePasswordCaptchaCredential"/>
 
 <view-state id="viewLoginForm" view="casLoginView" model="credential">
     <binder>
@@ -113,12 +109,12 @@ CSDN下载：[http://download.csdn.net/detail/jadyer/8906831](http://download.cs
 下面是扩展的`UsernamePasswordCaptchaCredential.java`
 
 ```java
-package com.jadyer.sso.model;
+package com.xuanyuv.sso.model;
 import org.jasig.cas.authentication.UsernamePasswordCredential;
 
 /**
  * 自定义的接收登录验证码的实体类
- * Created by 玄玉<https://jadyer.cn/> on 2015/07/14 16:28.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2015/07/14 16:28.
  */
 public class UsernamePasswordCaptchaCredential extends UsernamePasswordCredential {
     private static final long serialVersionUID = 8317889802836113837L;
@@ -130,7 +126,7 @@ public class UsernamePasswordCaptchaCredential extends UsernamePasswordCredentia
 下面是扩展的`AuthenticationViaCaptchaFormAction.java`
 
 ```java
-package com.jadyer.sso.authentication;
+package com.xuanyuv.sso.authentication;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.jasig.cas.authentication.Credential;
@@ -140,11 +136,11 @@ import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.util.StringUtils;
 import org.springframework.webflow.execution.RequestContext;
-import com.jadyer.sso.model.UsernamePasswordCaptchaCredential;
+import com.xuanyuv.sso.model.UsernamePasswordCaptchaCredential;
 
 /**
  * 自定义的处理验证码登录逻辑的Action
- * Created by 玄玉<https://jadyer.cn/> on 2015/07/14 16:28.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2015/07/14 16:28.
  */
 public class AuthenticationViaCaptchaFormAction extends AuthenticationViaFormAction {
     public final String validateCaptcha(final RequestContext context, final Credential credential, final MessageContext messageContext){
@@ -181,13 +177,13 @@ public class AuthenticationViaCaptchaFormAction extends AuthenticationViaFormAct
         p:ticketRegistry-ref="ticketRegistry"/>
  -->
 <!-- 新添加的用于校验验证码的Action -->
-<bean id="authenticationViaCaptchaFormAction" class="com.jadyer.sso.authentication.AuthenticationViaCaptchaFormAction"
+<bean id="authenticationViaCaptchaFormAction" class="com.xuanyuv.sso.authentication.AuthenticationViaCaptchaFormAction"
         p:centralAuthenticationService-ref="centralAuthenticationService"
         p:warnCookieGenerator-ref="warnCookieGenerator"
         p:ticketRegistry-ref="ticketRegistry"/>
 ```
 
-下面是我的登录成功页`\WEB-INF\view\jsp\jadyer\ui\casGenericSuccess.jsp`
+下面是我的登录成功页`\WEB-INF\view\jsp\xuanyu\ui\casGenericSuccess.jsp`
 
 ```html
 <%@ page pageEncoding="UTF-8"%>
@@ -196,7 +192,7 @@ public class AuthenticationViaCaptchaFormAction extends AuthenticationViaFormAct
 </body>
 ```
 
-下面是我的登录页`\WEB-INF\view\jsp\jadyer\ui\casLoginView.jsp`
+下面是我的登录页`\WEB-INF\view\jsp\xuanyu\ui\casLoginView.jsp`
 
 ```html
 <%@ page pageEncoding="UTF-8"%>

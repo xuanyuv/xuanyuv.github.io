@@ -30,9 +30,9 @@ ok，let`s drink code ...
 2、[http://127.0.0.1:8000/login](http://127.0.0.1:8000/login)，这时浏览器会显示这几个字：登录成功
 
 ```java
-package com.jadyer.demo.mina.server;
-import com.jadyer.demo.mina.server.Handler.ServerHandler;
-import com.jadyer.demo.mina.server.codec.ServerProtocolCodecFactory;
+package com.xuanyuv.demo.mina.server;
+import com.xuanyuv.demo.mina.server.Handler.ServerHandler;
+import com.xuanyuv.demo.mina.server.codec.ServerProtocolCodecFactory;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.executor.ExecutorFilter;
 import org.apache.mina.filter.logging.LoggingFilter;
@@ -45,7 +45,7 @@ import java.util.List;
 
 /**
  * 服务启动类
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/07 14:28.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/07 14:28.
  */
 public class MainApp {
     public static void main(String[] args) throws IOException {
@@ -86,9 +86,9 @@ public class MainApp {
 目前只接收两种请求：TCP请求的固定业务编码为`10005`，HTTP请求的固定业务编码为`/login`（[http://127.0.0.1:8000/login](http://127.0.0.1:8000/login)）
 
 ```java
-package com.jadyer.demo.mina.server.Handler;
-import com.jadyer.demo.mina.server.model.Token;
-import com.jadyer.demo.mina.server.util.JadyerUtil;
+package com.xuanyuv.demo.mina.server.Handler;
+import com.xuanyuv.demo.mina.server.model.Token;
+import com.xuanyuv.demo.mina.server.util.XuanyuUtil;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
@@ -96,7 +96,7 @@ import java.net.HttpURLConnection;
 
 /**
  * 服务端消息处理器
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/07 14:24.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/07 14:24.
  */
 public class ServerHandler extends IoHandlerAdapter {
     @Override
@@ -125,7 +125,7 @@ public class ServerHandler extends IoHandlerAdapter {
         String respData;
         Token token = (Token)message;
         //打印收到的原始报文
-        System.out.println("渠道:" + token.getBusiType() + "  交易码:" + token.getBusiCode() + "  完整报文(HEX):"+JadyerUtil.buildHexStringWithASCII(JadyerUtil.getBytes(token.getFullMessage(), "UTF-8")));
+        System.out.println("渠道:" + token.getBusiType() + "  交易码:" + token.getBusiCode() + "  完整报文(HEX):"+XuanyuUtil.buildHexStringWithASCII(XuanyuUtil.getBytes(token.getFullMessage(), "UTF-8")));
         StringBuilder sb = new StringBuilder();
         sb.append("\r\n------------------------------------------------------------------------------------------");
         sb.append("\r\n【通信双方】").append(session);
@@ -139,11 +139,11 @@ public class ServerHandler extends IoHandlerAdapter {
                 respData = this.buildHTTPResponseMessage("<h2>欢迎访问由Mina2.0.7编写的Web服务器</h2>");
                 break;
             case "/favicon.ico":
-                //<link rel="icon" href="https://jadyer.cn/favicon.ico" type="image/x-icon"/>
-                //<link rel="shortcut icon" href="https://jadyer.cn/favicon.ico" type="image/x-icon"/>
-                String httpResponseMessageBody = "<link rel=\"icon\" href=\"https://jadyer.cn/favicon.ico\"";
+                //<link rel="icon" href="https://www.xuanyuv.com/favicon.ico" type="image/x-icon"/>
+                //<link rel="shortcut icon" href="https://www.xuanyuv.com/favicon.ico" type="image/x-icon"/>
+                String httpResponseMessageBody = "<link rel=\"icon\" href=\"https://www.xuanyuv.com/favicon.ico\"";
                 httpResponseMessageBody += " type=\"image/x-icon\"/>\n";
-                httpResponseMessageBody += "<link rel=\"shortcut icon\" href=\"https://jadyer.cn/favicon.ico\"";
+                httpResponseMessageBody += "<link rel=\"shortcut icon\" href=\"https://www.xuanyuv.com/favicon.ico\"";
                 httpResponseMessageBody += " type=\"image/x-icon\"/>";
                 respData = this.buildHTTPResponseMessage(httpResponseMessageBody);
                 break;
@@ -204,7 +204,7 @@ public class ServerHandler extends IoHandlerAdapter {
         if(httpResponseCode == HttpURLConnection.HTTP_OK){
             StringBuilder sb = new StringBuilder();
             sb.append("HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Length: ");
-            sb.append(JadyerUtil.getBytes(httpResponseMessageBody, "UTF-8").length);
+            sb.append(XuanyuUtil.getBytes(httpResponseMessageBody, "UTF-8").length);
             sb.append("\r\n\r\n");
             sb.append(httpResponseMessageBody);
             return sb.toString();
@@ -223,10 +223,10 @@ public class ServerHandler extends IoHandlerAdapter {
 这是用到的封装客户端请求报文的实体类`Token.java`
 
 ```java
-package com.jadyer.demo.mina.server.model;
+package com.xuanyuv.demo.mina.server.model;
 /**
  * 封装客户端请求报文
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/07 13:42.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/07 13:42.
  */
 public class Token {
     public static final String BUSI_TYPE_TCP = "TCP";
@@ -240,17 +240,17 @@ public class Token {
 }
 ```
 
-这是用到的一个小工具类`JadyerUtil.java`
+这是用到的一个小工具类`XuanyuUtil.java`
 
 ```java
-package com.jadyer.demo.mina.server.util;
+package com.xuanyuv.demo.mina.server.util;
 import java.io.UnsupportedEncodingException;
 
 /**
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/12 10:18.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/12 10:18.
  */
-public final class JadyerUtil {
-    private JadyerUtil(){}
+public final class XuanyuUtil {
+    private XuanyuUtil(){}
 
     /**
      * 判断输入的字符串参数是否为空
@@ -394,12 +394,12 @@ public final class JadyerUtil {
 下面就是我们自定义的用于组装编解码器的工厂`ServerProtocolCodecFactory.java`
 
 ```java
-package com.jadyer.demo.mina.server.codec;
+package com.xuanyuv.demo.mina.server.codec;
 import org.apache.mina.filter.codec.demux.DemuxingProtocolCodecFactory;
 
 /**
  * 组装编解码器的工厂
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/07 14:41.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/07 14:41.
  */
 public class ServerProtocolCodecFactory extends DemuxingProtocolCodecFactory {
     public ServerProtocolCodecFactory(){
@@ -413,7 +413,7 @@ public class ServerProtocolCodecFactory extends DemuxingProtocolCodecFactory {
 下面是自定义的编码器`ServerProtocolEncoder.java`
 
 ```java
-package com.jadyer.demo.mina.server.codec;
+package com.xuanyuv.demo.mina.server.codec;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolEncoderOutput;
@@ -422,7 +422,7 @@ import java.nio.charset.Charset;
 
 /**
  * 自定义的编码器
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/07 14:43.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/07 14:43.
  */
 public class ServerProtocolEncoder implements MessageEncoder<String> {
     @Override
@@ -438,9 +438,9 @@ public class ServerProtocolEncoder implements MessageEncoder<String> {
 下面是自定义的TCP协议解码器`ServerProtocolTCPDecoder.java`
 
 ```java
-package com.jadyer.demo.mina.server.codec;
-import com.jadyer.demo.mina.server.model.Token;
-import com.jadyer.demo.mina.server.util.JadyerUtil;
+package com.xuanyuv.demo.mina.server.codec;
+import com.xuanyuv.demo.mina.server.model.Token;
+import com.xuanyuv.demo.mina.server.util.XuanyuUtil;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolDecoderOutput;
@@ -455,7 +455,7 @@ import org.apache.mina.filter.codec.demux.MessageDecoderResult;
  * 在decode()方法进行读取操作会影响数据包的大小，decode需要判断协议中哪些已经decode完，哪些还没decode
  * decode完成后，通过ProtocolDecoderOutput.write()输出，并返回MessageDecoderResult.OK表示decode完毕
  * ----------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/07 13:44.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/07 13:44.
  */
 public class ServerProtocolTCPDecoder implements MessageDecoder {
     @Override
@@ -478,7 +478,7 @@ public class ServerProtocolTCPDecoder implements MessageDecoder {
         if(session.getLocalAddress().toString().contains(":9000")){
             byte[] messageLength = new byte[6];
             in.get(messageLength);
-            if(in.limit() >= Integer.parseInt(JadyerUtil.getString(messageLength, "UTF-8"))){
+            if(in.limit() >= Integer.parseInt(XuanyuUtil.getString(messageLength, "UTF-8"))){
                 return MessageDecoderResult.OK;
             }else{
                 return MessageDecoderResult.NEED_DATA;
@@ -492,7 +492,7 @@ public class ServerProtocolTCPDecoder implements MessageDecoder {
     public MessageDecoderResult decode(IoSession session, IoBuffer in, ProtocolDecoderOutput out) throws Exception {
         byte[] message = new byte[in.limit()];
         in.get(message);
-        String fullMessage = JadyerUtil.getString(message, "UTF-8");
+        String fullMessage = XuanyuUtil.getString(message, "UTF-8");
         Token token = new Token();
         token.setBusiCharset("UTF-8");
         token.setBusiType(Token.BUSI_TYPE_TCP);
@@ -508,9 +508,9 @@ public class ServerProtocolTCPDecoder implements MessageDecoder {
 下面是自定义的HTTP协议解码器`ServerProtocolHTTPDecoder.java`
 
 ```java
-package com.jadyer.demo.mina.server.codec;
-import com.jadyer.demo.mina.server.model.Token;
-import com.jadyer.demo.mina.server.util.JadyerUtil;
+package com.xuanyuv.demo.mina.server.codec;
+import com.xuanyuv.demo.mina.server.model.Token;
+import com.xuanyuv.demo.mina.server.util.XuanyuUtil;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolDecoderOutput;
@@ -519,7 +519,7 @@ import org.apache.mina.filter.codec.demux.MessageDecoderResult;
 
 /**
  * 自定义的HTTP协议解码器
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/07 13:44.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/07 13:44.
  */
 public class ServerProtocolHTTPDecoder implements MessageDecoder {
     @Override
@@ -544,7 +544,7 @@ public class ServerProtocolHTTPDecoder implements MessageDecoder {
     public MessageDecoderResult decode(IoSession session, IoBuffer in, ProtocolDecoderOutput out) throws Exception {
         byte[] message = new byte[in.limit()];
         in.get(message);
-        String fullMessage = JadyerUtil.getString(message, "UTF-8");
+        String fullMessage = XuanyuUtil.getString(message, "UTF-8");
         Token token = new Token();
         token.setBusiCharset("UTF-8");
         token.setBusiType(Token.BUSI_TYPE_HTTP);
@@ -598,14 +598,14 @@ public class ServerProtocolHTTPDecoder implements MessageDecoder {
 
     /**
      * 校验HTTP请求报文是否已完整接收（目前仅授理GET和POST请求）
-     * 关于HTTP请求的样例报文，可参考https://jadyer.cn/2012/11/22/linux-crlf/
+     * 关于HTTP请求的样例报文，可参考https://www.xuanyuv.com/2012/11/22/linux-crlf/
      * @param in 装载HTTP请求报文的IoBuffer
      */
     private boolean isComplete(IoBuffer in){
         //先获取HTTP请求的原始报文
         byte[] messages = new byte[in.limit()];
         in.get(messages);
-        String message = JadyerUtil.getString(messages, "UTF-8");
+        String message = XuanyuUtil.getString(messages, "UTF-8");
         //授理GET请求
         if(message.startsWith("GET")){
             return message.endsWith("\r\n\r\n");
@@ -623,7 +623,7 @@ public class ServerProtocolHTTPDecoder implements MessageDecoder {
                     }else if(contentLength > 0){
                         //取HTTP_POST请求报文体
                         String messageBody = message.split("\r\n\r\n")[1];
-                        if(contentLength == JadyerUtil.getBytes(messageBody, "UTF-8").length){
+                        if(contentLength == XuanyuUtil.getBytes(messageBody, "UTF-8").length){
                             return true;
                         }
                     }
@@ -641,7 +641,7 @@ public class ServerProtocolHTTPDecoder implements MessageDecoder {
 该工具类适用于本文自定义的TCP协议处理，对于其它协议，触类旁通修改编解码器就行了
 
 ```java
-package com.jadyer.demo.mina.server.util;
+package com.xuanyuv.demo.mina.server.util;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.future.ConnectFuture;
 import org.apache.mina.core.future.ReadFuture;
@@ -668,7 +668,7 @@ import java.util.concurrent.TimeUnit;
  * v1.4-->增加全局异常捕获
  * v1.5-->由于本工具类的作用是同步的客户端，故取消IoHandler设置，但注意必须setUseReadOperation(true)
  * ----------------------------------------------------------------------------------------------
- * Created by 玄玉<https://jadyer.cn/> on 2012/10/03 12:42.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2012/10/03 12:42.
  */
 public final class MinaUtil {
     private MinaUtil(){}
@@ -832,8 +832,8 @@ public final class MinaUtil {
 执行`MainApp.main()`启动服务后，除了浏览器访问，也可以用工具直接发TCP和HTTP消息，如下所示
 
 ```java
-package com.jadyer.demo.mina.server.test;
-import com.jadyer.demo.mina.server.util.MinaUtil;
+package com.xuanyuv.demo.mina.server.test;
+import com.xuanyuv.demo.mina.server.util.MinaUtil;
 import com.msxf.open.mpp.sdk.util.HttpUtil;
 import org.junit.Assert;
 import org.junit.Test;
@@ -842,8 +842,8 @@ import java.util.Map;
 
 /**
  * 测试MinaServer
- * 这里用到的HttpUtil，详见https://github.com/jadyer/seed/blob/master/seed-comm/src/main/java/com/jadyer/seed/comm/util/HttpUtil.java
- * Created by 玄玉<https://jadyer.cn/> on 2013/07/09 19:59.
+ * 这里用到的HttpUtil，详见https://github.com/xuanyuv/seed/blob/master/seed-comm/src/main/java/com/xuanyuv/seed/comm/util/HttpUtil.java
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2013/07/09 19:59.
  */
 public class TestMinaServer {
     @Test
@@ -872,7 +872,7 @@ public class TestMinaServer {
         //先测试带报文体的POST请求(即带参数，模拟表单提交)
         String reqURL = "http://127.0.0.1:8000/login";
         Map<String, String> params = new HashMap<>();
-        params.put("username", "Jadyer");
+        params.put("username", "hongyu");
         params.put("password", "xuanyu");
         String respData11 = HttpUtil.post(reqURL, params);
         Assert.assertEquals("登录成功", respData11);
@@ -880,7 +880,7 @@ public class TestMinaServer {
         String respData22 = HttpUtil.post(reqURL, new HashMap<String, String>());
         Assert.assertEquals("登录成功", respData22);
         //最后测试一下特殊情况，即不带报文体，但在请求地址上带有参数的POST请求（建行外联平台就是这么干的）
-        reqURL = "http://127.0.0.1:8000/login?username=Jadyer&password=xuanyu&aa=bb&cc=dd";
+        reqURL = "http://127.0.0.1:8000/login?username=hongyu&password=xuanyu&aa=bb&cc=dd";
         String respData33 = HttpUtil.post(reqURL, new HashMap<String, String>());
         Assert.assertEquals("登录成功", respData33);
     }
@@ -1049,13 +1049,13 @@ Content-Length: 12
 ```
 [20161217 22:31:34][main][HttpUtil.post]请求http://127.0.0.1:8000/login的报文为-->>java.util.HashMap@265485100[
 password=xuanyu
-username=Jadyer
+username=hongyu
 ]
 [20161217 22:31:36][main][HttpUtil.post]请求http://127.0.0.1:8000/login得到应答<<--[登录成功]
 [20161217 22:31:36][main][HttpUtil.post]请求http://127.0.0.1:8000/login的报文为-->>
 [20161217 22:31:36][main][HttpUtil.post]请求http://127.0.0.1:8000/login得到应答<<--[登录成功]
-[20161217 22:31:36][main][HttpUtil.post]请求http://127.0.0.1:8000/login?username=Jadyer&password=xuanyu&aa=bb&cc=dd的报文为-->>
-[20161217 22:31:36][main][HttpUtil.post]请求http://127.0.0.1:8000/login?username=Jadyer&password=xuanyu&aa=bb&cc=dd得到应答<<--[登录成功]
+[20161217 22:31:36][main][HttpUtil.post]请求http://127.0.0.1:8000/login?username=hongyu&password=xuanyu&aa=bb&cc=dd的报文为-->>
+[20161217 22:31:36][main][HttpUtil.post]请求http://127.0.0.1:8000/login?username=hongyu&password=xuanyu&aa=bb&cc=dd得到应答<<--[登录成功]
 ```
 
 对应的HTTP_POST测试时的服务端控制台输出，如下
@@ -1085,7 +1085,7 @@ username=Jadyer
 00B0: 6C 69 65 6E 74 2F 34 2E 35 2E 32 20 28 4A 61 76 | lient/4.5.2 (Jav
 00C0: 61 2F 31 2E 38 2E 30 5F 37 37 29 0D 0A 0D 0A 70 | a/1.8.0_77)    p
 00D0: 61 73 73 77 6F 72 64 3D 78 75 61 6E 79 75 26 75 | assword=xuanyu&u
-00E0: 73 65 72 6E 61 6D 65 3D 4A 61 64 79 65 72       | sername=Jadyer
+00E0: 73 65 72 6E 61 6D 65 3D 4A 61 64 79 65 72       | sername=hongyu
 ------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------
@@ -1098,9 +1098,9 @@ Host: 127.0.0.1:8000
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.2 (Java/1.8.0_77)
 
-password=xuanyu&username=Jadyer
+password=xuanyu&username=hongyu
 ------------------------------------------------------------------------------------------
-收到请求参数=[password=xuanyu&username=Jadyer]
+收到请求参数=[password=xuanyu&username=hongyu]
 
 ------------------------------------------------------------------------------------------
 【通信双方】(0x00000002: nio socket, server, /127.0.0.1:55368 => /127.0.0.1:8000)
@@ -1174,7 +1174,7 @@ Content-Length: 12
 渠道:HTTP  交易码:/login  完整报文(HEX):
 ------------------------------------------------------------------------
 0000: 50 4F 53 54 20 2F 6C 6F 67 69 6E 3F 75 73 65 72 | POST /login?user
-0010: 6E 61 6D 65 3D 4A 61 64 79 65 72 26 70 61 73 73 | name=Jadyer&pass
+0010: 6E 61 6D 65 3D 4A 61 64 79 65 72 26 70 61 73 73 | name=hongyu&pass
 0020: 77 6F 72 64 3D 78 75 61 6E 79 75 26 61 61 3D 62 | word=xuanyu&aa=b
 0030: 62 26 63 63 3D 64 64 20 48 54 54 50 2F 31 2E 31 | b&cc=dd HTTP/1.1
 0040: 0D 0A 43 6F 6E 74 65 6E 74 2D 4C 65 6E 67 74 68 |   Content-Length
@@ -1194,7 +1194,7 @@ Content-Length: 12
 ------------------------------------------------------------------------------------------
 【通信双方】(0x00000004: nio socket, server, /127.0.0.1:55370 => /127.0.0.1:8000)
 【收发标识】Receive
-【报文内容】POST /login?username=Jadyer&password=xuanyu&aa=bb&cc=dd HTTP/1.1
+【报文内容】POST /login?username=hongyu&password=xuanyu&aa=bb&cc=dd HTTP/1.1
 Content-Length: 0
 Content-Type: application/x-www-form-urlencoded; charset=UTF-8
 Host: 127.0.0.1:8000
@@ -1203,7 +1203,7 @@ User-Agent: Apache-HttpClient/4.5.2 (Java/1.8.0_77)
 
 
 ------------------------------------------------------------------------------------------
-收到请求参数=[username=Jadyer&password=xuanyu&aa=bb&cc=dd]
+收到请求参数=[username=hongyu&password=xuanyu&aa=bb&cc=dd]
 
 ------------------------------------------------------------------------------------------
 【通信双方】(0x00000004: nio socket, server, /127.0.0.1:55370 => /127.0.0.1:8000)

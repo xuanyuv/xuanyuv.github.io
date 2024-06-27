@@ -69,7 +69,7 @@ END
 //                                 -- 分隔符，表示此SQL语句结束
 
 -- 调用存储过程
-CALL pro_init('jadyer', @userId);
+CALL pro_init('xuanyu', @userId);
 SELECT @userId;
 
 -- 将相同的更新时间改为不同（按照一秒逐个累加）
@@ -151,8 +151,8 @@ WHERE realname IS NULL;
 SHOW CREATE TABLE t_admin;
 
 -- 查询某张表存在的索引类型
-SHOW INDEX FROM jadyer.t_admin;
-SHOW INDEX FROM t_admin FROM jadyer;
+SHOW INDEX FROM xuanyu.t_admin;
+SHOW INDEX FROM t_admin FROM xuanyu;
 SELECT INDEX_NAME, INDEX_TYPE FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_NAME='t_admin';
 
 -- 查询某张表的所有列名

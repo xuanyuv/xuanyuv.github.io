@@ -14,7 +14,7 @@ excerpt: 介绍JPA中的继承映射的示例代码。
 首先是部门表的实体类`Department.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +25,7 @@ import java.util.Set;
 
 /**
  * 部门表的实体
- * Created by 玄玉<https://jadyer.cn/> on 2011/02/11 11:15.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/02/11 11:15.
  */
 @Entity
 public class Department {
@@ -45,7 +45,7 @@ public class Department {
 然后是员工表的实体类`Employee.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -57,7 +57,7 @@ import javax.persistence.ManyToOne;
 
 /**
  * 员工表的实体
- * Created by 玄玉<https://jadyer.cn/> on 2011/02/11 11:15.
+ * Created by 玄玉<https://www.xuanyuv.com/> on 2011/02/11 11:15.
  */
 @Entity
 //指定继承策略
@@ -94,7 +94,7 @@ public class Employee {
 下面是用来代表工资的员工表的子类`Sales.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -113,7 +113,7 @@ public class Sales extends Employee {
 下面是用来代表技能的员工表的子类`Skiller.java`
 
 ```java
-package com.jadyer.model;
+package com.xuanyuv.model;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -144,8 +144,8 @@ public class Skiller extends Employee {
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
             <property name="hibernate.connection.username" value="scott"/>
-            <property name="hibernate.connection.password" value="jadyer"/>
-            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@127.0.0.1:1521:jadyer"/>
+            <property name="hibernate.connection.password" value="xuanyu"/>
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@127.0.0.1:1521:xuanyu"/>
         </properties>
     </persistence-unit>
 </persistence>
@@ -154,11 +154,11 @@ public class Skiller extends Employee {
 最后是JUnit4单元测试类`ExtendTest.java`
 
 ```java
-package com.jadyer.junit;
-import com.jadyer.model.Department;
-import com.jadyer.model.Employee;
-import com.jadyer.model.Sales;
-import com.jadyer.model.Skiller;
+package com.xuanyuv.junit;
+import com.xuanyuv.model.Department;
+import com.xuanyuv.model.Employee;
+import com.xuanyuv.model.Sales;
+import com.xuanyuv.model.Skiller;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

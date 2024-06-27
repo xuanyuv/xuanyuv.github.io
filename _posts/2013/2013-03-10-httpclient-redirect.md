@@ -22,7 +22,7 @@ HttpClient缺省会自动处理客户端重定向
 示例代码如下
 
 ```java
-package com.jadyer.httpclient;
+package com.xuanyuv.httpclient;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
