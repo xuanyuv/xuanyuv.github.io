@@ -14,8 +14,8 @@ type: page
 
 * 现居：重庆
 * 来自：哈尔滨
-* 邮箱：[xuanyuv@163.com](mailto:xuanyuv@163.com)
-* 订阅：<https://www.xuanyuv.com/blog/feed.xml>
+* 邮箱：[{{ site.email }}](mailto:{{ site.email }})
+* 订阅：<{{ site.fullurl }}/blog/feed.xml>
 
 ## 收藏
 

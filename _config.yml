@@ -1,6 +1,6 @@
 # 指定启动Jekyll服务时的端口号，访问的地址为http://127.0.0.1:port/，不配置则默认为4000
 port: 2000
-exclude: ["_drafts", ".git", ".gitignore", ".jekyll-cache", "_site", "CNAME"]
+exclude: ["_drafts", ".git", ".gitignore", ".jekyll-cache", "_site", "CNAME", "README.md"]
 
 # 指定并配置Markdown解析器（2016年05月01日起，GitHubPages将只支持kramdown作为唯一的Markdown引擎）
 markdown: kramdown
@@ -13,6 +13,7 @@ kramdown:
 fullurl: "https://www.xuanyuv.com"
 title: 半步多
 brief-intro: "玄玉V笔记"
+description: "这是一个Java技术博客，同时也记录了如Linux等周边技术。"
 
 # footer下方显示的联系方式
 github_username: xuanyuv
