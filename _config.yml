@@ -11,8 +11,6 @@ kramdown:
 # the base hostname & protocol for your site
 # 配合页面头部<link rel="canonical" href="https://jadyer.cn/2016/10/17/first-blog/">
 url: "https://www.xuanyuv.com"
-# the subpath of your site, e.g. /blog
-baseurl: ""
 title: 半步多
 brief-intro: "玄玉V笔记"
 
@@ -30,7 +28,7 @@ plugins: [jekyll-paginate]
 paginate: 12
 
 # 博文的固定链接形式（若配置成/:categories/:title.html则表示按照/分类/文章.html生成链接）
-permalink: /:year/:month/:day/:title/
+permalink: /blog/:year/:month/:day/:title.html
 
 # 摘要分割符号（Jekyll在解析文章时便可提取摘要）
 excerpt_separator: "\n\n\n\n"
