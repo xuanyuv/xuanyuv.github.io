@@ -10,7 +10,7 @@ kramdown:
 
 # the base hostname & protocol for your site
 # 配合供搜索引擎使用的页面头部<link rel="canonical" href="https://www.xuanyuv.com/blog/2016/10/17/first-blog/">
-url: "https://www.xuanyuv.com"
+fullurl: "https://www.xuanyuv.com"
 title: 半步多
 brief-intro: "玄玉V笔记"
 
