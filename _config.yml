@@ -12,7 +12,7 @@ kramdown:
 # 配合页面头部<link rel="canonical" href="https://jadyer.cn/2016/10/17/first-blog/">
 url: "https://www.xuanyuv.com"
 # the subpath of your site, e.g. /blog
-baseurl: ""
+baseurl: "/blog"
 title: 半步多
 brief-intro: "玄玉V笔记"
 
