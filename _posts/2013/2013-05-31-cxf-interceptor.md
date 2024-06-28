@@ -186,7 +186,7 @@ public class User {
 
 客户端只有一个用于演示调用服务端的`ClientApp.Java`
 
-它是通过`CXF提供的wsdl2java`生成的，关于其用法，可参考[https://www.xuanyuv.com/2013/05/31/cxf-demo/](https://www.xuanyuv.com/2013/05/31/cxf-demo/)
+它是通过`CXF提供的wsdl2java`生成的，关于其用法，可参考<https://www.xuanyuv.com/blog/20130531/cxf-demo.html>
 
 ```java
 package com.xuanyuv.client;
@@ -197,7 +197,7 @@ import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import com.xuanyuv.interceptor.LicenseOutInterceptor;
 
 //wsdl2java -d D:/Download/ -frontend jaxws21 -keep -verbose http://127.0.0.1:8088/myHelloService?wsdl
-//wsdl2java命令与wsimport相似，wsimport简介详见https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/
+//wsdl2java命令与wsimport相似，wsimport简介详见https://www.xuanyuv.com/blog/20130319/jaxws-and-wsimport-demo.html
 public class ClientApp {
     public static void main(String[] args) {
         JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();

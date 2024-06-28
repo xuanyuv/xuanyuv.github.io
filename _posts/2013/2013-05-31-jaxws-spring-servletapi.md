@@ -412,7 +412,7 @@ public class ClientService {
     <bean id="myServerWebService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
         <!--
         记得首先还是要使用wsimport生成客户端代码，然后将接口类全路径写在serviceInterface的值里
-        关于wsimport的使用，可参考https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/
+        关于wsimport的使用，可参考https://www.xuanyuv.com/blog/20130319/jaxws-and-wsimport-demo.html
         wsimport -d D:/Download/ -keep -verbose http://127.0.0.1:8088/jaxws-spring/myService?wsdl
         -->
         <property name="serviceInterface" value="net.csdn.blog.xuanyuv.HelloService"/>
@@ -429,7 +429,7 @@ public class ClientService {
 
 最后是客户端调用服务端的模拟入口`ClientApp.java`
 
-它是通过wsimport生成的，关于其用法，可参考[https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/](https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/)
+它是通过wsimport生成的，关于其用法，可参考<https://www.xuanyuv.com/blog/20130319/jaxws-and-wsimport-demo.html>
 
 ```java
 package com.xuanyuv.client;

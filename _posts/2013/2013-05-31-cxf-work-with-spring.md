@@ -283,7 +283,7 @@ public class ClientService {
 
 最后是通过`CXF提供的wsdl2java`生成的，用于演示调用服务端的`ClientApp.Java`
 
-关于`wsdl2java`的用法，可参考[https://www.xuanyuv.com/2013/05/31/cxf-demo/](https://www.xuanyuv.com/2013/05/31/cxf-demo/)
+关于`wsdl2java`的用法，可参考<https://www.xuanyuv.com/blog/2013/05/31/cxf-demo.html>
 
 ```java
 package com.xuanyuv.client;
@@ -292,7 +292,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.xuanyuv.service.ClientService;
 
 //wsdl2java -d D:/Download/ -frontend jaxws21 -keep -verbose http://127.0.0.1:8088/myHelloService?wsdl
-//wsdl2java命令与wsimport相似，wsimport简介详见https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/
+//wsdl2java命令与wsimport相似，wsimport简介详见https://www.xuanyuv.com/blog/20130319/jaxws-and-wsimport-demo.html
 public class ClientApp {
     public static void main(String[] args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");

@@ -156,7 +156,7 @@ public class HelloHighLighter {
         String text = "我来自中国黑龙江省哈尔滨市巴彦县兴隆镇长春乡民权村4队";
         QueryParser parser = new QueryParser(Version.LUCENE_36, fieldName, new MMSegAnalyzer());
         try {
-            //这里用的是MMSeg4j中文分词器，有关介绍详见https://www.xuanyuv.com/2013/08/18/lucene-chinese-analyzer/
+            //这里用的是MMSeg4j中文分词器，有关介绍详见https://www.xuanyuv.com/blog/20130818/lucene-chinese-analyzer.html
             //MMSeg4j的new MMSegAnalyzer()默认只会对'中国'和'兴隆'进行分词，所以这里就只高亮它们俩了
             Query query = parser.parse("中国 兴隆");
             //针对查询出来的文本，查询其评分，以便于能够根据评分决定显示情况

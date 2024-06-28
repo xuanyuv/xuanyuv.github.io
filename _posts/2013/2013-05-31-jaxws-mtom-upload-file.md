@@ -115,7 +115,7 @@ import com.xuanyuv.service.BinaryServiceImpl;
  * 这里有必要提一下：当使用Apache的TcpMon监听MTOM时，由于JAXWS版本问题，可能会报告下面的异常
  * javax.xml.ws.WebServiceException: java.io.IOException: Error writing to server
  * 这时可以使用GoogleCode上的tcpmon或者Eclipse提供的TCP/IP Monitor
- * 有关三者的描述，可参考https://www.xuanyuv.com/2013/05/23/eclipse-tcpip-monitor/
+ * 有关三者的描述，可参考https://www.xuanyuv.com/blog/20130523/eclipse-tcpip-monitor.html
  * 好了，回归正题
  * 关于MTOM，有两种实现方式：传输byte[]和传输javax.activation.DataHandler
  * ---------------------------------------------------------------------------------------------------
@@ -156,7 +156,7 @@ public class ServerApp {
 
 客户端只有一个演示调用服务的类`ClientApp.java`
 
-这里是由wsimport生成的，关于其用法，可参考[https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/](https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/)
+这里是由wsimport生成的，关于其用法，可参考<https://www.xuanyuv.com/blog/20130319/jaxws-and-wsimport-demo.html>
 
 ```java
 package com.xuanyuv.client;

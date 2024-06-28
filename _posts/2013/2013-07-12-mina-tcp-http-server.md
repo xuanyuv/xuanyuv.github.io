@@ -598,7 +598,7 @@ public class ServerProtocolHTTPDecoder implements MessageDecoder {
 
     /**
      * 校验HTTP请求报文是否已完整接收（目前仅授理GET和POST请求）
-     * 关于HTTP请求的样例报文，可参考https://www.xuanyuv.com/2012/11/22/linux-crlf/
+     * 关于HTTP请求的样例报文，可参考https://www.xuanyuv.com/blog/20121122/linux-crlf.html
      * @param in 装载HTTP请求报文的IoBuffer
      */
     private boolean isComplete(IoBuffer in){

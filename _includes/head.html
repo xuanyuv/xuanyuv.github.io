@@ -3,11 +3,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Google 和 Baidu 站点收录配置 -->
-    <!-- https://search.google.com/search-console/welcome -->
-    <meta name="google-site-verification" content="MxJSZKo2T-4PXmdbLd-8uiMu1x1JsLfDFFmS3Z-JJsM" />
-    <!-- https://ziyuan.baidu.com/ -->
-    <meta name="baidu-site-verification" content="codeva-4VPtmVkV2E" />
+    <meta name="google-site-verification" content="{{ site.google-site-verification }}"/>
+    <meta name="baidu-site-verification" content="{{ site.baidu-site-verification }}"/>
 
     <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %} - {{site.brief-intro}}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">

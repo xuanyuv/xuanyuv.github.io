@@ -25,7 +25,7 @@ Checking monitor: must be configured to display at least 256 colors
 Check if the DISPLAY variable is set. Failed <<<<
 ```
 
-后来即便安装了图形界面（安装方法详见[https://www.xuanyuv.com/2014/01/15/centos-startx/](https://www.xuanyuv.com/2014/01/15/centos-startx/)），结果还是打印这个提示
+后来即便安装了图形界面（安装方法详见<https://www.xuanyuv.com/blog/20140115/centos-startx.html>），结果还是打印这个提示
 
 于是各种Google，弄了很多东西，其中有一次打印了下面的提示
 

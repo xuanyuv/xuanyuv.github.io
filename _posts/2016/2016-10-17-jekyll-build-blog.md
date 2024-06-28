@@ -273,7 +273,7 @@ New jekyll site installed in /app/www/blog.
 实际过程中，使用的思路就是：
 
 1. _config.yml 指定生成文章时忽略的文件或文件夹
-2. Linux 上[安装 Git](https://www.xuanyuv.com/2014/09/26/centos-install-apache/)
+2. Linux 上[安装 Git](https://www.xuanyuv.com/blog/20140926/centos-install-apache.html)
 3. Linux 上编写一个启动脚本（/app/www/xuanyuv.startup.sh）并运行
 4. Linux 上再弄一个 Nginx 来代理 Jekyll 服务
 5. 每次文章有更新时，通过 IntelliJ IDEA 触发 Linux 通过 git 拉取最新文章

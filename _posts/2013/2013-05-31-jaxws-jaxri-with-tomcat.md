@@ -117,7 +117,7 @@ public class HelloServiceImpl implements HelloService {
 
 客户端只有一个用于演示调用服务端的`ClientApp.Java`
 
-它是通过wsimport生成的，关于其用法，可参考[https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/](https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/)
+它是通过wsimport生成的，关于其用法，可参考<https://www.xuanyuv.com/blog/20130319/jaxws-and-wsimport-demo.html>
 
 ```java
 package com.xuanyuv.client;

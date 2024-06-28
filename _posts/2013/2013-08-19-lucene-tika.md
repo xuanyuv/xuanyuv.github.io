@@ -165,7 +165,7 @@ public class HelloTikaIndex {
         File myFile = new File("myExample/myFile/");
         try{
             //这里的分词器使用的是MMSeg4j（记得引入mmseg4j-all-1.8.5-with-dic.jar）
-            //详见https://www.xuanyuv.com/2013/08/18/lucene-chinese-analyzer/中对MMSeg4j的介绍
+            //详见https://www.xuanyuv.com/blog/20130818/lucene-chinese-analyzer.html中对MMSeg4j的介绍
             writer = new IndexWriter(directory, new IndexWriterConfig(Version.LUCENE_36, new ComplexAnalyzer()));
             writer.deleteAll();
             for(File file : myFile.listFiles()){

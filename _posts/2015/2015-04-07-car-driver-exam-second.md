@@ -23,7 +23,7 @@ excerpt: 记录了科目二考试通过的难忘瞬间。
 
 考试结果：同车共 4 名学员，除了我满分一杆过，其余 3 人都挂了
 
-科目三记录：[https://www.xuanyuv.com/2016/03/03/car-driver-exam-third/](https://www.xuanyuv.com/2016/03/03/car-driver-exam-third/)
+科目三记录：<https://www.xuanyuv.com/blog/20160303/car-driver-exam-third.html>
 
 
 ## 合场

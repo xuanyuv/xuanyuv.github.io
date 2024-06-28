@@ -313,7 +313,7 @@ public class HeaderHandler implements SOAPHandler<SOAPMessageContext> {
 
 最后是客户端调用服务端代码
 
-这里是由wsimport生成的，关于其用法，可参考[https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/](https://www.xuanyuv.com/2013/03/19/jaxws-and-wsimport-demo/)
+这里是由wsimport生成的，关于其用法，可参考<https://www.xuanyuv.com/blog/20130319/jaxws-and-wsimport-demo.html>
 
 ```java
 package com.xuanyuv.client;

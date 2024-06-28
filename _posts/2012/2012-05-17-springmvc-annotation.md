@@ -31,7 +31,7 @@ excerpt: 介绍了SpringMVC的常用配置，以及各种注解的用法。
     </context-param>
 
     <!-- 防止发生java.beans.Introspector内存泄露，应将它配置在ContextLoaderListener的前面 -->
-    <!-- 详细介绍见https://www.xuanyuv.com/20130924/spring-introspector-cleanup-listener/ -->
+    <!-- 详细介绍见https://www.xuanyuv.com/blog/20130924/spring-introspector-cleanup-listener.html -->
     <listener>
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
     </listener>

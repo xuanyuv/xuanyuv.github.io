@@ -59,7 +59,7 @@ AJP协议是为Tomcat与HTTP服务器之间通信而定制的协议，能够提�
 
 ## 配置Apache
 
-Apache的安装过程详见：[https://www.xuanyuv.com/2014/09/26/centos-install-apache/](https://www.xuanyuv.com/2014/09/26/centos-install-apache/)
+Apache的安装过程详见：<https://www.xuanyuv.com/blog/20140926/centos-install-apache.html>
 
 1. 修改/app/apache/conf/httpd.conf
 

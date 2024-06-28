@@ -160,7 +160,7 @@ public class LoginServletTest extends ServletTestCase {
 
 除公共部分的两个文件外，只需要写一个`JUnit3.8`的测试套件，就可以了
 
-**Tips：**关于JUnit测试套件，可参考我的另一篇博文[https://www.xuanyuv.com/2010/11/17/junit-suite-param/](https://www.xuanyuv.com/2010/11/17/junit-suite-param/)
+**Tips：**关于JUnit测试套件，可参考我的另一篇博文<https://www.xuanyuv.com/blog/20101117/junit-suite-param.html>
 
 ```java
 package com.xuanyuv.servlet;

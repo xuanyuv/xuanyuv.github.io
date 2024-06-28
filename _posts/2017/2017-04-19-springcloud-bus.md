@@ -11,7 +11,7 @@ excerpt: 本文演示了spring-cloud-starter-bus-amqp结合RabbitMQ搭建消息�
 {:toc}
 
 
-上一节的统一配置中心《[SpringCloud系列第08节之配置中心Config](https://www.xuanyuv.com/2017/04/17/springcloud-config/)》演示了属性热加载
+上一节的统一配置中心《[SpringCloud系列第08节之配置中心Config](https://www.xuanyuv.com/blog/20170417/springcloud-config.html)》演示了属性热加载
 
 其中提到，每次热加载属性时，都要逐次调用每个应用的 `/refresh` 接口（或者维护 Git 仓库的 Webhooks）来触发属性更新
 
@@ -68,7 +68,7 @@ D:\Develop\RabbitMQServer\rabbitmq_server-3.6.9\sbin>
 
 它是由四个模块组成的 Maven 工程，包含了一个注册中心、一个配置中心、两个读取了配置中心属性的服务提供方
 
-它是在上一节的统一配置中心《[SpringCloud系列第08节之配置中心Config](https://www.xuanyuv.com/2017/04/17/springcloud-config/)》的代码基础上改的
+它是在上一节的统一配置中心《[SpringCloud系列第08节之配置中心Config](https://www.xuanyuv.com/blog/20170417/springcloud-config.html)》的代码基础上改的
 
 由于改动不多，所以下面就只列出来各个改动点
 

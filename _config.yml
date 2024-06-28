@@ -15,6 +15,12 @@ title: 半步多
 brief-intro: "玄玉V笔记"
 description: "这是一个Java技术博客，同时也记录了如Linux等周边技术。"
 
+# Baidu 和 Google 站点收录配置
+# https://ziyuan.baidu.com/
+baidu-site-verification: codeva-4VPtmVkV2E
+# https://search.google.com/search-console/welcome
+google-site-verification: MxJSZKo2T-4PXmdbLd-8uiMu1x1JsLfDFFmS3Z-JJsM
+
 # footer下方显示的联系方式
 github_username: xuanyuv
 email: xuanyuv@163.com
