@@ -2,7 +2,7 @@
 layout: post
 title: "Prometheus结合Grafana搭建监控工具"
 categories: Linux
-tags: Linux
+tags: linux
 author: 玄玉
 excerpt: 通过开源软件Prometheus、Grafana搭建可以监控服务器、mysql、redis等等的监控系统。
 published: true

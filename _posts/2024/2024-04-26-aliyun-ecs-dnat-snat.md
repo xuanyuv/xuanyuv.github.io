@@ -2,7 +2,7 @@
 layout: post
 title: "简易跳板机连接内网服务器"
 categories: Linux
-tags: Linux ECS VPS 跳板机 SSH Tunnel
+tags: linux
 author: 玄玉
 excerpt: 针对无外网IP的服务器，介绍本地SSH连接的方法，以及它访问外网的方法等。
 published: true

@@ -2,7 +2,7 @@
 layout: post
 title: "SpringCloud系列第02节之注册中心Eureka"
 categories: SpringCloud
-tags: springcloud spring
+tags: springcloud
 author: 玄玉
 excerpt: 本文主要对Eureka做一个基本介绍，并演示一个小demo。
 ---

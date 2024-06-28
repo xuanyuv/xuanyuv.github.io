@@ -2,7 +2,7 @@
 layout: post
 title: "SpringCloud系列第09节之消息总线Bus"
 categories: SpringCloud
-tags: springcloud spring
+tags: springcloud
 author: 玄玉
 excerpt: 本文演示了spring-cloud-starter-bus-amqp结合RabbitMQ搭建消息总线，实现集群上应用读取的属性自动化更新。
 ---

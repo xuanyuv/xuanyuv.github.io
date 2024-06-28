@@ -2,7 +2,7 @@
 layout: post
 title: "SpringCloud系列第05节之服务消费Ribbon和Feign"
 categories: SpringCloud
-tags: springcloud spring
+tags: springcloud
 author: 玄玉
 excerpt: 本文演示了分别通过Ribbon和Feign两种方式实现，调用注册中心的服务的例子。
 ---

@@ -1,7 +1,7 @@
 .back-to-top {
     position: fixed;
     left: 50%;
-    margin-left: 580px;
+    margin-left: 41%;
     bottom: 37px;
     background-color: #f8f8fd;
     visibility: hidden;
@@ -29,7 +29,7 @@
 @media screen and (max-width:1200px) and (min-width: 770px) {
     .back-to-top {
         left: 50%;
-        margin-left: 45.5%;
+        margin-left: 45%;
     }
 }
 @media screen and (max-width: 770px) {

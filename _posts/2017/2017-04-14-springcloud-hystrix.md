@@ -2,7 +2,7 @@
 layout: post
 title: "SpringCloud系列第06节之断路器Hystrix"
 categories: SpringCloud
-tags: springcloud spring
+tags: springcloud
 author: 玄玉
 excerpt: 本文演示了客户端在Ribbon和Feign两种实现方式下的，断路器Hystrix的用法。
 ---

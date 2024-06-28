@@ -2,7 +2,7 @@
 layout: post
 title: "SpringCloud系列第08节之配置中心Config"
 categories: SpringCloud
-tags: springcloud spring
+tags: springcloud
 author: 玄玉
 excerpt: 本文演示了spring-cloud-config实现的统一配置中心示例。
 ---

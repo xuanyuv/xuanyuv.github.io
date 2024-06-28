@@ -2,7 +2,7 @@
 layout: post
 title: "小结扩容方案与负载均衡和吞吐量延迟"
 categories: 分布式
-tags: 分布式 扩容 lvs dns keepalived f5 nginx qps tps rt
+tags: 分布式
 author: 玄玉
 excerpt: 小小的总结一下常见的几种扩容方案、以及关于负载均衡的一些误区、和吞吐量延迟的一个形象的例子。
 published: true

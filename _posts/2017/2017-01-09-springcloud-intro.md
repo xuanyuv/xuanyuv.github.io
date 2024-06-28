@@ -2,7 +2,7 @@
 layout: post
 title: "SpringCloud系列第01节之入门"
 categories: SpringCloud
-tags: springcloud spring
+tags: springcloud
 author: 玄玉
 excerpt: 这是一个持续更新的一些关于SpringCloud周边的文章，比如它那不走寻常路的版本号，它里面各个组件的功能简介等。
 ---

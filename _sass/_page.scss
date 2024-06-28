@@ -15,7 +15,7 @@
     // word-break: break-all;
     .left {
         //width: 75%;
-        width: 80%;
+        width: 81%;
         float: left;
         padding: 20px 30px;
         line-height: 1.6;
@@ -94,8 +94,8 @@
     .right {
         float: left;
         //width: 25%;
-        width: 20%;
-        padding-left: 20px;
+        width: 19%;
+        padding-left: 25px;
         top: 0;
         .fixed {
             position: fixed;
@@ -147,7 +147,7 @@
 }
 @media screen and (max-width:1200px) and (min-width: 770px) {
     .page {
-        width: 90%;
+        width: 95%;
     }
 }
 @media screen and (max-width: 770px) {

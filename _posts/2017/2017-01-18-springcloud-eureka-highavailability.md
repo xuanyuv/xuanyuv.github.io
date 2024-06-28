@@ -2,7 +2,7 @@
 layout: post
 title: "SpringCloud系列第04节之注册中心Eureka高可用"
 categories: SpringCloud
-tags: springcloud spring
+tags: springcloud
 author: 玄玉
 excerpt: 本文是对Eureka高可用的一个介绍和演示。
 ---

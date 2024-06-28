@@ -2,7 +2,7 @@
 layout: post
 title: "SpringCloud系列第07节之服务网关Zuul"
 categories: SpringCloud
-tags: springcloud spring
+tags: springcloud
 author: 玄玉
 excerpt: 本文演示了Zuul实现的API-Gateway。
 ---
