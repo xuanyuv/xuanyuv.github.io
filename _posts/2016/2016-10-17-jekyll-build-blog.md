@@ -267,26 +267,77 @@ Running bundle install in /app/www/blog...
   Bundler: Use `bundle info [gemname]` to see where a bundled gem is installed.
 New jekyll site installed in /app/www/blog.
 [xuanyu@dev www]$ cd blog/
-[xuanyu@dev blog]$ jekyll serve -w --host=0.0.0.0
+[xuanyu@dev blog]$ jekyll serve -w --host=0.0.0.0 # 监听地址默认127.0.0.1，这样公网是访问不到的
 ```
 
-实际过程中，使用的思路就是：
+实际上的发布更新思路就是：
 
-1. _config.yml 指定生成文章时忽略的文件或文件夹
-2. Linux 上[安装 Git](https://www.xuanyuv.com/blog/20140926/centos-install-apache.html)
+1. Linux 上使用 Nginx 来代理 Jekyll 服务，并[安装 Git](https://www.xuanyuv.com/blog/20140926/centos-install-apache.html)
+2. 通过 _config.yml 指定生成文章时忽略的文件和文件夹
 3. Linux 上编写一个启动脚本（/app/www/xuanyuv.startup.sh）并运行
-4. Linux 上再弄一个 Nginx 来代理 Jekyll 服务
-5. 每次文章有更新时，通过 IntelliJ IDEA 触发 Linux 通过 git 拉取最新文章
+4. IntelliJ IDEA 上的 Alibaba Cloud Toolkit 插件来触发 Linux 使用 git 命令拉取最新文章
 
 下面就是启动脚本，以及，IntelliJ IDEA 上的 Alibaba Cloud Toolkit 插件的配置
 
+其中需要注意的是：
+
+* `jekyll serve` 命令执行时，若增加 `--detach` 参数，发现 `--watch` 会失效
+* 若执行完 `jekyll serve` 命令，就立即 `tail` 输出日志，发现 jekyll 进程会被停掉
+
 ```shell
 #!/bin/bash
-cd /app/www/xuanyuv.github.io/
-nohup jekyll serve -w > /app/www/xuanyuv.nohup.log 2>&1 &
+APP_NAME=jekyll
+APP_PATH=/app/www/xuanyuv.github.io/
+RUN__LOG=/app/www/xuanyuv.nohup.log
+
+appPID=0
+getAppPID(){
+    pidInfo=`ps aux|grep $APP_NAME|grep -v grep`
+    if [ -n "$pidInfo" ]; then
+        appPID=`echo $pidInfo | awk '{print $2}'`
+    else
+        appPID=0
+    fi
+}
+
+shutdown(){
+    getAppPID
+    echo ""
+    echo "[玄玉] =============================================================="
+    if [ $appPID -ne 0 ]; then
+        echo -n "[玄玉] Stopping $APP_NAME(PID=$appPID)..."
+        kill -9 $appPID
+        if [ $? -eq 0 ]; then
+            echo "[Success]"
+            echo "[玄玉] =============================================================="
+        else
+            echo "[Failed]"
+            echo "[玄玉] =============================================================="
+        fi
+        getAppPID
+        if [ $appPID -ne 0 ]; then
+            shutdown
+        fi
+    else
+        echo "[玄玉] $APP_NAME is not running"
+        echo "[玄玉] =============================================================="
+    fi
+    echo ""
+}
+
+startupByNohup(){
+    nohup $APP_NAME serve --watch > $RUN__LOG 2>&1 &
+    #tail -100f $RUN__LOG
+}
+
+shutdown
+cd $APP_PATH
+rm -rf _site
+git pull origin master
+startupByNohup
 ```
 
-![](https://cdn.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2016/2016-10-17-jekyll-build-blog-04.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2016/2016-10-17-jekyll-build-blog-04.png)
 
 ## Jekyll补充
 
@@ -317,7 +368,7 @@ nohup jekyll serve -w > /app/www/xuanyuv.nohup.log 2>&1 &
 
 若想手动刷新 jsDelivr 缓存，只需把链接中的 https://**cdn**.jsdelivr.net/ 替换成 https://**purge**.jsdelivr.net/ 即可
 
-> 如果jsdelivr暂时失效的话，可以尝试将URL中的cdn.jsdelivr.net换成以下地址<br/>
+> 如果 cdn.jsdelivr.net 暂时失效的话，可以尝试将URL中的 cdn.jsdelivr.net 换成以下地址<br/>
 gcore.jsdelivr.net<br/>
 fastly.jsdelivr.net<br/>
 testingcf.jsdelivr.net
