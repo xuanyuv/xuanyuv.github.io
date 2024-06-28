@@ -8,6 +8,11 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
+# 博文分页的配置
+# gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
+paginate: 12
+
 # the base hostname & protocol for your site
 # 配合供搜索引擎使用的页面头部<link rel="canonical" href="https://www.xuanyuv.com/blog/2016/10/17/first-blog/">
 fullurl: "https://www.xuanyuv.com"
@@ -25,17 +30,11 @@ google-site-verification: MxJSZKo2T-4PXmdbLd-8uiMu1x1JsLfDFFmS3Z-JJsM
 github_username: xuanyuv
 email: xuanyuv@163.com
 
-# 指定页面右侧分类和标签框的链接地址
-category_dir: category/
-tag_dir: tag/
-
-# 博文分页的配置
-# gems: [jekyll-paginate]
-plugins: [jekyll-paginate]
-paginate: 12
-
-# 博文的固定链接形式（若配置成/:categories/:title.html则表示按照/分类/文章.html生成链接）
-permalink: /blog/:year:month:day/:title.html
-
 # 摘要分割符号（Jekyll在解析文章时便可提取摘要）
 excerpt_separator: "\n\n\n\n"
+
+# 指定页面右侧分类和标签框的链接地址
+category_dir: blog/category/
+tag_dir: blog/tag/
+# 博文的固定链接形式（若配置成/:categories/:title.html则表示按照/分类/文章.html生成链接）
+permalink: /blog/:year:month:day/:title.html
