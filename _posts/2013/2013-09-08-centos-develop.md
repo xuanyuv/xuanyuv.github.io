@@ -258,6 +258,7 @@ http {
     keepalive_timeout   120;                      # 单位：s，设置客户端连接保持活动的超时时间，在超过这个时间后服务器会关闭该链接
     types_hash_max_size 4096;                     # 影响散列表的冲突率（默认为1024，其值越大，越会消耗更多的内存，但散列key的冲突率会降低，检索速度就更快）
     server_names_hash_bucket_size 512;            # 服务器名字的hash表大小
+    server_tokens       off;                      # 响应头中 [Server: nginx/1.24.0] 改为 [Server: nginx]
     include             mime.types;               # 文件扩展名与文件类型映射表
     default_type        application/octet-stream; # 默认文件类型
 

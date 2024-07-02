@@ -19,11 +19,11 @@ excerpt: 演示了FlyJSONP和jQuery分别实现跨域的异步请求的例子。
 
 ## FlyJSONP
 
-FlyJSONP是一个应用JSONP实现跨域请求的相当轻量级的JavaScript类库
+FlyJSONP 是一个应用 JSONP 实现跨域请求的相当轻量级的 JavaScript 类库
 
-它不依赖于任何JavaScript框架，只需要设置一些参数，便可实现跨域的POST和GET请求
+它不依赖于任何 JavaScript 框架，只需要设置一些参数，便可实现跨域的 POST 和 GET 请求
 
-它的官网为[https://alotaiba.github.io/FlyJSONP/](https://alotaiba.github.io/FlyJSONP/)
+它的官网为：<https://alotaiba.github.io/FlyJSONP/>
 
 用法举例如下
 
@@ -63,7 +63,7 @@ response.getWriter().print("{customState: 'hasCustomized'}");
 ## jQuery
 
 ```html
-<script src="//cdn.bootcss.com/jquery/1.7.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.2.3/jquery.min.js"></script>
 <script>
 //IE9.0.8112.16421和FireFox9.0.1上测试均通过
 //客户端请求时，必须提供回调函数名，并以参数形式放到请求的URL后面

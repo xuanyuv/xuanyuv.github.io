@@ -29,8 +29,8 @@ cas的页面显示控制是集中在`\WEB-INF\cas.properties`中的`cas.viewReso
 接下来就可以随意修改登录页面了
 
 > 注意：\WEB-INF\view\jsp\xuanyu\ui\includes\bottom.jsp页面中引用了googleapis的一些jquery库<br>
-可以换成百度CDN（[http://cdn.code.baidu.com](http://cdn.code.baidu.com)），比如[http://apps.bdimg.com/libs/jqueryui/1.10.2/jquery-ui.min.js](http://apps.bdimg.com/libs/jqueryui/1.10.2/jquery-ui.min.js)<br>
-或者Bootstrap中文网开源的免费CDN服务（[http://www.bootcdn.cn](http://www.bootcdn.cn)），比如[//cdn.bootcss.com/jqueryui/1.10.2/jquery-ui.min.js](//cdn.bootcss.com/jqueryui/1.10.2/jquery-ui.min.js)<br>
+可以换成百度CDN（[http://cdn.code.baidu.com](http://cdn.code.baidu.com)），比如<http://apps.bdimg.com/libs/jqueryui/1.10.2/jquery-ui.min.js><br>
+或者Bootstrap中文网开源的免费CDN服务：<http://www.bootcdn.cn/>，比如[//cdn.bootcss.com/jqueryui/1.10.2/jquery-ui.min.js](//cdn.bootcss.com/jqueryui/1.10.2/jquery-ui.min.js)
 
 ## 代码
 
