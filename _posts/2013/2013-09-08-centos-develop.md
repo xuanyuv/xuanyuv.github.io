@@ -276,6 +276,20 @@ http {
         default upgrade;
         '' close;
     }
+    
+    # 禁止通过IP的方式访问服务器（防止服务器被其它域名恶意解析）
+    # ssl_reject_handshake只对443有效，[return 444]对80和443都有效
+    # 像下面这种两个都配置时，443会优先采用ssl_reject_handshake（与二者配置的前后顺序无关）
+    # 所以：当访问https://IP/时，浏览器会看到：ERR_SSL_UNRECOGNIZED_NAME_ALERT
+    # 所以：当访问http://IP/时，浏览器会看到：ERR_EMPTY_RESPONSE
+    # 补充：经实测，可以不用配置[server_name _;]
+    server {
+        listen 80      default_server;
+        listen 443 ssl default_server;
+        access_log                off;
+        ssl_reject_handshake       on;
+        return                    444;
+    }
 
     server {
         listen 80;                                        # 监听端口
