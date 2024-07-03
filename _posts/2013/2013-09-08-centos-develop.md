@@ -282,8 +282,10 @@ http {
     # 像下面这种两个都配置时，443会优先采用ssl_reject_handshake（与二者配置的前后顺序无关）
     # 所以：当访问https://IP/时，浏览器会看到：ERR_SSL_UNRECOGNIZED_NAME_ALERT
     # 所以：当访问http://IP/时，浏览器会看到：ERR_EMPTY_RESPONSE
-    # 补充：经实测，可以不用配置[server_name _;]
     # 建议：该模块，配置在所有server模块的最前面（实测配置在中间或后面，也能生效）
+    # 补充：经实测，可以不用配置[server_name _;]
+    # 相关：https://shansing.com/read/519/
+    # 相关：https://www.cnblogs.com/walls/p/11324567.html
     server {
         listen 80      default_server;
         listen 443 ssl default_server;
