@@ -98,6 +98,40 @@ public static class Date extends SimpleTemplateVariableResolver {
 }
 ```
 
+## SVN版本信息的删除方法
+
+```
+# Eclipse中删除工程里面的 .svn 版本信息目录
+Project-->右键-->Team-->Disconnect...-->Also delete the SVN meta information from the file system.-->即可
+```
+
+更多的情况是：我们从 SVN Repository Checkout 代码或文档到本地硬盘
+
+这时，删除所检出的 .svn 版本信息目录，就可以使用下面的方法（本人亲测可用）
+
+```
+# 将下面的注册表代码保存为一个名字任意的 .reg 文件后，然后双击导入注册表
+# 接下来在所要删除的 .svn 的上级目录中右键，单击 Delete SVN Folders 即可
+
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\DeleteSVN]
+@="Delete SVN Folders"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\DeleteSVN\command]
+@="cmd.exe /c \"TITLE Removing SVN Folders in %1 && COLOR 9A && FOR /r \"%1\" %%f IN (.svn) DO RD /s /q \"%%f\" \""
+```
+
+如果担心哪天不小心会在其它的 svn 资料上右键点击到 Delete SVN Folders（后果有点严重）
+
+所以，我们可以去掉右键 Delete SVN Folders 的功能，方法如下：
+
+运行-->regedit（或者Win+R组合键-->regedit），然后依次找到下面的目录
+
+`[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\DeleteSVN]`
+
+再把 DeleteSVN 删除就行了
+
+现在，再对你的 svn 资料右键就会发现找不到 Delete SVN Folders 选项了
+
 ## SVN插件中英文互相转换
 
 修改`D:\Develop\eclipse\configuration\config.ini`文件，在其尾部添加如下属性即可
