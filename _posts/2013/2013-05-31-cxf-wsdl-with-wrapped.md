@@ -11,9 +11,9 @@ excerpt: 介绍Apache-CXF中通过手工编写XML的方式定义WSDL的各种细
 {:toc}
 
 
-它与`JAX-WS`的契约优先开发方式基本相同，不同在于：**CXF发布时要加两个参数**
+它与 `JAX-WS` 的契约优先开发方式基本相同，不同在于：**CXF发布时要加两个参数**
 
-关于`JAX-WS`的契约优先开发方式，详见<https://www.xuanyuv.com/blog/20130531/jaxws-build-wsdl-with-wrapped.html>
+关于 `JAX-WS` 的契约优先开发方式，详见<https://www.xuanyuv.com/blog/20130531/jaxws-wsdl-with-wrapped.html>
 
 下面开始演示代码编写
 

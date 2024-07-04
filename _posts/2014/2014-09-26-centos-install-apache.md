@@ -120,8 +120,7 @@ OpenSSL 3.0.14 4 Jun 2024 (Library: OpenSSL 3.0.14 4 Jun 2024)
 2. apache启动后通过电脑访问：[http://192.168.0.102/](http://192.168.0.102/)，发现无法访问（成功访问时页面会显示"It works!"）<br>
    解决办法是修改 /etc/sysconfig/iptables，增加一行：-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT<br>
    注意：这一样要添加到默认的22端口规则的下面，若添加到 iptables 文件的尾部，会有可能导致防火墙启动失败<br>
-   接着再执行：`service iptables restart`命令重启防火墙即可，不需要重启Linux<br>
-   详细原理描述见：<https://www.xuanyuv.com/blog/20130907/centos-config-develop.html>)
+   接着再执行：`service iptables restart`命令重启防火墙即可，不需要重启Linux
 3. /app/apache/htdocs/ 中默认的 index.html 不存在时，访问apache会显示 htdocs 目录下的文件列表<br>
    我们可以设置其不显示文件列表<br>
    解决办法是修改 /app/apache/conf/httpd.conf，注释掉**Options Indexes FollowSymLinks**这一行即可<br>

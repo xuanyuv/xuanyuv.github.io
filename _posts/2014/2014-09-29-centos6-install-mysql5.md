@@ -144,8 +144,7 @@ skip-name-resolve
    并且：这里授权是授权所有权限，当然也可以指定部分权限，详见官方文档[http://dev.mysql.com/doc/refman/5.5/en/grant.html](http://dev.mysql.com/doc/refman/5.5/en/grant.html)
 8. 通过以上操作，若客户端仍无法连接MySQL，可尝试以下办法<br>
    修改`/etc/sysconfig/iptables`，增加一行：`-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT`<br>
-   接着再执行`service iptables restart`命令重启防火墙即可，不需要重启Linux<br>
-   详细原理见：<https://www.xuanyuv.com/blog/20130907/centos-config-develop.html>
+   接着再执行`service iptables restart`命令重启防火墙即可，不需要重启Linux
 
 ## 编译选项
 

@@ -22,7 +22,7 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现负
 1. 修改端口（由于我是在一台机器上复制多个tomcat，所以需要修改端口，如果是不同的机器就可以跳过这一步）
 
     > ```sh
-[root@dev app]# vi tomcat/conf/server.xml  # 修改8005为-1，原因详见https://www.xuanyuv.com/blog/20140927/tomcat-telnet-shutdown.html
+[root@dev app]# vi tomcat/conf/server.xml  # 修改8005为-1，原因详见https://www.xuanyuv.com/blog/20140926/tomcat-telnet-shutdown.html
 [root@dev app]# cp -a tomcat tomcat1
 [root@dev app]# cp -a tomcat tomcat2
 [root@dev app]# cp -a tomcat tomcat3
