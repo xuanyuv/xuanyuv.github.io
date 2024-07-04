@@ -447,4 +447,4 @@ public class DemoController {
 
 属性热加载前，都要手工调用各个应用的刷新接口，即便使用 Git 仓库的 Webhooks，维护起来也够费劲的
 
-解决办法也有，详见下一篇文章《[SpringCloud系列第09节之消息总线Bus](https://www.xuanyuv.com/blog/20170419/springcloud-bus.html>)》中通过消息总线的方式，实现集群的自动更新
+解决办法也有，详见下一篇文章《[SpringCloud系列第09节之消息总线Bus](https://www.xuanyuv.com/blog/20170419/springcloud-bus.html)》中通过消息总线的方式，实现集群的自动更新

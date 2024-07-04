@@ -283,7 +283,7 @@ public class ClientService {
 
 最后是通过`CXF提供的wsdl2java`生成的，用于演示调用服务端的`ClientApp.Java`
 
-关于`wsdl2java`的用法，可参考<https://www.xuanyuv.com/blog/2013/05/31/cxf-demo.html>
+关于`wsdl2java`的用法，可参考<https://www.xuanyuv.com/blog/20130531/cxf-demo.html>
 
 ```java
 package com.xuanyuv.client;

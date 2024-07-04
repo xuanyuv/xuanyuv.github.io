@@ -19,9 +19,9 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现负
 
 ## 配置负载均衡
 
-1. 修改端口（由于我是在一台机器上复制多个tomcat，所以需要修改端口，如果是不同的机器就可以跳过这一步）
+首先：修改端口（由于我是在一台机器上复制多个tomcat，所以需要修改端口，如果是不同的机器就可以跳过这一步）
 
-    > ```sh
+```shell
 [root@dev app]# vi tomcat/conf/server.xml  # 修改8005为-1，原因详见https://www.xuanyuv.com/blog/20140926/tomcat-telnet-shutdown.html
 [root@dev app]# cp -a tomcat tomcat1
 [root@dev app]# cp -a tomcat tomcat2
@@ -31,9 +31,9 @@ excerpt: 介绍了CentOS-6.4-minimal版中Apache-2.2.29与Tomcat-6.0.41实现负
 [root@dev app]# vi tomcat3/conf/server.xml # 修改ssl端口和ajp端口为8743和8309，即分别+300
 ```
 
-2. 修改/app/apache/conf/workers.properties，修改后的内容如下
+其次：修改/app/apache/conf/workers.properties，修改后的内容如下
 
-    > ```ruby
+```properties
 worker.list=status,tomcatlb
 worker.status.type=status
 worker.tomcat1.port=8109
@@ -53,13 +53,15 @@ worker.retries=6                                          # 通信失败时的�
 worker.tomcatlb.balanced_workers=tomcat1,tomcat2,tomcat3  # 参与负载均衡的Web服务器
 ```
 
-3. 修改/app/apache/conf/extra/httpd-vhosts.conf：将默认的tomcat改为tomcatlb（即指定所有请求交由tomcatlb处理）
+最后：修改/app/apache/conf/extra/httpd-vhosts.conf：将默认的tomcat改为tomcatlb（即指定所有请求交由tomcatlb处理）
 
 ## 测试负载均衡
 
-启动apache和三个tomcat，便可通过jkstatus看到参与负载均衡的三个tomcat和一些参数（也可通过jkstatus修改负载均衡参数）
+启动 apache 和 3 个 tomcat
 
-*关于jkstatus的配置和使用*，详见：<https://www.xuanyuv.com/blog/20140927/tomcat-apache-jk.html#jk-1>
+便可通过 jkstatus 看到参与负载均衡的 3 个 tomcat 和一些参数（也可通过 jkstatus 修改负载均衡参数）
+
+*关于 jkstatus 的配置和使用*，详见：<https://www.xuanyuv.com/blog/20140927/tomcat-apache-jk.html>
 
 接下来就可以测试负载均衡效果了，测试代码如下
 
@@ -104,9 +106,9 @@ while(e.hasMoreElements()){
 
 关于workers.properties的更多属性说明，可参考以下两个网址
 
-[http://tomcat.apache.org/connectors-doc/reference/workers.html](http://tomcat.apache.org/connectors-doc/reference/workers.html)
+<http://tomcat.apache.org/connectors-doc/reference/workers.html>
 
-[http://blog.csdn.net/chumeng411/article/details/7541767](http://blog.csdn.net/chumeng411/article/details/7541767)
+<http://blog.csdn.net/chumeng411/article/details/7541767>
 
 另外补充两个待验证的workers属性描述
 
