@@ -290,6 +290,53 @@ GROUP BY t.id;
 -- 注：这样修改，也只是这一次的会话有效（若想永久有效，就得修改配置文件）
 ```
 
+## 查询所有的父子级
+
+| id  | pid | name |
+|:----|:----|:-----|
+| 80  | 0   | 系统管理 |
+| 113 | 80  | 租户管理 |
+| 115 | 113 | 我的租户 |
+| 126 | 115 | 租户查看 |
+| 127 | 115 | 租户编辑 |
+
+```sql
+-- 基于上面的表结构和数据：查询所有的父级（包含自身），查询结果如下
+-- +-----+--------+---------------+
+-- |index|identity|parent_identity|
+-- +-----+--------+---------------+
+-- |1    |126     |115            |
+-- |2    |115     |113            |
+-- |3    |113     |80             |
+-- |4    |80      |0              |
+-- +-----+--------+---------------+
+SELECT
+       @idx := @idx + 1                                         AS `index`,
+       @id                                                      AS identity,
+       (SELECT @id := pid FROM t_menu_info WHERE id = identity) AS parent_identity
+FROM
+     t_menu_info mi,
+     (SELECT @idx := 0, @id := 126) vars
+WHERE
+      @id != 0 AND pid > 0;
+
+-- 基于上面的表结构和数据：查询所有的子级（不包含自身），查询结果如下
+-- +---+
+-- |id |
+-- +---+
+-- |115|
+-- |127|
+-- |126|
+-- +---+
+SELECT
+       id
+FROM
+     t_menu_info mi,
+     (SELECT @id :=113) vars
+WHERE
+      FIND_IN_SET(pid, @id) > 0 AND @id := concat(@id, ',', id);
+```
+
 ## 数据的备份与恢复
 
 物理备份除了要拷贝 mysql_data 目录下的数据库文件夹，还要处理 mysql.ibd 文件，比较繁琐且易出错
