@@ -172,7 +172,7 @@ systemctl restart iptables.service
    service iptables restart
    # 重启内网机器的防火墙后，再到跳板机上执行：curl http://192.168.0.1:1400/，就会发现它是通的了
    ```
-3. 浏览器添加 [SwitchyOmega](https://switchyomega.org/) 或者 SmartProxy 插件，其代理信息也即跳板机的信息（**SOCKS5://127.0.0.1:1080/**）
+3. 浏览器添加 [SwitchyOmega](https://switchyomega.org/) 或者 SmartProxy 插件，代理信息也即跳板机信息（**SOCKS5://127.0.0.1:1080/**）
 
 这样就可以了
 
