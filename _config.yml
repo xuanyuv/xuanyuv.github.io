@@ -12,6 +12,7 @@ kramdown:
 # gems: [jekyll-paginate]
 plugins: [jekyll-paginate]
 paginate: 12
+paginate_path: "blog/page:num/"
 
 # 供搜索引擎使用的标签<link rel="canonical">
 fullurl: https://www.xuanyuv.com
