@@ -16,13 +16,19 @@ published: true
 
 ## Windows环境
 
-### 安装Ruby
+### 安装Jekyll
+
+我们要先安装 Ruby
 
 Windows 用户访问 <http://rubyinstaller.org/> 下载 149MB 大小的 [rubyinstaller-devkit-3.0.3-1-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.3-1/rubyinstaller-devkit-3.0.3-1-x64.exe)
 
-安装时注意勾选 `Add Ruby executables to your PATH`，没选的话可以手工配置一下 `Path=D:\Develop\Ruby30-x64\bin;...`
+安装时注意勾选 `Add Ruby executables to your PATH`
 
-安装完成后，按照提示再安装 MSYS2（在弹出的窗口选择 3 - MSYS2 and MINGW development toolchain）（这个耗时有点长，慢慢等待...）
+没选的话可以手工配置一下 `Path=D:\Develop\Ruby30-x64\bin;...`
+
+安装完成后，按照提示再安装 MSYS2（在弹出的窗口选择 3 - MSYS2 and MINGW development toolchain）
+
+（这个耗时有点长，慢慢等待...）
 
 最后，在命令提示符中验证一下安装结果
 
@@ -31,9 +37,7 @@ C:\Users\xuanyu>ruby -v
 ruby 3.0.3p157 (2021-11-24 revision 3fb7d2cadc) [x64-mingw32]
 ```
 
-### 安装Jekyll
-
-这里通过 RubyGems 安装 Jekyll，所以先到官网 <https://rubygems.org/> 下载 1.52MB 大小的[rubygems-3.3.3.zip](https://rubygems.org/rubygems/rubygems-3.3.3.zip)
+然后通过 RubyGems 安装 Jekyll，所以先到官网 <https://rubygems.org/> 下载 1.52MB 大小的[rubygems-3.3.3.zip](https://rubygems.org/rubygems/rubygems-3.3.3.zip)
 
 接着解压压缩包到桌面，并在命令提示符中执行安装命令
 
@@ -55,7 +59,7 @@ RubyGems installed the following executables:
 D:\Develop\rubygems-3.3.3>
 ```
 
-然后删掉 rubygems-3.3.3 文件夹，它没用了
+再删掉 rubygems-3.3.3 文件夹，它没用了
 
 **下面进入正题：用 RubyGems 来安装 Jekyll**（这个耗时也有点长...）
 
@@ -78,9 +82,9 @@ C:\Users\xuanyu>
 
 ### 创建博客
 
-先建一个文件夹（这里命名为 Jekyll）用于存放博客内容，然后在命令提示符中执行以下命令创建 Jekyll 工作区
+先建一个文件夹（这里命名为 Jekyll）存放博客内容，然后在命令提示符中执行以下命令创建 Jekyll 工作区
 
-注：执行完命令后，若过了一段时间控制台还是没有动静，不妨敲一下回车（堵了，执行结果没有输出在控制台上）
+注：执行完命令后，如果控制台长时间没有动静，不妨敲一下回车（堵了，执行结果没有输出在控制台上）
 
 ```
 D:\Develop\Code\Jekyll>jekyll new myblog
@@ -199,6 +203,8 @@ C:\Users\xuanyu>
 
 上面介绍的的 Windows 环境下的安装配置，其实 Linux 下的也不复杂，步骤都一样
 
+### 安装Jekyll
+
 这里是通过源码来编译安装的（服务器是阿里云 ECS，操作系统是 CentOS-7.9.2009）
 
 首先下载 21MB 大小的 [ruby-3.3.3.tar.gz](https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.3.tar.gz)，官方地址下载的有点慢，[可以在这下载](https://cache.ruby-china.com/pub/ruby/3.3/ruby-3.3.3.tar.xz)
@@ -270,19 +276,20 @@ New jekyll site installed in /app/www/blog.
 [xuanyu@dev blog]$ jekyll serve -w --host=0.0.0.0 # 监听地址默认127.0.0.1，这样公网是访问不到的
 ```
 
-实际上的发布更新思路就是：
+### 发布博客
 
-1. Linux 上使用 Nginx 来代理 Jekyll 服务，并[安装 Git](https://www.xuanyuv.com/blog/20140926/centos-install-apache.html)
-2. 通过 _config.yml 指定生成文章时忽略的文件和文件夹
-3. Linux 上编写一个启动脚本（/app/www/xuanyuv.startup.sh）并运行
-4. IntelliJ IDEA 上的 Alibaba Cloud Toolkit 插件来触发 Linux 使用 git 命令拉取最新文章
+这里的发布思路就是：
 
-下面就是启动脚本，以及，IntelliJ IDEA 上的 Alibaba Cloud Toolkit 插件的配置
+1. 停止 Jekyll 服务
+2. 删除 _site（生成的文章目录）
+3. 通过 [Git](https://www.xuanyuv.com/blog/20140926/centos-install-apache.html) 拉取最新的文章
+4. 启动 Jekyll 服务
 
-其中需要注意的是：
+然后再在前面使用 Nginx 代理 Jekyll 服务，就可以访问了
 
-* `jekyll serve` 命令执行时，若增加 `--detach` 参数，发现 `--watch` 会失效
-* 若执行完 `jekyll serve` 命令，就立即 `tail` 输出日志，发现 jekyll 进程会被停掉
+本地发布的话，可以通过 IntelliJ IDEA 上的 Alibaba Cloud Toolkit 插件，来触发远程脚本执行
+
+下面就是启动脚本：**/app/www/xuanyuv.startup.sh**，以及，Alibaba Cloud Toolkit 插件的配置
 
 ```shell
 #!/bin/bash
@@ -325,6 +332,8 @@ shutdown(){
     echo ""
 }
 
+# 注意：jekyll serve 命令执行时，若增加 --detach 参数，发现 --watch 会失效
+# 注意：若执行完 jekyll serve 命令，就立即 tail 输出日志，发现 jekyll 进程会被停掉
 startupByNohup(){
     nohup $APP_NAME serve --watch > $RUN__LOG 2>&1 &
     #tail -100f $RUN__LOG
