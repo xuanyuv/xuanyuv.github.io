@@ -372,4 +372,4 @@ startupByNohup
 gcore.jsdelivr.net<br/>
 fastly.jsdelivr.net<br/>
 testingcf.jsdelivr.net<br/>
-另外：js和css等静态文件的CDN，可以参考https://blog.akass.cn/resources/mirrors（bootcdn和staticfile已被污染）
+另外：js和css等静态文件的CDN，可以参考<https://blog.akass.cn/resources/mirrors>（bootcdn和staticfile已被污染）
