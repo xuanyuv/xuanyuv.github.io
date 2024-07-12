@@ -71,7 +71,7 @@ WebRoot
  -->
 <link type="text/css" rel="stylesheet" href="./js/zTree/css/demo.css">
 <link type="text/css" rel="stylesheet" href="./js/zTree/css/zTreeStyle.css">
-<script src="https://cdn.bootcss.com/jquery/1.2.3/jquery.min.js"></script>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-99-y/jquery/1.2.3/jquery.min.js" type="application/javascript"></script>
 <script src="./js/zTree/jquery.ztree.all-3.5.min.js"></script>
 
 <script>

@@ -371,4 +371,5 @@ startupByNohup
 > 如果 cdn.jsdelivr.net 暂时失效的话，可以尝试将URL中的 cdn.jsdelivr.net 换成以下地址<br/>
 gcore.jsdelivr.net<br/>
 fastly.jsdelivr.net<br/>
-testingcf.jsdelivr.net
+testingcf.jsdelivr.net<br/>
+另外：js和css等静态文件的CDN，可以参考https://blog.akass.cn/resources/mirrors（bootcdn和staticfile已被污染）

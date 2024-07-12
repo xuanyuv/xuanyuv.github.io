@@ -46,7 +46,7 @@ excerpt: 介绍如何实现网页在不同浏览器下的声音自动播放功�
     <title>网页自动播放声音</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <script src="//cdn.bootcss.com/jquery/1.2.3/jquery.min.js"></script>
+    <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-99-y/jquery/1.2.3/jquery.min.js" type="application/javascript"></script>
 </head>
 <script>
 //这里参考了以下两个站点的介绍

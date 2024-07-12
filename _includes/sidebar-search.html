@@ -25,17 +25,17 @@
 </style>
 
 <!--
-<script src="/js/jekyll-search.min.js" charset="utf-8"></script>
+<script src="/js/simple-jekyll-search.min.js" charset="utf-8"></script>
 <script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script>
 -->
-<script src="https://cdn.bootcdn.net/ajax/libs/simple-jekyll-search/1.9.2/simple-jekyll-search.min.js"></script>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-99-y/simple-jekyll-search/1.9.2/simple-jekyll-search.min.js" type="application/javascript"></script>
 <script type="text/javascript">
 // Simple-Jekyll-Search是个开源项目，托管在https://github.com/christian-fei/Simple-Jekyll-Search
 SimpleJekyllSearch({
     searchInput          : document.getElementById('search_box'),                  // 监听输入框（只要输入框的值发生变化，搜索结果的容器也发生变化）
     resultsContainer     : document.getElementById('search_results'),              // 存放搜索结果的容器（一般是ul）
     searchResultTemplate : '<li><a href="{url}" target="_blank">{title}</a></li>', // 设置搜索结果的每一项的渲染方式
-    json                 : '/js/jekyll-search-data.json',                          // 该文件的作用是生成搜索的数据索引
+    json                 : '/js/simple-jekyll-search-data.json',                          // 该文件的作用是生成搜索的数据索引
     noResultsText        : 'No results found',                                     // 无搜索数据提示语
     limit                : 8,                                                      // 返回最多文章数
     fuzzy                : false                                                   // 是否模糊匹配
