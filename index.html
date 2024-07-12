@@ -70,7 +70,7 @@ $(document).ready(function() {
               <span class="page_number ">{{ paginator.page }}/{{ paginator.total_pages }}</span>
               {% if paginator.next_page %}
                 <a href="{{ paginator.next_page_path }}" class="next"><i class="fa fa-angle-right"></i></a>
-                <a href="/blog/page{{ paginator.total_pages }}" class="next"><i class="fa fa-angle-double-right"></i></a>
+                <a href="/blog/page{{ paginator.total_pages }}/" class="next"><i class="fa fa-angle-double-right"></i></a>
               {% else %}
                 <span class="next disable"><i class="fa fa-angle-right"></i></span>
                 <span class="next disable"><i class="fa fa-angle-double-right"></i></span>
