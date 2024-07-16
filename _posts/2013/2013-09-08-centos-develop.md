@@ -548,6 +548,8 @@ su xuanyu -c "/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start"   #
 
 ### 修改Maven配置
 
+下面是 settings.xml
+
 ```xml
 <localRepository>D:/Develop/Code/repo_mvn</localRepository>
 
@@ -570,9 +572,7 @@ su xuanyu -c "/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start"   #
 </mirror>
 ```
 
-对于 settings.xml 而已，仅此三项即可（不用配置<profile>）
-
-对于 pom.xml 而言，需要配置项如下：
+下面是 pom.xml
 
 ```xml
 <repositories>
