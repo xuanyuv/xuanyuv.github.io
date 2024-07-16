@@ -28,6 +28,7 @@ type: page
 
 ## 站点
 
+* [Soybean管理系统](https://soybeanjs.cn/)
 * [类UI](https://layui.dev/)
 * [云沙箱](https://s.threatbook.com/)
 * [LiteFlow国产开源规则引擎](https://liteflow.cc/)
