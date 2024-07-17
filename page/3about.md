@@ -31,6 +31,7 @@ type: page
 * [Soybean管理系统](https://soybeanjs.cn/)
 * [类UI](https://layui.dev/)
 * [云沙箱](https://s.threatbook.com/)
+* [Spring项目发布日历](https://calendar.spring.io/)
 * [LiteFlow国产开源规则引擎](https://liteflow.cc/)
 * [warm-flow国产开源工作流引擎](http://warm-flow.cn/)
 * [Dromara社区](https://gitee.com/dromara)
