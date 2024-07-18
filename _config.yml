@@ -20,7 +20,9 @@ title: 半步多
 brief-intro: 玄玉V笔记
 description: 这是一个Java技术博客，同时也记录了如Linux等周边技术。
 
-# Baidu 和 Google 站点收录配置
+# Bing 和 Baidu 和 Google 站点收录配置
+# https://www.bing.com/toolbox/webmaster/
+bing-msvalidate: 4FBCCBEB794070451660FC7DC893B24E
 # https://ziyuan.baidu.com/
 baidu-site-verification: codeva-4VPtmVkV2E
 # https://search.google.com/search-console/welcome
