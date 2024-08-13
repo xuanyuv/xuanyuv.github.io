@@ -263,8 +263,8 @@ http {
     default_type        application/octet-stream; # 默认文件类型
 
     ssl_protocols       TLSv1.2;
-    ssl_certificate     xuanyu.cn.pem;
-    ssl_certificate_key xuanyu.cn.key;
+    ssl_certificate     xuanyuv.com.pem;
+    ssl_certificate_key xuanyuv.com.key;
     ssl_session_cache   shared:SSL:10m;
     ssl_session_timeout 10m;
     ssl_prefer_server_ciphers on;
@@ -296,14 +296,14 @@ http {
 
     server {
         listen 80;                                        # 监听端口
-        server_name xuanyu.cn www.xuanyu.cn;              # 域名可以有多个，用空格隔开
+        server_name xuanyuv.com www.xuanyuv.com;          # 域名可以有多个，用空格隔开
         # rewrite ^(.*) https://$server_name$1 permanent; # HTTP 自动跳转 HTTPS
-        rewrite ^(.*) https://www.xuanyu.cn/ permanent;   # HTTP 自动跳转 HTTPS
+        rewrite ^(.*) https://www.xuanyuv.com/ permanent; # HTTP 自动跳转 HTTPS
     }
 
     server {
         listen 443 ssl;
-        server_name xuanyu.cn www.xuanyu.cn;
+        server_name xuanyuv.com www.xuanyuv.com;
         # location 是有顺序的，当一个请求有可能匹配多个 location 时，该请求会被第一个 location 处理
         location / {
             root /app/software/nginx-1.24.0/html;
@@ -330,7 +330,7 @@ http {
 ```text
 server {
     listen 443 ssl;
-    server_name gw.xuanyu.cn;
+    server_name gw.xuanyuv.com;
     location / {
         proxy_pass       http://192.168.0.1:1099/;
         proxy_set_header Host              $http_host;
@@ -349,7 +349,7 @@ server {
 
 server {
     listen 443 ssl;
-    server_name sso.xuanyu.cn;
+    server_name sso.xuanyuv.com;
     location / {
         proxy_pass       http://192.168.0.1:1100/;
     }
@@ -357,7 +357,7 @@ server {
 
 server {
     listen 443 ssl;
-    server_name m.xuanyu.cn;
+    server_name m.xuanyuv.com;
     location / {
         proxy_pass       http://192.168.0.1:7789/;
         client_max_body_size    50M;
@@ -367,10 +367,10 @@ server {
 
 server {
     listen 443 ssl;
-    server_name home.xuanyu.cn;
+    server_name home.xuanyuv.com;
     # check client is pc or mobile
     if ($http_user_agent ~* (mobile|nokia|iphone|ipad|android|samsung|htc|blackberry)) {
-         rewrite  ^(.*)    https://m.xuanyu.cn/ permanent;
+         rewrite  ^(.*)    https://m.xuanyuv.com/ permanent;
     }
     location / {
         proxy_pass       http://192.168.0.1:7788/;
