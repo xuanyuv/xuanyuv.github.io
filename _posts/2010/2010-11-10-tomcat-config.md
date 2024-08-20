@@ -11,6 +11,19 @@ excerpt: 列举了几个常用的Tomcat配置。
 {:toc}
 
 
+## 启动
+
+```shell
+[xuanyu@dev bin]$ pwd
+/app/software/apache-tomcat-10.1.28/bin
+[xuanyu@dev bin]$ vim startuptomcat.sh
+#!/bin/sh
+cd /app/software/apache-tomcat-10.1.28/bin/
+nohup ./startup.sh > nohup.log 2>&1 &
+[xuanyu@dev bin]$ chmod 755 *.sh
+[xuanyu@dev bin]$
+```
+
 ## 配置端口
 
 修改 /apache-tomcat-6.0.20/conf/server.xml 文件第67行，改为如下内容
