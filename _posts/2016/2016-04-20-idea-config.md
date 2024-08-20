@@ -143,15 +143,17 @@ settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---8
 
 ### 编辑器之代码字体
 
-用的是网上推荐的 Yahei Consolas Hybrid 字体，下载地址如下
+**推荐 idea 自带的 JetBrains Mono 字体，这也是一款真等宽的字体**
+
+以前用的是网上推荐的 Yahei Consolas Hybrid 字体（实际它不是真等宽字体），下载地址如下
 
 <https://gitee.com/a42/YaHei-Consolas-Hybrid-1.12>
 
 <https://github.com/GitHubNull/YaHei-Consolas-Hybrid-1.12>
 
-之前的两种安装方法：双击 ttf 文件再点击安装按钮，或把 ttf 文件拷贝到 C:\Windows\Fonts\ 目录
+常规的两种安装方法是：双击 ttf 文件再点击安装按钮，或把 ttf 文件拷贝到 C:\Windows\Fonts\ 目录
 
-但新版 Win10 有一个特性是：默认安装字体只是给当前用户安装的，而 2018.3 无法良好的适配该特性，导致获取不到新安装字体
+但新版 Win10 有一个特性：默认安装字体只是给当前用户安装的，而 2018.3 无法良好的适配该特性，导致获取不到新安装字体
 
 解决办法就是：右键 ttf 文件，选择为所有用户安装即可
 
