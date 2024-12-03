@@ -38,7 +38,6 @@ type: page
 * [勇芳软件](http://wwx.yfvb.com/)
 * [KLBLOG](http://www.kailing.pub)
 * [程序猿DD](http://blog.didispace.com)
-* [狗头军师](https://wflynn.cn/)
 * [并发编程网](http://ifeve.com)
 * [存在码文档](https://cunzaima.cn/)
 * [银保监](http://www.cbirc.gov.cn)
