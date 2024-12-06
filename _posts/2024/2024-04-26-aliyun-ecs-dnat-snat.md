@@ -261,11 +261,19 @@ shutdown(){
 }
 
 startupByNohup(){
-    # 这里要写 java 全路径，因为在跳板机上通过远程 ssh 过来的请求，会识别不到内网机器的环境变量
+    # 这里要写 java 全路径，因为在跳板机上通过远程 ssh 过来的请求，会识别不到内网机器的[系统环境变量]
     # 使得跳板机上报告下面的错误（相应的，内网机器上，也就启动应用失败）
     # nohup: failed to run command ‘java’: No such file or directory
     nohup /app/software/jdk-21.0.3/bin/java $JAVA_OPTS -jar -Dspring.profiles.active=prod $APP_NAME > nohup.log 2>&1 &
     tail -100f nohup.log
+    # 还有一种解决办法：就是把启动所需的环境变量，写在目标服务器的[/home/当前用户/.bashrc]上面，这样sshpass是能够使用到的
+    # vim /home/xuanyu/.bashrc
+    # # Set Java Environment Variable
+    # JAVA_HOME=/app/software/jdk-21.0.3/
+    # PATH=$JAVA_HOME/bin:$PATH
+    # export JAVA_HOME PATH
+    # # Jasypt
+    # export JASYPT_ENCRYPTOR_PASSWORD=pas.xuanyuv.com
 }
 
 cd $APP_PATH
