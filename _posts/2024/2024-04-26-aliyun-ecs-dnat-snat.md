@@ -266,7 +266,8 @@ startupByNohup(){
     # nohup: failed to run command ‘java’: No such file or directory
     nohup /app/software/jdk-21.0.3/bin/java $JAVA_OPTS -jar -Dspring.profiles.active=prod $APP_NAME > nohup.log 2>&1 &
     # nohup java $JAVA_OPTS -jar -Dspring.profiles.active=prod $APP_NAME > nohup.log 2>&1 &
-    # 还有一种解决办法：把启动所需的环境变量，写在目标服务器的[/home/当前用户/.bashrc]，这样sshpass是能够使用到的
+    # 有一种解决办法是：把启动所需的环境变量，写在目标服务器的[/home/当前用户/.bashrc]，这样sshpass是能够使用到的
+    # 详细介绍见：https://www.cnblogs.com/zhenyuyaodidiao/p/9287497.html
     # vim /home/xuanyu/.bashrc
     # # Set Java Environment Variable
     # JAVA_HOME=/app/software/jdk-21.0.3/
