@@ -15,12 +15,11 @@ excerpt: 介绍常用的Linux命令。
 
 `curl -X POST -H "Content-Type: application/json" -d '{"tenantId":"0"}' "http://127.0.0.1:2000/mpp/syncFans"`
 
-`zip -9r mpp.201305090010.zip mpp-2.0.jar<br/>
-zip -9r mpp.$(date "+%Y%m%d%H%M%S").zip mpp-2.0.jar`
+`zip -9r mpp.201305090010.zip mpp-2.0.jar`
+`zip -9r mpp.$(date "+%Y%m%d%H%M%S").zip mpp-2.0.jar`
 
-`unzip mpp.201305090010.zip<br/>
-unzip mpp.201305090010.zip -d ../code/
-`
+`unzip mpp.201305090010.zip`
+`unzip mpp.201305090010.zip -d ../code/`
 
 ## grep
 
