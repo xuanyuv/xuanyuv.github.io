@@ -13,7 +13,7 @@ excerpt: 介绍常用的Linux命令。
 
 `wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.2.10.tgz`
 
-`curl -X POST -H "Content-Type: application/json" -d '{"tenantId":"0"}' "http://127.0.0.1:2000/mpp/syncFans"`
+`curl -X POST -H "xuanyutoken: 2084ad9d-fdb3-4ad2-bb09-ea2263d94a7e" -H "Content-Type: application/json" -d '{"tenantId":"0"}' "http://127.0.0.1:2000/mpp/syncFans"`
 
 `zip -9r mpp.201305090010.zip mpp-2.0.jar`
 `zip -9r mpp.$(date "+%Y%m%d%H%M%S").zip mpp-2.0.jar`
