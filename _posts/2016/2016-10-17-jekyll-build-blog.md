@@ -382,6 +382,6 @@ gcore.jsdelivr.net<br/>
 fastly.jsdelivr.net<br/>
 testingcf.jsdelivr.net
 
-另外：js 和 css 等静态文件的 CDN，推荐使用 [字节跳动静态资源共同库](https://cdn.bytedance.com/)
+另外：js 和 css 等静态文件的 CDN，推荐使用 [字节跳动静态资源公共库](https://cdn.bytedance.com/)
 
 另外：参考 <https://blog.akass.cn/resources/mirrors>（bootcdn 和 staticfile 已被污染）
