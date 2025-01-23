@@ -12,6 +12,7 @@ type: page
 
 我是玄玉
 
+* ![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/myself.jpg)
 * 现居：重庆
 * 来自：哈尔滨
 * 邮箱：[{{ site.email }}](mailto:{{ site.email }})
