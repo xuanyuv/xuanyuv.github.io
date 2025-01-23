@@ -51,3 +51,5 @@ type: page
 ## 笔记本
 
 ![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/myx220i.png)
+
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/myx13.png)
