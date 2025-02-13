@@ -36,7 +36,7 @@ $(document).ready(function() {
             <ul>
                 <div post-cate="All">
                     {% for post in paginator.posts %}
-                        {% if post.showblog==null or !post.showblog %}
+                        {% if post.showblog == null or post.showblog %}
                             <li>
                                 <a class="post-link" style="font-size:20px;" href="{{ post.url }}">{{ post.title }}</a>
                                 <hr style="margin: 12px 0">
