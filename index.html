@@ -36,12 +36,10 @@ $(document).ready(function() {
             <ul>
                 <div post-cate="All">
                     {% for post in paginator.posts %}
-                        {% if post.showblog %}
-                            <li>
-                                <a class="post-link" style="font-size:20px;" href="{{ post.url }}">{{ post.title }}</a>
-                                <hr style="margin: 12px 0">
-                            </li>
-                        {% endif %}
+                        <li>
+                            <a class="post-link" style="font-size:20px;" href="{{ post.url }}">{{ post.title }}</a>
+                            <hr style="margin: 12px 0">
+                        </li>
                     {% endfor %}
                 </div>
                 <!-- 玄玉201805241800：预置各分类文章列表，供首页点击分类时动态显示 -->
