@@ -361,6 +361,7 @@ startupByNohup
 * page 目录是个人自定义的，一般存放站内固定的页面
 * sitemap.txt 是给搜索引擎看的，告诉它怎么爬这个站
 * index.html 是整站的入口
+* 附：Jekyll语法简单笔记：<https://yulijia.net/cn/软件世界/2015/03/12/jekyll-syntax.html>
 * 附：Jekyll语法简单笔记：<http://github.tiankonguse.com/blog/2014/11/10/jekyll-study.html>
 
 ## 图床
