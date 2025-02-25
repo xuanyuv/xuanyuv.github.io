@@ -20,7 +20,7 @@ published: true
 
 我们要先安装 Ruby
 
-Windows 用户访问 <http://rubyinstaller.org/> 下载 139MB 大小的 [rubyinstaller-devkit-3.4.2-1-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.4.2-1/rubyinstaller-devkit-3.4.2-1-x64.exe)
+Windows 用户访问 <https://rubyinstaller.org/downloads/archives/> 下载 127MB 大小的 [rubyinstaller-devkit-3.3.3-1-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.3-1/rubyinstaller-devkit-3.3.3-1-x64.exe)
 
 `注意：后面安装 jekyll 时会依赖 MSYS2，所以这里直接下载带 devkit 的安装包`
 
@@ -34,133 +34,54 @@ Windows 用户访问 <http://rubyinstaller.org/> 下载 139MB 大小的 [rubyins
 
 ```
 C:\Users\xuanyu>ruby -v
-ruby 3.4.2 (2025-02-15 revision d2930f8e7a) +PRISM [x64-mingw-ucrt]
+ruby 3.3.3 (2024-06-12 revision f1c7b6f435) [x64-mingw-ucrt]
 ```
 
-然后通过 RubyGems 安装 Jekyll，所以先到官网 <https://rubygems.org/> 下载 1.22MB 大小的[rubygems-3.6.5.zip](https://rubygems.org/rubygems/rubygems-3.6.5.zip)
+然后通过 RubyGems 安装 Jekyll，所以先到官网 <https://rubygems.org/> 下载 1.19MB 大小的[rubygems-3.5.11.zip](https://rubygems.org/rubygems/rubygems-3.5.11.zip)
 
 接着解压压缩包到桌面，并在命令提示符中执行安装命令
 
 ```
-C:\Users\xuanyu\Desktop\rubygems-3.6.5>ruby setup.rb
+C:\Users\xuanyu\Desktop\rubygems-3.5.11>ruby setup.rb
   Successfully built RubyGem
   Name: bundler
-  Version: 2.6.5
-  File: bundler-2.6.5.gem
-Bundler 2.6.5 installed
-RubyGems 3.6.5 installed
+  Version: 2.5.11
+  File: bundler-2.5.11.gem
+Bundler 2.5.11 installed
+RubyGems 3.5.11 installed
 ...
 ...
 RubyGems installed the following executables:
-        D:/Develop/Ruby3.4.2-1/bin/gem
-        D:/Develop/Ruby3.4.2-1/bin/bundle
-        D:/Develop/Ruby3.4.2-1/bin/bundler
+        D:/Develop/Ruby3.3.3-1/bin/gem
+        D:/Develop/Ruby3.3.3-1/bin/bundle
+        D:/Develop/Ruby3.3.3-1/bin/bundler
 
-D:\Develop\rubygems-3.6.5>
+D:\Develop\rubygems-3.5.11>
 ```
 
-然后删掉桌面的 rubygems-3.6.5 文件夹，它没用了
+然后删掉桌面的 rubygems-3.5.11 文件夹，它没用了
 
 **下面进入正题：用 RubyGems 来安装 Jekyll**（这个耗时也有点长...）
 
 ```
 C:\Users\xuanyu>gem -v
-3.6.5
+3.5.11
 C:\Users\xuanyu>gem install jekyll
-Successfully installed webrick-1.9.1
-Successfully installed unicode-display_width-2.6.0
-Successfully installed terminal-table-3.0.2
-Successfully installed safe_yaml-1.0.5
+Fetching webrick-1.9.1.gem
+Fetching unicode-display_width-2.6.0.gem
+Fetching terminal-table-3.0.2.gem
+Fetching safe_yaml-1.0.5.gem
 ...
 ...
-Successfully installed public_suffix-6.0.1
-Successfully installed addressable-2.8.7
-Successfully installed jekyll-4.4.1
-28 gems installed
+Parsing documentation for jekyll-4.4.1
+Installing ri documentation for jekyll-4.4.1
+Done installing documentation for webrick, unicode-display_width, terminal-table, safe_yaml, rouge, forwardable-extended, pathutil, mercenary, liquid, rexml, kramdown, kramdown-parser-gfm, ffi, rb-inotify, rb-fsevent, listen, jekyll-watch, google-protobuf, sass-embedded, jekyll-sass-converter, concurrent-ruby, i18n, http_parser.rb, eventmachine, em-websocket, colorator, public_suffix, addressable, jekyll after 30 seconds
+29 gems installed
 
 C:\Users\xuanyu>
 ```
 
 至此，Jekyll就安装完毕了
-
-#### 创建博客
-
-`创建博客这一小节，可略过，这里仅留作备档参考`
-
-先建一个文件夹（这里命名为 Jekyll）存放博客内容，然后在命令提示符中执行以下命令创建 Jekyll 工作区
-
-注：执行完命令后，如果控制台长时间没有动静，不妨敲一下回车（堵了，执行结果没有输出在控制台上）
-
-```
-D:\Develop\Code\Jekyll>jekyll new myblog
-Running bundle install in D:/Develop/Code/Jekyll/myblog...
-  Bundler: Fetching gem metadata from https://rubygems.org/..........
-  Bundler: Resolving dependencies...
-...
-...
-  Bundler: Bundle complete! 6 Gemfile dependencies, 35 gems now installed.
-  Bundler: Use `bundle info [gemname]` to see where a bundled gem is installed.
-New jekyll site installed in D:/Develop/Code/Jekyll/myblog.
-
-D:\Develop\Code\Jekyll>
-```
-
-创建完毕，我们回到本地目录看一下
-
-![](https://ae01.alicdn.com/kf/Hf6772f121e91419e973267a6650a539ep.png)
-
-接下来到博客文件夹中，启动Jekyll服务
-
-```
-D:\Develop\Code\Jekyll\myblog>jekyll serve --watch
-Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
-            Source: D:/Develop/Code/Jekyll/myblog
-       Destination: D:/Develop/Code/Jekyll/myblog/_site
- Incremental build: disabled. Enable with --incremental
-      Generating...
-...
-...
-                    done in 0.857 seconds.
- Auto-regeneration: enabled for 'D:/Develop/Code/Jekyll/myblog'
-    Server address: http://127.0.0.1:4000/
-  Server running... press ctrl-c to stop.
-```
-
-启动过程中，会报告下面的错误提示：
-
-```
- Auto-regeneration: enabled for 'D:/Develop/Code/Jekyll/myblog'
-                    ------------------------------------------------
-      Jekyll 4.2.1   Please append `--trace` to the `serve` command
-                     for any additional information or backtrace.
-                    ------------------------------------------------
-D:/Develop/Ruby30-x64/lib/ruby/gems/3.0.0/gems/jekyll-4.2.1/lib/jekyll/commands/serve/servlet.rb:3:in `require': cannot load such file -- webrick (LoadError)
-        from D:/Develop/Ruby30-x64/lib/ruby/gems/3.0.0/gems/jekyll-4.2.1/lib/jekyll/commands/serve/servlet.rb:3:in `<top (required)>'
-        from D:/Develop/Ruby30-x64/lib/ruby/gems/3.0.0/gems/jekyll-4.2.1/lib/jekyll/commands/serve.rb:179:in `require_relative'
-```
-
-这是因为从Ruby-3.0开始，webrick已经不再绑定到Ruby中了，详见：[Ruby 3.0.0 Released](https://www.ruby-lang.org/en/news/2020/12/25/ruby-3-0-0-released/)
-
-那么手动添加即可
-
-```
-D:\Develop\Code\Jekyll\myblog>bundle add webrick
-Fetching gem metadata from https://rubygems.org/.........
-Resolving dependencies...
-...
-...
-Using jekyll 4.2.1
-Using jekyll-feed 0.15.1
-Using jekyll-seo-tag 2.7.1
-Using minima 2.5.1
-Installing webrick 1.7.0
-
-D:\Develop\Code\Jekyll\myblog>jekyll serve --watch
-```
-
-最后，重新启动，访问 [http://127.0.0.1:4000/](http://127.0.0.1:4000/) 会看到下面的页面
-
-![](https://ae01.alicdn.com/kf/H4dcc32f6d61247eaa92b26c4eb206409T.png)
 
 ### 复制主题
 
@@ -190,7 +111,11 @@ C:\Users\xuanyu\Desktop\xuanyuv.github.io>
 
 ```
 C:\Users\xuanyu>gem install jekyll-paginate
+Fetching jekyll-paginate-1.1.0.gem
 Successfully installed jekyll-paginate-1.1.0
+Parsing documentation for jekyll-paginate-1.1.0
+Installing ri documentation for jekyll-paginate-1.1.0
+Done installing documentation for jekyll-paginate after 0 seconds
 1 gem installed
 
 C:\Users\xuanyu>
