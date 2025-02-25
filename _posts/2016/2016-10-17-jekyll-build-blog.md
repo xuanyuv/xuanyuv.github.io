@@ -20,13 +20,13 @@ published: true
 
 我们要先安装 Ruby
 
-Windows 用户访问 <http://rubyinstaller.org/> 下载 149MB 大小的 [rubyinstaller-devkit-3.0.3-1-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.3-1/rubyinstaller-devkit-3.0.3-1-x64.exe)
+Windows 用户访问 <http://rubyinstaller.org/> 下载 139MB 大小的 [rubyinstaller-devkit-3.4.2-1-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.4.2-1/rubyinstaller-devkit-3.4.2-1-x64.exe)
 
-安装时注意勾选 `Add Ruby executables to your PATH`
+`注意：后面安装 jekyll 时会依赖 MSYS2，所以这里直接下载带 devkit 的安装包`
 
-没选的话可以手工配置一下 `Path=D:\Develop\Ruby30-x64\bin;...`
+安装时注意勾选 **Add Ruby executables to your PATH** （不然后面还得手动配置环境变量）
 
-安装完成后，按照提示再安装 MSYS2（在弹出的窗口选择 3 - MSYS2 and MINGW development toolchain）
+安装到最后一步，再按照提示安装 MSYS2（弹出的窗口选择 3 - MSYS2 and MINGW development toolchain）
 
 （这个耗时有点长，慢慢等待...）
 
@@ -34,53 +34,58 @@ Windows 用户访问 <http://rubyinstaller.org/> 下载 149MB 大小的 [rubyins
 
 ```
 C:\Users\xuanyu>ruby -v
-ruby 3.0.3p157 (2021-11-24 revision 3fb7d2cadc) [x64-mingw32]
+ruby 3.4.2 (2025-02-15 revision d2930f8e7a) +PRISM [x64-mingw-ucrt]
 ```
 
-然后通过 RubyGems 安装 Jekyll，所以先到官网 <https://rubygems.org/> 下载 1.52MB 大小的[rubygems-3.3.3.zip](https://rubygems.org/rubygems/rubygems-3.3.3.zip)
+然后通过 RubyGems 安装 Jekyll，所以先到官网 <https://rubygems.org/> 下载 1.22MB 大小的[rubygems-3.6.5.zip](https://rubygems.org/rubygems/rubygems-3.6.5.zip)
 
 接着解压压缩包到桌面，并在命令提示符中执行安装命令
 
 ```
-C:\Users\xuanyu\Desktop\rubygems-3.3.3>ruby setup.rb
+C:\Users\xuanyu\Desktop\rubygems-3.6.5>ruby setup.rb
   Successfully built RubyGem
   Name: bundler
-  Version: 2.3.3
-  File: bundler-2.3.3.gem
-Bundler 2.3.3 installed
-RubyGems 3.3.3 installed
+  Version: 2.6.5
+  File: bundler-2.6.5.gem
+Bundler 2.6.5 installed
+RubyGems 3.6.5 installed
 ...
 ...
 RubyGems installed the following executables:
-        D:/Develop/Ruby30-x64/bin/gem
-        D:/Develop/Ruby30-x64/bin/bundle
-        D:/Develop/Ruby30-x64/bin/bundler
+        D:/Develop/Ruby3.4.2-1/bin/gem
+        D:/Develop/Ruby3.4.2-1/bin/bundle
+        D:/Develop/Ruby3.4.2-1/bin/bundler
 
-D:\Develop\rubygems-3.3.3>
+D:\Develop\rubygems-3.6.5>
 ```
 
-再删掉 rubygems-3.3.3 文件夹，它没用了
+然后删掉桌面的 rubygems-3.6.5 文件夹，它没用了
 
 **下面进入正题：用 RubyGems 来安装 Jekyll**（这个耗时也有点长...）
 
 ```
+C:\Users\xuanyu>gem -v
+3.6.5
 C:\Users\xuanyu>gem install jekyll
-Fetching terminal-table-2.0.0.gem
-Fetching unicode-display_width-1.8.0.gem
-Fetching safe_yaml-1.0.5.gem
+Successfully installed webrick-1.9.1
+Successfully installed unicode-display_width-2.6.0
+Successfully installed terminal-table-3.0.2
+Successfully installed safe_yaml-1.0.5
 ...
 ...
-Parsing documentation for jekyll-4.2.1
-Installing ri documentation for jekyll-4.2.1
-Done installing documentation for unicode-display_width, terminal-table, safe_yaml, rouge, forwardable-extended, pathutil, mercenary, liquid, kramdown, kramdown-parser-gfm, ffi, rb-inotify, rb-fsevent, listen, jekyll-watch, sassc, jekyll-sass-converter, concurrent-ruby, i18n, http_parser.rb, eventmachine, em-websocket, colorator, public_suffix, addressable, jekyll after 52 seconds
-26 gems installed
+Successfully installed public_suffix-6.0.1
+Successfully installed addressable-2.8.7
+Successfully installed jekyll-4.4.1
+28 gems installed
 
 C:\Users\xuanyu>
 ```
 
 至此，Jekyll就安装完毕了
 
-### 创建博客
+#### 创建博客
+
+`创建博客这一小节，可略过，这里仅留作备档参考`
 
 先建一个文件夹（这里命名为 Jekyll）存放博客内容，然后在命令提示符中执行以下命令创建 Jekyll 工作区
 
@@ -171,10 +176,10 @@ D:\Develop\Code\Jekyll\myblog>jekyll serve --watch
 
 ```
 C:\Users\xuanyu\Desktop\xuanyuv.github.io>jekyll serve --watch
-Configuration file: D:/Develop/Code/Jekyll/myblog/_config.yml
+Configuration file: C:/Users/xuanyu/Desktop/xuanyuv.github.io/_config.yml
   Dependency Error: Yikes! It looks like you don't have jekyll-paginate or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. If you've run Jekyll with `bundle exec`, ensure that you have included the jekyll-paginate gem in your Gemfile as well. The full error message from Ruby is: 'cannot load such file -- jekyll-paginate' If you run into trouble, you can find helpful resources at https://jekyllrb.com/help/!
                     ------------------------------------------------
-      Jekyll 4.1.1   Please append `--trace` to the `serve` command
+      Jekyll 4.4.1   Please append `--trace` to the `serve` command
                      for any additional information or backtrace.
                     ------------------------------------------------
 
@@ -185,11 +190,7 @@ C:\Users\xuanyu\Desktop\xuanyuv.github.io>
 
 ```
 C:\Users\xuanyu>gem install jekyll-paginate
-Fetching jekyll-paginate-1.1.0.gem
 Successfully installed jekyll-paginate-1.1.0
-Parsing documentation for jekyll-paginate-1.1.0
-Installing ri documentation for jekyll-paginate-1.1.0
-Done installing documentation for jekyll-paginate after 0 seconds
 1 gem installed
 
 C:\Users\xuanyu>
