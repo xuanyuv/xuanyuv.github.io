@@ -20,13 +20,13 @@ published: true
 
 我们要先安装 Ruby
 
-Windows 用户访问 <https://rubyinstaller.org/downloads/archives/> 下载 127MB 大小的 [rubyinstaller-devkit-3.3.3-1-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.3-1/rubyinstaller-devkit-3.3.3-1-x64.exe)
+通过 <https://rubyinstaller.org/downloads/archives/> 下载 127MB 大小的 [rubyinstaller-devkit-3.3.3-1-x64.exe](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.3-1/rubyinstaller-devkit-3.3.3-1-x64.exe)
 
 `注意：后面安装 jekyll 时会依赖 MSYS2，所以这里直接下载带 devkit 的安装包`
 
 安装时注意勾选 **Add Ruby executables to your PATH** （不然后面还得手动配置环境变量）
 
-安装到最后一步，再按照提示安装 MSYS2（弹出的窗口选择 3 - MSYS2 and MINGW development toolchain）
+安装到最后一步，再按照提示安装 MSYS2：弹出的窗口选择 **3 - MSYS2 and MINGW development toolchain**
 
 （这个耗时有点长，慢慢等待...）
 
