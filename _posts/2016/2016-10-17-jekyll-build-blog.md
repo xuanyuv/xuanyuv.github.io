@@ -111,7 +111,6 @@ C:\Users\xuanyu\Desktop\xuanyuv.github.io>
 
 ```
 C:\Users\xuanyu>gem install jekyll-paginate
-Fetching jekyll-paginate-1.1.0.gem
 Successfully installed jekyll-paginate-1.1.0
 Parsing documentation for jekyll-paginate-1.1.0
 Installing ri documentation for jekyll-paginate-1.1.0
