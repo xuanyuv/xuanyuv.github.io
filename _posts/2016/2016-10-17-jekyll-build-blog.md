@@ -136,9 +136,8 @@ C:\Users\xuanyu>
 
 然后校验下 sha256：83c05b2177ee9c335b631b29b8c077b4770166d02fa527f3a9f6a40d13f3cce2
 
-`这里会用到OpenSSL，安装步骤见：<https://www.xuanyuv.com/blog/20140926/centos-install-apache.html#安装openssl>`
-
 ```shell
+# 下面会用到OpenSSL，安装步骤见：https://www.xuanyuv.com/blog/20140926/centos-install-apache.html#安装openssl
 [root@dev backup]# yum install -y libyaml-devel # 编译 Ruby 时的依赖
 [root@dev backup]# tar zxvf ruby-3.3.3.tar.gz   # 解压 Ruby 源码包
 [root@dev backup]# cd ruby-3.3.3/               # 注意需要指定 OpenSSL
