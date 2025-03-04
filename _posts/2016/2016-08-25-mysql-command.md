@@ -62,12 +62,12 @@ WHERE
      AND DATA_FREE >= 1024*1024*30
 ORDER BY data_free DESC;
 
--- 清理表碎片：方式一
+-- 清理表碎片：方式一（会锁表，只能读，不能写）
 ALTER TABLE mpp.t_fans_info ENGINE = InnoDB;
-ANALYZE TABLE mpp.t_fans_info;
+ANALYZE NO_WRITE_TO_BINLOG TABLE mpp.t_fans_info;
 
--- 清理表碎片：方式二
-OPTIMIZE TABLE t_fans_info;
+-- 清理表碎片：方式二（会锁表，只能读，不能写）
+OPTIMIZE NO_WRITE_TO_BINLOG TABLE t_fans_info;
 ```
 
 ## 存储过程
