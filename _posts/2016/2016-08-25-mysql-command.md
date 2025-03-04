@@ -43,7 +43,7 @@ CREATE TABLE t_account_info(
 ## 表碎片
 
 ```sql
--- 查看单张表是否存在碎片（Data_free字段不为0，则表示有碎片存在）
+-- 查看单张表是否存在碎片（data_free字段不为0，则表示有碎片存在）
 SHOW TABLE STATUS FROM mpp LIKE 't_fans_info';
 
 -- 查看当前实例下，所有数据库的所有表的，碎片大小超过30MB的情况
