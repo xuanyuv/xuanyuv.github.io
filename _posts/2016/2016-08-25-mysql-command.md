@@ -40,6 +40,36 @@ CREATE TABLE t_account_info(
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_UNICODE_CI COMMENT='渠道信息表';
 ```
 
+## 表碎片
+
+```sql
+-- 查看单张表是否存在碎片（Data_free字段不为0，则表示有碎片存在）
+SHOW TABLE STATUS FROM mpp LIKE 't_fans_info';
+
+-- 查看当前实例下，所有数据库的所有表的，碎片大小超过30MB的情况
+SELECT
+     CONCAT(TABLE_SCHEMA, '.', TABLE_NAME)                                AS 表名,
+     TABLE_ROWS                                                           AS 表行数,
+     CONCAT( ROUND( (data_length + index_length) / 1024 / 1024, 2), 'MB') AS 表大小,
+     CONCAT( ROUND( data_length                  / 1024 / 1024, 2), 'MB') AS 数据大小,
+     CONCAT( ROUND( index_length                 / 1024 / 1024, 2), 'MB') AS 索引大小,
+     CONCAT( ROUND( data_free                    / 1024 / 1024, 2), 'MB') AS 碎片大小
+FROM
+     information_schema.TABLES
+WHERE
+     TABLE_SCHEMA NOT IN ('sys', 'mysql', 'information_schema', 'performance_schema')
+     # AND TABLE_NAME = 't_fans_info'
+     AND DATA_FREE >= 1024*1024*30
+ORDER BY data_free DESC;
+
+-- 清理表碎片：方式一
+ALTER TABLE mpp.t_fans_info ENGINE = InnoDB;
+ANALYZE TABLE mpp.t_fans_info;
+
+-- 清理表碎片：方式二
+OPTIMIZE TABLE t_fans_info;
+```
+
 ## 存储过程
 
 ```sql
