@@ -267,10 +267,6 @@ SELECT t1.totalApply, t2.totalSign, IF(t3.money IS NULL,0,t3.money) money FROM
 ## 按时间段统计数据
 
 ```sql
--- 查询结果集添加自增序号
-SET @i:=32;
-SELECT (@i:=@i+1) AS rowNum, realname from t_user_info;
-
 -- 11月份的注册量
 -- SELECT count(1) FROM t_account_info t WHERE month(t.create_time)=11;
 SELECT count(1) FROM t_account_info t WHERE date_format(t.apply_time, '%Y%m')=201611
@@ -318,6 +314,12 @@ GROUP BY t.id;
 -- 然后把ONLY_FULL_GROUP_BY去掉，重新设置sql_mode即可
 -- SET sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 -- 注：这样修改，也只是这一次的会话有效（若想永久有效，就得修改配置文件）
+
+-- 查询结果集添加自增序号
+-- 通过【@变量名】来定义用户变量，赋值时可以用【=】或【:=】，但是SELECT时必须用【:=】赋值
+SET @i=16;
+SET @i:=32;
+SELECT (@i:=@i+1) AS rowNum, realname from t_user_info;
 ```
 
 ## 查询所有的父子级
@@ -362,7 +364,7 @@ SELECT
        id
 FROM
      t_menu_info mi,
-     (SELECT @id :=113) vars
+     (SELECT @id := 113) vars
 WHERE
       FIND_IN_SET(pid, @id) > 0 AND @id := concat(@id, ',', id);
 ```
