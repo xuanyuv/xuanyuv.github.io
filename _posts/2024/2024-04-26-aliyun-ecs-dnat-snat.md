@@ -279,11 +279,13 @@ startupByNohup(){
 }
 
 cd $APP_PATH
-if [[ ! -n $1 || $1 -ne 1 ]]; then
+# 判断第一个参数：长度等于0（-n判断参数长度是否非0，-z判断参数长度是否为0） 或者 不等于1
+if [[ -z $1 || $1 -ne 1 ]]; then
     shutdown
     startupByNohup
 fi
 if [ $1 -eq 1 ]; then
+# else
     cp $APP_NAME $APP_NAME.$(date "+%Y%m%d%H%M%S")
 fi
 ```
