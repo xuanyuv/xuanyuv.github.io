@@ -39,6 +39,7 @@ type: page
 * [warm-flow国产开源工作流引擎](http://warm-flow.cn/)
 * [Dromara社区](https://gitee.com/dromara)
 * [勇芳软件](http://wwx.yfvb.com/)
+* [学不会](https://www.xuebuhui.cn)
 * [KLBLOG](http://www.kailing.pub)
 * [程序猿DD](http://blog.didispace.com)
 * [并发编程网](http://ifeve.com)
