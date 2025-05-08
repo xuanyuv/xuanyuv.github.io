@@ -46,6 +46,7 @@ type: page
 * [存在码文档](https://cunzaima.cn/)
 * [银保监](http://www.cbirc.gov.cn)
 * [证监会](http://www.csrc.gov.cn)
+* [提前还贷计算器](https://calc.qufenlei.com/money/tiqianhuankuan.html)
 
 ## 台式机
 
