@@ -49,7 +49,7 @@ SHA256：C117C5DDBC51F315C739F9321D4907FA50090BA7B48E7E9A2D173D49EF2F73A3
   - BT: magnet:?xt=urn:btih:366ADAA52FB3639B17D73718DD5F9E3EE9477B40&dn=SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO&xl=5044211712
 ```
 
-同样的，不忘初心博客上也制作了：[【不忘初心美化版】[太阳谷] Windows10 LTSC2021（19044.4291）X64 无更新[精简版][2.29G](2024.4.19) 价值60元新壁纸（夕阳下雄伟壮观的万里长城）](https://www.pc528.net/ltsc2021_meihua.html)
+同样的，不忘初心博客上也制作了：[【不忘初心美化版】[太阳谷] Windows10 LTSC2021（19044.4291）X64 无更新【精简版2.29G】(2024.4.19) 价值60元新壁纸（夕阳下雄伟壮观的万里长城）](https://www.pc528.net/ltsc2021_meihua.html)
 
 ### 制作U盘引导盘
 
@@ -69,7 +69,7 @@ SHA256：C117C5DDBC51F315C739F9321D4907FA50090BA7B48E7E9A2D173D49EF2F73A3
 
 **通过以上两种方式，确保系统安装前的状态是 UEFI+GPT**
 
-> 有一个比Rufus更好用的工具：Ventoy<https://www.ventoy.net/cn/index.html>，关键它不影响U盘日常普通使用
+> 有一个比Rufus更好用的工具：[Ventoy](https://www.ventoy.net/cn/index.html)，关键它不影响U盘日常普通使用
 
 ### 装系统
 
