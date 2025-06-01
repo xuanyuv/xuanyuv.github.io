@@ -69,6 +69,8 @@ SHA256：C117C5DDBC51F315C739F9321D4907FA50090BA7B48E7E9A2D173D49EF2F73A3
 
 **通过以上两种方式，确保系统安装前的状态是 UEFI+GPT**
 
+> 有一个比Rufus更好用的工具：Ventoy<https://www.ventoy.net/cn/index.html>，关键它不影响U盘日常普通使用
+
 ### 装系统
 
 插上U盘，重启电脑进BIOS（T490快捷键是F12），鼠标单击USB HDD: Teclast CoolFlash，这时会自动重启并进入安装界面
