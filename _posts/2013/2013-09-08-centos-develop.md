@@ -263,6 +263,7 @@ http {
     default_type        application/octet-stream; # 默认文件类型
 
     ssl_protocols       TLSv1.2;
+    # ssl_certificate   xuanyuv.com.crt;          # CRT文件也可以
     ssl_certificate     xuanyuv.com.pem;
     ssl_certificate_key xuanyuv.com.key;
     ssl_session_cache   shared:SSL:10m;
@@ -352,6 +353,20 @@ server {
     server_name sso.xuanyuv.com;
     location / {
         proxy_pass       http://192.168.0.1:1100/;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name qss.xuanyuv.com;
+    location / {
+        proxy_pass       http://192.168.0.1:1200/;
+        proxy_set_header Host              $http_host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        client_max_body_size        50M;
+        client_body_buffer_size     50M;
     }
 }
 
