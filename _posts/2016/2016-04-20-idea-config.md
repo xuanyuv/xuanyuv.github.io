@@ -11,7 +11,7 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 {:toc}
 
 
-> 本文所列配置项，已适配：ideaIC-2023.3.6<br/>
+> 本文所列配置项，已适配：ideaIC-2023.3.8<br/>
   idea历史版本下载：<http://www.jetbrains.com/idea/download/other.html>
 
 ## 快捷键
@@ -92,9 +92,15 @@ Run Configuration Templates for New Projects---Application---Shorten command lin
 # 打开内存使用状态
 新版：主界面双击Shift，在弹出的搜索栏输入Show memory indicator，再启用即可
 旧版：settings---Appearance & Behavior---Appearance---Show memory indicator
+
+# 隐藏左侧和右侧的工具栏
+标题栏---view---Appearance---取消勾选 Tool Window Bars（后续双击 Alt 键即可复显出来）
 ```
 
 ### 外观及行为配置
+
+**记得先启用新版UI**
+
 ```
 # 黑色主题及避免中文乱码（此处若选 Yahei Consolas Hybrid，会使得配置窗口很难看，非常难看）
 settings---Appearance & Behavior---Appearance---Theme---默认即可
@@ -132,7 +138,7 @@ settings---Editor---General---Code Folding---勾选Inner classes、Anonymous cla
 settings---Editor---General---Editor Tabs---不勾选Show file extension
 
 # Tab上星号标识编辑过且未保存的文件
-settings---Editor---General---Editor Tabs---勾选Mark modified (*)
+settings---Editor---General---Editor Tabs---勾选Mark modified
 
 # Tab上移除文件上的叉
 settings---Editor---General---Editor Tabs---Close button position---None
