@@ -43,7 +43,7 @@ published: true
 | x86_32 / x86 / i386       | **32** 位 Intel / AMD CPU 的别称 |
 | AArch64 / ARMv8v9 / arm64 | 64 位 ARM CPU 的别称             |
 | AArch32 / ARMv1v7 / arm   | 32 位 ARM CPU 的别称             |
-| rv64gc / rv64g            | 64 位 RISC **-** V CPU 的别称    |
+| rv64gc / rv64g            | 64 位 RISC-V CPU 的别称          |
 | ppc64le                   | 64 位 PowerPC CPU，小端字节序存储     |
 
 ## Prometheus
