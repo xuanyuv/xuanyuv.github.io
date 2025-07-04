@@ -37,14 +37,14 @@ published: true
   
 另外，下载软件时，注意对应的 CPU 架构版本
 
-| CPU 架构                    | 描述                       |
-|:--------------------------|:-------------------------|
-| x86_64 / x64 / amd64      | 64 位 AMD/Intel CPU 的别称   |
-| AArch64 / ARMv8v9 / arm64 | 64 位 ARM CPU 的别称         |
-| AArch32 / ARMv1v7 /arm    | 32 位 ARM CPU 的别称         |
-| x86_32 / x86 / i386       | 32 位 AMD/Intel CPU 的别称   |
-| rv64gc / rv64g            | 64 位 RISC-V CPU 的别称      |
-| ppc64le                   | 64 位 PowerPC CPU，小端字节序存储 |
+| CPU 架构                    | 描述                         |
+|:--------------------------|:---------------------------|
+| x86_64 / x64 / amd64      | **64** 位 AMD/Intel CPU 的别称 |
+| x86_32 / x86 / i386       | **32** 位 AMD/Intel CPU 的别称 |
+| AArch64 / ARMv8v9 / arm64 | 64 位 ARM CPU 的别称           |
+| AArch32 / ARMv1v7 /arm    | 32 位 ARM CPU 的别称           |
+| rv64gc / rv64g            | 64 位 RISC-V CPU 的别称        |
+| ppc64le                   | 64 位 PowerPC CPU，小端字节序存储   |
 
 ## Prometheus
 
