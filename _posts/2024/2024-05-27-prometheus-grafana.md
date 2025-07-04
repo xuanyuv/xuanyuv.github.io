@@ -39,8 +39,8 @@ published: true
 
 | CPU 架构                    | 描述                         |
 |:--------------------------|:---------------------------|
-| x86_64 / x64 / amd64      | **64** 位 AMD/Intel CPU 的别称 |
-| x86_32 / x86 / i386       | **32** 位 AMD/Intel CPU 的别称 |
+| x86_64 / x64 / amd64      | **64** 位 Intel/AMD CPU 的别称 |
+| x86_32 / x86 / i386       | **32** 位 Intel/AMD CPU 的别称 |
 | AArch64 / ARMv8v9 / arm64 | 64 位 ARM CPU 的别称           |
 | AArch32 / ARMv1v7 /arm    | 32 位 ARM CPU 的别称           |
 | rv64gc / rv64g            | 64 位 RISC-V CPU 的别称        |
