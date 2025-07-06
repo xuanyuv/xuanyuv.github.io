@@ -95,6 +95,9 @@ Run Configuration Templates for New Projects---Application---Shorten command lin
 
 # 隐藏左侧和右侧的工具栏
 标题栏---view---Appearance---取消勾选 Tool Window Bars（后续双击 Alt 键即可复显出来）
+
+# 隐藏或打开顶部的导航菜单栏
+主界面双击Shift，在弹出的搜索栏输入main menu，再启用 View | Appearance: Main Menu 即可
 ```
 
 ### 外观及行为配置
