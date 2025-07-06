@@ -125,7 +125,7 @@ published: true
 
 这里有几个概念：
 * CommitLog：存储消息主体（虽然名字里有log，但不是日志，它存的是消息数据）
-* ConsumeQueue：消息消费队列
+* ConsumerQueue：消息消费队列
 * IndexFile：消息索引文件（它跟存储没啥太大关系，是给运维用的）
 
 ### commitlog
