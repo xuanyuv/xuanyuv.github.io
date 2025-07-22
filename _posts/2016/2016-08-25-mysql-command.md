@@ -320,6 +320,13 @@ GROUP BY t.id;
 SET @i=16;
 SET @i:=32;
 SELECT (@i:=@i+1) AS rowNum, realname from t_user_info;
+-- 举例
+SET @lastId = (SELECT max(id)+1 FROM t_user_info);
+INSERT INTO t_user_info VALUE(@lastId,   '卢云');
+INSERT INTO t_user_info VALUE(@lastId+1, '顾倩兮');
+INSERT INTO t_user_info VALUES
+((@lastId:=@lastId+1), '卢云'),
+((@lastId:=@lastId+1), '顾倩兮');
 ```
 
 ## 查询所有的父子级
