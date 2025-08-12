@@ -239,7 +239,7 @@ settings---Editor---File and Code Templates---Includes---File Header---编辑为
 
 ```
 /**
- * Created by 玄玉<https://www.xuanyuv.com/> on ${DATE} ${TIME}.
+ * Created by 玄玉<https://www.xuanyuv.com> on ${DATE} ${TIME}.
  */
 ```
 
@@ -296,7 +296,7 @@ settings---Editor---Live Templates---右上角 `+` 选择 Template Group---输�
 ```
 /**
  *
- * Comment by 玄玉<https://www.xuanyuv.com/> on $date$ $time$.
+ * Comment by 玄玉<https://www.xuanyuv.com> on $date$ $time$.
  */
 ```
 
