@@ -96,18 +96,14 @@ Redis 的所有版本下载地址：https://download.redis.io/releases/
 [xuanyu@dev backup]$ mkdir -v /app/software/redis-8.2.0/rdb
 [xuanyu@dev backup]$ mv redis-8.2.0 /app/software/redis-8.2.0/redis/
 [xuanyu@dev backup]$ cd /app/software/redis-8.2.0/redis/
-[xuanyu@dev redis]$ make # 过程稍慢，输出下面两行则编译完成（不用执行 make test，它执行的更慢，也没必要）
+[xuanyu@dev redis]$ make # 过程稍慢，输出下面两行则编译完成（不用执行 make test，它执行的更慢，不是必要）
 Hint: It's a good idea to run 'make test' ;)
 
-make[1]: Leaving directory `/app/software/redis-8.2.0/redis/src'
 [xuanyu@dev redis]# cd src/
 [xuanyu@dev redis]$ su root
 [root@dev src]# make install # 过程很快（注意：是在 src 目录下执行的，同样也不用去执行 make test）
 Hint: It's a good idea to run 'make test' ;)
 
-    INSTALL redis-server
-    INSTALL redis-benchmark
-    INSTALL redis-cli
 [root@dev src]$ exit
 [xuanyu@dev src]$ mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-sentinel redis-server redis-trib.rb /app/software/redis-8.2.0/bin/
 [xuanyu@dev src]$ cd ..
@@ -127,7 +123,8 @@ requirepass 123                                      # 设置连接密码
 # [root@dev run]# touch redis_6382.pid
 # [root@dev run]# chown -R xuanyu:Develop redis_6382.pid
 # [root@dev run]$ exit
-[xuanyu@dev run]$ cd /app/software/redis-8.2.0/bin/
+# [xuanyu@dev run]$ cd /app/software/redis-8.2.0/bin/
+[xuanyu@dev conf]$ cd /app/software/redis-8.2.0/bin/
 [xuanyu@dev bin]$ ./redis-server /app/software/redis-8.2.0/conf/redis.conf # 启动redis
 [xuanyu@dev bin]$ ./redis-cli -p 6382                                      # 客户端命令行连接
 127.0.0.1:6382> PING                                                       # 尝试执行一个命令
