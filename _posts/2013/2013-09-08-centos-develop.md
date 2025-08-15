@@ -71,9 +71,7 @@ JDK 21 will receive updates under the NFTC, until September 2026, a year after t
 
 Redis 的所有版本下载地址：https://download.redis.io/releases/
 
-这里下载 5.0.14：https://download.redis.io/releases/redis-5.0.14.tar.gz
-
-> Redis 是由 C 语言写的，其运行需要 C 环境，故编译前需安装 gcc：yum -y install gcc gcc-c++
+由于 Redis 是用 C 语言写的，其运行需要 C 环境，故编译前需安装 gcc：`yum -y install gcc gcc-c++`
 
 另外，在 ARM 架构的 Linux 系统上，make 编译时可能报错：**/usr/bin/ld: cannot find -latomic**
 
@@ -86,56 +84,65 @@ Redis 的所有版本下载地址：https://download.redis.io/releases/
 
 然后重新编译即可
 
+下面是 Redis-8.2.0 的安装步骤（其它版本的安装步骤和这个是一模一样的，比如 5.0.14 或者 7.2.10）
+
 ```shell
 [xuanyu@dev ~]$ cd /app/software/backup/
-[xuanyu@dev backup]$ wget https://download.redis.io/releases/redis-5.0.14.tar.gz
-[xuanyu@dev backup]$ tar zxvf redis-5.0.14.tar.gz
-[xuanyu@dev backup]$ mkdir -pv /app/software/redis-5.0.14/conf
-[xuanyu@dev backup]$ mkdir -v /app/software/redis-5.0.14/bin
-[xuanyu@dev backup]$ mkdir -v /app/software/redis-5.0.14/log
-[xuanyu@dev backup]$ mkdir -v /app/software/redis-5.0.14/rdb
-[xuanyu@dev backup]$ mv redis-5.0.14 /app/software/redis-5.0.14/redis/
-[xuanyu@dev backup]$ cd /app/software/redis-5.0.14/redis/
+[xuanyu@dev backup]$ wget https://download.redis.io/releases/redis-8.2.0.tar.gz
+[xuanyu@dev backup]$ tar zxvf redis-8.2.0.tar.gz
+[xuanyu@dev backup]$ mkdir -pv /app/software/redis-8.2.0/conf
+[xuanyu@dev backup]$ mkdir -v /app/software/redis-8.2.0/bin
+[xuanyu@dev backup]$ mkdir -v /app/software/redis-8.2.0/log
+[xuanyu@dev backup]$ mkdir -v /app/software/redis-8.2.0/rdb
+[xuanyu@dev backup]$ mv redis-8.2.0 /app/software/redis-8.2.0/redis/
+[xuanyu@dev backup]$ cd /app/software/redis-8.2.0/redis/
 [xuanyu@dev redis]$ make # 过程稍慢，输出下面两行则编译完成（不用执行 make test，它执行的更慢，也没必要）
 Hint: It's a good idea to run 'make test' ;)
 
-make[1]: Leaving directory '/app/software/redis-5.0.14/redis/src'
+make[1]: Leaving directory `/app/software/redis-8.2.0/redis/src'
 [xuanyu@dev redis]# cd src/
 [xuanyu@dev redis]$ su root
 [root@dev src]# make install # 过程很快（注意：是在 src 目录下执行的，同样也不用去执行 make test）
 Hint: It's a good idea to run 'make test' ;)
 
-    INSTALL install
-    INSTALL install
-    INSTALL install
-    INSTALL install
-    INSTALL install
+    INSTALL redis-server
+    INSTALL redis-benchmark
+    INSTALL redis-cli
 [root@dev src]$ exit
-[xuanyu@dev src]$ mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-sentinel redis-server redis-trib.rb /app/software/redis-5.0.14/bin/
+[xuanyu@dev src]$ mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-sentinel redis-server redis-trib.rb /app/software/redis-8.2.0/bin/
 [xuanyu@dev src]$ cd ..
-[xuanyu@dev redis]$ mv redis.conf /app/software/redis-5.0.14/conf/
-[xuanyu@dev redis]$ cd /app/software/redis-5.0.14/conf/
+[xuanyu@dev redis]$ mv redis.conf /app/software/redis-8.2.0/conf/
+[xuanyu@dev redis]$ cd /app/software/redis-8.2.0/conf/
 [xuanyu@dev conf]$ vim redis.conf
-# bind 127.0.0.1                    # 对于多网卡机器，注释掉后，就可以接受来自任意一个网卡的redis请求
-daemonize yes                       # 后台启动将默认的 no 改为 yes
-logfile "/app/software/redis-5.0.14/log/redis.log"
-dir /app/software/redis-5.0.14/rdb/ # 数据库目录
-requirepass 123                     # 设置连接密码
-[xuanyu@dev conf]$ cd /app/software/redis-5.0.14/bin/
-[xuanyu@dev bin]$ ./redis-server /app/software/redis-5.0.14/conf/redis.conf # 启动redis
-[xuanyu@dev bin]$ ./redis-cli -h 127.0.0.1 -p 6379 -a 123 shutdown          # 停止redis
-[xuanyu@dev bin]$ ./redis-cli                                               # 客户端命令行连接
-127.0.0.1:6379> PING                                                        # 尝试执行一个命令
-(error) NOAUTH Authentication required.                                     # 说明配置文件设定密码生效了
-127.0.0.1:6379> auth 123                                                    # 提供密码
+# bind 127.0.0.1                                     # 对于多网卡机器，注释后，便可接受来自任意一个网卡的请求
+port 6382                                            # 把端口改为6382
+daemonize yes                                        # 后台运行
+pidfile /app/software/redis-8.2.0/bin/redis_6382.pid # 后台运行的pid文件（当停止redis后，该文件会自动消失）
+logfile "/app/software/redis-8.2.0/log/redis.log"    # 日志文件
+always-show-logo yes                                 # 启动日志中，打印logo
+dir /app/software/redis-8.2.0/rdb/                   # 数据库目录
+requirepass 123                                      # 设置连接密码
+#[xuanyu@dev conf]$ su root
+#[root@dev conf]# cd /var/run
+#[root@dev run]# touch redis_6382.pid
+#[root@dev run]# chown -R xuanyu:Develop redis_6382.pid
+#[root@dev run]$ exit
+[xuanyu@dev run]$ cd /app/software/redis-8.2.0/bin/
+[xuanyu@dev bin]$ ./redis-server /app/software/redis-8.2.0/conf/redis.conf # 启动redis
+[xuanyu@dev bin]$ ./redis-cli -p 6382                                      # 客户端命令行连接
+127.0.0.1:6382> PING                                                       # 尝试执行一个命令
+(error) NOAUTH Authentication required.                                    # 说明密码生效了
+127.0.0.1:6382> auth 123                                                   # 提供密码
 OK
-127.0.0.1:6379> PING
+127.0.0.1:6382> PING
 PONG
-127.0.0.1:6379> quit
-[root@dev bin]$ vim /etc/rc.d/rc.local                                      # 添加自启动
-su xuanyu -c "/app/software/redis-5.0.14/bin/redis-server /app/software/redis-5.0.14/conf/redis.conf"
-[root@dev bin]$ chmod +x /etc/rc.d/rc.local                                 # 赋权，使其变成可执行文件
-[root@dev bin]$ reboot                                                      # 最后，重启系统，验证
+127.0.0.1:6382> SHUTDOWN SAVE                                              # 停止并保存redis数据
+not connected> quit                                                        # 退出命令行
+[root@dev bin]$ su root
+[root@dev bin]$ vim /etc/rc.d/rc.local                                     # 添加自启动
+su xuanyu -c "/app/software/redis-8.2.0/bin/redis-server /app/software/redis-8.2.0/conf/redis.conf"
+[root@dev bin]$ chmod +x /etc/rc.d/rc.local                                # 赋权，使其变成可执行文件
+[root@dev bin]$ reboot                                                     # 最后，重启系统，验证
 ```
 
 注：bin 和 conf 目录是为了便于管理，对于启动（或集群）都比较方便（bin 存放命令，conf 存放配置）
@@ -144,14 +151,66 @@ su xuanyu -c "/app/software/redis-5.0.14/bin/redis-server /app/software/redis-5.
 
 ```shell
 # 备份原数据（执行完 save 或者 bgsave 命令后，数据就会持久化到硬盘上的 RDB 文件中）
-127.0.0.1:6379> save
+127.0.0.1:6382> save
 # 查询 RDB 文件的保存位置
-127.0.0.1:6379> config get dir
+127.0.0.1:6382> config get dir
 1) "dir"
-2) "/app/software/redis-5.0.14/rdb"
-127.0.0.1:6379>
+2) "/app/software/redis-8.2.0/rdb"
+127.0.0.1:6382>
 # 最后将 RDB 文件拷贝到目标 Redis 的 rdb 目录下替换，再重启 Redis 即可
 ```
+
+### 安装RediSearch
+
+安装思路就是：先获取 redisearch.so，然后让 Redis 启动时，加载它就行了
+
+可以通过编译源码来生成 so 文件：<https://github.com/RediSearch/RediSearch>
+
+如果编译失败（比如我），还可以到官网下载现成的：<https://redis.io/downloads/#Modules_Tools_and_Integration>
+
+选择 **RediSearch for Redis 7.2, RHEL 7**，下载得到 2.85MB 大小的 redisearch.Linux-rhel7-x86_64.2.8.24.zip
+
+取出里面的 so 文件，并重命名为 redisearch.so，然后上传到服务器
+
+```shell
+[xuanyu@dev ~]$ cd /app/software/backup/
+[xuanyu@dev backup]$ mkdir -v /app/software/redis-8.2.0/conf/modules
+[xuanyu@dev backup]$ cp redisearch.so /app/software/redis-8.2.0/conf/modules
+[xuanyu@dev backup]$ cd /app/software/redis-8.2.0/conf/modules/
+[xuanyu@dev modules]$ chmod 755 redisearch.so
+[xuanyu@dev modules]$ vim ../redis.conf
+loadmodule /app/software/redis-8.2.0/conf/modules/redisearch.so
+[xuanyu@dev modules]$ cd /app/software/redis-8.2.0/bin/
+[xuanyu@dev bin]$ ./redis-server /app/software/redis-8.2.0/conf/redis.conf
+[xuanyu@dev bin]$ less ../log/redis.log
+[xuanyu@dev bin]$ ./redis-cli -p 6382
+127.0.0.1:6382> module list # 查看已安装的模块列表
+1) 1) "name"
+   2) "ReJSON"
+   3) "ver"
+   4) (integer) 20607       # 已安装了 RedisJSON-v2.6.7
+   5) "path"
+   6) "/app/software/redis-8.2.0/conf/modules/rejson.so"
+   7) "args"
+   8) (empty array)
+2) 1) "name"
+   2) "search"
+   3) "ver"
+   4) (integer) 20824       # 已安装了 RediSearch-2.8.24
+   5) "path"
+   6) "/app/software/redis-8.2.0/conf/modules/redisearch.so"
+   7) "args"
+   8) (empty array)
+127.0.0.1:6382> exit
+```
+
+### 安装RedisJSON
+
+它的安装方式和 RediSearch 一模一样，故过程略
+
+也是在官网下载 **RedisJSON 2 for Redis 7.2, RHEL 7** 得到 1.64MB 大小的 rejson.Linux-rhel7-x86_64.2.6.7.zip
+
+另附其源码地址：<https://github.com/RedisJSON/RedisJSON>
 
 ## 安装Nginx
 

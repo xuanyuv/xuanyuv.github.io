@@ -86,25 +86,37 @@ alias ipv6 off
 
 ## 安装Git
 
-```sh
+git-2.46.x 开始，编译时，会报告类似下面的错误：
+
+```shell
+http.c:655:28: error: ‘CURLOPT_PROXYHEADER’ undeclared (first use in this function)
+```
+
+是因为高版本的 git 在编译时，会依赖一些宏，比如 CURLOPT_PROXYHEADER，它是 libcurl 7.37.0 及之后版本中引入的
+
+可以使用 `curl --version` 命令检查当前 libcurl 的版本
+
+由于 CentOS-7 官方支持的最新版本只有 curl 7.29.0，所以要么从源码编译安装最新版 libcurl，要么安装 git-2.45.4
+
+```shell
 # Git 工作时要调用 curl/zlib/openssl/expat/libiconv 等库的代码，所以要先安装这些依赖
 [root@dev backup]# yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
-[root@dev backup]# wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.45.2.tar.gz
-[root@dev backup]# tar zxvf git-2.45.2.tar.gz # sha256：98b26090ed667099a3691b93698d1e213e1ded73d36a2fde7e9125fce28ba234
-[root@dev backup]# cd git-2.45.2/
-[root@dev git-2.45.2]# make prefix=/app/software/git-2.45.2 all
-[root@dev git-2.45.2]# make prefix=/app/software/git-2.45.2 install
+[root@dev backup]# wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.45.4.tar.gz
+[root@dev backup]# tar zxvf git-2.45.4.tar.gz
+[root@dev backup]# cd git-2.45.4/
+[root@dev git-2.45.2]# make prefix=/app/software/git-2.45.4 all
+[root@dev git-2.45.2]# make prefix=/app/software/git-2.45.4 install
 [root@dev git-2.45.2]# cd ..
-[root@dev backup]# rm -rf git-2.45.2
+[root@dev backup]# rm -rf git-2.45.4
 [root@dev backup]# vim /etc/profile
                    # Set Git Environment Variable
-                   GIT_HOME=/app/software/git-2.45.2
+                   GIT_HOME=/app/software/git-2.45.4
                    PATH=$GIT_HOME/bin:$PATH
                    export GIT_HOME PATH
 [root@dev backup]# source /etc/profile
 [root@dev backup]# echo $PATH
 [root@dev backup]# git --version
-git version 2.45.2
+git version 2.45.4
 [root@dev backup]#
 ```
 
@@ -112,7 +124,7 @@ git version 2.45.2
 
 下载地址为：https://www.open.collab.net/files/documents/60/11125/CollabNetSubversion-client-1.8.13-1.x86_64.rpm
 
-```sh
+```shell
 [xuanyu@dev ~]$ rpm -q Subversion
 [xuanyu@dev ~]$ rpm -ivh /app/CollabNetSubversion-client-1.8.13-1.x86_64.rpm
 warning: /app/CollabNetSubversion-client-1.8.13-1.x86_64.rpm: Header V3 DSA/SHA1 Signature...
