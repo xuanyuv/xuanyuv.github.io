@@ -165,7 +165,7 @@ su xuanyu -c "/app/software/redis-8.2.0/bin/redis-server /app/software/redis-8.2
 
 如果编译失败（比如我），可以到官网下载现成的：<https://redis.io/downloads/#Modules_Tools_and_Integration>
 
-选择 **RediSearch for Redis 7.2, RHEL 7**，下载得到 2.85MB 大小的 redisearch.Linux-rhel7-x86_64.2.8.24.zip
+选择 `RediSearch for Redis 7.2, RHEL 7`，下载得到 2.85MB 大小的 redisearch.Linux-rhel7-x86_64.2.8.24.zip
 
 取出里面的 so 文件，并重命名为 redisearch.so，然后上传到服务器
 
@@ -205,7 +205,7 @@ loadmodule /app/software/redis-8.2.0/conf/modules/redisearch.so
 
 它的安装方式和 RediSearch 一模一样，故过程略
 
-也是在官网下载 **RedisJSON 2 for Redis 7.2, RHEL 7** 得到 1.64MB 大小的 rejson.Linux-rhel7-x86_64.2.6.7.zip
+也是在官网下载 `RedisJSON 2 for Redis 7.2, RHEL 7` 得到 1.64MB 大小的 rejson.Linux-rhel7-x86_64.2.6.7.zip
 
 另附其源码地址：<https://github.com/RedisJSON/RedisJSON>
 
