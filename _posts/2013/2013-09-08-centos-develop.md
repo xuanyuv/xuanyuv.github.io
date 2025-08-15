@@ -122,11 +122,11 @@ logfile "/app/software/redis-8.2.0/log/redis.log"    # 日志文件
 always-show-logo yes                                 # 启动日志中，打印logo
 dir /app/software/redis-8.2.0/rdb/                   # 数据库目录
 requirepass 123                                      # 设置连接密码
-#[xuanyu@dev conf]$ su root
-#[root@dev conf]# cd /var/run
-#[root@dev run]# touch redis_6382.pid
-#[root@dev run]# chown -R xuanyu:Develop redis_6382.pid
-#[root@dev run]$ exit
+# [xuanyu@dev conf]$ su root
+# [root@dev conf]# cd /var/run
+# [root@dev run]# touch redis_6382.pid
+# [root@dev run]# chown -R xuanyu:Develop redis_6382.pid
+# [root@dev run]$ exit
 [xuanyu@dev run]$ cd /app/software/redis-8.2.0/bin/
 [xuanyu@dev bin]$ ./redis-server /app/software/redis-8.2.0/conf/redis.conf # 启动redis
 [xuanyu@dev bin]$ ./redis-cli -p 6382                                      # 客户端命令行连接
@@ -166,7 +166,7 @@ su xuanyu -c "/app/software/redis-8.2.0/bin/redis-server /app/software/redis-8.2
 
 可以通过编译源码来生成 so 文件：<https://github.com/RediSearch/RediSearch>
 
-如果编译失败（比如我），还可以到官网下载现成的：<https://redis.io/downloads/#Modules_Tools_and_Integration>
+如果编译失败（比如我），可以到官网下载现成的：<https://redis.io/downloads/#Modules_Tools_and_Integration>
 
 选择 **RediSearch for Redis 7.2, RHEL 7**，下载得到 2.85MB 大小的 redisearch.Linux-rhel7-x86_64.2.8.24.zip
 

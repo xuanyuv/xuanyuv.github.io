@@ -92,11 +92,13 @@ git-2.46.x 开始，编译时，会报告类似下面的错误：
 http.c:655:28: error: ‘CURLOPT_PROXYHEADER’ undeclared (first use in this function)
 ```
 
-是因为高版本的 git 在编译时，会依赖一些宏，比如 CURLOPT_PROXYHEADER，它是 libcurl 7.37.0 及之后版本中引入的
+是因为高版本的 git 在编译时，会依赖一些宏
+
+比如 CURLOPT_PROXYHEADER，它是 libcurl 7.37.0 及之后版本中引入的
 
 可以使用 `curl --version` 命令检查当前 libcurl 的版本
 
-由于 CentOS-7 官方支持的最新版本只有 curl 7.29.0，所以要么从源码编译安装最新版 libcurl，要么安装 git-2.45.4
+由于 CentOS-7 官方支持的最新版只有 curl 7.29.0，所以要么从源码编译安装最新版 libcurl，要么安装 git-2.45.4
 
 ```shell
 # Git 工作时要调用 curl/zlib/openssl/expat/libiconv 等库的代码，所以要先安装这些依赖
