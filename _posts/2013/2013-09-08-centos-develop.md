@@ -69,7 +69,7 @@ JDK 21 will receive updates under the NFTC, until September 2026, a year after t
 
 ## 安装Redis
 
-Redis 的所有版本下载地址：https://download.redis.io/releases/
+Redis 的开源发行版（它也有企业版）的所有版本下载地址：https://download.redis.io/releases/
 
 由于 Redis 是用 C 语言写的，其运行需要 C 环境，故编译前需安装 gcc：`yum -y install gcc gcc-c++`
 
@@ -90,10 +90,10 @@ Redis 的所有版本下载地址：https://download.redis.io/releases/
 [xuanyu@dev ~]$ cd /app/software/backup/
 [xuanyu@dev backup]$ wget https://download.redis.io/releases/redis-8.2.0.tar.gz
 [xuanyu@dev backup]$ tar zxvf redis-8.2.0.tar.gz
-[xuanyu@dev backup]$ mkdir -pv /app/software/redis-8.2.0/conf
-[xuanyu@dev backup]$ mkdir -v /app/software/redis-8.2.0/bin
-[xuanyu@dev backup]$ mkdir -v /app/software/redis-8.2.0/log
-[xuanyu@dev backup]$ mkdir -v /app/software/redis-8.2.0/rdb
+[xuanyu@dev backup]$ mkdir -pv /app/software/redis-8.2.0/conf        # 存放配置
+[xuanyu@dev backup]$ mkdir -v /app/software/redis-8.2.0/bin          # 存放命令
+[xuanyu@dev backup]$ mkdir -v /app/software/redis-8.2.0/log          # bin和conf目录是为了便于管理
+[xuanyu@dev backup]$ mkdir -v /app/software/redis-8.2.0/rdb          # 对于启动（或集群）都比较方便
 [xuanyu@dev backup]$ mv redis-8.2.0 /app/software/redis-8.2.0/redis/
 [xuanyu@dev backup]$ cd /app/software/redis-8.2.0/redis/
 [xuanyu@dev redis]$ make # 过程稍慢，输出下面两行则编译完成（不用执行 make test，它执行的更慢，不是必要）
@@ -142,9 +142,9 @@ su xuanyu -c "/app/software/redis-8.2.0/bin/redis-server /app/software/redis-8.2
 [root@dev bin]$ reboot                                                     # 最后，重启系统，验证
 ```
 
-注：bin 和 conf 目录是为了便于管理，对于启动（或集群）都比较方便（bin 存放命令，conf 存放配置）
+# 备份与还原
 
-另：补充一下通过 RDB 方式进行数据备份与还原
+下面是通过 RDB 方式，进行数据的备份与还原
 
 ```shell
 # 备份原数据（执行完 save 或者 bgsave 命令后，数据就会持久化到硬盘上的 RDB 文件中）
@@ -157,57 +157,100 @@ su xuanyu -c "/app/software/redis-8.2.0/bin/redis-server /app/software/redis-8.2
 # 最后将 RDB 文件拷贝到目标 Redis 的 rdb 目录下替换，再重启 Redis 即可
 ```
 
-### 安装RediSearch
+### 安装redisearch
 
-安装思路就是：先获取 redisearch.so，然后让 Redis 启动时，加载它就行了
+redisearch 的某些功能会依赖于 rejson，所以一般都是它俩一起安装
 
-可以通过编译源码来生成 so 文件：<https://github.com/RediSearch/RediSearch>
+安装思路比较简单：都先获取 rejson.so 和 redisearch.so 文件，然后让 Redis 启动时，加载它俩就行了
 
-如果编译失败（比如我），可以到官网下载现成的：<https://redis.io/downloads/#Modules_Tools_and_Integration>
+问题的关键就在于：**怎么获取 so 文件**
 
-选择 `RediSearch for Redis 7.2, RHEL 7`，下载得到 2.85MB 大小的 redisearch.Linux-rhel7-x86_64.2.8.24.zip
+目前，网上一般有下面两种做法
 
-取出里面的 so 文件，并重命名为 redisearch.so，然后上传到服务器
+1. 源码编译：`git clone --recursive https://github.com/RediSearch/RediSearch.git`<br/>
+　　　　下载到最新版源码及其自动关联的submodule源码后，再执行`make clean build COORD=oss IGNORE_MISSING_DEPS=1`<br/>
+　　　　但往往也会报错，比如：**: No such file or directory**，这时又有大聪明说，你要先安装 boost<br/>
+　　　　方法是进入 **/RediSearch/.install** 目录，执行`./install_boost.sh 1.83.0`。放心吧，Centos7.9上没用的
+2. 官网下载：<https://redis.io/downloads/#Modules_Tools_and_Integration>，按照自己的环境选对应版本<br/>
+　　　　喜闻乐见的是，安装和启动都没问题，测试`FT.CREATE`和`FT.ADD`也没问题，但是`FT.SEARCH`就会报下面的错误<br/>
+　　　　**Module Disabled in Open Source Redis**，这是因为：它是用于运行在 Redis 企业版的，不是开源发行版的
+
+那就没招儿了吗？暂时还是有的，别忘了 Redis Stack：<https://github.com/redis-stack/redis-stack/releases>
+
+Redis Stack 是在 Redis 的基础上，天然集成了以下模块：
+
+* RedisJSON（JSON文档）
+* RediSearch（全文搜索）
+* RedisGraph（图数据库）
+* RedisTimeSeries（时序数据） 
+* RedisBloom（布隆过滤器）
+
+不过要注意的是：2025 年 12 月开始，官方就会停止发布 Redis Stack 的维护版本了（6.2、7.2、7.4）
+
+用官方的说法是：Redis-8.x 开始，就已经把 Redis Stack 集成进了单一的 Redis 开源发行版中的
+
+下面是目前能下载到的针对 RHEL-7 和 RHEL-8 的最新版安装包：
+
+<https://packages.redis.io/redis-stack/redis-stack-server-7.4.0-v6.rhel8.x86_64.tar.gz>
+* RediSearch 2.10.20
+* RedisJSON 2.8.9
+* RedisTimeSeries 1.12.6
+* RedisBloom 2.8.7
+
+<https://packages.redis.io/redis-stack/redis-stack-server-6.2.6-v15.rhel7.x86_64.tar.gz>
+* RediSearch 2.6.19
+* RedisJSON 2.4.9
+* RedisGraph 2.10.12
+* RedisTimeSeries 1.8.13
+* RedisBloom 2.4.9
+
+注意：如果是拿 rhel8 编译出来的 RediSearch 2.10.20 到 CentOS-7.9 上去使用，启动时会报下面的错
+
+```shell
+failed to load: /lib64/libc.so.6: version `GLIBC_2.28' not found
+```
+
+这是由于 CentOS-7.9 上的 gblic 是 2.17 版本的（可以使用`ldd -version`命令查看）
+
+如果操作系统是 [Alibaba Cloud Linux 3.2104](https://help.aliyun.com/zh/alinux/product-overview/features-and-advantages) 则是没问题的，因为它是兼容 CentOS-8、RHEL-8 生态的
+
+言归正传，下面是具体的安装步骤
 
 ```shell
 [xuanyu@dev ~]$ cd /app/software/backup/
 [xuanyu@dev backup]$ mkdir -v /app/software/redis-8.2.0/conf/modules
-[xuanyu@dev backup]$ cp redisearch.so /app/software/redis-8.2.0/conf/modules
+[xuanyu@dev backup]$ cp rejson.so redisearch.so /app/software/redis-8.2.0/conf/modules
 [xuanyu@dev backup]$ cd /app/software/redis-8.2.0/conf/modules/
-[xuanyu@dev modules]$ chmod 755 redisearch.so
+[xuanyu@dev modules]$ chmod 755 rejson.so redisearch.so
 [xuanyu@dev modules]$ vim ../redis.conf
+loadmodule /app/software/redis-8.2.0/conf/modules/rejson.so
 loadmodule /app/software/redis-8.2.0/conf/modules/redisearch.so
 [xuanyu@dev modules]$ cd /app/software/redis-8.2.0/bin/
 [xuanyu@dev bin]$ ./redis-server /app/software/redis-8.2.0/conf/redis.conf
 [xuanyu@dev bin]$ less ../log/redis.log
 [xuanyu@dev bin]$ ./redis-cli -p 6382
-127.0.0.1:6382> module list # 查看已安装的模块列表
+127.0.0.1:6382> auth 123
+OK
+127.0.0.1:6382> module list # 查看已加载的模块列表
 1) 1) "name"
-   2) "ReJSON"
-   3) "ver"
-   4) (integer) 20607       # 已安装了 RedisJSON-v2.6.7
-   5) "path"
-   6) "/app/software/redis-8.2.0/conf/modules/rejson.so"
-   7) "args"
-   8) (empty array)
-2) 1) "name"
    2) "search"
    3) "ver"
-   4) (integer) 20824       # 已安装了 RediSearch-2.8.24
+   4) (integer) 20619       # 已加载了 RediSearch-2.6.19
    5) "path"
    6) "/app/software/redis-8.2.0/conf/modules/redisearch.so"
    7) "args"
    8) (empty array)
+2) 1) "name"
+   2) "ReJSON"
+   3) "ver"
+   4) (integer) 20409       # 已加载了 RedisJSON-v2.4.9
+   5) "path"
+   6) "/app/software/redis-8.2.0/conf/modules/rejson.so"
+   7) "args"
+   8) (empty array)
 127.0.0.1:6382> exit
+[xuanyu@dev bin]$ 
 ```
-
-### 安装RedisJSON
-
-它的安装方式和 RediSearch 一模一样，故过程略
-
-也是在官网下载 `RedisJSON 2 for Redis 7.2, RHEL 7` 得到 1.64MB 大小的 rejson.Linux-rhel7-x86_64.2.6.7.zip
-
-另附其源码地址：<https://github.com/RedisJSON/RedisJSON>
 
 ## 安装Nginx
 
