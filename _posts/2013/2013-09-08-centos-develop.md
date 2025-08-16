@@ -168,14 +168,14 @@ redisearch 的某些功能，搭配 rejson 会更好，所以一般都是它俩�
 目前，网上一般有下面两种做法
 
 1. 源码编译：`git clone --recursive https://github.com/RediSearch/RediSearch.git`<br/>
-　　　　下载到最新版的源码，及其，自动关联的 submodule 源码后<br/>
-　　　　再在 **/RediSearch/** 目录执行命令`make clean build COORD=oss IGNORE_MISSING_DEPS=1`<br/>
-　　　　但往往也会报错，比如 **: No such file or directory**，这时又有大聪明说，你要先安装 boost<br/>
-　　　　方法是进入 **/RediSearch/.install** 目录，执行`./install_boost.sh 1.83.0`<br/>
-　　　　放心吧，在 Centos-7.9 上是没用的
+　　　　　下载到最新版的源码，及其，自动关联的 submodule 源码后<br/>
+　　　　　再在 **/RediSearch/** 目录执行命令`make clean build COORD=oss IGNORE_MISSING_DEPS=1`<br/>
+　　　　　但往往也会报错，比如 **: No such file or directory**，这时又有大聪明说，要先安装 boost<br/>
+　　　　　方法是进入 **/RediSearch/.install** 目录，执行`./install_boost.sh 1.83.0`<br/>
+　　　　　放心吧，在 Centos-7.9 上是没用的
 2. 官网下载：<https://redis.io/downloads/#Modules_Tools_and_Integration>，按照自己的环境选对应版本<br/>
-　　　　安装和启动都没问题，测试`FT.CREATE`和`FT.ADD`也没问题，但是`FT.SEARCH`会报下面的错误<br/>
-　　　　**Module Disabled in Open Source Redis**：因为它是用在 Redis 企业版的，不是开源发行版的
+　　　　　安装和启动都没问题，`FT.CREATE`和`FT.ADD`也没问题，但是`FT.SEARCH`会报下面的错误<br/>
+　　　　　**Module Disabled in Open Source Redis**：因为它是用在 Redis 企业版，不是开源发行版的
 
 那就没招儿了吗？暂时还是有的，别忘了 Redis Stack：<https://github.com/redis-stack/redis-stack/releases>
 
@@ -194,17 +194,16 @@ Redis Stack 是在 Redis 的基础上，天然集成了以下模块：
 下面是目前能下载到的针对 RHEL-8 和 RHEL-7 的最新版安装包：
 
 <https://packages.redis.io/redis-stack/redis-stack-server-7.4.0-v6.rhel8.x86_64.tar.gz> 包含以下模块：
-* RediSearch 2.10.20
-* RedisJSON 2.8.9
-* RedisTimeSeries 1.12.6
-* RedisBloom 2.8.7
+
+RediSearch-2.10.20、RedisJSON-2.8.9、RedisTimeSeries-1.12.6、RedisBloom-2.8.7
+
+<https://packages.redis.io/redis-stack/redis-stack-server-7.2.0-v18.rhel8.x86_64.tar.gz> 包含以下模块：
+
+RediSearch-2.8.28、RedisJSON-2.6.15、RedisTimeSeries-1.10.17、RedisBloom-2.6.18、RedisGears-2.0.23
 
 <https://packages.redis.io/redis-stack/redis-stack-server-6.2.6-v15.rhel7.x86_64.tar.gz> 包含以下模块：
-* RediSearch 2.6.19
-* RedisJSON 2.4.9
-* RedisGraph 2.10.12
-* RedisTimeSeries 1.8.13
-* RedisBloom 2.4.9
+
+RediSearch-2.6.19、RedisJSON-2.4.9、RedisTimeSeries-1.8.13、RedisBloom-2.4.9、RedisGraph-2.10.12
 
 注意：如果是拿 rhel8 编译出来的 RediSearch 2.10.20 到 CentOS-7.9 上去使用，启动时会报下面的错
 
@@ -214,7 +213,7 @@ failed to load: /lib64/libc.so.6: version `GLIBC_2.28' not found
 
 这是由于 CentOS-7.9 上的 gblic 是 2.17 版本的（可以使用`ldd -version`命令查看）
 
-如果操作系统是 [Alibaba Cloud Linux 3.2104](https://help.aliyun.com/zh/alinux/product-overview/features-and-advantages) 则是没问题的，因为它兼容 CentOS-8、RHEL-8 生态
+如果操作系统是 [Alibaba Cloud Linux 3.2104](https://help.aliyun.com/zh/alinux/product-overview/features-and-advantages) 则没问题，因为它是兼容 CentOS-8、RHEL-8 生态的
 
 言归正传，下面是具体的安装步骤
 
