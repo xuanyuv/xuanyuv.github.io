@@ -142,7 +142,7 @@ su xuanyu -c "/app/software/redis-8.2.0/bin/redis-server /app/software/redis-8.2
 [root@dev bin]$ reboot                                                     # 最后，重启系统，验证
 ```
 
-# 备份与还原
+### 备份与还原
 
 下面是通过 RDB 方式，进行数据的备份与还原
 
@@ -159,7 +159,7 @@ su xuanyu -c "/app/software/redis-8.2.0/bin/redis-server /app/software/redis-8.2
 
 ### 安装redisearch
 
-redisearch 的某些功能会依赖于 rejson，所以一般都是它俩一起安装
+redisearch 的某些功能，搭配 rejson 会更好，所以一般都是它俩一起安装
 
 安装思路比较简单：都先获取 rejson.so 和 redisearch.so 文件，然后让 Redis 启动时，加载它俩就行了
 
@@ -168,12 +168,14 @@ redisearch 的某些功能会依赖于 rejson，所以一般都是它俩一起�
 目前，网上一般有下面两种做法
 
 1. 源码编译：`git clone --recursive https://github.com/RediSearch/RediSearch.git`<br/>
-　　　　下载到最新版源码及其自动关联的submodule源码后，再执行`make clean build COORD=oss IGNORE_MISSING_DEPS=1`<br/>
-　　　　但往往也会报错，比如：**: No such file or directory**，这时又有大聪明说，你要先安装 boost<br/>
-　　　　方法是进入 **/RediSearch/.install** 目录，执行`./install_boost.sh 1.83.0`。放心吧，Centos7.9上没用的
+　　　　下载到最新版的源码，及其，自动关联的 submodule 源码后<br/>
+　　　　再在 **/RediSearch/** 目录执行命令`make clean build COORD=oss IGNORE_MISSING_DEPS=1`<br/>
+　　　　但往往也会报错，比如 **: No such file or directory**，这时又有大聪明说，你要先安装 boost<br/>
+　　　　方法是进入 **/RediSearch/.install** 目录，执行`./install_boost.sh 1.83.0`<br/>
+　　　　放心吧，在 Centos-7.9 上是没用的
 2. 官网下载：<https://redis.io/downloads/#Modules_Tools_and_Integration>，按照自己的环境选对应版本<br/>
-　　　　喜闻乐见的是，安装和启动都没问题，测试`FT.CREATE`和`FT.ADD`也没问题，但是`FT.SEARCH`就会报下面的错误<br/>
-　　　　**Module Disabled in Open Source Redis**，这是因为：它是用于运行在 Redis 企业版的，不是开源发行版的
+　　　　安装和启动都没问题，测试`FT.CREATE`和`FT.ADD`也没问题，但是`FT.SEARCH`会报下面的错误<br/>
+　　　　**Module Disabled in Open Source Redis**：因为它是用在 Redis 企业版的，不是开源发行版的
 
 那就没招儿了吗？暂时还是有的，别忘了 Redis Stack：<https://github.com/redis-stack/redis-stack/releases>
 
@@ -185,19 +187,19 @@ Redis Stack 是在 Redis 的基础上，天然集成了以下模块：
 * RedisTimeSeries（时序数据） 
 * RedisBloom（布隆过滤器）
 
-不过要注意的是：2025 年 12 月开始，官方就会停止发布 Redis Stack 的维护版本了（6.2、7.2、7.4）
+不过要注意的是：2025 年 12 月起，官方就会停止发布 Redis Stack 的维护版本了（6.2、7.2、7.4）
 
-用官方的说法是：Redis-8.x 开始，就已经把 Redis Stack 集成进了单一的 Redis 开源发行版中的
+用官方的说法是：Redis-8.x 开始，就已经把 Redis Stack 集成进了单一的 Redis 开源发行版中了
 
-下面是目前能下载到的针对 RHEL-7 和 RHEL-8 的最新版安装包：
+下面是目前能下载到的针对 RHEL-8 和 RHEL-7 的最新版安装包：
 
-<https://packages.redis.io/redis-stack/redis-stack-server-7.4.0-v6.rhel8.x86_64.tar.gz>
+<https://packages.redis.io/redis-stack/redis-stack-server-7.4.0-v6.rhel8.x86_64.tar.gz> 包含以下模块：
 * RediSearch 2.10.20
 * RedisJSON 2.8.9
 * RedisTimeSeries 1.12.6
 * RedisBloom 2.8.7
 
-<https://packages.redis.io/redis-stack/redis-stack-server-6.2.6-v15.rhel7.x86_64.tar.gz>
+<https://packages.redis.io/redis-stack/redis-stack-server-6.2.6-v15.rhel7.x86_64.tar.gz> 包含以下模块：
 * RediSearch 2.6.19
 * RedisJSON 2.4.9
 * RedisGraph 2.10.12
@@ -212,7 +214,7 @@ failed to load: /lib64/libc.so.6: version `GLIBC_2.28' not found
 
 这是由于 CentOS-7.9 上的 gblic 是 2.17 版本的（可以使用`ldd -version`命令查看）
 
-如果操作系统是 [Alibaba Cloud Linux 3.2104](https://help.aliyun.com/zh/alinux/product-overview/features-and-advantages) 则是没问题的，因为它是兼容 CentOS-8、RHEL-8 生态的
+如果操作系统是 [Alibaba Cloud Linux 3.2104](https://help.aliyun.com/zh/alinux/product-overview/features-and-advantages) 则是没问题的，因为它兼容 CentOS-8、RHEL-8 生态
 
 言归正传，下面是具体的安装步骤
 
