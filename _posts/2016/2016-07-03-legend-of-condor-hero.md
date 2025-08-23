@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "神雕侠侣的另类真相"
+title: "神雕侠侣的真相"
 categories: 其它
-tags: 神雕侠侣 真相 另类
+tags: 神雕侠侣 真相
 author: 玄玉
-excerpt: 你意想不到的，却又觉得很有道理的，金庸小说射雕三部曲之神雕侠侣的另类真相。
+excerpt: 意想不到的，却又觉得很有道理。
 ---
 
 * content

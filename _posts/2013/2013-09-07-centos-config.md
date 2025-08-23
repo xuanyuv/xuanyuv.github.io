@@ -198,3 +198,41 @@ The JDK is a development environment for building applications, applets
 and components that can be deployed with the Java Platform Standard
 Edition Runtime Environment.
 ```
+
+## 安装CentOS-8.5
+
+dvd iso 下载地址：<https://mirrors.aliyun.com/centos/8.5.2111/isos/x86_64/>
+
+这里是在虚拟机里安装，用的是 VirtualBox-7.0.14：<https://www.virtualbox.org/wiki/Download_Old_Builds_7_0>
+
+注意，从 VirtualBox-7.0.16 开始，要求只能安装在 C 盘（也可以安装在其它盘，不过要执行几个授权命令）
+
+`另外，VMware-workstation-17.6.4 有时安装完，发现本地网络适配器没有自动安装虚拟网卡（VMnet1、VMnet8）`
+
+`即便是卸载、清理注册表、重装，也还是没有虚拟网卡，最后 centos-8.5 能联网，但是外部的 xshell 连接不上去`
+
+言归正传，整体来讲，主要有 **3** 点需要注意：
+
+1. 安装时，在安装界面把网卡启用了（我在这里启用时，显示的默认 ip = 10.0.2.15）
+2. 安装完，改下防火墙：<https://www.xuanyuv.com/blog/20240426/aliyun-ecs-dnat-snat.html#关于新版防火墙>
+3. 安装后，网络的配置，如下所示（centos-8.5 里面不用改什么，唯一的启用网卡，刚才已经做了）
+
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2013/2013-09-07-centos-config-01.png)
+
+如此一来，centos-8.5 就可以上网了，同时 xshell 可以通过 127.0.0.1:2222 连上 centos-8.5
+
+截图里的 6382 端口是 Redis-8.2 的，本地的客户端也是通过 127.0.0.1:6382 就可以直连上去了
+
+### 更换yum国内源
+
+主要思路就是：备份源文件、下载最新的国内源文件、更新源地址、生成缓存
+
+```shell
+[root@xy ~]# cd /etc/yum.repos.d/
+[root@xy yum.repos.d]# mkdir backup && mv *repo backup/
+[root@xy yum.repos.d]# curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-8.repo
+[root@xy yum.repos.d]# sed -i -e "s|mirrors.cloud.aliyuncs.com|mirrors.aliyun.com|g" /etc/yum.repos.d/CentOS-*
+[root@xy yum.repos.d]# sed -i -e "s|releasever|releasever-stream|g" /etc/yum.repos.d/CentOS-*
+[root@xy yum.repos.d]# yum clean all && yum makecache
+[root@xy yum.repos.d]#
+```

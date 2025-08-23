@@ -26,7 +26,7 @@ type: page
 * [英雄志讲武堂](http://www.jiang-wu-tang.com/JWTphpBBS/index.php)、[皇帝之家](https://www.huangdizhijia.com/index.html)、[知轩藏书](http://www.zxcs.me)、[知轩藏书2](https://zxcs.zip/)、[知轩藏书3](https://zxcs.info/)、[书荒部落](http://noveless.com)
 * [HTML5炫画](http://www.html5tricks.com)、[懒人之家](http://www.lanrenzhijia.com)、[故宫壁纸](https://www.dpm.org.cn/lights/royal.html)
 * [新浪微博图床](http://weibo.com/minipublish)、[新浪微博图床Chrome扩展](https://github.com/Suxiaogang/WeiboPicBed)、[SMMS图床](https://sm.ms)
-* [CMCT](https://cmct.tv/?fromuid=72191)、[伊甸园](http://bbs.sfile2012.com)、[FIX字幕侠](http://www.zimuxia.cn)、[MP4电影](https://domp4.icu/)、[盘了个盘](https://www.panlegepan.com/)
+* [CMCT](https://cmct.tv/?fromuid=72191)、[伊甸园](http://bbs.sfile2012.com)、[FIX字幕侠](http://www.zimuxia.cn)、[MP4电影](https://domp4.icu/)、[盘了个盘](https://www.panlegepan.com/)、[SeedHub](https://seedhub.wwwnav.com/)
 
 ## 站点
 

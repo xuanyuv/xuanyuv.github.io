@@ -73,17 +73,6 @@ Redis 的开源发行版（它也有企业版）的所有版本下载地址：ht
 
 由于 Redis 是用 C 语言写的，其运行需要 C 环境，故编译前需安装 gcc：`yum -y install gcc gcc-c++`
 
-另外，在 ARM 架构的 Linux 系统上，make 编译时可能报错：**/usr/bin/ld: cannot find -latomic**
-
-说明系统缺少 libatomic.so，即编译时需要用到 libatomic.so 库，而系统又找不到这个库
-
-解决办法如下：
-
-1. 先执行：`yum -y install *atomic*`
-2. 再执行：`ln -s /usr/lib64/libatomic.so.1.2.0 /usr/lib/libatomic.so`
-
-然后重新编译即可
-
 下面是 Redis-8.2.0 的安装步骤（其它版本的安装步骤和这个是一模一样的，比如 5.0.14 或者 7.2.10）
 
 ```shell
@@ -142,6 +131,17 @@ su xuanyu -c "/app/software/redis-8.2.0/bin/redis-server /app/software/redis-8.2
 [root@dev bin]$ reboot                                                     # 最后，重启系统，验证
 ```
 
+另外，在 ARM 架构的 Linux 系统上，make 编译时可能报错：**/usr/bin/ld: cannot find -latomic**
+
+说明系统缺少 libatomic.so，即编译时需要用到 libatomic.so 库，而系统又找不到这个库
+
+解决办法如下：
+
+1. 先执行：`yum -y install *atomic*`
+2. 再执行：`ln -s /usr/lib64/libatomic.so.1.2.0 /usr/lib/libatomic.so`
+
+然后重新编译即可
+
 ### 备份与还原
 
 下面是通过 RDB 方式，进行数据的备份与还原
@@ -161,9 +161,9 @@ su xuanyu -c "/app/software/redis-8.2.0/bin/redis-server /app/software/redis-8.2
 
 redisearch 的某些功能，搭配 rejson 会更好，所以一般都是它俩一起安装
 
-安装思路比较简单：都先获取 rejson.so 和 redisearch.so 文件，然后让 Redis 启动时，加载它俩就行了
+安装思路比较简单：都是获取 rejson.so 和 redisearch.so 文件，然后让 Redis 启动时，加载它俩就行了
 
-问题的关键就在于：**怎么获取 so 文件**
+问题的关键就在于：**如何获取 so 文件**
 
 目前，网上一般有下面两种做法
 
@@ -175,23 +175,19 @@ redisearch 的某些功能，搭配 rejson 会更好，所以一般都是它俩�
 　　　　　放心吧，在 Centos-7.9 上是没用的
 2. 官网下载：<https://redis.io/downloads/#Modules_Tools_and_Integration>，按照自己的环境选对应版本<br/>
 　　　　　安装和启动都没问题，`FT.CREATE`和`FT.ADD`也没问题，但是`FT.SEARCH`会报下面的错误<br/>
-　　　　　**Module Disabled in Open Source Redis**：因为它是用在 Redis 企业版，不是开源发行版的
+　　　　　**Module Disabled in Open Source Redis**：因为它是用于 Redis 企业版的，不是开源版的
 
-那就没招儿了吗？暂时还是有的，别忘了 Redis Stack：<https://github.com/redis-stack/redis-stack/releases>
-
-Redis Stack 是在 Redis 的基础上，天然集成了以下模块：
-
+> 那就没招儿了？暂时还是有的，别忘了 Redis Stack：<https://github.com/redis-stack/redis-stack/releases><br>
+Redis Stack 是在 Redis 的基础上，天然集成了以下模块：<br>
 * RedisJSON（JSON文档）
 * RediSearch（全文搜索）
 * RedisGraph（图数据库）
-* RedisTimeSeries（时序数据） 
-* RedisBloom（布隆过滤器）
+* RedisTimeSeries（时序数据）
+* RedisBloom（布隆过滤器）<br>
+不过要注意：2025 年 12 月起，就会停止发布 Redis Stack 的维护版本了（6.2、7.2、7.4）<br>
+官方的说法：Redis-8.x 开始，就已经把 Redis Stack 集成进单一的 Redis 开源发行版中了
 
-不过要注意的是：2025 年 12 月起，官方就会停止发布 Redis Stack 的维护版本了（6.2、7.2、7.4）
-
-用官方的说法是：Redis-8.x 开始，就已经把 Redis Stack 集成进了单一的 Redis 开源发行版中了
-
-下面是目前能下载到的针对 RHEL-8 和 RHEL-7 的最新版安装包：
+下面是目前能下载到的，针对 rhel8 和 rhel7 的最新版安装包：（so 文件位于安装包的 lib 目录中）
 
 <https://packages.redis.io/redis-stack/redis-stack-server-7.4.0-v6.rhel8.x86_64.tar.gz> 包含以下模块：
 
@@ -205,15 +201,14 @@ RediSearch-2.8.28、RedisJSON-2.6.15、RedisTimeSeries-1.10.17、RedisBloom-2.6.
 
 RediSearch-2.6.19、RedisJSON-2.4.9、RedisTimeSeries-1.8.13、RedisBloom-2.4.9、RedisGraph-2.10.12
 
-注意：如果是拿 rhel8 编译出来的 RediSearch 2.10.20 到 CentOS-7.9 上去使用，启动时会报下面的错
-
 ```shell
-failed to load: /lib64/libc.so.6: version `GLIBC_2.28' not found
+# 如果是拿 rhel8 编译出来的 RediSearch-2.10.20 到 CentOS-7.9 上用，启动会报下面的错
+failed to load: /lib64/libc.so.6: version 'GLIBC_2.28' not found
+
+# 这是由于 CentOS-7.9 上的 gblic 是 2.17 版本的（可以用这个命令查看：ldd --version）
+# 如果操作系统是 Alibaba Cloud Linux 3.2104 则没问题，因为它是兼容 CentOS-8、RHEL-8 生态的
+# 详见：https://help.aliyun.com/zh/alinux/product-overview/features-and-advantages
 ```
-
-这是由于 CentOS-7.9 上的 gblic 是 2.17 版本的（可以使用`ldd -version`命令查看）
-
-如果操作系统是 [Alibaba Cloud Linux 3.2104](https://help.aliyun.com/zh/alinux/product-overview/features-and-advantages) 则没问题，因为它是兼容 CentOS-8、RHEL-8 生态的
 
 言归正传，下面是具体的安装步骤
 
@@ -251,6 +246,35 @@ OK
    8) (empty array)
 127.0.0.1:6382> exit
 [xuanyu@dev bin]$ 
+```
+
+另外，上面链接里提取到的 so 文件，都是基于 **x86_64 / x64 / amd64** 架构的系统的
+
+如果是 **AArch64 / ARMv8v9 / arm64** 架构的系统，是会启动失败的，提示下面的报错
+
+```shell
+failed to load: rejson.so: cannot open shared object file: No such file or directory
+
+[xuanyu@dev modules]$ ldd rejson.so # 此时查看动态库依赖关系：异常情况
+	not a dynamic executable
+[xuanyu@dev modules]$ ldd rejson.so # 此时查看动态库依赖关系：正常情况
+	linux-vdso.so.1 =>  (0x00007ffd26de0000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x00007fc900087000)
+	librt.so.1 => /lib64/librt.so.1 (0x00007fc8ffe7f000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007fc8ffc63000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007fc8ff961000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007fc8ff75d000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007fc8ff38f000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fc900635000)
+# 如果程序是交叉编译的，生成的程序可能在本机 ldd 时，看不到依赖库，此时可以执行下面命令，看其依赖项
+[xuanyu@dev modules]$ readelf -d rejson.so | grep NEEDED
+ 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [librt.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libpthread.so.0]
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libdl.so.2]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]
 ```
 
 ## 安装Nginx
