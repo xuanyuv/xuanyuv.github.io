@@ -88,12 +88,12 @@ Redis 的开源发行版（它也有企业版）的所有版本下载地址：ht
 [xuanyu@dev redis]$ make # 过程稍慢，输出下面两行则编译完成（不用执行 make test，它执行的更慢，不是必要）
 Hint: It's a good idea to run 'make test' ;)
 
-[xuanyu@dev redis]# cd src/
-[xuanyu@dev redis]$ su root
+[xuanyu@dev redis]$ cd src/
+[xuanyu@dev src]$ su root
 [root@dev src]# make install # 过程很快（注意：是在 src 目录下执行的，同样也不用去执行 make test）
 Hint: It's a good idea to run 'make test' ;)
 
-[root@dev src]$ exit
+[root@dev src]# exit
 [xuanyu@dev src]$ mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-sentinel redis-server redis-trib.rb /app/software/redis-8.2.0/bin/
 [xuanyu@dev src]$ cd ..
 [xuanyu@dev redis]$ mv redis.conf /app/software/redis-8.2.0/conf/
