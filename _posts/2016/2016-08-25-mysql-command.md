@@ -152,7 +152,9 @@ DROP INDEX idx_name_password ON t_account;
 
 ```sql
 -- 更新某字段值为另一个表的同名字段值
-UPDATE t_user u, t_account a SET u.account_type=a.type WHERE u.account_id=a.id
+UPDATE t_user u, t_account a SET u.account_type = a.type WHERE u.account_id = a.id
+
+UPDATE t_user u LEFT JOIN t_account a ON u.account_id = a.id SET u.account_type = IFNULL(a.type, 0)
 
 -- 清空表数据（效率高于DELETE，不可带WHERE，不记录日志，不可恢复数据，序号ID重新从1开始）
 TRUNCATE TABLE t_user;
