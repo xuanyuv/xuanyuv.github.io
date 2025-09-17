@@ -358,7 +358,16 @@ settings---Build,Execution,Deployment---Compiler---Shared build process heap siz
 
 数据库工具，常见的有 Heidisql、DBeaver、JookDB、Navicat，其实 JetBrains 家的 DataGrip 也挺好用
 
-> 此处已适配：DataGrip-2021.2.2（2021.2.3版本起，要求登录JetBrains帐号，故无限试用插件也失效了）
+> 此处已适配：DataGrip-2021.2.2（2021.2.3版本起，要求登录JetBrains帐号，故无限试用插件也失效了）<br/>
+如果想改hosts的话，可以试试下面的<br/>
+127.0.0.1 jetbrains.com<br/>
+127.0.0.1 www.jetbrains.com<br/>
+127.0.0.1 plugins.jetbrains.com<br/>
+127.0.0.1 account.jetbrains.com<br/>
+127.0.0.1 account.jetbrains.com.cn<br/>
+127.0.0.1 plugins.jetbrains.com.cn<br/>
+127.0.0.1 www.jetbrains.com.cn<br/>
+127.0.0.1 jetbrains.com.cn
 
 ### idea.properties
 
