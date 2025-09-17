@@ -34,6 +34,7 @@ type: page
 * [类UI](https://layui.dev/)
 * [云沙箱](https://s.threatbook.com/)
 * [OCR识别](https://ocr.m78cloud.cn/)
+* [写个字吧](https://xgzb.top/)
 * [Spring项目发布日历](https://calendar.spring.io/)
 * [LiteFlow国产开源规则引擎](https://liteflow.cc/)
 * [warm-flow国产开源工作流引擎](http://warm-flow.cn/)
