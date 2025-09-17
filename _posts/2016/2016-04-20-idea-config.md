@@ -12,7 +12,7 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 
 
 > 本文所列配置项，已适配：ideaIC-2023.3.8<br/>
-  idea历史版本下载：<http://www.jetbrains.com/idea/download/other.html>
+  idea历史版本下载：<https://www.jetbrains.com/idea/download/other.html>
 
 ## 快捷键
 
@@ -359,7 +359,7 @@ settings---Build,Execution,Deployment---Compiler---Shared build process heap siz
 数据库工具，常见的有 Heidisql、DBeaver、JookDB、Navicat，其实 JetBrains 家的 DataGrip 也挺好用
 
 > 此处已适配：DataGrip-2021.2.2（2021.2.3版本起，要求登录JetBrains帐号，故无限试用插件也失效了）<br/>
-如果想改hosts的话，可以试试下面的<br/>
+如果想改hosts，可以试试下面的<br/>
 127.0.0.1 jetbrains.com<br/>
 127.0.0.1 www.jetbrains.com<br/>
 127.0.0.1 plugins.jetbrains.com<br/>
