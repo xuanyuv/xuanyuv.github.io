@@ -356,7 +356,7 @@ settings---Build,Execution,Deployment---Compiler---Shared build process heap siz
 
 ## datagrip的几个配置
 
-数据库工具，常见的有 Heidisql、DBeaver、JookDB、Navicat，其实 JetBrains 家的 DataGrip 也挺好用
+数据库工具，常见的有 JookDB、Heidisql、DBeaver、Navicat，其实 JetBrains 家的 DataGrip 更好用
 
 > 此处已适配：DataGrip-2021.2.2（2021.2.3版本起，要求登录JetBrains帐号，故无限试用插件也失效了）<br/>
 如果想改hosts，可以试试下面的<br/>
