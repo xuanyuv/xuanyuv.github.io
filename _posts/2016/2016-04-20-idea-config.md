@@ -136,7 +136,7 @@ settings---Editor---General---Breadcrumbs---不勾选Show breadcrumbs
 settings---Editor---General---Code Completion---不勾选Match case
 
 # 设定折叠或展开的代码类型（勾选则表示该类型代码在文件被打开时默认是被折叠显示的）
-settings---Editor---General---Code Folding---勾选Method bodies、Inner classes、Anonymous classes
+settings---Editor---General---Code Folding---勾选Method bodies、Inner classes、Anonymous classes、XML tags
 
 # Tab上移除文件后缀
 settings---Editor---General---Editor Tabs---不勾选Show file extension
