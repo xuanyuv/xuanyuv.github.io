@@ -151,7 +151,26 @@ DROP INDEX idx_name_password ON t_account;
 ## 修改表数据
 
 ```sql
+-- 查询结果集添加自增序号
+-- 通过【@变量名】来定义用户变量，赋值时可以用【=】或【:=】，但是SELECT时必须用【:=】赋值
+SET @i=16;
+SET @i:=32;
+SELECT (@i:=@i+1) AS rowNum, realname from t_user_info;
+-- 举例
+SET @lastId = (SELECT max(id)+1 FROM t_user_info);
+INSERT INTO t_user_info VALUE(@lastId,   '卢云');
+INSERT INTO t_user_info VALUE(@lastId+1, '顾倩兮');
+INSERT INTO t_user_info VALUES
+((@lastId:=@lastId+1), '卢云'),
+((@lastId:=@lastId+1), '顾倩兮');
+
 -- 更新某字段值为另一个表的同名字段值
+SET @id_202507 = (SELECT min(id)-1 FROM t_user WHERE birthday=20250701);
+SET @id_202504 = (SELECT min(id)-1 FROM t_user WHERE birthday=20250401);
+UPDATE t_user SET birthday_month = FLOOR(birthday/100) WHERE id > @id_202507;
+UPDATE t_user SET birthday_month = FLOOR(birthday/100) WHERE id > @id_202504 AND id <= @id_202507;
+UPDATE t_user SET birthday_month = FLOOR(birthday/100) WHERE id <= @id_202504;
+
 UPDATE t_user u, t_account a SET u.account_type = a.type WHERE u.account_id = a.id
 
 UPDATE t_user u LEFT JOIN t_account a ON u.account_id = a.id SET u.account_type = IFNULL(a.type, 0)
@@ -316,19 +335,6 @@ GROUP BY t.id;
 -- 然后把ONLY_FULL_GROUP_BY去掉，重新设置sql_mode即可
 -- SET sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 -- 注：这样修改，也只是这一次的会话有效（若想永久有效，就得修改配置文件）
-
--- 查询结果集添加自增序号
--- 通过【@变量名】来定义用户变量，赋值时可以用【=】或【:=】，但是SELECT时必须用【:=】赋值
-SET @i=16;
-SET @i:=32;
-SELECT (@i:=@i+1) AS rowNum, realname from t_user_info;
--- 举例
-SET @lastId = (SELECT max(id)+1 FROM t_user_info);
-INSERT INTO t_user_info VALUE(@lastId,   '卢云');
-INSERT INTO t_user_info VALUE(@lastId+1, '顾倩兮');
-INSERT INTO t_user_info VALUES
-((@lastId:=@lastId+1), '卢云'),
-((@lastId:=@lastId+1), '顾倩兮');
 ```
 
 ## 查询所有的父子级
