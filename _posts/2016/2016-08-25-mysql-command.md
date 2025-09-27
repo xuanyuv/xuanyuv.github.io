@@ -129,11 +129,16 @@ ALTER TABLE t_account COMMENT '账户信息表';
 -- MODIFY COLUMN 与 CHANGE COLUMN 唯一不同是：它不能重命名列
 ALTER TABLE t_account CHANGE COLUMN money_total money_max VARCHAR(50) COMMENT '总额度';
 ALTER TABLE t_account CHANGE COLUMN money_total money_max VARCHAR(50) COMMENT '总额度' AFTER id;
-ALTER TABLE t_account MODIFY COLUMN money_max DECIMAL(16,6) NOT NULL COMMENT '最高额度（元）';
-ALTER TABLE t_account MODIFY COLUMN money_max DECIMAL(16,6) NOT NULL COMMENT '最高额度（元）' AFTER id;
+ALTER TABLE t_account MODIFY COLUMN money_max DECIMAL(16,6) NOT NULL  COMMENT '最高额度（元）';
+ALTER TABLE t_account MODIFY COLUMN money_max DECIMAL(16,6) NOT NULL  COMMENT '最高额度（元）' AFTER id;
 
-ALTER TABLE t_account ADD    COLUMN money_type TINYINT(1) COMMENT '金额类型：1--RMB，2--USD' AFTER id;
 ALTER TABLE t_account DROP   COLUMN money_type;
+ALTER TABLE t_account ADD    COLUMN money_type TINYINT COMMENT '金额类型：1-RMB、2-USD' AFTER id;
+-- 如果不加AFTER，默认会添加在尾部
+ALTER TABLE t_account
+    ADD COLUMN gender   TINYINT    NOT NULL DEFAULT 0 COMMENT '性别：0-未知、1-男、2-女' AFTER id,
+    ADD COLUMN realname VARCHAR(4) NOT NULL           COMMENT '姓名' AFTER gender,
+    ADD COLUMN nickname VARCHAR(8)                    COMMENT '昵称' AFTER realname;
 
 ALTER TABLE t_account ADD PRIMARY KEY(account_id);
 ALTER TABLE t_account ADD INDEX idx_password(password);
