@@ -230,6 +230,15 @@ settings---Editor---Inspections---Proofreading---全部不勾选
 
 # properties的属性未使用
 settings---Editor---Inspections---Properties Files---不勾选Unused Property
+
+# 类上的注解折叠时，鼠标放上去后：去掉小黄灯：创建测试类
+settings---Editor---Intentions---Java---Declaration---不勾选Create test
+
+# 类上的注解折叠时，鼠标放上去后：去掉小黄灯：实现抽象类或接口
+settings---Editor---Intentions---Java---Declaration---不勾选Implement abstract class or interface
+
+# 鼠标点到注解上时，去掉小黄灯：修改类或方法的访问权限（public/private/protected/package-private）
+settings---Editor---Intentions---Java---Other---不勾选Change access modifier
 ```
 
 ### 编辑器之注释模板
