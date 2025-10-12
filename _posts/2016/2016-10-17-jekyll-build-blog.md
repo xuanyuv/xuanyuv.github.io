@@ -312,3 +312,11 @@ testingcf.jsdelivr.net
 另外：js 和 css 等静态文件的 CDN，推荐使用 [字节跳动静态资源公共库](https://cdn.bytedance.com/)
 
 另外：参考 <https://blog.akass.cn/resources/mirrors>（bootcdn 和 staticfile 已被污染）
+
+## PS制作透明背景文字
+
+新建：指定好宽度和高度（像素），模式默认RGB颜色，内容位置选透明
+
+然后就可以录入文字了，同时也可以通过导航菜单上的图像菜单，选择修改图像大小或画布大小
+
+也可以参考这篇百度经验 <https://jingyan.baidu.com/article/73c3ce2839f1c6a40343d9aa.html>
