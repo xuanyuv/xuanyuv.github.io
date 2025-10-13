@@ -473,3 +473,31 @@ datagrip 在操作数据库时，可能会提示下面信息：
 llegal mix of collations (utf8mb4_general_ci,IMPLICIT) and (utf8mb4_0900_ai_ci,IMPLICIT) for operation '='
 
 解决办法就是在数据库连接 URL 上增加：`connectionCollation=utf8mb4_general_ci`
+
+## Win7支持的最后版
+
+### idea.2023.1.7
+
+自从 idea.2023.2 版本发布起（2023年7月26日），Win7 就不再受支持了，官方说明原文如下：
+
+<https://blog.jetbrains.com/idea/2023/07/intellij-idea-2023-2/>
+
+<https://www.jetbrains.com/help/idea/supported-java-versions.html#2023>
+
+注：idea.2023.1.7 支持 Java17
+
+### vscode.1.70.3
+
+Visual Studio Code 1.70.3 是最后一个支持 Win7 的版本，官方说明原文如下：
+
+<https://code.visualstudio.com/updates/v1_70>
+
+### chrome.109
+
+2022年10月25日，谷歌宣布 Chrome.109 是支持 Win7 的最后一个版本，官方说明原文如下：
+
+<https://support.google.com/chrome/thread/185534985/sunsetting-support-for-windows-7-8-8-1-and-windows-server-2012-and-2012-r2-in-early-2023?hl=en>
+
+Chrome离线版官方下载页面：<https://www.google.cn/chrome/browser/desktop/index.html?standalone=1&platform=win64>
+
+Chrome离线版官方下载地址：<https://dl.google.com/release2/chrome/czao2hrvpk5wgqrkz4kks5r734_109.0.5414.120/109.0.5414.120_chrome_installer.exe>

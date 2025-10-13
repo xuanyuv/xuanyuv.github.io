@@ -313,7 +313,7 @@ testingcf.jsdelivr.net
 
 另外：参考 <https://blog.akass.cn/resources/mirrors>（bootcdn 和 staticfile 已被污染）
 
-## PS制作透明背景文字
+## PS制作无背景文字
 
 新建：指定好宽度和高度（像素），模式默认RGB颜色，内容位置选透明
 
