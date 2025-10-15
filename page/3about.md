@@ -50,6 +50,7 @@ type: page
 * [证监会](http://www.csrc.gov.cn)
 * [提前还贷计算器](https://calc.qufenlei.com/money/tiqianhuankuan.html)
 * [笔记本CPU天梯图](https://www.365pcbuy.com/article-409.html)
+* [免费AILogo生成器](https://slea.ai/zh-CN)
 
 ## 台式机
 
