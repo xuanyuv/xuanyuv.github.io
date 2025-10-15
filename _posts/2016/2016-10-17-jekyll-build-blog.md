@@ -320,7 +320,7 @@ testingcf.jsdelivr.net
 
 然后就可以录入文字了，同时也可以通过导航菜单上的图像菜单，选择修改图像大小或画布大小
 
-也可以参考这篇百度经验 <https://jingyan.baidu.com/article/73c3ce2839f1c6a40343d9aa.html>
+也可以参考：<https://jingyan.baidu.com/article/73c3ce2839f1c6a40343d9aa.html>
 
 ### 透明背景图片
 
@@ -339,4 +339,4 @@ testingcf.jsdelivr.net
 
 调整好画布尺寸后，按回车键或者在图片上双击鼠标左键即可
 
-可参考：<https://jingyan.baidu.com/article/49ad8bce06d1051935d8fa27.html>
+也可以参考：<https://jingyan.baidu.com/article/49ad8bce06d1051935d8fa27.html>
