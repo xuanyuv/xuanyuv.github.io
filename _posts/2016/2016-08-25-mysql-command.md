@@ -288,6 +288,18 @@ SELECT t1.totalApply, t2.totalSign, IF(t3.money IS NULL,0,t3.money) money FROM
 (SELECT COUNT(t.id) totalApply FROM t_apply_info t WHERE t.apply_date=20160810) t1,
 (SELECT COUNT(t.id) totalSign FROM t_apply_info t WHERE t.sign_date=20160810) t2,
 (SELECT SUM(t.pay_money) totalMoney FROM t_apply_info t WHERE t.pay_date=20160810) t3;
+
+-- 使用窗口函数实现：查询每个商户下，下单金额最高的前三名用户的，用户ID/总订单数量/总订单金额
+SELECT * FROM (
+    SELECT t1.*, row_number() OVER (PARTITION BY t1.merchant_id ORDER BY t1.totalPrice DESC) AS row_num
+    FROM (
+        SELECT merchant_id, user_id, count(id) orderNum, sum(price) totalPrice
+        FROM t_order_info
+        WHERE tenant_id=200010001 AND status=2
+        GROUP BY merchant_id, user_id
+    ) t1
+) t2
+WHERE t2.row_num <= 3
 ```
 
 ## 按时间段统计数据
