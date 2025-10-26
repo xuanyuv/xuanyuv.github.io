@@ -498,8 +498,8 @@ Visual Studio Code 1.70.3 是最后一个支持 Win7 的版本，官方说明原
 
 <https://support.google.com/chrome/thread/185534985/sunsetting-support-for-windows-7-8-8-1-and-windows-server-2012-and-2012-r2-in-early-2023?hl=en>
 
-Chrome109离线版官方下载地址：<https://dl.google.com/release2/chrome/czao2hrvpk5wgqrkz4kks5r734_109.0.5414.120/109.0.5414.120_chrome_installer.exe>
+Chrome109离线安装包下载地址：<https://dl.google.com/release2/chrome/czao2hrvpk5wgqrkz4kks5r734_109.0.5414.120/109.0.5414.120_chrome_installer.exe>
 
-Chrome最新版离线包官方下载地址：<https://www.google.cn/chrome/?standalone=1&platform=win64>
+Chrome最新版离线安装包下载地址：<https://www.google.cn/chrome/?standalone=1&platform=win64>
 
-补充：Chrome还有一个企业版，没咋用过，这是离线下载地址：<https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi>
+补充：还有一个没咋用过的Chrome企业版的离线地址：<https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi>
