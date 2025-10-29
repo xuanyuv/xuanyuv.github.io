@@ -36,7 +36,7 @@ JDK 21 will receive updates under the NFTC, until September 2026, a year after t
 
 *注：2026 年 09 月开始，若使用 JDK21 之后的 LTS 版本，仍是免费的（每个 LTS 版都有对应的 NFTC）*
 
-**所以，有很多人在使用 OpenJDK，下载地址为：<https://jdk.java.net/archive/>**
+**所以，有很多人在使用 OpenJDK，下载地址为：<https://jdk.java.net/25/>**
 
 **但是，有更多人在使用 Adoptium Eclipse Temurin，其实它的前身，就是大名鼎鼎的 AdoptOpenJDK**
 
