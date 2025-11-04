@@ -396,9 +396,27 @@ SELECT
        id
 FROM
      t_menu_info mi,
-     (SELECT @id := 113) vars
+     (SELECT @pid := 113) vars
 WHERE
-      FIND_IN_SET(pid, @id) > 0 AND @id := concat(@id, ',', id);
+      FIND_IN_SET(pid, @pid) > 0 AND @pid := concat(@pid, ',', id);
+
+-- 还有一种写法：根据父节点递归查询所有子节点（不包含自身）
+SELECT t3.*
+FROM(
+    SELECT t1.*, IF(FIND_IN_SET(pid, @pid) > 0, @pid := CONCAT(@pid, ',', id), 'www.xuanyuv.com') AS ischild
+    FROM (SELECT id, pid, name FROM t_menu_info WHERE tenant_id=200010001 ORDER BY id ASC) t1,
+         (SELECT @pid := 113) t2
+) t3
+WHERE ischild != 'www.xuanyuv.com'
+
+-- 还有一种写法：根据子节点递归查询所有父节点（包含自身）
+SELECT t3.*
+FROM(
+    SELECT t1.*, IF(FIND_IN_SET(id, @id) > 0, @id := CONCAT(@id, ',', pid), 'www.xuanyuv.com') AS isparent
+    FROM (SELECT id, pid, name FROM t_menu_info WHERE tenant_id=200010001 ORDER BY id DESC) t1,
+         (SELECT @id := 113) t2
+) t3
+WHERE isparent != 'www.xuanyuv.com'
 ```
 
 ## 数据的备份与恢复
