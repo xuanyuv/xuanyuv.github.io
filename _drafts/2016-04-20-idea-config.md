@@ -94,8 +94,12 @@ Run Configuration Templates for New Projects---Application---VM options: -Dsprin
 Run Configuration Templates for New Projects---Application---Shorten command line---JAR manifest
 
 # 打开内存使用状态
-新版：主界面双击Shift，在弹出的搜索栏输入memory indicator，再鼠标点击一次即可启用
 旧版：settings---Appearance & Behavior---Appearance---Show memory indicator
+新版：主界面双击Shift，在弹出的搜索栏输入memory indicator，再鼠标点击一次即可启用
+新版：或者菜单栏View---Appearance---Status Bar Widgets---勾选Memory Indicator
+
+# 右下角显示Git分之
+菜单栏View---Appearance---Status Bar Widgets---勾选Git Branch
 ```
 
 ### 外观及行为配置
