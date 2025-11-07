@@ -98,8 +98,14 @@ Run Configuration Templates for New Projects---Application---Shorten command lin
 新版：主界面双击Shift，在弹出的搜索栏输入memory indicator，再鼠标点击一次即可启用
 新版：或者菜单栏View---Appearance---Status Bar Widgets---勾选Memory Indicator
 
-# 右下角显示Git分之
+# 左下角的Git分支右侧显示Rollback
+菜单栏上右键---Add Action to Main Toolbar---选择Rollback...
+
+# 右下角显示Git分支
 菜单栏View---Appearance---Status Bar Widgets---勾选Git Branch
+
+# 左下角显示当前文件所在目录（包路径）
+菜单栏View---Appearance---Navigation Bar---勾选In Status Bar
 ```
 
 ### 外观及行为配置
@@ -171,8 +177,12 @@ settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---8
 
 ### 编辑器之代码风格
 ```
-# 控制台字号（先拷贝一份 Scheme 的 Islands Dark 配置，新命名为：Islands_Dark_xuanyu）
+# 控制台字号
+# 感觉 Islands Dark 的 Color Scheme 太亮眼、太刺眼了，整体不如 Darcula Contrast 柔和
+# 所以这里拷贝一份 Color Scheme 的 Darcula Contrast 配置，新命名为：Darcula_Contrast_xuanyu
 settings---Editor---Color Scheme---Console Font---Use console font instead of the default---Size=12
+# 然后再修改主题配置里面的编辑器的配置
+settings---Appearance & Behavior---Appearance---Theme---Editor color scheme改为Darcula_Contrast_xuanyu
 
 # 文件换行符使用Unix格式（先拷贝一份 Scheme 的 Default 配置，新命名为 Default_xuanyu）
 settings---Editor---Colors Style---Line separator---Unix and macOS (\n)
@@ -182,6 +192,9 @@ settings---Editor---Colors Style---Java---Imports---Class count to use import wi
 
 # 通过快捷键注释时，双斜杠位置为：与代码对齐（默认在行首），且注释的双斜线与注释内容之间有且仅有一个空格
 settings---Editor---Colors Style---Java---Code Generation---不勾选Line comment at first column，勾选Add a space at comment start
+
+# 代码后面的提交人改为不显示
+settings---Editor---Inlay Hints---Code vision---取消勾选Code author
 ```
 
 ### 编辑器之关闭检查
