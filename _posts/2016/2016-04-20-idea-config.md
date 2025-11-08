@@ -11,7 +11,7 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 {:toc}
 
 
-> 本文所列配置项，已适配：ideaIC-2023.3.8<br/>
+> 本文所列配置项，已适配：ideaIC-2025.2.4<br/>
   idea历史版本下载：<https://www.jetbrains.com/idea/download/other.html>
 
 ## 快捷键
@@ -40,7 +40,9 @@ idea.2016.3 开始，文件夹图标全部换成了暴丑的蓝色
 ```properties
 idea.config.path=D:/Develop/JetBrains/xuanyuData/ideaic/config
 idea.system.path=D:/Develop/JetBrains/xuanyuData/ideaic/system
+# 尽管默认值就是这个，但还是显式指定一下，不然启动idea时也会提示建议手动指定
 idea.plugins.path=${idea.config.path}/plugins
+# 尽管默认值就是这个，但还是显式指定一下，不然启动idea时也会提示建议手动指定
 idea.log.path=${idea.system.path}/log
 # 编辑大文件时idea容易卡顿：可适当提高该属性值
 idea.max.intellisense.filesize=2500
@@ -51,16 +53,17 @@ idea.cycle.buffer.size=disabled
 
 ### 64.exe.vmoptions
 ```text
+# 其实相比默认配置，就只改了Xms和Xmx
 -Xms3072m
 -Xmx3072m
+-XX:JbrShrinkingGcMaxHeapFreeRatio=40
 -XX:ReservedCodeCacheSize=512m
--XX:+UseG1GC
--XX:SoftRefLRUPolicyMSPerMB=100
--XX:CICompilerCount=2
 -XX:+HeapDumpOnOutOfMemoryError
 -XX:-OmitStackTraceInFastThrow
+-XX:CICompilerCount=2
 -XX:+IgnoreUnrecognizedVMOptions
--XX:CompileCommand=exclude,com/intellij/openapi/vfs/impl/FilePartNodeRoot,trieDescend
+-XX:+UnlockDiagnosticVMOptions
+-XX:TieredOldPercentage=100000
 -ea
 -Dsun.io.useCanonCaches=false
 -Dsun.java2d.metal=true
@@ -68,22 +71,22 @@ idea.cycle.buffer.size=disabled
 -Djdk.http.auth.tunneling.disabledSchemes=""
 -Djdk.attach.allowAttachSelf=true
 -Djdk.module.illegalAccess.silent=true
+-Djdk.nio.maxCachedBufferSize=2097152
+-Djava.util.zip.use.nio.for.zip.file.access=true
 -Dkotlinx.coroutines.debug=off
+-Djava.nio.file.spi.DefaultFileSystemProvider=com.intellij.platform.core.nio.fs.MultiRoutingFileSystemProvider
+-Dllm.show.ai.promotion.window.on.start=false
+-Didea.kotlin.plugin.use.k2=true
 
 ```
 
 ## 全局配置
 
-**在欢迎界面，点击左侧 Customize，再点击 All settings，开始下列配置**
+**在欢迎界面，点击左下角的扳手，再点击 Settings，开始下列配置**
 
 ### 项目参数及JDK
 
 ```
-# 注：新版idea要在配置完全局参数，并打开一个工程后，才能配置以下项
-
-# 设置JDK
-Structure for New Projects---Project Settings---Project---设置JDK
-
 # 控制台彩色输出：适合 SpringBoot 那种 main() 方法启动的（Maven启动与之类似，也是右上角配置JVM参数）
 Run Configuration Templates for New Projects---Application---VM options: -Dspring.output.ansi.enabled=ALWAYS
 
@@ -91,25 +94,28 @@ Run Configuration Templates for New Projects---Application---VM options: -Dsprin
 Run Configuration Templates for New Projects---Application---Shorten command line---JAR manifest
 
 # 打开内存使用状态
-新版：主界面双击Shift，在弹出的搜索栏输入Show memory indicator，再启用即可
 旧版：settings---Appearance & Behavior---Appearance---Show memory indicator
+新版：主界面双击Shift，在弹出的搜索栏输入memory indicator，再鼠标点击一次即可启用
+新版：或者菜单栏View---Appearance---Status Bar Widgets---勾选Memory Indicator
 
-# 隐藏左侧和右侧的工具栏
-标题栏---view---Appearance---取消勾选 Tool Window Bars（后续双击 Alt 键即可复显出来）
+# 左下角的Git分支右侧显示Rollback
+菜单栏上右键---Add Action to Main Toolbar---选择Rollback...
 
-# 隐藏或打开顶部的导航菜单栏
-主界面双击Shift，在弹出的搜索栏输入main menu，再启用 View | Appearance: Main Menu 即可
+# 右下角显示Git分支
+菜单栏View---Appearance---Status Bar Widgets---勾选Git Branch
+
+# 左下角显示当前文件所在目录（包路径）
+菜单栏View---Appearance---Navigation Bar---勾选In Status Bar
 ```
 
 ### 外观及行为配置
 
-**记得先启用新版UI**
-
 ```
-# 黑色主题及避免中文乱码（此处若选 Yahei Consolas Hybrid，会使得配置窗口很难看，非常难看）
-settings---Appearance & Behavior---Appearance---Theme---默认即可
-# 新版：2023.3.6版就用默认的 Dark，Use custom font，Inter，Size=13 就挺好的
-# 旧版：Darcula，Use custom font，Microsoft YaHei UI，Size=12
+# 最新黑色主题
+settings---Appearance & Behavior---Appearance---Theme---Islands Dark
+
+# 开启紧凑模式
+settings---Appearance & Behavior---Appearance---UI Options---勾选Compact mode
 
 # 隐藏工具栏快捷键下划线
 settings---Appearance & Behavior---Appearance---UI Options---不勾选Enable mnemonics in menu
@@ -136,7 +142,7 @@ settings---Editor---General---Breadcrumbs---不勾选Show breadcrumbs
 settings---Editor---General---Code Completion---不勾选Match case
 
 # 设定折叠或展开的代码类型（勾选则表示该类型代码在文件被打开时默认是被折叠显示的）
-settings---Editor---General---Code Folding---勾选Method bodies、Inner classes、Anonymous classes、XML tags
+settings---Editor---General---Code Folding---勾选Inner classes、Anonymous classes、XML tags
 
 # Tab上移除文件后缀
 settings---Editor---General---Editor Tabs---不勾选Show file extension
@@ -153,7 +159,7 @@ settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---8
 
 ### 编辑器之代码字体
 
-**推荐 idea 自带的 JetBrains Mono 字体，这也是一款真等宽的字体**
+**推荐 idea 自带的 JetBrains Mono，属于真等宽字体，同时也是 idea 的默认配置**
 
 以前用的是网上推荐的 Yahei Consolas Hybrid 字体（实际它不是真等宽字体），下载地址如下
 
@@ -171,10 +177,14 @@ settings---Editor---General---Editor Tabs--Closing Policy---Tab limit---8
 
 ### 编辑器之代码风格
 ```
-# 控制台字号（先拷贝一份 Scheme 的 Darcula 配置，新命名为 Darcula_Xuanyu）
+# 控制台字号
+# 感觉 Islands Dark 的 Color Scheme 太亮眼、太刺眼了，整体不如 Darcula Contrast 柔和
+# 所以这里拷贝一份 Color Scheme 的 Darcula Contrast 配置，新命名为：Darcula_Contrast_xuanyu
 settings---Editor---Color Scheme---Console Font---Use console font instead of the default---Size=12
+# 然后再修改主题配置里面的编辑器的配置
+settings---Appearance & Behavior---Appearance---Theme---Editor color scheme改为Darcula_Contrast_xuanyu
 
-# 文件换行符使用Unix格式（先拷贝一份 Scheme 的 Default 配置，新命名为 Default_Xuanyu）
+# 文件换行符使用Unix格式（先拷贝一份 Scheme 的 Default 配置，新命名为 Default_xuanyu）
 settings---Editor---Colors Style---Line separator---Unix and macOS (\n)
 
 # import每个类而非整个包（当import某个包下的类超过这里设置的个数时，就会换成星号来代替，比如import java.util.*）
@@ -182,26 +192,21 @@ settings---Editor---Colors Style---Java---Imports---Class count to use import wi
 
 # 通过快捷键注释时，双斜杠位置为：与代码对齐（默认在行首），且注释的双斜线与注释内容之间有且仅有一个空格
 settings---Editor---Colors Style---Java---Code Generation---不勾选Line comment at first column，勾选Add a space at comment start
+
+# 代码后面的提交人改为不显示
+settings---Editor---Inlay Hints---Code vision---取消勾选Code author
 ```
 
 ### 编辑器之关闭检查
 
-先拷贝一份 Profile 的 Default 配置，新命名为 Default_Xuanyu
-
-注意：不同的 idea 版本下的 Inspections 配置均有不同，以下只是概述其意
+先拷贝一份 Profile 的 Default 配置，新命名为 Default_xuanyu
 
 ```
-# DefaultFileTemplate
-settings---Editor---Inspections---General---不勾选Default File Template Usage
-
-# 方法参数是相同值
-settings---Editor---Inspections---Java---Declaration redundancy---不勾选Actual method parameter is the same constant
-
 # 取消注释内容中含有代码的提示
 settings---Editor---Inspections---Java---Code maturity---不勾选Commented out code
 
 # Return value of the method is never used
-settings---Editor---Inspections---Java---Declaration redundancy---不勾选Method can be void
+settings---Editor---Inspections---Java---Declaration redundancy---不勾选Method can be made 'void'
 
 # neverused
 settings---Editor---Inspections---Java---Declaration redundancy---不勾选Unused declaration
@@ -210,7 +215,7 @@ settings---Editor---Inspections---Java---Declaration redundancy---不勾选Unuse
 settings---Editor---Inspections---Java---Java language level migration aids---Java 8---Anonymous type can be replaced with lambda
 
 # @create@author@see（前者针对@create@author，后者针对@see）
-settings---Editor---Inspections---Java---Javadoc---不勾选Declaration has Javadoc problems和Declaration has problems in Javadoc references
+settings---Editor---Inspections---Java---Javadoc---不勾选Declaration has problems in Javadoc references、Javadoc declaration problems
 
 # 方法和类同名
 settings---Editor---Inspections---Java---Naming conventions---Method---不勾选Method name same as class name
@@ -219,26 +224,17 @@ settings---Editor---Inspections---Java---Naming conventions---Method---不勾选
 settings---Editor---Inspections---Java---Probable bugs---不勾选Result of method call ignored
 
 # serialVersionUID（然后回到类文件中，光标放到类名上，Alt+Enter就会提示生成serialVersionUID）
-settings---Editor---Inspections---Java---Serialization issues---勾选Serializable class without serialVersionUID
-settings---Editor---Inspections---JVM languages---勾选Non-serializable class with serialVersionUID
+settings---Editor---Inspections---Java---Serialization issues---勾选Non-serializable class with serialVersionUID
+settings---Editor---Inspections---JVM languages---勾选Serializable class without 'serialVersionUID'
 
-# 关闭Maven-jar包最新版检查
-settings---Editor---Inspections---Package Search---全部不勾选
+# 关闭黄叹号提示
+settings---Editor---Inspections---Java---Verbose or redundant code constructs---取消勾选'StringBuilder' can be replaced with 'String'
 
 # 关闭语法拼写检查
 settings---Editor---Inspections---Proofreading---全部不勾选
 
 # properties的属性未使用
 settings---Editor---Inspections---Properties Files---不勾选Unused Property
-
-# 类上的注解折叠时，鼠标放上去后：去掉小黄灯：创建测试类
-settings---Editor---Intentions---Java---Declaration---不勾选Create test
-
-# 类上的注解折叠时，鼠标放上去后：去掉小黄灯：实现抽象类或接口
-settings---Editor---Intentions---Java---Declaration---不勾选Implement abstract class or interface
-
-# 鼠标点到注解上时，去掉小黄灯：修改类或方法的访问权限（public/private/protected/package-private）
-settings---Editor---Intentions---Java---Other---不勾选Change access modifier
 ```
 
 ### 编辑器之注释模板
@@ -293,7 +289,7 @@ public enum ${NAME} {
 
 **接下来是自定义方法上的注释**
 
-settings---Editor---Live Templates---右上角 `+` 选择 Template Group---输入模板组名：XuanyuGroup
+settings---Editor---Live Templates--- `+` 选择 Template Group---输入模板组名：XuanyuGroup
 
 再点击 XuanyuGroup---右上角 `+` 加号选择 Live Template---设置自定义的触发注释输出的字母
 
@@ -322,7 +318,7 @@ settings---Editor---File Encodings---Default encoding for properties files---UTF
 settings---Editor---File Encodings---Transparent native-to-ascii conversion
 
 # 隐藏文件和文件夹
-settings---Editor---File Types---Ignore files and folders---target;.gradle;*.iml;*.idea;
+settings---Editor---File Types---Ignore files and folders---target、.gradle、*.iml、*.idea
 
 # 版本控制下文件变化的显示（调整文件夹显示颜色，配置在Version Control---File Status Color）
 新版：settings---Version Control---Confirmation---勾选Highlight directories that contain modified files in the Project tree
@@ -334,7 +330,7 @@ settings---Languages & Frameworks---Markdown---Default layout---Editor
 
 ### 快捷键
 
-先拷贝一份 keymap 的 Windows 配置，新命名为 Windows_Xuanyu
+先拷贝一份 keymap 的 Windows 配置，新命名为 Windows_xuanyu
 
 ```
 # 修改代码提示快捷键
@@ -344,7 +340,7 @@ settings---keymap---搜索框输入basic（idea默认的是Ctrl+空格，和我�
 settings---keymap---搜索框输入full screen（搜索到的是Toggle Full Screen mode）---F11
 
 # 修改文件关闭快捷键
-settings---keymap---快捷键搜索Ctrl+F4（搜索到的是Window--Editor Tabs--Close）---Ctrl+W
+settings---keymap---快捷键搜索Ctrl+F4（搜索到的是Window--Editor Tabs--Close Tab）---Ctrl+W
 
 # 修改类方法列表快捷键
 settings---keymap---快捷键搜索Ctrl+F12（搜索到的是Main menu--Navigate--File Structure）---Ctrl+O
@@ -352,15 +348,16 @@ settings---keymap---快捷键搜索Ctrl+F12（搜索到的是Main menu--Navigate
 
 ### Maven
 
+settings --- Build,Execution,Deployment --- 下面配置：
+
 ```
-settings---Build,Execution,Deployment---Build Tools---Maven---勾选Print exception stack traces，并选择本机Maven及本地仓库
-settings---Build,Execution,Deployment---Build Tools---Maven---Importing---Automatically download---勾选Sources和Annotations
-settings---Build,Execution,Deployment---Build Tools---Maven---Importing---JDK for importer---选择本机安装的1.8
-settings---Build,Execution,Deployment---Build Tools---Maven---Runner---JRE---选择本机安装的1.8
+Build Tools---Maven---勾选Print exception stack traces、选择本地的Maven和仓库、取消勾选Use settings from .mvn/maven.config
+Build Tools---Maven---Importing---Automatically download---勾选Sources和Annotations、选择本机安装的JDK-25.0.1
+Build Tools---Maven---Runner---JRE---选择本机安装的JDK-25.0.1
 
-settings---Build,Execution,Deployment---Compiler---Build project automatically
+Compiler---Build project automatically
 
-settings---Build,Execution,Deployment---Compiler---Shared build process heap size(Mbytes)---1024
+Compiler---Build process---Shared heap size(Mbytes)---1024
 ```
 
 ## datagrip的几个配置
