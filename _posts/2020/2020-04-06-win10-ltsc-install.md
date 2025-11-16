@@ -20,8 +20,6 @@ published: true
 
 那就折腾一下吧，直接装 LTSC（江湖人称老坛酸菜，属于 Win10 各版本中比较不错的存在）
 
-![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2020/2020-04-06-win10-ltsc-install-00.png)
-
 ### 准备工作
 
 1. 一个 8G U 盘（提前格式化）
@@ -171,6 +169,8 @@ SHA256：C117C5DDBC51F315C739F9321D4907FA50090BA7B48E7E9A2D173D49EF2F73A3
 
 ![](https://ae01.alicdn.com/kf/H0da493e6d2d644f6a358f6429bc974893.png)
 
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2020/2020-04-06-win10-ltsc-install-09.png)
+
 ### 关闭WD
 
 1. 运行gpedit.msc---计算机配置---管理模板---Windows组件---WindowsDefender防病毒程序---关闭WD防病毒程序---启用
@@ -183,7 +183,7 @@ SHA256：C117C5DDBC51F315C739F9321D4907FA50090BA7B48E7E9A2D173D49EF2F73A3
 
 ### 关闭自动更新
 
-![](https://ae01.alicdn.com/kf/Hd332ea5bb18c419b82ca59804e5e88ebU.png)
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2020/2020-04-06-win10-ltsc-install-10.png)
 
 1. 运行gpedit.msc---计算机配置---管理模板---Windows组件---Windows更新---指定 Intranet Microsoft 更新服务位置---启用<br/>
 然后在下面的三个输入框（Intranet更新、统计、备用下载服务地址）均填入 127.0.0.1，如上图所示
