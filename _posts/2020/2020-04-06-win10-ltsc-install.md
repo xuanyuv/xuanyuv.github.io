@@ -330,12 +330,12 @@ Win10 有个特点：自动扫描硬件，并安装相应的驱动
 
 ### 驱动备份与恢复
 
-微软在2012 年的 win8 和 2012-R2 起首次引入DISM（Deployment Image Servicing and Management，部署映像服务和管理）
+2012 年的 Win8 和 2012-R2 首次引入DISM（Deployment Image Servicing and Management，部署映像服务和管理）
 
 可以通过它来备份和恢复驱动：
 
 1. 提前在非系统盘创建保存驱动文件的文件夹，比如：E:\DriversBackup
-2. 以管理员身份打开 Windows PowerShell（或者快捷键`Win + X，再按A`即可快速打开）
+2. 以管理员身份打开 Windows PowerShell（或者快捷键`Win + X，再按A`）
 3. 备份驱动：`dism /online /export-driver /destination:E:\DriversBackup`
 4. 恢复驱动：`dism /online /add-driver /driver:E:\DriversBackup /recurse`
 
