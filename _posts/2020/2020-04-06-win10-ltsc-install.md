@@ -215,7 +215,7 @@ C 盘右键属性---工具选项卡---优化---更改设置---取消勾选按计
 
 任意文件夹菜单栏---查看---最右侧选项---查看选项卡---勾选始终显示图标，从不显示缩略图
 
-### 关闭快捷方式小箭头
+### 关闭快捷方式箭头
 
 启动注册表：运行---regedit
 
@@ -226,7 +226,9 @@ C 盘右键属性---工具选项卡---优化---更改设置---取消勾选按计
 
 即便如此，我们还是可以通过：运行---compmgmt.msc 来打开计算机管理面板
 
-### 隐藏此电脑默认文件夹
+### 隐藏此电脑文件夹
+
+默认的，此电脑下面有 7 个文件夹，有的不常用的可以隐藏掉（隐藏之后就看不到了）
 
 将以下内容另存为 reg 文件，双击导入注册表
 
@@ -257,7 +259,7 @@ Windows Registry Editor Version 5.00
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
 ```
 
-### 找回Windows照片查看器
+### 找回照片查看器
 
 将以下内容另存为 reg 文件，双击导入注册表即可
 
@@ -306,12 +308,6 @@ Windows Registry Editor Version 5.00
 
 然后注销或重启电脑，就能看到 txt 或 word 文件背景色变成了淡绿色
 
-### 安装驱动
-
-没啥说的，咔咔咔一顿安装一顿重启，就是了
-
-重启之后，就可以联网了：世界那么大，去网上看看
-
 ### 关闭自动驱动
 
 Win10 有个特点：自动扫描硬件，并安装相应的驱动
@@ -331,6 +327,23 @@ Win10 有个特点：自动扫描硬件，并安装相应的驱动
 更改为已启用，然后点击下面的【显示】按钮，输入设备的GUID值，确定后再勾选也适用于匹配已安装的设备
 
 查找GUID：运行compmgmt.msc---设备管理器---展开某设备---属性---详细信息选项卡---属性下拉框选择类Guid，右键复制显示的值
+
+### 驱动备份与恢复
+
+微软在2012 年的 win8 和 2012-R2 起首次引入DISM（Deployment Image Servicing and Management，部署映像服务和管理）
+
+可以通过它来备份和恢复驱动：
+
+1. 提前在非系统盘创建保存驱动文件的文件夹，比如：E:\DriversBackup
+2. 以管理员身份打开 Windows PowerShell（或者快捷键`Win + X，再按A`即可快速打开）
+3. 备份驱动：`dism /online /export-driver /destination:E:\DriversBackup`
+4. 恢复驱动：`dism /online /add-driver /driver:E:\DriversBackup /recurse`
+
+如果通过命令没有恢复成功，可以在设备管理器上手动操作一下：
+
+1. 运行 compmgmt.msc，点击设备管理器
+2. 在右侧的机器名称上，右键，添加驱动程序，选择 E:\DriversBackup（勾选包括子文件夹）
+3. 点击下一步，等待安装完成
 
 ### 补充
 
