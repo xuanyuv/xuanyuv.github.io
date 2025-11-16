@@ -18,7 +18,9 @@ published: true
 
 后发现 Cortana 常驻后台（打开电脑啥都不干，它一个人就占 30% CPU），并且家庭版也不怎么好，自动更新就麻烦
 
-那就折腾一下吧，直接装 LTSC（江湖人称老坛酸菜，差不多属于 Win10 各版本中最好的）
+那就折腾一下吧，直接装 LTSC（江湖人称老坛酸菜，属于 Win10 各版本中比较不错的存在）
+
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2020/2020-04-06-win10-ltsc-install-00.png)
 
 ### 准备工作
 
