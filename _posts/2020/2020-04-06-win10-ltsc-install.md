@@ -22,7 +22,7 @@ published: true
 
 ### 准备工作
 
-> 先关闭原电脑硬盘的BitLocker（如果已开），再备份原电脑驱动
+> 先关闭原电脑硬盘的BitLocker（如果已开），再对原电脑进行[驱动备份](#驱动备份与恢复)
 
 1. 一个 8G U 盘（提前格式化）
 2. 一个官方镜像文件（MSDN下载 [Windows 10 Enterprise LTSC 2019](https://msdn.itellyou.cn)）
