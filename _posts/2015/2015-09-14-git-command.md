@@ -64,6 +64,53 @@ $ ssh -T git@gitlab.company.com
 Welcome to GitLab, 玄玉!
 ```
 
+### 同平台多帐号
+
+以阿里云效为例，这时候就可以通过别名（下面的Host的值）的方式来访问
+```bash
+Host codeup-xuanyu
+HostName codeup.aliyun.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa.aliyun-xuanyu
+IdentityAgent none
+IdentitiesOnly yes
+User xuanyu
+
+Host codeup-xy
+HostName codeup.aliyun.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa.aliyun-xy
+IdentityAgent none
+IdentitiesOnly yes
+User xy
+```
+
+再执行下面的命令，进行验证
+
+```bash
+$ ssh -T git@codeup-xuanyu
+Welcome to Codeup, xuanyu!
+
+$ ssh -T git@codeup-xy
+Welcome to Codeup, xy!
+
+$ ssh -T git@codeup.aliyun.com
+git@codeup.aliyun.com: Permission denied (publickey).
+```
+
+因此clone代码时，就也要用别名，如下所示
+```bash
+$ git clone git@codeup.aliyun.com:6940c97df218320987654321/mydemo.git
+Cloning into 'mydemo'...
+git@codeup.aliyun.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+$ git clone git@codeup-xuanyu:6940c97df218320987654321/mydemo.git
+Cloning into 'mydemo'...
+Receiving objects: 100% (1166/1166), 6.48 MiB | 2.74 MiB/s, done.
+Resolving deltas: 100% (173/173), done.
+```
+
 ## 重置passphrase
 
 passphrase指的是生成RSA密钥时使用的密码，重置时必须输入原密码，否则不能重置
