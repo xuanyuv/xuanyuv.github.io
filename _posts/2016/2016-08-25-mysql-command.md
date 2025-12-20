@@ -14,6 +14,9 @@ excerpt: 一些常用的MySQL命令，诸如元数据查询、统计、建表、
 ## 建表
 
 ```sql
+-- CREATE DATABASE IF NOT EXISTS psp DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- CREATE DATABASE IF NOT EXISTS psp DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci;
+
 DROP TABLE IF EXISTS t_account_info;
 CREATE TABLE t_account_info(
     id             BIGINT         PRIMARY KEY AUTO_INCREMENT         COMMENT '主键',
@@ -37,7 +40,7 @@ CREATE TABLE t_account_info(
     user_realname  VARCHAR(50)    NOT NULL                           COMMENT '用户真实姓名',
     INDEX idx_tenantId_email(tenant_id, email),
     UNIQUE INDEX unique_tenantId_userId(tenant_id, user_id)
-)ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_UNICODE_CI COMMENT='渠道信息表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='渠道信息表';
 ```
 
 ## 表碎片
