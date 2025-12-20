@@ -16,14 +16,15 @@ excerpt: 一些idea的优化配置，诸如字体、乱码、显示、格式、�
 
 ## 快捷键
 
-| 快捷键                 | 用途                     | 备注                     |
-|:--------------------|:-----------------------|:-----------------------|
-| Alt + 回车            | 自动补全                   |                        |
-| Ctrl + Alt + 鼠标左键   | 进入实现类                  | 对应 eclipse 中的 Ctrl + T |
-| Ctrl + Alt + 方向左键   | 返回上一个方法                |                        |
-| Ctrl + Alt + H      | 查询某方法被其它地方调用           | 另外：Alt + F7 也挺好用       |
-| 键入 main 再按 Ctrl+J 键 | 快速输入main函数             | 或者：键入 psvm 再按 Tab 键    |
-| 键入 sout 再按 Tab 键    | 快速输入System.out.println | 对应 eclipse 中的 syso     |
+| 快捷键                    | 用途                     | 备注                     |
+|:-----------------------|:-----------------------|:-----------------------|
+| Alt + 回车               | 自动补全                   |                        |
+| Ctrl + Alt + 鼠标左键      | 进入实现类                  | 对应 eclipse 中的 Ctrl + T |
+| Ctrl + Alt + 方向左键      | 返回上一个方法                |                        |
+| Ctrl + Alt + H         | 查询某方法被其它地方调用           | 另外：Alt + F7 也挺好用       |
+| Ctrl + Shift + A 再选All | 作用等同双击Shift            |                        |
+| 键入 main 再按 Ctrl+J 键    | 快速输入main函数             | 或者：键入 psvm 再按 Tab 键    |
+| 键入 sout 再按 Tab 键       | 快速输入System.out.println | 对应 eclipse 中的 syso     |
 
 ## 橘黄色图标插件
 
