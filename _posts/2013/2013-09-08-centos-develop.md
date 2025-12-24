@@ -44,7 +44,7 @@ JDK 25 will receive updates under the NFTC, until September 2028, a year after t
 
 而后便移交给了 Eclipse 基金会，并改名为 Adoptium Eclipse Temurin：<https://adoptium.net/>
 
-它的JDK都严格通过 JavaSE TCK（Technology Compatibility Kit） 测试，也就意味着它与 OracleJDK 在功能上完全兼容
+它都是严格通过 JavaSE TCK（Technology Compatibility Kit） 测试的，意味着它与OracleJDK在功能上完全兼容
 
 并且它的 GPLv2 with Classpath Exception 许可证允许我们自由使用，包括二次打包分发，而无需开源业务代码
 
