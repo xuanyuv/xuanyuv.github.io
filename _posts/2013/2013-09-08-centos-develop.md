@@ -15,36 +15,36 @@ excerpt: 主要介绍CentOS-7.9版系统中，搭建Java开发环境的细节，
 
 ## 安装JDK
 
-Oracle官方下载地址：<https://www.oracle.com/java/technologies/downloads/#java21>
+Oracle官方下载地址：<https://www.oracle.com/java/technologies/downloads/#java25>
 
 关于收费问题，在该页面有这样一句话：
 
 ```text
-JDK 21 binaries are free to use in production and free to redistribute, at no cost, under the Oracle No-Fee Terms and Conditions (NFTC).
+JDK 25 binaries are free to use in production and free to redistribute, at no cost, under the Oracle No-Fee Terms and Conditions (NFTC).
 
-JDK 21 will receive updates under the NFTC, until September 2026, a year after the release of the next LTS. Subsequent JDK 21 updates will be licensed under the Java SE OTN License (OTN) and production use beyond the limited free grants of the OTN license will require a fee.
+JDK 25 will receive updates under the NFTC, until September 2028, a year after the release of the next LTS. Subsequent JDK 25 updates will be licensed under the Java SE OTN License (OTN) and production use beyond the limited free grants of the OTN license will require a fee.
 ```
 
-也就是说：截止到 2026 年 09 月，JDK21 都是采用 NFTC 协议（即完全免费，并且可以用于生产环境）
+也就是说：截止到 2028 年 09 月，JDK25 都是采用 NFTC 协议（即完全免费，并且可以用于生产环境）
 
-而从 2026 年 09 月起，JDK21 就开始采用 OTN 协议（即收费）
+而从 2028 年 09 月起，JDK25 就开始采用 OTN 协议（即收费）
 
 但是具体怎么收费，[网上有 2 种争论：](https://zhuanlan.zhihu.com/p/414822476)
 
-* 2026 年 09 月开始，只要使用了 JDK21，无论是哪个小版本，都要收费
-* 仅针对 2026 年 09 月之后发布的 JDK21 才收费，在这之前发布的 JDK21 依旧免费
+* 2028 年 09 月开始，只要使用了 JDK25，无论是哪个小版本，都要收费
+* 仅针对 2028 年 09 月之后发布的 JDK25 才收费，在这之前发布的 JDK25 依旧免费
 
-*注：2026 年 09 月开始，若使用 JDK21 之后的 LTS 版本，仍是免费的（每个 LTS 版都有对应的 NFTC）*
+*注：2028 年 09 月开始，若使用 JDK25 之后的 LTS 版本，仍是免费的（每个 LTS 版都有对应的 NFTC）*
 
 **所以，有很多人在使用 OpenJDK，下载地址为：<https://jdk.java.net/25/>**
 
 **但是，有更多人在使用 Adoptium Eclipse Temurin，其实它的前身，就是大名鼎鼎的 AdoptOpenJDK**
 
-实际上，AdoptOpenJDK 更新到 jdk16 就停止更新了（详见：<https://adoptopenjdk.net/releases.html>）
+实际上，AdoptOpenJDK 更新到 jdk16 就停止更新了：<https://adoptopenjdk.net/releases.html>
 
-而后便移交给了 Eclipse 基金会，并改名为 Adoptium Eclipse Temurin（主页：<https://adoptium.net/>）
+而后便移交给了 Eclipse 基金会，并改名为 Adoptium Eclipse Temurin：<https://adoptium.net/>
 
-*补充：Adoptium 不再提供 OpenJ9 的实现，若确实需要 OpenJ9，可以到[清华大学开源软件镜像站](https://mirror.tuna.tsinghua.edu.cn/news/rename-adoptopenjdk-to-adoptium/)下载*
+*补充：Adoptium 不再提供 OpenJ9 实现，若确实需要，可以到 [清华大学开源软件镜像站](https://mirror.tuna.tsinghua.edu.cn/news/rename-adoptopenjdk-to-adoptium/) 下载，[包括jdk25](https://mirrors.tuna.tsinghua.edu.cn/Adoptium/25/jdk/x64/)*
 
 ```sh
 [root@dev ~]# mkdir -p /app/software/backup
