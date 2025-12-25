@@ -367,7 +367,7 @@ Compiler---Build process---Shared heap size(Mbytes)---1024
 
 > 此处已经适配：DataGrip-2025.3.2（2021.2.3版本起，要求登录JetBrains帐号，故无限试用插件也失效了）<br/>
 历史版本下载：<https://www.jetbrains.com/datagrip/download/other.html><br/>
-若要改hosts：可以用下面的<br/>
+若要修改hosts：可以用下面的<br/>
 127.0.0.1 jetbrains.com<br/>
 127.0.0.1 www.jetbrains.com<br/>
 127.0.0.1 plugins.jetbrains.com<br/>
