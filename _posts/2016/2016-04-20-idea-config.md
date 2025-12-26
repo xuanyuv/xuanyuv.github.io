@@ -365,7 +365,7 @@ Compiler---Build process---Shared heap size(Mbytes)---1024
 
 数据库工具，常见的有 JookDB、Heidisql、DBeaver、Navicat，其实 JetBrains 家的 DataGrip 更好用
 
-> 此处已经适配：DataGrip-2025.3.2（2021.2.3版本起，要求登录JetBrains帐号，故无限试用插件也失效了）<br/>
+> 此处已经适配：DataGrip-2021.2.2（2021.2.3版本起，要求登录JetBrains帐号，无限试用插件也就失效了）<br/>
 历史版本下载：<https://www.jetbrains.com/datagrip/download/other.html><br/>
 若要修改hosts：可以用下面的<br/>
 127.0.0.1 jetbrains.com<br/>
@@ -375,7 +375,8 @@ Compiler---Build process---Shared heap size(Mbytes)---1024
 127.0.0.1 account.jetbrains.com.cn<br/>
 127.0.0.1 plugins.jetbrains.com.cn<br/>
 127.0.0.1 www.jetbrains.com.cn<br/>
-127.0.0.1 jetbrains.com.cn
+127.0.0.1 jetbrains.com.cn<br/><br/>
+Tips: 试了下最新版的DataGrip-2025.3.2，感觉升级意义不大。
 
 ### idea.properties
 
@@ -391,28 +392,20 @@ idea.cycle.buffer.size=disabled
 ### 64.exe.vmoptions
 
 ```text
-# 其实相比默认配置，就只改了Xms和Xmx
--Xms1024m
--Xmx1024m
--XX:JbrShrinkingGcMaxHeapFreeRatio=40
 -XX:ReservedCodeCacheSize=512m
+-Xmx1024m
+-Xms1024m
+-XX:+UseG1GC
+-XX:SoftRefLRUPolicyMSPerMB=100
+-XX:CICompilerCount=2
 -XX:+HeapDumpOnOutOfMemoryError
 -XX:-OmitStackTraceInFastThrow
--XX:CICompilerCount=2
--XX:+IgnoreUnrecognizedVMOptions
--XX:+UnlockDiagnosticVMOptions
--XX:TieredOldPercentage=100000
 -ea
 -Dsun.io.useCanonCaches=false
--Dsun.java2d.metal=true
--Djbr.catch.SIGABRT=true
 -Djdk.http.auth.tunneling.disabledSchemes=""
 -Djdk.attach.allowAttachSelf=true
 -Djdk.module.illegalAccess.silent=true
--Djdk.nio.maxCachedBufferSize=2097152
--Djava.util.zip.use.nio.for.zip.file.access=true
 -Dkotlinx.coroutines.debug=off
--Djava.nio.file.spi.DefaultFileSystemProvider=com.intellij.platform.core.nio.fs.MultiRoutingFileSystemProvider
 
 ```
 
@@ -444,13 +437,16 @@ idea.cycle.buffer.size=disabled
 
 ### 常用配置
 
-在欢迎界面，点击左下角的齿轮，再点击 Settings，开始下列配置
+旧版：在欢迎界面，点击左侧 Customize，再点击 All settings，开始下列配置
+
+新版：在欢迎界面，点击左下角的齿轮，再点击 Settings，开始下列配置
 
 注：有的配置可参考上方 idea 配置，故不再重复列出
 
 ```
 # 执行光标所在的语句（此时SQL须以分号结尾，除非手动选中整个SQL，那时就会直接执行选中的SQL）
-settings----Database---Query Execution---Execute---When caret inside statement execute---Smallest statement
+旧版：settings----Database---Query Execution---Execute---When caret inside statement execute---Smallest statement
+新版：settings----Database---General---Execute---When inside statement execute---Smallest statement
 
 # 其实 datagrip 也有工作空间和项目的概念（欢迎屏幕上能看见，默认个人目录），可通过下面配置来自定义
 settings---Appearancd & Behavior---System Settings---Default project directory
@@ -468,8 +464,8 @@ settings----Database---SQL Dialects---Global 和 Project 级别的都设置成 M
 标题栏---File---Data Sources...---Drivers---MySQL---设置本地 jar 及 serverTimezone=Asia/Shanghai
 
 # 表名后面显示注释
-新版：创建数据库连接后---Database Explorer---点击眼睛图标---勾选Comments Instead of Details
 旧版：标题栏---View---Appearance---Details in Tree View
+新版：创建数据库连接后---Database Explorer---点击眼睛图标---勾选Comments Instead of Details
 ```
 
 ### 字符集连接问题
