@@ -581,21 +581,21 @@ su xuanyu -c /app/software/nacos-2.2.3/bin/startup-standalone.sh # 临时以用�
 
 ```xml
 <service>
-   <!-- 唯一服务ID-->
-   <id>nacos</id>
-   <!-- 显示服务的名称 -->
-   <name>nacos</name>
-   <!-- 服务描述 -->
-   <description>本地的Nacos服务</description>
-   <!-- 日志路径 -->
-   <logpath>D:\Develop\nacos\bin\logs\</logpath>
-   <!-- 日志模式 -->
-   <logmode>roll</logmode>
-   <!-- 可执行文件的命令 -->
-   <executable>D:\Develop\nacos\bin\startup.cmd</executable>
-   <arguments>-m standalone</arguments>
-   <!-- 停止可执行文件的命令 -->
-   <stopexecutable>D:\Develop\nacos\bin\shutdown.cmd</stopexecutable>
+    <!-- 唯一服务ID-->
+    <id>nacos</id>
+    <!-- 显示服务的名称 -->
+    <name>nacos</name>
+    <!-- 服务描述 -->
+    <description>本地的Nacos服务</description>
+    <!-- 可执行文件的命令 -->
+    <executable>D:\Develop\nacos\bin\startup.cmd</executable>
+    <arguments>-m standalone</arguments>
+    <!-- 停止可执行文件的命令 -->
+    <stopexecutable>D:\Develop\nacos\bin\shutdown.cmd</stopexecutable>
+    <!-- 日志路径 -->
+    <logpath>D:\Develop\nacos\bin\logs\</logpath>
+    <!-- 日志模式 -->
+    <logmode>roll</logmode>
 </service>
 ```
 
