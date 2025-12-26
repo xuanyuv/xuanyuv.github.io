@@ -567,7 +567,9 @@ su xuanyu -c /app/software/nacos-2.2.3/bin/startup-standalone.sh # 临时以用�
 [root@dev bin]# reboot                              # 重启验证（应用程序连接时，需要开放8848、9848端口）
 ```
 
-另外，再补充一下：将 Nacos 安装成为 win10 系统服务的方法，步骤如下
+### 安装Win10服务
+
+下面，再补充一下：将 Nacos 安装成为 win10 系统服务的方法，步骤如下
 
 1. 下载文件：https://github.com/winsw/winsw/releases/download/v2.12.0/WinSW.NET4.exe
 2. WinSW.NET4.exe 放到 D:\Develop\nacos\bin\ 目录下，并重命名为 nacos-service.exe
