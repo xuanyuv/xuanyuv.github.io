@@ -145,6 +145,9 @@ settings---Editor---General---Code Completion---不勾选Match case
 # 设定折叠或展开的代码类型（勾选则表示该类型代码在文件被打开时默认是被折叠显示的）
 settings---Editor---General---Code Folding---勾选Inner classes、Anonymous classes、XML tags
 
+# Tab上打开多个文件时，分层显示，而不是横向隐藏
+settings---Editor---General---Editor Tabs---Show tabs in---选择Multiple rows
+
 # Tab上移除文件后缀
 settings---Editor---General---Editor Tabs---不勾选Show file extension
 
