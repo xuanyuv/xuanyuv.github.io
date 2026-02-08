@@ -21,12 +21,13 @@ type: page
 ## 收藏
 
 * [万能命令](https://wannengrun.net/)、[GithubRelease下载加速](https://doget.nocsdn.com/)、[GitHub Host](https://github-hosts.tinsfox.com/)、[Fetch GitHub Hosts](https://hosts.gitcdn.top/)
-* [烈火新站](https://apphot.cc/)、[大眼仔旭](http://www.dayanzai.me/)、[吾爱破解](https://www.52pojie.cn)、[我爱卡](https://bbs.51credit.com)
+* [烈火新站](https://apphot.cc/)、[吾爱破解](https://www.52pojie.cn)、[我爱卡](https://bbs.51credit.com)
 * [电音阁DJ](https://www.dianyinge.com/djshow/35737.html)、[DJ音乐](https://www.dj.net/)、[DJ舞曲网](https://www.djyyy.com/)、[黑色音频DJ](http://www.hy57.com/)、[抖音背景音乐提取](https://sevenmi.net/dyinMP3.html)
 * [英雄志讲武堂](http://www.jiang-wu-tang.com/JWTphpBBS/index.php)、[皇帝之家](https://www.huangdizhijia.com/index.html)、[知轩藏书](http://www.zxcs.me)、[知轩藏书2](https://zxcs.zip/)、[知轩藏书3](https://zxcs.info/)、[书荒部落](http://noveless.com)
 * [HTML5炫画](http://www.html5tricks.com)、[懒人之家](http://www.lanrenzhijia.com)、[故宫壁纸](https://www.dpm.org.cn/lights/royal.html)
 * [新浪微博图床](http://weibo.com/minipublish)、[新浪微博图床Chrome扩展](https://github.com/Suxiaogang/WeiboPicBed)、[SMMS图床](https://sm.ms)
-* [CMCT](https://cmct.tv/?fromuid=72191)、[伊甸园](http://bbs.sfile2012.com)、[FIX字幕侠](http://www.zimuxia.cn)、[MP4电影](https://domp4.icu/)、[盘了个盘](https://www.panlegepan.com/)、[SeedHub](https://seedhub.wwwnav.com/)
+* [CMCT](https://cmct.tv/?fromuid=72191)、[伊甸园](http://bbs.sfile2012.com)、[66影视](https://www.6v123.com/)、[盘了个盘](https://www.panlegepan.com/)、[SeedHub](https://seedhub.wwwnav.com/)
+* [HiFiHi](https://www.hifihi.com/)、[HiFiTi](https://www.hifiti.com/)、[歌曲海](https://www.gequhai.com/)、[布谷音乐网](https://buguyy.top/)
 
 ## 站点
 
@@ -48,6 +49,7 @@ type: page
 * [优秀的开源项目](https://chencoding.top:8090/)
 * [银保监](http://www.cbirc.gov.cn)
 * [证监会](http://www.csrc.gov.cn)
+* [分流抢票](https://www.bypass.cn/)
 * [提前还贷计算器](https://calc.qufenlei.com/money/tiqianhuankuan.html)
 * [笔记本CPU天梯图](https://www.365pcbuy.com/article-409.html)
 * [免费AILogo生成器](https://slea.ai/zh-CN)
