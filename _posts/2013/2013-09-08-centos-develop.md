@@ -281,6 +281,16 @@ failed to load: rejson.so: cannot open shared object file: No such file or direc
  0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]
 ```
 
+### 安装Windows版
+
+官方并未提供 Windows 安装包，这里使用民间大神根据 Redis 源码改造的：<https://github.com/tporadowski/redis/releases>
+
+下载得到 Redis-x64-5.0.14.1.zip，解压至本地，再通过 cmd 使用下面命令注册成服务
+
+`D:\Develop\Redis-x64-5.0.14.1>redis-server.exe --service-install redis.windows.conf --loglevel verbose`
+
+如果后面想删除服务，那就：`D:\Develop\Redis-x64-5.0.14.1>redis-server.exe --service-uninstall`
+
 ## 安装Nginx
 
 这里采用的是源码编译安装，下载地址为：https://nginx.org/download/nginx-1.24.0.tar.gz
