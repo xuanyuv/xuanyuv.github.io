@@ -656,6 +656,7 @@ su xuanyu -c "/app/software/nexus-3.68.1-02/nexus-3.68.1-02/bin/nexus start"   #
    org.apache.http.conn.ConnectTimeoutException: Connect to sonatype-download.global.ssl.fastly.net:443 [sonatype-download.global.ssl.fastly.net/31.13.86.21] failed: connect timed out
    ```
    关闭也简单：Nexus管理台：System：Capabilities菜单：编辑Outreach.Management：点击Disable，再重启Nexus即可
+7. 启动后，观察内存占用，**约为3.05G**
 
 ### 增加代理源
 
