@@ -14,8 +14,10 @@ excerpt: 一些常用的MySQL命令，诸如元数据查询、统计、建表、
 ## 建表
 
 ```sql
--- CREATE DATABASE IF NOT EXISTS psp DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;
 -- CREATE DATABASE IF NOT EXISTS psp DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci;
+-- CREATE DATABASE IF NOT EXISTS psp DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- 这是 MySQL-8.0+ 的官方默认推荐，也是最优选择，经过 MySQL 的专门优化，性能甚至接近general_ci
+CREATE DATABASE IF NOT EXISTS psp DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS t_account_info;
 CREATE TABLE t_account_info(
@@ -40,7 +42,7 @@ CREATE TABLE t_account_info(
     user_realname  VARCHAR(50)    NOT NULL                           COMMENT '用户真实姓名',
     INDEX idx_tenantId_email(tenant_id, email),
     UNIQUE INDEX unique_tenantId_userId(tenant_id, user_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='渠道信息表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='渠道信息表';
 ```
 
 ## 表碎片
@@ -253,7 +255,7 @@ mysql> SHOW VARIABLES WHERE Variable_name LIKE 'character_set_%' OR Variable_nam
 | character_set_system     | utf8mb3                                          |
 | character_sets_dir       | /app/software/mysql-8.0.32/mysql/share/charsets/ |
 | collation_connection     | utf8mb4_0900_ai_ci                               |
-| collation_database       | utf8mb4_unicode_ci                               |
+| collation_database       | utf8mb4_0900_ai_ci                               |
 | collation_server         | utf8mb4_0900_ai_ci                               |
 +--------------------------+--------------------------------------------------+
 11 rows in set, 1 warning (0.00 sec)
