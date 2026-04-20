@@ -29,6 +29,8 @@ excerpt: 太上老君说常清静经。
 
 > 正一真人曰：人家有此经，悟解之者，灾障不干，众圣护门。神升上界，朝拜高尊。功满德就，相感帝君。诵持不退，身腾紫云。
 
+![](https://gcore.jsdelivr.net/gh/xuanyuv/mydata/img/blog/2026/2026-03-31-qingjingjing.jpg)
+
 ## 原文
 
 > 老君曰：<br/>
