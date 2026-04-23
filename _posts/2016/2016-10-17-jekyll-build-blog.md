@@ -309,7 +309,7 @@ gcore.jsdelivr.net<br/>
 fastly.jsdelivr.net<br/>
 testingcf.jsdelivr.net
 
-另外：js 和 css 等静态文件的 CDN，推荐使用 [南方科技大学镜像站](https://mirrors.sustech.edu.cn/help/cdnjs.html)
+另外：js 和 css 等静态文件的 CDN，推荐使用 [南方科技大学镜像站](https://mirrors.sustech.edu.cn/help/cdnjs.html)（文件可以在这里搜索到：[cdnjs.com](https://cdnjs.com/)）
 
 另外：参考 <https://blog.akass.cn/archives/china-mirrors>（bootcdn 和 staticfile 已被污染）
 
