@@ -27,7 +27,7 @@ type: page
 * [HTML5炫画](http://www.html5tricks.com)、[懒人之家](http://www.lanrenzhijia.com)、[故宫壁纸](https://www.dpm.org.cn/lights/royal.html)
 * [新浪微博图床](http://weibo.com/minipublish)、[新浪微博图床Chrome扩展](https://github.com/Suxiaogang/WeiboPicBed)、[SMMS图床](https://sm.ms)
 * [CMCT](https://cmct.tv/?fromuid=72191)、[伊甸园](http://bbs.sfile2012.com)、[66影视](https://www.6v123.com/)、[盘了个盘](https://www.panlegepan.com/)、[SeedHub](https://seedhub.wwwnav.com/)
-* [HiFiHi](https://www.hifihi.com/)、[HiFiTi](https://www.hifiti.com/)、[歌曲海](https://www.gequhai.com/)、[布谷音乐网](https://buguyy.top/)
+* [HiFiHi](https://www.hifihi.com/)、[HiFiTi](https://www.hifiti.com/)、[歌曲宝](https://www.gequbao.com/)、[歌曲海](https://www.gequhai.com/)、[布谷音乐网](https://buguyy.top/)
 
 ## 站点
 
