@@ -34,6 +34,8 @@ idea.2016.3 开始，文件夹图标全部换成了暴丑的蓝色
 
 另外：2019.3.2 中该插件无效（2018.3.6 没问题），此时可以用这个插件：[Legacy Icon Pack for 2018.2+](https://plugins.jetbrains.com/plugin/10777-legacy-icon-pack-for-2018-2-)
 
+另外：前端代码高亮插件，可以考虑使用 WebCalm.0.12.1
+
 ## 首次运行前的配置
 
 ### idea.properties
