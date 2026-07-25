@@ -20,7 +20,7 @@ type: page
 
 ## 收藏
 
-* [万能命令](https://wannengrun.net/)、[GithubRelease下载加速](https://doget.nocsdn.com/)、[GitHub Host](https://github-hosts.tinsfox.com/)、[Fetch GitHub Hosts](https://hosts.gitcdn.top/)
+* [万能命令](https://wannengrun.net/)、[GithubRelease下载加速](https://doget.nocsdn.com/)、[GitHub Host](https://github-hosts.tinsfox.com/)、[Fetch GitHub Hosts](https://hosts.gitcdn.top/)、[飞鸟云](https://github.com/feiniaoyun)
 * [烈火新站](https://apphot.cc/)、[吾爱破解](https://www.52pojie.cn)、[我爱卡](https://bbs.51credit.com)
 * [电音阁DJ](https://www.dianyinge.com/djshow/35737.html)、[DJ音乐](https://www.dj.net/)、[DJ舞曲网](https://www.djyyy.com/)、[黑色音频DJ](http://www.hy57.com/)、[在线视频解析](https://www.viddown.cn/)、[抖音背景音乐提取](https://sevenmi.net/dyinMP3.html)
 * [英雄志讲武堂](http://www.jiang-wu-tang.com/JWTphpBBS/index.php)、[皇帝之家](https://www.huangdizhijia.com/index.html)、[知轩藏书](http://www.zxcs.me)、[知轩藏书2](https://zxcs.zip/)、[知轩藏书3](https://zxcs.info/)、[书荒部落](http://noveless.com)
