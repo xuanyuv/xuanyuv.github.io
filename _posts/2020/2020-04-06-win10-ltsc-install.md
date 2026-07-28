@@ -343,7 +343,13 @@ Win10 有个特点：自动扫描硬件，并安装相应的驱动
 3. 备份驱动：`dism /online /export-driver /destination:E:\DriversBackup`
 4. 恢复驱动：`dism /online /add-driver /driver:E:\DriversBackup /recurse`
 
-如果通过命令没有恢复成功，可以在设备管理器上手动操作一下：
+恢复驱动时，可能会提示：错误: 50 此命令只能与脱机映像一起使用，此时可以用下面这个命令来恢复
+
+`pnputil /add-driver E:\DriversBackup\*.inf /subdirs /install`
+
+它也会自动遍历子文件夹（等同于 dism 时的 /recurse），自动匹配硬件，自动安装驱动
+
+如果通过以上命令还是没有恢复成功，可以在设备管理器上手动操作一下：（比如手动安装网卡驱动）
 
 1. 运行 compmgmt.msc，点击设备管理器
 2. 在右侧的机器名称上，右键，添加驱动程序，选择 E:\DriversBackup（勾选包括子文件夹）
